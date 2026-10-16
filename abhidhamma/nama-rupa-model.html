@@ -1,0 +1,803 @@
+<title>Nāma–Rūpa Model</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a two-sided ledger — mind (indigo) on one side, matter (turmeric) on the other —
+   meeting at the six doors; the 17-moment cognitive process is the centrepiece. */
+:root {
+  --paper: #f3f4f7;
+  --surface: #ffffff;
+  --ink: #1b1d2b;
+  --muted: #5b5f74;
+  --line: #d8dbe5;
+  --nama: #3a40ad;
+  --nama-soft: #e5e6f6;
+  --rupa: #8f6100;
+  --rupa-mark: #d6981c;
+  --rupa-soft: #f6ecd5;
+  --nib: #27776a;
+  --nib-soft: #dbeee9;
+  --bad: #a3403c;
+  --bad-soft: #f5e1df;
+  --on-accent: #ffffff;
+  --display: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10121b; --surface: #181b27; --ink: #e6e7ef; --muted: #9a9eb3; --line: #2b2f42;
+    --nama: #a3a8ff; --nama-soft: #242849; --rupa: #e9b54d; --rupa-mark: #e9b54d; --rupa-soft: #382c13;
+    --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10121b; --surface: #181b27; --ink: #e6e7ef; --muted: #9a9eb3; --line: #2b2f42;
+  --nama: #a3a8ff; --nama-soft: #242849; --rupa: #e9b54d; --rupa-mark: #e9b54d; --rupa-soft: #382c13;
+  --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.55;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid; gap: 64px;
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; line-height: 1.1; }
+h2 { font-size: clamp(28px, 4vw, 38px); }
+h3 { font-size: 22px; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.prose { max-width: 66ch; display: grid; gap: 12px; color: var(--ink); }
+.prose .muted, .muted { color: var(--muted); }
+em.p, .p { font-style: italic; font-family: var(--display); font-size: 1.08em; }
+.nm { color: var(--nama); }
+.rp { color: var(--rupa); }
+section { display: grid; gap: 24px; min-width: 0; }
+.sec-head { display: grid; gap: 10px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--nama); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; gap: 22px; }
+.hero h1 { font-size: clamp(56px, 11vw, 120px); font-weight: 500; letter-spacing: -.01em; }
+.hero h1 .amp { font-style: italic; color: var(--muted); font-weight: 400; padding: 0 .08em; }
+.hero .lede { font-size: 19px; max-width: 62ch; }
+.realities {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line);
+}
+.real { padding: 16px 16px 18px 0; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.real + .real { padding-left: 16px; border-left: 1px solid var(--line); }
+.real .n { font-family: var(--display); font-size: 48px; line-height: 1; font-variant-numeric: tabular-nums; }
+.real .k { font-family: var(--display); font-style: italic; font-size: 21px; }
+.real .d { font-size: 14px; color: var(--muted); }
+.real .ch { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .05em; }
+.real.c .n, .real.c .k, .real.s .n, .real.s .k { color: var(--nama); }
+.real.r .n, .real.r .k { color: var(--rupa); }
+.real.nb .n, .real.nb .k { color: var(--nib); }
+.realm-tag { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+@media (max-width: 720px) {
+  .realities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .real:nth-child(3) { padding-left: 0; border-left: 0; }
+  .real:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* ---------- diagram ---------- */
+.figure { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 18px; }
+.svgwrap { overflow-x: auto; }
+.svgwrap svg { display: block; width: 100%; min-width: 620px; height: auto; }
+svg text { font-family: var(--body); fill: var(--ink); }
+svg .t-head { font-family: var(--display); font-size: 26px; font-weight: 500; letter-spacing: .04em; }
+svg .t-sm { font-size: 13px; fill: var(--muted); }
+svg .t-arrow { font-size: 13px; font-weight: 600; }
+svg .t-pali { font-family: var(--display); font-style: italic; font-size: 15px; }
+svg .t-core { font-family: var(--display); font-size: 19px; fill: var(--on-accent); }
+.c-nama { fill: var(--nama-soft); stroke: var(--nama); stroke-width: 1.5; }
+.c-rupa { fill: var(--rupa-soft); stroke: var(--rupa); stroke-width: 1.5; }
+.c-nib { fill: var(--nib-soft); stroke: var(--nib); stroke-width: 1.5; }
+.core-nama { fill: var(--nama); }
+.core-rupa { fill: var(--rupa); }
+.a-nama { stroke: var(--nama); stroke-width: 2; fill: none; }
+.a-rupa { stroke: var(--rupa); stroke-width: 2; fill: none; }
+.a-nib { stroke: var(--nib); stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; }
+.a-dash { stroke-dasharray: 6 5; }
+.mk-nama { fill: var(--nama); } .mk-rupa { fill: var(--rupa); } .mk-nib { fill: var(--nib); }
+.fill-nama { fill: var(--nama); } .fill-rupa { fill: var(--rupa); } .fill-nib { fill: var(--nib); }
+.legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; list-style: none; padding: 0; margin: 0; }
+.legend li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15px; min-width: 0; }
+.legend .sw { width: 22px; height: 3px; margin-top: 11px; border-radius: 2px; }
+.legend .sw.n { background: var(--nama); } .legend .sw.r { background: var(--rupa); } .legend .sw.b { background: var(--nib); }
+.legend .sw.d { background: repeating-linear-gradient(90deg, var(--nama) 0 6px, transparent 6px 10px); }
+.legend b { font-weight: 600; }
+@media (max-width: 720px) { .legend { grid-template-columns: 1fr; } }
+
+/* ---------- six doors ---------- */
+.doors { width: 100%; border-collapse: collapse; font-size: 15px; }
+.doors-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.doors th { text-align: left; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 12px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.doors td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; min-width: 150px; }
+.doors tr:last-child td { border-bottom: 0; }
+.doors tbody tr { cursor: pointer; }
+.doors tbody tr:hover td { background: color-mix(in srgb, var(--nama-soft) 45%, transparent); }
+.doors tbody tr.sel td { background: var(--nama-soft); }
+.doors td .p { display: block; }
+.doors td .e { font-size: 13px; color: var(--muted); }
+.tag { display: inline-block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 1px 6px; border-radius: 3px; margin-bottom: 4px; }
+.tag.r { background: var(--rupa-soft); color: var(--rupa); }
+.tag.n { background: var(--nama-soft); color: var(--nama); }
+.tag.x { background: var(--nib-soft); color: var(--nib); }
+.doors .go { font-family: var(--mono); font-size: 12px; color: var(--nama); white-space: nowrap; background: none; border: 1px solid var(--nama); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.doors .door-name { font-family: var(--display); font-size: 19px; }
+
+/* ---------- controls ---------- */
+.controls { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: end; }
+.ctl { display: grid; gap: 6px; }
+.ctl > span { font-family: var(--mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.seg { display: flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.seg button { border: 0; background: transparent; padding: 7px 12px; cursor: pointer; font-size: 14px; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--nama); color: var(--on-accent); }
+.seg.rupa button[aria-pressed="true"] { background: var(--rupa); color: var(--on-accent); }
+.seg button:disabled { opacity: .4; cursor: not-allowed; }
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); padding: 7px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btns { display: flex; gap: 8px; }
+
+/* ---------- timeline ---------- */
+.tl-scroll { overflow-x: auto; padding-bottom: 6px; }
+.tl { display: grid; gap: 4px; min-width: max-content; }
+.tl-row { display: grid; gap: 4px; }
+.cell {
+  width: 60px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface);
+  padding: 6px 4px 7px; display: grid; gap: 3px; justify-items: center; cursor: pointer; position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.cell .num { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.cell .ab { font-family: var(--display); font-style: italic; font-size: 14px; line-height: 1.1; text-align: center; }
+.cell .subs { display: flex; gap: 2px; }
+.cell .subs i { width: 12px; height: 4px; border-radius: 1px; background: var(--line); }
+.cell .mm { position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--rupa-mark); }
+.cell.bh { background: var(--paper); }
+.cell.proc { background: var(--nama-soft); border-color: color-mix(in srgb, var(--nama) 35%, var(--line)); }
+.cell.jav { background: var(--nama); border-color: var(--nama); }
+.cell.jav .ab, .cell.jav .num { color: var(--on-accent); }
+.cell.jav .subs i { background: color-mix(in srgb, var(--on-accent) 35%, transparent); }
+.cell.tad { background: var(--nama-soft); border-style: dashed; border-color: var(--nama); }
+.cell.vin { background: var(--surface); border: 2px solid var(--nama); }
+.cell.past { opacity: .55; }
+.cell.cur { transform: translateY(-4px); box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--nama) 70%, transparent); opacity: 1; }
+.cell.cur .subs i.on { background: var(--rupa-mark); }
+.cell.jav.cur .subs i.on { background: var(--rupa-mark); }
+.objbar { height: 30px; border-radius: 6px; background: var(--rupa-soft); position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--rupa) 35%, var(--line)); }
+.objbar .fill { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--rupa-mark) 45%, transparent); transition: width .3s linear; }
+.objbar .lbl { position: absolute; inset: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 10px; font-size: 12.5px; color: var(--rupa); font-weight: 600; white-space: nowrap; gap: 12px; }
+.objbar.free { background: var(--paper); border-style: dashed; }
+.objbar.free .lbl { color: var(--muted); font-weight: 400; }
+.tl-key { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.tl-key span { display: inline-flex; align-items: center; gap: 6px; }
+.tl-key i { width: 16px; height: 12px; border-radius: 3px; border: 1px solid var(--line); display: inline-block; }
+.tl-key i.bh { background: var(--paper); }
+.tl-key i.proc { background: var(--nama-soft); }
+.tl-key i.vin { background: var(--surface); border: 2px solid var(--nama); }
+.tl-key i.jav { background: var(--nama); border-color: var(--nama); }
+.tl-key i.tad { background: var(--nama-soft); border: 1px dashed var(--nama); }
+.tl-key i.mm { width: 8px; height: 8px; border-radius: 50%; background: var(--rupa-mark); border: 0; }
+
+.moment { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.moment h3 { font-size: 28px; }
+.moment .en { color: var(--muted); font-size: 16px; margin-top: 2px; }
+.moment .txt { margin-top: 12px; max-width: 60ch; }
+.facts { display: grid; gap: 10px; margin: 0; align-content: start; }
+.facts div { display: grid; grid-template-columns: 96px 1fr; gap: 10px; font-size: 14.5px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.facts dt { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.facts dd { margin: 0; }
+.submoments { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.submoments span { font-family: var(--mono); font-size: 11.5px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.submoments span.on { background: var(--rupa-soft); border-color: var(--rupa); color: var(--rupa); }
+@media (max-width: 720px) { .moment { grid-template-columns: 1fr; } }
+
+/* ---------- element grids ---------- */
+.groups { display: grid; gap: 18px; }
+.grp { display: grid; gap: 8px; }
+.grp-h { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.grp-h h4 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 500; }
+.grp-h .c { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.items { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.it { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px 8px; display: grid; gap: 1px; transition: opacity .2s, background .2s, border-color .2s; min-width: 0; }
+.it .p { font-size: 16px; line-height: 1.2; overflow-wrap: anywhere; }
+.it .e { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+.it.off { opacity: .32; }
+.rupa-grid .it.on { background: var(--rupa-soft); border-color: var(--rupa); }
+.ceta-grid .it.fixed { background: var(--nama-soft); border-color: var(--nama); }
+.ceta-grid .it.var { background: var(--surface); border: 1px dashed var(--nama); }
+.ceta-grid .grp.bad .it.fixed { background: var(--bad-soft); border-color: var(--bad); }
+.status { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.status .big { font-family: var(--display); font-size: 34px; line-height: 1; font-variant-numeric: tabular-nums; }
+.status .desc { flex: 1 1 320px; min-width: 0; font-size: 15px; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+@media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
+.note { font-size: 14.5px; color: var(--muted); border-left: 2px solid var(--line); padding-left: 12px; max-width: 70ch; }
+.kalapa { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.kalapa span { font-family: var(--display); font-style: italic; font-size: 15px; padding: 3px 9px; border-radius: 999px; background: var(--rupa-soft); color: var(--rupa); border: 1px solid color-mix(in srgb, var(--rupa) 40%, transparent); }
+.kalapa span.add { background: var(--nama-soft); color: var(--nama); border-color: color-mix(in srgb, var(--nama) 40%, transparent); }
+.kalapa b { font-weight: 400; color: var(--muted); padding: 0 4px; }
+
+/* ---------- citta bars ---------- */
+.bars { display: grid; gap: 22px; }
+.bar-blk { display: grid; gap: 8px; }
+.bar-blk .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.bar { display: flex; height: 42px; border-radius: 6px; overflow: hidden; gap: 2px; }
+.bar div { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 13px; transition: flex-grow .5s ease; min-width: 0; overflow: hidden; white-space: nowrap; }
+.seg-k { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+.seg-k span { display: inline-flex; align-items: center; gap: 6px; }
+.seg-k i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.s1 { background: var(--nama); color: var(--on-accent); }
+.s2 { background: color-mix(in srgb, var(--nama) 62%, var(--surface)); color: var(--on-accent); }
+.s3 { background: color-mix(in srgb, var(--nama) 32%, var(--surface)); color: var(--ink); }
+.s4 { background: var(--nib); color: var(--on-accent); }
+.k-bad { background: var(--bad); color: var(--on-accent); }
+.k-good { background: var(--nama); color: var(--on-accent); }
+.k-res { background: color-mix(in srgb, var(--nama) 40%, var(--surface)); color: var(--ink); }
+.k-fun { background: var(--muted); color: var(--paper); }
+
+footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; color: var(--muted); display: grid; gap: 6px; max-width: 80ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Abhidhammattha Saṅgaha · a study model after Bhikkhu Bodhi, <i>A Comprehensive Manual of Abhidhamma</i></div>
+    <h1><span class="nm">Nāma</span><span class="amp">&amp;</span><span class="rp">Rūpa</span></h1>
+    <p class="lede">The Abhidhamma breaks experience down into four ultimate realities (<em class="p">paramattha dhamma</em>). Three are conditioned. Consciousness and its mental factors make up <span class="nm">mind</span>, and twenty-eight kinds of material phenomena make up <span class="rp">matter</span>. The fourth, Nibbāna, is unconditioned. This model shows the parts of each side and how they hold each other up, moment by moment.</p>
+    <div class="realities" role="list">
+      <div class="real c" role="listitem">
+        <span class="realm-tag nm">Nāma</span>
+        <span class="n">89<span style="font-size:.5em"> / 121</span></span>
+        <span class="k">Citta</span>
+        <span class="d">Consciousness: the bare knowing of an object.</span>
+        <span class="ch">Chapter I</span>
+      </div>
+      <div class="real s" role="listitem">
+        <span class="realm-tag nm">Nāma</span>
+        <span class="n">52</span>
+        <span class="k">Cetasika</span>
+        <span class="d">Mental factors that arise and cease together with citta.</span>
+        <span class="ch">Chapter II</span>
+      </div>
+      <div class="real r" role="listitem">
+        <span class="realm-tag rp">Rūpa</span>
+        <span class="n">28</span>
+        <span class="k">Rūpa</span>
+        <span class="d">Material phenomena: four great elements and 24 derived from them.</span>
+        <span class="ch">Chapter VI</span>
+      </div>
+      <div class="real nb" role="listitem">
+        <span class="realm-tag" style="color:var(--nib)">Unconditioned</span>
+        <span class="n">1</span>
+        <span class="k">Nibbāna</span>
+        <span class="d">Neither mind nor matter. The object of path and fruition consciousness.</span>
+        <span class="ch">Chapter VI</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== The model ===== -->
+  <section id="model">
+    <div class="sec-head">
+      <div class="eyebrow">The whole model</div>
+      <h2>Two currents that condition each other</h2>
+      <div class="prose"><p>Mind cannot arise in the five-aggregate world without a physical base, and much of the body is produced and kept going by mind. Matter feeds mind through its bases and objects. Mind feeds matter directly as mind-born matter, and indirectly through kamma.</p></div>
+    </div>
+    <figure class="figure" style="margin:0">
+      <div class="svgwrap">
+        <svg viewBox="0 0 900 420" role="img" aria-labelledby="dg-t dg-d">
+          <title id="dg-t">Mind and matter conditioning each other</title>
+          <desc id="dg-d">Matter supports mind as base and object. Mind produces mind-born matter. Volition becomes kamma, which produces kamma-born matter. Temperature and nutriment also produce matter. Nibbāna stands outside both as an object of supramundane consciousness.</desc>
+          <defs>
+            <marker id="mk-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="mk-nama" d="M0 0 L10 5 L0 10 z"/></marker>
+            <marker id="mk-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="mk-rupa" d="M0 0 L10 5 L0 10 z"/></marker>
+            <marker id="mk-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk-nib" d="M0 0 L10 5 L0 10 z"/></marker>
+          </defs>
+
+          <text class="t-head fill-nama" x="220" y="44" text-anchor="middle" style="fill:var(--nama)">NĀMA</text>
+          <text class="t-sm" x="220" y="62" text-anchor="middle">mind</text>
+          <text class="t-head" x="620" y="44" text-anchor="middle" style="fill:var(--rupa)">RŪPA</text>
+          <text class="t-sm" x="620" y="62" text-anchor="middle">matter</text>
+
+          <!-- Nibbana -->
+          <text class="t-pali" x="420" y="30" text-anchor="middle" style="fill:var(--nib)">Nibbāna</text>
+          <circle class="c-nib" cx="420" cy="58" r="14"/>
+          <path class="a-nib" d="M404 66 Q 352 80 316 104" marker-end="url(#mk-b)"/>
+
+          <!-- Nama -->
+          <circle class="c-nama" cx="220" cy="190" r="120"/>
+          <circle class="core-nama" cx="220" cy="190" r="46"/>
+          <text class="t-core" x="220" y="196" text-anchor="middle">citta</text>
+          <text class="t-pali" x="220" y="122" text-anchor="middle" style="fill:var(--nama)">cetasika · 52</text>
+          <text class="t-sm" x="220" y="262" text-anchor="middle">consciousness with</text>
+          <text class="t-sm" x="220" y="278" text-anchor="middle">its mental factors</text>
+
+          <!-- Rupa -->
+          <circle class="c-rupa" cx="620" cy="190" r="120"/>
+          <circle class="core-rupa" cx="620" cy="190" r="46"/>
+          <text class="t-core" x="620" y="186" text-anchor="middle">4 great</text>
+          <text class="t-core" x="620" y="206" text-anchor="middle">elements</text>
+          <text class="t-pali" x="620" y="122" text-anchor="middle" style="fill:var(--rupa)">upādā-rūpa · 24</text>
+          <text class="t-sm" x="620" y="262" text-anchor="middle">derived matter, always</text>
+          <text class="t-sm" x="620" y="278" text-anchor="middle">in groups (kalāpa)</text>
+
+          <!-- matter -> mind -->
+          <path class="a-rupa" d="M509 146 L333 146" marker-end="url(#mk-r)"/>
+          <text class="t-arrow" x="421" y="137" text-anchor="middle" style="fill:var(--rupa)">base · vatthu</text>
+          <path class="a-rupa" d="M498 196 L344 196" marker-end="url(#mk-r)"/>
+          <text class="t-arrow" x="421" y="187" text-anchor="middle" style="fill:var(--rupa)">object · ārammaṇa</text>
+          <!-- mind -> matter -->
+          <path class="a-nama" d="M330 246 L507 246" marker-end="url(#mk-n)"/>
+          <text class="t-arrow" x="421" y="237" text-anchor="middle" style="fill:var(--nama)">mind-born · cittaja</text>
+
+          <!-- kamma loop -->
+          <path class="a-nama a-dash" d="M220 312 C 220 400, 620 400, 620 315" marker-end="url(#mk-n)"/>
+          <text class="t-arrow" x="420" y="404" text-anchor="middle" style="fill:var(--nama)">cetanā → kamma → kamma-born matter · kammaja</text>
+
+          <!-- external -->
+          <path class="a-rupa" d="M802 146 L733 146" marker-end="url(#mk-r)"/>
+          <text class="t-pali" x="808" y="142">utu</text>
+          <text class="t-sm" x="808" y="159">temperature</text>
+          <path class="a-rupa" d="M802 246 L730 246" marker-end="url(#mk-r)"/>
+          <text class="t-pali" x="808" y="242">āhāra</text>
+          <text class="t-sm" x="808" y="259">nutriment</text>
+        </svg>
+      </div>
+      <ul class="legend">
+        <li><span class="sw r"></span><span><b>Base (vatthu).</b> Every citta depends on a physical base: the five sense-sensitivities for the five sense consciousnesses, the heart-base for all the rest.</span></li>
+        <li><span class="sw r"></span><span><b>Object (ārammaṇa).</b> Visible form, sound, smell, taste and the tangible are all matter. Mind can also take mind, concepts or Nibbāna as its object.</span></li>
+        <li><span class="sw n"></span><span><b>Mind-born matter (cittaja).</b> 75 of the 89 cittas produce matter as they arise. Some produce bodily and vocal intimation, which is how deeds and speech happen.</span></li>
+        <li><span class="sw d"></span><span><b>Kamma (kammaja).</b> Volition (cetanā) is kamma. It produces the sense organs, sex, heart-base and life faculty from rebirth onward.</span></li>
+        <li><span class="sw r"></span><span><b>Temperature and nutriment.</b> Heat (the fire element) and nutritive essence keep producing new matter throughout life.</span></li>
+        <li><span class="sw b"></span><span><b>Nibbāna</b> is not produced by anything and produces nothing. Only the path and fruition cittas take it as object.</span></li>
+      </ul>
+    </figure>
+  </section>
+
+  <!-- ===== Six doors ===== -->
+  <section id="doors">
+    <div class="sec-head">
+      <div class="eyebrow">Where they meet · Chapter III</div>
+      <h2>The six doors</h2>
+      <div class="prose"><p>Each kind of knowing needs an object, a door it comes through, and a base it rests on. Five of the six channels are matter from end to end, and only the knowing is mind. The mind-door is different: its door is the life-continuum itself, a citta, but it still rests on the physical heart-base.</p><p class="muted">Select a row to run that door's cognitive process below.</p></div>
+    </div>
+    <div class="doors-wrap">
+      <table class="doors">
+        <thead><tr><th>Door</th><th>Object</th><th>Door is</th><th>Base</th><th>Consciousness</th><th></th></tr></thead>
+        <tbody id="doors-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Process ===== -->
+  <section id="process">
+    <div class="sec-head">
+      <div class="eyebrow">Mind in motion · Chapter IV</div>
+      <h2>One cognitive process, moment by moment</h2>
+      <div class="prose"><p>Consciousness is not a stream that sees continuously. It is a sequence of single cittas, each lasting one mind-moment with three sub-moments: arising, presence and dissolution. A unit of matter lasts 17 mind-moments, or 51 sub-moments. So a sense object that strikes a door lasts long enough for exactly one complete process.</p></div>
+    </div>
+
+    <div class="controls">
+      <div class="ctl"><span>Door</span><div class="seg" id="ctl-door" role="group" aria-label="Door"></div></div>
+      <div class="ctl"><span>Object</span><div class="seg rupa" id="ctl-int" role="group" aria-label="Object strength"></div></div>
+      <div class="ctl"><span>Run</span>
+        <div class="btns">
+          <button class="btn" id="btn-play" type="button">Play</button>
+          <button class="btn ghost" id="btn-step" type="button">Step</button>
+          <button class="btn ghost" id="btn-reset" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-scroll">
+      <div class="tl" id="tl"></div>
+    </div>
+    <div class="tl-key">
+      <span><i class="bh"></i>life-continuum (bhavaṅga)</span>
+      <span><i class="proc"></i>process citta</span>
+      <span><i class="vin"></i>sense consciousness</span>
+      <span><i class="jav"></i>javana: kamma is made here</span>
+      <span><i class="tad"></i>registration</span>
+      <span><i class="mm"></i>produces mind-born matter as it arises</span>
+    </div>
+
+    <div class="moment" id="moment" aria-live="polite"></div>
+  </section>
+
+  <!-- ===== Rupa ===== -->
+  <section id="rupa">
+    <div class="sec-head">
+      <div class="eyebrow rp">Rūpa · Chapter VI</div>
+      <h2>Twenty-eight kinds of matter</h2>
+      <div class="prose"><p>Matter is whatever is “deformed” (<em class="p">ruppati</em>) by cold, heat and other adverse conditions. Eighteen kinds are concretely produced and have their own intrinsic nature. Ten are non-concrete: they are modes or qualities of the concrete ones. Choose an origin to see which kinds it produces.</p></div>
+    </div>
+    <div class="controls">
+      <div class="ctl"><span>Produced by</span><div class="seg rupa" id="ctl-origin" role="group" aria-label="Origin of matter"></div></div>
+    </div>
+    <div class="status" id="rupa-status"></div>
+    <div class="groups rupa-grid" id="rupa-grid"></div>
+    <div class="two">
+      <div class="grp">
+        <div class="grp-h"><h4>Matter never arises alone</h4></div>
+        <p class="muted" style="font-size:15px">It comes in groups called <em class="p">kalāpa</em>. The smallest is the pure octad of eight inseparables, which are present wherever there is matter. Add the life faculty and eye-sensitivity and you have the eye-decad, one of the kamma-born groups.</p>
+        <div class="kalapa" aria-label="Eye-decad">
+          <span>pathavī</span><span>āpo</span><span>tejo</span><span>vāyo</span><span>vaṇṇa</span><span>gandha</span><span>rasa</span><span>ojā</span><b>+</b><span class="add">jīvita</span><span class="add">cakkhu-pasāda</span>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="grp-h"><h4>The tangible is not a separate kind</h4></div>
+        <p class="muted" style="font-size:15px">The object of body-consciousness is three of the great elements felt directly: earth as hardness or softness, fire as heat or cold, air as pressure or motion. Water, the element of cohesion, cannot be touched. That is why the 28 list only four objective kinds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Cetasika ===== -->
+  <section id="cetasika">
+    <div class="sec-head">
+      <div class="eyebrow nm">Nāma · Chapter II</div>
+      <h2>Fifty-two mental factors</h2>
+      <div class="prose"><p>A cetasika arises together with citta, ceases together with it, takes the same object and rests on the same base. Citta is the knowing. The factors colour it: feeling, intention, greed, mindfulness. Choose a citta to see which factors make it up.</p>
+      <p class="note">In the beautiful factors, <em class="p">kāya</em> (“body”) means the mental body, the group of accompanying factors. It does not mean the physical body.</p></div>
+    </div>
+    <div class="controls">
+      <div class="ctl"><span>Citta</span><div class="seg" id="ctl-citta" role="group" aria-label="Example citta"></div></div>
+    </div>
+    <div class="status" id="ceta-status"></div>
+    <div class="groups ceta-grid" id="ceta-grid"></div>
+  </section>
+
+  <!-- ===== Citta ===== -->
+  <section id="citta">
+    <div class="sec-head">
+      <div class="eyebrow nm">Nāma · Chapter I</div>
+      <h2>Eighty-nine kinds of consciousness</h2>
+      <div class="prose"><p>The same 89 cittas can be sorted two ways: by the plane of existence they belong to, or by their ethical nature. Counted with the five jhāna levels on which each path and fruition can be attained, the eight supramundane cittas become forty, and the total becomes 121.</p></div>
+    </div>
+    <div class="controls">
+      <div class="ctl"><span>Count</span><div class="seg" id="ctl-count" role="group" aria-label="Count">
+        <button type="button" data-n="89" aria-pressed="true">89</button><button type="button" data-n="121" aria-pressed="false">121</button>
+      </div></div>
+    </div>
+    <div class="bars" id="bars"></div>
+  </section>
+
+  <footer>
+    <p>Categories and counts follow Ācariya Anuruddha's <i>Abhidhammattha Saṅgaha</i> as translated and explained in Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i> (Buddhist Publication Society, 1993), with notes by U Rewata Dhamma and U Sīlānanda.</p>
+    <p>This is a study aid that summarises the Manual's schemes. The cognitive-process examples show one typical case where the text gives a range, such as the number of past life-continuum moments.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- Six doors ---------------- */
+  var DOORS = [
+    { id: "eye", name: "Eye", obj: ["rūpārammaṇa", "visible form", "r"], door: ["cakkhu-pasāda", "eye-sensitivity", "r"], base: ["cakkhu-vatthu", "eye-sensitivity", "r"], con: ["cakkhu-viññāṇa", "eye-consciousness", "n"], vin: ["cakkhu", "Cakkhu-viññāṇa", "Eye-consciousness", "Seeing"] },
+    { id: "ear", name: "Ear", obj: ["saddārammaṇa", "sound", "r"], door: ["sota-pasāda", "ear-sensitivity", "r"], base: ["sota-vatthu", "ear-sensitivity", "r"], con: ["sota-viññāṇa", "ear-consciousness", "n"], vin: ["sota", "Sota-viññāṇa", "Ear-consciousness", "Hearing"] },
+    { id: "nose", name: "Nose", obj: ["gandhārammaṇa", "smell", "r"], door: ["ghāna-pasāda", "nose-sensitivity", "r"], base: ["ghāna-vatthu", "nose-sensitivity", "r"], con: ["ghāna-viññāṇa", "nose-consciousness", "n"], vin: ["ghāna", "Ghāna-viññāṇa", "Nose-consciousness", "Smelling"] },
+    { id: "tongue", name: "Tongue", obj: ["rasārammaṇa", "taste", "r"], door: ["jivhā-pasāda", "tongue-sensitivity", "r"], base: ["jivhā-vatthu", "tongue-sensitivity", "r"], con: ["jivhā-viññāṇa", "tongue-consciousness", "n"], vin: ["jivhā", "Jivhā-viññāṇa", "Tongue-consciousness", "Tasting"] },
+    { id: "body", name: "Body", obj: ["phoṭṭhabbārammaṇa", "tangible: earth, fire, air", "r"], door: ["kāya-pasāda", "body-sensitivity", "r"], base: ["kāya-vatthu", "body-sensitivity", "r"], con: ["kāya-viññāṇa", "body-consciousness", "n"], vin: ["kāya", "Kāya-viññāṇa", "Body-consciousness", "Touching"] },
+    { id: "mind", name: "Mind", obj: ["dhammārammaṇa", "mental object: anything, incl. concepts and Nibbāna", "x"], door: ["bhavaṅga", "the life-continuum (a citta)", "n"], base: ["hadaya-vatthu", "heart-base", "r"], con: ["mano-viññāṇa", "mind-consciousness", "n"] }
+  ];
+  var TAGTXT = { r: "rūpa", n: "nāma", x: "either" };
+
+  function cellHTML(c) {
+    return '<span class="tag ' + c[2] + '">' + TAGTXT[c[2]] + '</span><span class="p">' + c[0] + '</span><span class="e">' + c[1] + "</span>";
+  }
+
+  var doorsBody = document.getElementById("doors-body");
+  doorsBody.innerHTML = DOORS.map(function (d) {
+    return '<tr data-door="' + d.id + '"><td><span class="door-name">' + d.name + "</span></td>" +
+      "<td>" + cellHTML(d.obj) + "</td><td>" + cellHTML(d.door) + "</td><td>" + cellHTML(d.base) + "</td><td>" + cellHTML(d.con) + "</td>" +
+      '<td><button class="go" type="button" data-door="' + d.id + '">Run process</button></td></tr>';
+  }).join("");
+  doorsBody.addEventListener("click", function (e) {
+    var tr = e.target.closest("tr[data-door]");
+    if (!tr) return;
+    setDoor(tr.getAttribute("data-door"));
+    if (e.target.closest(".go")) {
+      document.getElementById("process").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+  });
+
+  /* ---------------- Process ---------------- */
+  var M = {
+    AB: { ab: "atīta", cls: "bh", pali: "Atīta-bhavaṅga", en: "Past life-continuum", fn: "Life-continuum", kind: "Resultant", base: "Heart-base",
+      txt: "The object has already struck the door and arisen together with this moment, but the life-continuum flows on undisturbed. The life-continuum is the same resultant citta as the one at rebirth, and it keeps the same object it had then." },
+    BC: { ab: "calana", cls: "bh", pali: "Bhavaṅga-calana", en: "Vibrating life-continuum", fn: "Life-continuum", kind: "Resultant", base: "Heart-base",
+      txt: "The impact of the new object disturbs the life-continuum, and it begins to waver." },
+    BU: { ab: "upaccheda", cls: "bh", pali: "Bhavaṅgupaccheda", en: "Arrest of the life-continuum", fn: "Life-continuum", kind: "Resultant", base: "Heart-base",
+      txt: "The flow of the life-continuum is cut off so that an active process can begin." },
+    PDA: { ab: "āvajjana", cls: "proc", pali: "Pañcadvārāvajjana", en: "Five-door adverting", fn: "Adverting", kind: "Functional, rootless", base: "Heart-base",
+      txt: "Turns the mind toward the object at one of the five sense doors. It does not yet know what the object is, only that something is there." },
+    MDA: { ab: "āvajjana", cls: "proc", pali: "Manodvārāvajjana", en: "Mind-door adverting", fn: "Adverting", kind: "Functional, rootless", base: "Heart-base",
+      txt: "Turns the mind toward an object appearing at the mind-door. In a five-door process this same citta performs the determining function." },
+    SAM: { ab: "sampaṭ.", cls: "proc", pali: "Sampaṭicchana", en: "Receiving", fn: "Receiving", kind: "Resultant, rootless", base: "Heart-base",
+      txt: "Receives the object that the sense consciousness has just cognized." },
+    SAN: { ab: "santīr.", cls: "proc", pali: "Santīraṇa", en: "Investigating", fn: "Investigating", kind: "Resultant, rootless", base: "Heart-base",
+      txt: "Examines the object. When the object is extremely desirable, this citta is accompanied by joy." },
+    VOT: { ab: "voṭṭh.", cls: "proc", pali: "Voṭṭhapana", en: "Determining", fn: "Determining", kind: "Functional, rootless", base: "Heart-base",
+      txt: "Defines the object. This is the turning point. What follows, wholesome or unwholesome, depends on wise or unwise attention (yoniso or ayoniso manasikāra)." },
+    JAV: { ab: "javana", cls: "jav", pali: "Javana", en: "Impulsion", fn: "Javana", kind: "Wholesome or unwholesome, or functional for an arahant", base: "Heart-base",
+      txt: "The active phase that experiences the object fully. Here volition becomes kamma. The same type of citta usually runs seven times. The first javana can ripen in this life, the seventh in the next life, and the middle five in any later life." },
+    TAD: { ab: "tadār.", cls: "tad", pali: "Tadārammaṇa", en: "Registration", fn: "Registration", kind: "Resultant", base: "Heart-base",
+      txt: "Takes the same object as the javanas, “that object.” It occurs only for sense-sphere beings, with very great objects at the five doors or clear objects at the mind-door." },
+    B: { ab: "bhavaṅga", cls: "bh", pali: "Bhavaṅga", en: "Life-continuum", fn: "Life-continuum", kind: "Resultant", base: "Heart-base",
+      txt: "The process is over, and the mind sinks back into the life-continuum until the next object strikes." }
+  };
+  var SUB = [["uppāda", "arising"], ["ṭhiti", "presence"], ["bhaṅga", "dissolution"]];
+
+  var INT5 = [
+    { id: "vgreat", label: "Very great", note: "A very great object (atimahanta): one past life-continuum, then the full process to registration. Seventeen moments exactly.",
+      seq: function () { return rep("AB", 1).concat(["BC", "BU", "PDA", "VIN", "SAM", "SAN", "VOT"], rep("JAV", 7), rep("TAD", 2)); } },
+    { id: "great", label: "Great", note: "A great object (mahanta): two or three past life-continuum moments (three shown). The object ceases before registration can occur.",
+      seq: function () { return rep("AB", 3).concat(["BC", "BU", "PDA", "VIN", "SAM", "SAN", "VOT"], rep("JAV", 7)); } },
+    { id: "slight", label: "Slight", note: "A slight object (paritta): four to nine past life-continuum moments (five shown). There is no javana. Determining repeats two or three times, then the life-continuum resumes.",
+      seq: function () { return rep("AB", 5).concat(["BC", "BU", "PDA", "VIN", "SAM", "SAN"], rep("VOT", 3), rep("B", 3)); } },
+    { id: "vslight", label: "Very slight", note: "A very slight object (atiparitta): ten to fifteen past life-continuum moments. The life-continuum only vibrates and no process occurs.",
+      seq: function () { return rep("AB", 12).concat(rep("BC", 2), rep("B", 3)); } }
+  ];
+  var INTM = [
+    { id: "clear", label: "Clear", note: "A clear object (vibhūta) at the mind-door: adverting, seven javanas, and two registrations for a sense-sphere being.",
+      seq: function () { return ["BC", "BU", "MDA"].concat(rep("JAV", 7), rep("TAD", 2)); } },
+    { id: "obscure", label: "Obscure", note: "An obscure object (avibhūta) at the mind-door: the process ends with the javanas and has no registration.",
+      seq: function () { return ["BC", "BU", "MDA"].concat(rep("JAV", 7)); } }
+  ];
+  function rep(k, n) { var a = []; for (var i = 0; i < n; i++) a.push(k); return a; }
+
+  var state = { door: "eye", int: "vgreat", seq: [], i: 0, s: 0, timer: null };
+
+  var ctlDoor = document.getElementById("ctl-door");
+  ctlDoor.innerHTML = DOORS.map(function (d) { return '<button type="button" data-v="' + d.id + '">' + d.name + "</button>"; }).join("");
+  ctlDoor.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) setDoor(b.dataset.v); });
+  var ctlInt = document.getElementById("ctl-int");
+  ctlInt.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { state.int = b.dataset.v; build(); } });
+
+  function setDoor(id) {
+    var wasMind = state.door === "mind", isMind = id === "mind";
+    state.door = id;
+    if (wasMind !== isMind) state.int = isMind ? "clear" : "vgreat";
+    build();
+  }
+  function door() { return DOORS.filter(function (d) { return d.id === state.door; })[0]; }
+  function ints() { return state.door === "mind" ? INTM : INT5; }
+  function curInt() { return ints().filter(function (x) { return x.id === state.int; })[0] || ints()[0]; }
+
+  function info(key) {
+    if (key !== "VIN") return M[key];
+    var v = door().vin;
+    return { ab: v[0], cls: "vin", pali: v[1], en: v[2], fn: v[3], kind: "Resultant, rootless (wholesome- or unwholesome-resultant)", base: door().base[1].replace(/^./, function (c) { return c.toUpperCase(); }),
+      txt: "Bare cognition of the object, dependent on its own sensitivity base rather than the heart-base. It arises as the result of past kamma: wholesome-resultant for a desirable object, unwholesome-resultant for an undesirable one. Only the seven universal factors accompany it." };
+  }
+
+  var tl = document.getElementById("tl");
+  function build() {
+    stop();
+    state.seq = curInt().seq();
+    state.i = 0; state.s = 0;
+    Array.prototype.forEach.call(ctlDoor.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === state.door)); });
+    ctlInt.innerHTML = ints().map(function (x) { return '<button type="button" data-v="' + x.id + '" aria-pressed="' + (x.id === curInt().id) + '">' + x.label + "</button>"; }).join("");
+    state.int = curInt().id;
+    Array.prototype.forEach.call(doorsBody.children, function (tr) { tr.classList.toggle("sel", tr.dataset.door === state.door); });
+
+    var n = state.seq.length;
+    var cols = "repeat(" + n + ", 60px)";
+    var cells = state.seq.map(function (k, idx) {
+      var m = info(k);
+      var mm = k === "VIN" ? "" : '<span class="mm" title="Produces mind-born matter"></span>';
+      return '<button type="button" class="cell ' + m.cls + '" data-i="' + idx + '" aria-label="Moment ' + (idx + 1) + ": " + m.en + '">' + mm +
+        '<span class="num">' + (idx + 1) + '</span><span class="ab">' + m.ab + '</span><span class="subs"><i></i><i></i><i></i></span></button>';
+    }).join("");
+    var five = state.door !== "mind";
+    var o = door().obj[1].split(":")[0];
+    var bar = five
+      ? '<div class="objbar"><div class="fill"></div><div class="lbl"><span>' + o + ' arises · moment 1</span><span>object ceases after 17 mind-moments (51 sub-moments)</span></div></div>'
+      : '<div class="objbar free"><div class="lbl"><span>Mental object: past, present, future or timeless. No fixed 17-moment life-span applies.</span></div></div>';
+    tl.innerHTML = '<div class="tl-row" style="grid-template-columns:' + cols + '">' + cells + '</div>' +
+      '<div class="tl-row" style="grid-template-columns:' + cols + '"><div style="grid-column:1 / -1">' + bar + "</div></div>";
+    render();
+  }
+
+  tl.addEventListener("click", function (e) {
+    var c = e.target.closest(".cell");
+    if (!c) return;
+    stop(); state.i = +c.dataset.i; state.s = 0; render();
+  });
+
+  function render() {
+    var cells = tl.querySelectorAll(".cell");
+    cells.forEach(function (c, idx) {
+      c.classList.toggle("cur", idx === state.i);
+      c.classList.toggle("past", idx < state.i);
+      c.querySelectorAll(".subs i").forEach(function (t, j) { t.classList.toggle("on", idx === state.i && j <= state.s); });
+    });
+    var fill = tl.querySelector(".objbar .fill");
+    if (fill) fill.style.width = (((state.i * 3 + state.s + 1) / (state.seq.length * 3)) * 100).toFixed(2) + "%";
+
+    var k = state.seq[state.i], m = info(k);
+    var jn = "";
+    if (k === "JAV") { var first = state.seq.indexOf("JAV"); jn = " " + (state.i - first + 1) + " of 7"; }
+    var producesMatter = k === "VIN" ? "No. The ten sense consciousnesses are too weak to produce matter." : "Yes, at its arising sub-moment." + (k === "JAV" ? " Javanas can also produce bodily and vocal intimation." : "");
+    document.getElementById("moment").innerHTML =
+      "<div><div class=\"eyebrow\">Moment " + (state.i + 1) + " of " + state.seq.length + " · " + curInt().label.toLowerCase() + " object, " + door().name.toLowerCase() + "-door</div>" +
+      '<h3 style="margin-top:8px"><span class="p" style="font-size:1em">' + m.pali + jn + "</span></h3>" +
+      '<div class="en">' + m.en + "</div>" +
+      '<p class="txt">' + m.txt + "</p>" +
+      '<div class="submoments">' + SUB.map(function (s, j) { return '<span class="' + (j === state.s ? "on" : "") + '">' + s[0] + " · " + s[1] + "</span>"; }).join("") + "</div>" +
+      '<p class="note" style="margin-top:16px">' + curInt().note + "</p></div>" +
+      '<dl class="facts">' +
+      "<div><dt>Function</dt><dd>" + m.fn + "</dd></div>" +
+      "<div><dt>Kind</dt><dd>" + m.kind + "</dd></div>" +
+      "<div><dt>Base</dt><dd>" + m.base + "</dd></div>" +
+      "<div><dt>Makes matter</dt><dd>" + producesMatter + "</dd></div>" +
+      "</dl>";
+  }
+
+  function tick() {
+    if (state.s < 2) state.s++;
+    else if (state.i < state.seq.length - 1) { state.i++; state.s = 0; }
+    else { stop(); return; }
+    render();
+  }
+  function stop() { if (state.timer) { clearInterval(state.timer); state.timer = null; } playBtn.textContent = "Play"; }
+  var playBtn = document.getElementById("btn-play");
+  playBtn.addEventListener("click", function () {
+    if (state.timer) { stop(); return; }
+    if (state.i === state.seq.length - 1 && state.s === 2) { state.i = 0; state.s = 0; render(); }
+    state.timer = setInterval(tick, 360);
+    playBtn.textContent = "Pause";
+  });
+  document.getElementById("btn-step").addEventListener("click", function () {
+    stop();
+    if (state.i < state.seq.length - 1) { state.i++; state.s = 0; } else { state.s = 2; }
+    render();
+  });
+  document.getElementById("btn-reset").addEventListener("click", function () { stop(); state.i = 0; state.s = 0; render(); });
+
+  build();
+
+  /* ---------------- Rūpa ---------------- */
+  // origins: k = kamma, c = citta, u = utu, a = āhāra
+  var I8 = "kcua";
+  var RUPA = [
+    { g: "Great essentials", pali: "mahābhūta", concrete: true, items: [["pathavī", "earth: hardness, extension", I8], ["āpo", "water: cohesion", I8], ["tejo", "fire: heat", I8], ["vāyo", "air: motion, support", I8]] },
+    { g: "Sensitive", pali: "pasāda-rūpa", concrete: true, items: [["cakkhu", "eye-sensitivity", "k"], ["sota", "ear-sensitivity", "k"], ["ghāna", "nose-sensitivity", "k"], ["jivhā", "tongue-sensitivity", "k"], ["kāya", "body-sensitivity", "k"]] },
+    { g: "Objective", pali: "gocara-rūpa", concrete: true, items: [["vaṇṇa", "visible form (colour)", I8], ["sadda", "sound", "cu"], ["gandha", "smell", I8], ["rasa", "taste", I8]] },
+    { g: "Sexual", pali: "bhāva-rūpa", concrete: true, items: [["itthibhāva", "femininity", "k"], ["purisabhāva", "masculinity", "k"]] },
+    { g: "Heart", pali: "hadaya-rūpa", concrete: true, items: [["hadaya-vatthu", "heart-base", "k"]] },
+    { g: "Life", pali: "jīvita-rūpa", concrete: true, items: [["jīvitindriya", "life faculty", "k"]] },
+    { g: "Nutritional", pali: "āhāra-rūpa", concrete: true, items: [["kabaḷīkāra āhāra", "edible food (nutritive essence, ojā)", I8]] },
+    { g: "Limiting", pali: "pariccheda-rūpa", concrete: false, items: [["ākāsa-dhātu", "space element", I8]] },
+    { g: "Communicating", pali: "viññatti-rūpa", concrete: false, items: [["kāya-viññatti", "bodily intimation", "c"], ["vacī-viññatti", "vocal intimation", "c"]] },
+    { g: "Mutable", pali: "vikāra-rūpa", concrete: false, items: [["lahutā", "lightness", "cua"], ["mudutā", "malleability", "cua"], ["kammaññatā", "wieldiness", "cua"]] },
+    { g: "Characteristics", pali: "lakkhaṇa-rūpa", concrete: false, items: [["upacaya", "production", ""], ["santati", "continuity", ""], ["jaratā", "decay", ""], ["aniccatā", "impermanence", ""]] }
+  ];
+  var ORIG = [
+    { id: "all", label: "All 28" },
+    { id: "k", label: "Kamma", desc: "Kamma-born matter (kammaja). Past wholesome and unwholesome volition produces the sense organs, sex, heart-base and life faculty, along with the eight inseparables and space. It arises at every sub-moment from rebirth-linking onward." },
+    { id: "c", label: "Citta", desc: "Mind-born matter (cittaja). It arises at the arising sub-moment of 75 kinds of citta, starting from the first life-continuum after rebirth. Only mind can produce intimation, the matter of gesture and speech." },
+    { id: "u", label: "Temperature", desc: "Temperature-born matter (utuja). The fire element in any kalāpa, internal or external, produces new matter during its presence phase. This is also how sound arises in the inanimate world." },
+    { id: "a", label: "Nutriment", desc: "Nutriment-born matter (āhāraja). The nutritive essence of food, once absorbed, produces matter during its presence phase." },
+    { id: "none", label: "No origin", desc: "The four characteristics of matter (production, continuity, decay, impermanence) are not produced by any of the four causes. They only describe how produced matter comes and goes." }
+  ];
+  var origin = "all";
+  var ctlOrigin = document.getElementById("ctl-origin");
+  ctlOrigin.innerHTML = ORIG.map(function (o) { return '<button type="button" data-v="' + o.id + '">' + o.label + "</button>"; }).join("");
+  ctlOrigin.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { origin = b.dataset.v; renderRupa(); } });
+
+  function rupaOn(orig) {
+    if (origin === "all") return true;
+    if (origin === "none") return orig === "";
+    return orig.indexOf(origin) >= 0;
+  }
+  function renderRupa() {
+    Array.prototype.forEach.call(ctlOrigin.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === origin)); });
+    var count = 0;
+    var concreteDone = false;
+    var html = "";
+    RUPA.forEach(function (g, gi) {
+      if (!g.concrete && !concreteDone) {
+        concreteDone = true;
+        html += '<div class="eyebrow" style="margin-top:8px">Non-concretely produced · anipphanna · 10</div>';
+      }
+      if (gi === 0) html += '<div class="eyebrow">Concretely produced · nipphanna · 18</div>';
+      html += '<div class="grp"><div class="grp-h"><h4>' + g.g + '</h4><span class="p muted">' + g.pali + '</span><span class="c">' + g.items.length + '</span></div><div class="items">' +
+        g.items.map(function (it) {
+          var on = rupaOn(it[2]); if (on) count++;
+          var cls = origin === "all" ? "" : (on ? "on" : "off");
+          return '<div class="it ' + cls + '"><span class="p">' + it[0] + '</span><span class="e">' + it[1] + "</span></div>";
+        }).join("") + "</div></div>";
+    });
+    document.getElementById("rupa-grid").innerHTML = html;
+    var o = ORIG.filter(function (x) { return x.id === origin; })[0];
+    document.getElementById("rupa-status").innerHTML = '<span class="big rp">' + count + '</span><span class="desc">' +
+      (origin === "all" ? "Four origins produce matter: kamma, mind, temperature and nutriment. Some kinds come from one origin only, and the eight inseparables come from all four." : o.desc) + "</span>";
+  }
+  renderRupa();
+
+  /* ---------------- Cetasika ---------------- */
+  var CETA = [
+    { g: "Universals", pali: "sabbacittasādhāraṇa", key: "u", items: [["phassa", "contact"], ["vedanā", "feeling"], ["saññā", "perception"], ["cetanā", "volition"], ["ekaggatā", "one-pointedness"], ["jīvitindriya", "psychic life faculty"], ["manasikāra", "attention"]] },
+    { g: "Occasionals", pali: "pakiṇṇaka", key: "o", items: [["vitakka", "initial application"], ["vicāra", "sustained application"], ["adhimokkha", "decision"], ["viriya", "energy"], ["pīti", "zest"], ["chanda", "desire to act"]] },
+    { g: "Unwholesome", pali: "akusala", key: "a", bad: true, items: [["moha", "delusion"], ["ahirika", "shamelessness"], ["anottappa", "fearlessness of wrong"], ["uddhacca", "restlessness"], ["lobha", "greed"], ["diṭṭhi", "wrong view"], ["māna", "conceit"], ["dosa", "hatred"], ["issā", "envy"], ["macchariya", "avarice"], ["kukkucca", "worry"], ["thīna", "sloth"], ["middha", "torpor"], ["vicikicchā", "doubt"]] },
+    { g: "Beautiful", pali: "sobhana", key: "b", items: [["saddhā", "faith"], ["sati", "mindfulness"], ["hiri", "shame of wrong"], ["ottappa", "fear of wrong"], ["alobha", "non-greed"], ["adosa", "non-hatred"], ["tatramajjhattatā", "neutrality of mind"],
+      ["kāya-passaddhi", "tranquillity of mental body"], ["citta-passaddhi", "tranquillity of consciousness"], ["kāya-lahutā", "lightness of mental body"], ["citta-lahutā", "lightness of consciousness"], ["kāya-mudutā", "malleability of mental body"], ["citta-mudutā", "malleability of consciousness"],
+      ["kāya-kammaññatā", "wieldiness of mental body"], ["citta-kammaññatā", "wieldiness of consciousness"], ["kāya-pāguññatā", "proficiency of mental body"], ["citta-pāguññatā", "proficiency of consciousness"], ["kāyujjukatā", "rectitude of mental body"], ["cittujjukatā", "rectitude of consciousness"],
+      ["sammā-vācā", "right speech"], ["sammā-kammanta", "right action"], ["sammā-ājīva", "right livelihood"], ["karuṇā", "compassion"], ["muditā", "appreciative joy"], ["paññindriya", "wisdom faculty"]] }
+  ];
+  function ids(key, from, to) { var a = []; for (var i = from; i <= to; i++) a.push(key + i); return a; }
+  var U7 = ids("u", 0, 6), O6 = ids("o", 0, 5), A4 = ids("a", 0, 3), B19 = ids("b", 0, 18), ABST = ids("b", 19, 21), ILL = ids("b", 22, 23), PAN = ["b24"];
+  var CITTAS = [
+    { id: "eye", label: "Eye-consciousness", fixed: U7, vary: [], desc: "Eye-consciousness, a rootless resultant. It is the simplest citta, with only the seven universals." },
+    { id: "rest", label: "Restlessness", fixed: U7.concat(["o0", "o1", "o2", "o3"], A4), vary: [], desc: "Delusion-rooted, accompanied by restlessness. Four occasionals and the four unwholesome universals." },
+    { id: "greed", label: "Greed-rooted", fixed: U7.concat(O6, A4, ["a4", "a5"]), vary: [], desc: "Greed-rooted, joyful, with wrong view, unprompted. The first of the 89 cittas." },
+    { id: "kusala", label: "Wholesome", fixed: U7.concat(O6, B19, PAN), vary: ABST.concat(ILL), desc: "Sense-sphere wholesome, joyful, with knowledge, unprompted. The abstinences and illimitables join only on occasion and one at a time (dashed)." },
+    { id: "jhana", label: "First jhāna", fixed: U7.concat(O6, B19, PAN), vary: ILL, desc: "Fine-material first-jhāna wholesome. The abstinences never occur in mundane jhāna. Compassion or appreciative joy may join (dashed)." },
+    { id: "path", label: "Path", fixed: U7.concat(O6, B19, ABST, PAN), vary: [], desc: "Supramundane path consciousness at the first-jhāna level. Here the three abstinences arise together, as fixed factors, cutting off wrong speech, action and livelihood." }
+  ];
+  var citta = "greed";
+  var ctlCitta = document.getElementById("ctl-citta");
+  ctlCitta.innerHTML = CITTAS.map(function (c) { return '<button type="button" data-v="' + c.id + '">' + c.label + "</button>"; }).join("");
+  ctlCitta.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { citta = b.dataset.v; renderCeta(); } });
+
+  function renderCeta() {
+    Array.prototype.forEach.call(ctlCitta.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === citta)); });
+    var c = CITTAS.filter(function (x) { return x.id === citta; })[0];
+    document.getElementById("ceta-grid").innerHTML = CETA.map(function (g) {
+      return '<div class="grp' + (g.bad ? " bad" : "") + '"><div class="grp-h"><h4>' + g.g + '</h4><span class="p muted">' + g.pali + '</span><span class="c">' + g.items.length + '</span></div><div class="items">' +
+        g.items.map(function (it, i) {
+          var id = g.key + i;
+          var cls = c.fixed.indexOf(id) >= 0 ? "fixed" : (c.vary.indexOf(id) >= 0 ? "var" : "off");
+          return '<div class="it ' + cls + '"><span class="p">' + it[0] + '</span><span class="e">' + it[1] + "</span></div>";
+        }).join("") + "</div></div>";
+    }).join("");
+    var total = c.fixed.length + c.vary.length;
+    document.getElementById("ceta-status").innerHTML = '<span class="big nm">' + total + '</span><span class="desc">' +
+      (c.vary.length ? c.fixed.length + " fixed and " + c.vary.length + " variable factors. " : "factors, all fixed. ") + c.desc + "</span>";
+  }
+  renderCeta();
+
+  /* ---------------- Citta bars ---------------- */
+  var count = 89;
+  var ctlCount = document.getElementById("ctl-count");
+  ctlCount.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) { count = +b.dataset.n; renderBars(); } });
+  function renderBars() {
+    Array.prototype.forEach.call(ctlCount.children, function (b) { b.setAttribute("aria-pressed", String(+b.dataset.n === count)); });
+    var big = count === 121;
+    var planes = [["Sense-sphere", "kāmāvacara", 54, "s1"], ["Fine-material", "rūpāvacara", 15, "s2"], ["Immaterial", "arūpāvacara", 12, "s3"], ["Supramundane", "lokuttara", big ? 40 : 8, "s4"]];
+    var kinds = [["Unwholesome", "akusala", 12, "k-bad"], ["Wholesome", "kusala", big ? 37 : 21, "k-good"], ["Resultant", "vipāka", big ? 52 : 36, "k-res"], ["Functional", "kiriya", 20, "k-fun"]];
+    function bar(title, rows) {
+      return '<div class="bar-blk"><span class="lbl">' + title + '</span><div class="bar">' +
+        rows.map(function (r) { return '<div class="' + r[3] + '" style="flex:' + r[2] + ' 1 0" title="' + r[0] + ": " + r[2] + '">' + r[2] + "</div>"; }).join("") +
+        '</div><div class="seg-k">' + rows.map(function (r) { return '<span><i class="' + r[3] + '"></i>' + r[0] + ' <em class="p muted">' + r[1] + "</em> " + r[2] + "</span>"; }).join("") + "</div></div>";
+    }
+    document.getElementById("bars").innerHTML = bar("By plane", planes) + bar("By nature", kinds) +
+      '<p class="note">Sense-sphere 54 = 12 unwholesome + 18 rootless + 24 beautiful. ' +
+      (big ? "Each of the 4 paths and 4 fruits is counted on 5 jhāna levels: 8 × 5 = 40." : "Paths and fruits counted once each: 4 + 4 = 8.") + "</p>";
+  }
+  renderBars();
+})();
+</script>
