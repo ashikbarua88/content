@@ -254,7 +254,7 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
 a.xr { font-family: var(--ui); font-size: .76em; font-weight: 600; font-style: normal; color: var(--nama); text-decoration: none; border: 1px solid color-mix(in srgb, var(--nama) 40%, transparent); border-radius: 999px; padding: 0 5px; white-space: nowrap; vertical-align: 1px; }
 
 /* ---------- cover contents ---------- */
-.toc { columns: 2; column-gap: 26px; font-size: 12.3px; }
+.toc { columns: 2; column-gap: 26px; font-size: 12px; }
 .toc .grp { break-inside: avoid; margin-bottom: 7px; }
 .toc .row { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; border-bottom: 1px dotted var(--line); padding: 1px 0; color: inherit; text-decoration: none; }
 .toc .row.h { font-family: var(--ui); font-weight: 600; font-size: 10.5px; border-bottom: 1px solid var(--ink); padding-top: 2px; }
@@ -315,6 +315,37 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
 .gloss span { font-family: var(--ui); font-size: 9.5px; color: var(--muted); }
 @media (max-width: 700px) { .gloss { grid-template-columns: 1fr; } }
 
+/* ---------- stories ---------- */
+.stories-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 700px) { .stories-grid { grid-template-columns: 1fr; } }
+.story { border: 1px solid var(--line); border-top: 3px solid var(--lvc); border-radius: 0 0 6px 6px; padding: 8px 11px 9px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.story .sk { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.story .kind { font-family: var(--ui); font-size: 9px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--on-accent); border-radius: 3px; padding: 1px 6px; }
+.story .src { font-family: var(--ui); font-size: 9.5px; color: var(--muted); text-align: right; }
+.story h3 { font-size: 15px; }
+.story p { font-size: 11.6px; line-height: 1.42; }
+.story .read { font-size: 11.3px; line-height: 1.4; background: var(--faint); border-radius: 4px; padding: 5px 7px; }
+.story .read b, .story .sq b { font-family: var(--ui); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-right: 3px; }
+.story .sq { font-style: italic; font-size: 11.3px; }
+.story .sq b { font-style: normal; }
+
+/* ---------- life map ---------- */
+.lifemap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 18px; }
+@media (max-width: 700px) { .lifemap { grid-template-columns: 1fr; } }
+.rail { display: grid; gap: 6px; align-content: start; }
+.rail ol { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 3px solid var(--line); display: grid; gap: 7px; }
+.rail.past ol { border-left-color: var(--rupa-mark); }
+.rail.last ol { border-left-color: var(--nama); }
+.rail li { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 8px; font-size: 12px; line-height: 1.3; }
+.rail li::before { content: ""; position: absolute; left: -21px; top: 3px; width: 9px; height: 9px; border-radius: 50%; background: var(--sheet); border: 2px solid var(--muted); }
+.rail.past li::before { border-color: var(--rupa-mark); }
+.rail.last li::before { border-color: var(--nama); }
+.rail .when { font-family: var(--ui); font-size: 9.3px; color: var(--muted); padding-top: 1px; }
+.rail b { font-family: var(--display); font-weight: 500; font-size: 14px; }
+.rail .what { color: var(--muted); font-size: 11.3px; }
+.rail .pls { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+.rail .pls a { font-family: var(--ui); font-size: 9px; font-weight: 600; color: var(--on-lv); text-decoration: none; border-radius: 3px; padding: 0 5px; }
+
 @media print {
   body { background: var(--sheet); padding: 0; }
   .sheet { width: 210mm; height: 297mm; min-height: 0; margin: 0; box-shadow: none; overflow: hidden; break-after: page; page-break-after: always; }
@@ -331,7 +362,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     <p class="sub">Mind, matter and the conditions that join them: fifteen plates on a seven-level learning path</p>
   </div>
   <div class="fig">
-    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:515px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
+    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:440px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
     <div class="legend" style="justify-content:center">
       <span><i style="background:var(--bad)"></i>unwholesome 12</span>
       <span><i style="background:var(--nama)"></i>wholesome 17</span>
@@ -402,6 +433,20 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Abhidhamma Atlas · concept map</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= START HERE: THE LIFE AS A MAP ================= -->
+<section class="sheet" id="life">
+  <div class="ph"><span><b>Start here</b> · The life as a map</span><span>Abhidhamma Atlas</span></div>
+  <h2>The Buddha's life as a map of the atlas</h2>
+  <p class="lede">Every idea in these plates appears somewhere in a life story: the Bodhisatta's past lives in the Jātakas, and the last life of Siddhattha Gotama. Read down either line, follow the coloured plate numbers into the atlas, and use the story links to reach the retellings that close each level.</p>
+  <div class="lifemap" id="lifemap"></div>
+  <div class="box tint">
+    <h3>Why stories belong in an Abhidhamma atlas</h3>
+    <p class="small">The Abhidhamma speaks in dhammas, not people. The commentaries that teach it, though, are full of people: the Atthasālinī and the Visuddhimagga constantly turn to the Buddha's life, his disciples and the Jātakas to show a dhamma at work. A story gives one concrete case; the plates give the general structure. Going back and forth between the two is the Reflect depth of this atlas.</p>
+  </div>
+  <div class="pf"><span>Ages and sequence follow the traditional biography; sources are named on each story page</span><span class="pg"></span></div>
+</section>
+
+
 
 <!-- ================= LEVEL 1 ================= -->
 <section class="sheet level" id="L1" data-level="1"></section>
@@ -466,6 +511,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   </div>
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–II; Visuddhimagga XIV; Atthasālinī</span><span class="pg"></span></div>
 </section>
+
+<!-- ================= STORIES 1 ================= -->
+<section class="sheet stories" id="S1" data-level="1"></section>
 
 <!-- ================= LEVEL 2 ================= -->
 <section class="sheet level" id="L2" data-level="2"></section>
@@ -551,6 +599,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Sources: Milindapañha II; Visuddhimagga IV, XIV, XVIII; Atthasālinī; L. S. Cousins, “Vitakka/vitarka and vicāra” (1992); M. Heim, “Nāmarūpa in Buddhaghosa”</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= STORIES 2 ================= -->
+<section class="sheet stories" id="S2" data-level="2"></section>
+
 <!-- ================= LEVEL 3 ================= -->
 <section class="sheet level" id="L3" data-level="3"></section>
 
@@ -575,6 +626,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="legend"><span><i class="k-bh"></i>life-continuum</span><span><i class="k-pr"></i>process citta</span><span><i class="k-vi"></i>sense consciousness</span><span><i class="k-ja"></i>javana</span><span><i class="k-ta"></i>registration</span></div>
   <div class="pf"><span>Sources: Atthasālinī; Bodhi, <i>CMA</i> IV and its guide; Nārada, <i>The Buddha and His Teachings</i></span><span class="pg"></span></div>
 </section>
+
+<!-- ================= STORIES 3 ================= -->
+<section class="sheet stories" id="S3" data-level="3"></section>
 
 <!-- ================= LEVEL 4 ================= -->
 <section class="sheet level" id="L4" data-level="4"></section>
@@ -612,6 +666,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Source: Bodhi, <i>CMA</i> VIII §3–10; Paṭisambhidāmagga on the twenty modes</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= STORIES 4 ================= -->
+<section class="sheet stories" id="S4" data-level="4"></section>
+
 <!-- ================= LEVEL 5 ================= -->
 <section class="sheet level" id="L5" data-level="5"></section>
 
@@ -646,6 +703,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <p class="cap">Brahmā lifespans are in great aeons (<i>mahākappa</i>). The first three are given in the texts as fractions of an incalculable aeon, a quarter of a great aeon, and are converted here. Deva lifespans are in human years: 50 human years make one day of the Four Great Kings, and each higher heaven doubles both the day and the lifespan. Jhāna kamma ripens in the Brahmā planes <a class="xr" href="#p12">→ 12</a>.</p>
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Rewata Dhamma, table of realms</span><span class="pg"></span></div>
 </section>
+
+<!-- ================= STORIES 5 ================= -->
+<section class="sheet stories" id="S5" data-level="5"></section>
 
 <!-- ================= LEVEL 6 ================= -->
 <section class="sheet level" id="L6" data-level="6"></section>
@@ -700,6 +760,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga XIV, XVIII–XXII</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= STORIES 6 ================= -->
+<section class="sheet stories" id="S6" data-level="6"></section>
+
 <!-- ================= LEVEL 7 ================= -->
 <section class="sheet level" id="L7" data-level="7"></section>
 
@@ -736,6 +799,9 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   </div>
   <div class="pf"><span>Sources: Abhidharmakośa; Vasubandhu, <i>Lucid Introduction to the One Hundred Dharmas</i>; Kathāvatthu I</span><span class="pg"></span></div>
 </section>
+
+<!-- ================= STORIES 7 ================= -->
+<section class="sheet stories" id="S7" data-level="7"></section>
 
 <!-- ================= THREADS AND GLOSSARY ================= -->
 <section class="sheet" id="threads">
@@ -1135,7 +1201,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
         r[1].forEach(function (a, j) {
           k += T("rect", { x: f1(kx + (8 + j) * st2 + 3), y: y + 1, width: sq, height: sq, rx: 1.5, style: "fill:var(--rupa-mark)" });
         });
-        if (r[1].length) k += T("text", { x: f1(kx + (8 + r[1].length) * st2 + 8), y: y + 9, "class": "tx-xs tx-mu" }, "+ " + r[1].filter(function (v, i, a) { return a.indexOf(v) === i; }).map(function (v) { return v === "m" ? "3 mutable" : v; }).join(", "));
+        if (r[1].length && r[1].length <= 2) k += T("text", { x: f1(kx + (8 + r[1].length) * st2 + 8), y: y + 9, "class": "tx-xs tx-mu" }, "+ " + r[1].filter(function (v, i, a) { return a.indexOf(v) === i; }).map(function (v) { return v === "m" ? "3 mutable" : v; }).join(", "));
         y += 13;
       });
     });
@@ -1750,6 +1816,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     var cards = L.plates.map(function (p) {
       return '<a class="pc" href="#p' + p + '"><b>' + p + "</b><div><h3>" + PL[p].t + "</h3><p>" + PL[p].k + "</p></div></a>";
     }).join("");
+    cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
     if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, and the terms that name them.</p></div></a>';
     function col(title, pali, hint, list) {
       return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q) { return "<li>" + q + "</li>"; }).join("") + "</ol></div>";
@@ -1966,6 +2033,218 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     $("gloss").innerHTML = GL.map(function (g) { return "<div><i>" + g[0] + "</i> " + g[1] + " <span>· " + g[2] + "</span></div>"; }).join("");
   })();
 
+  /* ---------------- stories: data ---------------- */
+  var KIND = { life: ["The Buddha's life", "var(--nama)"], jataka: ["Jātaka", "var(--rupa-mark)"], disc: ["Disciples", "var(--nib)"] };
+  var ST = {
+    1: [
+      { k: "life", t: "Where the Abhidhamma was first taught", src: "Atthasālinī, introduction",
+        s: "The commentary tells that the Buddha spent a rainy season in the Tāvatiṃsa heaven, teaching the Abhidhamma to the devas, among them his mother, reborn as a deva. Each day he came down to Lake Anotatta, where he gave Sāriputta the outline, and Sāriputta taught it to five hundred monks. At the end of the rains he descended at Saṅkassa. The Tipiṭaka itself does not tell this story.",
+        r: "This is the tradition's account of where the seven books of Plate 1 came from, and why Sāriputta is honoured as the first teacher of the Abhidhamma.", p: [1, 11],
+        q: "Why might a tradition place the first teaching of the Abhidhamma among devas rather than humans?" },
+      { k: "jataka", t: "The last line of every Jātaka", src: "Jātaka, closing identification",
+        s: "Each Jātaka ends by naming who was who: “At that time, so-and-so was the king, and I myself was the ascetic.” One continuity is followed across many lives as if it were one person.",
+        r: "Conventional truth at work (Plate 2). Ultimately there is only a stream of cittas and matter, each moment conditioning the next. “The Bodhisatta” names the stream: neither the same person, nor a different one.", p: [2, 10],
+        q: "What does the word “I” refer to in “I was the ascetic”?" },
+      { k: "disc", t: "Vakkali and the body", src: "SN 22.87",
+        s: "The monk Vakkali longed to keep looking at the Buddha. The Buddha said: “Enough, Vakkali. What is there to see in this foul body? Whoever sees the Dhamma sees me.”",
+        r: "Even “the Buddha” is a convention for aggregates. What is really to be seen are dhammas and their characteristics, the shift Plate 2 asks of you.", p: [2],
+        q: "What would it mean to see a teacher in dhammas rather than as a person?" },
+      { k: "disc", t: "Nun Vajirā's chariot", src: "SN 5.10",
+        s: "Māra asked the nun Vajirā who had created “this being”. She answered: “Why do you assume a being? This is a heap of formations. As the word ‘chariot’ is used when the parts are assembled, so ‘a being’ is the convention when the aggregates are present.”",
+        r: "Her reply is the hinge of Plate 2: the five aggregates on the left of its diagram, the convention “a being” on top of them.", p: [2],
+        q: "Is Vajirā saying that beings do not exist, or saying what the word refers to?" }
+    ],
+    2: [
+      { k: "disc", t: "Kisāgotamī and the mustard seed", src: "Dhammapada commentary, v. 114",
+        s: "Mad with grief, Kisāgotamī carried her dead child from house to house asking for medicine. The Buddha asked her for a mustard seed from a house where no one had died. She found none, laid the child down, and understood that death comes to all.",
+        r: "Her grief is displeasure (domanassa), which on Plate 3 occurs only in the two hate-rooted cittas: grief is aversion toward loss. The search turned a private wound into a universal fact.", p: [3, 4],
+        q: "Why would the Abhidhamma class grief with aversion rather than with love?" },
+      { k: "disc", t: "Why Moggallāna smiled", src: "SN 19.1",
+        s: "Coming down Vulture Peak, Mahā Moggallāna smiled. Asked why, he said he had seen a skeleton moving through the air, pursued by crows and vultures. The Buddha confirmed that he too had seen such beings, and named the deeds that led there.",
+        r: "An arahant's smile comes from citta 30 on Plate 3, the smile-producing consciousness, found only in arahants and making no kamma. What he saw belongs to the woeful planes of Plate 11.", p: [3, 11],
+        q: "In terms of citta, how does an ordinary person's smile differ from an arahant's?" },
+      { k: "jataka", t: "Khantivādi, the teacher of patience", src: "Ja 313",
+        s: "A drunken king, Kalābu, asked an ascetic what he taught. “Patience,” he said. To test him, the king had his hands, feet, nose and ears cut off. The ascetic felt no anger and wished the king long life. Leaving, the king was swallowed by the earth.",
+        r: "Plate 4 at its sharpest: non-hatred (adosa) and hatred (dosa) never share a citta. The king's fate returns on Plate 10 as kamma that ripens in this very life.", p: [4, 10],
+        q: "Is patience only the absence of anger, or the presence of something else?" },
+      { k: "jataka", t: "The monkey king's bridge", src: "Ja 407",
+        s: "To save his troop from archers, a monkey king stretched himself across a river as a living bridge. The troop crossed over his back, but a jealous monkey leapt on him and broke it. The king of Benares, moved, tended him as he died.",
+        r: "Compassion (karuṇā) is one of the variable beautiful factors on Plate 4. It joins a wholesome citta only now and then, when the suffering of others is the object.", p: [4, 12],
+        q: "Why does compassion need suffering as its object, while loving-kindness does not?" },
+      { k: "disc", t: "Dhammadinnā on feeling", src: "MN 44",
+        s: "Questioned by the layman Visākha, the nun Dhammadinnā explained that lust lies latent in pleasant feeling, aversion in painful feeling and ignorance in neutral feeling. The Buddha said he would have answered in the same way.",
+        r: "This joins Plate 3's colours to Plate 9's wheel: feeling (link 7) is where craving (link 8) takes hold.", p: [3, 9],
+        q: "Which tendency does neutral feeling feed, and why is it the hardest to notice?" },
+      { k: "disc", t: "Pukkusāti and the elements", src: "MN 140",
+        s: "One night in a potter's shed, the Buddha taught a stranger, Pukkusāti, to see his body as earth, water, fire, air, space and consciousness, none of it “mine”. Pukkusāti recognised his teacher, but while seeking robes for ordination he was killed by a cow. The Buddha declared him a non-returner.",
+        r: "The four great elements are the core of the 28 kinds of matter on Plate 5. Analysing the body into elements is also one of the forty meditation subjects on Plate 12.", p: [5, 12],
+        q: "If hardness, cohesion, heat and motion are all there is in “my hand”, what does “my” point to?" }
+    ],
+    3: [
+      { k: "disc", t: "Bāhiya: in the seen, only the seen", src: "Ud 1.10",
+        s: "Bāhiya stopped the Buddha on his alms round, begging to be taught. The Buddha said: “In the seen there will be only the seen, in the heard only the heard, in the sensed only the sensed, in the cognized only the cognized.” Bāhiya became an arahant there and then, and was killed by a cow soon after.",
+        r: "Plate 7 shows where the instruction bites. Seeing itself, at moment 5, is a result and makes no kamma. Liking, disliking and “I” enter only in the javanas.", p: [7, 2],
+        q: "At which moment of Plate 7 does “the seen” become “a mango I want”?" },
+      { k: "disc", t: "Nanda, guardian of the doors", src: "Ud 3.2; AN 8.9",
+        s: "The Buddha's half-brother Nanda was ordained on his wedding day and pined for his bride. In time he became an arahant, and the Buddha named him foremost among those who guard the sense doors: whichever way Nanda looked, he looked with full awareness, so that longing and grief could not flow in.",
+        r: "The doors of sense restraint are the doors of Plate 7. Guarding them means the seeing is not followed by unwholesome javanas.", p: [7, 4],
+        q: "Can a door be guarded without being closed?" },
+      { k: "jataka", t: "Makhādeva's first grey hair", src: "Ja 9",
+        s: "King Makhādeva told his barber to report the first grey hair. When it came, the king held it in his hand, saw death approaching, handed the kingdom to his son and went forth.",
+        r: "A small object can carry a large process. The same sight of a grey hair could run javanas of vanity or of urgency; which one runs depends on attention at the turning point of determining (Plate 7).", p: [7, 13],
+        q: "What decides whether a grey hair produces worry or wisdom?" },
+      { k: "life", t: "Rāhula and the mirror", src: "MN 61",
+        s: "The Buddha asked his young son Rāhula what a mirror is for. “For reflection, sir.” “In the same way,” said the Buddha, “reflect before, during and after every action of body, speech and mind: does it lead to harm for myself, for others, or both?”",
+        r: "Reflection is a discipline for the javanas, where volition becomes kamma (Plates 7 and 10).", p: [7, 10],
+        q: "Why reflect after an action, when its kamma is already made?" }
+    ],
+    4: [
+      { k: "life", t: "The night of awakening", src: "MN 36; Ud 1.1–1.3",
+        s: "Under the Bodhi tree, in the first watch of the night he recalled his past lives; in the second he saw beings pass away and reappear according to their kamma; in the third he realised the destruction of the taints. In the days that followed he reviewed dependent origination forward and in reverse.",
+        r: "The three watches map onto the atlas: past lives and the planes (Plates 10–11), kamma and its fruit (Plate 10), and the wheel with its ending (Plates 9 and 13).", p: [9, 10, 13],
+        q: "Why must dependent origination be seen in reverse as well as forward?" },
+      { k: "disc", t: "Assaji's four lines", src: "Vinaya, Mahāvagga I.23",
+        s: "The wanderer Upatissa saw the monk Assaji on alms round and asked for his teacher's doctrine. Assaji gave it in one verse: “Of things that arise from a cause, the Tathāgata has told the cause, and also their cessation.” Upatissa, later Sāriputta, gained the eye of Dhamma on hearing it.",
+        r: "The shortest summary of Plates 8 and 9: whatever is conditioned has conditions, and they can cease. Sāriputta went on to become the Abhidhamma's first teacher (Plate 1).", p: [8, 9, 1],
+        q: "Why might a statement about conditions be enough to open the eye of Dhamma?" },
+      { k: "life", t: "“Do not say so, Ānanda”", src: "DN 15",
+        s: "Ānanda remarked that dependent origination, though called deep, seemed clear to him. The Buddha replied: “Do not say so, Ānanda. This dependent origination is deep and appears deep. Through not understanding it, this generation has become like a tangled skein.”",
+        r: "Plates 8 and 9 make the structure visible, but reading a diagram is learning (suta). Seeing a link happen is development (bhāvanā).", p: [9],
+        q: "What would it take to move from knowing the twelve links to seeing one of them happen?" },
+      { k: "life", t: "Rays from the Jewel House", src: "Atthasālinī, introduction",
+        s: "In the fourth week after the awakening, the commentary says, the Buddha sat in a jewelled chamber and contemplated the Abhidhamma. Through the first six books no rays appeared; when he reached the Paṭṭhāna, rays of six colours streamed from his body.",
+        r: "The tradition marks the Paṭṭhāna, the book behind Plate 8, as the vastest of all. Its colours inspired the modern Buddhist flag.", p: [8, 1],
+        q: "Why might the relations between things be harder to see than the things themselves?" }
+    ],
+    5: [
+      { k: "disc", t: "Maṭṭhakuṇḍalī's last thought", src: "Dhammapada commentary, v. 2",
+        s: "A miserly brahmin's son lay dying, left on the veranda so visitors would not see inside the house. The Buddha passed and let himself be seen. The boy's mind filled with faith, he died with that thought, and he was reborn in the Tāvatiṃsa heaven.",
+        r: "Death-proximate kamma on Plate 10: the last javanas were full of faith, and the rebirth-linking that followed took up their object.", p: [10, 11],
+        q: "If one last thought can decide a rebirth, why do teachers stress habitual kamma?" },
+      { k: "disc", t: "Queen Mallikā's seven days", src: "Dhammapada commentary, v. 151",
+        s: "Queen Mallikā was generous and devout, but as she died her mind went to one wrong deed she had hidden from the king. She was reborn in a woeful state for seven days, and then in the Tusita heaven.",
+        r: "The other face of death-proximate kamma: one unwholesome last thought outweighed a good life, but only for a while. Her stored good kamma then took its turn (Plate 10).", p: [10, 11],
+        q: "Which shapes rebirth more: a whole life, or its last moments?" },
+      { k: "disc", t: "Aṅgulimāla and the stones", src: "MN 86",
+        s: "The bandit Aṅgulimāla had killed many. Meeting the Buddha, he went forth and became an arahant. On alms round people threw stones and sticks at him. The Buddha said: “Bear it, brahmin. You are experiencing here and now the result of deeds for which you might have suffered in hell for many years.”",
+        r: "Kamma by time (Plate 10): what could ripen in this life did. With arahantship there is no next life, so kamma waiting for later lives could never ripen.", p: [10],
+        q: "What does Aṅgulimāla's story say about whether kamma is fate?" },
+      { k: "disc", t: "Devadatta's weighty kamma", src: "Vinaya, Cūḷavagga VII; Dhammapada commentary, v. 17",
+        s: "The Buddha's cousin Devadatta drew the Buddha's blood with a rock hurled from Vulture Peak, and split the Saṅgha. The commentary says that as he came at last to ask forgiveness, the earth swallowed him and he was reborn in the Avīci hell.",
+        r: "Wounding a Buddha and splitting the Saṅgha are two of the five heinous deeds: weighty kamma, which ripens before any other kind (Plate 10).", p: [10, 11],
+        q: "Why should weighty kamma override even death-proximate kamma?" },
+      { k: "disc", t: "Why Moggallāna was beaten", src: "Dhammapada commentary, vv. 137–140",
+        s: "Late in life the great disciple Mahā Moggallāna was beaten to death by hired bandits. The commentary traces this to a deed many lives before, when he turned on his own blind parents; versions differ on whether he went through with it.",
+        r: "Kamma that can ripen “in any later life” (Plate 10) waits for its chance, even for an arahant. What arahantship ends is new kamma and any further rebirth.", p: [10],
+        q: "If even an arahant meets old kamma, what exactly does arahantship end?" },
+      { k: "jataka", t: "King Nimi's chariot", src: "Ja 541",
+        s: "Sakka sent his charioteer Mātali to bring the righteous King Nimi to the Tāvatiṃsa heaven. On the way Mātali showed him the hells, naming the deeds that led there, and then the heavenly mansions, naming the deeds that earned them.",
+        r: "A guided tour of Plate 11. Each world is paired with a kind of deed, the same pairing as kamma “by place” on Plate 10.", p: [11, 10],
+        q: "Why does the story always show the deed alongside the world?" }
+    ],
+    6: [
+      { k: "life", t: "The rose-apple tree", src: "MN 36",
+        s: "As a boy, the Bodhisatta sat in the shade of a rose-apple tree while his father worked at a ploughing ceremony, and entered the first jhāna. Years later, worn out by austerities, he remembered it and asked: “Could that be the path to awakening?”",
+        r: "On Plate 13's tree, concentration is a root. The commentaries say his subject was the breath, one of the eleven that can reach all five jhānas on Plate 12.", p: [12, 13],
+        q: "Why was a pleasant, blameless state the clue, after years of pain?" },
+      { k: "disc", t: "Cūḷapanthaka's white cloth", src: "Dhammapada commentary, v. 25",
+        s: "Cūḷapanthaka could not learn a single verse in four months, and his brother told him to leave. The Buddha gave him a clean white cloth to rub while repeating “removing dirt”. As the cloth grew soiled he saw impermanence, and he became an arahant.",
+        r: "A subject fitted to the person (Plate 12): a simple object you can see and touch, which ripened into insight (Plate 13).", p: [12, 13],
+        q: "Why might a slow learner of words be a quick learner of seeing?" },
+      { k: "disc", t: "The goldsmith and the lotus", src: "Dhammapada commentary, v. 285; Ja 25",
+        s: "A young monk, a goldsmith for five hundred lives, made no progress with meditation on the foulness of the body. The Buddha gave him a lotus instead. Its beauty steadied his mind; then the flower withered, and he saw impermanence.",
+        r: "Plate 12's temperaments in action: the usual remedy for lust did not fit this mind, and a beautiful object did.", p: [12],
+        q: "Which of Plate 12's six temperaments sounds most like your own?" },
+      { k: "life", t: "Āḷāra and Uddaka", src: "MN 26",
+        s: "Before his awakening, the Bodhisatta reached the base of nothingness under Āḷāra Kālāma, and neither perception nor non-perception under Uddaka Rāmaputta. He left both, seeing they did not lead to Nibbāna. After awakening he thought first of teaching them, but both had died.",
+        r: "The highest calm leads to the highest immaterial planes of Plate 11, with lifespans of 60,000 and 84,000 aeons, but not out of the round. That is why Plate 13's tree needs a trunk of insight.", p: [11, 12, 13],
+        q: "What does insight supply that even the highest jhāna lacks?" },
+      { k: "disc", t: "Paṭācārā and the water", src: "Therīgāthā 112–116",
+        s: "Having lost her whole family, Paṭācārā became a nun. Washing her feet, she watched the water trickle down, some a little way, some further, like the stages of a life. That night, as she drew down the wick of her lamp, her mind was freed.",
+        r: "The knowledge of rise and fall on Plate 13, seen first in water and then in her own mind. The lamp going out echoes Plate 10's image of death.", p: [13, 10],
+        q: "Why is the going-out of a flame so often the image of Nibbāna?" },
+      { k: "life", t: "Koṇḍañña's eye of Dhamma", src: "SN 56.11",
+        s: "At the first sermon in the Deer Park, as the Buddha finished, Koṇḍañña understood: “Whatever is subject to arising is all subject to cessation.” The Buddha exclaimed, “Koṇḍañña has understood!”",
+        r: "Stream-entry (Plate 13): the first three fetters fall away, and path knowledge takes Nibbāna as its object for the first time.", p: [13],
+        q: "Why is the insight put as a general rule rather than a particular experience?" }
+    ],
+    7: [
+      { k: "jataka", t: "Sumedha's vow", src: "Buddhavaṃsa II; Jātaka introduction",
+        s: "Ages ago, the ascetic Sumedha lay down in the mud so that the Buddha Dīpaṅkara could walk across him, and resolved to become a Buddha himself. Dīpaṅkara foretold it. Four incalculable aeons and a hundred thousand aeons of perfections followed.",
+        r: "One volition (Plate 4), renewed and fulfilled across lives (Plate 10), in worlds measured in aeons (Plate 11): the whole atlas in a single vow.", p: [4, 10, 11],
+        q: "In Abhidhamma terms, what continues from Sumedha to Siddhattha?" },
+      { k: "jataka", t: "Vessantara's gifts", src: "Ja 547",
+        s: "In the last human life before the final one, the Bodhisatta as Prince Vessantara gave away the kingdom's white elephant, his wealth, and in the end his children and his wife. After that life he was reborn in the Tusita heaven.",
+        r: "Sense-sphere wholesome kamma at its fullest (Plate 10). The tradition counts it as the completion of the perfection of giving.", p: [10, 11],
+        q: "Can giving be wholesome kamma and also a step toward ending kamma?" },
+      { k: "disc", t: "Ajātasattu's lost chance", src: "DN 2",
+        s: "King Ajātasattu, who had killed his father to take the throne, heard the Buddha's discourse on the fruits of the recluse's life and went for refuge. When he had left, the Buddha said that had he not killed his father, the eye of Dhamma would have arisen in him then and there.",
+        r: "Weighty kamma (Plate 10) can bar the path (Plate 13). A heinous deed closes the door to path attainment in that life.", p: [10, 13],
+        q: "Why can one past act close a door that a good present act cannot open?" },
+      { k: "life", t: "The last night at Kusinārā", src: "DN 16",
+        s: "The Buddha's last words were: “All conditioned things are subject to decay. Strive on with diligence.” He then rose through the jhānas to the cessation of perception and feeling, came back down to the first jhāna, rose again to the fourth, and on emerging from it attained final Nibbāna.",
+        r: "Every level at once: the jhānas of Plates 3 and 12, the planes he would not return to (11), and a death followed by no rebirth-linking (10).", p: [3, 10, 12, 13],
+        q: "In terms of Plate 10, how does an arahant's death differ from anyone else's?" }
+    ]
+  };
+  var LIFE_PAST = [
+    ["Sumedha at Dīpaṅkara's feet", "the vow; four incalculable aeons of perfections begin", "Bv II", [10, 11], 7],
+    ["Khantivādi Jātaka", "patience under torture, without anger", "Ja 313", [4, 10], 2],
+    ["Mahākapi Jātaka", "a monkey king's body as a bridge", "Ja 407", [4], 2],
+    ["Makhādeva Jātaka", "a first grey hair, and renunciation", "Ja 9", [7, 13], 3],
+    ["Mūgapakkha Jātaka", "Prince Temiya remembers a hell, and refuses the throne", "Ja 538", [10, 11], 0],
+    ["Nimi Jātaka", "a chariot ride past the hells and heavens", "Ja 541", [11], 5],
+    ["Vessantara Jātaka", "the last human life before the final one: giving perfected", "Ja 547", [10], 7],
+    ["A deva in Tusita", "waiting for the final birth", "Jātaka introduction", [11], 0]
+  ];
+  var LIFE_LAST = [
+    ["Birth at Lumbinī", "rebirth-linking in the human world", "age 0", [10], 0],
+    ["The rose-apple tree", "a child enters the first jhāna", "childhood · MN 36", [3, 12], 6],
+    ["Going forth", "old age, sickness, death and a recluse", "age 29", [13], 0],
+    ["Two teachers", "nothingness; neither perception nor non-perception", "MN 26", [11, 12], 6],
+    ["Awakening", "three watches of the night; dependent origination", "age 35 · MN 36, Ud 1", [9, 10, 13], 4],
+    ["The Jewel House", "the fourth week: contemplating the Abhidhamma", "commentary", [1, 8], 4],
+    ["First sermon", "Koṇḍañña: all that arises ceases", "SN 56.11", [13], 6],
+    ["Not-self", "five monks become arahants", "SN 22.59", [2, 13], 0],
+    ["Assaji's verse", "Sāriputta hears of causes and their cessation", "Vin Mv I.23", [8, 9], 4],
+    ["A rains in Tāvatiṃsa", "the Abhidhamma taught to devas and his mother", "commentary", [1, 11], 1],
+    ["Aṅgulimāla", "a murderer becomes an arahant, and meets old kamma", "MN 86", [10], 5],
+    ["Final Nibbāna", "through the jhānas, at Kusinārā", "age 80 · DN 16", [3, 13], 7]
+  ];
+
+  /* ---------------- stories: render ---------------- */
+  each("section.stories", function (sec) {
+    var n = +sec.getAttribute("data-level"), L = LV[n], list = ST[n];
+    sec.style.setProperty("--lvc", lvc(n));
+    var cards = list.map(function (st) {
+      var kd = KIND[st.k];
+      return '<article class="story"><div class="sk"><span class="kind" style="background:' + kd[1] + '">' + kd[0] + '</span><span class="src">' + st.src + "</span></div>" +
+        "<h3>" + st.t + "</h3><p>" + st.s + "</p>" +
+        '<div class="read"><b>Read with the atlas</b> ' + st.r + " " + st.p.map(xr).join(" ") + "</div>" +
+        '<p class="sq"><b>Reflect</b> ' + st.q + "</p></article>";
+    }).join("");
+    var range = L.plates.length > 1 ? "plates " + L.plates[0] + "–" + L.plates[L.plates.length - 1] : "plate " + L.plates[0];
+    sec.innerHTML =
+      '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · In the stories</span><span>Abhidhamma Atlas</span></div>" +
+      '<div class="nav"><a class="lvb" href="#L' + n + '" style="background:' + lvc(n) + ';border:0"><b>' + ROM[n] + "</b>" + L.name + "</a><span>Retells and reads " + range + '</span><span class="thrs"><span class="thr"><i style="background:var(--nama)"></i>the Buddha\'s life</span><span class="thr"><i style="background:var(--rupa-mark)"></i>Jātaka</span><span class="thr"><i style="background:var(--nib)"></i>disciples</span></span></div>' +
+      "<h2>" + L.name + " in the stories</h2>" +
+      '<p class="lede">The tradition has always taught through lives. Each story is retold briefly from its source. The second part reads it with the plates of this level; those readings are study aids, not claims made by the texts themselves.</p>' +
+      '<div class="stories-grid">' + cards + "</div>" +
+      '<div class="pf"><span>MN, DN, SN, AN: Majjhima, Dīgha, Saṃyutta, Aṅguttara Nikāya · Ud: Udāna · Ja: Jātaka · Bv: Buddhavaṃsa · Vin: Vinaya</span><span class="pg"></span></div>';
+  });
+
+  (function () {
+    var box = $("lifemap"); if (!box) return;
+    function item(e, i) {
+      var link = e[4] ? ' <a class="xr" href="#S' + e[4] + '">story</a>' : "";
+      return '<li><div class="when">' + e[2] + '</div><div><b>' + e[0] + "</b>" + link + '<div class="what">' + e[1] + '</div><div class="pls">' +
+        e[3].map(function (p) { return '<a href="#p' + p + '" style="background:' + lvc(PL[p].lv) + '">' + p + "</a>"; }).join("") + "</div></div></li>";
+    }
+    box.innerHTML =
+      '<div class="rail past"><div class="lab">Past lives · Jātaka and Buddhavaṃsa</div><ol>' + LIFE_PAST.map(item).join("") + '</ol><div class="cap">↘ From Tusita to the final birth</div></div>' +
+      '<div class="rail last"><div class="lab">The last life · Siddhattha Gotama</div><ol>' + LIFE_LAST.map(item).join("") + "</ol></div>";
+  })();
+
   /* ---------------- page numbers and contents ---------------- */
   var sheets = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
   var pageOf = {};
@@ -1977,10 +2256,11 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   (function () {
     var toc = $("toc"); if (!toc) return;
     function row(href, num, label, cls) { return '<a class="row' + (cls ? " " + cls : "") + '" href="#' + href + '"><b>' + num + "</b><span>" + label + "</span><span>" + pageOf[href] + "</span></a>"; }
-    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("map", "→", "How the main ideas connect") + "</div>";
+    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("map", "→", "How the main ideas connect") + row("life", "→", "The Buddha's life as a map") + "</div>";
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); });
+      h += row("S" + l, "✦", "In the stories");
       if (l === 7) h += row("threads", "↯", "Threads and glossary");
       h += "</div>";
     }
