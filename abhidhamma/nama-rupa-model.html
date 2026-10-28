@@ -22,6 +22,7 @@
   --bad: #a3403c;
   --bad-soft: #f5e1df;
   --on-accent: #ffffff;
+  --nama-2: #8c90dc; --f-joy: #ebb446; --heart: #c0392b; --kamma: #6a3fb5; --temp: #d9622b; --food: #4f9a3a; --water: #2e8bc0; --air: #8aa0b8;
   --display: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -30,18 +31,19 @@
   :root:not([data-theme="light"]) {
     --paper: #10121b; --surface: #181b27; --ink: #e6e7ef; --muted: #9a9eb3; --line: #2b2f42;
     --nama: #a3a8ff; --nama-soft: #242849; --rupa: #e9b54d; --rupa-mark: #e9b54d; --rupa-soft: #382c13;
-    --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b;
+    --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b; --nama-2: #6d72c9; --f-joy: #ebb446; --heart: #f08d86; --kamma: #b99af0; --temp: #f39a6b; --food: #8fd17a; --water: #7cc3ea; --air: #b9c6d6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #10121b; --surface: #181b27; --ink: #e6e7ef; --muted: #9a9eb3; --line: #2b2f42;
   --nama: #a3a8ff; --nama-soft: #242849; --rupa: #e9b54d; --rupa-mark: #e9b54d; --rupa-soft: #382c13;
-  --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b;
+  --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3b1f1f; --on-accent: #10121b; --nama-2: #6d72c9; --f-joy: #ebb446; --heart: #f08d86; --kamma: #b99af0; --temp: #f39a6b; --food: #8fd17a; --water: #7cc3ea; --air: #b9c6d6;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   background: var(--paper); color: var(--ink);
   font-family: var(--body); font-size: 16px; line-height: 1.55;
@@ -255,6 +257,85 @@ svg .t-core { font-family: var(--display); font-size: 19px; fill: var(--on-accen
 
 footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; color: var(--muted); display: grid; gap: 6px; max-width: 80ch; }
 
+/* ---------- section chips ---------- */
+.chips-nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips-nav a { font-family: var(--mono); font-size: 11.5px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px; }
+.chips-nav a:hover { border-color: var(--nama); color: var(--nama); }
+.chips-nav a.new::after { content: " 3D"; color: var(--rupa); font-weight: 500; }
+
+/* ---------- 3D viewports ---------- */
+.viz3d { position: relative; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background:
+  radial-gradient(120% 90% at 50% 35%, var(--surface) 0%, var(--paper) 100%); min-height: 200px; }
+.viz3d canvas { display: block; width: 100%; cursor: grab; }
+.viz3d canvas:active { cursor: grabbing; }
+.viz3d .labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.lbl3 { position: absolute; left: 0; top: 0; font-family: var(--body); font-size: 12.5px; line-height: 1.2; white-space: nowrap; color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 78%, transparent); padding: 1px 6px; border-radius: 4px; transition: opacity .25s; will-change: transform; }
+.lbl3.p { font-family: var(--display); font-style: italic; font-size: 13.5px; }
+.lbl3.sm { font-size: 11px; color: var(--muted); }
+.lbl3.big { font-family: var(--display); font-size: 17px; font-weight: 500; }
+.lbl3.left { text-align: right; }
+.viz3d .hint3 { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); pointer-events: none; }
+.viz3d .tip3 { position: absolute; left: 0; top: 0; pointer-events: none; font-family: var(--body); font-size: 13px; background: var(--ink); color: var(--paper); padding: 3px 8px; border-radius: 4px; opacity: 0; transition: opacity .15s; white-space: nowrap; }
+.nogl { padding: 40px 20px; text-align: center; color: var(--muted); font-size: 15px; }
+.split3 { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 820px) { .split3 { grid-template-columns: 1fr; } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.panel h3 { font-size: 24px; }
+.panel .sub { color: var(--muted); font-size: 14.5px; }
+.panel .row { display: grid; grid-template-columns: 74px 1fr; gap: 8px; font-size: 14.5px; border-top: 1px solid var(--line); padding-top: 8px; }
+.panel .row > span:first-child { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.cchips { display: flex; flex-wrap: wrap; gap: 4px; }
+.cchip { font-family: var(--mono); font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--nama-soft); color: var(--nama); border: 1px solid color-mix(in srgb, var(--nama) 30%, transparent); }
+.cchip.r { background: var(--rupa-soft); color: var(--rupa); border-color: color-mix(in srgb, var(--rupa) 30%, transparent); }
+.btnrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 5px 12px; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.pill i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.pill[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ---------- relation cards ---------- */
+.relgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 720px) { .relgrid { grid-template-columns: 1fr; } }
+.relcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; align-content: start; }
+.relcard .dir { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 21px; }
+.relcard .dir b { font-weight: 500; }
+.relcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.relcard li { display: grid; gap: 3px; font-size: 14.5px; border-top: 1px solid var(--line); padding-top: 8px; }
+.relcard li .cchips { margin-top: 2px; }
+.relcard li button { justify-self: start; font-family: var(--mono); font-size: 11px; color: var(--nama); background: none; border: 1px solid var(--nama); border-radius: 999px; padding: 1px 9px; cursor: pointer; }
+.dot { width: 14px; height: 14px; display: inline-block; flex: none; }
+.dot.n { border-radius: 50%; background: var(--nama); }
+.dot.r { border-radius: 2px; background: var(--rupa-mark); }
+
+/* ---------- element cards ---------- */
+.elcards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 820px) { .elcards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .elcards { grid-template-columns: 1fr; } }
+.elcard { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--elc); border-radius: 0 0 8px 8px; padding: 10px 12px; display: grid; gap: 4px; align-content: start; }
+.elcard h4 { margin: 0; font-family: var(--display); font-size: 20px; font-weight: 500; }
+.elcard h4 span { font-family: var(--body); font-size: 13px; color: var(--muted); font-weight: 400; }
+.elcard dl { margin: 0; display: grid; gap: 4px; }
+.elcard dt { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.elcard dd { margin: 0 0 3px; font-size: 14px; }
+
+/* ---------- loom info and matrices ---------- */
+.legend3 { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend3 span { display: inline-flex; align-items: center; gap: 6px; }
+.legend3 i { width: 18px; height: 8px; border-radius: 2px; display: inline-block; }
+.legend3 em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--muted); border: 1px dashed var(--line); padding: 0 4px; border-radius: 3px; }
+.tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table.pb { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+table.pb th, table.pb td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: center; vertical-align: middle; }
+table.pb th { font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+table.pb td:first-child, table.pb th:first-child { text-align: left; }
+table.pb td:first-child b { font-family: var(--display); font-weight: 500; font-size: 17px; display: block; }
+table.pb td:first-child span { color: var(--muted); font-size: 12.5px; }
+table.pb tr:last-child td { border-bottom: 0; }
+.yes { display: inline-block; width: 14px; height: 14px; border-radius: 3px; background: var(--rupa-mark); }
+.yes.m { border-radius: 50%; background: var(--nama); }
+.no { display: inline-block; width: 14px; height: 2px; background: var(--line); vertical-align: middle; }
+td.kal { text-align: left !important; font-size: 13px; color: var(--muted); min-width: 170px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
@@ -296,12 +377,15 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
         <span class="ch">Chapter VI</span>
       </div>
     </div>
+    <nav class="chips-nav" aria-label="Sections">
+      <a href="#model">At a glance</a><a class="new" href="#model3d">Relations</a><a href="#relations">Who supports whom</a><a href="#doors">Six doors</a><a href="#process">One moment</a><a class="new" href="#loom">Matter in time</a><a href="#rupa">28 kinds of matter</a><a class="new" href="#kalapa">Kalāpas</a><a class="new" href="#cetasika">52 factors</a><a href="#mindmatter">Mind makes matter</a><a href="#planes">Planes</a><a href="#citta">89 cittas</a>
+    </nav>
   </header>
 
   <!-- ===== The model ===== -->
   <section id="model">
     <div class="sec-head">
-      <div class="eyebrow">The whole model</div>
+      <div class="eyebrow">At a glance</div>
       <h2>Two currents that condition each other</h2>
       <div class="prose"><p>Mind cannot arise in the five-aggregate world without a physical base, and much of the body is produced and kept going by mind. Matter feeds mind through its bases and objects. Mind feeds matter directly as mind-born matter, and indirectly through kamma.</p></div>
     </div>
@@ -376,6 +460,62 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
     </figure>
   </section>
 
+  <!-- ===== 3D relations ===== -->
+  <section id="model3d">
+    <div class="sec-head">
+      <div class="eyebrow">Explore in 3D · Chapters VI and VIII</div>
+      <h2>Nine ways mind and matter meet</h2>
+      <div class="prose"><p>On the left is mind: one citta with its mental factors circling it. On the right is a body, drawn as a cloud of tiny groups of matter, with the heart-base and the eye inside it. Around them are the outside sources: a visible object, past kamma, temperature and food. Choose a relation to see which way it runs and which of the Paṭṭhāna's conditions it involves.</p></div>
+    </div>
+    <div class="btnrow" id="rel-btns" role="group" aria-label="Relation"></div>
+    <div class="split3">
+      <div class="viz3d" id="rel3d"><span class="hint3">drag to turn</span></div>
+      <div class="panel" id="rel-info" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ===== Relations in detail ===== -->
+  <section id="relations">
+    <div class="sec-head">
+      <div class="eyebrow">The conditions, direction by direction · Chapter VIII</div>
+      <h2>Who supports whom</h2>
+      <div class="prose"><p>The Paṭṭhāna's 24 conditions can be sorted by which way they run. Four directions matter for this model. Each line names the conditions involved; the button shows it in the 3D model above.</p></div>
+    </div>
+    <div class="relgrid">
+      <div class="relcard">
+        <div class="dir"><span class="dot r"></span><b>Matter</b> → <span class="dot n"></span><b>mind</b></div>
+        <ul>
+          <li><span>The six bases, already arisen, support the cittas that depend on them.</span><div class="cchips"><span class="cchip r">prenascence</span><span class="cchip r">support</span><span class="cchip r">dissociation</span><span class="cchip r">presence</span></div><button type="button" data-rel="heart">Show in 3D</button></li>
+          <li><span>The five sense-sensitivities also govern their consciousness, as faculties.</span><div class="cchips"><span class="cchip r">faculty</span></div><button type="button" data-rel="eye">Show in 3D</button></li>
+          <li><span>A present sense object is the object of the five-door process; any matter can be a mind-door object.</span><div class="cchips"><span class="cchip r">object</span><span class="cchip r">object-prenascence</span></div><button type="button" data-rel="object">Show in 3D</button></li>
+        </ul>
+      </div>
+      <div class="relcard">
+        <div class="dir"><span class="dot n"></span><b>Mind</b> → <span class="dot r"></span><b>matter</b></div>
+        <ul>
+          <li><span>A citta produces matter as it arises; its roots, jhāna and path factors, volition, nutriments and faculties support that matter too.</span><div class="cchips"><span class="cchip">conascence</span><span class="cchip">root</span><span class="cchip">kamma</span><span class="cchip">nutriment</span><span class="cchip">faculty</span><span class="cchip">jhāna</span><span class="cchip">path</span></div><button type="button" data-rel="mindborn">Show in 3D</button></li>
+          <li><span>Later cittas sustain the body that arose before them.</span><div class="cchips"><span class="cchip">postnascence</span></div><button type="button" data-rel="post">Show in 3D</button></li>
+          <li><span>Volition from a past life produces kamma-born matter, at a different time from itself.</span><div class="cchips"><span class="cchip">asynchronous kamma</span></div><button type="button" data-rel="kamma">Show in 3D</button></li>
+        </ul>
+      </div>
+      <div class="relcard">
+        <div class="dir"><span class="dot n"></span><b>Mind</b> ⇄ <span class="dot r"></span><b>matter</b></div>
+        <ul>
+          <li><span>At rebirth-linking in the five-aggregate worlds, the resultant mental aggregates and the heart-base arise together and support each other.</span><div class="cchips"><span class="cchip">conascence</span><span class="cchip">mutuality</span><span class="cchip">support</span><span class="cchip">result</span><span class="cchip">dissociation</span></div><button type="button" data-rel="rebirth">Show in 3D</button></li>
+          <li><span>This is the only moment in a life when mind and matter condition each other mutually.</span></li>
+        </ul>
+      </div>
+      <div class="relcard">
+        <div class="dir"><span class="dot r"></span><b>Matter</b> → <span class="dot r"></span><b>matter</b></div>
+        <ul>
+          <li><span>The four great elements support each other, and every kind of derived matter rests on them.</span><div class="cchips"><span class="cchip r">conascence</span><span class="cchip r">mutuality</span><span class="cchip r">support</span></div></li>
+          <li><span>Edible food sustains the body.</span><div class="cchips"><span class="cchip r">nutriment</span></div><button type="button" data-rel="food">Show in 3D</button></li>
+          <li><span>Material life keeps kamma-born matter alive, as a faculty. Heat keeps new matter arising.</span><div class="cchips"><span class="cchip r">faculty</span></div><button type="button" data-rel="temp">Show in 3D</button></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Six doors ===== -->
   <section id="doors">
     <div class="sec-head">
@@ -426,6 +566,24 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
     <div class="moment" id="moment" aria-live="polite"></div>
   </section>
 
+  <!-- ===== Moments and matter ===== -->
+  <section id="loom">
+    <div class="sec-head">
+      <div class="eyebrow">Matter in time · Chapter VI</div>
+      <h2>The body, sub-moment by sub-moment</h2>
+      <div class="prose"><p>Each bar is one unit of matter, from the moment it arises until it ceases 51 sub-moments later. The four lanes are its four origins, and the row of discs along the bottom is the stream of cittas. Kamma makes new matter at every sub-moment; a citta makes matter at its arising. Because matter outlives seventeen cittas, dozens of generations of it are alive at any instant.</p></div>
+    </div>
+    <div class="btnrow" id="loom-modes" role="group" aria-label="Stage of life"></div>
+    <div class="viz3d" id="loom3d"><span class="hint3">drag to turn</span></div>
+    <div class="legend3">
+      <span><i style="background:var(--kamma)"></i>kamma-born · every sub-moment</span>
+      <span><i style="background:var(--nama)"></i>mind-born · at each citta's arising</span>
+      <span><i style="background:var(--temp)"></i>temperature-born <em>rate illustrative</em></span>
+      <span><i style="background:var(--food)"></i>nutriment-born <em>rate illustrative</em></span>
+    </div>
+    <div class="moment" style="grid-template-columns:1fr"><div><div class="eyebrow" id="loom-eyebrow"></div><h3 id="loom-title" style="margin-top:6px"></h3><p class="txt" id="loom-text"></p></div></div>
+  </section>
+
   <!-- ===== Rupa ===== -->
   <section id="rupa">
     <div class="sec-head">
@@ -453,6 +611,31 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
     </div>
   </section>
 
+  <!-- ===== Kalāpa viewer ===== -->
+  <section id="kalapa">
+    <div class="sec-head">
+      <div class="eyebrow rp">Inside a kalāpa · Chapter VI</div>
+      <h2>The smallest packets of matter, in 3D</h2>
+      <div class="prose"><p>Every kalāpa is built on the same core: the four great elements and the four kinds of matter that always go with them, drawn here as the eight corners of a cube. Kamma, mind, temperature and nutriment each add their own members. Choose one of the 21 groups.</p></div>
+    </div>
+    <div class="btnrow" id="kal-btns" role="group" aria-label="Kalāpa"></div>
+    <div class="split3">
+      <div class="viz3d" id="kal3d"><span class="hint3">drag to turn</span></div>
+      <div class="panel" id="kal-info" aria-live="polite"></div>
+    </div>
+    <div class="sec-head" style="margin-top:6px">
+      <h3 style="font-size:24px">The four great elements, by their four-part definition</h3>
+      <div class="prose"><p class="muted">The Visuddhimagga defines each element by characteristic, function and manifestation. Together they hold up all 24 kinds of derived matter.</p></div>
+    </div>
+    <div class="elcards">
+      <div class="elcard" style="--elc:var(--rupa)"><h4>pathavī <span>earth</span></h4><dl><dt>Characteristic</dt><dd>hardness</dd><dt>Function</dt><dd>to act as a foundation</dd><dt>Manifestation</dt><dd>receiving</dd></dl></div>
+      <div class="elcard" style="--elc:var(--water)"><h4>āpo <span>water</span></h4><dl><dt>Characteristic</dt><dd>trickling, cohesion</dd><dt>Function</dt><dd>to intensify</dd><dt>Manifestation</dt><dd>holding together</dd></dl></div>
+      <div class="elcard" style="--elc:var(--temp)"><h4>tejo <span>fire</span></h4><dl><dt>Characteristic</dt><dd>heat</dd><dt>Function</dt><dd>to mature, to maintain</dd><dt>Manifestation</dt><dd>a continued supply of softness</dd></dl></div>
+      <div class="elcard" style="--elc:var(--air)"><h4>vāyo <span>air</span></h4><dl><dt>Characteristic</dt><dd>distending</dd><dt>Function</dt><dd>to cause motion</dd><dt>Manifestation</dt><dd>conveying</dd></dl></div>
+    </div>
+    <p class="note">The body, the Visuddhimagga says, is founded on earth, held together by water, maintained by fire and distended by air. Of the four, only water cannot be touched, which is why the tangible object is the other three.</p>
+  </section>
+
   <!-- ===== Cetasika ===== -->
   <section id="cetasika">
     <div class="sec-head">
@@ -465,7 +648,37 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
       <div class="ctl"><span>Citta</span><div class="seg" id="ctl-citta" role="group" aria-label="Example citta"></div></div>
     </div>
     <div class="status" id="ceta-status"></div>
+    <div class="viz3d" id="ceta3d"><div class="tip3" id="ceta-tip"></div><span class="hint3">drag to turn · point at a factor</span></div>
     <div class="groups ceta-grid" id="ceta-grid"></div>
+  </section>
+
+  <!-- ===== Mind makes matter ===== -->
+  <section id="mindmatter">
+    <div class="sec-head">
+      <div class="eyebrow">Which minds move the body · Chapter VI</div>
+      <h2>Mind makes matter</h2>
+      <div class="prose"><p>Not every citta can produce matter, and those that can do different things with it. Choose a function to see which of the 89 cittas perform it. The numbers follow the standard order of the Manual.</p></div>
+    </div>
+    <div class="btnrow" id="mm-btns" role="group" aria-label="Function"></div>
+    <div class="btnrow" id="mm-sub" role="group" aria-label="Who smiles"></div>
+    <div class="status" id="mm-status"></div>
+    <div class="tblwrap" style="padding:10px"><svg id="mm-grid" viewBox="0 0 680 330" role="img" aria-label="The 89 cittas, with those performing the chosen function highlighted"></svg></div>
+  </section>
+
+  <!-- ===== Planes and bases ===== -->
+  <section id="planes">
+    <div class="sec-head">
+      <div class="eyebrow">Where mind and matter live · Chapters V and VI</div>
+      <h2>Not every world has both</h2>
+      <div class="prose"><p>Which bases exist depends on the plane. In the immaterial worlds there is mind with no matter at all; among the non-percipient beings there is matter with no mind. The last column shows the groups of matter that arise at the very moment of rebirth-linking.</p></div>
+    </div>
+    <div class="tblwrap">
+      <table class="pb">
+        <thead><tr><th>Plane and birth</th><th>eye</th><th>ear</th><th>nose</th><th>tongue</th><th>body</th><th>sex</th><th>heart-base</th><th>life</th><th>mind</th><th style="text-align:left">Matter at rebirth-linking</th></tr></thead>
+        <tbody id="pb-body"></tbody>
+      </table>
+    </div>
+    <div class="legend3"><span><i class="yes" style="width:14px;height:14px"></i>matter present</span><span><i class="yes m" style="width:14px;height:14px"></i>mind present</span><span><i class="no"></i>absent</span></div>
   </section>
 
   <!-- ===== Citta ===== -->
@@ -484,8 +697,9 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
   </section>
 
   <footer>
-    <p>Categories and counts follow Ācariya Anuruddha's <i>Abhidhammattha Saṅgaha</i> as translated and explained in Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i> (Buddhist Publication Society, 1993), with notes by U Rewata Dhamma and U Sīlānanda.</p>
-    <p>This is a study aid that summarises the Manual's schemes. The cognitive-process examples show one typical case where the text gives a range, such as the number of past life-continuum moments.</p>
+    <p>Categories and counts follow Ācariya Anuruddha's <i>Abhidhammattha Saṅgaha</i> as translated and explained in Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i> (Buddhist Publication Society, 1993), chapters I–VI and VIII, checked against Nārada's <i>A Manual of Abhidhamma</i>.</p>
+    <p>The element definitions are from the Visuddhimagga, chapter XI; the heart-base is discussed in chapter VIII and by Y. Karunadasa, <i>The Theravāda Abhidhamma</i>, who notes that the Paṭṭhāna itself never names the heart. Paṭṭhāna relations follow standard study texts on the conascence group and the 24 conditions.</p>
+    <p>Where the texts give an exact rule, the 3D views follow it: kamma-born matter at every sub-moment, mind-born matter at each citta's arising, a 51-sub-moment life for matter, kamma-born matter stopping seventeen mind-moments before death. Where they do not, as with the rate of temperature-born and nutriment-born matter, the view is marked illustrative.</p>
   </footer>
 </div>
 
@@ -777,6 +991,8 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
     var total = c.fixed.length + c.vary.length;
     document.getElementById("ceta-status").innerHTML = '<span class="big nm">' + total + '</span><span class="desc">' +
       (c.vary.length ? c.fixed.length + " fixed and " + c.vary.length + " variable factors. " : "factors, all fixed. ") + c.desc + "</span>";
+    window.__cetaState = { fixed: c.fixed, vary: c.vary };
+    document.dispatchEvent(new CustomEvent("citta-change", { detail: window.__cetaState }));
   }
   renderCeta();
 
@@ -801,3 +1017,573 @@ footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 14px; 
   renderBars();
 })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tok(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888888"; }
+  function $(id) { return document.getElementById(id); }
+  var HAS3 = !!window.THREE && (function () { try { var c = document.createElement("canvas"); return !!(c.getContext("webgl") || c.getContext("experimental-webgl")); } catch (e) { return false; } })();
+  var scenes = [], rethemers = [];
+  var NOGL = '<div class="nogl">This 3D view needs WebGL, which this browser is not providing. The panel and the rest of the page cover the same content.</div>';
+
+  /* ---------------- 3D toolkit ---------------- */
+  function make3D(id, o) {
+    var host = $(id); if (!host) return null;
+    if (!HAS3) { host.insertAdjacentHTML("afterbegin", NOGL); return null; }
+    var hf = o.heightFn || function (w) { return w < 560 ? Math.round(w * 0.95) : o.height; };
+    var W = host.clientWidth || 640, H = hf(W), renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) { host.insertAdjacentHTML("afterbegin", NOGL); return null; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(W, H);
+    host.insertBefore(renderer.domElement, host.firstChild);
+    var overlay = document.createElement("div"); overlay.className = "labels"; host.appendChild(overlay);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(o.fov || 36, W / H, 0.1, 100);
+    camera.position.set(o.cam[0], o.cam[1], o.cam[2]);
+    var look = new THREE.Vector3(o.look ? o.look[0] : 0, o.look ? o.look[1] : 0, o.look ? o.look[2] : 0);
+    var camBase = camera.position.clone().sub(look), refA = o.refAspect || 1.33;
+    function fit(w, h) { var f = Math.max(1, refA / (w / h)); camera.position.copy(look).add(camBase.clone().multiplyScalar(f)); camera.lookAt(look); }
+    fit(W, H);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+    var d1 = new THREE.DirectionalLight(0xffffff, 0.78); d1.position.set(3, 6, 7); scene.add(d1);
+    var d2 = new THREE.DirectionalLight(0xffffff, 0.25); d2.position.set(-5, -2, -4); scene.add(d2);
+    var root = new THREE.Group(); scene.add(root);
+    var S = { host: host, renderer: renderer, scene: scene, camera: camera, root: root, overlay: overlay, labels: [], visible: true,
+      update: null, touched: false, sway: o.sway || 0, baseY: o.rotY || 0, spin: o.spin || 0, t: 0 };
+    root.rotation.set(o.rotX || 0, S.baseY, 0);
+    var cv = renderer.domElement, drag = false, px = 0, py = 0;
+    cv.style.touchAction = "pan-y";
+    cv.addEventListener("pointerdown", function (e) { drag = true; S.touched = true; px = e.clientX; py = e.clientY; try { cv.setPointerCapture(e.pointerId); } catch (x) {} });
+    cv.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      root.rotation.y += (e.clientX - px) * 0.008;
+      root.rotation.x = Math.max(-1.0, Math.min(1.0, root.rotation.x + (e.clientY - py) * 0.006));
+      px = e.clientX; py = e.clientY;
+    });
+    cv.addEventListener("pointerup", function () { drag = false; });
+    cv.addEventListener("pointercancel", function () { drag = false; });
+    S.isDragging = function () { return drag; };
+    if (window.ResizeObserver) new ResizeObserver(function () {
+      var w = host.clientWidth; if (!w) return; var h = hf(w);
+      renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); fit(w, h);
+    }).observe(host);
+    if (window.IntersectionObserver) new IntersectionObserver(function (es) { es.forEach(function (en) { S.visible = en.isIntersecting; }); }, { rootMargin: "120px" }).observe(host);
+    scenes.push(S);
+    return S;
+  }
+  function anchor(S, x, y, z) { var a = new THREE.Object3D(); a.position.set(x, y, z); S.root.add(a); return a; }
+  function label(S, html, obj, cls) {
+    var el = document.createElement("span"); el.className = "lbl3 " + (cls || ""); el.innerHTML = html; S.overlay.appendChild(el);
+    var L = { el: el, obj: obj, alpha: 1, hidden: false }; S.labels.push(L); return L;
+  }
+  function col(v) { return new THREE.Color(tok(v)); }
+  function stdMat(v, opt) {
+    opt = opt || {};
+    var m = new THREE.MeshStandardMaterial({ color: col(v), roughness: 0.5, metalness: 0.05, emissive: col(v), emissiveIntensity: opt.glow != null ? opt.glow : 0.14,
+      transparent: opt.opacity != null, opacity: opt.opacity != null ? opt.opacity : 1 });
+    rethemers.push(function () { m.color.set(tok(v)); m.emissive.set(tok(v)); });
+    return m;
+  }
+  function basicMat(v, opacity) {
+    var m = new THREE.MeshBasicMaterial({ color: col(v), transparent: true, opacity: opacity, depthWrite: opacity > 0.6 });
+    rethemers.push(function () { m.color.set(tok(v)); });
+    return m;
+  }
+  function lineMat(v, opacity) {
+    var m = new THREE.LineBasicMaterial({ color: col(v), transparent: true, opacity: opacity });
+    rethemers.push(function () { m.color.set(tok(v)); });
+    return m;
+  }
+  var tmpV = HAS3 ? new THREE.Vector3() : null;
+  var t0 = performance.now(), last = t0;
+  function loop(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    scenes.forEach(function (S) {
+      if (!S.visible) return;
+      S.t += dt;
+      if (!RM && !S.touched) {
+        if (S.sway) S.root.rotation.y = S.baseY + S.sway * Math.sin(S.t * 0.35);
+        if (S.spin) S.root.rotation.y += S.spin * dt;
+      }
+      if (S.update) S.update(dt, S.t);
+      S.renderer.render(S.scene, S.camera);
+      var w = S.renderer.domElement.clientWidth, h = S.renderer.domElement.clientHeight;
+      S.labels.forEach(function (L) {
+        L.obj.getWorldPosition(tmpV); tmpV.project(S.camera);
+        var x = (tmpV.x * 0.5 + 0.5) * w, y = (-tmpV.y * 0.5 + 0.5) * h;
+        L.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(" + (L.el.classList.contains("left") ? "-100%" : "-50%") + ",-50%)";
+        L.el.style.opacity = (L.hidden || tmpV.z > 1) ? 0 : L.alpha;
+      });
+    });
+    requestAnimationFrame(loop);
+  }
+  function retheme() { setTimeout(function () { rethemers.forEach(function (f) { f(); }); }, 30); }
+  if (window.matchMedia) { var mq = matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", retheme); }
+  if (window.MutationObserver) new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "class", "style"] });
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function pills(host, items, cur, onPick) {
+    host.innerHTML = items.map(function (it) {
+      return '<button type="button" class="pill" data-v="' + it.id + '" aria-pressed="' + (it.id === cur) + '">' + (it.c ? '<i style="background:var(' + it.c + ')"></i>' : "") + it.label + "</button>";
+    }).join("");
+    host.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      onPick(b.getAttribute("data-v"));
+    });
+  }
+  function setPressed(host, v) { Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-v") === v)); }); }
+
+  /* ================= Scene A: relations ================= */
+  var REL = [
+    { id: "all", label: "All nine", c: null },
+    { id: "heart", label: "Heart-base supports mind", c: "--heart", dir: "matter → mind", when: "Every moment of life, in worlds with matter",
+      conds: ["support", "prenascence", "dissociation", "presence", "non-disappearance"], r: 1,
+      text: "Every citta except the ten sense consciousnesses rests on the heart-base, a unit of matter that arose before it and is still present. The Paṭṭhāna names it only as “the matter in dependence on which mind-element and mind-consciousness element occur”; the commentaries identify it with the heart, and the Visuddhimagga places it in the blood of the heart's cavity." },
+    { id: "eye", label: "A sense organ supports its consciousness", c: "--rupa", dir: "matter → mind", when: "Whenever a five-door process occurs",
+      conds: ["support", "prenascence", "faculty", "dissociation", "presence"], r: 1,
+      text: "Eye-sensitivity, already arisen and still present, is the base of eye-consciousness and governs it as a faculty. The same holds for ear, nose, tongue and body. Seeing depends on the eye; it is not produced by it." },
+    { id: "object", label: "Matter as object", c: "--f-joy", dir: "matter → mind", when: "Whenever matter is known",
+      conds: ["object", "object-prenascence", "presence"], r: 1,
+      text: "The mango's colour is a unit of matter in its presence phase. It strikes the eye door and becomes the object of the whole seventeen-moment process. At the mind door, any of the 28 kinds of matter can be an object, past or present." },
+    { id: "mindborn", label: "Mind produces matter", c: "--nama", dir: "mind → matter", when: "From the first life-continuum after conception until death",
+      conds: ["conascence", "support", "dissociation", "presence", "root · kamma · nutriment · faculty · jhāna · path"], r: 0,
+      text: "Seventy-five of the 89 cittas produce matter at their arising sub-moment: posture, gestures, speech, a smile. The factors of that citta, such as its roots and its volition, support the same matter. Intimation, the matter of a gesture or a word, lasts only as long as the citta that makes it." },
+    { id: "post", label: "Later mind sustains earlier body", c: "--nama-2", dir: "mind → matter", when: "Throughout life",
+      conds: ["postnascence", "dissociation", "presence", "non-disappearance"], r: 0,
+      text: "A citta supports the body matter that arose before it and is still present. This is the one condition in which the conditioned thing is older than its condition." },
+    { id: "kamma", label: "Past volition builds the body", c: "--kamma", dir: "mind → matter", when: "From conception until seventeen mind-moments before death",
+      conds: ["kamma (asynchronous)"], r: 0,
+      text: "Volition from a past life produces the eye, ear, nose, tongue and body sensitivities, sex, the heart-base and the life faculty, together with their eight inseparables. It does so at every sub-moment, from rebirth-linking until seventeen mind-moments before the death consciousness." },
+    { id: "rebirth", label: "At conception, they arise together", c: "--nib", dir: "mind ⇄ matter", when: "Only at rebirth-linking",
+      conds: ["conascence", "mutuality", "support", "result", "dissociation", "presence"], r: 2,
+      text: "In a womb, the resultant rebirth-linking citta arises together with three decads of kamma-born matter: the body, sex and heart-base decads. The mental aggregates and the heart-base support each other. It is the only moment in a life when mind and matter condition each other mutually." },
+    { id: "food", label: "Food sustains the body", c: "--food", dir: "matter → matter", when: "Whenever food is absorbed",
+      conds: ["nutriment"], r: 3,
+      text: "Edible food conditions the body by nutriment, and its nutritive essence produces new matter in its presence phase. The mind has nutriments too: contact, volition and consciousness nourish the mind and matter that arise with them." },
+    { id: "temp", label: "Heat keeps matter renewing", c: "--temp", dir: "matter → matter", when: "From conception, through life, and after death",
+      conds: ["the fourth origin of matter"], r: 3,
+      text: "The fire element in each kalāpa, in its presence phase, gives rise to new kalāpas. This begins at the presence phase of rebirth-linking and continues all life. It is the only origin that outlasts death: the matter of a corpse is temperature-born." }
+  ];
+  var sceneRel = null, relState = "all";
+  (function () {
+    var S = make3D("rel3d", { height: 470, cam: [0, 1.3, 12.2], look: [0, -0.05, 0], fov: 34, sway: 0.38, rotX: 0.06, refAspect: 1.3 });
+    sceneRel = S;
+    var OX = -0.55;
+    function P(x, y, z) { return new THREE.Vector3(x + OX, y, z); }
+    if (S) {
+      var R = S.root;
+      var N = P(-2.3, 0.15, 0), B = P(2.1, -0.05, 0);
+      var heartP = P(1.85, 0.22, 0.25), eyeP = P(2.0, 1.2, 0.55), mangoP = P(4.25, 1.4, 0.5), kammaP = P(-0.2, -2.05, -1.0), tempP = P(4.05, -1.35, -0.7), foodP = P(3.25, -2.0, 1.0);
+      var core = new THREE.Mesh(new THREE.SphereGeometry(0.55, 40, 28), stdMat("--nama", { glow: 0.35 })); core.position.copy(N); R.add(core);
+      var shell = new THREE.Mesh(new THREE.SphereGeometry(1.3, 28, 18), new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.1, color: col("--nama-2") }));
+      rethemers.push(function () { shell.material.color.set(tok("--nama-2")); });
+      shell.position.copy(N); R.add(shell);
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.01, 8, 80), basicMat("--nama", 0.5)); ring.position.copy(N); ring.rotation.x = 1.25; R.add(ring);
+      var unis = [];
+      for (var i = 0; i < 7; i++) { var u = new THREE.Mesh(new THREE.SphereGeometry(0.085, 16, 12), stdMat("--nama-2", { glow: 0.3 })); R.add(u); unis.push(u); }
+      var rand = rng(7), cloud = new THREE.Group(); cloud.position.copy(B); R.add(cloud);
+      var cubeG = new THREE.BoxGeometry(0.075, 0.075, 0.075), cubeM = stdMat("--rupa-mark", { opacity: 0.62, glow: 0.1 });
+      for (var c = 0; c < 240; c++) {
+        var x, y, z; do { x = rand() * 2 - 1; y = rand() * 2 - 1; z = rand() * 2 - 1; } while (x * x + y * y + z * z > 1);
+        var m = new THREE.Mesh(cubeG, cubeM); m.position.set(x * 0.95, y * 1.35, z * 0.72); m.rotation.set(rand() * 3, rand() * 3, 0); cloud.add(m);
+      }
+      var heart = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.2, 0.2), stdMat("--heart", { glow: 0.4 })); heart.position.copy(heartP); R.add(heart);
+      var eye = new THREE.Mesh(new THREE.SphereGeometry(0.14, 20, 14), stdMat("--rupa", { glow: 0.3 })); eye.position.copy(eyeP); R.add(eye);
+      var mango = new THREE.Mesh(new THREE.SphereGeometry(0.33, 28, 20), stdMat("--f-joy", { glow: 0.2 })); mango.scale.set(0.85, 1, 0.85); mango.position.copy(mangoP); R.add(mango);
+      var kam = new THREE.Mesh(new THREE.OctahedronGeometry(0.34), stdMat("--kamma", { glow: 0.3 })); kam.position.copy(kammaP); R.add(kam);
+      var tmp = new THREE.Mesh(new THREE.IcosahedronGeometry(0.27), stdMat("--temp", { glow: 0.3 })); tmp.position.copy(tempP); R.add(tmp);
+      var food = new THREE.Mesh(new THREE.DodecahedronGeometry(0.27), stdMat("--food", { glow: 0.25 })); food.position.copy(foodP); R.add(food);
+      function mid(a, b, dx, dy, dz) { return a.clone().add(b).multiplyScalar(0.5).add(new THREE.Vector3(dx, dy, dz)); }
+      var curves = {
+        heart: new THREE.QuadraticBezierCurve3(heartP, mid(heartP, N, 0, 1.05, 0.5), N.clone().add(new THREE.Vector3(0.5, 0.1, 0.1))),
+        rebirth: new THREE.QuadraticBezierCurve3(N.clone().add(new THREE.Vector3(0.45, -0.3, 0.15)), mid(N, heartP, 0, -1.2, 0.8), heartP),
+        eye: new THREE.QuadraticBezierCurve3(eyeP, mid(eyeP, N, 0, 1.55, 0.3), N.clone().add(new THREE.Vector3(0.35, 0.42, 0.1))),
+        object: new THREE.QuadraticBezierCurve3(mangoP, mid(mangoP, N, 0, 2.4, 0), N.clone().add(new THREE.Vector3(0.1, 0.55, 0))),
+        mindborn: new THREE.QuadraticBezierCurve3(N.clone().add(new THREE.Vector3(0.5, 0, 0.25)), mid(N, B, 0, 0.35, 1.5), B.clone().add(new THREE.Vector3(-0.8, 0, 0.3))),
+        post: new THREE.QuadraticBezierCurve3(N.clone().add(new THREE.Vector3(0.5, -0.15, -0.25)), mid(N, B, 0, -0.55, -1.45), B.clone().add(new THREE.Vector3(-0.8, -0.2, -0.3))),
+        kamma: new THREE.QuadraticBezierCurve3(kammaP, mid(kammaP, B, 0, -0.9, 0), B.clone().add(new THREE.Vector3(-0.3, -1.1, 0))),
+        food: new THREE.QuadraticBezierCurve3(foodP, mid(foodP, B, 0, -0.35, 0.4), B.clone().add(new THREE.Vector3(0.3, -1.0, 0.35))),
+        temp: new THREE.QuadraticBezierCurve3(tempP, mid(tempP, B, 0, 0.3, -0.3), B.clone().add(new THREE.Vector3(0.75, -0.4, -0.3)))
+      };
+      var tubes = {}, parts = {};
+      REL.forEach(function (r) {
+        if (r.id === "all") return;
+        var tube = new THREE.Mesh(new THREE.TubeGeometry(curves[r.id], 64, 0.022, 8, false), basicMat(r.c, 0.4));
+        R.add(tube); tubes[r.id] = tube;
+        var ps = [];
+        for (var k = 0; k < 5; k++) { var p = new THREE.Mesh(new THREE.SphereGeometry(0.055, 12, 10), basicMat(r.c, 1)); R.add(p); ps.push(p); }
+        parts[r.id] = ps;
+      });
+      label(S, "citta and its cetasikas", anchor(S, N.x, N.y - 1.6, N.z), "p");
+      label(S, "nāma · mind", anchor(S, N.x, N.y + 1.65, N.z), "big");
+      label(S, "rūpa · a body of kalāpas", anchor(S, B.x, B.y - 1.75, B.z), "p");
+      label(S, "heart-base", anchor(S, heartP.x - 0.05, heartP.y + 0.3, heartP.z + 0.2), "sm");
+      label(S, "eye-base", anchor(S, eyeP.x, eyeP.y + 0.3, eyeP.z), "sm");
+      label(S, "visible form", anchor(S, mangoP.x, mangoP.y + 0.55, mangoP.z), "sm");
+      label(S, "past volition · kamma", anchor(S, kammaP.x, kammaP.y - 0.55, kammaP.z), "sm");
+      label(S, "temperature", anchor(S, tempP.x, tempP.y - 0.45, tempP.z), "sm");
+      label(S, "nutriment", anchor(S, foodP.x, foodP.y - 0.45, foodP.z), "sm");
+      S.update = function (dt, t) {
+        unis.forEach(function (u, i) {
+          var a = t * 0.5 + i * Math.PI * 2 / 7, v3 = new THREE.Vector3(Math.cos(a) * 0.95, Math.sin(a) * 0.95, 0);
+          v3.applyEuler(ring.rotation); u.position.copy(N).add(v3);
+        });
+        kam.rotation.y += dt * 0.5; tmp.rotation.y -= dt * 0.4; food.rotation.x += dt * 0.3; cloud.rotation.y += dt * 0.05;
+        Object.keys(tubes).forEach(function (id) {
+          var on = relState === "all" || relState === id;
+          tubes[id].material.opacity = relState === "all" ? 0.45 : (on ? 0.95 : 0.07);
+          var speed = relState === "all" ? 0.12 : 0.3;
+          parts[id].forEach(function (p, k) {
+            p.visible = on && !RM;
+            if (!p.visible) return;
+            var u2 = ((t * speed) + k / parts[id].length) % 1;
+            if (id === "rebirth" && k % 2) u2 = 1 - u2;
+            p.position.copy(curves[id].getPoint(u2));
+          });
+        });
+      };
+    }
+    function info(id) {
+      var r = REL.filter(function (x) { return x.id === id; })[0];
+      if (id === "all") {
+        $("rel-info").innerHTML = '<div class="eyebrow">Overview</div><h3>Mind and matter, held together</h3><p class="sub">Nine relations from the Abhidhamma, drawn as moving threads. Matter gives mind its bases and its objects; mind produces matter and keeps the body going; past kamma builds the sense organs; food and heat renew the body; and at conception the two arise together.</p><p class="sub">Choose a relation to isolate it.</p>';
+        return;
+      }
+      $("rel-info").innerHTML = '<div class="eyebrow">' + r.dir + '</div><h3>' + r.label + '</h3><p class="sub">' + r.text + '</p>' +
+        '<div class="row"><span>Conditions</span><div class="cchips">' + r.conds.map(function (c) { return '<span class="cchip' + (r.dir.indexOf("matter →") === 0 ? " r" : "") + '">' + c + "</span>"; }).join("") + "</div></div>" +
+        '<div class="row"><span>When</span><div>' + r.when + "</div></div>";
+    }
+    pills($("rel-btns"), REL, "all", function (v) { relState = v; info(v); });
+    info("all");
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-rel]"); if (!b) return;
+      var v = b.getAttribute("data-rel"); relState = v; info(v); setPressed($("rel-btns"), v);
+      $("model3d").scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "start" });
+    });
+  })();
+
+  /* ================= Scene D: the loom of matter ================= */
+  (function () {
+    var MODES = [
+      { id: "birth", label: "Conception" },
+      { id: "life", label: "During life" },
+      { id: "death", label: "Approaching death" }
+    ];
+    var TEXT = {
+      birth: ["Rebirth-linking", "Matter begins with mind",
+        "At the arising of the rebirth-linking citta, kamma-born matter begins: in a womb, the body, sex and heart-base decads. Temperature-born matter begins at the presence phase of that first moment. Mind-born matter begins with the first life-continuum, because the rebirth-linking citta itself produces none. Nutriment-born matter waits until nutriment is absorbed."],
+      life: ["The ordinary course", "Many generations at once",
+        "Read one lane: every bar is a unit of matter, drawn for its whole life of 51 sub-moments. Bright bars are alive at the moment marked “now”; faint ones have ceased. About 51 generations of kamma-born matter and 17 of mind-born matter are alive together, each at a different stage. The body is a standing wave of arising and ceasing."],
+      death: ["The last seventeen moments", "Kamma lets go first",
+        "From the seventeenth mind-moment before the death consciousness, kamma produces no new matter, so the last kamma-born units cease exactly at death. With death, mind-born and nutriment-born matter stop arising too. Only temperature-born matter continues, as the matter of the corpse."]
+    };
+    var mode = "life", now = 0, playing = !RM, WIN = 120, LIFE = 51, DEATH = 90;
+    var S = make3D("loom3d", { height: 460, cam: [0, 2.9, 11.6], look: [0, 2.45, 0], fov: 36, sway: 0.22, rotY: 0, refAspect: 1.45 });
+    var lanes = [
+      { id: "kamma", c: "--kamma", y0: 3.7, h: 1.6, every: 1, mod: 51, label: "kamma-born" },
+      { id: "mind", c: "--nama", y0: 2.4, h: 1.0, every: 3, mod: 17, label: "mind-born" },
+      { id: "temp", c: "--temp", y0: 1.1, h: 1.0, every: 2, mod: 26, label: "temperature-born" },
+      { id: "food", c: "--food", y0: 0, h: 0.8, every: 4, mod: 13, label: "nutriment-born" }
+    ];
+    var dx = 0.07, X0 = -WIN * dx / 2, units = [], discs = [], marks = {}, discMats, CY = -0.4;
+    function arrivals(lane) {
+      var out = [];
+      for (var s = -LIFE + 1; s < WIN; s++) {
+        if (((s % lane.every) + lane.every) % lane.every !== 0) continue;
+        if (mode === "birth") {
+          if (lane.id === "kamma" && s < 0) continue;
+          if (lane.id === "temp" && s < 1) continue;
+          if (lane.id === "mind" && s < 3) continue;
+          if (lane.id === "food" && s < 66) continue;
+        }
+        if (mode === "death") {
+          if (lane.id === "kamma" && s >= DEATH - LIFE) continue;
+          if ((lane.id === "mind" || lane.id === "food") && s > DEATH) continue;
+        }
+        out.push(s);
+      }
+      return out;
+    }
+    function build() {
+      if (!S) return;
+      units.forEach(function (u) { S.root.remove(u.m); });
+      units = [];
+      lanes.forEach(function (lane) {
+        if (!lane.on) { lane.on = stdMat(lane.c, { glow: 0.45, opacity: 0.97 }); lane.off = basicMat(lane.c, 0.16); lane.geo = new THREE.BoxGeometry(1, 0.78 * lane.h / lane.mod, 0.3); }
+        arrivals(lane).forEach(function (s) {
+          var xs = Math.max(s, 0), xe = Math.min(s + LIFE, WIN);
+          if (xe <= xs) return;
+          var m = new THREE.Mesh(lane.geo, lane.off);
+          var layer = Math.floor(s / lane.every); layer = ((layer % lane.mod) + lane.mod) % lane.mod;
+          m.scale.x = (xe - xs) * dx;
+          m.position.set(X0 + (xs + (xe - xs) / 2) * dx, lane.y0 + (layer + 0.5) * (lane.h / lane.mod), 0);
+          m.visible = false; S.root.add(m);
+          units.push({ m: m, s: s, lane: lane });
+        });
+      });
+      discs.forEach(function (d, k) {
+        var sp = (mode === "birth" && k === 0) ? "birth" : (mode === "death" && k === DEATH / 3) ? "death" : (mode === "death" && k === (DEATH - LIFE) / 3) ? "mark" : "normal";
+        d.material = discMats[sp]; d.scale.setScalar(sp === "normal" ? 1 : 1.7);
+      });
+      marks.birth.hidden = mode !== "birth"; marks.death.hidden = mode !== "death"; marks.seventeen.hidden = mode !== "death"; marks.corpse.hidden = mode !== "death";
+      now = mode === "life" ? 60 : 0;
+    }
+    if (S) {
+      lanes.forEach(function (lane) {
+        var plate = new THREE.Mesh(new THREE.PlaneGeometry(WIN * dx, lane.h), basicMat("--line", 0.35)); plate.position.set(0, lane.y0 + lane.h / 2, -0.2); S.root.add(plate);
+        label(S, lane.label, anchor(S, X0 - 0.12, lane.y0 + lane.h / 2, 0), "sm left");
+      });
+      discMats = { normal: stdMat("--nama-2", { glow: 0.25 }), birth: stdMat("--nib", { glow: 0.4 }), death: stdMat("--ink", { glow: 0.2 }), mark: stdMat("--kamma", { glow: 0.35 }) };
+      for (var k = 0; k * 3 < WIN; k++) {
+        var d = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.05, 20), discMats.normal);
+        d.rotation.x = Math.PI / 2; d.position.set(X0 + (k * 3 + 1.5) * dx, CY, 0); d.visible = false; S.root.add(d); discs.push(d);
+      }
+      label(S, "cittas", anchor(S, X0 - 0.12, CY, 0), "sm left");
+      marks.birth = label(S, "rebirth-linking", anchor(S, X0 + 1.5 * dx, CY - 0.38, 0), "sm");
+      marks.death = label(S, "death consciousness", anchor(S, X0 + (DEATH + 1.5) * dx, CY - 0.38, 0), "sm");
+      marks.seventeen = label(S, "17th moment before death", anchor(S, X0 + (DEATH - LIFE + 1.5) * dx, CY - 0.38, 0), "sm");
+      marks.corpse = label(S, "after death: temperature only", anchor(S, X0 + (DEATH + 15) * dx, 2.25, 0.3), "sm");
+      var nowPlane = new THREE.Mesh(new THREE.BoxGeometry(0.02, 6.1, 0.5), basicMat("--ink", 0.22)); nowPlane.position.set(0, 2.55, 0); S.root.add(nowPlane);
+      var nowA = new THREE.Object3D(); nowA.position.set(0, 3.25, 0); nowPlane.add(nowA); label(S, "now", nowA, "sm");
+      S.update = function (dt) {
+        if (playing) { now += dt * 12; if (now >= WIN) now = mode === "life" ? 60 : 0; }
+        nowPlane.position.x = X0 + now * dx;
+        units.forEach(function (u) {
+          if (u.s > now) { u.m.visible = false; return; }
+          u.m.visible = true;
+          u.m.material = now < u.s + LIFE ? u.lane.on : u.lane.off;
+        });
+        discs.forEach(function (d, k) { d.visible = k * 3 <= now && !(mode === "death" && k * 3 > DEATH); });
+      };
+      build();
+    }
+    function text(m) { var t = TEXT[m]; $("loom-eyebrow").textContent = t[0]; $("loom-title").textContent = t[1]; $("loom-text").textContent = t[2]; }
+    pills($("loom-modes"), MODES.concat([{ id: "play", label: playing ? "Pause" : "Play" }]), mode, function (v) {
+      if (v === "play") { playing = !playing; setPressed($("loom-modes"), mode); $("loom-modes").querySelector('[data-v="play"]').textContent = playing ? "Pause" : "Play"; return; }
+      mode = v; build(); text(v);
+    });
+    text(mode);
+  })();
+
+  /* ================= Scene B: kalāpa viewer ================= */
+  (function () {
+    var OCT = [["pathavī", "earth", "--rupa", [-1, -1, -1]], ["āpo", "water", "--water", [1, -1, -1]], ["tejo", "fire", "--temp", [1, -1, 1]], ["vāyo", "air", "--air", [-1, -1, 1]],
+      ["vaṇṇa", "colour", "--rupa-mark", [-1, 1, -1]], ["gandha", "smell", "--rupa-mark", [1, 1, -1]], ["rasa", "taste", "--rupa-mark", [1, 1, 1]], ["ojā", "nutritive essence", "--rupa-mark", [-1, 1, 1]]];
+    var ADD = {
+      life: ["jīvita", "life faculty", "--kamma", [0, 0, 0]], eye: ["cakkhu", "eye-sensitivity", "--rupa", [0, 1.9, 0]], ear: ["sota", "ear-sensitivity", "--rupa", [0, 1.9, 0]],
+      nose: ["ghāna", "nose-sensitivity", "--rupa", [0, 1.9, 0]], tongue: ["jivhā", "tongue-sensitivity", "--rupa", [0, 1.9, 0]], body: ["kāya", "body-sensitivity", "--rupa", [0, 1.9, 0]],
+      fem: ["itthibhāva", "femininity", "--rupa", [0, 1.9, 0]], masc: ["purisabhāva", "masculinity", "--rupa", [0, 1.9, 0]], heart: ["hadaya-vatthu", "heart-base", "--heart", [0, 1.9, 0]],
+      sound: ["sadda", "sound", "--water", [1.95, 0, 0]], bint: ["kāya-viññatti", "bodily intimation", "--nama", [-1.95, 0, 0]], vint: ["vacī-viññatti", "vocal intimation", "--nama", [-1.95, 0, 0]],
+      m1: ["lahutā", "lightness", "--food", [-0.75, -1.95, 0.45]], m2: ["mudutā", "malleability", "--food", [0.75, -1.95, 0.45]], m3: ["kammaññatā", "wieldiness", "--food", [0, -1.95, -0.85]]
+    };
+    var M3 = ["m1", "m2", "m3"];
+    var K = [
+      ["kamma", "eye-decad", ["life", "eye"]], ["kamma", "ear-decad", ["life", "ear"]], ["kamma", "nose-decad", ["life", "nose"]], ["kamma", "tongue-decad", ["life", "tongue"]],
+      ["kamma", "body-decad", ["life", "body"]], ["kamma", "female-decad", ["life", "fem"]], ["kamma", "male-decad", ["life", "masc"]], ["kamma", "heart-base decad", ["life", "heart"]], ["kamma", "vital nonad", ["life"]],
+      ["mind", "pure octad", []], ["mind", "bodily intimation nonad", ["bint"]], ["mind", "vocal intimation decad", ["vint", "sound"]], ["mind", "undecad of mutability", M3],
+      ["mind", "dodecad: bodily intimation and mutability", ["bint"].concat(M3)], ["mind", "tridecad: vocal intimation, sound and mutability", ["vint", "sound"].concat(M3)],
+      ["temp", "pure octad", []], ["temp", "sound nonad", ["sound"]], ["temp", "undecad of mutability", M3], ["temp", "dodecad: sound and mutability", ["sound"].concat(M3)],
+      ["food", "pure octad", []], ["food", "undecad of mutability", M3]
+    ];
+    var ORIGIN = { kamma: ["Kamma-born", "--kamma", "Produced by past kamma, at every sub-moment from rebirth-linking. Every kamma-born group carries the life faculty, which keeps it alive as living matter."],
+      mind: ["Mind-born", "--nama", "Produced by a citta at its arising. Intimation is how mind communicates through the body and the voice; the three mutable qualities make the body light, soft and workable."],
+      temp: ["Temperature-born", "--temp", "Produced by the fire element of earlier kalāpas, inside the body and in the world outside. All the matter of plants, stones and corpses is temperature-born."],
+      food: ["Nutriment-born", "--food", "Produced by the nutritive essence of absorbed food, in its presence phase. Besides the pure octad, it produces the group that carries the three mutable qualities."] };
+    var cur = 0;
+    var S = make3D("kal3d", { height: 420, cam: [0, 1.1, 8.6], look: [0, -0.05, 0], fov: 36, spin: 0.22, rotX: 0.32, rotY: 0.6, refAspect: 1.2 });
+    var nodes = {}, edges = [], spokes = [];
+    if (S) {
+      var R = S.root;
+      OCT.forEach(function (o, i) {
+        var m = new THREE.Mesh(new THREE.SphereGeometry(i < 4 ? 0.3 : 0.24, 28, 20), stdMat(o[2], { glow: 0.25 }));
+        m.position.set(o[3][0] * 0.95, o[3][1] * 0.95, o[3][2] * 0.95); R.add(m);
+        nodes["o" + i] = m; label(S, '<i class="p">' + o[0] + "</i> · " + o[1], m, "sm");
+      });
+      var cubeEdges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.9, 1.9, 1.9)), lineMat("--muted", 0.55)); R.add(cubeEdges);
+      var plane = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 1.9), basicMat("--rupa", 0.08)); plane.rotation.x = -Math.PI / 2; plane.position.y = -0.95; R.add(plane);
+      Object.keys(ADD).forEach(function (k) {
+        var a = ADD[k];
+        var m = new THREE.Mesh(new THREE.SphereGeometry(k === "life" ? 0.26 : 0.22, 26, 18), stdMat(a[2], { glow: 0.35 }));
+        m.position.set(a[3][0], a[3][1], a[3][2]); m.visible = false; R.add(m);
+        var L = label(S, '<i class="p">' + a[0] + "</i> · " + a[1], m, "sm");
+        var sp = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), m.position.clone()]), lineMat(a[2], 0.6)); sp.visible = false; R.add(sp);
+        nodes[k] = { m: m, L: L, sp: sp };
+      });
+      S.update = function (dt, t) {
+        K[cur][2].forEach(function (k) { var n = nodes[k]; if (!RM) n.m.scale.setScalar(1 + 0.08 * Math.sin(t * 2.2)); });
+      };
+    }
+    function show(i) {
+      cur = i; var k = K[i], o = ORIGIN[k[0]];
+      if (S) {
+        Object.keys(ADD).forEach(function (key) {
+          var on = k[2].indexOf(key) >= 0, n = nodes[key];
+          n.m.visible = on; n.sp.visible = on && key !== "life"; n.L.hidden = !on;
+          if (on && key === "vint") n.m.position.set(-1.95, 0, 0);
+        });
+        if (k[2].indexOf("vint") >= 0 || k[2].indexOf("bint") >= 0) {
+          ["bint", "vint"].forEach(function (key) { nodes[key].m.position.set(-1.95, 0, 0); nodes[key].sp.geometry.setFromPoints([new THREE.Vector3(), nodes[key].m.position.clone()]); });
+        }
+      }
+      var members = OCT.map(function (x) { return '<span class="cchip r">' + x[0] + "</span>"; }).join("") +
+        k[2].map(function (a) { return '<span class="cchip' + (ADD[a][2] === "--nama" ? "" : " r") + '">' + ADD[a][0] + "</span>"; }).join("");
+      $("kal-info").innerHTML = '<div class="eyebrow" style="color:var(' + o[1] + ')">' + o[0] + '</div><h3>' + k[1].charAt(0).toUpperCase() + k[1].slice(1) + '</h3>' +
+        '<p class="sub">' + (8 + k[2].length) + " members: the eight inseparables" + (k[2].length ? " plus " + k[2].map(function (a) { return ADD[a][1]; }).join(", ") : " alone") + ".</p>" +
+        '<div class="cchips">' + members + "</div><p class=\"sub\">" + o[2] + "</p>" +
+        '<div class="row"><span>Lifespan</span><div>17 mind-moments, like all concrete matter' + (k[2].some(function (a) { return a === "bint" || a === "vint"; }) ? "; the intimation itself lasts only one mind-moment" : "") + ".</div></div>";
+    }
+    var host = $("kal-btns");
+    var groups = ["kamma", "mind", "temp", "food"];
+    host.innerHTML = groups.map(function (g) {
+      return K.map(function (k, i) { return k[0] === g ? '<button type="button" class="pill" data-v="' + i + '" aria-pressed="' + (i === 0) + '"><i style="background:var(' + ORIGIN[g][1] + ')"></i>' + k[1].split(":")[0] + "</button>" : ""; }).join("");
+    }).join("");
+    host.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      setPressed(host, b.getAttribute("data-v")); show(+b.getAttribute("data-v"));
+    });
+    show(0);
+  })();
+
+  /* ================= Scene C: cetasika constellation ================= */
+  (function () {
+    var NAMES = {
+      u: [["phassa", "contact"], ["vedanā", "feeling"], ["saññā", "perception"], ["cetanā", "volition"], ["ekaggatā", "one-pointedness"], ["jīvitindriya", "psychic life"], ["manasikāra", "attention"]],
+      o: [["vitakka", "initial application"], ["vicāra", "sustained application"], ["adhimokkha", "decision"], ["viriya", "energy"], ["pīti", "zest"], ["chanda", "desire to act"]],
+      a: [["moha", "delusion"], ["ahirika", "shamelessness"], ["anottappa", "fearlessness of wrong"], ["uddhacca", "restlessness"], ["lobha", "greed"], ["diṭṭhi", "wrong view"], ["māna", "conceit"], ["dosa", "hatred"], ["issā", "envy"], ["macchariya", "avarice"], ["kukkucca", "worry"], ["thīna", "sloth"], ["middha", "torpor"], ["vicikicchā", "doubt"]],
+      b: [["saddhā", "faith"], ["sati", "mindfulness"], ["hiri", "shame of wrong"], ["ottappa", "fear of wrong"], ["alobha", "non-greed"], ["adosa", "non-hatred"], ["tatramajjhattatā", "neutrality"], ["kāya-passaddhi", "tranquillity of factors"], ["citta-passaddhi", "tranquillity of mind"], ["kāya-lahutā", "lightness of factors"], ["citta-lahutā", "lightness of mind"], ["kāya-mudutā", "malleability of factors"], ["citta-mudutā", "malleability of mind"], ["kāya-kammaññatā", "wieldiness of factors"], ["citta-kammaññatā", "wieldiness of mind"], ["kāya-pāguññatā", "proficiency of factors"], ["citta-pāguññatā", "proficiency of mind"], ["kāyujjukatā", "rectitude of factors"], ["cittujjukatā", "rectitude of mind"], ["sammā-vācā", "right speech"], ["sammā-kammanta", "right action"], ["sammā-ājīva", "right livelihood"], ["karuṇā", "compassion"], ["muditā", "appreciative joy"], ["paññindriya", "wisdom"]]
+    };
+    var S = make3D("ceta3d", { height: 420, cam: [0, 0.9, 8.6], look: [0, 0, 0], fov: 36, sway: 0.5, rotX: 0.18, refAspect: 1.15 });
+    if (!S) return;
+    var R = S.root, pts = [], hit = [];
+    var core = new THREE.Mesh(new THREE.SphereGeometry(0.4, 36, 24), stdMat("--nama", { glow: 0.45 })); R.add(core);
+    label(S, "citta", anchor(S, 0, -0.62, 0), "p");
+    var mats = { u: "--nama", o: "--nama-2", a: "--bad", b: "--nama" };
+    var dim = basicMat("--muted", 0.22);
+    function add(key, i, pos) {
+      var full = stdMat(mats[key], { glow: 0.35 });
+      var m = new THREE.Mesh(new THREE.SphereGeometry(0.085, 16, 12), full); m.position.copy(pos); R.add(m);
+      var id = key + i; m.userData = { id: id, key: key, name: NAMES[key][i], full: full };
+      pts.push(m); hit.push(m);
+    }
+    for (var i = 0; i < 7; i++) { var a = i * Math.PI * 2 / 7; add("u", i, new THREE.Vector3(Math.cos(a) * 0.95, 0, Math.sin(a) * 0.95)); }
+    var e = new THREE.Euler(1.15, 0, 0.5);
+    for (i = 0; i < 6; i++) { a = i * Math.PI * 2 / 6 + 0.3; add("o", i, new THREE.Vector3(Math.cos(a) * 1.45, 0, Math.sin(a) * 1.45).applyEuler(e)); }
+    function hemi(key, n, sign) {
+      var GA = Math.PI * (3 - Math.sqrt(5));
+      for (var k = 0; k < n; k++) {
+        var h = 0.12 + 0.86 * (k + 0.5) / n, r = Math.sqrt(1 - h * h), th = k * GA;
+        add(key, k, new THREE.Vector3(sign * h * 2.25, Math.cos(th) * r * 2.25, Math.sin(th) * r * 2.25));
+      }
+    }
+    hemi("a", 14, -1); hemi("b", 25, 1);
+    [[0.95, null], [1.45, e]].forEach(function (rg) {
+      var t = new THREE.Mesh(new THREE.TorusGeometry(rg[0], 0.006, 6, 90), basicMat("--line", 0.9)); t.rotation.x = Math.PI / 2;
+      var g = new THREE.Group(); g.add(t); if (rg[1]) g.rotation.copy(rg[1]); R.add(g);
+    });
+    var shellG = new THREE.SphereGeometry(2.25, 32, 20, -Math.PI / 2, Math.PI);
+    var wl = new THREE.Mesh(shellG, new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.07, color: col("--bad") })); R.add(wl);
+    var wr = new THREE.Mesh(shellG, new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.07, color: col("--nama") })); wr.rotation.y = Math.PI; R.add(wr);
+    rethemers.push(function () { wl.material.color.set(tok("--bad")); wr.material.color.set(tok("--nama")); });
+    var divider = new THREE.Mesh(new THREE.CircleGeometry(2.45, 64), basicMat("--muted", 0.07)); divider.rotation.y = Math.PI / 2; R.add(divider);
+    label(S, "unwholesome · 14", anchor(S, -2.55, 2.1, 0), "sm");
+    label(S, "beautiful · 25", anchor(S, 2.55, 2.1, 0), "sm");
+    label(S, "never in one citta", anchor(S, 0, -2.75, 0), "sm");
+    var state = {};
+    function apply(d) {
+      state = {};
+      (d.fixed || []).forEach(function (x) { state[x] = "fixed"; });
+      (d.vary || []).forEach(function (x) { state[x] = "var"; });
+      pts.forEach(function (m) { var s = state[m.userData.id]; m.material = s ? m.userData.full : dim; m.scale.setScalar(s ? 1 : 0.7); });
+    }
+    S.update = function (dt, t) {
+      core.rotation.y += dt * 0.3;
+      if (RM) return;
+      pts.forEach(function (m) { if (state[m.userData.id] === "var") m.scale.setScalar(1 + 0.35 * (0.5 + 0.5 * Math.sin(t * 3))); });
+    };
+    document.addEventListener("citta-change", function (ev) { apply(ev.detail); });
+    if (window.__cetaState) apply(window.__cetaState);
+    var ray = new THREE.Raycaster(), mouse = new THREE.Vector2(), tip = $("ceta-tip");
+    S.renderer.domElement.addEventListener("pointermove", function (ev) {
+      if (S.isDragging()) { tip.style.opacity = 0; return; }
+      var r = S.renderer.domElement.getBoundingClientRect();
+      mouse.x = ((ev.clientX - r.left) / r.width) * 2 - 1; mouse.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
+      ray.setFromCamera(mouse, S.camera);
+      var hits = ray.intersectObjects(hit);
+      if (!hits.length) { tip.style.opacity = 0; return; }
+      var u = hits[0].object.userData, st = state[u.id];
+      tip.innerHTML = "<i>" + u.name[0] + "</i> · " + u.name[1] + (st === "fixed" ? " · present" : st === "var" ? " · may join" : " · absent");
+      tip.style.transform = "translate(" + (ev.clientX - r.left + 12) + "px," + (ev.clientY - r.top - 28) + "px)";
+      tip.style.opacity = 1;
+    });
+    S.renderer.domElement.addEventListener("pointerleave", function () { tip.style.opacity = 0; });
+  })();
+
+  /* ================= Mind makes matter ================= */
+  (function () {
+    var ROWS = [["Unwholesome", [8, 2, 2], 1], ["Rootless", [7, 8, 3], 13], ["Beautiful", [8, 8, 8], 31], ["Fine-material", [5, 5, 5], 55], ["Immaterial", [4, 4, 4], 70], ["Supramundane", [4, 4], 82]];
+    function range(a, b) { var r = []; for (var i = a; i <= b; i++) r.push(i); return r; }
+    var all = range(1, 89);
+    var NOMAT = [13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 74, 75, 76, 77];
+    var SETS = {
+      matter: all.filter(function (n) { return NOMAT.indexOf(n) < 0; }),
+      intimation: [29].concat(range(1, 12), [30], range(31, 38), range(47, 54), [59, 69]),
+      posture: range(55, 59).concat(range(65, 69), range(70, 73), range(78, 81), range(82, 89)),
+      smile: range(1, 4).concat([30], range(31, 34), range(47, 50))
+    };
+    var SMILE = { all: SETS.smile, worldling: range(1, 4).concat(range(31, 34)), trainee: [3, 4].concat(range(31, 34)), arahant: [30].concat(range(47, 50)), buddha: range(47, 50) };
+    var DESC = {
+      matter: ["75", "of the 89 cittas produce matter. The exceptions are the ten sense consciousnesses and the four immaterial resultants. Two moments also produce none: rebirth-linking, and an arahant's death consciousness."],
+      intimation: ["32", "cittas can produce bodily and vocal intimation, the matter of gestures and speech: mind-door adverting, the 29 sense-sphere javanas and the 2 cittas of direct knowledge."],
+      posture: ["26", "absorption javanas, in jhāna, on the path and in fruition, also uphold the body's posture."],
+      smile: ["13", "cittas can produce a smile; all of them are accompanied by joy. Which ones a person smiles with depends on their attainment."]
+    };
+    var SDESC = { all: "", worldling: "Ordinary people smile with 8: the four joyful greed-rooted and the four joyful wholesome cittas.", trainee: "Stream-enterers, once-returners and non-returners smile with 6: two joyful greed-rooted cittas without wrong view, and the four joyful wholesome.",
+      arahant: "Arahants smile with 5: the smile-producing citta and the four joyful sense-sphere functional cittas.", buddha: "According to Nārada, Buddhas smile only with the four joyful beautiful functional cittas." };
+    var cur = "matter", sub = "all";
+    function draw() {
+      var set = cur === "smile" ? SMILE[sub] : SETS[cur];
+      var s = "", x0 = 132, cell = 19, step = 21, gg = 12, rowH = 50, num;
+      ROWS.forEach(function (r, ri) {
+        var y = 14 + ri * rowH + (ri >= 3 ? 10 : 0), x = x0; num = r[2];
+        s += '<text x="22" y="' + (y + 25) + '" style="font-family:var(--display);font-size:15px;fill:var(--ink)">' + r[0] + "</text>";
+        r[1].forEach(function (g) {
+          for (var i = 0; i < g; i++) {
+            var on = set.indexOf(num) >= 0, cx = x + i * step;
+            s += '<rect x="' + cx + '" y="' + (y + 12) + '" width="' + cell + '" height="' + cell + '" rx="3" style="fill:' + (on ? "var(--nama)" : "var(--paper)") + ";stroke:" + (on ? "var(--nama)" : "var(--line)") + '"/>';
+            s += '<text x="' + (cx + cell / 2) + '" y="' + (y + 25) + '" text-anchor="middle" style="font-family:var(--mono);font-size:8.5px;fill:' + (on ? "var(--on-accent)" : "var(--muted)") + '">' + num + "</text>";
+            num++;
+          }
+          x += g * step + gg;
+        });
+      });
+      $("mm-grid").innerHTML = s;
+      var d = DESC[cur];
+      $("mm-status").innerHTML = '<span class="big nm">' + (cur === "smile" && sub !== "all" ? set.length : d[0]) + '</span><span class="desc">' + d[1] + (cur === "smile" && sub !== "all" ? " " + SDESC[sub] : "") + "</span>";
+      $("mm-sub").hidden = cur !== "smile";
+    }
+    pills($("mm-btns"), [{ id: "matter", label: "Produce matter" }, { id: "intimation", label: "Gesture and speech" }, { id: "posture", label: "Uphold posture" }, { id: "smile", label: "Smile" }], cur, function (v) { cur = v; draw(); });
+    pills($("mm-sub"), [{ id: "all", label: "Anyone" }, { id: "worldling", label: "Ordinary person" }, { id: "trainee", label: "Trainee" }, { id: "arahant", label: "Arahant" }, { id: "buddha", label: "Buddha" }], sub, function (v) { sub = v; draw(); });
+    draw();
+  })();
+
+  /* ================= Planes and bases ================= */
+  (function () {
+    var Y = '<span class="yes"></span>', M = '<span class="yes m"></span>', N = '<span class="no"></span>';
+    var rows = [
+      ["Sense-sphere, womb-born", "humans, many animals", [Y, Y, Y, Y, Y, Y, Y, Y, M], "3 decads: body, sex, heart-base. The other organs develop later."],
+      ["Sense-sphere, spontaneous", "devas, hell beings, petas", [Y, Y, Y, Y, Y, Y, Y, Y, M], "Up to 7 decads at once: eye, ear, nose, tongue, body, sex, heart-base."],
+      ["Fine-material", "the Brahmā worlds", [Y, Y, N, N, N, N, Y, Y, M], "4 groups: eye, ear and heart-base decads, and the vital nonad."],
+      ["Non-percipient", "beings without mind", [N, N, N, N, N, N, N, Y, N], "The vital nonad only. Matter with no mind at all."],
+      ["Immaterial", "the four formless worlds", [N, N, N, N, N, N, N, N, M], "None. Mind with no matter at all; the citta needs no base."]
+    ];
+    $("pb-body").innerHTML = rows.map(function (r) {
+      return "<tr><td><b>" + r[0] + "</b><span>" + r[1] + "</span></td>" + r[2].map(function (c) { return "<td>" + c + "</td>"; }).join("") + '<td class="kal">' + r[3] + "</td></tr>";
+    }).join("");
+  })();
+
+  if (scenes.length) requestAnimationFrame(loop);
+})();
+</script>
+
