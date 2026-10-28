@@ -33,6 +33,7 @@
   --g1: #3a40ad; --g2: #7b5cc0; --g3: #b24f86; --g4: #c58410; --g5: #27776a; --g6: #5b6077;
   --t-lust: #c2493f; --t-hate: #3a40ad; --t-del: #6b6f84; --t-faith: #d6981c; --t-int: #27776a; --t-spec: #8a5cc0; --t-all: #c9cdd8;
   --on-accent: #ffffff;
+  --kamma: #6a3fb5; --temp: #d9622b; --food: #4f9a3a; --water: #2e8bc0; --air: #8aa0b8; --heart: #c0392b;
   --lv1: #6b7194; --lv2: #5d64a8; --lv3: #5157b4; --lv4: #454bac; --lv5: #3a3f9c; --lv6: #2f3388; --lv7: #25286c; --on-lv: #ffffff;
   --th1: #3a40ad; --th2: #c2459a; --th3: #2e8bc0; --th4: #6a3fb5; --th5: #d6981c; --th6: #7a7f96; --th7: #c0392b; --th8: #4f9a3a; --th9: #27776a; --th10: #e07b39; --th11: #8b5e3c;
   --display: "Noto Serif Display", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -46,7 +47,7 @@
     --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3c2020;
     --g1: #a3a8ff; --g2: #b9a1f0; --g3: #e48fbd; --g4: #e9b54d; --g5: #72cbb6; --g6: #a3a8bd;
     --t-lust: #ef8a80; --t-hate: #a3a8ff; --t-del: #a3a8bd; --t-faith: #e9b54d; --t-int: #72cbb6; --t-spec: #c3a6f5; --t-all: #3a3f55;
-    --on-accent: #10121b; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
+    --on-accent: #10121b; --kamma: #b99af0; --temp: #f39a6b; --food: #8fd17a; --water: #7cc3ea; --air: #b9c6d6; --heart: #f08d86; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
     color-scheme: dark;
   }
 }
@@ -56,7 +57,7 @@
   --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3c2020;
   --g1: #a3a8ff; --g2: #b9a1f0; --g3: #e48fbd; --g4: #e9b54d; --g5: #72cbb6; --g6: #a3a8bd;
   --t-lust: #ef8a80; --t-hate: #a3a8ff; --t-del: #a3a8bd; --t-faith: #e9b54d; --t-int: #72cbb6; --t-spec: #c3a6f5; --t-all: #3a3f55;
-  --on-accent: #10121b; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
+  --on-accent: #10121b; --kamma: #b99af0; --temp: #f39a6b; --food: #8fd17a; --water: #7cc3ea; --air: #b9c6d6; --heart: #f08d86; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
   color-scheme: dark;
 }
 
@@ -289,11 +290,11 @@ table.tax tr.d3 td { background: var(--nama-soft); }
 .lvq { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--muted); margin-top: 4px; }
 .lvcols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); gap: 16px; align-items: start; }
 @media (max-width: 700px) { .lvcols { grid-template-columns: 1fr; } }
-.pcards { display: grid; gap: 6px; }
-a.pc { display: grid; grid-template-columns: 38px 1fr; gap: 8px; border: 1px solid var(--line); border-left: 4px solid var(--lvc); border-radius: 6px; padding: 7px 10px; color: inherit; text-decoration: none; }
+.pcards { display: grid; gap: 4px; }
+a.pc { display: grid; grid-template-columns: 34px 1fr; gap: 8px; border: 1px solid var(--line); border-left: 4px solid var(--lvc); border-radius: 6px; padding: 5px 10px; color: inherit; text-decoration: none; }
 a.pc b { font-family: var(--display); font-size: 26px; line-height: 1; color: var(--lvc); font-weight: 500; }
 a.pc h3 { font-size: 14px; }
-a.pc p { font-size: 11.5px; color: var(--muted); }
+a.pc p { font-size: 11px; color: var(--muted); line-height: 1.35; }
 .qgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .qcol { background: var(--faint); border-top: 3px solid var(--lvc); border-radius: 0 0 6px 6px; padding: 8px 11px 10px; display: grid; gap: 5px; align-content: start; }
 .qcol h3 { font-size: 14px; }
@@ -346,6 +347,40 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
 .rail .pls { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
 .rail .pls a { font-family: var(--ui); font-size: 9px; font-weight: 600; color: var(--on-lv); text-decoration: none; border-radius: 3px; padding: 0 5px; }
 
+/* ---------- 3D models ---------- */
+.viz3d { position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: radial-gradient(120% 90% at 50% 35%, var(--sheet) 0%, var(--faint) 100%); min-height: 120px; }
+.viz3d canvas.c3 { display: block; cursor: grab; }
+.viz3d canvas.c3:active { cursor: grabbing; }
+.viz3d .labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.lbl3 { position: absolute; left: 0; top: 0; font-family: var(--ui); font-size: 11px; line-height: 1.2; white-space: nowrap; color: var(--ink); background: color-mix(in srgb, var(--sheet) 80%, transparent); padding: 1px 5px; border-radius: 3px; transition: opacity .25s; will-change: transform; }
+.lbl3.p { font-family: var(--body); font-style: italic; font-size: 13px; }
+.lbl3.nd { font-weight: 600; font-size: 11.5px; }
+.lbl3.sm { font-size: 10.5px; color: var(--muted); }
+.lbl3.sm2 { font-size: 10px; }
+.lbl3.xs { font-size: 9.2px; padding: 0 4px; }
+.lbl3.el { font-size: 9.5px; color: var(--ink); font-style: italic; }
+.lbl3.badge { color: var(--on-accent); font-weight: 700; font-size: 11px; border-radius: 999px; padding: 1px 7px; }
+.lbl3.cap3 { font-size: 9px; letter-spacing: .1em; color: var(--muted); font-weight: 600; background: none; }
+.lbl3 i { font-family: var(--body); }
+.viz3d .hint3 { position: absolute; right: 8px; bottom: 6px; font-family: var(--ui); font-size: 9.5px; color: var(--muted); pointer-events: none; }
+.viz3d .tip3 { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; font-family: var(--ui); font-size: 11.5px; background: var(--ink); color: var(--sheet); padding: 2px 7px; border-radius: 4px; opacity: 0; transition: opacity .15s; white-space: nowrap; }
+.nogl { padding: 30px 18px; text-align: center; color: var(--muted); font-size: 13px; }
+.btnrow { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { border: 1px solid var(--line); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 3px 10px; font-family: var(--ui); font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+.btnrow.sm .pill { font-size: 10.5px; padding: 2px 8px; }
+.pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.pill[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.nodeidx { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 18px; font-size: 11.3px; line-height: 1.32; }
+.nodeidx b { font-family: var(--ui); font-size: 10.5px; }
+.dotlv { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
+.linklist { columns: 2; column-gap: 20px; font-size: 11px; line-height: 1.32; }
+.lkgrp { break-inside: avoid-column; margin-bottom: 6px; }
+.lkgrp .lab { margin-bottom: 2px; }
+.lk { margin-bottom: 3px; break-inside: avoid; }
+.lk b { font-family: var(--ui); font-size: 10px; }
+@media (max-width: 700px) { .nodeidx { grid-template-columns: 1fr; } .linklist { columns: 1; } }
+@media print { .viz3d .hint3, .ctl3, .viz3d .tip3 { display: none !important; } .viz3d { background: var(--sheet); } }
+
 @media print {
   body { background: var(--sheet); padding: 0; }
   .sheet { width: 210mm; height: 297mm; min-height: 0; margin: 0; box-shadow: none; overflow: hidden; break-after: page; page-break-after: always; }
@@ -362,7 +397,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     <p class="sub">Mind, matter and the conditions that join them: fifteen plates on a seven-level learning path</p>
   </div>
   <div class="fig">
-    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:440px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
+    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:415px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
     <div class="legend" style="justify-content:center">
       <span><i style="background:var(--bad)"></i>unwholesome 12</span>
       <span><i style="background:var(--nama)"></i>wholesome 17</span>
@@ -431,6 +466,46 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     </div>
   </div>
   <div class="pf"><span>Abhidhamma Atlas · concept map</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= START HERE: 3D INTERCONNECTION MAP ================= -->
+<section class="sheet" id="map3d">
+  <div class="ph"><span><b>Start here</b> · The map in 3D</span><span>Abhidhamma Atlas</span></div>
+  <h2>The interconnection map in 3D</h2>
+  <p class="lede">The sixteen main ideas of the atlas, lifted into three dimensions. Each level is a floor, rising from Foundations at the bottom to Practice at the top. Every line is a relation taught in the plates, coloured by kind. Turn the model to follow a thread, choose a loop, or choose an idea to light up everything it touches.</p>
+  <div class="btnrow ctl3" id="m3-btns" role="group" aria-label="Highlight"></div>
+  <div class="viz3d" id="m3-view"><span class="hint3">drag to turn · choose an idea</span></div>
+  <div class="legend">
+    <span><i style="background:var(--muted)"></i>analysis</span>
+    <span><i style="background:var(--nama)"></i>within mind</span>
+    <span><i style="background:var(--rupa-mark)"></i>mind and matter</span>
+    <span><i style="background:var(--kamma)"></i>kamma and rebirth</span>
+    <span><i style="background:var(--nib)"></i>the path</span>
+  </div>
+  <p class="cap" id="m3-sel">Selected: none. The next page explains all 28 links.</p>
+  <div class="lab">The sixteen ideas</div>
+  <div class="nodeidx" id="m3-nodes"></div>
+  <div class="pf"><span>Abhidhamma Atlas · interconnection map</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= START HERE: EVERY LINK ================= -->
+<section class="sheet" id="links">
+  <div class="ph"><span><b>Start here</b> · Every link explained</span><span>Abhidhamma Atlas</span></div>
+  <h2>Every link explained</h2>
+  <p class="lede">The matrix shows which idea leads to which: read across a row for what an idea gives rise to, down a column for what it depends on. The list beneath gives each relation in a sentence, with the plates that teach it.</p>
+  <div class="cols" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center">
+    <div class="fig"><svg id="lk-matrix" viewBox="0 0 400 400" role="img" aria-label="Matrix of the 28 links between the sixteen ideas"></svg></div>
+    <div class="box tint">
+      <h3>Reading the shape</h3>
+      <ul class="tight small">
+        <li>Links that point down, from a higher floor to a lower one, are where later teaching reaches back: kamma builds the body, insight sees mind and matter, the path cuts the roots of the wheel.</li>
+        <li id="lk-busy"></li>
+        <li>Three loops recur: kamma to rebirth to life-continuum to javana and back to kamma; matter to mind and back to matter; and calm to insight to path, which cuts the first loop at its roots.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="linklist" id="lk-list"></div>
+  <div class="pf"><span>Abhidhamma Atlas · links</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= START HERE: THE LIFE AS A MAP ================= -->
@@ -510,6 +585,24 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
       <dl><dt>Characteristic</dt><dd>not wobbling, not floating away from the object</dd><dt>Function</dt><dd>absence of confusion, non-forgetfulness</dd><dt>Manifestation</dt><dd>guarding; facing the object</dd><dt>Proximate cause</dt><dd>strong perception, or the four foundations of mindfulness</dd></dl></div>
   </div>
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–II; Visuddhimagga XIV; Atthasālinī</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= LEVEL 1 IN 3D ================= -->
+<section class="sheet d3p" id="D1" data-level="1">
+  <div class="ph"><span><b>Level I</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L1" style="background:var(--lv1);border:0"><b>I</b>Foundations</a><span>Models for plates <a href="#p1">1</a>–<a href="#p2">2</a></span></div>
+  <h2>The categories, mapped</h2>
+  <p class="lede">The suttas describe experience with overlapping lists: five aggregates, twelve bases, eighteen elements, four noble truths. The Abhidhamma shows that every item on every list is made of the same four realities. Here the realities are glass columns; each list is a shelf, and each item sits over the columns it is made of. An item that bridges several columns contains several kinds of reality.</p>
+  <div class="btnrow ctl3" id="d1-btns" role="group" aria-label="Shelf"></div>
+  <div class="viz3d" id="d1-view"><span class="hint3">drag to turn</span></div>
+  <div class="cols">
+    <div class="box"><h3>Five aggregates</h3><p class="small">Rūpa is all 28 kinds of matter. Feeling and perception are one mental factor each, and formations are the other 50. Consciousness is all 89 cittas. Nibbāna belongs to no aggregate.</p></div>
+    <div class="box"><h3>Twelve bases</h3><p class="small">Ten bases are matter: five sense organs and five objects. The mind base is all 89 cittas. The mental-object base gathers the rest: the 52 factors, the 16 subtle kinds of matter, and Nibbāna.</p></div>
+    <div class="box"><h3>Eighteen elements</h3><p class="small">As the bases, but the mind base splits into seven: five sense-consciousness elements (10 cittas), the mind element (3: five-door adverting and the two receiving cittas) and the mind-consciousness element (the other 76).</p></div>
+    <div class="box"><h3>Four noble truths</h3><p class="small">Suffering is everything mundane, the mind and matter of the three planes. Its origin is craving, which the Abhidhamma identifies with the factor greed. Cessation is Nibbāna. The path is eight mental factors that arise together in path consciousness.</p></div>
+  </div>
+  <p class="cap">Gross and subtle matter: the five organs and seven objects (touch counting as earth, fire and air) are the 12 gross kinds of matter; the other 16 are subtle and are known only at the mind door.</p>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VII (compendium of categories); Nārada, <i>Manual</i> VII</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= STORIES 1 ================= -->
@@ -599,6 +692,30 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Sources: Milindapañha II; Visuddhimagga IV, XIV, XVIII; Atthasālinī; L. S. Cousins, “Vitakka/vitarka and vicāra” (1992); M. Heim, “Nāmarūpa in Buddhaghosa”</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= LEVEL 2 IN 3D ================= -->
+<section class="sheet d3p" id="D2" data-level="2">
+  <div class="ph"><span><b>Level II</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L2" style="background:var(--lv2);border:0"><b>II</b>Elements</a><span>Models for plates <a href="#p3">3</a>–<a href="#p6">6</a></span></div>
+  <h2>Elements in 3D</h2>
+  <p class="lede">Three models of the elements of experience: all 89 cittas as a stupa, the 52 factors gathered round a single citta, and the inside of a kalāpa of matter.</p>
+  <div class="btnrow ctl3" id="d2-tower-btns" role="group" aria-label="Colour by"></div>
+  <div class="viz3d" id="d2-tower"><span class="hint3">drag to turn</span></div>
+  <p class="cap">Each cube is one citta. The tiers rise from the 54 sense-sphere cittas, through the 15 fine-material and 12 immaterial, to the 8 supramundane cittas around Nibbāna at the top. Coloured by feeling, most of the stupa is joy or equanimity; the four red-brown and green cubes are the only cittas with bodily pain, bodily pleasure or displeasure.</p>
+  <div class="cols">
+    <div class="fig">
+      <div class="btnrow ctl3 sm" id="d2-ceta-btns" role="group" aria-label="Citta"></div>
+      <div class="viz3d" id="d2-ceta"><div class="tip3" id="d2-ceta-tip"></div><span class="hint3">drag to turn</span></div>
+      <p class="cap" id="d2-ceta-cap"></p>
+    </div>
+    <div class="fig">
+      <div class="btnrow ctl3 sm" id="d2-kal-btns" role="group" aria-label="Kalāpa"></div>
+      <div class="viz3d" id="d2-kal"><span class="hint3">drag to turn</span></div>
+      <p class="cap" id="d2-kal-cap"></p>
+    </div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I, II, VI</span><span class="pg"></span></div>
+</section>
+
 <!-- ================= STORIES 2 ================= -->
 <section class="sheet stories" id="S2" data-level="2"></section>
 
@@ -625,6 +742,22 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   </div>
   <div class="legend"><span><i class="k-bh"></i>life-continuum</span><span><i class="k-pr"></i>process citta</span><span><i class="k-vi"></i>sense consciousness</span><span><i class="k-ja"></i>javana</span><span><i class="k-ta"></i>registration</span></div>
   <div class="pf"><span>Sources: Atthasālinī; Bodhi, <i>CMA</i> IV and its guide; Nārada, <i>The Buddha and His Teachings</i></span><span class="pg"></span></div>
+</section>
+
+<!-- ================= LEVEL 3 IN 3D ================= -->
+<section class="sheet d3p" id="D3" data-level="3">
+  <div class="ph"><span><b>Level III</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L3" style="background:var(--lv3);border:0"><b>III</b>Process</a><span>Models for plate <a href="#p7">7</a></span></div>
+  <h2>Process in 3D</h2>
+  <p class="lede">Two views of the same seconds of life. Above, one cognitive process as a track of moments, with what each moment does to kamma and to the body. Below, the body itself: every unit of matter drawn for its whole life of 51 sub-moments.</p>
+  <div class="btnrow ctl3" id="d3-proc-btns" role="group" aria-label="Object"></div>
+  <div class="viz3d" id="d3-proc"><span class="hint3">drag to turn</span></div>
+  <p class="cap">The bar above the track is the object's life: seventeen moments for a very great object. Violet seeds rise from the javanas, where kamma is made. The small cubes below are mind-born matter, produced as each citta arises, except the sense consciousness, which is too weak to produce matter.</p>
+  <div class="btnrow ctl3" id="d3-loom-modes" role="group" aria-label="Stage of life"></div>
+  <div class="viz3d" id="d3-loom"><span class="hint3">drag to turn</span></div>
+  <div class="legend"><span><i style="background:var(--kamma)"></i>kamma-born · every sub-moment</span><span><i style="background:var(--nama)"></i>mind-born · at each citta's arising</span><span><i style="background:var(--temp)"></i>temperature-born · rate illustrative</span><span><i style="background:var(--food)"></i>nutriment-born · rate illustrative</span></div>
+  <p class="cap"><b id="d3-loom-title"></b> <span id="d3-loom-text"></span></p>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IV, VI</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= STORIES 3 ================= -->
@@ -666,6 +799,22 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Source: Bodhi, <i>CMA</i> VIII §3–10; Paṭisambhidāmagga on the twenty modes</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= LEVEL 4 IN 3D ================= -->
+<section class="sheet d3p" id="D4" data-level="4">
+  <div class="ph"><span><b>Level IV</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L4" style="background:var(--lv4);border:0"><b>IV</b>Relations</a><span>Models for plates <a href="#p8">8</a>–<a href="#p9">9</a></span></div>
+  <h2>Relations in 3D</h2>
+  <p class="lede">The wheel of Plate 9 opened into a helix that climbs through three lives, and the 24 conditions of Plate 8 drawn as arcs between mind, matter and concepts.</p>
+  <div class="btnrow ctl3" id="d4-helix-btns" role="group" aria-label="Colour by"></div>
+  <div class="viz3d" id="d4-helix"><span class="hint3">drag to turn</span></div>
+  <p class="cap">Red links are defilements, indigo kamma, turmeric results; becoming (10) is both kamma and result. The three rings are the connections between the four groups, and the halos mark the two roots, ignorance and craving. At rebirth, the Visuddhimagga says, mentality supports the six bases in at least seven ways: conascence, mutuality, support, association, result, presence and non-disappearance.</p>
+  <div class="cols" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)">
+    <div class="fig"><div class="viz3d" id="d4-comp"><span class="hint3">drag to turn</span></div></div>
+    <div class="fig"><div class="btnrow ctl3 sm" id="d4-comp-btns" role="group" aria-label="Family"></div><div class="box" id="d4-comp-info"></div></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VIII; Visuddhimagga XVII</span><span class="pg"></span></div>
+</section>
+
 <!-- ================= STORIES 4 ================= -->
 <section class="sheet stories" id="S4" data-level="4"></section>
 
@@ -702,6 +851,21 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="legend"><span><i style="background:var(--nama);border-radius:50%"></i>mind only (immaterial planes)</span><span><i style="background:var(--rupa-mark)"></i>matter only (non-percipient beings)</span><span><i style="background:linear-gradient(90deg,var(--nama) 50%,var(--rupa-mark) 50%)"></i>mind and matter</span></div>
   <p class="cap">Brahmā lifespans are in great aeons (<i>mahākappa</i>). The first three are given in the texts as fractions of an incalculable aeon, a quarter of a great aeon, and are converted here. Deva lifespans are in human years: 50 human years make one day of the Four Great Kings, and each higher heaven doubles both the day and the lifespan. Jhāna kamma ripens in the Brahmā planes <a class="xr" href="#p12">→ 12</a>.</p>
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Rewata Dhamma, table of realms</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= LEVEL 5 IN 3D ================= -->
+<section class="sheet d3p" id="D5" data-level="5">
+  <div class="ph"><span><b>Level V</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L5" style="background:var(--lv5);border:0"><b>V</b>Lives and worlds</a><span>Models for plates <a href="#p10">10</a>–<a href="#p11">11</a></span></div>
+  <h2>Thirty-one planes as a world-mountain</h2>
+  <p class="lede">The traditional cosmos, stacked. The woeful states lie below the human world. Mount Sineru rises from it: the Four Great Kings dwell on its slopes and the Thirty-three on its summit. The higher heavens and the Brahmā worlds rest above it in space, and the four immaterial planes, drawn as empty rings, have no matter at all.</p>
+  <div class="viz3d" id="d5-view"><span class="hint3">drag to turn</span></div>
+  <div class="cols3">
+    <div class="box"><h3>Floors of mind</h3><p class="small">Each floor of the Brahmā worlds corresponds to a jhāna; beings are reborn there by the kamma of that jhāna. The higher the floor, the longer the life and the subtler the mind.</p></div>
+    <div class="box"><h3>Mind without matter</h3><p class="small">In the four immaterial planes there is no body and no base: cittas arise with no physical support. Among the non-percipient beings, the reverse: a body with no mind at all.</p></div>
+    <div class="box"><h3>Ring widths</h3><p class="small">Disc widths are schematic, not measured. For the actual lifespans, from nine million human years to 84,000 aeons, see Plate 11.</p></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; commentaries on Sineru</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= STORIES 5 ================= -->
@@ -760,6 +924,22 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga XIV, XVIII–XXII</span><span class="pg"></span></div>
 </section>
 
+<!-- ================= LEVEL 6 IN 3D ================= -->
+<section class="sheet d3p" id="D6" data-level="6">
+  <div class="ph"><span><b>Level VI</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L6" style="background:var(--lv6);border:0"><b>VI</b>Practice</a><span>Models for plates <a href="#p12">12</a>–<a href="#p13">13</a></span></div>
+  <h2>Practice in 3D</h2>
+  <p class="lede">The thirty-seven requisites of enlightenment, the suttas' list of everything that builds awakening, turn out to be only fourteen states. And the ten fetters, shown as rings round a single column, fall away path by path.</p>
+  <div class="viz3d" id="d6-sky"><span class="hint3">drag to turn</span></div>
+  <div class="legend" id="d6-sky-legend"></div>
+  <p class="cap">Each tower is one state; each block in it is one place it appears among the 37. Energy appears nine times, mindfulness eight, wisdom five, concentration four and faith twice; the other nine appear once each. Thirteen of the fourteen are mental factors. One, as a base of success, is citta itself.</p>
+  <div class="cols" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start">
+    <div class="fig"><div class="btnrow ctl3 sm" id="d6-fet-btns" role="group" aria-label="Attainment"></div><div class="viz3d" id="d6-fet"><span class="hint3">drag to turn</span></div></div>
+    <div class="box tint"><h3>Ten fetters, four paths</h3><p class="small">Stream-entry cuts the first three. Once-return weakens sensual desire and ill will; non-return cuts them. Arahantship cuts the last five, and nothing binds to further existence.</p><p class="small" id="d6-fet-cap"></p></div>
+  </div>
+  <div class="pf"><span>Sources: Nārada, <i>Manual</i> VII; Bodhi, <i>CMA</i> VII, IX</span><span class="pg"></span></div>
+</section>
+
 <!-- ================= STORIES 6 ================= -->
 <section class="sheet stories" id="S6" data-level="6"></section>
 
@@ -798,6 +978,21 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     <p class="src">Principal sources: Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i> (BPS, 1993); Nārada, <i>A Manual of Abhidhamma</i>; Bhikkhu Ñāṇamoli (tr.), <i>The Path of Purification</i>; <i>The Expositor</i> (Atthasālinī), tr. Pe Maung Tin; <i>Milindapañha</i>; Nyanaponika, <i>Abhidhamma Studies</i>; Y. Karunadasa, <i>The Theravāda Abhidhamma</i>; L. S. Cousins (1992) on vitakka and vicāra; M. Heim on nāmarūpa in Buddhaghosa; Agganyani's Paṭṭhāna overview; Encyclopedia of Buddhism entries on the 75 and 100 dharmas.</p>
   </div>
   <div class="pf"><span>Sources: Abhidharmakośa; Vasubandhu, <i>Lucid Introduction to the One Hundred Dharmas</i>; Kathāvatthu I</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= LEVEL 7 IN 3D ================= -->
+<section class="sheet d3p" id="D7" data-level="7">
+  <div class="ph"><span><b>Level VII</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
+  <div class="nav"><a class="lvb" href="#L7" style="background:var(--lv7);border:0"><b>VII</b>Synthesis</a><span>Models for plates <a href="#p14">14</a>–<a href="#p15">15</a> and the threads</span></div>
+  <h2>The whole atlas, woven</h2>
+  <p class="lede">The fifteen plates sit on a spiral that climbs through the seven levels. The eleven threads of the thread map run between them as coloured strands. Choose a thread to follow one idea from the plate where it first appears to the last.</p>
+  <div class="btnrow ctl3 sm" id="d7-btns" role="group" aria-label="Thread"></div>
+  <div class="viz3d" id="d7-view"><span class="hint3">drag to turn</span></div>
+  <div class="cols">
+    <div class="box"><h3>What the weave shows</h3><p class="small">Citta runs through ten plates, kamma and matter through eight each. Plate 14 is the knot where eight strands meet: one moment of experience needs nearly every idea at once.</p></div>
+    <div class="box"><h3>How to use it</h3><p class="small">After finishing the atlas, pick the thread you understand least. Read its plates in order, then return to the interconnection map at the front and see how its links look now.</p></div>
+  </div>
+  <div class="pf"><span>Abhidhamma Atlas · synthesis in 3D</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= STORIES 7 ================= -->
@@ -1816,6 +2011,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     var cards = L.plates.map(function (p) {
       return '<a class="pc" href="#p' + p + '"><b>' + p + "</b><div><h3>" + PL[p].t + "</h3><p>" + PL[p].k + "</p></div></a>";
     }).join("");
+    cards += '<a class="pc" href="#D' + n + '"><b>◈</b><div><h3>In 3D</h3><p>Models of this level\'s diagrams to turn and explore.</p></div></a>';
     cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
     if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, and the terms that name them.</p></div></a>';
     function col(title, pali, hint, list) {
@@ -1861,7 +2057,7 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
     var th = TH.filter(function (t) { return t[4].indexOf(n) >= 0; }).map(function (t) { return '<span class="thr"><i style="background:' + t[3] + '"></i>' + t[5] + "</span>"; }).join("");
     var nav = document.createElement("div");
     nav.className = "nav";
-    nav.innerHTML = '<a class="lvb" href="#L' + lv + '" style="background:' + lvc(lv) + ';border:0"><b>' + ROM[lv] + "</b>" + LV[lv].name + "</a><span>" + from + "</span><span>" + to + '</span><span class="thrs">' + th + "</span>";
+    nav.innerHTML = '<a class="lvb" href="#L' + lv + '" style="background:' + lvc(lv) + ';border:0"><b>' + ROM[lv] + "</b>" + LV[lv].name + "</a><span>" + from + "</span><span>" + to + '</span><span><a href="#D' + lv + '">3D view</a></span><span class="thrs">' + th + "</span>";
     sec.querySelector(".ph").insertAdjacentElement("afterend", nav);
   });
 
@@ -2256,11 +2452,11 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   (function () {
     var toc = $("toc"); if (!toc) return;
     function row(href, num, label, cls) { return '<a class="row' + (cls ? " " + cls : "") + '" href="#' + href + '"><b>' + num + "</b><span>" + label + "</span><span>" + pageOf[href] + "</span></a>"; }
-    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("map", "→", "How the main ideas connect") + row("life", "→", "The Buddha's life as a map") + "</div>";
+    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("life", "→", "The Buddha's life as a map") + "</div>";
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); });
-      h += row("S" + l, "✦", "In the stories");
+      h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, then in the stories</span><span>' + pageOf["D" + l] + "–" + pageOf["S" + l] + "</span></a>";
       if (l === 7) h += row("threads", "↯", "Threads and glossary");
       h += "</div>";
     }
@@ -2268,4 +2464,847 @@ a.pc p { font-size: 11.5px; color: var(--muted); }
   })();
 })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tok(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#888888"; }
+  function $(id) { return document.getElementById(id); }
+  var HAS3 = !!window.THREE && (function () { try { var c = document.createElement("canvas"); return !!(c.getContext("webgl") || c.getContext("experimental-webgl")); } catch (e) { return false; } })();
+  var NOGL = '<div class="nogl">This model needs WebGL, which this browser is not providing. The captions and the 2D plates cover the same content.</div>';
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var R3 = null, scenes = [], rethemers = [];
+  function renderer() {
+    if (!R3) { R3 = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true }); R3.setPixelRatio(1); R3.setSize(1400, 1300, false); }
+    return R3;
+  }
+
+  /* ---------------- toolkit ---------------- */
+  function make3D(id, o) {
+    var host = $(id); if (!host) return null;
+    if (!HAS3) { host.insertAdjacentHTML("afterbegin", NOGL); return null; }
+    var cv = document.createElement("canvas"); cv.className = "c3"; host.insertBefore(cv, host.firstChild);
+    var ctx = cv.getContext("2d");
+    var overlay = document.createElement("div"); overlay.className = "labels"; host.appendChild(overlay);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(o.fov || 36, 1.5, 0.1, 200);
+    var look = new THREE.Vector3(o.look[0], o.look[1], o.look[2]);
+    var camBase = new THREE.Vector3(o.cam[0], o.cam[1], o.cam[2]).sub(look), refA = o.refAspect || 1.4;
+    scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+    var d1 = new THREE.DirectionalLight(0xffffff, 0.78); d1.position.set(3, 6, 7); scene.add(d1);
+    var d2 = new THREE.DirectionalLight(0xffffff, 0.25); d2.position.set(-5, -2, -4); scene.add(d2);
+    var root = new THREE.Group(); scene.add(root);
+    var S = { host: host, cv: cv, ctx: ctx, scene: scene, camera: camera, root: root, overlay: overlay, labels: [], visible: true, update: null,
+      touched: false, sway: o.sway || 0, spin: o.spin || 0, baseY: o.rotY || 0, baseX: o.rotX || 0, t: 0, dirty: true, w: 0, h: 0 };
+    root.rotation.set(S.baseX, S.baseY, 0);
+    S.size = function () {
+      var w = host.clientWidth || 640, h = o.heightFn ? o.heightFn(w) : (w < 560 ? Math.round(w * (o.phoneRatio || 0.9)) : o.height);
+      if (w === S.w && h === S.h) return;
+      S.w = w; S.h = h;
+      cv.style.width = w + "px"; cv.style.height = h + "px";
+      cv.width = Math.round(w * DPR); cv.height = Math.round(h * DPR);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+      var f = Math.max(1, refA / (w / h));
+      camera.position.copy(look).add(camBase.clone().multiplyScalar(f)); camera.lookAt(look);
+      S.dirty = true;
+    };
+    S.size();
+    var drag = false, px = 0, py = 0;
+    cv.style.touchAction = "pan-y";
+    cv.addEventListener("pointerdown", function (e) { drag = true; S.touched = true; px = e.clientX; py = e.clientY; S.downX = e.clientX; S.downY = e.clientY; try { cv.setPointerCapture(e.pointerId); } catch (x) {} });
+    cv.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      root.rotation.y += (e.clientX - px) * 0.008;
+      root.rotation.x = Math.max(-1.0, Math.min(1.0, root.rotation.x + (e.clientY - py) * 0.006));
+      px = e.clientX; py = e.clientY; S.dirty = true;
+    });
+    cv.addEventListener("pointerup", function (e) {
+      drag = false;
+      if (S.onClick && Math.abs(e.clientX - S.downX) < 5 && Math.abs(e.clientY - S.downY) < 5) S.onClick(e);
+    });
+    cv.addEventListener("pointercancel", function () { drag = false; });
+    S.isDragging = function () { return drag; };
+    S.pick = function (e, objs) {
+      var r = cv.getBoundingClientRect(), m = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      var ray = new THREE.Raycaster(); ray.setFromCamera(m, camera);
+      var hits = ray.intersectObjects(objs, false); return hits.length ? hits[0].object : null;
+    };
+    if (window.ResizeObserver) new ResizeObserver(function () { S.size(); }).observe(host);
+    if (window.IntersectionObserver) new IntersectionObserver(function (es) { es.forEach(function (en) { S.visible = en.isIntersecting; if (en.isIntersecting) S.dirty = true; }); }, { rootMargin: "150px" }).observe(host);
+    scenes.push(S);
+    return S;
+  }
+  function anchor(S, x, y, z, parent) { var a = new THREE.Object3D(); a.position.set(x, y, z); (parent || S.root).add(a); return a; }
+  function label(S, html, obj, cls) {
+    var el = document.createElement("span"); el.className = "lbl3 " + (cls || ""); el.innerHTML = html; S.overlay.appendChild(el);
+    var L = { el: el, obj: obj, alpha: 1, hidden: false }; S.labels.push(L); return L;
+  }
+  function col(v) { return new THREE.Color(tok(v)); }
+  function stdMat(v, opt) {
+    opt = opt || {};
+    var m = new THREE.MeshStandardMaterial({ color: col(v), roughness: 0.5, metalness: 0.05, emissive: col(v), emissiveIntensity: opt.glow != null ? opt.glow : 0.16,
+      transparent: opt.opacity != null, opacity: opt.opacity != null ? opt.opacity : 1, depthWrite: opt.opacity == null || opt.opacity > 0.6 });
+    rethemers.push(function () { m.color.set(tok(v)); m.emissive.set(tok(v)); });
+    return m;
+  }
+  function basicMat(v, opacity, wire) {
+    var m = new THREE.MeshBasicMaterial({ color: col(v), transparent: true, opacity: opacity, depthWrite: opacity > 0.6, wireframe: !!wire });
+    rethemers.push(function () { m.color.set(tok(v)); });
+    return m;
+  }
+  function lineMat(v, opacity) {
+    var m = new THREE.LineBasicMaterial({ color: col(v), transparent: true, opacity: opacity });
+    rethemers.push(function () { m.color.set(tok(v)); });
+    return m;
+  }
+  function tube(points, r, mat, closed) {
+    var curve = points.length === 3 && !closed ? new THREE.QuadraticBezierCurve3(points[0], points[1], points[2]) : new THREE.CatmullRomCurve3(points, !!closed);
+    var m = new THREE.Mesh(new THREE.TubeGeometry(curve, 64, r, 8, !!closed), mat); m.userData.curve = curve; return m;
+  }
+  function V(x, y, z) { return new THREE.Vector3(x, y, z); }
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function pills(host, items, cur, onPick) {
+    if (!host) return;
+    host.innerHTML = items.map(function (it) {
+      return '<button type="button" class="pill" data-v="' + it.id + '" aria-pressed="' + (it.id === cur) + '">' + (it.c ? '<i style="background:var(' + it.c + ')"></i>' : "") + it.label + "</button>";
+    }).join("");
+    host.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      onPick(b.getAttribute("data-v"));
+    });
+  }
+  function setPressed(host, v) { if (host) Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-v") === v)); }); }
+
+  var tmpV = HAS3 ? new THREE.Vector3() : null;
+  function draw(S) {
+    var r = renderer(), W = S.cv.width, H = S.cv.height, c = r.domElement;
+    if (c.width < W || c.height < H) r.setSize(Math.max(c.width, W), Math.max(c.height, H), false);
+    r.setViewport(0, 0, W, H); r.setScissor(0, 0, W, H); r.setScissorTest(true);
+    r.setClearColor(0x000000, 0); r.clear();
+    r.render(S.scene, S.camera);
+    S.ctx.clearRect(0, 0, W, H);
+    S.ctx.drawImage(c, 0, c.height - H, W, H, 0, 0, W, H);
+    S.labels.forEach(function (L) {
+      L.obj.getWorldPosition(tmpV); tmpV.project(S.camera);
+      var x = (tmpV.x * 0.5 + 0.5) * S.w, y = (-tmpV.y * 0.5 + 0.5) * S.h;
+      var shift = L.el.classList.contains("left") ? "-100%" : (L.el.classList.contains("right") ? "0%" : "-50%");
+      L.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(" + shift + ",-50%)";
+      L.el.style.opacity = (L.hidden || tmpV.z > 1) ? 0 : L.alpha;
+    });
+  }
+  var last = performance.now();
+  function loop(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    var anim = !RM && !window.__freeze3d;
+    scenes.forEach(function (S) {
+      if (!S.visible) return;
+      if (anim) {
+        S.t += dt;
+        if (!S.touched) {
+          if (S.sway) S.root.rotation.y = S.baseY + S.sway * Math.sin(S.t * 0.35);
+          if (S.spin) S.root.rotation.y += S.spin * dt;
+        }
+        if (S.update) S.update(dt, S.t);
+        draw(S);
+      } else if (S.dirty) {
+        if (S.update) S.update(0, S.t);
+        draw(S); S.dirty = false;
+      }
+    });
+    requestAnimationFrame(loop);
+  }
+  window.__render3dAll = function () {
+    window.__freeze3d = true;
+    scenes.forEach(function (S) {
+      S.w = 0; S.size();
+      S.root.rotation.set(S.baseX, S.baseY + (S.printY || 0), 0);
+      if (S.beforePrint) S.beforePrint();
+      if (S.update) S.update(0, S.t);
+      draw(S);
+    });
+    return scenes.length;
+  };
+  function retheme() { setTimeout(function () { rethemers.forEach(function (f) { f(); }); scenes.forEach(function (S) { S.dirty = true; }); }, 30); }
+  if (window.matchMedia) { var mq = matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", retheme); }
+  if (window.MutationObserver) new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  /* ================= 1. Interconnection map ================= */
+  var NODES = [
+    { id: "T", lv: 1, ang: 0, r: 0, t: "Two truths", d: "Conventional speech and ultimate analysis; the starting point.", p: [2] },
+    { id: "CE", lv: 2, ang: 210, t: "Cetasika · 52", d: "The mental factors that colour each citta.", p: [4, 6] },
+    { id: "CI", lv: 2, ang: 150, t: "Citta · 89", d: "Kinds of consciousness, each one moment of knowing.", p: [3] },
+    { id: "RU", lv: 2, ang: 35, t: "Rūpa · 28", d: "Kinds of matter, always in groups of eight or more.", p: [5] },
+    { id: "NB", lv: 2, ang: 300, t: "Nibbāna", d: "The unconditioned; the object of path and fruition.", p: [2, 13] },
+    { id: "BH", lv: 3, ang: 105, t: "Life-continuum", d: "The resultant citta that fills the gaps between processes.", p: [7, 10] },
+    { id: "PR", lv: 3, ang: 165, t: "Cognitive process", d: "The fixed sequence in which cittas take an object.", p: [7] },
+    { id: "JV", lv: 3, ang: 235, t: "Javana", d: "The active phase, where volition becomes kamma.", p: [7] },
+    { id: "CO", lv: 4, ang: 140, t: "24 conditions", d: "The ways in which one dhamma supports another.", p: [8] },
+    { id: "DO", lv: 4, ang: 215, t: "Dependent origination", d: "The twelve links, read across three lives.", p: [9] },
+    { id: "RB", lv: 5, ang: 160, t: "Death and rebirth", d: "The hinge between one life and the next.", p: [10] },
+    { id: "PL", lv: 5, ang: 85, t: "31 planes", d: "The worlds, matched to levels of mind.", p: [11] },
+    { id: "KA", lv: 5, ang: 250, t: "Kamma", d: "Volition, and the way it ripens.", p: [10] },
+    { id: "SA", lv: 6, ang: 90, t: "Calm · jhāna", d: "Concentration, from access to the five jhānas.", p: [12] },
+    { id: "VI", lv: 6, ang: 170, t: "Insight", d: "The knowledges that see mind and matter rise and fall.", p: [13] },
+    { id: "PA", lv: 6, ang: 285, t: "Path and fruit", d: "The four paths, with Nibbāna as their object.", p: [13] }
+  ];
+  var LINKS = [
+    ["T", "CE", "ana", "analysed into", "Ultimate analysis finds four kinds of reality; the mental factors are one of them.", [2]],
+    ["T", "CI", "ana", "analysed into", "Consciousness is the second reality.", [2]],
+    ["T", "RU", "ana", "analysed into", "Matter is the third.", [2]],
+    ["T", "NB", "ana", "and the unconditioned", "Nibbāna is the fourth reality, and the only unconditioned one.", [2]],
+    ["CO", "PR", "ana", "explains every step", "Each step of a process is held by specific conditions: proximity, support, object and more.", [8]],
+    ["CO", "DO", "ana", "applied to a life", "The twelve links are related by the same 24 conditions.", [8, 9]],
+    ["PL", "CI", "ana", "each world its minds", "Each plane allows certain kinds of citta; the immaterial planes have no matter at all.", [3, 11]],
+    ["CE", "CI", "mind", "arise together", "A citta and its factors arise and cease together, with one object and one base.", [4]],
+    ["CI", "PR", "mind", "strung into processes", "Cittas never occur at random; they follow fixed sequences.", [7]],
+    ["BH", "PR", "mind", "an object interrupts", "The life-continuum vibrates and is cut off when an object strikes.", [7]],
+    ["PR", "JV", "mind", "peaks in", "Every complete process culminates in seven javanas.", [7]],
+    ["RU", "CI", "mm", "base and object", "Matter supplies the six bases and the five sense objects.", [5, 8]],
+    ["CI", "RU", "mm", "mind-born matter", "75 kinds of citta produce matter as they arise: posture, gesture, speech.", [5, 8]],
+    ["KA", "RU", "mm", "kamma-born matter", "Past kamma produces the sense organs, sex, heart-base and life faculty.", [5, 10]],
+    ["JV", "KA", "kam", "its volition is kamma", "Wholesome or unwholesome volition in the javanas is new kamma.", [7, 10]],
+    ["CE", "KA", "kam", "volition is a factor", "Kamma is cetanā, one of the seven universal mental factors.", [4, 10]],
+    ["DO", "KA", "kam", "formations and becoming", "Links 2 and 10 of the wheel are kamma.", [9]],
+    ["DO", "RB", "kam", "via consciousness", "Link 3 is rebirth-linking consciousness.", [9, 10]],
+    ["KA", "RB", "kam", "ripens as rebirth", "Productive kamma produces the next rebirth-linking.", [10]],
+    ["RB", "BH", "kam", "continues as", "The rebirth-linking citta recurs as the life-continuum for the whole life.", [7, 10]],
+    ["RB", "PL", "kam", "in one of 31", "Rebirth takes place in a plane that fits the ripening kamma.", [10, 11]],
+    ["SA", "PL", "path", "jhāna ripens here", "Jhāna kamma ripens in the Brahmā planes.", [11, 12]],
+    ["SA", "VI", "path", "supports", "Concentration is a root of the tree of purification.", [12, 13]],
+    ["VI", "CI", "path", "sees mind and matter", "Insight begins by defining mind and matter, then watches them rise and fall.", [2, 13]],
+    ["DO", "VI", "path", "discerning conditions", "Overcoming doubt, the fourth purification, is seeing the conditions of mind and matter.", [9, 13]],
+    ["VI", "PA", "path", "matures into", "The insight knowledges culminate in path knowledge.", [13]],
+    ["PA", "DO", "path", "cuts its roots", "The paths abandon ignorance and craving, the two roots of the wheel.", [9, 13]],
+    ["PA", "NB", "path", "takes as object", "Path and fruition cittas take Nibbāna as their object.", [2, 13]]
+  ];
+  var LTYPE = { ana: ["--muted", "Analysis"], mind: ["--nama", "Within mind"], mm: ["--rupa-mark", "Mind and matter"], kam: ["--kamma", "Kamma and rebirth"], path: ["--nib", "The path"] };
+  var LOOPS = {
+    life: [["KA", "RB"], ["RB", "BH"], ["BH", "PR"], ["PR", "JV"], ["JV", "KA"]],
+    mm: [["RU", "CI"], ["CI", "RU"], ["KA", "RU"]],
+    way: [["SA", "VI"], ["VI", "PA"], ["PA", "NB"], ["PA", "DO"]]
+  };
+  function xr(n) { return '<a class="xr" href="#p' + n + '">→ ' + n + "</a>"; }
+  (function () {
+    var byId = {}; NODES.forEach(function (n) { byId[n.id] = n; });
+    var host = $("m3-nodes");
+    if (host) host.innerHTML = NODES.map(function (n) {
+      return '<div><span class="dotlv" style="background:var(--lv' + n.lv + ')"></span><b>' + n.t + "</b> " + n.d + " " + n.p.map(xr).join(" ") + "</div>";
+    }).join("");
+    var list = $("lk-list");
+    if (list) list.innerHTML = Object.keys(LTYPE).map(function (k) {
+      return '<div class="lkgrp"><div class="lab" style="color:var(' + LTYPE[k][0] + ')">' + LTYPE[k][1] + "</div>" + LINKS.filter(function (l) { return l[2] === k; }).map(function (l) {
+        return '<div class="lk"><b>' + byId[l[0]].t + " → " + byId[l[1]].t + "</b> <i>" + l[3] + "</i>. " + l[4] + " " + l[5].map(xr).join(" ") + "</div>";
+      }).join("") + "</div>";
+    }).join("");
+    var mx = $("lk-matrix");
+    if (mx) {
+      var order = NODES.map(function (n) { return n.id; }), cs = 15.5, ox = 112, oy = 112, s = "";
+      order.forEach(function (id, i) {
+        s += '<text x="' + (ox - 6) + '" y="' + (oy + i * cs + cs * 0.7) + '" text-anchor="end" class="tx-xs">' + byId[id].t.split(" · ")[0] + "</text>";
+        s += '<text transform="translate(' + (ox + i * cs + cs * 0.65) + "," + (oy - 6) + ') rotate(-55)" class="tx-xs">' + byId[id].t.split(" · ")[0] + "</text>";
+        order.forEach(function (jd, j) {
+          s += '<rect x="' + (ox + j * cs) + '" y="' + (oy + i * cs) + '" width="' + (cs - 1.5) + '" height="' + (cs - 1.5) + '" rx="2" style="fill:var(--faint)"/>';
+        });
+      });
+      LINKS.forEach(function (l) {
+        var i = order.indexOf(l[0]), j = order.indexOf(l[1]);
+        s += '<rect x="' + (ox + j * cs) + '" y="' + (oy + i * cs) + '" width="' + (cs - 1.5) + '" height="' + (cs - 1.5) + '" rx="2" style="fill:var(' + LTYPE[l[2]][0] + ')"><title>' + byId[l[0]].t + " → " + byId[l[1]].t + "</title></rect>";
+      });
+      s += '<text x="' + ox + '" y="' + (oy + 16 * cs + 16) + '" class="tx-xs tx-mu">row: from · column: to</text>';
+      mx.innerHTML = s;
+    }
+    var deg = {}; LINKS.forEach(function (l) { deg[l[0]] = (deg[l[0]] || 0) + 1; deg[l[1]] = (deg[l[1]] || 0) + 1; });
+    var top = Object.keys(deg).sort(function (a, b) { return deg[b] - deg[a]; });
+    var busy = $("lk-busy");
+    if (busy) busy.innerHTML = "<b>" + byId[top[0]].t.split(" · ")[0] + "</b> takes part in " + deg[top[0]] + " links and <b>" + byId[top[1]].t.split(" · ")[0] + "</b> in " + deg[top[1]] + ": they are the busiest ideas on the map.";
+
+    var S = make3D("m3-view", { height: 455, cam: [0, 2.4, 14.6], look: [0, 0.2, 0], fov: 36, sway: 0.5, rotX: 0.05, refAspect: 1.3, phoneRatio: 1.15 });
+    if (!S) return;
+    var Y = { 1: -3.1, 2: -1.8, 3: -0.5, 4: 0.8, 5: 2.1, 6: 3.4 }, RAD = 2.9;
+    for (var lv = 2; lv <= 6; lv++) {
+      var disc = new THREE.Mesh(new THREE.CircleGeometry(RAD + 0.4, 64), basicMat("--lv" + lv, 0.07)); disc.rotation.x = -Math.PI / 2; disc.position.y = Y[lv] - 0.02; S.root.add(disc);
+      var rim = new THREE.Mesh(new THREE.TorusGeometry(RAD + 0.4, 0.008, 6, 120), basicMat("--lv" + lv, 0.45)); rim.rotation.x = Math.PI / 2; rim.position.y = Y[lv] - 0.02; S.root.add(rim);
+      label(S, ["", "I", "II", "III", "IV", "V", "VI"][lv], anchor(S, RAD + 0.75, Y[lv], 0), "sm");
+    }
+    var base = new THREE.Mesh(new THREE.CircleGeometry(0.9, 48), basicMat("--lv1", 0.12)); base.rotation.x = -Math.PI / 2; base.position.y = Y[1] - 0.02; S.root.add(base);
+    label(S, "I", anchor(S, 1.1, Y[1], 0), "sm");
+    var meshes = [], pos = {};
+    NODES.forEach(function (n) {
+      var r = n.r === 0 ? 0 : RAD, a = n.ang * Math.PI / 180;
+      var p = V(r * Math.cos(a), Y[n.lv], r * Math.sin(a)); pos[n.id] = p;
+      var NC = { T: "--muted", CE: "--nama-2", CI: "--nama", RU: "--rupa-mark", NB: "--nib", BH: "--nama-2", PR: "--nama", JV: "--nama", CO: "--g6", DO: "--g6", RB: "--kamma", PL: "--th11", KA: "--kamma", SA: "--nib", VI: "--nib", PA: "--nib" };
+      var m = new THREE.Mesh(new THREE.SphereGeometry(0.24, 28, 20), stdMat(NC[n.id], { glow: 0.3 })); m.position.copy(p); m.userData.id = n.id; S.root.add(m); meshes.push(m);
+      n.L = label(S, n.t, anchor(S, p.x, p.y + 0.42, p.z), "nd");
+    });
+    var edges = LINKS.map(function (l) {
+      var a = pos[l[0]], b = pos[l[1]], mid = a.clone().add(b).multiplyScalar(0.5);
+      var out = V(mid.x, 0, mid.z); if (out.length() < 0.1) out = V(1, 0, 0);
+      out.normalize().multiplyScalar(0.9 + a.distanceTo(b) * 0.12); mid.add(out); mid.y += 0.25;
+      var mat = basicMat(LTYPE[l[2]][0], 0.55);
+      var t = tube([a, mid, b], 0.024, mat); S.root.add(t);
+      var cone = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.2, 10), mat);
+      var c = t.userData.curve, end = c.getPoint(0.86), dir = c.getTangent(0.86);
+      cone.position.copy(end); cone.quaternion.setFromUnitVectors(V(0, 1, 0), dir); S.root.add(cone);
+      var L = label(S, l[3], anchor(S, c.getPoint(0.5).x, c.getPoint(0.5).y, c.getPoint(0.5).z), "sm el"); L.hidden = true;
+      return { l: l, mat: mat, L: L };
+    });
+    var sel = null, loop = null;
+    function apply() {
+      edges.forEach(function (e) {
+        var on;
+        if (sel) on = e.l[0] === sel || e.l[1] === sel;
+        else if (loop) on = LOOPS[loop].some(function (p) { return p[0] === e.l[0] && p[1] === e.l[1]; });
+        else on = null;
+        e.mat.opacity = on === null ? 0.55 : (on ? 0.95 : 0.08);
+        e.L.hidden = !on;
+      });
+      NODES.forEach(function (n) {
+        var related = !sel && !loop ? true : (sel ? (n.id === sel || LINKS.some(function (l) { return (l[0] === sel && l[1] === n.id) || (l[1] === sel && l[0] === n.id); }))
+          : LOOPS[loop].some(function (p) { return p[0] === n.id || p[1] === n.id; }));
+        n.L.alpha = related ? 1 : 0.3;
+      });
+      var cap = $("m3-sel");
+      if (cap) {
+        if (sel) {
+          var n = NODES.filter(function (x) { return x.id === sel; })[0];
+          var outs = LINKS.filter(function (l) { return l[0] === sel; }).map(function (l) { return l[3] + " → " + NODES.filter(function (x) { return x.id === l[1]; })[0].t; });
+          var ins = LINKS.filter(function (l) { return l[1] === sel; }).map(function (l) { return NODES.filter(function (x) { return x.id === l[0]; })[0].t + " → " + l[3]; });
+          cap.innerHTML = "<b>" + n.t + ".</b> " + n.d + (ins.length ? " <b>From:</b> " + ins.join("; ") + "." : "") + (outs.length ? " <b>To:</b> " + outs.join("; ") + "." : "");
+        } else if (loop) cap.innerHTML = { life: "<b>The loop of a life.</b> Kamma ripens as rebirth; the rebirth citta continues as the life-continuum; objects interrupt it; processes peak in javanas; their volition is new kamma.",
+          mm: "<b>Mind and matter.</b> Matter gives mind its bases and objects; mind produces matter; kamma builds the body's organs.",
+          way: "<b>The way out.</b> Calm supports insight; insight matures into path; the path takes Nibbāna as object and cuts the roots of the wheel." }[loop];
+        else cap.innerHTML = "Selected: none. Choose an idea in the model, or a loop above. The next page explains all 28 links.";
+      }
+      S.dirty = true;
+    }
+    pills($("m3-btns"), [{ id: "all", label: "All links" }, { id: "life", label: "Loop of a life", c: "--kamma" }, { id: "mm", label: "Mind and matter", c: "--rupa-mark" }, { id: "way", label: "The way out", c: "--nib" }], "all", function (v) { sel = null; loop = v === "all" ? null : v; apply(); });
+    S.onClick = function (e) { var o = S.pick(e, meshes); if (!o) return; sel = sel === o.userData.id ? null : o.userData.id; loop = null; setPressed($("m3-btns"), "all"); apply(); };
+    apply();
+  })();
+
+  /* ================= 2. D1: categories ================= */
+  (function () {
+    var S = make3D("d1-view", { height: 470, cam: [0, 6.6, 10.2], look: [0.1, 2.1, 0], fov: 36, sway: 0.32, rotX: 0.02, refAspect: 1.4, phoneRatio: 1.05 });
+    var PIL = { ci: [-3.0, 1.5, "--nama", "citta · 89"], ce: [-1.25, 1.5, "--nama-2", "cetasika · 52"], ru: [1.0, 2.5, "--rupa-mark", "rūpa · 28"], nb: [3.05, 1.0, "--nib", "Nibbāna · 1"] };
+    var SH = [["agg", 0.9, "--g2", "5 aggregates"], ["bas", 1.95, "--g4", "12 bases"], ["ele", 3.0, "--g5", "18 elements"], ["tru", 4.05, "--g3", "4 noble truths"]];
+    var ZR = { f: 0.56, m: 0, b: -0.58 };
+    var RU = ["eye", "ear", "nose", "tongue", "body"], OB = ["form", "sound", "smell", "taste", "touch"];
+    var T = [
+      ["agg", ["ru"], "f", "rūpa"], ["agg", ["ce"], "f", "feeling"], ["agg", ["ce"], "m", "perception"], ["agg", ["ce"], "b", "formations"], ["agg", ["ci"], "f", "consciousness"],
+      ["bas", ["ci"], "f", "mind base"], ["bas", ["ce", "ru", "nb"], "b", "mental-object base"],
+      ["ele", ["ci"], "f", "5 sense-consc. · 10"], ["ele", ["ci"], "m", "mind el. · 3"], ["ele", ["ci"], "b", "mind-consc. el. · 76"], ["ele", ["ce", "ru", "nb"], "b", "mental-object element"],
+      ["tru", ["ci", "ce", "ru"], "f", "suffering · all that is mundane"], ["tru", ["ce"], "m", "origin · craving"], ["tru", ["ce"], "b", "path · 8 factors"], ["tru", ["nb"], "f", "cessation"]
+    ];
+    ["bas", "ele"].forEach(function (sh) {
+      RU.forEach(function (n, i) { T.push([sh, ["ru"], "f", n, i]); });
+      OB.forEach(function (n, i) { T.push([sh, ["ru"], "m", n, i]); });
+    });
+    var cur = "all";
+    pills($("d1-btns"), [{ id: "all", label: "All four lists" }].concat(SH.map(function (s) { return { id: s[0], label: s[3], c: s[2] }; })), cur, function (v) { cur = v; apply(); });
+    if (!S) return;
+    var mats = {}, objs = [];
+    Object.keys(PIL).forEach(function (k) {
+      var p = PIL[k];
+      var glass = new THREE.Mesh(new THREE.BoxGeometry(p[1], 4.5, 1.7), basicMat(p[2], 0.07)); glass.position.set(p[0], 2.25, 0); S.root.add(glass);
+      var edgesM = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(p[1], 4.5, 1.7)), lineMat(p[2], 0.35)); edgesM.position.copy(glass.position); S.root.add(edgesM);
+      var foot = new THREE.Mesh(new THREE.BoxGeometry(p[1], 0.45, 1.7), stdMat(p[2], { glow: 0.3 })); foot.position.set(p[0], -0.22, 0); S.root.add(foot);
+      label(S, p[3], anchor(S, p[0], -0.7, 0.9), "p");
+    });
+    SH.forEach(function (sh) {
+      var plate = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.02, 1.9), basicMat(sh[2], 0.06)); plate.position.set(0.2, sh[1] - 0.14, 0); S.root.add(plate);
+      label(S, sh[3], anchor(S, -3.95, sh[1], 0.9), "sm left");
+      mats[sh[0]] = { on: stdMat(sh[2], { glow: 0.3, opacity: 0.92 }), off: basicMat(sh[2], 0.1) };
+    });
+    T.forEach(function (t) {
+      var sh = SH.filter(function (s) { return s[0] === t[0]; })[0];
+      var left = Infinity, right = -Infinity;
+      t[1].forEach(function (k) { var p = PIL[k]; left = Math.min(left, p[0] - p[1] / 2); right = Math.max(right, p[0] + p[1] / 2); });
+      var x0 = left + 0.08, x1 = right - 0.08, w;
+      if (t[4] != null) { var cw = (x1 - x0) / 5; w = cw - 0.06; x0 = x0 + t[4] * cw + 0.03; x1 = x0 + w; } else w = x1 - x0;
+      var m = new THREE.Mesh(new THREE.BoxGeometry(w, 0.2, 0.42), mats[t[0]].on);
+      m.position.set((x0 + x1) / 2, sh[1], ZR[t[2]]); m.userData.sh = t[0]; S.root.add(m); objs.push(m);
+      var L = label(S, t[3], anchor(S, (x0 + x1) / 2, sh[1] + 0.2, ZR[t[2]] + 0.2), t[4] != null ? "xs" : "sm2");
+      L.sh = t[0]; m.userData.L = L;
+    });
+    function apply() {
+      objs.forEach(function (m) {
+        var on = cur === "all" || cur === m.userData.sh;
+        m.material = on ? mats[m.userData.sh].on : mats[m.userData.sh].off;
+        m.userData.L.alpha = on ? 1 : 0.15;
+      });
+      S.dirty = true;
+    }
+    apply();
+  })();
+
+  /* ================= 3. D2: stupa of cittas ================= */
+  var FEEL = { J: "--f-joy", E: "--f-eq", S: "--f-ple", P: "--f-pain", D: "--f-dis", V: "--f-joy" };
+  (function () {
+    var tiers = [
+      { r: 2.7, y: 0, n: "54 sense-sphere", f: "JJJJEEEEDDEE" + "EEEEPEE" + "EEEESEJE" + "EEJ" + "JJJJEEEE" + "JJJJEEEE" + "JJJJEEEE",
+        k: "BBBBBBBBBBBB" + "RRRRRRR" + "RRRRRRRR" + "FFF" + "GGGGGGGG" + "RRRRRRRR" + "FFFFFFFF" },
+      { r: 2.0, y: 0.95, n: "15 fine-material", f: "JJJJEJJJJEJJJJE", k: "GGGGGRRRRRFFFFF" },
+      { r: 1.35, y: 1.8, n: "12 immaterial", f: "EEEEEEEEEEEE", k: "GGGGRRRRFFFF" },
+      { r: 0.75, y: 2.55, n: "8 supramundane", f: "VVVVVVVV", k: "PPPPQQQQ" }
+    ];
+    var KC = { B: "--bad", G: "--nama", R: "--nama-2", F: "--muted", P: "--nib", Q: "--nib" };
+    var mode = "feel";
+    pills($("d2-tower-btns"), [{ id: "feel", label: "Colour by feeling" }, { id: "kind", label: "Colour by kind" }], mode, function (v) { mode = v; apply(); });
+    var S = make3D("d2-tower", { height: 300, cam: [0, 3.4, 8.4], look: [0, 1.15, 0], fov: 34, spin: 0.16, rotX: 0.05, refAspect: 1.9, phoneRatio: 0.9 });
+    if (!S) return;
+    var mats = {}, cubes = [];
+    function mat(v, op) { var key = v + (op || ""); if (!mats[key]) mats[key] = stdMat(v, { glow: 0.25, opacity: op }); return mats[key]; }
+    tiers.forEach(function (t) {
+      var n = t.f.length;
+      var plat = new THREE.Mesh(new THREE.CylinderGeometry(t.r + 0.25, t.r + 0.4, 0.12, 64), basicMat("--line", 0.5)); plat.position.y = t.y - 0.18; S.root.add(plat);
+      for (var i = 0; i < n; i++) {
+        var a = i / n * Math.PI * 2, c = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.22, 0.2));
+        c.position.set(Math.cos(a) * t.r, t.y, Math.sin(a) * t.r); c.rotation.y = -a; c.userData = { f: t.f[i], k: t.k[i] }; S.root.add(c); cubes.push(c);
+      }
+      label(S, t.n, anchor(S, 0, t.y + 0.05, t.r + 0.45), "sm");
+    });
+    var orb = new THREE.Mesh(new THREE.SphereGeometry(0.3, 32, 22), stdMat("--nib", { glow: 0.6 })); orb.position.y = 3.25; S.root.add(orb);
+    label(S, "Nibbāna", anchor(S, 0, 3.75, 0), "p");
+    function apply() {
+      cubes.forEach(function (c) { c.material = mode === "feel" ? mat(FEEL[c.userData.f], c.userData.f === "V" ? 0.55 : undefined) : mat(KC[c.userData.k], c.userData.k === "Q" ? 0.55 : undefined); });
+      S.dirty = true;
+    }
+    apply();
+  })();
+
+  /* ================= 4. D2: constellation of factors ================= */
+  (function () {
+    var NAMES = {
+      u: [["phassa", "contact"], ["vedanā", "feeling"], ["saññā", "perception"], ["cetanā", "volition"], ["ekaggatā", "one-pointedness"], ["jīvitindriya", "psychic life"], ["manasikāra", "attention"]],
+      o: [["vitakka", "initial application"], ["vicāra", "sustained application"], ["adhimokkha", "decision"], ["viriya", "energy"], ["pīti", "zest"], ["chanda", "desire to act"]],
+      a: [["moha", "delusion"], ["ahirika", "shamelessness"], ["anottappa", "fearlessness of wrong"], ["uddhacca", "restlessness"], ["lobha", "greed"], ["diṭṭhi", "wrong view"], ["māna", "conceit"], ["dosa", "hatred"], ["issā", "envy"], ["macchariya", "avarice"], ["kukkucca", "worry"], ["thīna", "sloth"], ["middha", "torpor"], ["vicikicchā", "doubt"]],
+      b: [["saddhā", "faith"], ["sati", "mindfulness"], ["hiri", "shame of wrong"], ["ottappa", "fear of wrong"], ["alobha", "non-greed"], ["adosa", "non-hatred"], ["tatramajjhattatā", "neutrality"], ["kāya-passaddhi", "tranquillity of factors"], ["citta-passaddhi", "tranquillity of mind"], ["kāya-lahutā", "lightness of factors"], ["citta-lahutā", "lightness of mind"], ["kāya-mudutā", "malleability of factors"], ["citta-mudutā", "malleability of mind"], ["kāya-kammaññatā", "wieldiness of factors"], ["citta-kammaññatā", "wieldiness of mind"], ["kāya-pāguññatā", "proficiency of factors"], ["citta-pāguññatā", "proficiency of mind"], ["kāyujjukatā", "rectitude of factors"], ["cittujjukatā", "rectitude of mind"], ["sammā-vācā", "right speech"], ["sammā-kammanta", "right action"], ["sammā-ājīva", "right livelihood"], ["karuṇā", "compassion"], ["muditā", "appreciative joy"], ["paññindriya", "wisdom"]]
+    };
+    function ids(k, a, b) { var r = []; for (var i = a; i <= b; i++) r.push(k + i); return r; }
+    var U7 = ids("u", 0, 6), O6 = ids("o", 0, 5), A4 = ids("a", 0, 3), B19 = ids("b", 0, 18), ABST = ids("b", 19, 21), ILL = ids("b", 22, 23), PAN = ["b24"];
+    var C = [
+      { id: "eye", label: "Eye-consc.", fixed: U7, vary: [], d: "Eye-consciousness: only the seven universals." },
+      { id: "greed", label: "Greed-rooted", fixed: U7.concat(O6, A4, ["a4", "a5"]), vary: [], d: "Greed-rooted, joyful, with wrong view: 19 factors, all on the unwholesome side." },
+      { id: "kusala", label: "Wholesome", fixed: U7.concat(O6, B19, PAN), vary: ABST.concat(ILL), d: "Sense-sphere wholesome with knowledge: 33 fixed factors, and up to 5 more that join one at a time." },
+      { id: "path", label: "Path", fixed: U7.concat(O6, B19, ABST, PAN), vary: [], d: "Path consciousness: 36 factors, with the three abstinences together." }
+    ];
+    var cur = "greed", S = make3D("d2-ceta", { height: 290, cam: [0, 0.9, 9.6], look: [0, 0, 0], fov: 36, sway: 0.5, rotX: 0.18, refAspect: 1.0, phoneRatio: 0.9 });
+    var state = {}, pts = [], dim;
+    function apply() {
+      var c = C.filter(function (x) { return x.id === cur; })[0];
+      state = {}; c.fixed.forEach(function (x) { state[x] = "fixed"; }); c.vary.forEach(function (x) { state[x] = "var"; });
+      pts.forEach(function (m) { var s = state[m.userData.id]; m.material = s ? m.userData.full : dim; m.scale.setScalar(s ? 1 : 0.7); });
+      if ($("d2-ceta-cap")) $("d2-ceta-cap").textContent = c.d + " Unwholesome factors (red) and beautiful ones (indigo) sit on opposite half-spheres: they never share a citta.";
+      if (S) S.dirty = true;
+    }
+    pills($("d2-ceta-btns"), C, cur, function (v) { cur = v; apply(); });
+    if (!S) { apply(); return; }
+    var R = S.root, mats = { u: "--nama", o: "--nama-2", a: "--bad", b: "--nama" };
+    dim = basicMat("--muted", 0.22);
+    var core = new THREE.Mesh(new THREE.SphereGeometry(0.4, 36, 24), stdMat("--nama", { glow: 0.45 })); R.add(core);
+    label(S, "citta", anchor(S, 0, -0.62, 0), "p");
+    function add(key, i, pos) { var full = stdMat(mats[key], { glow: 0.35 }); var m = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), full); m.position.copy(pos); R.add(m); m.userData = { id: key + i, name: NAMES[key][i], full: full }; pts.push(m); }
+    for (var i = 0; i < 7; i++) { var a = i * Math.PI * 2 / 7; add("u", i, V(Math.cos(a) * 0.95, 0, Math.sin(a) * 0.95)); }
+    var e = new THREE.Euler(1.15, 0, 0.5);
+    for (i = 0; i < 6; i++) { a = i * Math.PI * 2 / 6 + 0.3; add("o", i, V(Math.cos(a) * 1.45, 0, Math.sin(a) * 1.45).applyEuler(e)); }
+    function hemi(key, n, sign) { var GA = Math.PI * (3 - Math.sqrt(5)); for (var k = 0; k < n; k++) { var h = 0.12 + 0.86 * (k + 0.5) / n, r = Math.sqrt(1 - h * h), th = k * GA; add(key, k, V(sign * h * 2.25, Math.cos(th) * r * 2.25, Math.sin(th) * r * 2.25)); } }
+    hemi("a", 14, -1); hemi("b", 25, 1);
+    var shellG = new THREE.SphereGeometry(2.25, 32, 20, -Math.PI / 2, Math.PI);
+    R.add(new THREE.Mesh(shellG, basicMat("--bad", 0.07, true)));
+    var wr = new THREE.Mesh(shellG, basicMat("--nama", 0.07, true)); wr.rotation.y = Math.PI; R.add(wr);
+    var dv = new THREE.Mesh(new THREE.CircleGeometry(2.45, 64), basicMat("--muted", 0.07)); dv.rotation.y = Math.PI / 2; R.add(dv);
+    label(S, "unwholesome", anchor(S, -2.4, 2.25, 0), "sm"); label(S, "beautiful", anchor(S, 2.4, 2.25, 0), "sm");
+    S.update = function (dt, t) { if (!dt) return; pts.forEach(function (m) { if (state[m.userData.id] === "var") m.scale.setScalar(1 + 0.35 * (0.5 + 0.5 * Math.sin(t * 3))); }); };
+    var tip = $("d2-ceta-tip");
+    S.cv.addEventListener("pointermove", function (ev) {
+      if (S.isDragging() || !tip) { if (tip) tip.style.opacity = 0; return; }
+      var o = S.pick(ev, pts); if (!o) { tip.style.opacity = 0; return; }
+      var r = S.cv.getBoundingClientRect(), st = state[o.userData.id];
+      tip.innerHTML = "<i>" + o.userData.name[0] + "</i> · " + o.userData.name[1] + (st === "fixed" ? " · present" : st === "var" ? " · may join" : " · absent");
+      tip.style.transform = "translate(" + (ev.clientX - r.left + 12) + "px," + (ev.clientY - r.top - 28) + "px)"; tip.style.opacity = 1;
+    });
+    S.cv.addEventListener("pointerleave", function () { if (tip) tip.style.opacity = 0; });
+    apply();
+  })();
+
+  /* ================= 5. D2: kalāpa ================= */
+  (function () {
+    var OCT = [["pathavī", "earth", "--rupa", [-1, -1, -1]], ["āpo", "water", "--water", [1, -1, -1]], ["tejo", "fire", "--temp", [1, -1, 1]], ["vāyo", "air", "--air", [-1, -1, 1]],
+      ["vaṇṇa", "colour", "--rupa-mark", [-1, 1, -1]], ["gandha", "smell", "--rupa-mark", [1, 1, -1]], ["rasa", "taste", "--rupa-mark", [1, 1, 1]], ["ojā", "nutritive essence", "--rupa-mark", [-1, 1, 1]]];
+    var ADD = { life: ["jīvita", "life", "--kamma", [0, 0, 0]], eye: ["cakkhu", "eye-sensitivity", "--rupa", [0, 1.9, 0]], heart: ["hadaya", "heart-base", "--heart", [0, 1.9, 0]],
+      sound: ["sadda", "sound", "--water", [1.95, 0, 0]], vint: ["vacī-viññatti", "vocal intimation", "--nama", [-1.95, 0, 0]],
+      m1: ["lahutā", "lightness", "--food", [-0.75, -1.95, 0.45]], m2: ["mudutā", "malleability", "--food", [0.75, -1.95, 0.45]], m3: ["kammaññatā", "wieldiness", "--food", [0, -1.95, -0.85]] };
+    var K = [
+      { id: "eye", label: "Eye-decad", a: ["life", "eye"], d: "Kamma-born: the eight inseparables, the life faculty and eye-sensitivity." },
+      { id: "heart", label: "Heart decad", a: ["life", "heart"], d: "Kamma-born: the base of all cittas except the sense consciousnesses." },
+      { id: "oct", label: "Pure octad", a: [], d: "The eight inseparables alone: the smallest possible group of matter." },
+      { id: "tri", label: "Speech", a: ["vint", "sound", "m1", "m2", "m3"], d: "Mind-born tridecad: vocal intimation, sound and the three mutable qualities, thirteen members in all." }
+    ];
+    var cur = "eye", S = make3D("d2-kal", { height: 290, cam: [0, 1.1, 9.6], look: [0, -0.05, 0], fov: 36, spin: 0.22, rotX: 0.32, rotY: 0.6, refAspect: 1.0, phoneRatio: 0.9 });
+    var nodes = {};
+    function show(id) {
+      cur = id; var k = K.filter(function (x) { return x.id === id; })[0];
+      if (S) Object.keys(ADD).forEach(function (key) { var on = k.a.indexOf(key) >= 0, n = nodes[key]; n.m.visible = on; n.sp.visible = on && key !== "life"; n.L.hidden = !on; });
+      if ($("d2-kal-cap")) $("d2-kal-cap").textContent = k.d + " The cube's corners are the eight inseparables: the four great elements below, colour, smell, taste and nutritive essence above.";
+      if (S) S.dirty = true;
+    }
+    pills($("d2-kal-btns"), K, cur, show);
+    if (!S) { show(cur); return; }
+    var R = S.root;
+    OCT.forEach(function (o, i) {
+      var m = new THREE.Mesh(new THREE.SphereGeometry(i < 4 ? 0.3 : 0.24, 28, 20), stdMat(o[2], { glow: 0.25 }));
+      m.position.set(o[3][0] * 0.95, o[3][1] * 0.95, o[3][2] * 0.95); R.add(m); label(S, '<i class="p">' + o[0] + "</i>", m, "xs");
+    });
+    R.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.9, 1.9, 1.9)), lineMat("--muted", 0.55)));
+    Object.keys(ADD).forEach(function (k) {
+      var a = ADD[k], m = new THREE.Mesh(new THREE.SphereGeometry(k === "life" ? 0.26 : 0.22, 26, 18), stdMat(a[2], { glow: 0.35 }));
+      m.position.set(a[3][0], a[3][1], a[3][2]); R.add(m);
+      var L = label(S, '<i class="p">' + a[0] + "</i>", m, "xs");
+      var sp = new THREE.Line(new THREE.BufferGeometry().setFromPoints([V(0, 0, 0), m.position.clone()]), lineMat(a[2], 0.6)); R.add(sp);
+      nodes[k] = { m: m, L: L, sp: sp };
+    });
+    show(cur);
+  })();
+
+  /* ================= 6. D3: process track ================= */
+  (function () {
+    var STR = [
+      { id: "vgreat", label: "Very great", s: "a bh bu pa vi sa st vo ja ja ja ja ja ja ja ta ta" },
+      { id: "great", label: "Great", s: "a a a bh bu pa vi sa st vo ja ja ja ja ja ja ja" },
+      { id: "slight", label: "Slight", s: "a a a a a bh bu pa vi sa st vo vo vo b b b" },
+      { id: "vslight", label: "Very slight", s: "a a a a a a a a a a a a bh bh b b b" },
+      { id: "mind", label: "Mind door", s: "bh bu ma ja ja ja ja ja ja ja ta ta" }
+    ];
+    var KIND = { a: ["bh", "past"], b: ["bh", "bhavaṅga"], bh: ["bh2", "vibrating"], bu: ["bh2", "arrest"], pa: ["pr", "adverting"], ma: ["pr", "adverting"], vi: ["vi", "seeing"], sa: ["pr", "receiving"], st: ["pr", "investigating"], vo: ["pr", "determining"], ja: ["ja", "javana"], ta: ["ta", "registration"] };
+    var H = { bh: 0.18, bh2: 0.26, pr: 0.5, vi: 0.62, ja: 0.95, ta: 0.42 };
+    var CO = { bh: "--line", bh2: "--muted", pr: "--nama-2", vi: "--rupa", ja: "--nama", ta: "--nama-2" };
+    var cur = "vgreat";
+    var S = make3D("d3-proc", { height: 270, cam: [0, 2.2, 7.3], look: [0, 0.55, 0], fov: 34, sway: 0.28, rotX: 0.04, refAspect: 2.3, phoneRatio: 0.8 });
+    var group = null, seeds = [], objBar = null;
+    function build() {
+      if (!S) return;
+      if (group) S.root.remove(group);
+      group = new THREE.Group(); S.root.add(group); seeds = [];
+      S.labels = S.labels.filter(function (L) { if (L.tmp) { L.el.remove(); return false; } return true; });
+      var codes = STR.filter(function (x) { return x.id === cur; })[0].s.split(" "), n = codes.length, step = 0.48, x0 = -((n - 1) * step) / 2;
+      var shown = {};
+      codes.forEach(function (c, i) {
+        var k = KIND[c][0], h = H[k], x = x0 + i * step;
+        var m = new THREE.Mesh(new THREE.BoxGeometry(0.38, h, 0.5), stdMat(CO[k], { glow: 0.25, opacity: k === "bh" ? 0.6 : undefined })); m.position.set(x, h / 2, 0); group.add(m);
+        if (k === "ja") {
+          var sd = new THREE.Mesh(new THREE.OctahedronGeometry(0.09), stdMat("--kamma", { glow: 0.5 })); sd.position.set(x, 1.15, 0); sd.userData.base = 1.15; sd.userData.ph = i * 0.6; group.add(sd); seeds.push(sd);
+        }
+        if (c !== "vi" && cur !== "vslight") {
+          var mb = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.11, 0.11), stdMat("--nama", { glow: 0.2, opacity: 0.85 })); mb.position.set(x, -0.32, 0.12); group.add(mb);
+        }
+        var name = KIND[c][1];
+        if (!shown[name] && (c !== "ja" || !shown.javana)) {
+          shown[name] = true;
+          var nl = Object.keys(shown).length; var L = label(S, c === "ja" ? "javana ×7" : name, anchor(S, x + (c === "ja" ? 3 * step : 0), h + (c === "ja" ? 0.62 : (nl % 2 ? 0.2 : 0.48)), 0, group), "xs"); L.tmp = true;
+        }
+      });
+      if (cur !== "mind") {
+        var len = n * step - 0.08;
+        objBar = new THREE.Mesh(new THREE.BoxGeometry(len, 0.08, 0.3), stdMat("--rupa-mark", { glow: 0.35 })); objBar.position.set(0, 1.55, -0.1); group.add(objBar);
+        var L2 = label(S, "the object: 17 moments of matter", anchor(S, 0, 1.78, -0.1, group), "sm"); L2.tmp = true;
+      }
+      var L3 = label(S, "mind-born matter", anchor(S, x0 - 0.6, -0.32, 0.12, group), "xs left"); L3.tmp = true;
+      S.dirty = true;
+    }
+    pills($("d3-proc-btns"), STR, cur, function (v) { cur = v; build(); });
+    if (!S) return;
+    var floor = new THREE.Mesh(new THREE.BoxGeometry(9.2, 0.03, 1.1), basicMat("--line", 0.4)); floor.position.y = -0.02; S.root.add(floor);
+    S.update = function (dt, t) { seeds.forEach(function (sd) { sd.position.y = sd.userData.base + (dt ? 0.12 * Math.sin(t * 2 + sd.userData.ph) : 0); sd.rotation.y = t; }); };
+    build();
+  })();
+
+  /* ================= 7. D3: the loom of matter ================= */
+  (function () {
+    var MODES = [{ id: "birth", label: "Conception" }, { id: "life", label: "During life" }, { id: "death", label: "Approaching death" }];
+    var TEXT = {
+      birth: ["Conception.", "Kamma-born matter begins with the rebirth-linking citta; temperature-born at its presence phase; mind-born only with the first life-continuum; nutriment-born once nutriment is absorbed."],
+      life: ["During life.", "Bright bars are alive at the moment marked “now”; faint ones have ceased. About 51 generations of kamma-born matter and 17 of mind-born matter are alive at once: the body is a standing wave of arising and ceasing."],
+      death: ["Approaching death.", "From the seventeenth mind-moment before death, kamma makes no new matter, so its last units cease exactly at death. Mind-born and nutriment-born matter stop with death; temperature-born matter continues, as the corpse."]
+    };
+    var mode = "life", now = 60, WIN = 120, LIFE = 51, DEATH = 90;
+    function text() { if ($("d3-loom-title")) { $("d3-loom-title").textContent = TEXT[mode][0]; $("d3-loom-text").textContent = TEXT[mode][1]; } }
+    var S = make3D("d3-loom", { height: 300, cam: [0, 2.9, 11.6], look: [0, 2.45, 0], fov: 36, sway: 0.2, refAspect: 2.0, phoneRatio: 0.85 });
+    var lanes = [
+      { id: "kamma", c: "--kamma", y0: 3.7, h: 1.6, every: 1, mod: 51, label: "kamma-born" },
+      { id: "mind", c: "--nama", y0: 2.4, h: 1.0, every: 3, mod: 17, label: "mind-born" },
+      { id: "temp", c: "--temp", y0: 1.1, h: 1.0, every: 2, mod: 26, label: "temperature-born" },
+      { id: "food", c: "--food", y0: 0, h: 0.8, every: 4, mod: 13, label: "nutriment-born" }
+    ];
+    var dx = 0.07, X0 = -WIN * dx / 2, units = [], discs = [], marks = {}, discMats, CY = -0.4, nowPlane;
+    function arrivals(lane) {
+      var out = [];
+      for (var s = -LIFE + 1; s < WIN; s++) {
+        if (((s % lane.every) + lane.every) % lane.every !== 0) continue;
+        if (mode === "birth" && ((lane.id === "kamma" && s < 0) || (lane.id === "temp" && s < 1) || (lane.id === "mind" && s < 3) || (lane.id === "food" && s < 66))) continue;
+        if (mode === "death" && ((lane.id === "kamma" && s >= DEATH - LIFE) || ((lane.id === "mind" || lane.id === "food") && s > DEATH))) continue;
+        out.push(s);
+      }
+      return out;
+    }
+    function build() {
+      text();
+      if (!S) return;
+      units.forEach(function (u) { S.root.remove(u.m); }); units = [];
+      lanes.forEach(function (lane) {
+        if (!lane.on) { lane.on = stdMat(lane.c, { glow: 0.45, opacity: 0.97 }); lane.off = basicMat(lane.c, 0.16); lane.geo = new THREE.BoxGeometry(1, 0.78 * lane.h / lane.mod, 0.3); }
+        arrivals(lane).forEach(function (s) {
+          var xs = Math.max(s, 0), xe = Math.min(s + LIFE, WIN); if (xe <= xs) return;
+          var m = new THREE.Mesh(lane.geo, lane.off), layer = Math.floor(s / lane.every); layer = ((layer % lane.mod) + lane.mod) % lane.mod;
+          m.scale.x = (xe - xs) * dx; m.position.set(X0 + (xs + (xe - xs) / 2) * dx, lane.y0 + (layer + 0.5) * (lane.h / lane.mod), 0); m.visible = false; S.root.add(m);
+          units.push({ m: m, s: s, lane: lane });
+        });
+      });
+      discs.forEach(function (d, k) {
+        var sp = (mode === "birth" && k === 0) ? "birth" : (mode === "death" && k === DEATH / 3) ? "death" : (mode === "death" && k === (DEATH - LIFE) / 3) ? "mark" : "normal";
+        d.material = discMats[sp]; d.scale.setScalar(sp === "normal" ? 1 : 1.7);
+      });
+      marks.birth.hidden = mode !== "birth"; marks.death.hidden = mode !== "death"; marks.seventeen.hidden = mode !== "death"; marks.corpse.hidden = mode !== "death";
+      now = mode === "life" ? 60 : (mode === "death" ? 110 : 100);
+      S.dirty = true;
+    }
+    pills($("d3-loom-modes"), MODES, mode, function (v) { mode = v; build(); });
+    if (!S) { text(); return; }
+    lanes.forEach(function (lane) {
+      var plate = new THREE.Mesh(new THREE.PlaneGeometry(WIN * dx, lane.h), basicMat("--line", 0.35)); plate.position.set(0, lane.y0 + lane.h / 2, -0.2); S.root.add(plate);
+      label(S, lane.label, anchor(S, X0 - 0.12, lane.y0 + lane.h / 2, 0), "xs left");
+    });
+    discMats = { normal: stdMat("--nama-2", { glow: 0.25 }), birth: stdMat("--nib", { glow: 0.4 }), death: stdMat("--ink", { glow: 0.2 }), mark: stdMat("--kamma", { glow: 0.35 }) };
+    for (var k = 0; k * 3 < WIN; k++) {
+      var d = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.05, 20), discMats.normal); d.rotation.x = Math.PI / 2; d.position.set(X0 + (k * 3 + 1.5) * dx, CY, 0); d.visible = false; S.root.add(d); discs.push(d);
+    }
+    label(S, "cittas", anchor(S, X0 - 0.12, CY, 0), "xs left");
+    marks.birth = label(S, "rebirth-linking", anchor(S, X0 + 1.5 * dx, CY - 0.4, 0), "xs");
+    marks.death = label(S, "death", anchor(S, X0 + (DEATH + 1.5) * dx, CY - 0.4, 0), "xs");
+    marks.seventeen = label(S, "17 moments before death", anchor(S, X0 + (DEATH - LIFE + 1.5) * dx, CY - 0.4, 0), "xs");
+    marks.corpse = label(S, "the corpse: temperature only", anchor(S, X0 + (DEATH + 15) * dx, 2.25, 0.3), "xs");
+    nowPlane = new THREE.Mesh(new THREE.BoxGeometry(0.02, 6.1, 0.5), basicMat("--ink", 0.22)); nowPlane.position.set(0, 2.55, 0); S.root.add(nowPlane);
+    var nowA = new THREE.Object3D(); nowA.position.set(0, 3.25, 0); nowPlane.add(nowA); label(S, "now", nowA, "xs");
+    S.update = function (dt) {
+      if (dt) { now += dt * 12; if (now >= WIN) now = mode === "life" ? 60 : 0; }
+      nowPlane.position.x = X0 + now * dx;
+      units.forEach(function (u) { if (u.s > now) { u.m.visible = false; return; } u.m.visible = true; u.m.material = now < u.s + LIFE ? u.lane.on : u.lane.off; });
+      discs.forEach(function (d, k) { d.visible = k * 3 <= now && !(mode === "death" && k * 3 > DEATH); });
+    };
+    S.beforePrint = function () { mode = "life"; setPressed($("d3-loom-modes"), "life"); build(); now = 62; };
+    build();
+  })();
+
+  /* ================= 8. D4: helix of dependent origination ================= */
+  (function () {
+    var L = [["avijjā", "ignorance", "D", 0], ["saṅkhārā", "formations", "K", 0], ["viññāṇa", "consciousness", "R", 1], ["nāmarūpa", "mind and matter", "R", 1], ["saḷāyatana", "six bases", "R", 1], ["phassa", "contact", "R", 1],
+      ["vedanā", "feeling", "R", 1], ["taṇhā", "craving", "D", 2], ["upādāna", "clinging", "D", 2], ["bhava", "becoming", "KR", 2], ["jāti", "birth", "R", 3], ["jarāmaraṇa", "decay and death", "R", 3]];
+    var RC = { D: "--bad", K: "--nama", R: "--rupa-mark", KR: "--rupa-mark" };
+    var GC = ["--muted", "--nama", "--kamma", "--nib"];
+    var PC = ["--muted", "--nama", "--nama", "--nib"];
+    var mode = "round";
+    pills($("d4-helix-btns"), [{ id: "round", label: "Three rounds" }, { id: "group", label: "Four groups" }, { id: "period", label: "Three lives" }], mode, function (v) { mode = v; apply(); });
+    var S = make3D("d4-helix", { height: 360, cam: [0, 0.9, 10.6], look: [0, 0.25, 0], fov: 36, spin: 0.14, rotX: 0.12, refAspect: 1.6, phoneRatio: 1.0 });
+    if (!S) return;
+    var pts = [], nodes = [];
+    L.forEach(function (l, i) {
+      var a = i * 40 * Math.PI / 180 - Math.PI / 2, y = i * 0.42 - 2.3, p = V(Math.cos(a) * 2.3, y, Math.sin(a) * 2.3); pts.push(p);
+      var m = new THREE.Mesh(new THREE.SphereGeometry(0.25, 28, 20)); m.position.copy(p); S.root.add(m); nodes.push(m);
+      if (l[2] === "KR") { var k2 = new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 14), stdMat("--nama", { glow: 0.35 })); k2.position.copy(p).add(V(0, 0.3, 0)); S.root.add(k2); }
+      if (i === 0 || i === 7) { var halo = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.03, 8, 40), stdMat("--ink", { glow: 0.2 })); halo.position.copy(p); halo.rotation.x = Math.PI / 2; S.root.add(halo); }
+      label(S, (i + 1) + " <i>" + l[0] + "</i> · " + l[1], anchor(S, p.x * 1.22, p.y + 0.12, p.z * 1.22), "sm");
+    });
+    S.root.add(tube(pts, 0.035, basicMat("--muted", 0.5)));
+    [[1, 2], [6, 7], [9, 10]].forEach(function (c, k) {
+      var mid = pts[c[0]].clone().add(pts[c[1]]).multiplyScalar(0.5);
+      var r = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.035, 8, 24), stdMat("--ink", { glow: 0.2 })); r.position.copy(mid); r.lookAt(pts[c[1]]); S.root.add(r);
+    });
+    var bands = [["past life", -2.55, 0.7, "--muted"], ["this life", -1.6, 3.1, "--nama"], ["next life", 1.75, 0.85, "--nib"]];
+    bands.forEach(function (b) {
+      var cyl = new THREE.Mesh(new THREE.CylinderGeometry(2.75, 2.75, b[2], 48, 1, true), basicMat(b[3], 0.07)); cyl.position.y = b[1] + b[2] / 2; cyl.material.side = THREE.DoubleSide; S.root.add(cyl);
+      label(S, b[0], anchor(S, -3.2, b[1] + b[2] / 2, 0), "sm left");
+    });
+    var mats = {};
+    function mat(v) { if (!mats[v]) mats[v] = stdMat(v, { glow: 0.35 }); return mats[v]; }
+    function apply() {
+      nodes.forEach(function (m, i) {
+        var l = L[i];
+        m.material = mode === "round" ? mat(RC[l[2]]) : mode === "group" ? mat(GC[l[3]]) : mat(PC[l[3]]);
+      });
+      S.dirty = true;
+    }
+    apply();
+  })();
+
+  /* ================= 9. D4: conditions compass ================= */
+  (function () {
+    var FAM = [
+      { id: "A", c: "--g1", t: "Mind → mind", n: 6, list: "proximity, contiguity, absence, disappearance, repetition, association", d: "Each citta gives way to the next; javanas strengthen their successors; factors arising together are associated." },
+      { id: "B", c: "--g2", t: "Mind → mind and matter", n: 5, list: "root, jhāna, path, kamma, result", d: "Roots, jhāna and path factors, volition and resultant mind support both the mind and the matter that arise with them." },
+      { id: "C", c: "--g3", t: "Mind → matter", n: 1, list: "postnascence", d: "Later cittas sustain the body that arose before them." },
+      { id: "D", c: "--g4", t: "Matter → mind", n: 1, list: "prenascence", d: "Bases and sense objects, already arisen, support the cittas that follow." },
+      { id: "E", c: "--g5", t: "Concepts, mind, matter → mind", n: 2, list: "object, decisive support", d: "Anything can be an object; a strong past experience can decisively support what arises now." },
+      { id: "F", c: "--g6", t: "Mind and matter → both", n: 9, list: "predominance, conascence, mutuality, support, nutriment, faculty, dissociation, presence, non-disappearance", d: "Things that arise together hold each other up, like the legs of a tripod." }
+    ];
+    var cur = "all";
+    function info() {
+      var box = $("d4-comp-info"); if (!box) return;
+      if (cur === "all") { box.innerHTML = "<h3>Six families, 24 conditions</h3><p class=\"small\">Arcs between mind (sphere), matter (cube) and concepts (ring). An arc's thickness shows how many conditions its family holds. Choose a family to see them.</p>"; return; }
+      var f = FAM.filter(function (x) { return x.id === cur; })[0];
+      box.innerHTML = '<h3 style="color:var(' + f.c + ')">' + f.t + " · " + f.n + '</h3><p class="small"><i>' + f.list + '.</i></p><p class="small">' + f.d + "</p>";
+    }
+    pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAM.map(function (f) { return { id: f.id, label: f.t.replace(" and ", " & "), c: f.c }; })), cur, function (v) { cur = v; info(); apply(); });
+    info();
+    var S = make3D("d4-comp", { height: 300, cam: [0, 2.2, 9.6], look: [0, 0.1, 0], fov: 36, sway: 0.45, rotX: 0.1, refAspect: 1.2, phoneRatio: 0.9 });
+    if (!S) return;
+    var Mi = V(-1.9, 0, 0), Ma = V(1.9, 0, 0), Co = V(0, 0.2, -2.1);
+    var mind = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 22), stdMat("--nama", { glow: 0.35 })); mind.position.copy(Mi); S.root.add(mind);
+    var matter = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.8, 0.8), stdMat("--rupa-mark", { glow: 0.3 })); matter.position.copy(Ma); S.root.add(matter);
+    var conc = new THREE.Mesh(new THREE.TorusGeometry(0.38, 0.06, 10, 40), stdMat("--muted", { glow: 0.2 })); conc.position.copy(Co); S.root.add(conc);
+    label(S, "mind", anchor(S, Mi.x, Mi.y - 0.8, Mi.z), "p"); label(S, "matter", anchor(S, Ma.x, Ma.y - 0.8, Ma.z), "p"); label(S, "concepts", anchor(S, Co.x, Co.y - 0.65, Co.z), "p");
+    function R(n) { return 0.02 + n * 0.009; }
+    var arcs = [];
+    function add(fid, pts, closed) { var f = FAM.filter(function (x) { return x.id === fid; })[0]; var m = tube(pts, R(f.n), basicMat(f.c, 0.8), closed); m.userData.f = fid; S.root.add(m); arcs.push(m); return m; }
+    var loopA = []; for (var i = 0; i <= 24; i++) { var a = i / 24 * Math.PI * 2; loopA.push(V(Mi.x - 0.2 + Math.cos(a) * 0.9, Mi.y + 0.9 + Math.sin(a) * 0.45, Mi.z + Math.sin(a) * 0.3)); }
+    add("A", loopA, true);
+    add("B", [V(Mi.x + 0.4, -0.2, 0.3), V(0, -0.5, 1.9), V(Ma.x - 0.4, -0.2, 0.3)]);
+    add("C", [V(Mi.x + 0.4, 0.4, 0), V(0, 1.5, 0), V(Ma.x - 0.4, 0.4, 0)]);
+    add("D", [V(Ma.x - 0.4, -0.45, 0), V(0, -1.55, 0), V(Mi.x + 0.4, -0.45, 0)]);
+    add("E", [V(Co.x - 0.3, Co.y, Co.z + 0.2), V(-1.2, 0.4, -1.1), V(Mi.x + 0.3, 0.1, -0.3)]);
+    var loopF = []; for (i = 0; i <= 40; i++) { a = i / 40 * Math.PI * 2; loopF.push(V(Math.cos(a) * 3.1, -0.05 + Math.sin(a * 2) * 0.12, Math.sin(a) * 1.15)); }
+    add("F", loopF, true);
+    var lab = { A: V(Mi.x - 0.2, 1.62, 0), B: V(0, -0.65, 2.0), C: V(0, 1.15, 0), D: V(0, -1.3, 0), E: V(-1.05, 0.62, -1.25), F: V(3.2, 0.25, 0.4) };
+    FAM.forEach(function (f) { f.L = label(S, f.t.split(" ")[0] === "Mind" && f.id !== "F" ? f.n + "" : f.n + "", anchor(S, lab[f.id].x, lab[f.id].y, lab[f.id].z), "badge"); f.L.el.style.background = "var(" + f.c + ")"; });
+    function apply() { arcs.forEach(function (m) { m.material.opacity = cur === "all" || cur === m.userData.f ? 0.85 : 0.08; }); FAM.forEach(function (f) { f.L.alpha = cur === "all" || cur === f.id ? 1 : 0.2; }); S.dirty = true; }
+    apply();
+  })();
+
+  /* ================= 10. D5: planes as a world-mountain ================= */
+  (function () {
+    var P = [
+      ["Niraya", "hell", "w"], ["Tiracchāna", "animals", "w"], ["Peta", "hungry ghosts", "w"], ["Asura", "titans", "w"], ["Manussa", "humans", "h"],
+      ["Cātumahārājika", "Four Great Kings · on Sineru's slopes", "s1"], ["Tāvatiṃsa", "Thirty-three · on the summit", "s2"], ["Yāma", "", "d"], ["Tusita", "", "d"], ["Nimmānarati", "", "d"], ["Paranimmitavasavattī", "", "d"],
+      ["Brahmapārisajja", "1st jhāna", "b1"], ["Brahmapurohita", "", "b1"], ["Mahābrahmā", "", "b1"],
+      ["Parittābha", "2nd jhāna", "b2"], ["Appamāṇābha", "", "b2"], ["Ābhassara", "", "b2"],
+      ["Parittasubha", "3rd jhāna", "b3"], ["Appamāṇasubha", "", "b3"], ["Subhakiṇha", "", "b3"],
+      ["Vehapphala", "4th jhāna", "b4"], ["Asaññasatta", "matter only", "b4n"], ["Aviha", "pure abode", "b4"], ["Atappa", "", "b4"], ["Sudassa", "", "b4"], ["Sudassī", "", "b4"], ["Akaniṭṭha", "highest pure abode", "b4"],
+      ["Ākāsānañcāyatana", "infinite space", "a"], ["Viññāṇañcāyatana", "infinite consciousness", "a"], ["Ākiñcaññāyatana", "nothingness", "a"], ["Nevasaññānāsaññāyatana", "", "a"]
+    ];
+    var S = make3D("d5-view", { height: 560, cam: [0, 5.6, 19.5], look: [0, 4.6, 0], fov: 36, spin: 0.12, rotX: 0.06, refAspect: 1.15, phoneRatio: 1.35 });
+    if (!S) return;
+    var y = -0.4, prev = null, GAP = { w: 0, h: 0.35, s1: 0.2, s2: 0.2, d: 0.25, b1: 0.35, b2: 0.3, b3: 0.3, b4: 0.3, b4n: 0.3, a: 0.4 };
+    var yS = {};
+    P.forEach(function (p, i) {
+      var g = p[2]; y += (prev === null ? 0 : (g !== prev ? GAP[g] : 0)) + 0.23; prev = g; p.y = y;
+      var r, mat;
+      if (g === "w") { r = 1.55 - i * 0.08; mat = stdMat("--bad", { glow: 0.2, opacity: 0.85 }); }
+      else if (g === "h") { r = 2.3; mat = stdMat("--muted", { glow: 0.15 }); }
+      else if (g === "s1" || g === "s2" || g === "d") { r = g === "d" ? 1.45 : 1.15; mat = stdMat("--rupa-mark", { glow: 0.25, opacity: 0.9 }); }
+      else if (g === "a") { r = 1.6; mat = null; }
+      else if (g === "b4n") { r = 1.3; mat = stdMat("--rupa", { glow: 0.2 }); }
+      else { r = 1.75; mat = stdMat("--nama-2", { glow: 0.22, opacity: 0.88 }); }
+      if (g === "a") {
+        var ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.03, 8, 80), stdMat("--nama", { glow: 0.35 })); ring.rotation.x = Math.PI / 2; ring.position.y = y; S.root.add(ring);
+      } else if (g === "s1") {
+        var ringK = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.07, 10, 60), mat); ringK.rotation.x = Math.PI / 2; ringK.position.y = y; S.root.add(ringK);
+      } else {
+        var disc = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.07, 64), mat); disc.position.y = y; S.root.add(disc);
+      }
+      yS[p[0]] = y;
+      var side = i % 2 ? 1 : -1;
+      label(S, "<i>" + p[0] + "</i>" + (p[1] ? " · " + p[1] : ""), anchor(S, side * 2.55, y, 0), "xs " + (side > 0 ? "right" : "left"));
+    });
+    var hY = yS.Manussa, tY = yS["Tāvatiṃsa"];
+    var cone = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.95, tY - hY, 40, 1), stdMat("--rupa", { glow: 0.12, opacity: 0.9 })); cone.position.y = (hY + tY) / 2; S.root.add(cone);
+    label(S, "Mount Sineru", anchor(S, 0, (hY + tY) / 2, 1.05), "xs");
+    var axis = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, y + 1, 8), basicMat("--line", 0.6)); axis.position.y = y / 2; S.root.add(axis);
+    var brk = [["woeful", 0, 3], ["sense heavens", 5, 10], ["fine-material", 11, 26], ["immaterial", 27, 30]];
+    brk.forEach(function (b) { label(S, b[0].toUpperCase(), anchor(S, 0, (P[b[1]].y + P[b[2]].y) / 2, -2.6), "cap3"); });
+  })();
+
+  /* ================= 11. D6: requisites skyline ================= */
+  (function () {
+    var G = [["Foundations of mindfulness", "--th1"], ["Right efforts", "--th4"], ["Bases of success", "--th10"], ["Faculties", "--th3"], ["Powers", "--th2"], ["Enlightenment factors", "--th8"], ["Path factors", "--th9"]];
+    var ST = [
+      ["viriya", "energy", [0, 4, 1, 1, 1, 1, 1]], ["sati", "mindfulness", [4, 0, 0, 1, 1, 1, 1]], ["paññā", "wisdom", [0, 0, 1, 1, 1, 1, 1]], ["samādhi", "concentration", [0, 0, 0, 1, 1, 1, 1]], ["saddhā", "faith", [0, 0, 0, 1, 1, 0, 0]],
+      ["chanda", "desire", [0, 0, 1, 0, 0, 0, 0]], ["citta", "consciousness", [0, 0, 1, 0, 0, 0, 0]], ["pīti", "zest", [0, 0, 0, 0, 0, 1, 0]], ["passaddhi", "tranquillity", [0, 0, 0, 0, 0, 1, 0]], ["upekkhā", "equanimity", [0, 0, 0, 0, 0, 1, 0]],
+      ["vitakka", "right thought", [0, 0, 0, 0, 0, 0, 1]], ["sammā-vācā", "right speech", [0, 0, 0, 0, 0, 0, 1]], ["sammā-kammanta", "right action", [0, 0, 0, 0, 0, 0, 1]], ["sammā-ājīva", "right livelihood", [0, 0, 0, 0, 0, 0, 1]]
+    ];
+    if ($("d6-sky-legend")) $("d6-sky-legend").innerHTML = G.map(function (g) { return '<span><i style="background:var(' + g[1] + ')"></i>' + g[0] + "</span>"; }).join("");
+    var S = make3D("d6-sky", { height: 300, cam: [0, 3.0, 8.4], look: [0, 1.45, 0], fov: 34, sway: 0.3, rotX: 0.04, refAspect: 2.0, phoneRatio: 0.85 });
+    if (!S) return;
+    var step = 0.56, x0 = -((ST.length - 1) * step) / 2, cube = new THREE.BoxGeometry(0.44, 0.34, 0.44), mats = G.map(function (g) { return stdMat(g[1], { glow: 0.28 }); });
+    ST.forEach(function (s, i) {
+      var x = x0 + i * step, h = 0;
+      s[2].forEach(function (n, gi) { for (var k = 0; k < n; k++) { var m = new THREE.Mesh(cube, mats[gi]); m.position.set(x, 0.17 + h * 0.37, 0); S.root.add(m); h++; } });
+      label(S, h + "", anchor(S, x, h * 0.37 + 0.25, 0), "xs");
+      label(S, "<i>" + s[0] + "</i>", anchor(S, x, i % 2 ? -0.62 : -0.3, 0.35), "xs");
+    });
+    var base = new THREE.Mesh(new THREE.BoxGeometry(ST.length * step + 0.3, 0.04, 0.9), basicMat("--line", 0.5)); base.position.y = -0.03; S.root.add(base);
+  })();
+
+  /* ================= 12. D6: fetters ================= */
+  (function () {
+    var F = [["personality view", 0], ["doubt", 0], ["rites and rules", 0], ["sensual desire", 1], ["ill will", 1], ["lust for fine-material being", 3], ["lust for immaterial being", 3], ["conceit", 3], ["restlessness", 3], ["ignorance", 3]];
+    var PC = ["--nib", "--th8", "--th8", "--nama"];
+    var STAGES = [{ id: "0", label: "Ordinary person" }, { id: "1", label: "Stream-enterer" }, { id: "2", label: "Once-returner" }, { id: "3", label: "Non-returner" }, { id: "4", label: "Arahant" }];
+    var CAP = { "0": "All ten fetters bind.", "1": "Personality view, doubt and clinging to rites and rules are gone for good.", "2": "Sensual desire and ill will remain, but weakened.", "3": "Sensual desire and ill will are gone; five subtle fetters remain.", "4": "No fetter remains." };
+    var cur = "0";
+    var S = make3D("d6-fet", { height: 300, cam: [0, 1.6, 8.6], look: [0, 1.25, 0], fov: 34, spin: 0.2, rotX: 0.08, refAspect: 1.1, phoneRatio: 0.95 });
+    var rings = [];
+    function apply() {
+      var st = +cur;
+      rings.forEach(function (r, i) {
+        var f = F[i], gone = (f[1] === 0 && st >= 1) || (f[1] === 1 && st >= 3) || (f[1] === 3 && st >= 4), weak = f[1] === 1 && st === 2;
+        r.m.visible = !gone; r.L.hidden = gone; r.m.scale.setScalar(weak ? 0.75 : 1); r.m.material.opacity = weak ? 0.35 : 0.95;
+      });
+      if ($("d6-fet-cap")) $("d6-fet-cap").innerHTML = "<b>" + STAGES[st].label + ".</b> " + CAP[cur];
+      if (S) S.dirty = true;
+    }
+    pills($("d6-fet-btns"), STAGES, cur, function (v) { cur = v; apply(); });
+    if (!S) { apply(); return; }
+    var col0 = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 3.4, 32), stdMat("--nib", { glow: 0.3, opacity: 0.55 })); col0.position.y = 1.4; S.root.add(col0);
+    F.forEach(function (f, i) {
+      var y = 0.05 + i * 0.3, m = new THREE.Mesh(new THREE.TorusGeometry(0.58, 0.07, 12, 48), stdMat(PC[f[1]], { glow: 0.3, opacity: 0.95 })); m.rotation.x = Math.PI / 2; m.position.y = y; S.root.add(m);
+      var L = label(S, f[0], anchor(S, 0.95, y, 0), "xs right");
+      rings.push({ m: m, L: L });
+    });
+    label(S, "Nibbāna", anchor(S, 0, 3.4, 0), "p");
+    apply();
+  })();
+
+  /* ================= 13. D7: the weave ================= */
+  (function () {
+    var PLv = [1, 1, 2, 2, 2, 2, 3, 4, 4, 5, 5, 6, 6, 7, 7];
+    var PS = ["Library", "Two truths", "The 89", "The 52", "Matter", "Similes", "Seeing", "Conditions", "The wheel", "Kamma", "Planes", "Calm", "Insight", "Every lens", "Other maps"];
+    var TH = [
+      ["citta", "--th1", [2, 3, 4, 6, 7, 8, 9, 11, 14, 15]], ["feeling", "--th2", [2, 3, 4, 6, 9, 12, 14]], ["contact", "--th3", [2, 4, 6, 8, 9, 14]], ["kamma", "--th4", [4, 5, 6, 7, 8, 9, 10, 14]],
+      ["matter", "--th5", [2, 5, 6, 7, 8, 11, 14, 15]], ["bhavaṅga", "--th6", [7, 10, 14, 15]], ["roots", "--th7", [4, 8, 9, 13, 14]], ["jhāna", "--th8", [3, 4, 8, 10, 11, 12, 13]],
+      ["Nibbāna", "--th9", [2, 13, 15]], ["wisdom", "--th10", [4, 6, 13, 14]], ["time", "--th11", [5, 7, 10, 11, 15]]
+    ];
+    var cur = "all";
+    pills($("d7-btns"), [{ id: "all", label: "All threads" }].concat(TH.map(function (t) { return { id: t[0], label: t[0], c: t[1] }; })), cur, function (v) { cur = v; apply(); });
+    var S = make3D("d7-view", { height: 470, cam: [0, 2.6, 13.6], look: [0, 0.2, 0], fov: 36, spin: 0.12, rotX: 0.1, refAspect: 1.4, phoneRatio: 1.1 });
+    if (!S) return;
+    var pos = [];
+    for (var p = 1; p <= 15; p++) {
+      var a = (p - 1) * 26 * Math.PI / 180, y = (PLv[p - 1] - 1) * 0.85 - 2.6 + ((p - 1) % 2) * 0.12, v3 = V(Math.cos(a) * 2.8, y, Math.sin(a) * 2.8); pos[p] = v3;
+      var card = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.36, 0.06), stdMat("--lv" + PLv[p - 1], { glow: 0.3 })); card.position.copy(v3); card.lookAt(V(0, y, 0)); S.root.add(card);
+      label(S, "<b>" + p + "</b> " + PS[p - 1], anchor(S, v3.x * 1.18, v3.y + 0.32, v3.z * 1.18), "xs");
+    }
+    var tubes = [];
+    TH.forEach(function (t, k) {
+      var off = (k - 5) * 0.045;
+      var pts = t[2].map(function (p) { var q = pos[p].clone(); var n = V(q.x, 0, q.z).normalize(); return q.add(n.multiplyScalar(off)).add(V(0, off, 0)); });
+      var m = tube(pts, 0.022, basicMat(t[1], 0.85)); m.userData.t = t[0]; S.root.add(m); tubes.push(m);
+    });
+    function apply() { tubes.forEach(function (m) { m.material.opacity = cur === "all" || cur === m.userData.t ? 0.9 : 0.06; }); S.dirty = true; }
+    apply();
+  })();
+
+  if (scenes.length) requestAnimationFrame(loop);
+})();
+</script>
+
 
