@@ -33,6 +33,8 @@
   --g1: #3a40ad; --g2: #7b5cc0; --g3: #b24f86; --g4: #c58410; --g5: #27776a; --g6: #5b6077;
   --t-lust: #c2493f; --t-hate: #3a40ad; --t-del: #6b6f84; --t-faith: #d6981c; --t-int: #27776a; --t-spec: #8a5cc0; --t-all: #c9cdd8;
   --on-accent: #ffffff;
+  --lv1: #6b7194; --lv2: #5d64a8; --lv3: #5157b4; --lv4: #454bac; --lv5: #3a3f9c; --lv6: #2f3388; --lv7: #25286c; --on-lv: #ffffff;
+  --th1: #3a40ad; --th2: #c2459a; --th3: #2e8bc0; --th4: #6a3fb5; --th5: #d6981c; --th6: #7a7f96; --th7: #c0392b; --th8: #4f9a3a; --th9: #27776a; --th10: #e07b39; --th11: #8b5e3c;
   --display: "Noto Serif Display", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --body: "Gentium Book Plus", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --ui: "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -44,7 +46,7 @@
     --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3c2020;
     --g1: #a3a8ff; --g2: #b9a1f0; --g3: #e48fbd; --g4: #e9b54d; --g5: #72cbb6; --g6: #a3a8bd;
     --t-lust: #ef8a80; --t-hate: #a3a8ff; --t-del: #a3a8bd; --t-faith: #e9b54d; --t-int: #72cbb6; --t-spec: #c3a6f5; --t-all: #3a3f55;
-    --on-accent: #10121b;
+    --on-accent: #10121b; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
     color-scheme: dark;
   }
 }
@@ -54,7 +56,7 @@
   --nib: #72cbb6; --nib-soft: #163430; --bad: #f08d86; --bad-soft: #3c2020;
   --g1: #a3a8ff; --g2: #b9a1f0; --g3: #e48fbd; --g4: #e9b54d; --g5: #72cbb6; --g6: #a3a8bd;
   --t-lust: #ef8a80; --t-hate: #a3a8ff; --t-del: #a3a8bd; --t-faith: #e9b54d; --t-int: #72cbb6; --t-spec: #c3a6f5; --t-all: #3a3f55;
-  --on-accent: #10121b;
+  --on-accent: #10121b; --lv1: #8f95b8; --lv2: #9aa0cc; --lv3: #a6abdb; --lv4: #b1b6e6; --lv5: #bcc0ef; --lv6: #c7caf6; --lv7: #d2d4fc; --on-lv: #10121b; --th1: #a3a8ff; --th2: #ef8cc8; --th3: #7cc3ea; --th4: #b99af0; --th5: #e9b54d; --th6: #a3a8bd; --th7: #f08d86; --th8: #8fd17a; --th9: #72cbb6; --th10: #f3a774; --th11: #c99a76;
   color-scheme: dark;
 }
 
@@ -69,7 +71,7 @@ body {
 }
 .sheet {
   background: var(--sheet); width: 210mm; min-height: 297mm; margin: 0 auto 28px;
-  padding: 13mm 14mm 10mm; display: flex; flex-direction: column; gap: 12px;
+  padding: 12mm 14mm 10mm; display: flex; flex-direction: column; gap: 10px;
   box-shadow: 0 1px 2px rgba(20, 22, 40, .08), 0 12px 32px -12px rgba(20, 22, 40, .25);
   position: relative;
 }
@@ -77,13 +79,13 @@ body {
   .sheet { width: 100%; min-height: 0; padding: 22px 16px 18px; }
 }
 h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; margin: 0; line-height: 1.12; text-wrap: balance; }
-h2 { font-size: 31px; }
+h2 { font-size: 29px; }
 h3 { font-size: 17px; font-weight: 600; }
 p { margin: 0; }
 .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--ui); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .ph b { color: var(--ink); font-weight: 600; }
 .pf { margin-top: auto; display: flex; justify-content: space-between; gap: 12px; font-family: var(--ui); font-size: 9.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 6px; }
-.lede { font-size: 14.5px; max-width: 72ch; }
+.lede { font-size: 13.8px; max-width: 74ch; }
 .p, i.p { font-style: italic; }
 .nm { color: var(--nama); } .rp { color: var(--rupa); } .nb { color: var(--nib); } .bd { color: var(--bad); }
 .small { font-size: 12px; }
@@ -122,10 +124,7 @@ ul.tight { margin: 0; padding-left: 16px; display: grid; gap: 3px; }
 .cover { gap: 18px; }
 .cover h1 { font-size: 66px; font-weight: 500; letter-spacing: -.01em; }
 .cover .sub { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--muted); }
-.toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 22px; font-size: 13px; }
-.toc div { display: grid; grid-template-columns: 26px 1fr; gap: 6px; border-bottom: 1px dotted var(--line); padding-bottom: 2px; }
-.toc b { font-family: var(--ui); font-size: 10px; color: var(--muted); font-weight: 600; padding-top: 2px; }
-@media (max-width: 600px) { .toc { grid-template-columns: 1fr; } .cover h1 { font-size: 46px; } }
+@media (max-width: 600px) { .cover h1 { font-size: 46px; } }
 
 /* ---------- plate 1: library ---------- */
 .shelf { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
@@ -242,6 +241,80 @@ table.fet td:first-child { text-align: left; }
 table.fet td i.f { display: inline-block; width: 26px; height: 9px; border-radius: 2px; background: var(--nama); vertical-align: middle; }
 table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radius: 2px; background: repeating-linear-gradient(90deg, var(--nama) 0 3px, transparent 3px 6px); border: 1px solid var(--nama); vertical-align: middle; }
 
+/* ---------- learning path: navigation strip on every plate ---------- */
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 12px; font-family: var(--ui); font-size: 9.5px; color: var(--muted); margin-top: -3px; }
+.nav a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--line); padding: 0 1px; }
+.lvb { display: inline-flex; align-items: center; gap: 6px; color: var(--on-lv); font-weight: 600; border-radius: 999px; padding: 1px 9px 1px 2px; letter-spacing: .03em; text-decoration: none; }
+.nav a.lvb { color: var(--on-lv); border-bottom: 0; padding: 1px 9px 1px 2px; }
+.sheet > * { flex-shrink: 0; }
+.lvb b { background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 0 6px; font-size: 9px; }
+.thrs { display: inline-flex; flex-wrap: wrap; gap: 2px 8px; margin-left: auto; }
+.thr { display: inline-flex; align-items: center; gap: 3px; }
+.thr i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+a.xr { font-family: var(--ui); font-size: .76em; font-weight: 600; font-style: normal; color: var(--nama); text-decoration: none; border: 1px solid color-mix(in srgb, var(--nama) 40%, transparent); border-radius: 999px; padding: 0 5px; white-space: nowrap; vertical-align: 1px; }
+
+/* ---------- cover contents ---------- */
+.toc { columns: 2; column-gap: 26px; font-size: 12.3px; }
+.toc .grp { break-inside: avoid; margin-bottom: 7px; }
+.toc .row { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; border-bottom: 1px dotted var(--line); padding: 1px 0; color: inherit; text-decoration: none; }
+.toc .row.h { font-family: var(--ui); font-weight: 600; font-size: 10.5px; border-bottom: 1px solid var(--ink); padding-top: 2px; }
+.toc .row b { font-family: var(--ui); font-size: 10px; color: var(--muted); font-weight: 600; }
+.toc .row span:last-child { font-family: var(--ui); font-size: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) { .toc { columns: 1; } }
+
+/* ---------- taxonomy table ---------- */
+table.tax { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 3px; font-family: var(--ui); font-size: 9.6px; line-height: 1.3; table-layout: fixed; }
+table.tax th, table.tax td { vertical-align: top; text-align: left; padding: 5px 6px; border-radius: 4px; }
+table.tax thead th { padding: 0 2px 2px; vertical-align: bottom; }
+table.tax thead th a { color: inherit; text-decoration: none; display: block; }
+table.tax thead th .stp { border-radius: 3px 3px 0 0; margin-bottom: 4px; }
+table.tax thead th b { display: block; font-family: var(--display); font-size: 17px; font-weight: 500; color: var(--ink); line-height: 1; }
+table.tax thead th span { font-size: 9.5px; color: var(--muted); font-weight: 600; }
+table.tax tbody th { width: 76px; font-weight: 600; font-size: 9.5px; color: var(--ink); }
+table.tax tbody th i { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: 11px; }
+table.tax tr.q td { font-family: var(--body); font-style: italic; font-size: 11.3px; color: var(--ink); }
+table.tax tr.pl td a { display: inline-block; font-weight: 600; color: var(--on-lv); text-decoration: none; border-radius: 3px; padding: 0 5px; margin: 0 2px 2px 0; }
+table.tax tr.d1 td { background: var(--faint); }
+table.tax tr.d2 td { background: color-mix(in srgb, var(--nama-soft) 60%, var(--faint)); }
+table.tax tr.d3 td { background: var(--nama-soft); }
+.rt { display: grid; grid-template-columns: 112px 1fr; gap: 8px; align-items: center; padding: 4px 0; border-bottom: 1px dotted var(--line); font-size: 12px; }
+.rt:last-child { border-bottom: 0; }
+.seq { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; font-family: var(--ui); font-size: 10px; }
+.seq a, .seq span { background: var(--faint); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; color: var(--ink); text-decoration: none; }
+.seq em { color: var(--muted); font-style: normal; }
+
+/* ---------- level pages ---------- */
+.lvhead { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: end; }
+.lvnum { font-family: var(--display); font-size: 104px; line-height: .78; color: var(--lvc); font-weight: 500; }
+.lvq { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--muted); margin-top: 4px; }
+.lvcols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); gap: 16px; align-items: start; }
+@media (max-width: 700px) { .lvcols { grid-template-columns: 1fr; } }
+.pcards { display: grid; gap: 6px; }
+a.pc { display: grid; grid-template-columns: 38px 1fr; gap: 8px; border: 1px solid var(--line); border-left: 4px solid var(--lvc); border-radius: 6px; padding: 7px 10px; color: inherit; text-decoration: none; }
+a.pc b { font-family: var(--display); font-size: 26px; line-height: 1; color: var(--lvc); font-weight: 500; }
+a.pc h3 { font-size: 14px; }
+a.pc p { font-size: 11.5px; color: var(--muted); }
+.qgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.qcol { background: var(--faint); border-top: 3px solid var(--lvc); border-radius: 0 0 6px 6px; padding: 8px 11px 10px; display: grid; gap: 5px; align-content: start; }
+.qcol h3 { font-size: 14px; }
+.qcol h3 i { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: 12.5px; }
+.qcol .hint { font-family: var(--ui); font-size: 9.5px; color: var(--muted); }
+.qcol ol { margin: 0; padding-left: 16px; font-size: 12px; display: grid; gap: 5px; }
+@media (max-width: 700px) { .qgrid { grid-template-columns: 1fr; } }
+.conf { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.conf li { display: grid; grid-template-columns: 18px 1fr; gap: 6px; font-size: 12.3px; }
+.conf li::before { content: "≠"; font-family: var(--display); font-size: 17px; line-height: 1; color: var(--bad); }
+
+/* ---------- synthesis plate and threads ---------- */
+.worksheet { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 18px; font-size: 11.3px; }
+.worksheet div { border-bottom: 1px dotted var(--muted); padding: 2px 0 7px; }
+.worksheet b { font-family: var(--ui); font-size: 9.8px; font-weight: 600; }
+@media (max-width: 700px) { .worksheet { grid-template-columns: 1fr; } }
+.gloss { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px 16px; font-size: 11.2px; line-height: 1.32; }
+.gloss i { font-weight: 700; }
+.gloss span { font-family: var(--ui); font-size: 9.5px; color: var(--muted); }
+@media (max-width: 700px) { .gloss { grid-template-columns: 1fr; } }
+
 @media print {
   body { background: var(--sheet); padding: 0; }
   .sheet { width: 210mm; height: 297mm; min-height: 0; margin: 0; box-shadow: none; overflow: hidden; break-after: page; page-break-after: always; }
@@ -251,15 +324,14 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
-<!-- ================= COVER ================= -->
 <section class="sheet cover" id="cover">
   <div class="ph"><span><b>Abhidhamma Atlas</b> · a visual companion</span><span>After Bhikkhu Bodhi's <i>Comprehensive Manual</i></span></div>
   <div style="display:grid;gap:8px">
     <h1>Abhidhamma Atlas</h1>
-    <p class="sub">Mind, matter and the conditions that join them, drawn in fourteen plates</p>
+    <p class="sub">Mind, matter and the conditions that join them: fifteen plates on a seven-level learning path</p>
   </div>
   <div class="fig">
-    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:560px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
+    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:515px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
     <div class="legend" style="justify-content:center">
       <span><i style="background:var(--bad)"></i>unwholesome 12</span>
       <span><i style="background:var(--nama)"></i>wholesome 17</span>
@@ -270,26 +342,70 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     </div>
     <p class="cap" style="text-align:center">Each dot is one of the 89 kinds of consciousness. The rings run from the sense-sphere on the outside to the supramundane at the centre, where the only object is Nibbāna.</p>
   </div>
-  <div class="toc" aria-label="Contents">
-    <div><b>1</b><span>The library: seven books and their heirs</span></div>
-    <div><b>8</b><span>The web of 24 conditions</span></div>
-    <div><b>2</b><span>From a person to dhammas</span></div>
-    <div><b>9</b><span>The wheel across three lives</span></div>
-    <div><b>3</b><span>A map of the 89, coloured by feeling</span></div>
-    <div><b>10</b><span>Kamma, death and rebirth</span></div>
-    <div><b>4</b><span>The 52 factors as an ensemble</span></div>
-    <div><b>11</b><span>Thirty-one planes and their lifespans</span></div>
-    <div><b>5</b><span>The commentators' picture-book</span></div>
-    <div><b>12</b><span>Forty meditation subjects</span></div>
-    <div><b>6</b><span>The mango and the moment</span></div>
-    <div><b>13</b><span>The tree of purification</span></div>
-    <div><b>7</b><span>How matter is made</span></div>
-    <div><b>14</b><span>Other maps of the same ground</span></div>
-  </div>
-  <div class="pf"><span>Colour key used throughout: <span class="nm">indigo, mind</span> · <span class="rp">turmeric, matter</span> · <span class="nb">teal, Nibbāna</span> · <span class="bd">red, unwholesome</span></span><span>i</span></div>
+  <div class="toc" id="toc" aria-label="Contents"></div>
+  <div class="pf"><span>Colour key used throughout: <span class="nm">indigo, mind</span> · <span class="rp">turmeric, matter</span> · <span class="nb">teal, Nibbāna</span> · <span class="bd">red, unwholesome</span></span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 1 ================= -->
+<!-- ================= START HERE: LEARNING PATH ================= -->
+<section class="sheet" id="learn">
+  <div class="ph"><span><b>Start here</b> · How to learn with this atlas</span><span>Abhidhamma Atlas</span></div>
+  <h2>A learning path in seven levels</h2>
+  <p class="lede">The plates are arranged as a path. Each level answers one question and assumes only the levels before it. Within every level you can work at three depths, taken from the Abhidhamma's own account of how wisdom grows: from learning, from reflection and from development. Read down a column to deepen one level; read across a row to climb.</p>
+  <div class="scroll"><table class="tax" id="tax"></table></div>
+  <div class="cols">
+    <div class="box tint">
+      <h3>Three depths of understanding</h3>
+      <ul class="tight small">
+        <li><b>Learn</b> · <i>sutamayā paññā</i>, wisdom from hearing and study. Know the lists, the terms and the diagrams.</li>
+        <li><b>Reflect</b> · <i>cintāmayā paññā</i>, wisdom from thinking it through. See why the lists are built as they are, and how the plates connect.</li>
+        <li><b>Observe</b> · <i>bhāvanāmayā paññā</i>, wisdom from development. Recognise the same things in your own experience.</li>
+      </ul>
+      <p class="src">Dīgha Nikāya 33; Vibhaṅga. The tradition's matching triad is study, practice and realisation (<i>pariyatti, paṭipatti, paṭivedha</i>).</p>
+    </div>
+    <div class="box">
+      <h3>Three routes through the atlas</h3>
+      <div id="routes"></div>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lab">Which plates build on which</div>
+    <div class="scroll"><svg id="dag" viewBox="0 0 680 236" style="max-width:600px;margin:0 auto" role="img" aria-label="Dependency graph of the fifteen plates, arranged in seven level columns"></svg></div>
+    <p class="cap">Each arrow means “read this first”. Every level page lists what you should arrive with and what you should leave able to do.</p>
+  </div>
+  <div class="pf"><span>Abhidhamma Atlas · learning path</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= START HERE: CONCEPT MAP ================= -->
+<section class="sheet" id="map">
+  <div class="ph"><span><b>Start here</b> · Concept map</span><span>Abhidhamma Atlas</span></div>
+  <h2>How the main ideas connect</h2>
+  <p class="lede">Sixteen main ideas and the relations that join them. Rows follow Levels I to VI, and each box names the plates that teach it. Read every arrow as a sentence: <i>Javana, its volition is kamma, Kamma.</i> Come back to this page after each level and you will find more of it makes sense.</p>
+  <div class="fig"><svg class="cmap" data-hl="0" viewBox="0 0 680 610" role="img" aria-label="Concept map of sixteen main ideas in six level rows, joined by labelled arrows"></svg></div>
+  <div class="lab">Three loops worth tracing on the map</div>
+  <div class="cols3">
+    <div class="box">
+      <h3>The loop of a life</h3>
+      <div class="seq"><span>Kamma</span><em>→</em><span>Rebirth</span><em>→</em><span>Life-continuum</span><em>→</em><span>Process</span><em>→</em><span>Javana</span><em>→</em><span>Kamma</span></div>
+      <p class="small">Each javana adds kamma; kamma shapes the next life; that life's moments make more javanas. <a class="xr" href="#p7">→ 7</a> <a class="xr" href="#p10">→ 10</a></p>
+    </div>
+    <div class="box">
+      <h3>Mind and matter hold each other up</h3>
+      <div class="seq"><span>Rūpa</span><em>→</em><span>Citta</span><em>→</em><span>Rūpa</span></div>
+      <p class="small">Matter gives mind its bases and objects; mind gives matter its movements; kamma builds the sense organs. <a class="xr" href="#p5">→ 5</a> <a class="xr" href="#p8">→ 8</a></p>
+    </div>
+    <div class="box">
+      <h3>The way out</h3>
+      <div class="seq"><span>Calm</span><em>→</em><span>Insight</span><em>→</em><span>Path</span><em>→</em><span>Nibbāna</span></div>
+      <p class="small">The path cuts ignorance and craving, the two roots of the wheel, so the first loop stops turning. <a class="xr" href="#p9">→ 9</a> <a class="xr" href="#p13">→ 13</a></p>
+    </div>
+  </div>
+  <div class="pf"><span>Abhidhamma Atlas · concept map</span><span class="pg"></span></div>
+</section>
+
+
+<!-- ================= LEVEL 1 ================= -->
+<section class="sheet level" id="L1" data-level="1"></section>
+
 <section class="sheet" id="p1">
   <div class="ph"><span><b>Plate 1</b> · The library</span><span>Abhidhamma Atlas</span></div>
   <h2>Seven books, and the shelves that grew around them</h2>
@@ -309,21 +425,20 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="north">
       <div class="lab">A parallel shelf: northern Abhidharma</div>
       <div class="chips"><span class="chip">Sarvāstivāda: seven treatises, led by the <i>Jñānaprasthāna</i></span><span class="chip"><i>Mahāvibhāṣā</i>, c. 2nd c. CE</span><span class="chip"><i>Abhidharmakośa</i>, Vasubandhu, c. 4th–5th c.</span><span class="chip">Yogācāra: Asaṅga's <i>Abhidharmasamuccaya</i>; the hundred dharmas</span></div>
-      <p class="cap">These lists grew from the same early matrices (<i>mātikā</i>) but reached different counts. Plate 14 sets them side by side.</p>
+      <p class="cap">These lists grew from the same early matrices (<i>mātikā</i>) but reached different counts. Plate 15 sets them side by side. <a class="xr" href="#p15">→ 15</a></p>
     </div>
   </div>
   <p class="cap">Dates before the modern period are approximate and some are disputed. Anuruddha's date, for example, is placed anywhere from the 8th to the 12th century; most modern scholars favour the 10th–12th.</p>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> introduction; Encyclopaedia entries on the Abhidhamma literature</span><span>1</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> introduction; Encyclopaedia entries on the Abhidhamma literature</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 2 ================= -->
 <section class="sheet" id="p2">
   <div class="ph"><span><b>Plate 2</b> · Two truths</span><span>Abhidhamma Atlas</span></div>
   <h2>From a person to dhammas</h2>
   <p class="lede">Ordinary speech talks about people, chariots and mangoes. That is conventional truth (<i>sammuti-sacca</i>), and it is not false. The Abhidhamma adds a second level, ultimate truth (<i>paramattha-sacca</i>): the irreducible events, or <i>dhammas</i>, that the conventions are built from. The five aggregates of the suttas map directly onto the four ultimate realities.</p>
   <div class="fig">
     <div class="scroll"><svg id="sankey" viewBox="0 0 680 362" style="max-width:630px;margin:0 auto" role="img" aria-label="Five aggregates flowing into four ultimate realities"></svg></div>
-    <p class="cap">Band widths are proportional to the number of kinds of dhamma. Feeling and perception are one mental factor each, so their bands are drawn at a minimum width. Formations hold the other 50 factors. Nibbāna belongs to no aggregate.</p>
+    <p class="cap">Band widths are proportional to the number of kinds of dhamma. Feeling and perception are one mental factor each, so their bands are drawn at a minimum width. Formations hold the other 50 factors. Nibbāna belongs to no aggregate. Each reality has its own plate: citta <a class="xr" href="#p3">→ 3</a>, cetasika <a class="xr" href="#p4">→ 4</a>, rūpa <a class="xr" href="#p5">→ 5</a>.</p>
   </div>
   <div class="cols">
     <div class="box tint">
@@ -349,10 +464,12 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="idcard"><div class="hd"><b>sati</b><span>mindfulness · beautiful</span></div>
       <dl><dt>Characteristic</dt><dd>not wobbling, not floating away from the object</dd><dt>Function</dt><dd>absence of confusion, non-forgetfulness</dd><dt>Manifestation</dt><dd>guarding; facing the object</dd><dt>Proximate cause</dt><dd>strong perception, or the four foundations of mindfulness</dd></dl></div>
   </div>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–II; Visuddhimagga XIV; Atthasālinī</span><span>2</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–II; Visuddhimagga XIV; Atthasālinī</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 3 ================= -->
+<!-- ================= LEVEL 2 ================= -->
+<section class="sheet level" id="L2" data-level="2"></section>
+
 <section class="sheet" id="p3">
   <div class="ph"><span><b>Plate 3</b> · Chapter I · Citta</span><span>Abhidhamma Atlas</span></div>
   <h2>A map of the 89, coloured by feeling</h2>
@@ -377,13 +494,13 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
         <li>Bodily pleasure and bodily pain occur in exactly one citta each: wholesome-resultant and unwholesome-resultant body-consciousness.</li>
         <li>Displeasure occurs only in the two hate-rooted cittas. Wherever there is displeasure, there is aversion.</li>
         <li>Every immaterial citta is equanimous, and so is the fifth jhāna. The higher the concentration, the quieter the feeling.</li>
+        <li>The fine-material and immaterial rows are the minds of jhāna. Each has its own worlds <a class="xr" href="#p11">→ 11</a> and its own meditation subjects <a class="xr" href="#p12">→ 12</a>.</li>
       </ul>
     </div>
   </div>
-  <div class="pf"><span>Source: Bodhi, <i>CMA</i> I and III (compendium of feeling)</span><span>3</span></div>
+  <div class="pf"><span>Source: Bodhi, <i>CMA</i> I and III (compendium of feeling)</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 4 ================= -->
 <section class="sheet" id="p4">
   <div class="ph"><span><b>Plate 4</b> · Chapter II · Cetasika</span><span>Abhidhamma Atlas</span></div>
   <h2>The 52 mental factors as an ensemble</h2>
@@ -393,13 +510,35 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="lab">How many factors join each kind of citta</div>
     <svg id="factor-bars" viewBox="0 0 660 214" role="img" aria-label="Number of mental factors in ten example cittas, from 7 in eye-consciousness to 38 in sense-sphere wholesome"></svg>
     <div class="legend"><span><i style="background:var(--nama)"></i>always present</span><span><i style="background:var(--nama-soft);border:1px dashed var(--nama)"></i>may join, one at a time</span><span><i style="background:var(--bad)"></i>includes unwholesome factors</span></div>
+    <p class="cap">Three factors carry the story forward. Volition (<i>cetanā</i>) is kamma <a class="xr" href="#p10">→ 10</a>. Contact starts the chain of feeling and craving <a class="xr" href="#p9">→ 9</a>. Wisdom (<i>paññindriya</i>) grows into the insight knowledges <a class="xr" href="#p13">→ 13</a>.</p>
   </div>
-  <div class="pf"><span>Source: Bodhi, <i>CMA</i> II (combinations of mental factors)</span><span>4</span></div>
+  <div class="pf"><span>Source: Bodhi, <i>CMA</i> II (combinations of mental factors)</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 5 ================= -->
 <section class="sheet" id="p5">
-  <div class="ph"><span><b>Plate 5</b> · How the old teachers taught</span><span>Abhidhamma Atlas</span></div>
+  <div class="ph"><span><b>Plate 5</b> · Chapter VI · Rūpa</span><span>Abhidhamma Atlas</span></div>
+  <h2>How matter is made</h2>
+  <p class="lede">Four things produce matter: kamma, mind, temperature and nutriment. The matrix shows which kinds each one makes. Matter never arises alone; it comes in packets called <i>kalāpas</i>, and every packet carries the same eight inseparables.</p>
+  <div class="cols" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+    <div class="fig"><svg id="rupa-matrix" viewBox="0 0 330 520" role="img" aria-label="Matrix of 28 kinds of matter against their four origins"></svg></div>
+    <div style="display:grid;gap:12px;align-content:start">
+      <div class="fig">
+        <div class="lab">One unit of matter outlives seventeen cittas</div>
+        <svg id="matter-life" viewBox="0 0 330 120" role="img" aria-label="Seventeen cittas of three sub-moments each, against one unit of matter with one sub-moment of arising, forty-nine of presence and one of dissolution"></svg>
+      </div>
+      <div class="fig">
+        <div class="lab">The 21 kalāpas</div>
+        <svg id="kalapas" viewBox="0 0 330 360" role="img" aria-label="21 groups of matter by origin, each drawn as a row of squares"></svg>
+        <div class="legend"><span><i style="background:var(--rupa-soft);border:1px solid var(--rupa)"></i>the eight inseparables</span><span><i style="background:var(--rupa-mark)"></i>added kinds</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="cap">Space separates the kalāpas, and the four characteristics only mark their arising and decay, so neither is counted inside a group. Kamma-born matter is where this plate meets Plate 10 <a class="xr" href="#p10">→ 10</a>; mind-born matter is how javanas move the body <a class="xr" href="#p7">→ 7</a>.</p>
+  <div class="pf"><span>Source: Bodhi, <i>CMA</i> VI</span><span class="pg"></span></div>
+</section>
+
+<section class="sheet" id="p6">
+  <div class="ph"><span><b>Plate 6</b> · How the old teachers taught</span><span>Abhidhamma Atlas</span></div>
   <h2>The commentators' picture-book</h2>
   <p class="lede">The canonical Abhidhamma is lists and tables. The commentaries brought it to life with similes. Each one is chosen to show a single property, not to tell a whole story, so it pays to ask what the picture is pointing at.</p>
   <div class="box tint" style="gap:8px">
@@ -409,12 +548,14 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <p class="src">Visuddhimagga XIV, on “in what sense is it understanding?”</p>
   </div>
   <div class="similes" id="similes"></div>
-  <div class="pf"><span>Sources: Milindapañha II; Visuddhimagga IV, XIV, XVIII; Atthasālinī; L. S. Cousins, “Vitakka/vitarka and vicāra” (1992); M. Heim, “Nāmarūpa in Buddhaghosa”</span><span>5</span></div>
+  <div class="pf"><span>Sources: Milindapañha II; Visuddhimagga IV, XIV, XVIII; Atthasālinī; L. S. Cousins, “Vitakka/vitarka and vicāra” (1992); M. Heim, “Nāmarūpa in Buddhaghosa”</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 6 ================= -->
-<section class="sheet" id="p6">
-  <div class="ph"><span><b>Plate 6</b> · Chapter IV · Vīthi</span><span>Abhidhamma Atlas</span></div>
+<!-- ================= LEVEL 3 ================= -->
+<section class="sheet level" id="L3" data-level="3"></section>
+
+<section class="sheet" id="p7">
+  <div class="ph"><span><b>Plate 7</b> · Chapter IV · Vīthi</span><span>Abhidhamma Atlas</span></div>
   <h2>The mango and the moment</h2>
   <p class="lede">The Atthasālinī explains a seventeen-moment process of seeing with a story about a man asleep under a mango tree. Read the two columns together: the left is the Abhidhamma, the right is the picture.</p>
   <table class="mango" id="mango"></table>
@@ -432,33 +573,12 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     </div>
   </div>
   <div class="legend"><span><i class="k-bh"></i>life-continuum</span><span><i class="k-pr"></i>process citta</span><span><i class="k-vi"></i>sense consciousness</span><span><i class="k-ja"></i>javana</span><span><i class="k-ta"></i>registration</span></div>
-  <div class="pf"><span>Sources: Atthasālinī; Bodhi, <i>CMA</i> IV and its guide; Nārada, <i>The Buddha and His Teachings</i></span><span>6</span></div>
+  <div class="pf"><span>Sources: Atthasālinī; Bodhi, <i>CMA</i> IV and its guide; Nārada, <i>The Buddha and His Teachings</i></span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 7 ================= -->
-<section class="sheet" id="p7">
-  <div class="ph"><span><b>Plate 7</b> · Chapter VI · Rūpa</span><span>Abhidhamma Atlas</span></div>
-  <h2>How matter is made</h2>
-  <p class="lede">Four things produce matter: kamma, mind, temperature and nutriment. The matrix shows which kinds each one makes. Matter never arises alone; it comes in packets called <i>kalāpas</i>, and every packet carries the same eight inseparables.</p>
-  <div class="cols" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
-    <div class="fig"><svg id="rupa-matrix" viewBox="0 0 330 520" role="img" aria-label="Matrix of 28 kinds of matter against their four origins"></svg></div>
-    <div style="display:grid;gap:12px;align-content:start">
-      <div class="fig">
-        <div class="lab">One unit of matter outlives seventeen cittas</div>
-        <svg id="matter-life" viewBox="0 0 330 120" role="img" aria-label="Seventeen cittas of three sub-moments each, against one unit of matter with one sub-moment of arising, forty-nine of presence and one of dissolution"></svg>
-      </div>
-      <div class="fig">
-        <div class="lab">The 21 kalāpas</div>
-        <svg id="kalapas" viewBox="0 0 330 360" role="img" aria-label="21 groups of matter by origin, each drawn as a row of squares"></svg>
-        <div class="legend"><span><i style="background:var(--rupa-soft);border:1px solid var(--rupa)"></i>the eight inseparables</span><span><i style="background:var(--rupa-mark)"></i>added kinds</span></div>
-      </div>
-    </div>
-  </div>
-  <p class="cap">Space separates the kalāpas, and the four characteristics only mark their arising and decay, so neither is counted inside a group.</p>
-  <div class="pf"><span>Source: Bodhi, <i>CMA</i> VI</span><span>7</span></div>
-</section>
+<!-- ================= LEVEL 4 ================= -->
+<section class="sheet level" id="L4" data-level="4"></section>
 
-<!-- ================= PLATE 8 ================= -->
 <section class="sheet" id="p8">
   <div class="ph"><span><b>Plate 8</b> · Chapter VIII · Paṭṭhāna</span><span>Abhidhamma Atlas</span></div>
   <h2>The web of 24 conditions</h2>
@@ -469,18 +589,17 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="cond24" id="cond24"></div>
   </div>
   <div class="box">
-    <h3>Worked example: seeing a mango and wanting it</h3>
+    <h3>Worked example: seeing a mango and wanting it <a class="xr" href="#p14">→ 14</a></h3>
     <div class="ex" id="example"></div>
   </div>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VIII; Agganyani, overview of the 24 paccayas</span><span>8</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VIII; Agganyani, overview of the 24 paccayas</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 9 ================= -->
 <section class="sheet" id="p9">
   <div class="ph"><span><b>Plate 9</b> · Chapter VIII · Paṭicca-samuppāda</span><span>Abhidhamma Atlas</span></div>
   <h2>The wheel across three lives</h2>
   <p class="lede">The Abhidhamma reads the twelve links of dependent origination across three lives and hangs a whole vocabulary on them: three periods, twelve factors, twenty modes, three connections, four groups, three rounds and two roots. The wheel shows all seven at once.</p>
-  <div class="fig"><svg id="wheel" viewBox="0 0 680 600" role="img" aria-label="Wheel of the twelve links with periods, groups, connections, rounds and roots"></svg></div>
+  <div class="fig"><svg id="wheel" viewBox="0 0 680 600" style="max-width:640px;margin:0 auto" role="img" aria-label="Wheel of the twelve links with periods, groups, connections, rounds and roots"></svg></div>
   <div class="legend" style="justify-content:center">
     <span><i style="background:var(--bad)"></i>round of defilements</span>
     <span><i style="background:var(--nama)"></i>round of kamma</span>
@@ -489,10 +608,13 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <span>◆ connection</span>
   </div>
   <div class="modes" id="modes"></div>
-  <div class="pf"><span>Source: Bodhi, <i>CMA</i> VIII §3–10; Paṭisambhidāmagga on the twenty modes</span><span>9</span></div>
+  <p class="cap">Links 8–10, craving, clinging and becoming, arise in the javanas of Plate 7 <a class="xr" href="#p7">→ 7</a>. Links 3–7 are the results that Plate 10 follows across the hinge between lives <a class="xr" href="#p10">→ 10</a>.</p>
+  <div class="pf"><span>Source: Bodhi, <i>CMA</i> VIII §3–10; Paṭisambhidāmagga on the twenty modes</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 10 ================= -->
+<!-- ================= LEVEL 5 ================= -->
+<section class="sheet level" id="L5" data-level="5"></section>
+
 <section class="sheet" id="p10">
   <div class="ph"><span><b>Plate 10</b> · Chapter V · Kamma</span><span>Abhidhamma Atlas</span></div>
   <h2>Kamma, death and rebirth</h2>
@@ -501,7 +623,7 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
   <div class="fig">
     <div class="lab">When a javana's kamma can ripen</div>
     <svg id="ripen" viewBox="0 0 680 124" role="img" aria-label="Seven javanas: the first ripens in this life, the seventh in the next, the middle five in any later life"></svg>
-    <p class="cap">If the right conditions never come in time, the kamma becomes defunct (<i>ahosi</i>).</p>
+    <p class="cap">If the right conditions never come in time, the kamma becomes defunct (<i>ahosi</i>). These are the seven javanas of Plate 7 <a class="xr" href="#p7">→ 7</a>.</p>
   </div>
   <div class="fig">
     <div class="lab">The hinge between two lives</div>
@@ -512,21 +634,22 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="box"><h3>Four causes of death</h3><p class="small">End of the lifespan, end of the productive kamma, both together, or a destructive kamma cutting in. A lamp goes out the same four ways: the wick is used up, the oil is used up, both run out, or a gust of wind blows it out.</p></div>
     <div class="box"><h3>Nothing travels across</h3><p class="small">Rebirth-linking is conditioned by the past life, but nothing passes over. The Visuddhimagga's images: an echo, the light of a lamp, the impression of a seal, a reflection in a mirror.</p></div>
   </div>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Visuddhimagga XVII</span><span>10</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Visuddhimagga XVII</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 11 ================= -->
 <section class="sheet" id="p11">
   <div class="ph"><span><b>Plate 11</b> · Chapter V · Bhūmi</span><span>Abhidhamma Atlas</span></div>
   <h2>Thirty-one planes, on a scale of deep time</h2>
   <p class="lede">The planes match the levels of mind: each jhāna has its own heavens. Plotted on a logarithmic scale, the lifespans rise in steady doublings. The chart also shows which planes hold mind only or matter only.</p>
-  <div class="fig"><div class="scroll"><svg id="planes" viewBox="0 0 680 716" role="img" aria-label="31 planes of existence with lifespans on logarithmic scales"></svg></div></div>
+  <div class="fig"><div class="scroll"><svg id="planes" viewBox="0 0 680 716" style="max-width:655px;margin:0 auto" role="img" aria-label="31 planes of existence with lifespans on logarithmic scales"></svg></div></div>
   <div class="legend"><span><i style="background:var(--nama);border-radius:50%"></i>mind only (immaterial planes)</span><span><i style="background:var(--rupa-mark)"></i>matter only (non-percipient beings)</span><span><i style="background:linear-gradient(90deg,var(--nama) 50%,var(--rupa-mark) 50%)"></i>mind and matter</span></div>
-  <p class="cap">Brahmā lifespans are in great aeons (<i>mahākappa</i>). The first three are given in the texts as fractions of an incalculable aeon, a quarter of a great aeon, and are converted here. Deva lifespans are in human years: 50 human years make one day of the Four Great Kings, and each higher heaven doubles both the day and the lifespan.</p>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Rewata Dhamma, table of realms</span><span>11</span></div>
+  <p class="cap">Brahmā lifespans are in great aeons (<i>mahākappa</i>). The first three are given in the texts as fractions of an incalculable aeon, a quarter of a great aeon, and are converted here. Deva lifespans are in human years: 50 human years make one day of the Four Great Kings, and each higher heaven doubles both the day and the lifespan. Jhāna kamma ripens in the Brahmā planes <a class="xr" href="#p12">→ 12</a>.</p>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> V; Nārada, <i>A Manual of Abhidhamma</i> V; Rewata Dhamma, table of realms</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 12 ================= -->
+<!-- ================= LEVEL 6 ================= -->
+<section class="sheet level" id="L6" data-level="6"></section>
+
 <section class="sheet" id="p12">
   <div class="ph"><span><b>Plate 12</b> · Chapter IX · Samatha</span><span>Abhidhamma Atlas</span></div>
   <h2>Forty meditation subjects</h2>
@@ -545,14 +668,13 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
         <li><b>First jhāna only</b> (11): foulness and the parts of the body need applied thought to hold the object.</li>
         <li><b>Four jhānas</b> (3): loving-kindness, compassion and appreciative joy come with pleasant feeling, so they stop before the fifth.</li>
         <li><b>Fifth only</b> (1): equanimity as a divine abiding needs neutral feeling.</li>
-        <li><b>All five</b> (11): the kasiṇas and the breath. The immaterial four build on the fifth.</li>
+        <li><b>All five</b> (11): the kasiṇas and the breath. The immaterial four build on the fifth. <a class="xr" href="#p11">→ 11</a></li>
       </ul>
     </div>
   </div>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga III–IV</span><span>12</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga III–IV</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 13 ================= -->
 <section class="sheet" id="p13">
   <div class="ph"><span><b>Plate 13</b> · Chapter IX · Vipassanā</span><span>Abhidhamma Atlas</span></div>
   <h2>The tree of purification</h2>
@@ -575,12 +697,29 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
       <p class="small" style="margin-top:4px">At the crown, a single moment of path knowledge is followed by two or three moments of fruition, both taking Nibbāna as their object.</p>
     </div>
   </div>
-  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga XIV, XVIII–XXII</span><span>13</span></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IX; Visuddhimagga XIV, XVIII–XXII</span><span class="pg"></span></div>
 </section>
 
-<!-- ================= PLATE 14 ================= -->
+<!-- ================= LEVEL 7 ================= -->
+<section class="sheet level" id="L7" data-level="7"></section>
+
+<!-- ================= PLATE 14: ONE MOMENT ================= -->
 <section class="sheet" id="p14">
-  <div class="ph"><span><b>Plate 14</b> · Comparison</span><span>Abhidhamma Atlas</span></div>
+  <div class="ph"><span><b>Plate 14</b> · Synthesis</span><span>Abhidhamma Atlas</span></div>
+  <h2>One moment, every lens</h2>
+  <p class="lede">Every plate so far describes the same experience from a different angle. Here one ordinary moment, seeing a ripe mango and wanting it, is read through ten of them at once. Each lens points back to the plate that teaches it.</p>
+  <div class="fig"><svg id="lens" viewBox="0 0 680 620" style="max-width:630px;margin:0 auto" role="img" aria-label="One moment of seeing and wanting a mango, with ten surrounding boxes reading it through ten frameworks"></svg></div>
+  <div class="box tint">
+    <h3>Your turn</h3>
+    <p class="small">Pick one moment from today, such as hearing your name or tasting something sweet, and answer each lens in a line.</p>
+    <div class="worksheet" id="worksheet"></div>
+  </div>
+  <div class="pf"><span>Draws on plates 2–13</span><span class="pg"></span></div>
+</section>
+
+
+<section class="sheet" id="p15">
+  <div class="ph"><span><b>Plate 15</b> · Comparison</span><span>Abhidhamma Atlas</span></div>
   <h2>Other maps of the same ground</h2>
   <p class="lede">Three Buddhist schools analysed experience into ultimate elements and reached different lists. Comparing them shows which choices were open. Counted the same way, with citta as one element, the Theravāda list has 82 items.</p>
   <div class="fig"><div class="scroll"><svg id="compare" viewBox="0 0 680 166" role="img" aria-label="Stacked bars comparing Theravāda 82, Sarvāstivāda 75 and Yogācāra 100 elements"></svg></div>
@@ -590,17 +729,25 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
     <div class="box"><h3>A fifth category</h3><p class="small">Northern lists add “formations dissociated from mind”: possession, life force, the arising and decay of things, words. The Theravāda has no such category. It treats most of these as concepts, or as aspects of matter and mind.</p></div>
     <div class="box"><h3>The base of mind</h3><p class="small">Yogācāra counts eight consciousnesses, including a storehouse consciousness (<i>ālaya-vijñāna</i>) that carries seeds of past action. The Theravāda's life-continuum (<i>bhavaṅga</i>) is often compared with it, though it is momentary and stores nothing.</p></div>
   </div>
-  <div class="box tint">
-    <h3>Using this atlas</h3>
-    <p class="small">Read the plates in order the first time: plates 2–4 give the elements, 6–8 show them moving, 9–11 widen the frame to lifetimes and worlds, and 12–13 turn it into practice. On a second pass, pick one dhamma, such as contact or greed, and follow it through every plate where it appears.</p>
-  </div>
   <div class="box">
     <h3>Research notes</h3>
     <p class="small">This atlas was built from two rounds of research. The first surveyed the canonical books, the commentaries and manuals, and modern studies, looking for how each explains the material. The second checked the specific claims used here: the groupings of the 24 conditions, the plane lifespans, the wording and source of each simile, and the counts of the northern schools. Where the texts give a range, or where a figure was confirmed only by secondary sources, the plate says so.</p>
     <p class="src">Principal sources: Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i> (BPS, 1993); Nārada, <i>A Manual of Abhidhamma</i>; Bhikkhu Ñāṇamoli (tr.), <i>The Path of Purification</i>; <i>The Expositor</i> (Atthasālinī), tr. Pe Maung Tin; <i>Milindapañha</i>; Nyanaponika, <i>Abhidhamma Studies</i>; Y. Karunadasa, <i>The Theravāda Abhidhamma</i>; L. S. Cousins (1992) on vitakka and vicāra; M. Heim on nāmarūpa in Buddhaghosa; Agganyani's Paṭṭhāna overview; Encyclopedia of Buddhism entries on the 75 and 100 dharmas.</p>
   </div>
-  <div class="pf"><span>Sources: Abhidharmakośa; Vasubandhu, <i>Lucid Introduction to the One Hundred Dharmas</i>; Kathāvatthu I</span><span>14</span></div>
+  <div class="pf"><span>Sources: Abhidharmakośa; Vasubandhu, <i>Lucid Introduction to the One Hundred Dharmas</i>; Kathāvatthu I</span><span class="pg"></span></div>
 </section>
+
+<!-- ================= THREADS AND GLOSSARY ================= -->
+<section class="sheet" id="threads">
+  <div class="ph"><span><b>Threads</b> · Level VII review</span><span>Abhidhamma Atlas</span></div>
+  <h2>Threads: following one idea through the atlas</h2>
+  <p class="lede">Eleven key ideas run through many plates. Each coloured line is one idea; each stop is a plate where it appears. Plate 14 is the interchange where most of them meet. To review, pick a line and read its plates in order. The same colours mark the threads in the strip at the top of every plate.</p>
+  <div class="fig"><div class="scroll"><svg id="metro" viewBox="0 0 680 360" role="img" aria-label="Metro-style map of eleven key ideas running across fifteen plates"></svg></div></div>
+  <div class="lab">Glossary · the plate where each term is taught</div>
+  <div class="gloss" id="gloss"></div>
+  <div class="pf"><span>Abhidhamma Atlas · threads and glossary</span><span class="pg"></span></div>
+</section>
+
 
 <script>
 (function () {
@@ -836,12 +983,12 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
       pair: '<circle ' + F + ' cx="26" cy="12" r="5"/><path ' + C + ' d="M26 18 V34 M18 28 L34 24"/><circle ' + F + ' cx="32" cy="34" r="6"/><path ' + C + ' d="M32 40 V52 M26 58 L32 52 L38 58 M24 44 H40"/><path ' + C + ' d="M44 30 L52 26"/>'
     };
     var cards = [
-      ["rams", "Contact", "phassa", "Two rams butting heads: one is the eye, one is the visible object, and their meeting is contact. Or two hands clapping.", "Milindapañha"],
-      ["crown", "Feeling", "vedanā", "A cook tastes a dish while preparing it; the king enjoys the whole meal. Other factors touch the object's taste in passing. Feeling, as master, enjoys it fully.", "Atthasālinī"],
-      ["mark", "Perception", "saññā", "A carpenter marks his timber so he can recognise it later. Perception makes a sign, so that next time it can say, “this is the same”.", "Visuddhimagga XIV"],
-      ["pupil", "Volition", "cetanā", "A head pupil recites his own lesson and makes the others recite theirs. Volition does its own work and sets the other factors to theirs.", "Atthasālinī"],
-      ["bell", "Applied and sustained thought", "vitakka, vicāra", "Striking a bell, and its ringing on. A bird spreading its wings to take off, and gliding. A bee diving onto a lotus, and moving over it once landed.", "Visuddhimagga IV; Milindapañha has a gong"],
-      ["pair", "Mind and matter", "nāma-rūpa", "A blind man carrying a lame man who can see: neither can travel alone. Also a puppet that moves only through wood and strings, and two sheaves of reeds propped against each other.", "Visuddhimagga XVIII"]
+      ["rams", "Contact", "phassa", "Two rams butting heads: one is the eye, one is the visible object, and their meeting is contact. Or two hands clapping.", "Milindapañha <a class='xr' href='#p4'>→ 4</a> <a class='xr' href='#p9'>→ 9</a>"],
+      ["crown", "Feeling", "vedanā", "A cook tastes a dish while preparing it; the king enjoys the whole meal. Other factors touch the object's taste in passing. Feeling, as master, enjoys it fully.", "Atthasālinī <a class='xr' href='#p3'>→ 3</a> <a class='xr' href='#p9'>→ 9</a>"],
+      ["mark", "Perception", "saññā", "A carpenter marks his timber so he can recognise it later. Perception makes a sign, so that next time it can say, “this is the same”.", "Visuddhimagga XIV <a class='xr' href='#p4'>→ 4</a>"],
+      ["pupil", "Volition", "cetanā", "A head pupil recites his own lesson and makes the others recite theirs. Volition does its own work and sets the other factors to theirs.", "Atthasālinī <a class='xr' href='#p4'>→ 4</a> <a class='xr' href='#p10'>→ 10</a>"],
+      ["bell", "Applied and sustained thought", "vitakka, vicāra", "Striking a bell, and its ringing on. A bird spreading its wings to take off, and gliding. A bee diving onto a lotus, and moving over it once landed.", "Visuddhimagga IV; Milindapañha has a gong <a class='xr' href='#p12'>→ 12</a>"],
+      ["pair", "Mind and matter", "nāma-rūpa", "A blind man carrying a lame man who can see: neither can travel alone. Also a puppet that moves only through wood and strings, and two sheaves of reeds propped against each other.", "Visuddhimagga XVIII <a class='xr' href='#p5'>→ 5</a> <a class='xr' href='#p13'>→ 13</a>"]
     ];
     $("similes").innerHTML = cards.map(function (c) {
       return '<div class="sim"><svg viewBox="0 0 64 64" aria-hidden="true">' + icons[c[0]] + '</svg><div><h3>' + c[1] + ' <span class="p">' + c[2] + '</span></h3><p>' + c[3] + '</p><p class="src">' + c[4] + "</p></div></div>";
@@ -881,7 +1028,7 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
       5: [1, "He picks it up.", ""],
       6: [1, "He looks it over.", ""],
       7: [1, "He decides: a ripe mango.", ""],
-      8: [7, "He eats it. Here, and only here, the mind acts: liking or disliking, wisdom or its absence. This is where kamma is made.", ""],
+      8: [7, "He eats it. Here, and only here, the mind acts: liking or disliking, wisdom or its absence. This is where kamma is made. <a class='xr' href='#p10'>→ 10</a>", ""],
       15: [2, "He swallows the last of it. †", "later"],
       17: [1, "He goes back to sleep. †", "later"]
     };
@@ -1324,15 +1471,15 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
       s += T("text", { x: x + 48, y: 521, "text-anchor": "middle", "class": "tx-s" }, t);
     });
     s += T("path", { d: "M" + (cx - 20) + " 470 C" + (cx - 40) + " 485, " + (cx - 120) + " 490, " + (cx - 170) + " 500 M" + (cx + 20) + " 470 C" + (cx + 40) + " 485, " + (cx + 120) + " 490, " + (cx + 170) + " 500", style: "fill:none;stroke:var(--rupa);stroke-width:3" });
-    var roots = [["1", "Purification of virtue", "sīla-visuddhi", cx - 150], ["2", "Purification of mind", "citta-visuddhi", cx + 150]];
+    var roots = [["1", "Purification of virtue", "sīla-visuddhi · a root", cx - 150], ["2", "Purification of mind", "citta-visuddhi · access or jhāna", cx + 150]];
     roots.forEach(function (r) {
       s += T("rect", { x: r[3] - 92, y: 426, width: 184, height: 36, rx: 18, style: "fill:var(--sheet);stroke:var(--rupa);stroke-width:1.6" });
       s += T("text", { x: r[3], y: 441, "text-anchor": "middle", "class": "tx-s tx-b" }, r[0] + " · " + r[1]);
-      s += T("text", { x: r[3], y: 454, "text-anchor": "middle", "class": "tx-xs tx-it tx-mu" }, r[2] + " · a root");
+      s += T("text", { x: r[3], y: 454, "text-anchor": "middle", "class": "tx-xs tx-it tx-mu" }, r[2]);
     });
     var trunk = [
-      ["3", "Purification of view", "defining mind and matter", []],
-      ["4", "Overcoming doubt", "discerning their conditions", []],
+      ["3", "Purification of view", "defining nāma-rūpa · pl. 2–5", []],
+      ["4", "Overcoming doubt", "discerning conditions · pl. 8–9", []],
       ["5", "Knowledge of path and not-path", "telling true insight from its imitations", ["comprehension", "rise and fall (tender)"]],
       ["6", "Knowledge of the way", "nine insight knowledges", ["rise and fall (mature)", "dissolution", "fearfulness", "danger", "disenchantment", "desire for deliverance", "reflection", "equanimity about formations", "conformity"]],
       ["7", "Knowledge and vision", "path knowledge", []]
@@ -1399,3 +1546,446 @@ table.fet td i.w { display: inline-block; width: 26px; height: 9px; border-radiu
   })();
 })();
 </script>
+<script>
+(function () {
+  "use strict";
+  function A(o) { var s = ""; for (var k in o) if (o[k] !== undefined && o[k] !== null) s += " " + k + '="' + o[k] + '"'; return s; }
+  function T(tag, o, inner) { return inner === undefined ? "<" + tag + A(o) + "/>" : "<" + tag + A(o) + ">" + inner + "</" + tag + ">"; }
+  function $(id) { return document.getElementById(id); }
+  function f1(n) { return Math.round(n * 10) / 10; }
+  function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+  var ROM = ["", "I", "II", "III", "IV", "V", "VI", "VII"];
+  var HALO = "paint-order:stroke;stroke:var(--sheet);stroke-width:3px;stroke-linejoin:round";
+  function xr(n) { return '<a class="xr" href="#p' + n + '">→ ' + n + "</a>"; }
+  function lvc(n) { return "var(--lv" + n + ")"; }
+
+  /* ---------------- data ---------------- */
+  var PL = {
+    1: { t: "The library", s: "Library", lv: 1, k: "Seven books, and the commentaries and manuals that grew around them." },
+    2: { t: "From a person to dhammas", s: "Two truths", lv: 1, k: "How “a person” resolves into four kinds of ultimate reality." },
+    3: { t: "A map of the 89", s: "The 89", lv: 2, k: "Every kind of consciousness, coloured by the feeling it carries." },
+    4: { t: "The 52 factors as an ensemble", s: "The 52", lv: 2, k: "Seven factors in every moment, and two families that never mix." },
+    5: { t: "How matter is made", s: "Matter", lv: 2, k: "28 kinds of matter, four origins, 21 kalāpas." },
+    6: { t: "The commentators' picture-book", s: "Similes", lv: 2, k: "The similes that make the elements memorable." },
+    7: { t: "The mango and the moment", s: "Seeing", lv: 3, k: "A 17-moment process of seeing, told through the mango simile." },
+    8: { t: "The web of 24 conditions", s: "Conditions", lv: 4, k: "How each dhamma helps another, sorted by direction." },
+    9: { t: "The wheel across three lives", s: "The wheel", lv: 4, k: "Dependent origination and its whole vocabulary in one drawing." },
+    10: { t: "Kamma, death and rebirth", s: "Kamma", lv: 5, k: "Four ways to sort kamma, and the hinge between two lives." },
+    11: { t: "Thirty-one planes", s: "Planes", lv: 5, k: "The worlds of each level of mind, on a scale of deep time." },
+    12: { t: "Forty meditation subjects", s: "Calm", lv: 6, k: "Subjects matched to temperaments, and how deep each can go." },
+    13: { t: "The tree of purification", s: "Insight", lv: 6, k: "The path of insight as soil, roots, trunk and crown." },
+    14: { t: "One moment, every lens", s: "Every lens", lv: 7, k: "One moment of seeing and wanting, read through ten frameworks." },
+    15: { t: "Other maps of the same ground", s: "Other maps", lv: 7, k: "How two other schools counted the elements." }
+  };
+  var FROM = { 2: [1], 3: [2], 4: [2, 3], 5: [2], 6: [3, 4, 5], 7: [3, 4, 5], 8: [7], 9: [8], 10: [7, 9], 11: [3, 10], 12: [3, 11], 13: [9, 12], 14: [7, 9, 13], 15: [14] };
+  var TO = {};
+  Object.keys(FROM).forEach(function (k) { FROM[k].forEach(function (f) { (TO[f] = TO[f] || []).push(+k); }); });
+
+  var LV = [null,
+    { name: "Foundations", q: "What is the Abhidhamma, and what does it take apart?", qs: "What is being taken apart?", plates: [1, 2],
+      arrive: "No background is needed. A little familiarity with the five aggregates of the suttas helps.",
+      leave: ["Name the seven books and the main later works.", "Tell conventional truth from ultimate truth.", "Map the five aggregates onto the four ultimate realities.", "Read the four-part definition the commentaries give every dhamma."],
+      learn: ["Name the four ultimate realities and how many kinds each has.", "Which book analyses, and which one relates everything by condition?"],
+      reflect: ["The Abhidhamma calls “chariot” a convention, not a falsehood. What would be lost if conventions were simply false?", "Why might a four-part definition teach more than a one-line gloss?"],
+      observe: ["Take one ordinary moment, such as drinking tea, and list which of the five aggregates were present in it."],
+      conf: ["“Ultimate” does not mean hidden or permanent. Dhammas are momentary events, and they are exactly what is directly experienced.", "The Abhidhamma does not throw persons away. One of its seven books, the Puggalapaññatti, is about types of people."],
+      tax: ["Name the 7 books and 4 realities", "Why a convention is not a falsehood", "See one moment as five aggregates"] },
+    { name: "Elements", q: "What is experience made of?", qs: "What is experience made of?", plates: [3, 4, 5, 6],
+      arrive: "Level I: the four realities and the two truths.",
+      leave: ["Place any citta by plane, ethical kind and feeling.", "Tell the 7 universals from the 6 occasionals, and say why unwholesome and beautiful factors never meet.", "Name the four origins of matter and the eight inseparables.", "Explain contact, feeling, perception or volition with a commentarial simile."],
+      learn: ["Name the seven universal factors.", "Which four things produce matter, and which kinds does only kamma produce?"],
+      reflect: ["Displeasure appears only in the two hate-rooted cittas. What does that suggest about mental pain and aversion?", "Feeling is a universal factor. Can any moment of mind be entirely without feeling-tone?"],
+      observe: ["Note the feeling-tone of the next ten things you see: pleasant, unpleasant or neutral.", "When irritation arises, look for pleasure in the very same moment. Can you find it, or do they alternate?"],
+      conf: ["Vedanā is not emotion. It is only the pleasant, painful or neutral tone of a moment; an emotion is a complex of many factors.", "Rūpa is not just visible form. It includes the sense organs, sound, the heart-base and nutritive essence.", "Citta and its factors are not separate things that meet. They arise together, cease together and share one object and one base."],
+      tax: ["Classify cittas, factors and matter", "Why some factors never meet", "Notice the feeling-tone of moments"] },
+    { name: "Process", q: "How does experience unfold, moment by moment?", qs: "How does it unfold?", plates: [7],
+      arrive: "Level II: the kinds of citta, especially the rootless ones, and the lifespan of matter.",
+      leave: ["List the 17 moments of a five-door process and the job of each.", "Explain why new kamma is made only in the javanas.", "Say how weaker objects cut the process short, and how the mind-door process differs."],
+      learn: ["At which moment does seeing occur? Which moments make kamma?", "What happens when the object is only “slight”?"],
+      reflect: ["Eye-consciousness is the result of past kamma, but the javanas make new kamma. Where, then, is the room for choice in a moment of seeing?", "Why can a very weak object produce no javana at all?"],
+      observe: ["When a sound catches your attention, notice the brief gap between hearing it and naming it."],
+      conf: ["Bhavaṅga is not a self or a soul. It is a resultant citta that arises and ceases like any other.", "The 17 moments are not a slow sequence you can watch one by one. They describe structure, far below the speed of ordinary awareness.", "Javana is not a separate decision-maker. It is a run of, usually, seven similar cittas."],
+      tax: ["List the 17 moments and their jobs", "Why kamma is made only in javana", "Catch the gap between hearing and naming"] },
+    { name: "Relations", q: "How does everything hold together?", qs: "How does it hold together?", plates: [8, 9],
+      arrive: "Level III: the cognitive process. Level II: mind and matter.",
+      leave: ["Name the six families of conditions and give an example of each.", "Trace one moment of experience through several conditions.", "Place the 12 links across three lives, and name the connections, rounds and roots."],
+      learn: ["Which two links are the roots of the wheel?", "Name the four conditions that, the Saṅgaha says, include all 24."],
+      reflect: ["Contact and feeling arise together, yet contact is listed first. What kind of order is the list showing?", "Why must the Paṭṭhāna allow concepts, not only dhammas, to be objects?"],
+      observe: ["Trace one craving back: what feeling came just before it, and what contact before that?"],
+      conf: ["Conditions are not billiard balls in a chain. Many of them hold between things that arise at the same time.", "The three-life reading is the Saṅgaha's standard, but the Vibhaṅga also applies the twelve links within a single moment of mind."],
+      tax: ["Name the 6 families and 12 links", "Why most conditions are simultaneous", "Trace a craving back to a contact"] },
+    { name: "Lives and worlds", q: "What carries on from one life to the next, and where?", qs: "What carries on, and where?", plates: [10, 11],
+      arrive: "Level III: javana and the life-continuum. Level IV: dependent origination.",
+      leave: ["Sort kamma by function, order, time and place.", "Describe the last process of a life and how rebirth-linking takes its object.", "Match each jhāna to its planes and read their lifespans."],
+      learn: ["What three kinds of object can appear at death?", "Which plane holds beings with matter but no mind?"],
+      reflect: ["Rebirth-linking takes the same object as the last javanas. How does that tie Plate 10 back to Plate 7?", "Why might habitual kamma matter more, in practice, than any single act?"],
+      observe: ["Notice which thoughts return most often as you fall asleep. They are the raw material of habitual kamma."],
+      conf: ["Kamma is the volition, not its result. Results are vipāka.", "Nothing transmigrates. Rebirth-linking is conditioned by the past life, but nothing passes across.", "The planes are not only places. Each corresponds to a kind of mind: jhāna kamma ripens in the Brahmā worlds."],
+      tax: ["Sort kamma 4 ways; the 31 planes", "How rebirth hangs on the last process", "Watch which thoughts are habitual"] },
+    { name: "Practice", q: "What do I do with all this?", qs: "What do I do with it?", plates: [12, 13],
+      arrive: "Levels II to IV. Insight takes the elements, the process and the conditions as its objects.",
+      leave: ["Choose a meditation subject for a temperament and say how deep it can go.", "Name the three signs and three stages of concentration.", "Order the seven purifications and the ten insight knowledges, and say which fetters each path ends."],
+      learn: ["Which subjects can reach all five jhānas?", "Which three fetters end at stream-entry?"],
+      reflect: ["Purifications 3 and 4 are “defining mind and matter” and “discerning their conditions”. Which levels of this atlas do they match?", "Why does the tree put virtue and concentration at the roots rather than in the trunk?"],
+      observe: ["Choose one subject suited to your temperament and practise it daily for a week. Note which sign, if any, appears."],
+      conf: ["Calm and insight are not rivals. The tree puts concentration at the roots of insight.", "The insight knowledges are not ideas about impermanence. They are stages of directly seeing mind and matter arise and pass."],
+      tax: ["40 subjects; 7 purifications; 10 fetters", "Why calm is the root of insight", "Practise one subject for a week"] },
+    { name: "Synthesis", q: "How does it all fit together, and how do others see it?", qs: "How does it all fit?", plates: [14, 15],
+      arrive: "Everything before. This level is for review and perspective.",
+      leave: ["Describe one moment of experience through every lens in the atlas.", "Compare the Theravāda list with the Sarvāstivāda and Yogācāra lists.", "Follow any key idea through every plate where it appears."],
+      learn: ["How many elements does each of the three schools count?", "Which thread runs through the most plates?"],
+      reflect: ["If the past and future were as real as the present, which plates would have to change?", "The Paṭṭhāna already relates everything to everything. What does a concept map add, and what does it leave out?"],
+      observe: ["Fill in the worksheet on Plate 14 for one moment of your own day."],
+      conf: ["Different counts do not always mean different claims. Much of the difference lies in how things are grouped.", "Synthesis is not a new doctrine. These pages only make visible the links the texts already draw."],
+      tax: ["The counts of three schools", "What a different view of time would change", "Read one moment through every lens"] }
+  ];
+
+  var TH = [
+    ["citta", "Citta", "consciousness", "var(--th1)", [2, 3, 4, 6, 7, 8, 9, 11, 14, 15], "citta"],
+    ["feel", "Vedanā", "feeling", "var(--th2)", [2, 3, 4, 6, 9, 12, 14], "feeling"],
+    ["contact", "Phassa", "contact", "var(--th3)", [2, 4, 6, 8, 9, 14], "contact"],
+    ["kamma", "Cetanā", "volition and kamma", "var(--th4)", [4, 5, 6, 7, 8, 9, 10, 14], "kamma"],
+    ["rupa", "Rūpa", "matter", "var(--th5)", [2, 5, 6, 7, 8, 11, 14, 15], "matter"],
+    ["bhav", "Bhavaṅga", "life-continuum", "var(--th6)", [7, 10, 14, 15], "bhavaṅga"],
+    ["roots", "Taṇhā, avijjā", "the two roots", "var(--th7)", [4, 8, 9, 13, 14], "roots"],
+    ["jhana", "Jhāna", "absorption", "var(--th8)", [3, 4, 8, 10, 11, 12, 13], "jhāna"],
+    ["nib", "Nibbāna", "the unconditioned", "var(--th9)", [2, 13, 15], "Nibbāna"],
+    ["panna", "Paññā", "wisdom", "var(--th10)", [4, 6, 13, 14], "wisdom"],
+    ["time", "Khaṇa", "moments and time", "var(--th11)", [5, 7, 10, 11, 15], "time"]
+  ];
+
+  /* ---------------- concept map ---------------- */
+  var CN = [
+    { id: "T", lv: 1, x: 340, y: 46, w: 170, t: "Two truths", s: "conventional, ultimate · pl. 2" },
+    { id: "NB", lv: 2, x: 575, y: 46, w: 150, t: "Nibbāna", s: "unconditioned · pl. 2, 13" },
+    { id: "CE", lv: 2, x: 85, y: 140, w: 140, t: "Cetasika · 52", s: "mental factors · pl. 4, 6" },
+    { id: "CI", lv: 2, x: 245, y: 140, w: 130, t: "Citta · 89", s: "consciousness · pl. 3" },
+    { id: "RU", lv: 2, x: 460, y: 140, w: 140, t: "Rūpa · 28", s: "matter · pl. 5" },
+    { id: "BH", lv: 3, x: 100, y: 250, w: 150, t: "Life-continuum", s: "bhavaṅga · pl. 7, 10" },
+    { id: "PR", lv: 3, x: 300, y: 250, w: 150, t: "Cognitive process", s: "17 mind-moments · pl. 7" },
+    { id: "JV", lv: 3, x: 490, y: 250, w: 130, t: "Javana", s: "impulsion · pl. 7" },
+    { id: "CO", lv: 4, x: 130, y: 355, w: 150, t: "24 conditions", s: "Paṭṭhāna · pl. 8" },
+    { id: "DO", lv: 4, x: 330, y: 355, w: 170, t: "Dependent origination", s: "12 links, 3 lives · pl. 9" },
+    { id: "RB", lv: 5, x: 100, y: 460, w: 150, t: "Death and rebirth", s: "rebirth-linking · pl. 10" },
+    { id: "PL", lv: 5, x: 300, y: 460, w: 140, t: "31 planes", s: "worlds of mind · pl. 11" },
+    { id: "KA", lv: 5, x: 490, y: 460, w: 130, t: "Kamma", s: "volition · pl. 10" },
+    { id: "SA", lv: 6, x: 100, y: 565, w: 150, t: "Calm · jhāna", s: "samatha · pl. 12" },
+    { id: "VI", lv: 6, x: 300, y: 565, w: 150, t: "Insight", s: "vipassanā · pl. 13" },
+    { id: "PA", lv: 6, x: 490, y: 565, w: 130, t: "Path and fruit", s: "four paths · pl. 13" }
+  ];
+  var CE = [
+    { f: "T", t: "CE", d: "M300 66 L100 120" },
+    { f: "T", t: "CI", d: "M330 66 L262 120", l: "analysed into", lx: 300, ly: 100, a: "end" },
+    { f: "T", t: "RU", d: "M372 66 L448 120" },
+    { f: "T", t: "NB", d: "M425 46 L498 46", l: "and", lx: 461, ly: 40, a: "middle" },
+    { f: "CE", t: "CI", d: "M155 140 L178 140", both: 1, l: "arise together", lx: 166, ly: 178, a: "middle" },
+    { f: "RU", t: "CI", d: "M390 131 L312 131", l: "base, object", lx: 351, ly: 124, a: "middle" },
+    { f: "CI", t: "RU", d: "M310 150 L388 150", l: "mind-born matter", lx: 349, ly: 166, a: "middle" },
+    { f: "CI", t: "PR", d: "M262 160 L292 228", l: "strung into", lx: 284, ly: 196, a: "start" },
+    { f: "BH", t: "PR", d: "M175 250 L223 250", l: "object interrupts", lx: 199, ly: 222, a: "middle" },
+    { f: "PR", t: "JV", d: "M375 250 L423 250", l: "peaks in", lx: 399, ly: 222, a: "middle" },
+    { f: "JV", t: "KA", d: "M500 270 L500 438", l: "its volition\nis kamma", lx: 507, ly: 322, a: "start" },
+    { f: "CO", t: "PR", d: "M168 335 L262 272", l: "explains every step", lx: 222, ly: 318, a: "start" },
+    { f: "CO", t: "DO", d: "M205 355 L243 355", l: "applied to a life", lx: 224, ly: 392, a: "middle" },
+    { f: "DO", t: "RB", d: "M290 375 L150 438", l: "via consciousness", lx: 206, ly: 410, a: "end" },
+    { f: "DO", t: "KA", d: "M395 375 L455 438", l: "formations,\nbecoming", lx: 432, ly: 397, a: "start" },
+    { f: "KA", t: "RB", d: "M480 480 C480 516, 110 516, 110 482", l: "ripens as rebirth", lx: 382, ly: 521, a: "middle" },
+    { f: "RB", t: "BH", d: "M25 460 L12 460 L12 250 L23 250", l: "continues as", rot: 1, lx: 8, ly: 355 },
+    { f: "RB", t: "PL", d: "M175 460 L228 460", l: "in one of", lx: 202, ly: 452, a: "middle" },
+    { f: "SA", t: "PL", d: "M150 545 L262 482", l: "jhāna ripens here", lx: 194, ly: 532, a: "start" },
+    { f: "SA", t: "VI", d: "M175 565 L223 565", l: "supports", lx: 199, ly: 557, a: "middle" },
+    { f: "VI", t: "PA", d: "M375 565 L423 565", l: "matures into", lx: 399, ly: 600, a: "middle" },
+    { f: "PA", t: "DO", d: "M440 545 L364 377", l: "cuts its roots", lx: 372, ly: 430, a: "end" },
+    { f: "KA", t: "RU", d: "M555 460 L600 460 L600 140 L532 140", l: "kamma-born matter", rot: 1, lx: 610, ly: 300 },
+    { f: "PA", t: "NB", d: "M555 565 L662 565 L662 46 L652 46", l: "takes as object", rot: 1, lx: 672, ly: 300 }
+  ];
+  var cmapCount = 0;
+  function cmap(svg, hl) {
+    var N = {}, uid = "cm" + (cmapCount++);
+    CN.forEach(function (n) { N[n.id] = n; });
+    var s = "<defs>" +
+      T("marker", { id: uid + "a", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" }, T("path", { d: "M0 0 L10 5 L0 10 z", style: "fill:var(--muted)" })) +
+      T("marker", { id: uid + "b", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" }, T("path", { d: "M0 0 L10 5 L0 10 z", style: "fill:var(--ink)" })) + "</defs>";
+    [46, 140, 250, 355, 460, 565].forEach(function (y, i) {
+      var lv = i + 1;
+      var fill = hl === lv ? "fill:color-mix(in srgb, var(--lv" + lv + ") 14%, transparent)" : (lv % 2 ? "fill:var(--faint)" : "fill:none");
+      s += T("rect", { x: 0, y: y - 36, width: 680, height: 72, rx: 6, style: fill });
+    });
+    CE.forEach(function (e) {
+      var strong = !hl || N[e.f].lv === hl || N[e.t].lv === hl;
+      var dim = hl && !strong && !(N[e.f].lv < hl && N[e.t].lv < hl);
+      var col = hl && strong ? "var(--ink)" : "var(--muted)";
+      var mk = hl && strong ? "b" : "a";
+      s += T("path", { d: e.d, style: "fill:none;stroke:" + col + ";stroke-width:" + (hl && strong ? 1.6 : 1.2) + (dim ? ";opacity:.28" : ""), "marker-end": "url(#" + uid + mk + ")", "marker-start": e.both ? "url(#" + uid + mk + ")" : null });
+      if (e.l) {
+        var cls = "tx-xs" + (hl && strong ? " tx-b" : " tx-mu");
+        var st = HALO + (dim ? ";opacity:.35" : "");
+        if (e.rot) s += T("text", { x: e.lx, y: e.ly, transform: "rotate(-90 " + e.lx + " " + e.ly + ")", "text-anchor": "middle", "class": cls, style: st }, e.l);
+        else e.l.split("\n").forEach(function (ln, i) { s += T("text", { x: e.lx, y: e.ly + i * 10, "text-anchor": e.a, "class": cls, style: st }, ln); });
+      }
+    });
+    CN.forEach(function (n) {
+      var state = !hl ? "full" : (hl === 7 ? "full" : (n.lv === hl ? "hl" : (n.lv < hl ? "past" : "future")));
+      var x = n.x - n.w / 2, y = n.y - 20, c = lvc(n.lv);
+      var g = "";
+      if (state === "hl") {
+        g += T("rect", { x: x, y: y, width: n.w, height: 40, rx: 6, style: "fill:" + c });
+        g += T("text", { x: x + 11, y: n.y - 3, "class": "tx-m tx-b", style: "fill:var(--on-lv)" }, n.t);
+        g += T("text", { x: x + 11, y: n.y + 11, "class": "tx-xs", style: "fill:var(--on-lv);opacity:.85" }, n.s);
+      } else {
+        g += T("rect", { x: x, y: y, width: n.w, height: 40, rx: 6, style: "fill:var(--sheet);stroke:" + c + ";stroke-width:1.3" });
+        g += T("rect", { x: x, y: y, width: 5, height: 40, rx: 2, style: "fill:" + c });
+        g += T("text", { x: x + 12, y: n.y - 3, "class": "tx-m tx-b" }, n.t);
+        g += T("text", { x: x + 12, y: n.y + 11, "class": "tx-xs tx-mu" }, n.s);
+      }
+      s += T("g", { style: state === "future" ? "opacity:.3" : "" }, g);
+    });
+    svg.innerHTML = s;
+  }
+
+  /* ---------------- level pages ---------------- */
+  each("section.level", function (sec) {
+    var n = +sec.getAttribute("data-level"), L = LV[n];
+    sec.style.setProperty("--lvc", lvc(n));
+    var cards = L.plates.map(function (p) {
+      return '<a class="pc" href="#p' + p + '"><b>' + p + "</b><div><h3>" + PL[p].t + "</h3><p>" + PL[p].k + "</p></div></a>";
+    }).join("");
+    if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, and the terms that name them.</p></div></a>';
+    function col(title, pali, hint, list) {
+      return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q) { return "<li>" + q + "</li>"; }).join("") + "</ol></div>";
+    }
+    var range = L.plates.length > 1 ? "plates " + L.plates[0] + "–" + L.plates[L.plates.length - 1] : "plate " + L.plates[0];
+    sec.innerHTML =
+      '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · " + L.name + "</span><span>Abhidhamma Atlas</span></div>" +
+      '<div class="lvhead"><div class="lvnum">' + ROM[n] + '</div><div><div class="lab">Level ' + ROM[n] + " of VII · " + range + "</div><h2>" + L.name + '</h2><p class="lvq">' + L.q + "</p></div></div>" +
+      '<svg class="ladder" data-lv="' + n + '" viewBox="0 0 680 50" aria-label="Position in the seven levels"></svg>' +
+      '<div class="lvcols"><div style="display:grid;gap:10px">' +
+      '<div class="box"><div class="lab">You arrive with</div><p class="small">' + L.arrive + '</p><div class="lab" style="margin-top:4px">You leave able to</div><ul class="tight small">' + L.leave.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>" +
+      '<div class="pcards">' + cards + "</div></div>" +
+      '<div class="fig"><svg class="cmap" data-hl="' + n + '" viewBox="0 0 680 610" role="img" aria-label="Concept map with this level highlighted"></svg>' +
+      '<p class="cap">' + (n === 7 ? "Synthesis uses the whole map." : "Filled: this level. Outlined: earlier levels. Faded: what comes later. Bold arrows touch this level.") + "</p></div></div>" +
+      '<div class="lab">Check yourself at three depths</div>' +
+      '<div class="qgrid">' + col("Learn", "suta", "recall the lists and terms", L.learn) + col("Reflect", "cintā", "connect and explain", L.reflect) + col("Observe", "bhāvanā", "find it in experience", L.observe) + "</div>" +
+      '<div class="box"><h3>Common confusions</h3><ul class="conf">' + L.conf.map(function (c) { return "<li><span>" + c + "</span></li>"; }).join("") + "</ul></div>" +
+      '<div class="pf"><span>Level ' + ROM[n] + " · " + L.name + " · " + range + '</span><span class="pg"></span></div>';
+  });
+
+  each("svg.cmap", function (svg) { cmap(svg, +svg.getAttribute("data-hl")); });
+
+  each("svg.ladder", function (svg) {
+    var cur = +svg.getAttribute("data-lv"), s = "";
+    for (var i = 1; i <= 7; i++) {
+      var x = (i - 1) * 97 + 1, h = 8 + i * 3.4, y = 30 - h;
+      var st = i === cur ? "fill:" + lvc(i) : (i < cur ? "fill:color-mix(in srgb, " + lvc(i) + " 30%, var(--sheet))" : "fill:none;stroke:var(--line)");
+      var g = T("rect", { x: x, y: y, width: 93, height: h, rx: 2, style: st }) +
+        T("text", { x: x, y: 44, "class": "tx-s" + (i === cur ? " tx-b" : " tx-mu") }, ROM[i] + " · " + LV[i].name);
+      s += T("a", { href: "#L" + i }, g);
+    }
+    svg.innerHTML = s;
+  });
+
+  /* ---------------- nav strip on plates ---------------- */
+  each("section.sheet", function (sec) {
+    var m = /^p(\d+)$/.exec(sec.id);
+    if (!m) return;
+    var n = +m[1], P = PL[n], lv = P.lv;
+    var from = FROM[n] ? (n === 14 ? 'Builds on <a href="#p2">2</a>–<a href="#p13">13</a>' : "Builds on " + FROM[n].map(function (f) { return '<a href="#p' + f + '">' + f + "</a>"; }).join(" · ")) : "Start of the path";
+    var to = TO[n] ? "Leads to " + TO[n].map(function (f) { return '<a href="#p' + f + '">' + f + "</a>"; }).join(" · ") : '<a href="#threads">Threads and glossary</a>';
+    var th = TH.filter(function (t) { return t[4].indexOf(n) >= 0; }).map(function (t) { return '<span class="thr"><i style="background:' + t[3] + '"></i>' + t[5] + "</span>"; }).join("");
+    var nav = document.createElement("div");
+    nav.className = "nav";
+    nav.innerHTML = '<a class="lvb" href="#L' + lv + '" style="background:' + lvc(lv) + ';border:0"><b>' + ROM[lv] + "</b>" + LV[lv].name + "</a><span>" + from + "</span><span>" + to + '</span><span class="thrs">' + th + "</span>";
+    sec.querySelector(".ph").insertAdjacentElement("afterend", nav);
+  });
+
+  /* ---------------- taxonomy table, routes, dag ---------------- */
+  (function () {
+    var t = $("tax"); if (!t) return;
+    var h = "<thead><tr><th></th>";
+    for (var i = 1; i <= 7; i++) h += '<th><a href="#L' + i + '"><div class="stp" style="height:' + (6 + i * 5) + "px;background:" + lvc(i) + '"></div><b>' + ROM[i] + "</b><span>" + LV[i].name + "</span></a></th>";
+    h += "</tr></thead><tbody>";
+    function row(cls, head, fn) { var r = '<tr class="' + cls + '"><th>' + head + "</th>"; for (var i = 1; i <= 7; i++) r += "<td>" + fn(i) + "</td>"; return r + "</tr>"; }
+    h += row("q", "Question", function (i) { return LV[i].qs; });
+    h += row("pl", "Plates", function (i) { return LV[i].plates.map(function (p) { return '<a href="#p' + p + '" style="background:' + lvc(i) + '">' + p + "</a>"; }).join(""); });
+    h += row("d1", "Learn<br><i>suta</i>", function (i) { return LV[i].tax[0]; });
+    h += row("d2", "Reflect<br><i>cintā</i>", function (i) { return LV[i].tax[1]; });
+    h += row("d3", "Observe<br><i>bhāvanā</i>", function (i) { return LV[i].tax[2]; });
+    t.innerHTML = h + "</tbody>";
+
+    var routes = [
+      ["Full course", "every level page and plate, in order", null],
+      ["Quick tour", "the core in six plates", [2, 3, 7, 9, 13, 14]],
+      ["Practitioner's route", "from the elements to the path", [2, 4, 7, 9, 12, 13, 14]]
+    ];
+    $("routes").innerHTML = routes.map(function (r) {
+      var seq = r[2] ? r[2].map(function (p) { return '<a href="#p' + p + '">' + p + " " + PL[p].s + "</a>"; }).join("<em>→</em>") : '<a href="#L1">Level I</a><em>→</em><span>1</span><em>→</em><span>2</span><em>→</em><a href="#L2">Level II</a><em>→ … →</em><a href="#threads">Threads</a>';
+      return '<div class="rt"><div><b>' + r[0] + '</b><div class="cap">' + r[1] + '</div></div><div class="seq">' + seq + "</div></div>";
+    }).join("");
+
+    var cx = function (lv) { return 48 + (lv - 1) * 98; };
+    var pos = {};
+    for (var l = 1; l <= 7; l++) {
+      var ps = LV[l].plates, nn = ps.length;
+      ps.forEach(function (p, i) { pos[p] = { x: cx(l), y: 128 + (i - (nn - 1) / 2) * 42, lv: l }; });
+    }
+    var s = "<defs>" + T("marker", { id: "dag-a", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto" }, T("path", { d: "M0 0 L10 5 L0 10 z", style: "fill:var(--muted)" })) + "</defs>";
+    for (l = 1; l <= 7; l++) {
+      s += T("rect", { x: cx(l) - 47, y: 4, width: 94, height: 228, rx: 6, style: "fill:" + (l % 2 ? "var(--faint)" : "none") });
+      s += T("text", { x: cx(l), y: 20, "text-anchor": "middle", "class": "tx-s tx-b" }, ROM[l] + " · " + LV[l].name);
+    }
+    Object.keys(FROM).forEach(function (k) {
+      FROM[k].forEach(function (f) {
+        var a = pos[f], b = pos[+k], d;
+        if (a.lv === b.lv && Math.abs(b.y - a.y) < 50) {
+          d = "M" + a.x + " " + (a.y + 14) + " L" + b.x + " " + (b.y - 15);
+        } else if (a.lv === b.lv) {
+          var off = 54 + Math.abs(b.y - a.y) / 14;
+          d = "M" + (a.x + 42) + " " + a.y + " C" + (a.x + off) + " " + a.y + ", " + (b.x + off) + " " + b.y + ", " + (b.x + 43) + " " + b.y;
+        } else {
+          var mx = (a.x + 42 + b.x - 42) / 2;
+          d = "M" + (a.x + 42) + " " + a.y + " C" + mx + " " + a.y + ", " + mx + " " + b.y + ", " + (b.x - 43) + " " + b.y;
+        }
+        s += T("path", { d: d, style: "fill:none;stroke:var(--muted);stroke-width:1.1;opacity:.8", "marker-end": "url(#dag-a)" });
+      });
+    });
+    Object.keys(pos).forEach(function (p) {
+      var o = pos[p];
+      s += T("a", { href: "#p" + p },
+        T("rect", { x: o.x - 42, y: o.y - 14, width: 84, height: 28, rx: 5, style: "fill:var(--sheet);stroke:" + lvc(o.lv) + ";stroke-width:1.4" }) +
+        T("rect", { x: o.x - 42, y: o.y - 14, width: 22, height: 28, rx: 5, style: "fill:" + lvc(o.lv) }) +
+        T("text", { x: o.x - 31, y: o.y + 4, "text-anchor": "middle", "class": "tx-s tx-b", style: "fill:var(--on-lv)" }, p) +
+        T("text", { x: o.x - 15, y: o.y + 4, "class": "tx-s" }, PL[p].s));
+    });
+    $("dag").innerHTML = s;
+  })();
+
+  /* ---------------- plate 14: lens ---------------- */
+  (function () {
+    var svg = $("lens"); if (!svg) return;
+    var L = [
+      ["Two truths", [2], "Conventionally: “I see a mango and want it.” Ultimately: cittas, mental factors, an eye-base and a visible form, with no owner behind them."],
+      ["Citta", [3], "Eye-consciousness: wholesome-resultant, rootless, with equanimity. Then javanas of the third greed-rooted citta: joyful, without wrong view, unprompted."],
+      ["Cetasika", [4], "Eye-consciousness carries only the 7 universals. Each javana carries 18 factors, led by greed (lobha); conceit may join as a 19th."],
+      ["Rūpa", [5], "Eye-sensitivity is kamma-born; the mango's colour is temperature-born. The javanas make mind-born matter: perhaps a smile, or a hand reaching out."],
+      ["Process", [7], "A very great object: seeing at moment 5, the wanting in javanas 9–15, registration at 16–17, then back to the life-continuum."],
+      ["Conditions", [8], "Eye-base: prenascence, support. Colour: object. Adverting: proximity. Greed: root. Each javana: repetition. Volition: kamma."],
+      ["Dependent origination", [9], "Contact → feeling → craving. This is the second connection, where present results turn into present causes."],
+      ["Kamma", [10], "Unwholesome kamma, by place. By time: J1 may ripen in this life, J7 in the next, J2–6 later. Repeated often, it becomes habitual kamma."],
+      ["Planes", [11], "Unwholesome kamma that produces rebirth leads to a woeful plane; within a life it ripens as unwelcome experiences."],
+      ["Practice", [12, 13], "Mindfulness notes “wanting”. Insight sees it arise and pass. Sensual desire is weakened at once-return and ended at non-return."]
+    ];
+    function wrap(t, n) {
+      var w = t.split(" "), out = [], cur = "";
+      w.forEach(function (x) { if ((cur + " " + x).trim().length > n) { out.push(cur.trim()); cur = x; } else cur += " " + x; });
+      if (cur.trim()) out.push(cur.trim());
+      return out;
+    }
+    var cx = 340, cy = 310, R = 86, s = "", bw = 214, bh = 112;
+    L.forEach(function (l, i) {
+      var left = i < 5, k = i % 5;
+      var x = left ? 0 : 680 - bw, y = 4 + k * 124, lv = PL[l[1][0]].lv;
+      var ex = left ? x + bw : x, ey = y + bh / 2;
+      var dx = ex - cx, dy = ey - cy, dd = Math.sqrt(dx * dx + dy * dy);
+      s += T("line", { x1: f1(cx + dx / dd * R), y1: f1(cy + dy / dd * R), x2: ex, y2: ey, style: "stroke:" + lvc(lv) + ";stroke-width:1.4" });
+      s += T("circle", { cx: ex, cy: ey, r: 3, style: "fill:" + lvc(lv) });
+    });
+    s += T("circle", { cx: cx, cy: cy, r: R, style: "fill:var(--nama-soft);stroke:var(--nama);stroke-width:1.6" });
+    s += T("ellipse", { cx: cx, cy: cy - 30, rx: 22, ry: 28, transform: "rotate(-24 " + cx + " " + (cy - 30) + ")", style: "fill:var(--f-joy);stroke:var(--rupa);stroke-width:1.5" });
+    s += T("path", { d: "M" + (cx + 8) + " " + (cy - 58) + " q14 -10 24 -2 q-12 10 -24 2", style: "fill:var(--f-ple);stroke:var(--nib);stroke-width:1" });
+    s += T("text", { x: cx, y: cy + 18, "text-anchor": "middle", "class": "tx-l tx-d tx-b" }, "Seeing a ripe mango");
+    s += T("text", { x: cx, y: cy + 35, "text-anchor": "middle", "class": "tx-l tx-d tx-b" }, "and wanting it");
+    s += T("text", { x: cx, y: cy + 52, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "one ordinary moment, ten lenses");
+    L.forEach(function (l, i) {
+      var left = i < 5, k = i % 5;
+      var x = left ? 0 : 680 - bw, y = 4 + k * 124, lv = PL[l[1][0]].lv;
+      var g = T("rect", { x: x, y: y, width: bw, height: bh, rx: 6, style: "fill:var(--sheet);stroke:var(--line)" });
+      g += T("rect", { x: left ? x : x + bw - 5, y: y, width: 5, height: bh, rx: 2, style: "fill:" + lvc(lv) });
+      var tx = left ? x + 12 : x + 10;
+      g += T("text", { x: tx, y: y + 18, "class": "tx-m tx-b" }, l[0]);
+      var bx = left ? x + bw - 14 : x + bw - 18;
+      l[1].slice().reverse().forEach(function (p, j) {
+        var px = bx - j * 22;
+        g += T("a", { href: "#p" + p }, T("circle", { cx: px, cy: y + 14, r: 9, style: "fill:" + lvc(PL[p].lv) }) + T("text", { x: px, y: y + 17.5, "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:var(--on-lv)" }, p));
+      });
+      wrap(l[2], 37).forEach(function (ln, j) { g += T("text", { x: tx, y: y + 36 + j * 12.6, "class": "tx-s", style: "font-size:9.8px" }, ln); });
+      s += g;
+    });
+    svg.innerHTML = s;
+    var ws = [["Two truths", "In everyday words, and in dhammas?"], ["Citta", "Which kind, and with what feeling?"], ["Cetasika", "Which factor led: greed, aversion, mindfulness?"], ["Rūpa", "Which base, and which object?"],
+      ["Process", "Which door, and how strong an object?"], ["Conditions", "What was the object, the root, the strong support?"], ["Dependent origination", "Did feeling turn into craving?"], ["Kamma", "What was the volition? Is it a habit?"],
+      ["Planes", "What kind of world does this mind belong to?"], ["Practice", "What would mindfulness have noticed?"]];
+    $("worksheet").innerHTML = ws.map(function (w) { return "<div><b>" + w[0] + "</b> · " + w[1] + "</div>"; }).join("");
+  })();
+
+  /* ---------------- threads: metro map and glossary ---------------- */
+  (function () {
+    var svg = $("metro"); if (!svg) return;
+    var X = function (p) { return 200 + (p - 1) * 31.4; };
+    var s = "";
+    for (var l = 1; l <= 7; l++) {
+      var ps = LV[l].plates, x0 = X(ps[0]) - 14, x1 = X(ps[ps.length - 1]) + 14;
+      s += T("rect", { x: x0, y: 4, width: x1 - x0, height: 350, rx: 6, style: "fill:" + (l % 2 ? "var(--faint)" : "color-mix(in srgb, var(--faint) 40%, transparent)") });
+      s += T("a", { href: "#L" + l }, T("text", { x: (x0 + x1) / 2, y: 20, "text-anchor": "middle", "class": "tx-s tx-b", style: "fill:" + lvc(l) }, ROM[l]));
+      ps.forEach(function (p) { s += T("a", { href: "#p" + p }, T("text", { x: X(p), y: 38, "text-anchor": "middle", "class": "tx-s tx-b" }, p)); });
+    }
+    s += T("text", { x: 0, y: 38, "class": "tx-xs tx-mu tx-b" }, "PLATE →");
+    var y0 = 62, dy = 27.5;
+    var ys14 = [];
+    TH.forEach(function (t, k) {
+      var y = y0 + k * dy, ps = t[4];
+      s += T("line", { x1: 0, y1: y, x2: 14, y2: y, style: "stroke:" + t[3] + ";stroke-width:5;stroke-linecap:round" });
+      s += T("text", { x: 22, y: y + 4, "class": "tx-m" }, '<tspan class="tx-it" style="font-size:12px">' + t[1] + '</tspan><tspan class="tx-mu"> ' + t[2] + "</tspan>");
+      s += T("line", { x1: X(ps[0]), y1: y, x2: X(ps[ps.length - 1]), y2: y, style: "stroke:" + t[3] + ";stroke-width:5;stroke-linecap:round" });
+      if (ps.indexOf(14) >= 0) ys14.push(y);
+    });
+    if (ys14.length) s += T("rect", { x: X(14) - 9, y: Math.min.apply(null, ys14) - 9, width: 18, height: Math.max.apply(null, ys14) - Math.min.apply(null, ys14) + 18, rx: 9, style: "fill:var(--sheet);stroke:var(--ink);stroke-width:2" });
+    TH.forEach(function (t, k) {
+      var y = y0 + k * dy;
+      t[4].forEach(function (p) {
+        s += T("a", { href: "#p" + p }, T("circle", { cx: f1(X(p)), cy: y, r: p === 14 ? 4.5 : 6, style: "fill:var(--sheet);stroke:" + t[3] + ";stroke-width:3" }));
+      });
+    });
+    s += T("text", { x: X(14), y: 350, "text-anchor": "middle", "class": "tx-xs tx-b" }, "interchange");
+    svg.innerHTML = s;
+
+    var GL = [
+      ["abhidhamma", "the “higher teaching”: experience analysed into dhammas", "1"], ["āhāra", "nutriment; nutritive essence", "5, 8"], ["ārammaṇa", "the object of a citta", "7, 8"],
+      ["avijjā", "ignorance, a root of the wheel", "9, 13"], ["bhavaṅga", "life-continuum", "7, 10"], ["bhūmi", "plane of existence", "11"],
+      ["cetanā", "volition; kamma itself", "4, 10"], ["cetasika", "mental factor", "4"], ["citta", "consciousness: one moment of knowing", "3"],
+      ["dhamma", "an ultimate, irreducible event", "2"], ["jhāna", "meditative absorption", "12"], ["javana", "impulsion, the active phase of a process", "7"],
+      ["kalāpa", "smallest group of matter", "5"], ["kamma", "volitional action", "10"], ["kasiṇa", "a device for concentration, such as a disc of earth", "12"],
+      ["lakkhaṇa", "characteristic", "2"], ["magga", "path of a noble person", "13"], ["nāma", "mind: citta with its factors", "2"],
+      ["nibbāna", "the unconditioned", "2, 13"], ["nimitta", "sign; in meditation, the mental image", "12"], ["paccaya", "condition", "8"],
+      ["paññā", "wisdom, understanding", "6, 13"], ["paṭicca-samuppāda", "dependent origination", "9"], ["paṭisandhi", "rebirth-linking", "10"],
+      ["phassa", "contact", "2, 4"], ["rūpa", "matter", "5"], ["sammuti", "convention", "2"],
+      ["saññā", "perception", "6"], ["saṅkhāra", "formations", "2, 9"], ["sati", "mindfulness", "2, 4"],
+      ["taṇhā", "craving, a root of the wheel", "9"], ["upekkhā", "equanimity; neutral feeling", "3"], ["vedanā", "feeling: pleasant, painful or neutral", "3"],
+      ["vipāka", "result of kamma", "3, 10"], ["viññāṇa", "consciousness, as an aggregate", "2"], ["vīthi", "cognitive process", "7"],
+      ["visuddhi", "purification", "13"], ["vitakka", "applied thought", "6, 12"], ["vicāra", "sustained thought", "6"]
+    ];
+    $("gloss").innerHTML = GL.map(function (g) { return "<div><i>" + g[0] + "</i> " + g[1] + " <span>· " + g[2] + "</span></div>"; }).join("");
+  })();
+
+  /* ---------------- page numbers and contents ---------------- */
+  var sheets = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
+  var pageOf = {};
+  sheets.forEach(function (sec, i) {
+    pageOf[sec.id] = i + 1;
+    var pg = sec.querySelector(".pf .pg");
+    if (pg) pg.textContent = i + 1;
+  });
+  (function () {
+    var toc = $("toc"); if (!toc) return;
+    function row(href, num, label, cls) { return '<a class="row' + (cls ? " " + cls : "") + '" href="#' + href + '"><b>' + num + "</b><span>" + label + "</span><span>" + pageOf[href] + "</span></a>"; }
+    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("map", "→", "How the main ideas connect") + "</div>";
+    for (var l = 1; l <= 7; l++) {
+      h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
+      LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); });
+      if (l === 7) h += row("threads", "↯", "Threads and glossary");
+      h += "</div>";
+    }
+    toc.innerHTML = h;
+  })();
+})();
+</script>
+
