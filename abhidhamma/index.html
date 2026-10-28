@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abhidhamma Study</title>
+<meta name="description" content="A visual atlas and an interactive model for studying the Theravāda Abhidhamma slowly, after Bhikkhu Bodhi's Comprehensive Manual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;1,400&family=Noto+Sans:wght@400;600&family=Noto+Serif+Display:ital,wght@0,500;1,400&display=swap">
+<style>
+/* A single title page in the atlas's own palette: indigo for mind, turmeric for matter, teal for Nibbāna. */
+:root {
+  --desk: #e6e8ee; --sheet: #ffffff; --ink: #1b1d2b; --muted: #5b5f74; --line: #d6d9e3;
+  --nama: #3a40ad; --rupa: #8a5d00; --nib: #27776a;
+  --display: "Noto Serif Display", Georgia, serif; --body: "Gentium Book Plus", Georgia, serif; --ui: "Noto Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --desk: #0c0e15; --sheet: #171a26; --ink: #e5e6ef; --muted: #9a9eb3; --line: #2c3044; --nama: #a3a8ff; --rupa: #e9b54d; --nib: #72cbb6; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --desk: #0c0e15; --sheet: #171a26; --ink: #e5e6ef; --muted: #9a9eb3; --line: #2c3044; --nama: #a3a8ff; --rupa: #e9b54d; --nib: #72cbb6; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--desk); color: var(--ink); font: 16px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px; }
+main { max-width: 760px; margin: 0 auto; background: var(--sheet); padding: 40px clamp(20px, 5vw, 56px); display: grid; gap: 22px; }
+h1 { font: 500 clamp(40px, 8vw, 64px)/1.05 var(--display); margin: 0; text-wrap: balance; }
+.sub { font: italic 20px/1.35 var(--display); color: var(--muted); margin: 0; }
+.items { display: grid; gap: 12px; }
+a.item { display: grid; grid-template-columns: 6px 1fr; gap: 14px; color: inherit; text-decoration: none; border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 14px 0; overflow: hidden; }
+a.item::before { content: ""; background: var(--c); }
+a.item:hover, a.item:focus-visible { border-color: var(--ink); outline: none; }
+a.item h2 { font: 500 24px/1.15 var(--display); margin: 0 0 4px; }
+a.item p { margin: 0; font-size: 15px; color: var(--muted); }
+.lab { font: 600 11px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+footer { font: 12.5px/1.5 var(--ui); color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="lab">Abhidhamma study</div>
+  <h1>Mind, matter and the conditions that join them</h1>
+  <p class="sub">Two companions to Bhikkhu Bodhi's <i>A Comprehensive Manual of Abhidhamma</i>, made for slow, deep study.</p>
+  <div class="items">
+    <a class="item" href="atlas/" style="--c:var(--nama)"><div><h2>Abhidhamma Atlas</h2><p>Fifteen plates on a seven-level path, with 3D models, stories from the Buddha's life and the Jātakas, a clickable concept map, and tools for slow study. Read it on screen or print it.</p></div></a>
+    <a class="item" href="abhidhamma-atlas.pdf" style="--c:var(--rupa)"><div><h2>The atlas as a PDF</h2><p>Forty-eight A4 pages, one sheet per page, for reading offline or printing.</p></div></a>
+    <a class="item" href="nama-rupa-model.html" style="--c:var(--nib)"><div><h2>Nāma–rūpa model</h2><p>An interactive model of mind and matter: the relations between them, a lifespan of moments, the kalāpas, and the factors around one citta.</p></div></a>
+  </div>
+  <footer>Made as a study aid, not as an authority: every plate names its sources, and the readings of the stories are marked as study aids. To suggest a correction or add a plate, see <a href="https://github.com/ashikbarua88/content/tree/master/abhidhamma">the source</a> and its CONTRIBUTING guide.</footer>
+</main>
+</body>
+</html>
