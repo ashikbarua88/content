@@ -11,6 +11,8 @@
 
   /* ---------------- data (see data.js) ---------------- */
   var D = window.ATLAS, PL = D.plates, FROM = D.builds, LV = D.levels, TH = D.threads;
+  var COMP = D.companions || {};
+  function compsAfter(p) { return Object.keys(COMP).filter(function (k) { return COMP[k].after === p; }); }
   var KIND = D.storyKinds, ST = D.stories, LIFE_PAST = D.lifePast, LIFE_LAST = D.lifeLast, GL = D.glossary;
   var TO = {};
   Object.keys(FROM).forEach(function (k) { FROM[k].forEach(function (f) { (TO[f] = TO[f] || []).push(+k); }); });
@@ -20,26 +22,38 @@
     var n = +sec.getAttribute("data-level"), L = LV[n];
     sec.style.setProperty("--lvc", lvc(n));
     var cards = L.plates.map(function (p) {
-      return '<a class="pc" href="#p' + p + '"><b>' + p + "</b><div><h3>" + PL[p].t + "</h3><p>" + PL[p].k + "</p></div></a>";
+      return '<a class="pc" href="#p' + p + '"><b>' + p + "</b><div><h3>" + PL[p].t + "</h3><p>" + PL[p].k + "</p></div></a>" +
+        compsAfter(p).map(function (c) { return '<a class="pc" href="#p' + c + '"><b>' + c + "</b><div><h3>" + COMP[c].t + "</h3><p>" + COMP[c].k + "</p></div></a>"; }).join("");
     }).join("");
-    cards += '<a class="pc" href="#D' + n + '"><b>◈</b><div><h3>In 3D</h3><p>Models of this level\'s diagrams to turn and explore.</p></div></a>';
-    cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
-    if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, and the terms that name them.</p></div></a>';
-    function col(title, pali, hint, list) {
-      return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q) { return "<li>" + q + "</li>"; }).join("") + "</ol></div>";
+    var many = L.plates.length + L.plates.reduce(function (k, p) { return k + compsAfter(p).length; }, 0) >= 5;
+    if (many) cards += '<div class="pc"><b>◈</b><div><h3><a href="#D' + n + '">In 3D</a> · <a href="#S' + n + '">In the stories</a></h3><p>Models to turn, then episodes from the Buddha\'s life, the Jātakas and the disciples.</p></div></div>';
+    else {
+      cards += '<a class="pc" href="#D' + n + '"><b>◈</b><div><h3>In 3D</h3><p>Models of this level\'s diagrams to turn and explore.</p></div></a>';
+      cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
     }
+    if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, what to read in the Manual, and 150 terms.</p></div></a>';
+    var HN = (D.hints || {})[n] || [];
+    function col(title, pali, hint, list, hints) {
+      return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q, i) {
+        return "<li>" + q + (hints && hints[i] ? '<details class="web qhint"><summary>hint</summary>' + hints[i] + "</details>" : "") + "</li>";
+      }).join("") + "</ol></div>";
+    }
+    var PQ = (D.prereq || {})[n];
+    var pre = PQ ? '<details class="web prechk"><summary>Before you start: three quick checks on what this level assumes</summary><ol>' +
+      PQ.map(function (q) { return "<li>" + q[0] + '<details><summary>answer</summary>' + q[1] + "</details></li>"; }).join("") + "</ol></details>" : "";
     var range = L.plates.length > 1 ? "plates " + L.plates[0] + "–" + L.plates[L.plates.length - 1] : "plate " + L.plates[0];
     sec.innerHTML =
       '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · " + L.name + "</span><span>Abhidhamma Atlas</span></div>" +
       '<div class="lvhead"><div class="lvnum">' + ROM[n] + '</div><div><div class="lab">Level ' + ROM[n] + " of VII · " + range + "</div><h2>" + L.name + '</h2><p class="lvq">' + L.q + "</p></div></div>" +
       '<svg class="ladder" data-lv="' + n + '" viewBox="0 0 680 50" aria-label="Position in the seven levels"></svg>' +
-      '<div class="lvcols"><div style="display:grid;gap:10px">' +
+      /* r2: arrive box and plate cards side by side; the concept map below at full width, cropped to this level's rows */
+      '<div class="lvcols lvcols2">' +
       '<div class="box"><div class="lab">You arrive with</div><p class="small">' + L.arrive + '</p><div class="lab" style="margin-top:4px">You leave able to</div><ul class="tight small">' + L.leave.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>" +
-      '<div class="pcards">' + cards + "</div></div>" +
-      '<div class="fig"><svg class="cmap" data-hl="' + n + '" viewBox="0 0 680 610" role="img" aria-label="Concept map with this level highlighted"></svg>' +
-      '<p class="cap">' + (n === 7 ? "Synthesis uses the whole map." : "Filled: this level. Outlined: earlier levels. Faded: what comes later. Bold arrows touch this level.") + '<span class="web"> Choose a box to open it on the main map.</span></p></div></div>' +
-      '<div class="lab">Check yourself at three depths</div>' +
-      '<div class="qgrid">' + col("Learn", "suta", "recall the lists and terms", L.learn) + col("Reflect", "cintā", "connect and explain", L.reflect) + col("Observe", "bhāvanā", "find it in experience", L.observe) + "</div>" +
+      '<div class="pcards' + (L.plates.length > 1 ? " two" : "") + '">' + cards + "</div></div>" +
+      '<div class="fig lvmap' + (n === 7 ? " whole" : "") + '"><svg class="cmap" data-hl="' + n + '" viewBox="0 0 680 610" role="img" aria-label="The part of the concept map around this level"></svg>' +
+      '<p class="cap">' + (n === 7 ? "Synthesis uses the whole map (page 5)." : "The concept map around this level. Filled: this level. Outlined: earlier levels. Faded: what comes later. Bold arrows touch this level; the whole map is on page 5.") + '<span class="web"> Choose a box to open it on the main map.</span></p></div>' +
+      pre + '<div class="lab">Check yourself at three depths</div>' +
+      '<div class="qgrid">' + col("Learn", "suta", "recall the lists and terms", L.learn) + col("Reflect", "cintā", "connect and explain", L.reflect, HN) + col("Observe", "bhāvanā", "find it in experience", L.observe) + "</div>" +
       '<div class="box"><h3>Common confusions</h3><ul class="conf">' + L.conf.map(function (c) { return "<li><span>" + c + "</span></li>"; }).join("") + "</ul></div>" +
       '<div class="pf"><span>Level ' + ROM[n] + " · " + L.name + " · " + range + '</span><span class="pg"></span></div>';
   });
@@ -50,7 +64,7 @@
       var x = (i - 1) * 97 + 1, h = 8 + i * 3.4, y = 30 - h;
       var st = i === cur ? "fill:" + lvc(i) : (i < cur ? "fill:color-mix(in srgb, " + lvc(i) + " 30%, var(--sheet))" : "fill:none;stroke:var(--line)");
       var g = T("rect", { x: x, y: y, width: 93, height: h, rx: 2, style: st }) +
-        T("text", { x: x, y: 44, "class": "tx-s" + (i === cur ? " tx-b" : " tx-mu") }, ROM[i] + " · " + LV[i].name);
+        T("text", { x: x, y: 44, "class": "tx-xs" + (i === cur ? " tx-b" : " tx-mu") }, ROM[i] + " · " + LV[i].name);
       s += T("a", { href: "#L" + i }, g);
     }
     svg.innerHTML = s;
@@ -58,7 +72,15 @@
 
   /* ---------------- nav strip on plates ---------------- */
   each("section.sheet", function (sec) {
-    var m = /^p(\d+)$/.exec(sec.id);
+    var m = /^p(\d+)$/.exec(sec.id), c = /^p(\d+b)$/.exec(sec.id);
+    if (c && COMP[c[1]]) {
+      var C = COMP[c[1]], cn = document.createElement("div");
+      cn.className = "nav";
+      cn.innerHTML = '<a class="lvb" href="#L' + C.lv + '" style="background:' + lvc(C.lv) + ';border:0"><b>' + ROM[C.lv] + "</b>" + LV[C.lv].name + "</a><span>Continues " + C.from.map(function (f) { return '<a href="#p' + f + '">' + f + "</a>"; }).join(" · ") +
+        "</span><span>Leads to " + C.to.map(function (f) { return '<a href="#p' + f + '">' + f + "</a>"; }).join(" · ") + "</span>";
+      sec.querySelector(".ph").insertAdjacentElement("afterend", cn);
+      return;
+    }
     if (!m) return;
     var n = +m[1], P = PL[n], lv = P.lv;
     var from = FROM[n] ? (n === 14 ? 'Builds on <a href="#p2">2</a>–<a href="#p13">13</a>' : "Builds on " + FROM[n].map(function (f) { return '<a href="#p' + f + '">' + f + "</a>"; }).join(" · ")) : "Start of the path";
@@ -131,58 +153,157 @@
     $("dag").innerHTML = s;
   })();
 
-  /* ---------------- plate 14: lens ---------------- */
+  /* ---------------- plate 14: one moment, every lens (r2: each lens shows its plate) ----------------
+     Ten cards, each with a thumbnail of its plate's own drawing with the mango moment marked,
+     so Plate 14 is a review of pictures already seen. Texts come from D.mango.lens;
+     the moment strip and the mango come from ATLAS.glyph (plates.js). */
   (function () {
     var svg = $("lens"); if (!svg) return;
-    var L = [
-      ["Two truths", [2], "Conventionally: “I see a mango and want it.” Ultimately: cittas, mental factors, an eye-base and a visible form, with no owner behind them."],
-      ["Citta", [3], "Eye-consciousness: wholesome-resultant, rootless, with equanimity. Then javanas of the third greed-rooted citta: joyful, without wrong view, unprompted."],
-      ["Cetasika", [4], "Eye-consciousness carries only the 7 universals. Each javana carries 18 factors, led by greed (lobha); conceit may join as a 19th."],
-      ["Rūpa", [5], "Eye-sensitivity is kamma-born; the mango's colour is temperature-born. The javanas make mind-born matter: perhaps a smile, or a hand reaching out."],
-      ["Process", [7], "A very great object: seeing at moment 5, the wanting in javanas 9–15, registration at 16–17, then back to the life-continuum."],
-      ["Conditions", [8], "Eye-base: prenascence, support. Colour: object. Adverting: proximity. Greed: root. Each javana: repetition. Volition: kamma."],
-      ["Dependent origination", [9], "Contact → feeling → craving. This is the second connection, where present results turn into present causes."],
-      ["Kamma", [10], "Unwholesome kamma, by place. By time: J1 may ripen in this life, J7 in the next, J2–6 later. Repeated often, it becomes habitual kamma."],
-      ["Planes", [11], "Unwholesome kamma that produces rebirth leads to a woeful plane; within a life it ripens as unwelcome experiences."],
-      ["Practice", [12, 13], "Mindfulness notes “wanting”. Insight sees it arise and pass. Sensual desire is weakened at once-return and ended at non-return."]
-    ];
+    var M = D.mango, G = D.glyph, FEEL = { J: "var(--f-joy)", E: "var(--f-eq)", S: "var(--f-ple)", P: "var(--f-pain)", D: "var(--f-dis)", V: "var(--f-joy)" };
+    var INK = "fill:none;stroke:var(--ink);stroke-width:1.1";
+    function tiny(x, y, t, cls, anchor) { return T("text", { x: f1(x), y: f1(y), "text-anchor": anchor || "start", "class": "tx-mu" + (cls ? " " + cls : ""), style: "font-size:6.6px" }, t); }
+    function arrow(x1, y1, x2, y2, col) {
+      var a = Math.atan2(y2 - y1, x2 - x1), h = 3.2;
+      return T("line", { x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2), style: "stroke:" + col + ";stroke-width:1" }) +
+        T("path", { d: "M" + f1(x2) + " " + f1(y2) + " L" + f1(x2 - h * Math.cos(a - 0.45)) + " " + f1(y2 - h * Math.sin(a - 0.45)) + " L" + f1(x2 - h * Math.cos(a + 0.45)) + " " + f1(y2 - h * Math.sin(a + 0.45)) + " Z", style: "fill:" + col });
+    }
+    /* each thumbnail draws in a 112 × 80 box at (x, y) */
+    var TH = {
+      2: function (x, y) {
+        var s = T("circle", { cx: x + 16, cy: y + 24, r: 6, style: "fill:var(--faint);stroke:var(--muted)" }) + T("path", { d: "M" + (x + 5) + " " + (y + 52) + " q0 -18 11 -18 q11 0 11 18 Z", style: "fill:var(--faint);stroke:var(--muted)" });
+        s += tiny(x + 16, y + 64, "“I see it”", "", "middle") + arrow(x + 34, y + 38, x + 50, y + 38, "var(--muted)");
+        s += T("rect", { x: x + 56, y: y + 8, width: 7, height: 7, rx: 1, style: "fill:var(--rupa-mark)" }) + tiny(x + 66, y + 14, "eye-base") + T("rect", { x: x + 56, y: y + 19, width: 7, height: 7, rx: 1, style: "fill:var(--rupa-mark);opacity:.6" }) + tiny(x + 66, y + 25, "colour");
+        for (var i = 0; i < 7; i++) s += T("circle", { cx: x + 59.5 + (i % 4) * 7, cy: y + 35 + Math.floor(i / 4) * 7, r: 2.4, style: "fill:var(--nama-2)" });
+        s += tiny(x + 88, y + 39, "factors") + T("circle", { cx: x + 62, cy: y + 58, r: 6, style: "fill:var(--nama)" }) + tiny(x + 72, y + 61, "a citta");
+        return s + tiny(x + 56, y + 76, "and no owner");
+      },
+      3: function (x, y) {
+        var rows = [[8, 2, 2], [7, 8, 3], [8, 8, 8], [5, 5, 5], [4, 4, 4], [4, 4]], n = 1, s = "", feel = {};
+        D.cittas.forEach(function (c) { feel[c[0]] = c[2]; });
+        rows.forEach(function (r, ri) {
+          var xx = x + 2, yy = y + 4 + ri * 12.4 + (ri >= 3 ? 2 : 0);
+          r.forEach(function (len) {
+            for (var i = 0; i < len; i++) {
+              var on = M.cittas.indexOf(n) >= 0;
+              s += T("rect", { x: f1(xx), y: f1(yy), width: 3.4, height: 7, rx: .8, style: "fill:" + (on ? FEEL[feel[n]] : "var(--line)") + (on ? ";stroke:var(--ink);stroke-width:.9" : "") });
+              xx += 4.2; n++;
+            }
+            xx += 3;
+          });
+        });
+        return s + tiny(x + 2, y + 81, "ringed: #28 #20 #25 #26 #29 #3");
+      },
+      4: function (x, y) {
+        var cx = x + 56, cy = y + 38, s = "";
+        function ring(n, r, a0, a1, fn) { for (var i = 0; i < n; i++) { var a = (a0 + (a1 - a0) * (n === 1 ? 0 : i / (n - 1))) * Math.PI / 180; s += fn(cx + r * Math.cos(a), cy + r * Math.sin(a), i); } }
+        ring(25, 34, -75, 75, function (px, py) { return T("circle", { cx: f1(px), cy: f1(py), r: 1.8, style: "fill:var(--line)" }); });
+        ring(14, 34, 105, 255, function (px, py, i) { var on = i < 5, may = i === 6; return T("circle", { cx: f1(px), cy: f1(py), r: on ? 2.6 : 1.8, style: on ? "fill:var(--bad)" : (may ? "fill:none;stroke:var(--bad);stroke-dasharray:1.5 1" : "fill:var(--line)") }); });
+        ring(6, 23, -60, 240, function (px, py) { return T("circle", { cx: f1(px), cy: f1(py), r: 2.4, style: "fill:var(--nama-2)" }); });
+        ring(7, 13, -90, 218, function (px, py) { return T("circle", { cx: f1(px), cy: f1(py), r: 2.4, style: "fill:var(--nama)" }); });
+        s += T("circle", { cx: cx, cy: cy, r: 6, style: "fill:var(--nama)" });
+        return s + tiny(x + 2, y + 79, "7+6+4+greed = 18; conceit may join");
+      },
+      5: function (x, y) {
+        var s = "";
+        function row(yy, n, add, lab, sub) {
+          for (var i = 0; i < n; i++) s += T("rect", { x: x + 2 + i * 6, y: yy, width: 5, height: 5, rx: .8, style: i < 8 ? "fill:var(--rupa-soft);stroke:var(--rupa-mark);stroke-width:.7" : "fill:var(--rupa-mark)" });
+          s += tiny(x + 2 + n * 6 + 3, yy + 5, lab, "tx-b") + tiny(x + 2, yy + 13, sub);
+        }
+        row(y + 4, 10, 2, "eye-decad", "kamma-born: the eye-base");
+        row(y + 28, 8, 0, "octad", "temperature-born: its colour");
+        row(y + 52, 8, 0, "octads ×7", "mind-born, one per javana");
+        return s;
+      },
+      7: function (x, y) {
+        return G.strip({ x: x + 2, y: y + 10, cw: 5.6, ch: 14, gap: .8, obj: true, hl: [5, 9, 10, 11, 12, 13, 14, 15] }) +
+          tiny(x + 2 + 4 * 6.4 + 2.8, y + 40, "5 sees", "", "middle") + tiny(x + 2 + 11 * 6.4 + 2.8, y + 40, "9–15 wanting", "", "middle") + tiny(x + 2, y + 6, "the mango's matter: 17 moments") +
+          tiny(x + 2, y + 56, "very great object, at the eye-door") + tiny(x + 2, y + 66, "then registration, then sleep");
+      },
+      8: function (x, y) {
+        var s = "", C = "var(--nama)", R = "var(--rupa-mark)";
+        function sq(px, py) { return T("rect", { x: px - 4, y: py - 4, width: 8, height: 8, rx: 1, style: "fill:var(--rupa-mark)" }); }
+        function dot(px, py, c) { return T("circle", { cx: px, cy: py, r: 4.2, style: "fill:" + (c || C) }); }
+        function n(px, py, t) { return T("circle", { cx: px, cy: py, r: 4.6, style: "fill:var(--sheet);stroke:var(--muted);stroke-width:.6" }) + T("text", { x: px, y: py + 2.3, "text-anchor": "middle", style: "font-size:6px", "class": "tx-b" }, t); }
+        s = sq(x + 8, y + 10) + sq(x + 8, y + 46) + dot(x + 8, y + 28) + dot(x + 46, y + 28) + dot(x + 84, y + 28, "var(--nama)") + dot(x + 84, y + 58, "var(--bad)") + dot(x + 106, y + 28);
+        s += arrow(x + 12, y + 12, x + 41, y + 25, R) + arrow(x + 12, y + 44, x + 41, y + 31, R) + arrow(x + 13, y + 28, x + 41, y + 28, C) + arrow(x + 51, y + 28, x + 79, y + 28, C) + arrow(x + 84, y + 53, x + 84, y + 33, "var(--bad)") + arrow(x + 89, y + 28, x + 101, y + 28, C);
+        s += n(x + 28, y + 14, "10") + n(x + 28, y + 42, "2") + n(x + 26, y + 34, "4") + n(x + 92, y + 45, "1") + n(x + 96, y + 20, "12");
+        return s + tiny(x + 2, y + 71, "eye-base, colour → seeing → … javana") + tiny(x + 2, y + 79, "greed a root; javana repeats javana");
+      },
+      9: function (x, y) {
+        var cx = x + 38, cy = y + 40, s = "", K = "DKRRRRRDDKRR";
+        for (var i = 0; i < 12; i++) {
+          var a0 = (-90 + i * 30 + 1.5) * Math.PI / 180, a1 = (-90 + (i + 1) * 30 - 1.5) * Math.PI / 180, r0 = 22, r1 = 35;
+          var on = i >= 5 && i <= 7, col = { D: "var(--bad)", K: "var(--kamma)", R: "var(--nama-2)" }[K[i]];
+          s += T("path", { d: "M" + f1(cx + r1 * Math.cos(a0)) + " " + f1(cy + r1 * Math.sin(a0)) + " A" + r1 + " " + r1 + " 0 0 1 " + f1(cx + r1 * Math.cos(a1)) + " " + f1(cy + r1 * Math.sin(a1)) + " L" + f1(cx + r0 * Math.cos(a1)) + " " + f1(cy + r0 * Math.sin(a1)) + " A" + r0 + " " + r0 + " 0 0 0 " + f1(cx + r0 * Math.cos(a0)) + " " + f1(cy + r0 * Math.sin(a0)) + " Z",
+            style: "fill:" + col + (on ? ";stroke:var(--ink);stroke-width:.9" : ";opacity:.28") });
+        }
+        var ad = (-90 + 7 * 30) * Math.PI / 180;
+        s += T("path", { d: "M" + f1(cx + 37 * Math.cos(ad)) + " " + f1(cy + 37 * Math.sin(ad) - 4) + " l4 4 l-4 4 l-4 -4 Z", style: "fill:var(--sheet);stroke:var(--ink);stroke-width:.9" });
+        return s + tiny(x + 80, y + 30, "6 contact") + tiny(x + 80, y + 40, "7 feeling") + tiny(x + 80, y + 50, "8 craving") + tiny(x + 80, y + 62, "◇ connection 2");
+      },
+      10: function (x, y) {
+        var s = "";
+        for (var i = 0; i < 7; i++) s += T("rect", { x: x + 4 + i * 15, y: y + 6, width: 12, height: 12, rx: 2, style: "fill:var(--nama)" }) + T("text", { x: x + 10 + i * 15, y: y + 14.5, "text-anchor": "middle", "class": "tx-onac", style: "font-size:6px" }, "J" + (i + 1));
+        s += T("path", { d: "M" + (x + 10) + " " + (y + 19) + " q0 14 -4 22", style: "fill:none;stroke:var(--kamma);stroke-width:1" }) + tiny(x + 2, y + 50, "J1: this life");
+        s += T("path", { d: "M" + (x + 100) + " " + (y + 19) + " q0 14 4 22", style: "fill:none;stroke:var(--kamma);stroke-width:1" }) + tiny(x + 110, y + 50, "J7: next", "", "end");
+        for (i = 1; i < 6; i++) s += T("path", { d: "M" + (x + 10 + i * 15) + " " + (y + 19) + " Q" + (x + 10 + i * 15) + " " + (y + 34) + " " + (x + 55) + " " + (y + 60), style: "fill:none;stroke:var(--kamma);stroke-width:.8;opacity:.75" });
+        return s + tiny(x + 55, y + 70, "J2–6: any later life", "", "middle") + tiny(x + 55, y + 79, "unless it lapses", "", "middle");
+      },
+      11: function (x, y) {
+        var s = "", W = [84, 80, 76, 72, 70, 66, 62, 58, 54, 50, 50, 44, 40, 36, 32, 28, 24, 20, 14, 8, 60, 54, 48, 42, 36, 30, 0, 0, 0, 0, 0];
+        W.forEach(function (w, i) {
+          var yy = y + 3 + i * 2.25 + (i >= 20 ? 2 : 0) + (i >= 26 ? 2 : 0), human = i === 26, woe = i > 26;
+          s += T("rect", { x: x + 4, y: f1(yy), width: human || woe ? 4 : w, height: 1.6, style: "fill:" + (human ? "var(--ink)" : woe ? "var(--bad)" : "var(--line)") });
+        });
+        return s + tiny(x + 12, y + 67, "◀ human: where he is", "tx-b") + tiny(x + 12, y + 77, "◀ woeful: if it gave rebirth");
+      },
+      13: function (x, y) {
+        var s = "", F = [[1], [1], [1], [2, 3], [2, 3], [4], [4], [4], [4], [4]];
+        F.forEach(function (f, i) {
+          for (var c = 1; c <= 4; c++) {
+            var on = f.indexOf(c) >= 0, me = i === 3, w = me && c === 2;
+            s += T("rect", { x: x + 46 + (c - 1) * 15, y: y + 3 + i * 7, width: 11, height: 4.6, rx: 1, style: on ? (w ? "fill:var(--nama-soft);stroke:var(--nama);stroke-width:.7" : "fill:var(--nama)") + (me ? "" : ";opacity:.3") : "fill:var(--faint)" });
+          }
+        });
+        s += T("rect", { x: x + 44, y: y + 3 + 3 * 7 - 1.5, width: 62, height: 7.6, rx: 2, style: INK });
+        return s + tiny(x + 42, y + 28, "sensual desire", "tx-b", "end") + ["S", "O", "N", "A"].map(function (l, c) { return tiny(x + 51.5 + c * 15, y + 77, l, "", "middle"); }).join("") + tiny(x + 42, y + 44, "weakened, then", "", "end") + tiny(x + 42, y + 52, "ended", "", "end");
+      }
+    };
+    var ORDER = [[2, "Two truths"], [3, "Citta"], [4, "Cetasika"], [5, "Rūpa"], [7, "Process"], [8, "Conditions"], [9, "Dependent origination"], [10, "Kamma"], [11, "Planes"], [13, "Practice"]];
     function wrap(t, n) {
       var w = t.split(" "), out = [], cur = "";
       w.forEach(function (x) { if ((cur + " " + x).trim().length > n) { out.push(cur.trim()); cur = x; } else cur += " " + x; });
       if (cur.trim()) out.push(cur.trim());
       return out;
     }
-    var cx = 340, cy = 310, R = 86, s = "", bw = 214, bh = 112;
-    L.forEach(function (l, i) {
-      var left = i < 5, k = i % 5;
-      var x = left ? 0 : 680 - bw, y = 4 + k * 124, lv = PL[l[1][0]].lv;
-      var ex = left ? x + bw : x, ey = y + bh / 2;
-      var dx = ex - cx, dy = ey - cy, dd = Math.sqrt(dx * dx + dy * dy);
-      s += T("line", { x1: f1(cx + dx / dd * R), y1: f1(cy + dy / dd * R), x2: ex, y2: ey, style: "stroke:" + lvc(lv) + ";stroke-width:1.4" });
-      s += T("circle", { cx: ex, cy: ey, r: 3, style: "fill:" + lvc(lv) });
-    });
-    s += T("circle", { cx: cx, cy: cy, r: R, style: "fill:var(--nama-soft);stroke:var(--nama);stroke-width:1.6" });
-    s += T("ellipse", { cx: cx, cy: cy - 30, rx: 22, ry: 28, transform: "rotate(-24 " + cx + " " + (cy - 30) + ")", style: "fill:var(--f-joy);stroke:var(--rupa);stroke-width:1.5" });
-    s += T("path", { d: "M" + (cx + 8) + " " + (cy - 58) + " q14 -10 24 -2 q-12 10 -24 2", style: "fill:var(--f-ple);stroke:var(--nib);stroke-width:1" });
-    s += T("text", { x: cx, y: cy + 18, "text-anchor": "middle", "class": "tx-l tx-d tx-b" }, "Seeing a ripe mango");
-    s += T("text", { x: cx, y: cy + 35, "text-anchor": "middle", "class": "tx-l tx-d tx-b" }, "and wanting it");
-    s += T("text", { x: cx, y: cy + 52, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "one ordinary moment, ten lenses");
-    L.forEach(function (l, i) {
-      var left = i < 5, k = i % 5;
-      var x = left ? 0 : 680 - bw, y = 4 + k * 124, lv = PL[l[1][0]].lv;
-      var g = T("rect", { x: x, y: y, width: bw, height: bh, rx: 6, style: "fill:var(--sheet);stroke:var(--line)" });
-      g += T("rect", { x: left ? x : x + bw - 5, y: y, width: 5, height: bh, rx: 2, style: "fill:" + lvc(lv) });
-      var tx = left ? x + 12 : x + 10;
-      g += T("text", { x: tx, y: y + 18, "class": "tx-m tx-b" }, l[0]);
-      var bx = left ? x + bw - 14 : x + bw - 18;
-      l[1].slice().reverse().forEach(function (p, j) {
-        var px = bx - j * 22;
-        g += T("a", { href: "#p" + p }, T("circle", { cx: px, cy: y + 14, r: 9, style: "fill:" + lvc(PL[p].lv) }) + T("text", { x: px, y: y + 17.5, "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:var(--on-lv)" }, p));
+    /* two columns for print and wide screens (svg#lens), one column below 560 px (svg#lens-v) */
+    function layout(target, ncol) {
+      if (!target) return;
+      var s = "", top = ncol === 2 ? 56 : 84, bw = 334, bh = 98, gap = 12, W = ncol === 2 ? 680 : 334;
+      s += G.mango(22, 26, 14);
+      s += T("text", { x: 46, y: 24, "class": "tx-l tx-d tx-b" }, M.t);
+      s += T("text", { x: 46, y: 38, "class": "tx-xs tx-mu" }, ncol === 2 ? "one ordinary moment, ten lenses · each card shows its plate's drawing with this moment marked" : "ten lenses, each with its plate's drawing");
+      s += G.strip(ncol === 2 ? { x: 446, y: 10, cw: 11.4, ch: 18, gap: 2, obj: true, hl: [5, 9, 10, 11, 12, 13, 14, 15], num: [1, 5, 9, 15, 17] } : { x: 46, y: 48, cw: 13.6, ch: 16, gap: 2, obj: true, hl: [5, 9, 10, 11, 12, 13, 14, 15], num: [1, 5, 9, 15, 17] });
+      ORDER.forEach(function (o, i) {
+        var p = o[0], col = i % ncol, row = Math.floor(i / ncol), x = col * (bw + gap), y = top + row * (bh + 5), lv = PL[p].lv;
+        var g = T("rect", { x: x, y: y, width: bw, height: bh, rx: 6, style: "fill:var(--sheet);stroke:var(--line)" });
+        g += T("rect", { x: x, y: y, width: 4, height: bh, rx: 2, style: "fill:" + lvc(lv) });
+        g += T("rect", { x: x + 10, y: y + 6, width: 116, height: 86, rx: 4, style: "fill:var(--faint)" });
+        g += TH[p](x + 12, y + 9);
+        g += T("text", { x: x + 136, y: y + 19, "class": "tx-m tx-b" }, o[1]);
+        var ps = p === 13 ? [12, 13] : [p];
+        ps.slice().reverse().forEach(function (pp, j) {
+          var px = x + bw - 14 - j * 22;
+          g += T("circle", { cx: px, cy: y + 15, r: 9, style: "fill:" + lvc(PL[pp].lv) }) + T("text", { x: px, y: y + 18.5, "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:var(--on-lv)" }, pp);
+        });
+        wrap(M.lens[p], 38).forEach(function (ln, j) { g += T("text", { x: x + 136, y: y + 34 + j * 11.6, "class": "tx-s", style: "font-size:9.6px" }, ln); });
+        s += T("a", { href: "#p" + p, "aria-label": o[1] + ", Plate " + p }, g);
       });
-      wrap(l[2], 37).forEach(function (ln, j) { g += T("text", { x: tx, y: y + 36 + j * 12.6, "class": "tx-s", style: "font-size:9.8px" }, ln); });
-      s += g;
-    });
-    svg.innerHTML = s;
+      target.setAttribute("viewBox", "0 0 " + W + " " + (top + Math.ceil(10 / ncol) * (bh + 5)));
+      target.innerHTML = s;
+    }
+    layout(svg, 2);
+    layout($("lens-v"), 1);
     var ws = [["Two truths", "In everyday words, and in dhammas?"], ["Citta", "Which kind, and with what feeling?"], ["Cetasika", "Which factor led: greed, aversion, mindfulness?"], ["Rūpa", "Which base, and which object?"],
       ["Process", "Which door, and how strong an object?"], ["Conditions", "What was the object, the root, the strong support?"], ["Dependent origination", "Did feeling turn into craving?"], ["Kamma", "What was the volition? Is it a habit?"],
       ["Planes", "What kind of world does this mind belong to?"], ["Practice", "What would mindfulness have noticed?"]];
@@ -220,7 +341,12 @@
     s += T("text", { x: X(14), y: 350, "text-anchor": "middle", "class": "tx-xs tx-b" }, "interchange");
     svg.innerHTML = s;
 
-    $("gloss").innerHTML = GL.map(function (g) { return "<div><i>" + g[0] + "</i> " + g[1] + " <span>· " + g[2] + "</span></div>"; }).join("");
+    function term(t) { var p = t.split(" · "); return "<i>" + p[0] + "</i>" + (p[1] ? ' <span class="en">' + p[1] + "</span>" : ""); }
+    var half = Math.ceil(GL.length / 2);
+    [["gloss", GL.slice(0, half)], ["gloss-2", GL.slice(half)]].forEach(function (g) {
+      if ($(g[0])) $(g[0]).innerHTML = g[1].map(function (r) { return "<div>" + term(r[0]) + " " + r[1] + ' <a href="#p' + r[2] + '">' + r[2] + "</a></div>"; }).join("");
+    });
+    if ($("cma")) $("cma").innerHTML = (D.cmaMap || []).map(function (r) { return '<a class="cmr" href="#p' + r[0] + '"><b>' + r[0] + "</b><span>" + r[1] + "</span><em>" + r[2] + "</em></a>"; }).join("");
   })();
 
 
@@ -238,7 +364,7 @@
     var range = L.plates.length > 1 ? "plates " + L.plates[0] + "–" + L.plates[L.plates.length - 1] : "plate " + L.plates[0];
     sec.innerHTML =
       '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · In the stories</span><span>Abhidhamma Atlas</span></div>" +
-      '<div class="nav"><a class="lvb" href="#L' + n + '" style="background:' + lvc(n) + ';border:0"><b>' + ROM[n] + "</b>" + L.name + "</a><span>Retells and reads " + range + '</span><span class="thrs"><span class="thr"><i style="background:var(--nama)"></i>the Buddha\'s life</span><span class="thr"><i style="background:var(--rupa-mark)"></i>Jātaka</span><span class="thr"><i style="background:var(--nib)"></i>disciples</span></span></div>' +
+      '<div class="nav"><a class="lvb" href="#L' + n + '" style="background:' + lvc(n) + ';border:0"><b>' + ROM[n] + "</b>" + L.name + "</a><span>Retells and reads " + range + '</span><span class="thrs"><span class="thr"><i style="background:' + KIND.life[1] + '"></i>the Buddha\'s life</span><span class="thr"><i style="background:' + KIND.jataka[1] + '"></i>Jātaka</span><span class="thr"><i style="background:' + KIND.disc[1] + '"></i>disciples</span></span></div>' +
       "<h2>" + L.name + " in the stories</h2>" +
       '<p class="lede">The tradition has always taught through lives. Each story is retold briefly from its source. The second part reads it with the plates of this level; those readings are study aids, not claims made by the texts themselves.</p>' +
       '<div class="stories-grid">' + cards + "</div>" +
@@ -271,12 +397,26 @@
     var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("study", "→", "How to study slowly") + row("plan", "→", "A study plan, one plate a week") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("life", "→", "The Buddha's life as a map") + "</div>";
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
-      LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); });
+      LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); compsAfter(p).forEach(function (c) { h += row("p" + c, c, COMP[c].t); }); });
       h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, then in the stories</span><span>' + pageOf["D" + l] + "–" + pageOf["S" + l] + "</span></a>";
-      if (l === 7) h += row("threads", "↯", "Threads and glossary");
+      if (l === 7) { h += row("threads", "↯", "Threads, and reading with the Manual"); h += row("glossary", "↯", "Glossary of 150 terms"); }
       h += "</div>";
     }
     h += '<div class="grp">' + row("explorer", "✎", "Study tools: one dhamma, many lenses", "h") + row("idcards", "✎", "Sixteen identity cards") + row("deck", "✎", "A review deck in five boxes") + "</div>";
     toc.innerHTML = h;
+  })();
+  /* ---------------- on-screen definitions: hover or tap a Pāli term ---------------- */
+  (function () {
+    var M = {};
+    function key(t) { return t.toLowerCase().replace(/[“”"'’.,;:()]/g, "").trim(); }
+    (D.glossary || []).concat(D.glossaryExtra || []).forEach(function (r) {
+      var parts = r[0].split(" · "), d = parts[0] + (parts[1] ? " (" + parts[1] + ")" : "") + ": " + r[1] + " · taught on " + (/^\d/.test(r[2]) ? "Plate " : "") + r[2];
+      parts[0].split(/\s*[,\/]\s*/).forEach(function (k) { if (k && !M[key(k)]) M[key(k)] = d; });
+    });
+    each("section.sheet i, section.sheet em", function (el) {
+      if (el.closest("a, svg, .gloss, .lbl3, h1, h2")) return;
+      var d = M[key(el.textContent)];
+      if (d) { el.classList.add("gl"); el.title = d; }
+    });
   })();
 })();

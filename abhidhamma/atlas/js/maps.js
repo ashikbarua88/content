@@ -73,7 +73,7 @@
       LINKS.forEach(function (l, i) {
         var nx = l.from === cur ? l.to : (l.to === cur ? l.from : null), fwd = l.from === cur;
         if (!nx || done[nx]) return;
-        var d = dist[cur] + (fwd ? 1 : 3);
+        var d = dist[cur] + (fwd ? 1 : 3) + (l.type === "ana" ? 3 : 0);  /* r2: "analysed into" is taxonomy, not mechanism: use it last */
         if (d < dist[nx]) { dist[nx] = d; prev[nx] = { i: i, fwd: fwd, at: cur }; }
       });
     }
@@ -153,7 +153,15 @@
   }
 
   /* small maps on the level pages: each box opens that idea on the main map */
-  each("svg.cmap:not(#cmap-main)", function (svg) { draw(svg, +svg.getAttribute("data-hl"), null, false); });
+  each("svg.cmap:not(#cmap-main)", function (svg) {
+    var hl = +svg.getAttribute("data-hl");
+    draw(svg, hl, null, false);
+    /* r2: crop a level page's map to the rows of its level and its neighbours, so the labels stay legible */
+    if (hl >= 1 && hl <= 6) {
+      var y0 = ROWS[Math.max(0, hl - 2)] - 40, y1 = hl < 6 ? ROWS[hl] + 26 : ROWS[5] + 40;
+      svg.setAttribute("viewBox", "0 " + y0 + " 680 " + (y1 - y0));
+    }
+  });
 
   /* ---------------- the idea index on the 3D page ---------------- */
   (function () {

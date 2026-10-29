@@ -135,7 +135,7 @@
     if (list) {
       list.innerHTML = [1, 2, 3, 4, 5, 6, 7].map(function (lv) {
         return '<div class="dgrp"><div class="lab" style="color:var(--lv' + lv + ')">' + ROM[lv] + " · " + LV[lv].name + "</div><ol>" +
-          D.deck.filter(function (c) { return c[0] === lv; }).map(function (c) { return "<li><b>" + c[1] + "</b> <span>" + c[2] + "</span></li>"; }).join("") + "</ol></div>";
+          D.deck.filter(function (c) { return c[0] === lv && !c[3]; }).map(function (c) { return "<li><b>" + c[1] + "</b> <span>" + c[2] + "</span></li>"; }).join("") + "</ol></div>";
       }).join("");
     }
     var INT = [0, 1, 3, 7, 14, 30];
@@ -150,7 +150,7 @@
       }
       g += '<text x="' + (X(1) + W + 11) + '" y="10" text-anchor="middle" class="tx-xs" style="fill:var(--nib)">known: move up</text>';
       g += '<path d="M' + (X(5) + W / 2) + " 50 C" + (X(5) + W / 2) + " 60, " + (X(1) + W / 2) + " 60, " + (X(1) + W / 2) + ' 51" style="fill:none;stroke:var(--bad);stroke-width:1.3;stroke-dasharray:4 3"/>';
-      g += '<text x="340" y="60" text-anchor="middle" class="tx-xs" style="fill:var(--bad);paint-order:stroke;stroke:var(--sheet);stroke-width:3px">missed: back to box 1</text>';
+      g += '<text x="340" y="70" text-anchor="middle" class="tx-xs" style="fill:var(--bad);paint-order:stroke;stroke:var(--sheet);stroke-width:3px">missed: back to box 1</text>';
       lg.innerHTML = g;
     }
     var app = $("deck-app"); if (!app) return;

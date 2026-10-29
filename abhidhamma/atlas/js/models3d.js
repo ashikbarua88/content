@@ -12,7 +12,13 @@
     return R3;
   }
 
-  /* ---------------- toolkit ---------------- */
+  /* ---------------- toolkit ----------------
+     make3D options: cam/look/fov set the viewing direction; with fit:true the distance and a sideways
+     pan are solved so the model AND its labels fill the canvas at any aspect (phone, desktop, A4).
+     height / phoneRatio / heightFn size the canvas on screen, printHeight in print.
+     declutter:true hides the lower-priority of two overlapping labels (label(..., {pri})).
+     printSearch: [y-offsets] lets __render3dAll pick the print angle with the fewest label overlaps. */
+  function isPrint() { return !!window.__print3d || !!(window.matchMedia && matchMedia("print").matches); }
   function make3D(id, o) {
     var host = $(id); if (!host) return null;
     if (!HAS3) { host.insertAdjacentHTML("afterbegin", NOGL); return null; }
@@ -28,19 +34,21 @@
     var d2 = new THREE.DirectionalLight(0xffffff, 0.25); d2.position.set(-5, -2, -4); scene.add(d2);
     var root = new THREE.Group(); scene.add(root);
     var S = { host: host, cv: cv, ctx: ctx, scene: scene, camera: camera, root: root, overlay: overlay, labels: [], visible: true, update: null,
-      touched: false, sway: o.sway || 0, spin: o.spin || 0, baseY: o.rotY || 0, baseX: o.rotX || 0, t: 0, dirty: true, w: 0, h: 0 };
+      touched: false, sway: o.sway || 0, spin: o.spin || 0, baseY: o.rotY || 0, baseX: o.rotX || 0, t: 0, dirty: true, w: 0, h: 0,
+      look: look, camBase: camBase, fit: !!o.fit, pad: o.pad != null ? o.pad : 0.035, zoom: o.zoom || 1, declutter: !!o.declutter,
+      printSearch: o.printSearch || null, needFit: true, onSize: null };
     root.rotation.set(S.baseX, S.baseY, 0);
     S.size = function () {
-      var w = host.clientWidth || 640, h = o.heightFn ? o.heightFn(w) : (w < 560 ? Math.round(w * (o.phoneRatio || 0.9)) : o.height);
+      var w = host.clientWidth || 640, h = isPrint() && o.printHeight ? o.printHeight : o.heightFn ? o.heightFn(w) : (w < 560 ? Math.round(w * (o.phoneRatio || 0.9)) : o.height);
       if (w === S.w && h === S.h) return;
       S.w = w; S.h = h;
       cv.style.width = w + "px"; cv.style.height = h + "px";
       cv.width = Math.round(w * DPR); cv.height = Math.round(h * DPR);
       camera.aspect = w / h; camera.updateProjectionMatrix();
-      var f = Math.max(1, refA / (w / h));
-      camera.position.copy(look).add(camBase.clone().multiplyScalar(f)); camera.lookAt(look);
-      S.dirty = true;
+      if (!S.fit) { var f = Math.max(1, refA / (w / h)); camera.position.copy(look).add(camBase.clone().multiplyScalar(f)); camera.lookAt(look); }
+      S.needFit = true; S.dirty = true;
     };
+    S.refit = function () { S.needFit = true; S.dirty = true; };
     S.size();
     var drag = false, px = 0, py = 0;
     cv.style.touchAction = "pan-y";
@@ -68,9 +76,89 @@
     return S;
   }
   function anchor(S, x, y, z, parent) { var a = new THREE.Object3D(); a.position.set(x, y, z); (parent || S.root).add(a); return a; }
-  function label(S, html, obj, cls) {
+  /* opt: pri (declutter priority, higher wins), nofit (camera fit ignores it), minW (hidden below this canvas width),
+     short (text used below 560 px). */
+  function label(S, html, obj, cls, opt) {
     var el = document.createElement("span"); el.className = "lbl3 " + (cls || ""); el.innerHTML = html; S.overlay.appendChild(el);
-    var L = { el: el, obj: obj, alpha: 1, hidden: false }; S.labels.push(L); return L;
+    var L = { el: el, obj: obj, alpha: 1, hidden: false, html: html, w: null, h: null };
+    if (opt) for (var k in opt) L[k] = opt[k];
+    S.labels.push(L); return L;
+  }
+  function relabel(L, html) { if (L.el.innerHTML !== html) { L.el.innerHTML = html; L.w = null; } }
+  function shortLabels(S) { S.labels.forEach(function (L) { if (L.short) relabel(L, S.w < 560 ? L.short : L.html); }); }
+
+  /* Solve camera distance and pan so every mesh box corner and every label (with its pixel size) fits the canvas.
+     Spinning models are fitted over a full turn, swaying ones over their swing. */
+  function fitCamera(S) {
+    var cam = S.camera, dir = S.camBase.clone().normalize();
+    var r = new THREE.Vector3().crossVectors(V(0, 1, 0), dir).normalize(), u = new THREE.Vector3().crossVectors(dir, r);
+    var keep = S.root.rotation.clone(); S.root.rotation.set(0, 0, 0); S.root.updateMatrixWorld(true);
+    var pts = [], bx = new THREE.Box3(), W = S.w, H = S.h;
+    S.root.traverse(function (m) {
+      if (m === S.root || !m.geometry) return;
+      for (var p = m; p && p !== S.root; p = p.parent) if (p.userData.nofit) return;
+      if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
+      bx.copy(m.geometry.boundingBox).applyMatrix4(m.matrixWorld);
+      for (var i = 0; i < 8; i++) pts.push({ p: V(i & 1 ? bx.max.x : bx.min.x, i & 2 ? bx.max.y : bx.min.y, i & 4 ? bx.max.z : bx.min.z), l: 0, rr: 0, t: 0, b: 0 });
+    });
+    S.labels.forEach(function (L) {
+      if (L.nofit || (L.minW && W < L.minW)) return;
+      for (var p = L.obj; p && p !== S.root; p = p.parent) if (p.userData && p.userData.nofit) return;
+      var w = L.el.offsetWidth, h = L.el.offsetHeight, c = L.el.classList, pw = new THREE.Vector3(); L.obj.getWorldPosition(pw);
+      var lw = c.contains("left") ? w : c.contains("right") ? 0 : w / 2;
+      pts.push({ p: pw, l: 2 * lw / W, rr: 2 * (w - lw) / W, t: h / H, b: h / H });
+    });
+    S.root.rotation.copy(keep); S.root.updateMatrixWorld(true);
+    var rots = [];
+    if (isPrint() || window.__freeze3d) rots.push(S.baseY + (S.printY || 0));
+    else if (S.spin) for (var k = 0; k < 12; k++) rots.push(k * Math.PI / 6);
+    else if (S.sway) rots.push(S.baseY - S.sway, S.baseY - S.sway / 2, S.baseY, S.baseY + S.sway / 2, S.baseY + S.sway);
+    else rots.push(S.baseY);
+    var tv = Math.tan(cam.fov * Math.PI / 360), th = tv * cam.aspect, pad = S.pad, M = new THREE.Matrix4(), E = new THREE.Euler();
+    var Q = [];
+    rots.forEach(function (ry) {
+      M.makeRotationFromEuler(E.set(S.baseX, ry, 0));
+      pts.forEach(function (P) { Q.push({ q: P.p.clone().applyMatrix4(M).sub(S.look), P: P }); });
+    });
+    var pan = V(0, 0, 0), d = S.camBase.length();
+    function solve() {
+      var need = 0.5;
+      Q.forEach(function (o) {
+        var q = o.q.clone().sub(pan), x = q.dot(r), y = q.dot(u), z = q.dot(dir), P = o.P;
+        var ax = x >= 0 ? th * Math.max(0.08, 1 - pad - P.rr) : th * Math.max(0.08, 1 - pad - P.l);
+        var ay = y >= 0 ? tv * Math.max(0.08, 1 - pad - P.t) : tv * Math.max(0.08, 1 - pad - P.b);
+        need = Math.max(need, z + Math.abs(x) / ax, z + Math.abs(y) / ay, z + 0.6);
+      });
+      return need;
+    }
+    for (var it = 0; it < 5; it++) {
+      d = solve();
+      var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      Q.forEach(function (o) {
+        var q = o.q.clone().sub(pan), D = d - q.dot(dir), X = q.dot(r) / (D * th), Y = q.dot(u) / (D * tv);
+        x0 = Math.min(x0, X - o.P.l); x1 = Math.max(x1, X + o.P.rr); y0 = Math.min(y0, Y - o.P.b); y1 = Math.max(y1, Y + o.P.t);
+      });
+      pan.add(r.clone().multiplyScalar((x0 + x1) / 2 * d * th)).add(u.clone().multiplyScalar((y0 + y1) / 2 * d * tv));
+    }
+    d = solve() / S.zoom;
+    var tgt = S.look.clone().add(pan);
+    cam.position.copy(tgt).add(dir.multiplyScalar(d)); cam.lookAt(tgt); cam.updateMatrixWorld(true);
+  }
+  function overlapScore(S) {
+    var rs = [];
+    S.labels.forEach(function (L) {
+      if (L.hidden || L.alpha < 0.5 || (L.minW && S.w < L.minW)) return;
+      L.obj.getWorldPosition(tmpV); tmpV.project(S.camera);
+      var x = (tmpV.x * 0.5 + 0.5) * S.w, y = (-tmpV.y * 0.5 + 0.5) * S.h, w = L.el.offsetWidth, h = L.el.offsetHeight, c = L.el.classList;
+      var x0 = x - (c.contains("left") ? w : c.contains("right") ? 0 : w / 2);
+      rs.push([x0, y - h / 2, x0 + w, y + h / 2, L.pri || 0]);
+    });
+    var s = 0;
+    for (var i = 0; i < rs.length; i++) for (var j = i + 1; j < rs.length; j++) {
+      var ix = Math.min(rs[i][2], rs[j][2]) - Math.max(rs[i][0], rs[j][0]), iy = Math.min(rs[i][3], rs[j][3]) - Math.max(rs[i][1], rs[j][1]);
+      if (ix > 0 && iy > 0) s += ix * iy * (1 + Math.min(rs[i][4], rs[j][4]));
+    }
+    return s;
   }
   function col(v) { return new THREE.Color(tok(v)); }
   function stdMat(v, opt) {
@@ -110,7 +198,15 @@
   function setPressed(host, v) { if (host) Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-v") === v)); }); }
 
   var tmpV = HAS3 ? new THREE.Vector3() : null;
+  function prepare(S) {
+    if (!S.needFit) return;
+    S.needFit = false;
+    shortLabels(S); if (S.onSize) S.onSize(S.w, S.h); if (S.beforeFit) S.beforeFit();
+    S.labels.forEach(function (L) { L.w = null; });
+    if (S.fit) fitCamera(S);
+  }
   function draw(S) {
+    prepare(S);
     var r = renderer(), W = S.cv.width, H = S.cv.height, c = r.domElement;
     if (c.width < W || c.height < H) r.setSize(Math.max(c.width, W), Math.max(c.height, H), false);
     r.setViewport(0, 0, W, H); r.setScissor(0, 0, W, H); r.setScissorTest(true);
@@ -118,12 +214,21 @@
     r.render(S.scene, S.camera);
     S.ctx.clearRect(0, 0, W, H);
     S.ctx.drawImage(c, 0, c.height - H, W, H, 0, 0, W, H);
-    S.labels.forEach(function (L) {
+    var placed = S.declutter ? [] : null, list = S.labels;
+    if (placed) list = S.labels.map(function (L, i) { return [L, (L.alpha >= 0.5 ? 1000 : 0) + (L.pri || 0), i]; })
+      .sort(function (a, b) { return b[1] - a[1] || a[2] - b[2]; }).map(function (a) { return a[0]; });
+    list.forEach(function (L) {
       L.obj.getWorldPosition(tmpV); tmpV.project(S.camera);
-      var x = (tmpV.x * 0.5 + 0.5) * S.w, y = (-tmpV.y * 0.5 + 0.5) * S.h;
-      var shift = L.el.classList.contains("left") ? "-100%" : (L.el.classList.contains("right") ? "0%" : "-50%");
+      var x = (tmpV.x * 0.5 + 0.5) * S.w, y = (-tmpV.y * 0.5 + 0.5) * S.h, cl = L.el.classList;
+      var shift = cl.contains("left") ? "-100%" : (cl.contains("right") ? "0%" : "-50%");
+      var off = L.hidden || tmpV.z > 1 || (L.minW && S.w < L.minW);
+      if (placed && !off) {
+        if (L.w == null) { L.w = L.el.offsetWidth; L.h = L.el.offsetHeight; }
+        var x0 = x - (shift === "-100%" ? L.w : shift === "0%" ? 0 : L.w / 2), b = [x0 + 1.5, y - L.h / 2 + 1.5, x0 + L.w - 1.5, y + L.h / 2 - 1.5];
+        if (placed.some(function (p) { return b[0] < p[2] && p[0] < b[2] && b[1] < p[3] && p[1] < b[3]; })) off = true; else placed.push(b);
+      }
       L.el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(" + shift + ",-50%)";
-      L.el.style.opacity = (L.hidden || tmpV.z > 1) ? 0 : L.alpha;
+      L.el.style.opacity = off ? 0 : L.alpha;
     });
   }
   var last = performance.now();
@@ -151,13 +256,29 @@
     window.__freeze3d = true;
     scenes.forEach(function (S) {
       S.w = 0; S.size();
-      S.root.rotation.set(S.baseX, S.baseY + (S.printY || 0), 0);
       if (S.beforePrint) S.beforePrint();
       if (S.update) S.update(0, S.t);
+      if (S.printSearch) {
+        var best = null;
+        S.printSearch.forEach(function (py) {
+          S.printY = py; S.root.rotation.set(S.baseX, S.baseY + py, 0); S.root.updateMatrixWorld(true);
+          S.needFit = true; prepare(S);
+          var sc = overlapScore(S); if (!best || sc < best[1] - 1) best = [py, sc];
+        });
+        S.printY = best[0];
+      }
+      S.root.rotation.set(S.baseX, S.baseY + (S.printY || 0), 0);
+      S.needFit = true;
       draw(S);
     });
     return scenes.length;
   };
+  /* Printing from the browser: draw every model at its print size first, then return to the screen. */
+  window.addEventListener("beforeprint", function () { window.__print3d = true; window.__render3dAll(); });
+  window.addEventListener("afterprint", function () {
+    window.__print3d = false; window.__freeze3d = false;
+    scenes.forEach(function (S) { S.w = 0; S.size(); });
+  });
   function retheme() { setTimeout(function () { rethemers.forEach(function (f) { f(); }); scenes.forEach(function (S) { S.dirty = true; }); }, 30); }
   if (window.matchMedia) { var mq = matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", retheme); }
   if (window.MutationObserver) new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
@@ -169,22 +290,25 @@
   (function () {
     var D = window.ATLAS, IDEAS = D.ideas, LINKS = D.links, LTYPE = D.linkTypes, LOOPS = D.loops;
     var byId = {}; IDEAS.forEach(function (n) { byId[n.id] = n; });
-    var S = make3D("m3-view", { height: 455, cam: [0, 2.4, 14.6], look: [0, 0.2, 0], fov: 36, sway: 0.5, rotX: 0.05, refAspect: 1.3, phoneRatio: 1.15 });
+    /* Fitted camera; floors 1.45 apart so a back node's label clears the floor above's front node; labels
+       sit on the outward side of their node; print picks the turn with the fewest label overlaps. */
+    var S = make3D("m3-view", { height: 470, printHeight: 560, cam: [0, 2.2, 14.6], look: [0, 0.2, 0], fov: 36, sway: 0.5, rotX: 0.05, phoneRatio: 1.05,
+      fit: true, declutter: true, printSearch: [-0.5, -0.35, -0.2, -0.1, 0, 0.1, 0.2, 0.35, 0.5] });
     if (!S) return;
-    var Y = { 1: -3.1, 2: -1.8, 3: -0.5, 4: 0.8, 5: 2.1, 6: 3.4 }, RAD = 2.9;
+    var Y = { 1: -3.6, 2: -2.15, 3: -0.7, 4: 0.75, 5: 2.2, 6: 3.65 }, RAD = 2.9;
     for (var lv = 2; lv <= 6; lv++) {
       var disc = new THREE.Mesh(new THREE.CircleGeometry(RAD + 0.4, 64), basicMat("--lv" + lv, 0.07)); disc.rotation.x = -Math.PI / 2; disc.position.y = Y[lv] - 0.02; S.root.add(disc);
       var rim = new THREE.Mesh(new THREE.TorusGeometry(RAD + 0.4, 0.008, 6, 120), basicMat("--lv" + lv, 0.45)); rim.rotation.x = Math.PI / 2; rim.position.y = Y[lv] - 0.02; S.root.add(rim);
-      label(S, ["", "I", "II", "III", "IV", "V", "VI"][lv], anchor(S, RAD + 0.75, Y[lv], 0), "sm");
+      label(S, ["", "I", "II", "III", "IV", "V", "VI"][lv], anchor(S, RAD + 0.75, Y[lv], 0), "sm", { pri: 1 });
     }
     var base = new THREE.Mesh(new THREE.CircleGeometry(0.9, 48), basicMat("--lv1", 0.12)); base.rotation.x = -Math.PI / 2; base.position.y = Y[1] - 0.02; S.root.add(base);
-    label(S, "I", anchor(S, 1.1, Y[1], 0), "sm");
+    label(S, "I", anchor(S, 1.1, Y[1], 0), "sm", { pri: 1 });
     var meshes = [], pos = {}, labs = {};
     IDEAS.forEach(function (n) {
       var r = n.orbit === null ? 0 : RAD, a = (n.orbit || 0) * Math.PI / 180;
       var p = V(r * Math.cos(a), Y[n.lv], r * Math.sin(a)); pos[n.id] = p;
       var m = new THREE.Mesh(new THREE.SphereGeometry(0.24, 28, 20), stdMat(n.c, { glow: 0.3 })); m.position.copy(p); m.userData.id = n.id; S.root.add(m); meshes.push(m);
-      labs[n.id] = label(S, n.t, anchor(S, p.x, p.y + 0.42, p.z), "nd");
+      labs[n.id] = label(S, n.t, anchor(S, p.x * 1.06, p.y + 0.4, p.z * 1.06), "nd", { pri: 5 });
     });
     var edges = LINKS.map(function (l, i) {
       var a = pos[l.from], b = pos[l.to], mid = a.clone().add(b).multiplyScalar(0.5);
@@ -195,7 +319,7 @@
       var cone = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.2, 10), mat);
       var c = t.userData.curve, end = c.getPoint(0.86), dir = c.getTangent(0.86);
       cone.position.copy(end); cone.quaternion.setFromUnitVectors(V(0, 1, 0), dir); S.root.add(cone);
-      var L = label(S, l.label, anchor(S, c.getPoint(0.5).x, c.getPoint(0.5).y, c.getPoint(0.5).z), "sm el"); L.hidden = true;
+      var L = label(S, l.label, anchor(S, c.getPoint(0.5).x, c.getPoint(0.5).y, c.getPoint(0.5).z), "sm el", { pri: 3, nofit: true }); L.hidden = true;
       return { l: l, i: i, mat: mat, L: L };
     });
     var st = { idea: null, loop: null, path: null };
@@ -250,38 +374,41 @@
     apply();
   })();
 
-  /* ================= 2. D1: categories ================= */
+  /* ================= 2. D1: categories =================
+     Items take the colour of the reality they are made of (one column: that column's colour; several: neutral),
+     except the truths, which keep their meaning colours (origin red, path and cessation teal). */
   (function () {
-    var S = make3D("d1-view", { height: 470, cam: [0, 6.6, 10.2], look: [0.1, 2.1, 0], fov: 36, sway: 0.32, rotX: 0.02, refAspect: 1.4, phoneRatio: 1.05 });
+    var S = make3D("d1-view", { height: 470, printHeight: 500, cam: [0, 7.4, 9.4], look: [0.1, 2.1, 0], fov: 36, sway: 0.28, rotX: 0.02, phoneRatio: 1.0, fit: true, declutter: true });
     var PIL = { ci: [-3.0, 1.5, "--nama", "citta · 89"], ce: [-1.25, 1.5, "--nama-2", "cetasika · 52"], ru: [1.0, 2.5, "--rupa-mark", "rūpa · 28"], nb: [3.05, 1.0, "--nib", "Nibbāna · 1"] };
-    var SH = [["agg", 0.9, "--g2", "5 aggregates"], ["bas", 1.95, "--g4", "12 bases"], ["ele", 3.0, "--g5", "18 elements"], ["tru", 4.05, "--g3", "4 noble truths"]];
-    var ZR = { f: 0.56, m: 0, b: -0.58 };
+    var SH = [["agg", 0.9, "5 aggregates"], ["bas", 1.95, "12 bases"], ["ele", 3.0, "18 elements"], ["tru", 4.05, "4 noble truths"]];
+    var ZR = { f: 0.64, m: 0, b: -0.64 };
     var RU = ["eye", "ear", "nose", "tongue", "body"], OB = ["form", "sound", "smell", "taste", "touch"];
+    /* [shelf, columns, row, label, small-index, colour override, label column] */
     var T = [
       ["agg", ["ru"], "f", "rūpa"], ["agg", ["ce"], "f", "feeling"], ["agg", ["ce"], "m", "perception"], ["agg", ["ce"], "b", "formations"], ["agg", ["ci"], "f", "consciousness"],
       ["bas", ["ci"], "f", "mind base"], ["bas", ["ce", "ru", "nb"], "b", "mental-object base"],
       ["ele", ["ci"], "f", "5 sense-consc. · 10"], ["ele", ["ci"], "m", "mind el. · 3"], ["ele", ["ci"], "b", "mind-consc. el. · 76"], ["ele", ["ce", "ru", "nb"], "b", "mental-object element"],
-      ["tru", ["ci", "ce", "ru"], "f", "suffering · all that is mundane"], ["tru", ["ce"], "m", "origin · craving"], ["tru", ["ce"], "b", "path · 8 factors"], ["tru", ["nb"], "f", "cessation"]
+      ["tru", ["ci", "ce", "ru"], "f", "suffering · all that is mundane", null, "--muted", "ci"], ["tru", ["ce"], "m", "origin · craving", null, "--bad"], ["tru", ["ce"], "b", "path · the path factors", null, "--nib"], ["tru", ["nb"], "f", "cessation", null, "--nib"]
     ];
     ["bas", "ele"].forEach(function (sh) {
       RU.forEach(function (n, i) { T.push([sh, ["ru"], "f", n, i]); });
       OB.forEach(function (n, i) { T.push([sh, ["ru"], "m", n, i]); });
     });
     var cur = "all";
-    pills($("d1-btns"), [{ id: "all", label: "All four lists" }].concat(SH.map(function (s) { return { id: s[0], label: s[3], c: s[2] }; })), cur, function (v) { cur = v; apply(); });
+    pills($("d1-btns"), [{ id: "all", label: "All four lists" }].concat(SH.map(function (s) { return { id: s[0], label: s[2] }; })), cur, function (v) { cur = v; apply(); });
     if (!S) return;
-    var mats = {}, objs = [];
+    var objs = [], mats = {};
+    function mat(c, on) { var k = c + on; if (!mats[k]) mats[k] = on ? stdMat(c, { glow: 0.3, opacity: 0.92 }) : basicMat(c, 0.1); return mats[k]; }
     Object.keys(PIL).forEach(function (k) {
       var p = PIL[k];
-      var glass = new THREE.Mesh(new THREE.BoxGeometry(p[1], 4.5, 1.7), basicMat(p[2], 0.07)); glass.position.set(p[0], 2.25, 0); S.root.add(glass);
-      var edgesM = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(p[1], 4.5, 1.7)), lineMat(p[2], 0.35)); edgesM.position.copy(glass.position); S.root.add(edgesM);
-      var foot = new THREE.Mesh(new THREE.BoxGeometry(p[1], 0.45, 1.7), stdMat(p[2], { glow: 0.3 })); foot.position.set(p[0], -0.22, 0); S.root.add(foot);
-      label(S, p[3], anchor(S, p[0], -0.7, 0.9), "p");
+      var glass = new THREE.Mesh(new THREE.BoxGeometry(p[1], 4.5, 1.9), basicMat(p[2], 0.07)); glass.position.set(p[0], 2.25, 0); S.root.add(glass);
+      var edgesM = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(p[1], 4.5, 1.9)), lineMat(p[2], 0.35)); edgesM.position.copy(glass.position); S.root.add(edgesM);
+      var foot = new THREE.Mesh(new THREE.BoxGeometry(p[1], 0.45, 1.9), stdMat(p[2], { glow: 0.3 })); foot.position.set(p[0], -0.22, 0); S.root.add(foot);
+      label(S, p[3], anchor(S, p[0], -0.7, 1.0), "p", { pri: 9 });
     });
     SH.forEach(function (sh) {
-      var plate = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.02, 1.9), basicMat(sh[2], 0.06)); plate.position.set(0.2, sh[1] - 0.14, 0); S.root.add(plate);
-      label(S, sh[3], anchor(S, -3.95, sh[1], 0.9), "sm left");
-      mats[sh[0]] = { on: stdMat(sh[2], { glow: 0.3, opacity: 0.92 }), off: basicMat(sh[2], 0.1) };
+      var plate = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.02, 2.0), basicMat("--g6", 0.06)); plate.position.set(0.2, sh[1] - 0.14, 0); S.root.add(plate);
+      label(S, sh[2], anchor(S, -3.95, sh[1], 1.0), "sm left", { pri: 9 });
     });
     T.forEach(function (t) {
       var sh = SH.filter(function (s) { return s[0] === t[0]; })[0];
@@ -289,15 +416,17 @@
       t[1].forEach(function (k) { var p = PIL[k]; left = Math.min(left, p[0] - p[1] / 2); right = Math.max(right, p[0] + p[1] / 2); });
       var x0 = left + 0.08, x1 = right - 0.08, w;
       if (t[4] != null) { var cw = (x1 - x0) / 5; w = cw - 0.06; x0 = x0 + t[4] * cw + 0.03; x1 = x0 + w; } else w = x1 - x0;
-      var m = new THREE.Mesh(new THREE.BoxGeometry(w, 0.2, 0.42), mats[t[0]].on);
-      m.position.set((x0 + x1) / 2, sh[1], ZR[t[2]]); m.userData.sh = t[0]; S.root.add(m); objs.push(m);
-      var L = label(S, t[3], anchor(S, (x0 + x1) / 2, sh[1] + 0.2, ZR[t[2]] + 0.2), t[4] != null ? "xs" : "sm2");
-      L.sh = t[0]; m.userData.L = L;
+      var c = t[5] || (t[1].length > 1 ? "--g6" : PIL[t[1][0]][2]);
+      var m = new THREE.Mesh(new THREE.BoxGeometry(w, 0.2, 0.42), mat(c, true));
+      m.position.set((x0 + x1) / 2, sh[1], ZR[t[2]]); m.userData = { sh: t[0], c: c }; S.root.add(m); objs.push(m);
+      var lx = t[6] ? PIL[t[6]][0] : (x0 + x1) / 2;
+      var L = label(S, t[3], anchor(S, lx, sh[1] + 0.2, ZR[t[2]] + 0.2), t[4] != null ? "xs" : "sm2", { pri: t[4] != null ? 2 : 5 });
+      m.userData.L = L;
     });
     function apply() {
       objs.forEach(function (m) {
         var on = cur === "all" || cur === m.userData.sh;
-        m.material = on ? mats[m.userData.sh].on : mats[m.userData.sh].off;
+        m.material = mat(m.userData.c, on);
         m.userData.L.alpha = on ? 1 : 0.15;
       });
       S.dirty = true;
@@ -316,10 +445,16 @@
       { r: 0.75, y: 2.55, n: "8 supramundane", f: "VVVVVVVV", k: "PPPPQQQQ" }
     ];
     var KC = { B: "--bad", G: "--nama", R: "--nama-2", F: "--muted", P: "--nib", Q: "--nib" };
+    /* The legend prints with the default colouring, so the colours can be read on paper. */
+    var LEG = { feel: [["--f-joy", "joy"], ["--f-eq", "equanimity"], ["--f-ple", "bodily pleasure"], ["--f-pain", "bodily pain"], ["--f-dis", "displeasure"], ["--f-joy", "supramundane (joy or equanimity, by jhāna)", 0.55]],
+      kind: [["--bad", "unwholesome"], ["--nama", "wholesome"], ["--nama-2", "resultant"], ["--muted", "functional"], ["--nib", "path"], ["--nib", "fruit", 0.55]] };
+    function legend() { var el = $("d2-tower-legend"); if (el) el.innerHTML = LEG[mode].map(function (l) { return '<span><i style="background:var(' + l[0] + ');opacity:' + (l[2] || 1) + ';outline:1px solid var(--line)"></i>' + l[1] + "</span>"; }).join(""); }
     var mode = "feel";
-    pills($("d2-tower-btns"), [{ id: "feel", label: "Colour by feeling" }, { id: "kind", label: "Colour by kind" }], mode, function (v) { mode = v; apply(); });
-    var S = make3D("d2-tower", { height: 300, cam: [0, 3.4, 8.4], look: [0, 1.15, 0], fov: 34, spin: 0.16, rotX: 0.05, refAspect: 1.9, phoneRatio: 0.9 });
+    pills($("d2-tower-btns"), [{ id: "feel", label: "Colour by feeling" }, { id: "kind", label: "Colour by kind" }], mode, function (v) { mode = v; legend(); apply(); });
+    legend();
+    var S = make3D("d2-tower", { height: 300, cam: [0, 3.0, 8.4], look: [0, 1.15, 0], fov: 34, spin: 0.16, rotX: 0.05, phoneRatio: 0.8, fit: true });
     if (!S) return;
+    var edgeG = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.2, 0.22, 0.2)), edgeM = lineMat("--muted", 0.45);
     var mats = {}, cubes = [];
     function mat(v, op) { var key = v + (op || ""); if (!mats[key]) mats[key] = stdMat(v, { glow: 0.25, opacity: op }); return mats[key]; }
     tiers.forEach(function (t) {
@@ -328,6 +463,7 @@
       for (var i = 0; i < n; i++) {
         var a = i / n * Math.PI * 2, c = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.22, 0.2));
         c.position.set(Math.cos(a) * t.r, t.y, Math.sin(a) * t.r); c.rotation.y = -a; c.userData = { f: t.f[i], k: t.k[i] }; S.root.add(c); cubes.push(c);
+        c.add(new THREE.LineSegments(edgeG, edgeM));
       }
       label(S, t.n, anchor(S, 0, t.y + 0.05, t.r + 0.45), "sm");
     });
@@ -356,7 +492,7 @@
       { id: "kusala", label: "Wholesome", fixed: U7.concat(O6, B19, PAN), vary: ABST.concat(ILL), d: "Sense-sphere wholesome with knowledge: 33 fixed factors, and up to 5 more that join one at a time." },
       { id: "path", label: "Path", fixed: U7.concat(O6, B19, ABST, PAN), vary: [], d: "Path consciousness: 36 factors, with the three abstinences together." }
     ];
-    var cur = "greed", S = make3D("d2-ceta", { height: 290, cam: [0, 0.9, 9.6], look: [0, 0, 0], fov: 36, sway: 0.5, rotX: 0.18, refAspect: 1.0, phoneRatio: 0.9 });
+    var cur = "greed", S = make3D("d2-ceta", { height: 290, cam: [0, 0.9, 9.6], look: [0, 0, 0], fov: 36, sway: 0.5, rotX: 0.18, phoneRatio: 0.9, fit: true });
     var state = {}, pts = [], dim;
     function apply() {
       var c = C.filter(function (x) { return x.id === cur; })[0];
@@ -404,11 +540,12 @@
       m1: ["lahutā", "lightness", "--food", [-0.75, -1.95, 0.45]], m2: ["mudutā", "malleability", "--food", [0.75, -1.95, 0.45]], m3: ["kammaññatā", "wieldiness", "--food", [0, -1.95, -0.85]] };
     var K = [
       { id: "eye", label: "Eye-decad", a: ["life", "eye"], d: "Kamma-born: the eight inseparables, the life faculty and eye-sensitivity." },
-      { id: "heart", label: "Heart decad", a: ["life", "heart"], d: "Kamma-born: the base of all cittas except the sense consciousnesses." },
+      { id: "heart", label: "Heart decad", a: ["life", "heart"], d: "Kamma-born: in beings with bodies, the base of every citta except the ten sense consciousnesses." },
       { id: "oct", label: "Pure octad", a: [], d: "The eight inseparables alone: the smallest possible group of matter." },
       { id: "tri", label: "Speech", a: ["vint", "sound", "m1", "m2", "m3"], d: "Mind-born tridecad: vocal intimation, sound and the three mutable qualities, thirteen members in all." }
     ];
-    var cur = "eye", S = make3D("d2-kal", { height: 290, cam: [0, 1.1, 9.6], look: [0, -0.05, 0], fov: 36, spin: 0.22, rotX: 0.32, rotY: 0.6, refAspect: 1.0, phoneRatio: 0.9 });
+    var cur = "eye", S = make3D("d2-kal", { height: 290, cam: [0, 1.1, 9.6], look: [0, -0.05, 0], fov: 36, spin: 0.22, rotX: 0.32, rotY: 0.6, phoneRatio: 0.9,
+      fit: true, declutter: true, printSearch: [0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4] });
     var nodes = {};
     function show(id) {
       cur = id; var k = K.filter(function (x) { return x.id === id; })[0];
@@ -421,20 +558,22 @@
     var R = S.root;
     OCT.forEach(function (o, i) {
       var m = new THREE.Mesh(new THREE.SphereGeometry(i < 4 ? 0.3 : 0.24, 28, 20), stdMat(o[2], { glow: 0.25 }));
-      m.position.set(o[3][0] * 0.95, o[3][1] * 0.95, o[3][2] * 0.95); R.add(m); label(S, '<i class="p">' + o[0] + "</i>", m, "xs");
+      m.position.set(o[3][0] * 0.95, o[3][1] * 0.95, o[3][2] * 0.95); R.add(m); label(S, '<i class="p">' + o[0] + "</i>", anchor(S, 0, i < 4 ? -0.42 : 0.38, 0, m), "xs", { pri: 4 });
     });
     R.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.9, 1.9, 1.9)), lineMat("--muted", 0.55)));
     Object.keys(ADD).forEach(function (k) {
       var a = ADD[k], m = new THREE.Mesh(new THREE.SphereGeometry(k === "life" ? 0.26 : 0.22, 26, 18), stdMat(a[2], { glow: 0.35 }));
       m.position.set(a[3][0], a[3][1], a[3][2]); R.add(m);
-      var L = label(S, '<i class="p">' + a[0] + "</i>", m, "xs");
+      var L = label(S, '<i class="p">' + a[0] + "</i>", anchor(S, 0, k === "life" ? 0.34 : 0.36, 0, m), "xs", { pri: 6 });
       var sp = new THREE.Line(new THREE.BufferGeometry().setFromPoints([V(0, 0, 0), m.position.clone()]), lineMat(a[2], 0.6)); R.add(sp);
       nodes[k] = { m: m, L: L, sp: sp };
     });
     show(cur);
   })();
 
-  /* ================= 6. D3: process track ================= */
+  /* ================= 6. D3: process track =================
+     Names sit in two rows under the track (short forms on phones), so no name overlaps a block, the object bar
+     or its neighbour. Seeing is drawn as an indigo outline: it is a citta, not matter. */
   (function () {
     var STR = [
       { id: "vgreat", label: "Very great", s: "a bh bu pa vi sa st vo ja ja ja ja ja ja ja ta ta" },
@@ -443,40 +582,44 @@
       { id: "vslight", label: "Very slight", s: "a a a a a a a a a a a a bh bh b b b" },
       { id: "mind", label: "Mind door", s: "bh bu ma ja ja ja ja ja ja ja ta ta" }
     ];
-    var KIND = { a: ["bh", "past"], b: ["bh", "bhavaṅga"], bh: ["bh2", "vibrating"], bu: ["bh2", "arrest"], pa: ["pr", "adverting"], ma: ["pr", "adverting"], vi: ["vi", "seeing"], sa: ["pr", "receiving"], st: ["pr", "investigating"], vo: ["pr", "determining"], ja: ["ja", "javana"], ta: ["ta", "registration"] };
+    var KIND = { a: ["bh", "past", "past"], b: ["bh", "bhavaṅga", "bh."], bh: ["bh2", "vibrating", "vib."], bu: ["bh2", "arrest", "arr."], pa: ["pr", "adverting", "adv."], ma: ["pr", "adverting", "adv."], vi: ["vi", "seeing", "see"], sa: ["pr", "receiving", "rec."], st: ["pr", "investigating", "inv."], vo: ["pr", "determining", "det."], ja: ["ja", "javana ×7", "javana ×7"], ta: ["ta", "registration", "reg."] };
     var H = { bh: 0.18, bh2: 0.26, pr: 0.5, vi: 0.62, ja: 0.95, ta: 0.42 };
-    var CO = { bh: "--line", bh2: "--muted", pr: "--nama-2", vi: "--rupa", ja: "--nama", ta: "--nama-2" };
+    var CO = { bh: "--line", bh2: "--muted", pr: "--nama-2", vi: "--nama", ja: "--nama", ta: "--nama-2" };
     var cur = "vgreat";
-    var S = make3D("d3-proc", { height: 270, cam: [0, 2.2, 7.3], look: [0, 0.55, 0], fov: 34, sway: 0.28, rotX: 0.04, refAspect: 2.3, phoneRatio: 0.8 });
-    var group = null, seeds = [], objBar = null;
+    var S = make3D("d3-proc", { height: 270, printHeight: 255, cam: [0, 2.6, 7.3], look: [0, 0.4, 0], fov: 34, sway: 0.22, rotX: 0.04, phoneRatio: 0.5, fit: true });
+    var group = null, seeds = [], objBar = null, mats = {};
+    function mat(k) { if (!mats[k]) mats[k] = k === "vi" ? stdMat("--nama", { glow: 0.2, opacity: 0.18 }) : stdMat(CO[k], { glow: 0.25, opacity: k === "bh" ? 0.6 : undefined }); return mats[k]; }
     function build() {
       if (!S) return;
       if (group) S.root.remove(group);
       group = new THREE.Group(); S.root.add(group); seeds = [];
       S.labels = S.labels.filter(function (L) { if (L.tmp) { L.el.remove(); return false; } return true; });
       var codes = STR.filter(function (x) { return x.id === cur; })[0].s.split(" "), n = codes.length, step = 0.48, x0 = -((n - 1) * step) / 2;
-      var shown = {};
+      var shown = {}, row = 0;
       codes.forEach(function (c, i) {
         var k = KIND[c][0], h = H[k], x = x0 + i * step;
-        var m = new THREE.Mesh(new THREE.BoxGeometry(0.38, h, 0.5), stdMat(CO[k], { glow: 0.25, opacity: k === "bh" ? 0.6 : undefined })); m.position.set(x, h / 2, 0); group.add(m);
+        var m = new THREE.Mesh(new THREE.BoxGeometry(0.38, h, 0.5), mat(k)); m.position.set(x, h / 2, 0); group.add(m);
+        if (k === "vi") { var ed = new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), lineMat("--nama", 0.95)); m.add(ed); }
         if (k === "ja") {
           var sd = new THREE.Mesh(new THREE.OctahedronGeometry(0.09), stdMat("--kamma", { glow: 0.5 })); sd.position.set(x, 1.15, 0); sd.userData.base = 1.15; sd.userData.ph = i * 0.6; group.add(sd); seeds.push(sd);
         }
         if (c !== "vi" && cur !== "vslight") {
-          var mb = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.11, 0.11), stdMat("--nama", { glow: 0.2, opacity: 0.85 })); mb.position.set(x, -0.32, 0.12); group.add(mb);
+          var mb = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.11, 0.11), stdMat("--nama", { glow: 0.2, opacity: 0.85 })); mb.position.set(x, -0.3, 0.12); group.add(mb);
         }
         var name = KIND[c][1];
-        if (!shown[name] && (c !== "ja" || !shown.javana)) {
+        if (!shown[name]) {
           shown[name] = true;
-          var nl = Object.keys(shown).length; var L = label(S, c === "ja" ? "javana ×7" : name, anchor(S, x + (c === "ja" ? 3 * step : 0), h + (c === "ja" ? 0.62 : (nl % 2 ? 0.2 : 0.48)), 0, group), "xs"); L.tmp = true;
+          var lx = c === "ja" ? x + 3 * step : x, ly = row % 2 ? -1.08 : -0.64;
+          var L = label(S, name, anchor(S, lx, ly, 0.3, group), "xs", { short: KIND[c][2] }); L.tmp = true; relabel(L, S.w < 560 ? L.short : L.html);
+          row++;
         }
       });
       if (cur !== "mind") {
         var len = n * step - 0.08;
         objBar = new THREE.Mesh(new THREE.BoxGeometry(len, 0.08, 0.3), stdMat("--rupa-mark", { glow: 0.35 })); objBar.position.set(0, 1.55, -0.1); group.add(objBar);
-        var L2 = label(S, "the object: 17 moments of matter", anchor(S, 0, 1.78, -0.1, group), "sm"); L2.tmp = true;
+        var L2 = label(S, "the object: 17 moments of matter", anchor(S, 0, 1.8, -0.1, group), "sm"); L2.tmp = true;
       }
-      var L3 = label(S, "mind-born matter", anchor(S, x0 - 0.6, -0.32, 0.12, group), "xs left"); L3.tmp = true;
+      var L3 = label(S, "mind-born matter", anchor(S, x0 - 0.35, -0.3, 0.12, group), "xs left"); L3.tmp = true;
       S.dirty = true;
     }
     pills($("d3-proc-btns"), STR, cur, function (v) { cur = v; build(); });
@@ -486,83 +629,92 @@
     build();
   })();
 
-  /* ================= 7. D3: the loom of matter ================= */
+  /* ================= 7. D3: the clock of matter =================
+     Replaces the "loom" (bars stacked by layer, which printed as a parallelogram texture).
+     One turn of the pointer = 51 sub-moments = 17 cittas = the life of one unit of matter. Each ring is one origin;
+     each bar is one generation, set down where the pointer stood when it arose and shrinking as it ages, so it
+     ceases when the pointer comes round again. The rings stay full while every bar is replaced: a standing wave. */
   (function () {
     var MODES = [{ id: "birth", label: "Conception" }, { id: "life", label: "During life" }, { id: "death", label: "Approaching death" }];
     var TEXT = {
-      birth: ["Conception.", "Kamma-born matter begins with the rebirth-linking citta; temperature-born at its presence phase; mind-born only with the first life-continuum; nutriment-born once nutriment is absorbed."],
-      life: ["During life.", "Bright bars are alive at the moment marked “now”; faint ones have ceased. About 51 generations of kamma-born matter and 17 of mind-born matter are alive at once: the body is a standing wave of arising and ceasing."],
-      death: ["Approaching death.", "From the seventeenth mind-moment before death, kamma makes no new matter, so its last units cease exactly at death. Mind-born and nutriment-born matter stop with death; temperature-born matter continues, as the corpse."]
+      birth: ["Conception.", "Kamma-born matter begins with the rebirth-linking citta, one generation at every sub-moment; temperature-born at its presence phase; mind-born only with the first life-continuum; nutriment-born once nutriment is absorbed. Each ring fills during the first turn."],
+      life: ["During life.", "Each bar is one generation of matter, set down where the pointer stood when it arose and shrinking as it ages. It ceases when the pointer comes round again: one turn is 17 cittas, or 51 sub-moments. Every bar is replaced, yet the rings stay full: about 51 generations of kamma-born matter and 17 of mind-born matter are alive at once. The body is a standing wave of arising and ceasing."],
+      death: ["Approaching death.", "From the seventeenth citta before death, kamma makes no new matter, so the kamma-born ring empties in one last turn and its last units cease exactly at death. Mind-born and nutriment-born matter stop with death; temperature-born matter continues, as the corpse."]
     };
-    var mode = "life", now = 60, WIN = 120, LIFE = 51, DEATH = 90;
+    var N = 51, LIFE = 51, DEATH = 90, mode = "life", now = 62;
     function text() { if ($("d3-loom-title")) { $("d3-loom-title").textContent = TEXT[mode][0]; $("d3-loom-text").textContent = TEXT[mode][1]; } }
-    var S = make3D("d3-loom", { height: 300, cam: [0, 2.9, 11.6], look: [0, 2.45, 0], fov: 36, sway: 0.2, refAspect: 2.0, phoneRatio: 0.85 });
+    var S = make3D("d3-loom", { height: 330, printHeight: 310, cam: [0, 7.4, 6.6], look: [0, 0.2, 0.3], fov: 36, sway: 0.18, phoneRatio: 0.8, fit: true, declutter: true });
     var lanes = [
-      { id: "kamma", c: "--kamma", y0: 3.7, h: 1.6, every: 1, mod: 51, label: "kamma-born" },
-      { id: "mind", c: "--nama", y0: 2.4, h: 1.0, every: 3, mod: 17, label: "mind-born" },
-      { id: "temp", c: "--temp", y0: 1.1, h: 1.0, every: 2, mod: 26, label: "temperature-born" },
-      { id: "food", c: "--food", y0: 0, h: 0.8, every: 4, mod: 13, label: "nutriment-born" }
+      { id: "kamma", c: "--kamma", R: 3.05, every: 1, w: 0.2, label: "kamma-born · ~51 alive" },
+      { id: "mind", c: "--nama", R: 2.4, every: 3, w: 0.32, label: "mind-born · ~17 alive" },
+      { id: "temp", c: "--temp", R: 1.75, every: 2, w: 0.2, label: "temperature-born" },
+      { id: "food", c: "--food", R: 1.1, every: 4, w: 0.22, label: "nutriment-born" }
     ];
-    var dx = 0.07, X0 = -WIN * dx / 2, units = [], discs = [], marks = {}, discMats, CY = -0.4, nowPlane;
-    function arrivals(lane) {
-      var out = [];
-      for (var s = -LIFE + 1; s < WIN; s++) {
-        if (((s % lane.every) + lane.every) % lane.every !== 0) continue;
-        if (mode === "birth" && ((lane.id === "kamma" && s < 0) || (lane.id === "temp" && s < 1) || (lane.id === "mind" && s < 3) || (lane.id === "food" && s < 66))) continue;
-        if (mode === "death" && ((lane.id === "kamma" && s >= DEATH - LIFE) || ((lane.id === "mind" || lane.id === "food") && s > DEATH))) continue;
-        out.push(s);
-      }
-      return out;
+    function ang(t) { return -Math.PI / 2 + (t / N) * Math.PI * 2; }
+    function arrives(lane, s) {
+      if (((s % lane.every) + lane.every) % lane.every !== 0) return false;
+      if (mode === "birth" && ((lane.id === "kamma" && s < 0) || (lane.id === "temp" && s < 1) || (lane.id === "mind" && s < 3) || (lane.id === "food" && s < 66))) return false;
+      if (mode === "death" && ((lane.id === "kamma" && s >= DEATH - LIFE) || ((lane.id === "mind" || lane.id === "food") && s > DEATH))) return false;
+      return true;
     }
+    var marks = {};
     function build() {
       text();
       if (!S) return;
-      units.forEach(function (u) { S.root.remove(u.m); }); units = [];
-      lanes.forEach(function (lane) {
-        if (!lane.on) { lane.on = stdMat(lane.c, { glow: 0.45, opacity: 0.97 }); lane.off = basicMat(lane.c, 0.16); lane.geo = new THREE.BoxGeometry(1, 0.78 * lane.h / lane.mod, 0.3); }
-        arrivals(lane).forEach(function (s) {
-          var xs = Math.max(s, 0), xe = Math.min(s + LIFE, WIN); if (xe <= xs) return;
-          var m = new THREE.Mesh(lane.geo, lane.off), layer = Math.floor(s / lane.every); layer = ((layer % lane.mod) + lane.mod) % lane.mod;
-          m.scale.x = (xe - xs) * dx; m.position.set(X0 + (xs + (xe - xs) / 2) * dx, lane.y0 + (layer + 0.5) * (lane.h / lane.mod), 0); m.visible = false; S.root.add(m);
-          units.push({ m: m, s: s, lane: lane });
-        });
-      });
-      discs.forEach(function (d, k) {
-        var sp = (mode === "birth" && k === 0) ? "birth" : (mode === "death" && k === DEATH / 3) ? "death" : (mode === "death" && k === (DEATH - LIFE) / 3) ? "mark" : "normal";
-        d.material = discMats[sp]; d.scale.setScalar(sp === "normal" ? 1 : 1.7);
-      });
-      marks.birth.hidden = mode !== "birth"; marks.death.hidden = mode !== "death"; marks.seventeen.hidden = mode !== "death"; marks.corpse.hidden = mode !== "death";
-      now = mode === "life" ? 60 : (mode === "death" ? 110 : 100);
+      now = mode === "life" ? 62 : mode === "birth" ? 0 : 30;
+      marks.birth.hidden = mode !== "birth"; marks.death.hidden = mode !== "death"; marks.corpse.hidden = mode !== "death";
       S.dirty = true;
     }
     pills($("d3-loom-modes"), MODES, mode, function (v) { mode = v; build(); });
     if (!S) { text(); return; }
-    lanes.forEach(function (lane) {
-      var plate = new THREE.Mesh(new THREE.PlaneGeometry(WIN * dx, lane.h), basicMat("--line", 0.35)); plate.position.set(0, lane.y0 + lane.h / 2, -0.2); S.root.add(plate);
-      label(S, lane.label, anchor(S, X0 - 0.12, lane.y0 + lane.h / 2, 0), "xs left");
+    var base = new THREE.Mesh(new THREE.CylinderGeometry(3.95, 3.95, 0.04, 96), basicMat("--line", 0.35)); base.position.y = -0.04; S.root.add(base);
+    lanes.forEach(function (lane, li) {
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(lane.R, 0.012, 6, 120), basicMat(lane.c, 0.5)); ring.rotation.x = Math.PI / 2; S.root.add(ring);
+      lane.mat = stdMat(lane.c, { glow: 0.4, opacity: 0.95 });
+      lane.geo = new THREE.BoxGeometry(lane.w, 1, 0.16); lane.geo.translate(0, 0.5, 0);
+      lane.pool = [];
+      for (var i = 0; i < Math.ceil(N / lane.every) + 1; i++) { var m = new THREE.Mesh(lane.geo, lane.mat); m.visible = false; m.userData.nofit = i > 0; S.root.add(m); lane.pool.push(m); }
+      label(S, lane.label, anchor(S, 0, 0.05, lane.R + 0.2), "xs", { pri: 8 });
     });
-    discMats = { normal: stdMat("--nama-2", { glow: 0.25 }), birth: stdMat("--nib", { glow: 0.4 }), death: stdMat("--ink", { glow: 0.2 }), mark: stdMat("--kamma", { glow: 0.35 }) };
-    for (var k = 0; k * 3 < WIN; k++) {
-      var d = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.05, 20), discMats.normal); d.rotation.x = Math.PI / 2; d.position.set(X0 + (k * 3 + 1.5) * dx, CY, 0); d.visible = false; S.root.add(d); discs.push(d);
+    /* the citta ring: 17 cittas of 3 sub-moments each; the current one is lit */
+    var cMat = { on: stdMat("--nama", { glow: 0.5 }), off: basicMat("--nama-2", 0.35) }, cittas = [];
+    for (var k = 0; k < 17; k++) {
+      var a = ang(k * 3 + 1.5), d = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.06, 0.2), cMat.off);
+      d.position.set(Math.cos(a) * 3.65, 0, Math.sin(a) * 3.65); d.rotation.y = -a + Math.PI / 2; S.root.add(d); cittas.push(d);
     }
-    label(S, "cittas", anchor(S, X0 - 0.12, CY, 0), "xs left");
-    marks.birth = label(S, "rebirth-linking", anchor(S, X0 + 1.5 * dx, CY - 0.4, 0), "xs");
-    marks.death = label(S, "death", anchor(S, X0 + (DEATH + 1.5) * dx, CY - 0.4, 0), "xs");
-    marks.seventeen = label(S, "17 moments before death", anchor(S, X0 + (DEATH - LIFE + 1.5) * dx, CY - 0.4, 0), "xs");
-    marks.corpse = label(S, "the corpse: temperature only", anchor(S, X0 + (DEATH + 15) * dx, 2.25, 0.3), "xs");
-    nowPlane = new THREE.Mesh(new THREE.BoxGeometry(0.02, 6.1, 0.5), basicMat("--ink", 0.22)); nowPlane.position.set(0, 2.55, 0); S.root.add(nowPlane);
-    var nowA = new THREE.Object3D(); nowA.position.set(0, 3.25, 0); nowPlane.add(nowA); label(S, "now", nowA, "xs");
+    label(S, "17 cittas = one turn", anchor(S, Math.cos(ang(40)) * 4.05, 0.05, Math.sin(ang(40)) * 4.05), "xs left", { pri: 7, minW: 560 });
+    /* the pointer: a thin upright blade from the hub to the citta ring */
+    var ptrG = new THREE.PlaneGeometry(3.9, 1.05); ptrG.rotateY(Math.PI / 2); ptrG.translate(0, 0.52, 1.95);
+    var ptr = new THREE.Mesh(ptrG, basicMat("--ink", 0.14)); ptr.material.side = THREE.DoubleSide; S.root.add(ptr);
+    var edgeG = new THREE.BoxGeometry(0.03, 0.03, 3.9); edgeG.translate(0, 1.05, 1.95); ptr.add(new THREE.Mesh(edgeG, basicMat("--ink", 0.8)));
+    var nowA = new THREE.Object3D(); nowA.position.set(0, 1.3, 3.95); ptr.add(nowA); label(S, "now", nowA, "xs", { pri: 9 });
+    marks.birth = label(S, "rebirth-linking", anchor(S, Math.cos(ang(0)) * 3.65, 0.25, Math.sin(ang(0)) * 3.65), "xs", { pri: 9 });
+    marks.death = label(S, "death · one turn after kamma's last matter", anchor(S, Math.cos(ang(DEATH)) * 3.65, 0.25, Math.sin(ang(DEATH)) * 3.65), "xs", { pri: 9 });
+    marks.corpse = label(S, "the corpse: temperature only", anchor(S, 0, 0.6, 0), "xs", { pri: 9 });
     S.update = function (dt) {
-      if (dt) { now += dt * 12; if (now >= WIN) now = mode === "life" ? 60 : 0; }
-      nowPlane.position.x = X0 + now * dx;
-      units.forEach(function (u) { if (u.s > now) { u.m.visible = false; return; } u.m.visible = true; u.m.material = now < u.s + LIFE ? u.lane.on : u.lane.off; });
-      discs.forEach(function (d, k) { d.visible = k * 3 <= now && !(mode === "death" && k * 3 > DEATH); });
+      if (dt) { now += dt * 12; var end = mode === "life" ? 62 + N * 3 : mode === "birth" ? 120 : 125; if (now >= end) now = mode === "life" ? 62 : mode === "birth" ? 0 : 30; }
+      ptr.rotation.y = Math.PI / 2 - ang(now);
+      lanes.forEach(function (lane) {
+        var used = 0;
+        for (var s = Math.floor(now); s > now - LIFE && used < lane.pool.length; s--) {
+          if (!arrives(lane, s)) continue;
+          var m = lane.pool[used++], a = ang(s + 0.5), life = 1 - (now - s) / LIFE;
+          m.visible = true; m.position.set(Math.cos(a) * lane.R, 0, Math.sin(a) * lane.R); m.rotation.y = -a + Math.PI / 2;
+          m.scale.y = 0.06 + 0.8 * Math.max(0, life);
+        }
+        for (; used < lane.pool.length; used++) lane.pool[used].visible = false;
+      });
+      var ci = Math.floor(((now % N) + N) % N / 3), dead = mode === "death" && now > DEATH;
+      cittas.forEach(function (c, i) { c.material = i === ci && !dead ? cMat.on : cMat.off; });
     };
     S.beforePrint = function () { mode = "life"; setPressed($("d3-loom-modes"), "life"); build(); now = 62; };
     build();
   })();
 
-  /* ================= 8. D4: helix of dependent origination ================= */
+  /* ================= 8. D4: helix of dependent origination =================
+     One turn for the twelve links, a steeper pitch and a higher camera, so no two links share a screen row;
+     each label sits on the outer side of its link (left or right, recomputed as the helix turns).
+     The helix sways instead of spinning, and the life bands are labelled at their front rims. */
   (function () {
     var L = [["avijjā", "ignorance", "D", 0], ["saṅkhārā", "formations", "K", 0], ["viññāṇa", "consciousness", "R", 1], ["nāmarūpa", "mind and matter", "R", 1], ["saḷāyatana", "six bases", "R", 1], ["phassa", "contact", "R", 1],
       ["vedanā", "feeling", "R", 1], ["taṇhā", "craving", "D", 2], ["upādāna", "clinging", "D", 2], ["bhava", "becoming", "KR", 2], ["jāti", "birth", "R", 3], ["jarāmaraṇa", "decay and death", "R", 3]];
@@ -571,25 +723,37 @@
     var PC = ["--muted", "--nama", "--nama", "--nib"];
     var mode = "round";
     pills($("d4-helix-btns"), [{ id: "round", label: "Three rounds" }, { id: "group", label: "Four groups" }, { id: "period", label: "Three lives" }], mode, function (v) { mode = v; apply(); });
-    var S = make3D("d4-helix", { height: 360, cam: [0, 0.9, 10.6], look: [0, 0.25, 0], fov: 36, spin: 0.14, rotX: 0.12, refAspect: 1.6, phoneRatio: 1.0 });
+    var S = make3D("d4-helix", { height: 380, printHeight: 400, cam: [0, 1.4, 10.6], look: [0, 0, 0], fov: 36, sway: 0.35, rotY: 0.2, phoneRatio: 1.15, fit: true, declutter: true,
+      printSearch: [-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3] });
     if (!S) return;
-    var pts = [], nodes = [];
+    var pts = [], nodes = [], labs = [], STEP = 0.62, Y0 = -3.4;
     L.forEach(function (l, i) {
-      var a = i * 40 * Math.PI / 180 - Math.PI / 2, y = i * 0.42 - 2.3, p = V(Math.cos(a) * 2.3, y, Math.sin(a) * 2.3); pts.push(p);
+      var a = i * 30 * Math.PI / 180 - Math.PI / 2 - 0.2, y = Y0 + i * STEP, p = V(Math.cos(a) * 2.3, y, Math.sin(a) * 2.3); pts.push(p);
       var m = new THREE.Mesh(new THREE.SphereGeometry(0.25, 28, 20)); m.position.copy(p); S.root.add(m); nodes.push(m);
       if (l[2] === "KR") { var k2 = new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 14), stdMat("--nama", { glow: 0.35 })); k2.position.copy(p).add(V(0, 0.3, 0)); S.root.add(k2); }
       if (i === 0 || i === 7) { var halo = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.03, 8, 40), stdMat("--ink", { glow: 0.2 })); halo.position.copy(p); halo.rotation.x = Math.PI / 2; S.root.add(halo); }
-      label(S, (i + 1) + " <i>" + l[0] + "</i> · " + l[1], anchor(S, p.x * 1.22, p.y + 0.12, p.z * 1.22), "sm");
+      labs.push(label(S, (i + 1) + " <i>" + l[0] + "</i> · " + l[1], anchor(S, p.x * 1.16, p.y, p.z * 1.16), "sm right", { pri: 5, short: (i + 1) + " " + l[1] }));
     });
+    var hubV = new THREE.Vector3(), lv = new THREE.Vector3();
+    function sideLabels() {
+      S.root.updateMatrixWorld(true);
+      labs.forEach(function (Lb, i) {
+        nodes[i].getWorldPosition(lv); hubV.set(0, lv.y, 0);
+        var right = lv.sub(hubV).applyQuaternion(S.camera.quaternion.clone().invert()).x >= 0;
+        Lb.el.classList.toggle("right", right); Lb.el.classList.toggle("left", !right);
+      });
+    }
+    S.beforeFit = sideLabels;
     S.root.add(tube(pts, 0.035, basicMat("--muted", 0.5)));
-    [[1, 2], [6, 7], [9, 10]].forEach(function (c, k) {
+    [[1, 2], [6, 7], [9, 10]].forEach(function (c) {
       var mid = pts[c[0]].clone().add(pts[c[1]]).multiplyScalar(0.5);
       var r = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.035, 8, 24), stdMat("--ink", { glow: 0.2 })); r.position.copy(mid); r.lookAt(pts[c[1]]); S.root.add(r);
     });
-    var bands = [["past life", -2.55, 0.7, "--muted"], ["this life", -1.6, 3.1, "--nama"], ["next life", 1.75, 0.85, "--nib"]];
+    var cut1 = Y0 + 1.5 * STEP, cut2 = Y0 + 9.5 * STEP;
+    var bands = [["past life", Y0 - 0.4, cut1 - (Y0 - 0.4), "--muted"], ["this life", cut1, cut2 - cut1, "--nama"], ["next life", cut2, Y0 + 11 * STEP + 0.45 - cut2, "--nib"]];
     bands.forEach(function (b) {
       var cyl = new THREE.Mesh(new THREE.CylinderGeometry(2.75, 2.75, b[2], 48, 1, true), basicMat(b[3], 0.07)); cyl.position.y = b[1] + b[2] / 2; cyl.material.side = THREE.DoubleSide; S.root.add(cyl);
-      label(S, b[0], anchor(S, -3.2, b[1] + b[2] / 2, 0), "sm left");
+      label(S, b[0].toUpperCase(), anchor(S, 0, b[1] + 0.14, 2.95, S.scene), "cap3", { pri: 3 });
     });
     var mats = {};
     function mat(v) { if (!mats[v]) mats[v] = stdMat(v, { glow: 0.35 }); return mats[v]; }
@@ -600,6 +764,7 @@
       });
       S.dirty = true;
     }
+    S.update = function () { sideLabels(); };
     apply();
   })();
 
@@ -611,18 +776,23 @@
       { id: "C", c: "--g3", t: "Mind → matter", n: 1, list: "postnascence", d: "Later cittas sustain the body that arose before them." },
       { id: "D", c: "--g4", t: "Matter → mind", n: 1, list: "prenascence", d: "Bases and sense objects, already arisen, support the cittas that follow." },
       { id: "E", c: "--g5", t: "Concepts, mind, matter → mind", n: 2, list: "object, decisive support", d: "Anything can be an object; a strong past experience can decisively support what arises now." },
-      { id: "F", c: "--g6", t: "Mind and matter → both", n: 9, list: "predominance, conascence, mutuality, support, nutriment, faculty, dissociation, presence, non-disappearance", d: "Things that arise together hold each other up, like the legs of a tripod." }
+      { id: "F", c: "--g6", t: "Mind and matter → both", n: 9, list: "predominance, conascence, mutuality, support, nutriment, faculty, dissociation, presence, non-disappearance", d: "Mind and matter hold each other up, mostly as things that arise together, like the legs of a tripod; support, presence and non-disappearance also work from a base that arose earlier or a citta that arises later." }
     ];
     var cur = "all";
     function info() {
       var box = $("d4-comp-info"); if (!box) return;
-      if (cur === "all") { box.innerHTML = "<h3>Six families, 24 conditions</h3><p class=\"small\">Arcs between mind (sphere), matter (cube) and concepts (ring). An arc's thickness shows how many conditions its family holds. Choose a family to see them.</p>"; return; }
+      /* "All" (and print) lists the six families with their conditions, so the panel is never empty on paper */
+      if (cur === "all") {
+        box.innerHTML = "<h3>Six families, 24 conditions</h3><p class=\"small\">Arcs between mind (sphere), matter (cube) and concepts (ring); an arc's thickness shows how many conditions its family holds.</p>" +
+          FAM.map(function (f) { return '<p class="small"><b style="color:var(' + f.c + ')">' + f.t + " · " + f.n + "</b> <i>" + f.list + ".</i></p>"; }).join("");
+        return;
+      }
       var f = FAM.filter(function (x) { return x.id === cur; })[0];
       box.innerHTML = '<h3 style="color:var(' + f.c + ')">' + f.t + " · " + f.n + '</h3><p class="small"><i>' + f.list + '.</i></p><p class="small">' + f.d + "</p>";
     }
     pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAM.map(function (f) { return { id: f.id, label: f.t.replace(" and ", " & "), c: f.c }; })), cur, function (v) { cur = v; info(); apply(); });
     info();
-    var S = make3D("d4-comp", { height: 300, cam: [0, 2.2, 9.6], look: [0, 0.1, 0], fov: 36, sway: 0.45, rotX: 0.1, refAspect: 1.2, phoneRatio: 0.9 });
+    var S = make3D("d4-comp", { height: 300, cam: [0, 2.2, 9.6], look: [0, 0.1, 0], fov: 36, sway: 0.45, rotX: 0.1, phoneRatio: 0.85, fit: true });
     if (!S) return;
     var Mi = V(-1.9, 0, 0), Ma = V(1.9, 0, 0), Co = V(0, 0.2, -2.1);
     var mind = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 22), stdMat("--nama", { glow: 0.35 })); mind.position.copy(Mi); S.root.add(mind);
@@ -646,21 +816,24 @@
     apply();
   })();
 
-  /* ================= 10. D5: planes as a world-mountain ================= */
+  /* ================= 10. D5: planes as a world-mountain =================
+     The model is round, so it turns (sways) under labels that stay put: plane labels sit in two fixed columns
+     with leader lines to their discs; the four group names sit on chips in front of their groups.
+     On phones the labels shorten (English, or one label per jhāna group). */
   (function () {
     var P = [
-      ["Niraya", "hell", "w"], ["Tiracchāna", "animals", "w"], ["Peta", "hungry ghosts", "w"], ["Asura", "titans", "w"], ["Manussa", "humans", "h"],
-      ["Cātumahārājika", "Four Great Kings · on Sineru's slopes", "s1"], ["Tāvatiṃsa", "Thirty-three · on the summit", "s2"], ["Yāma", "", "d"], ["Tusita", "", "d"], ["Nimmānarati", "", "d"], ["Paranimmitavasavattī", "", "d"],
-      ["Brahmapārisajja", "1st jhāna", "b1"], ["Brahmapurohita", "", "b1"], ["Mahābrahmā", "", "b1"],
-      ["Parittābha", "2nd jhāna", "b2"], ["Appamāṇābha", "", "b2"], ["Ābhassara", "", "b2"],
-      ["Parittasubha", "3rd jhāna", "b3"], ["Appamāṇasubha", "", "b3"], ["Subhakiṇha", "", "b3"],
-      ["Vehapphala", "4th jhāna", "b4"], ["Asaññasatta", "matter only", "b4n"], ["Aviha", "pure abode", "b4"], ["Atappa", "", "b4"], ["Sudassa", "", "b4"], ["Sudassī", "", "b4"], ["Akaniṭṭha", "highest pure abode", "b4"],
-      ["Ākāsānañcāyatana", "infinite space", "a"], ["Viññāṇañcāyatana", "infinite consciousness", "a"], ["Ākiñcaññāyatana", "nothingness", "a"], ["Nevasaññānāsaññāyatana", "", "a"]
+      ["Niraya", "hell", "w", "hell"], ["Tiracchāna", "animals", "w", "animals"], ["Peta", "hungry ghosts", "w", "ghosts"], ["Asura", "titans", "w", "titans"], ["Manussa", "humans", "h", "humans"],
+      ["Cātumahārājika", "Four Great Kings · on Sineru's slopes", "s1", "Four Kings"], ["Tāvatiṃsa", "Thirty-three · on the summit", "s2", "Thirty-three"], ["Yāma", "", "d", "Yāma"], ["Tusita", "", "d", "Tusita"], ["Nimmānarati", "", "d", "Nimmānarati"], ["Paranimmitavasavattī", "", "d", "Paranimmita…"],
+      ["Brahmapārisajja", "1st jhāna", "b1", "1st jhāna ×3"], ["Brahmapurohita", "", "b1", ""], ["Mahābrahmā", "", "b1", ""],
+      ["Parittābha", "2nd jhāna", "b2", "2nd jhāna ×3"], ["Appamāṇābha", "", "b2", ""], ["Ābhassara", "", "b2", ""],
+      ["Parittasubha", "3rd jhāna", "b3", "3rd jhāna ×3"], ["Appamāṇasubha", "", "b3", ""], ["Subhakiṇha", "", "b3", ""],
+      ["Vehapphala", "4th jhāna", "b4", "4th jhāna"], ["Asaññasatta", "matter only", "b4n", "matter only"], ["Aviha", "pure abode", "b4", "pure abodes ×5"], ["Atappa", "", "b4", ""], ["Sudassa", "", "b4", ""], ["Sudassī", "", "b4", ""], ["Akaniṭṭha", "highest pure abode", "b4", ""],
+      ["Ākāsānañcāyatana", "infinite space", "a", "infinite space"], ["Viññāṇañcāyatana", "infinite consciousness", "a", "infinite consc."], ["Ākiñcaññāyatana", "nothingness", "a", "nothingness"], ["Nevasaññānāsaññāyatana", "neither perception nor non-perception", "a", "neither-nor"]
     ];
-    var S = make3D("d5-view", { height: 560, cam: [0, 5.6, 19.5], look: [0, 4.6, 0], fov: 36, spin: 0.12, rotX: 0.06, refAspect: 1.15, phoneRatio: 1.35 });
+    var S = make3D("d5-view", { height: 560, printHeight: 600, cam: [0, 4.2, 19.5], look: [0, 3.4, 0], fov: 36, sway: 0.5, rotX: 0.06, phoneRatio: 1.25, fit: true, declutter: true });
     if (!S) return;
     var y = -0.4, prev = null, GAP = { w: 0, h: 0.35, s1: 0.2, s2: 0.2, d: 0.25, b1: 0.35, b2: 0.3, b3: 0.3, b4: 0.3, b4n: 0.3, a: 0.4 };
-    var yS = {};
+    var yS = {}, labs = [], LX = 2.75;
     P.forEach(function (p, i) {
       var g = p[2]; y += (prev === null ? 0 : (g !== prev ? GAP[g] : 0)) + 0.23; prev = g; p.y = y;
       var r, mat;
@@ -673,100 +846,258 @@
       if (g === "a") {
         var ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.03, 8, 80), stdMat("--nama", { glow: 0.35 })); ring.rotation.x = Math.PI / 2; ring.position.y = y; S.root.add(ring);
       } else if (g === "s1") {
-        var ringK = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.07, 10, 60), mat); ringK.rotation.x = Math.PI / 2; ringK.position.y = y; S.root.add(ringK);
+        var ringK = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.07, 10, 60), mat); ringK.rotation.x = Math.PI / 2; ringK.position.y = y; S.root.add(ringK); r = 1.02;
       } else {
         var disc = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.07, 64), mat); disc.position.y = y; S.root.add(disc);
       }
       yS[p[0]] = y;
       var side = i % 2 ? 1 : -1;
-      label(S, "<i>" + p[0] + "</i>" + (p[1] ? " · " + p[1] : ""), anchor(S, side * 2.55, y, 0), "xs " + (side > 0 ? "right" : "left"));
+      /* leader line, fixed in the scene: from the disc's rim to the label column */
+      var ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints([V(side * (r + 0.05), y, 0), V(side * (LX - 0.05), y, 0)]), lineMat("--muted", 0.45)); S.scene.add(ln);
+      var L = label(S, "<i>" + p[0] + "</i>" + (p[1] ? " · " + p[1] : ""), anchor(S, side * LX, y, 0, S.scene), "xs " + (side > 0 ? "right" : "left"), { pri: p[1] ? 4 : 2 });
+      L.sh = p[3]; L.ln = ln; labs.push(L);
     });
+    S.onSize = function (w) { labs.forEach(function (L) { var ph = w < 560; relabel(L, ph ? L.sh : L.html); L.hidden = ph && !L.sh; L.ln.visible = !L.hidden; }); };
     var hY = yS.Manussa, tY = yS["Tāvatiṃsa"];
     var cone = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.95, tY - hY, 40, 1), stdMat("--rupa", { glow: 0.12, opacity: 0.9 })); cone.position.y = (hY + tY) / 2; S.root.add(cone);
-    label(S, "Mount Sineru", anchor(S, 0, (hY + tY) / 2, 1.05), "xs");
+    label(S, "Mount Sineru", anchor(S, 0, (hY + tY) / 2 - 0.05, 1.05), "xs", { pri: 6 });
     var axis = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, y + 1, 8), basicMat("--line", 0.6)); axis.position.y = y / 2; S.root.add(axis);
-    var brk = [["woeful", 0, 3], ["sense heavens", 5, 10], ["fine-material", 11, 26], ["immaterial", 27, 30]];
-    brk.forEach(function (b) { label(S, b[0].toUpperCase(), anchor(S, 0, (P[b[1]].y + P[b[2]].y) / 2, -2.6), "cap3"); });
+    /* group names on chips, in front of their groups (woeful below its discs, so it never meets Mount Sineru) */
+    [["woeful", P[0].y - 0.42, 1.2], ["sense heavens", (P[7].y + P[10].y) / 2, 1.6], ["fine-material", (P[14].y + P[19].y) / 2, 1.9], ["immaterial", (P[27].y + P[30].y) / 2, 1.75]].forEach(function (g) {
+      var L = label(S, g[0].toUpperCase(), anchor(S, 0, g[1], g[2], S.scene), "cap3", { pri: 8 }); L.el.style.background = "color-mix(in srgb, var(--sheet) 85%, transparent)"; L.el.style.padding = "1px 5px";
+    });
   })();
 
-  /* ================= 11. D6: requisites skyline ================= */
+  /* ================= 11. D6: the climb (replaces the requisites skyline and the fetter column) =================
+     Calm: stacked floors of absorption. Factor posts show which jhāna factors each floor keeps (a post ends on the
+     last floor that has its factor); the immaterial floors are empty frames, as in D5, and the top of calm is still
+     a plane of existence. Insight: a teal column beside the stack, fed by dashed links from any floor (or from the
+     ground: dry insight), passing the insight knowledges and, above the top of calm, the four paths. The ten fetters
+     are red rings set just under the path that cuts them; choosing a stage drops the rings that stage has cut.
+     The 37 requisites, formerly a 3D bar chart, are drawn below as a 2D incidence table (14 states × 7 groups). */
   (function () {
-    var G = [["Foundations of mindfulness", "--th1"], ["Right efforts", "--th4"], ["Bases of success", "--th10"], ["Faculties", "--th3"], ["Powers", "--th2"], ["Enlightenment factors", "--th8"], ["Path factors", "--th9"]];
+    var G = [["Foundations of mindfulness", "Found.", 4], ["Right efforts", "Efforts", 4], ["Bases of success", "Bases", 4], ["Faculties", "Facult.", 5], ["Powers", "Powers", 5], ["Enlightenment factors", "Enlight.", 7], ["Path factors", "Path", 8]];
     var ST = [
       ["viriya", "energy", [0, 4, 1, 1, 1, 1, 1]], ["sati", "mindfulness", [4, 0, 0, 1, 1, 1, 1]], ["paññā", "wisdom", [0, 0, 1, 1, 1, 1, 1]], ["samādhi", "concentration", [0, 0, 0, 1, 1, 1, 1]], ["saddhā", "faith", [0, 0, 0, 1, 1, 0, 0]],
-      ["chanda", "desire", [0, 0, 1, 0, 0, 0, 0]], ["citta", "consciousness", [0, 0, 1, 0, 0, 0, 0]], ["pīti", "zest", [0, 0, 0, 0, 0, 1, 0]], ["passaddhi", "tranquillity", [0, 0, 0, 0, 0, 1, 0]], ["upekkhā", "equanimity", [0, 0, 0, 0, 0, 1, 0]],
-      ["vitakka", "right thought", [0, 0, 0, 0, 0, 0, 1]], ["sammā-vācā", "right speech", [0, 0, 0, 0, 0, 0, 1]], ["sammā-kammanta", "right action", [0, 0, 0, 0, 0, 0, 1]], ["sammā-ājīva", "right livelihood", [0, 0, 0, 0, 0, 0, 1]]
+      ["chanda", "desire to act", [0, 0, 1, 0, 0, 0, 0]], ["citta", "consciousness", [0, 0, 1, 0, 0, 0, 0]], ["pīti", "zest", [0, 0, 0, 0, 0, 1, 0]], ["passaddhi", "tranquillity", [0, 0, 0, 0, 0, 1, 0]], ["upekkhā", "equanimity", [0, 0, 0, 0, 0, 1, 0]],
+      ["vitakka", "right intention", [0, 0, 0, 0, 0, 0, 1]], ["sammā-vācā", "right speech", [0, 0, 0, 0, 0, 0, 1]], ["sammā-kammanta", "right action", [0, 0, 0, 0, 0, 0, 1]], ["sammā-ājīva", "right livelihood", [0, 0, 0, 0, 0, 0, 1]]
     ];
-    if ($("d6-sky-legend")) $("d6-sky-legend").innerHTML = G.map(function (g) { return '<span><i style="background:var(' + g[1] + ')"></i>' + g[0] + "</span>"; }).join("");
-    var S = make3D("d6-sky", { height: 300, cam: [0, 3.0, 8.4], look: [0, 1.45, 0], fov: 34, sway: 0.3, rotX: 0.04, refAspect: 2.0, phoneRatio: 0.85 });
-    if (!S) return;
-    var step = 0.56, x0 = -((ST.length - 1) * step) / 2, cube = new THREE.BoxGeometry(0.44, 0.34, 0.44), mats = G.map(function (g) { return stdMat(g[1], { glow: 0.28 }); });
-    ST.forEach(function (s, i) {
-      var x = x0 + i * step, h = 0;
-      s[2].forEach(function (n, gi) { for (var k = 0; k < n; k++) { var m = new THREE.Mesh(cube, mats[gi]); m.position.set(x, 0.17 + h * 0.37, 0); S.root.add(m); h++; } });
-      label(S, h + "", anchor(S, x, h * 0.37 + 0.25, 0), "xs");
-      label(S, "<i>" + s[0] + "</i>", anchor(S, x, i % 2 ? -0.62 : -0.3, 0.35), "xs");
-    });
-    var base = new THREE.Mesh(new THREE.BoxGeometry(ST.length * step + 0.3, 0.04, 0.9), basicMat("--line", 0.5)); base.position.y = -0.03; S.root.add(base);
-  })();
-
-  /* ================= 12. D6: fetters ================= */
-  (function () {
-    var F = [["personality view", 0], ["doubt", 0], ["rites and rules", 0], ["sensual desire", 1], ["ill will", 1], ["lust for fine-material being", 3], ["lust for immaterial being", 3], ["conceit", 3], ["restlessness", 3], ["ignorance", 3]];
-    var PC = ["--nib", "--th8", "--th8", "--nama"];
-    var STAGES = [{ id: "0", label: "Ordinary person" }, { id: "1", label: "Stream-enterer" }, { id: "2", label: "Once-returner" }, { id: "3", label: "Non-returner" }, { id: "4", label: "Arahant" }];
-    var CAP = { "0": "All ten fetters bind.", "1": "Personality view, doubt and clinging to rites and rules are gone for good.", "2": "Sensual desire and ill will remain, but weakened.", "3": "Sensual desire and ill will are gone; five subtle fetters remain.", "4": "No fetter remains." };
-    var cur = "0";
-    var S = make3D("d6-fet", { height: 300, cam: [0, 1.6, 8.6], look: [0, 1.25, 0], fov: 34, spin: 0.2, rotX: 0.08, refAspect: 1.1, phoneRatio: 0.95 });
-    var rings = [];
-    function apply() {
-      var st = +cur;
-      rings.forEach(function (r, i) {
-        var f = F[i], gone = (f[1] === 0 && st >= 1) || (f[1] === 1 && st >= 3) || (f[1] === 3 && st >= 4), weak = f[1] === 1 && st === 2;
-        r.m.visible = !gone; r.L.hidden = gone; r.m.scale.setScalar(weak ? 0.75 : 1); r.m.material.opacity = weak ? 0.35 : 0.95;
+    (function table() {
+      var host = $("d6-req"); if (!host) return;
+      var LW = 168, CW = 34, RH = 15.5, TOP = 34, W = LW + 7 * CW + 34, Hh = TOP + ST.length * RH + 6, o = [];
+      o.push('<svg viewBox="0 0 ' + W + " " + Hh + '" role="img" aria-label="The 37 requisites as 14 states in 7 groups">');
+      G.forEach(function (g, j) {
+        var x = LW + j * CW + CW / 2;
+        o.push('<text x="' + x + '" y="12" text-anchor="middle" font-size="9" fill="var(--muted)"><title>' + g[0] + "</title>" + g[1] + '</text><text x="' + x + '" y="25" text-anchor="middle" font-size="9" font-weight="600">' + g[2] + "</text>");
       });
-      if ($("d6-fet-cap")) $("d6-fet-cap").innerHTML = "<b>" + STAGES[st].label + ".</b> " + CAP[cur];
-      if (S) S.dirty = true;
+      o.push('<text x="' + (LW + 7 * CW + 17) + '" y="25" text-anchor="middle" font-size="9" font-weight="600">×</text>');
+      ST.forEach(function (st, i) {
+        var y = TOP + i * RH + RH / 2, tot = st[2].reduce(function (a, b) { return a + b; }, 0);
+        if (i % 2 === 0) o.push('<rect x="0" y="' + (y - RH / 2) + '" width="' + W + '" height="' + RH + '" fill="var(--faint)"/>');
+        o.push('<text x="4" y="' + (y + 3.3) + '" font-size="9.5"><tspan font-style="italic" font-family="var(--body)" font-size="10.5">' + st[0] + '</tspan> <tspan fill="var(--muted)">' + st[1] + "</tspan></text>");
+        st[2].forEach(function (n, j) {
+          if (!n) return;
+          var x = LW + j * CW + CW / 2;
+          o.push('<circle cx="' + x + '" cy="' + y + '" r="' + (n > 1 ? 6.2 : 3.6) + '" fill="' + (st[0] === "citta" ? "var(--nama)" : "var(--nama-2)") + '"/>');
+          if (n > 1) o.push('<text x="' + x + '" y="' + (y + 3.2) + '" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--on-accent)">' + n + "</text>");
+        });
+        o.push('<text x="' + (LW + 7 * CW + 17) + '" y="' + (y + 3.3) + '" text-anchor="middle" font-size="9.5" font-weight="600">' + tot + "</text>");
+      });
+      o.push("</svg>");
+      host.innerHTML = o.join("");
+    })();
+
+    var STAGES = [{ id: "0", label: "Ordinary person" }, { id: "1", label: "Stream-enterer" }, { id: "2", label: "Once-returner" }, { id: "3", label: "Non-returner" }, { id: "4", label: "Arahant" }];
+    var CAP = { "0": "All ten fetters bind. The red rings sit just under the path that will cut them.", "1": "Stream-entry has cut personality view, doubt and clinging to rites and rules, for good.", "2": "Once-return cuts no new fetter: sensual desire and ill will remain, but weakened.", "3": "Non-return has cut sensual desire and ill will; five subtle fetters remain.", "4": "Arahantship has cut the last five. No fetter remains." };
+    /* fetters: [name, cut at stage] (once-return, stage 2, weakens the two cut at 3) */
+    var F = [["personality view", 1], ["doubt", 1], ["rites and rules", 1], ["sensual desire", 3], ["ill will", 3], ["lust for fine-material being", 4], ["lust for immaterial being", 4], ["conceit", 4], ["restlessness", 4], ["ignorance", 4]];
+    var cur = "0";
+    function caption() { if ($("d6-fet-cap")) $("d6-fet-cap").innerHTML = "<b>" + STAGES[+cur].label + ".</b> " + CAP[cur]; }
+    var S = make3D("d6-climb", { height: 520, printHeight: 520, cam: [0, 4.2, 15.5], look: [0.3, 4.1, 0], fov: 34, sway: 0.3, rotY: -0.18, rotX: 0.04, phoneRatio: 1.25, fit: true, declutter: true });
+    var rings = [], climber = null, PATHY = [0.3, 5.15, 5.85, 6.55, 7.25];
+    function apply() {
+      caption();
+      if (!S) return;
+      var st = +cur;
+      rings.forEach(function (r) {
+        var gone = st >= r.cut, weak = r.cut === 3 && st === 2;
+        r.target = gone ? 0.12 : r.y0; r.fade = gone ? 0 : (weak ? 0.4 : 0.95); r.sc = weak ? 0.7 : 1;
+        if (!S.anim) { r.m.position.y = r.target; r.m.material.opacity = r.fade; r.m.visible = r.fade > 0.02; r.m.scale.setScalar(r.sc); }
+      });
+      if (r0L) { r0L.forEach(function (x) { x.L.alpha = st >= x.cut ? 0.25 : 1; }); }
+      climber.position.y = PATHY[st];
+      S.dirty = true;
     }
-    pills($("d6-fet-btns"), STAGES, cur, function (v) { cur = v; apply(); });
-    if (!S) { apply(); return; }
-    var col0 = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 3.4, 32), stdMat("--nib", { glow: 0.3, opacity: 0.55 })); col0.position.y = 1.4; S.root.add(col0);
-    F.forEach(function (f, i) {
-      var y = 0.05 + i * 0.3, m = new THREE.Mesh(new THREE.TorusGeometry(0.58, 0.07, 12, 48), stdMat(PC[f[1]], { glow: 0.3, opacity: 0.95 })); m.rotation.x = Math.PI / 2; m.position.y = y; S.root.add(m);
-      var L = label(S, f[0], anchor(S, 0.95, y, 0), "xs right");
-      rings.push({ m: m, L: L });
+    var r0L = null;
+    pills($("d6-fet-btns"), STAGES, cur, function (v) { cur = v; S && (S.anim = true); apply(); });
+    if (!S) { caption(); return; }
+    var R = S.root, CX = -1.3, IX = 1.6;
+    var ground = new THREE.Mesh(new THREE.BoxGeometry(7.4, 0.08, 2.6), basicMat("--line", 0.6)); ground.position.set(0.2, -0.04, 0); R.add(ground);
+    label(S, "virtue: the ground", anchor(S, -2.75, 0.02, 1.15), "xs left", { pri: 5 });
+    /* calm: floors */
+    var FL = [["access", 0.55, "w"], ["1st jhāna", 1.05, "j"], ["2nd jhāna", 1.5, "j"], ["3rd jhāna", 1.95, "j"], ["4th jhāna", 2.4, "j"], ["5th jhāna", 2.85, "j"],
+      ["infinite space", 3.35, "a"], ["infinite consciousness", 3.8, "a"], ["nothingness", 4.25, "a"], ["neither perception nor non-perception", 4.7, "a"]];
+    var plateG = new THREE.BoxGeometry(2.6, 0.04, 2.0), plateE = new THREE.EdgesGeometry(plateG);
+    FL.forEach(function (f, i) {
+      if (f[2] === "j") { var pm = new THREE.Mesh(plateG, basicMat("--nama", 0.2 - i * 0.015)); pm.position.set(CX, f[1], 0); R.add(pm); }
+      var e = new THREE.LineSegments(plateE, lineMat("--nama", f[2] === "w" ? 0.3 : f[2] === "a" ? 0.85 : 0.55)); e.position.set(CX, f[1], 0); R.add(e);
+      label(S, f[0], anchor(S, CX - 1.4, f[1], 1.0), "xs left", { pri: 6, short: f[0].replace("neither perception nor non-perception", "neither-nor").replace("infinite consciousness", "inf. consciousness") });
+      if (f[2] !== "w") { /* dashed link: any floor can be insight's base */
+        var dl = new THREE.Line(new THREE.BufferGeometry().setFromPoints([V(CX + 1.3, f[1], 0), V(IX - 0.1, f[1] + 0.25, 0)]), new THREE.LineDashedMaterial({ color: col("--nib"), transparent: true, opacity: 0.55, dashSize: 0.1, gapSize: 0.08 }));
+        dl.computeLineDistances(); R.add(dl); (function (m) { rethemers.push(function () { m.color.set(tok("--nib")); }); })(dl.material);
+      }
     });
-    label(S, "Nibbāna", anchor(S, 0, 3.4, 0), "p");
+    label(S, "top of calm: still a plane of existence", anchor(S, CX - 1.4, 5.0, 1.0), "xs left", { pri: 4, minW: 560 });
+    /* jhāna factor posts: [name, english, floors present (indices into FL), colour] */
+    var FAC = [["vitakka", "initial application", [1], "--nama-2"], ["vicāra", "sustained application", [1, 2], "--nama-2"], ["pīti", "zest", [1, 2, 3], "--nama-2"],
+      ["sukha", "happiness", [1, 2, 3, 4], "--f-joy"], ["upekkhā", "equanimity", [5, 6, 7, 8, 9], "--f-eq"], ["ekaggatā", "one-pointedness", [1, 2, 3, 4, 5, 6, 7, 8, 9], "--nama"]];
+    var PX = [-2.35, -1.9, -1.45, -1.0, -1.0, -0.4], bead = new THREE.SphereGeometry(0.085, 16, 12);
+    FAC.forEach(function (fc, k) {
+      var x = PX[k], z = -0.7, m = stdMat(fc[3], { glow: 0.35 }), ys = fc[2].map(function (i) { return FL[i][1] + 0.09; });
+      ys.forEach(function (yy) { var b = new THREE.Mesh(bead, m); b.position.set(x, yy, z); R.add(b); });
+      if (ys.length > 1) { var post = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, ys[ys.length - 1] - ys[0], 8), m); post.position.set(x, (ys[0] + ys[ys.length - 1]) / 2, z); R.add(post); }
+      var ly = k === 4 ? ys[0] : ys[ys.length - 1], top = k === 5;
+      label(S, "<i>" + fc[0] + "</i> · " + fc[1], anchor(S, x + (top ? -0.12 : 0.12), ly + 0.17, z), "xs " + (top ? "left" : "right"), { pri: 5, short: "<i>" + fc[0] + "</i>" });
+    });
+    /* insight column */
+    var col0 = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 8.0, 16), stdMat("--nib", { glow: 0.35, opacity: 0.9 })); col0.position.set(IX, 4.0, 0); R.add(col0);
+    label(S, "dry insight: momentary concentration", anchor(S, IX + 0.2, 0.3, 0), "xs right", { pri: 4, short: "dry insight" });
+    var KN = [["view: mind and matter discerned", 1.0], ["overcoming doubt: their conditions", 1.55], ["comprehension", 2.1], ["rise and fall", 2.65], ["dissolution … reflection", 3.2], ["equanimity about formations", 3.75], ["conformity · change of lineage", 4.3]];
+    var kb = stdMat("--nib", { glow: 0.3 });
+    KN.forEach(function (k) { var b = new THREE.Mesh(bead, kb); b.position.set(IX, k[1], 0); R.add(b); label(S, k[0], anchor(S, IX + 0.2, k[1], 0), "xs right", { pri: 3, minW: 400 }); });
+    ["stream-entry", "once-return", "non-return", "arahantship"].forEach(function (n, i) {
+      var d = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.06, 40), stdMat("--nib", { glow: 0.4 })); d.position.set(IX, PATHY[i + 1], 0); R.add(d);
+      label(S, "<b>" + n + "</b>", anchor(S, IX + 0.5, PATHY[i + 1], 0), "sm2 right", { pri: 8 });
+    });
+    var orb = new THREE.Mesh(new THREE.SphereGeometry(0.34, 32, 22), stdMat("--nib", { glow: 0.6 })); orb.position.set(IX, 8.25, 0); R.add(orb);
+    label(S, "Nibbāna: the object of every path", anchor(S, IX, 8.8, 0), "p", { pri: 9, short: "Nibbāna" });
+    climber = new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 14), stdMat("--ink", { glow: 0.2 })); climber.position.set(IX + 0.32, 0.3, 0.25); R.add(climber);
+    /* fetter rings, red, just under the path that cuts them */
+    var RY = { 0: 4.82, 1: 4.92, 2: 5.02, 3: 6.27, 4: 6.38, 5: 6.82, 6: 6.9, 7: 6.98, 8: 7.06, 9: 7.14 };
+    var ringG = new THREE.TorusGeometry(0.27, 0.035, 10, 40);
+    F.forEach(function (f, i) {
+      var m = new THREE.Mesh(ringG, stdMat("--bad", { glow: 0.3, opacity: 0.95 })); m.rotation.x = Math.PI / 2; m.position.set(IX, RY[i], 0); m.material.transparent = true; R.add(m);
+      rings.push({ m: m, cut: f[1], y0: RY[i], target: RY[i], fade: 0.95, sc: 1 });
+    });
+    r0L = [["personality view · doubt · rites and rules", 4.86, 1, 1], ["sensual desire · ill will", 6.32, 3, 0], ["lust for fine-material and immaterial being ·<br>conceit · restlessness · ignorance", 6.98, 4, 0]].map(function (g) {
+      return { L: label(S, g[0], anchor(S, g[3] ? IX + 0.4 : IX - 0.4, g[1], 0), "xs " + (g[3] ? "right" : "left"), { pri: 7, short: ["3 fetters", "2 fetters", "5 fetters"][g[2] === 1 ? 0 : g[2] === 3 ? 1 : 2] }), cut: g[2] };
+    });
+    r0L.forEach(function (x) { x.L.el.style.color = "var(--bad)"; });
+    S.update = function (dt) {
+      if (!S.anim || !dt) return;
+      var moving = false;
+      rings.forEach(function (r) {
+        var m = r.m, dy = r.target - m.position.y, dop = r.fade - m.material.opacity;
+        if (Math.abs(dy) > 0.005 || Math.abs(dop) > 0.01) { moving = true; m.position.y += dy * Math.min(1, dt * 3); m.material.opacity += dop * Math.min(1, dt * 3); m.rotation.z += dt * 2 * (r.target < r.y0 ? 1 : 0); }
+        m.scale.setScalar(r.sc); m.visible = m.material.opacity > 0.02;
+      });
+      if (!moving) S.anim = false;
+    };
+    S.beforePrint = function () { cur = "0"; setPressed($("d6-fet-btns"), "0"); S.anim = false; apply(); };
     apply();
   })();
 
-  /* ================= 13. D7: the weave ================= */
+  /* ================= 13. D7: one moment, every lens (replaces "the weave") =================
+     The mango moment (seeing a ripe mango and wanting it) as five transparent layers on one time axis of 17
+     mind-moments: matter (the mango's colour, eye-sensitivity, mind-born matter), citta, factors (stacked by kind:
+     universal, occasional, beautiful, unwholesome), conditions (proximity and repetition along the layer; object,
+     prenascence and kamma as threads between layers) and kamma (results arriving at the resultant cittas, new kamma
+     made at the javanas, sent to three different futures). A cursor cuts all five layers at one moment; the caption
+     reads the cut lens by lens. Counts: research data (CMA II rules); javana effectiveness: CMA V. */
   (function () {
-    var PLv = [1, 1, 2, 2, 2, 2, 3, 4, 4, 5, 5, 6, 6, 7, 7];
-    var PS = ["Library", "Two truths", "The 89", "The 52", "Matter", "Similes", "Seeing", "Conditions", "The wheel", "Kamma", "Planes", "Calm", "Insight", "Every lens", "Other maps"];
-    var TH = [
-      ["citta", "--th1", [2, 3, 4, 6, 7, 8, 9, 11, 14, 15]], ["feeling", "--th2", [2, 3, 4, 6, 9, 12, 14]], ["contact", "--th3", [2, 4, 6, 8, 9, 14]], ["kamma", "--th4", [4, 5, 6, 7, 8, 9, 10, 14]],
-      ["matter", "--th5", [2, 5, 6, 7, 8, 11, 14, 15]], ["bhavaṅga", "--th6", [7, 10, 14, 15]], ["roots", "--th7", [4, 8, 9, 13, 14]], ["jhāna", "--th8", [3, 4, 8, 10, 11, 12, 13]],
-      ["Nibbāna", "--th9", [2, 13, 15]], ["wisdom", "--th10", [4, 6, 13, 14]], ["time", "--th11", [5, 7, 10, 11, 15]]
+    var MO = ["bh", "vb", "ar", "pa", "vi", "sa", "st", "vo", "ja", "ja", "ja", "ja", "ja", "ja", "ja", "ta", "ta"];
+    /* factors per moment: [universal, occasional, beautiful, unwholesome, may-join] (Plate 3 numbers in the caption) */
+    var FX = { bh: [7, 6, 20, 0, 0], vb: [7, 6, 20, 0, 0], ar: [7, 6, 20, 0, 0], pa: [7, 3, 0, 0, 0], vi: [7, 0, 0, 0, 0], sa: [7, 3, 0, 0, 0], st: [7, 4, 0, 0, 0], vo: [7, 4, 0, 0, 0], ja: [7, 6, 0, 5, 1], ta: [7, 4, 0, 0, 0] };
+    var RES = { bh: 1, vb: 1, ar: 1, vi: 1, sa: 1, st: 1, ta: 1 };
+    var H = { bh: 0.18, vb: 0.26, ar: 0.26, pa: 0.5, vi: 0.62, sa: 0.5, st: 0.5, vo: 0.5, ja: 0.95, ta: 0.42 };
+    var CO = { bh: "--line", vb: "--muted", ar: "--muted", pa: "--nama-2", vi: "--nama", sa: "--nama-2", st: "--nama-2", vo: "--nama-2", ja: "--nama", ta: "--nama-2" };
+    var CUTS = [
+      { id: "4", label: "Seeing", t: ["Seeing (Plate 3, citta 20): wholesome-resultant eye-consciousness.", "Only the 7 universals.", "The colour is in its 5th moment; eye-sensitivity is the base. Seeing alone makes no mind-born matter.", "Prenascence from the eye-base, object from the colour, proximity from adverting.", "A result of past wholesome kamma; it makes none."] },
+      { id: "7", label: "Determining", t: ["Determining (citta 29), a functional citta.", "11: the universals, applied and sustained thought, decision and energy.", "Colour in its 8th moment.", "Proximity from investigating. Here the course turns: what the javanas become depends on attention (the commentaries).", "Neither result nor kamma."] },
+      { id: "8", label: "Javana 1", t: ["The first javana: greed-rooted, joyful, without wrong view (citta 3): wanting what is seen. “A mango” is known in the mind-door processes that follow.", "18, or 19 if conceit joins: 13 ethically variable, then delusion, shamelessness, fearlessness of wrong, restlessness and greed (red).", "Colour in its 9th moment; the javana makes mind-born matter.", "Proximity from determining; repetition to the next javana.", "Its volition is kamma, and the first javana's can ripen only in this life."] },
+      { id: "14", label: "Javana 7", t: ["The seventh javana, the same citta.", "The same 18 or 19.", "Colour in its 15th moment.", "Proximity and repetition from javana 6.", "The seventh javana's kamma ripens in the next life or not at all; the five between can ripen in any life after the next, while the round goes on."] },
+      { id: "15", label: "Registration", t: ["Registration (citta 26): resultant, holding the javanas' object.", "11, with zest: the object is very pleasing.", "Colour in its 16th moment; one more, and the object ceases.", "Proximity from the last javana; then the life-continuum resumes.", "A result again: the course of kamma for this moment is done."] }
     ];
-    var cur = "all";
-    pills($("d7-btns"), [{ id: "all", label: "All threads" }].concat(TH.map(function (t) { return { id: t[0], label: t[0], c: t[1] }; })), cur, function (v) { cur = v; apply(); });
-    var S = make3D("d7-view", { height: 470, cam: [0, 2.6, 13.6], look: [0, 0.2, 0], fov: 36, spin: 0.12, rotX: 0.1, refAspect: 1.4, phoneRatio: 1.1 });
-    if (!S) return;
-    var pos = [];
-    for (var p = 1; p <= 15; p++) {
-      var a = (p - 1) * 26 * Math.PI / 180, y = (PLv[p - 1] - 1) * 0.85 - 2.6 + ((p - 1) % 2) * 0.12, v3 = V(Math.cos(a) * 2.8, y, Math.sin(a) * 2.8); pos[p] = v3;
-      var card = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.36, 0.06), stdMat("--lv" + PLv[p - 1], { glow: 0.3 })); card.position.copy(v3); card.lookAt(V(0, y, 0)); S.root.add(card);
-      label(S, "<b>" + p + "</b> " + PS[p - 1], anchor(S, v3.x * 1.18, v3.y + 0.32, v3.z * 1.18), "xs");
+    var cur = "8", LN = ["Citta", "Factors", "Matter", "Conditions", "Kamma"];
+    function caption() {
+      var c = CUTS.filter(function (x) { return x.id === cur; })[0], box = $("d7-cap"); if (!box) return;
+      box.innerHTML = "<b>The cut at " + c.label.toLowerCase() + ".</b> " + c.t.map(function (x, i) { return "<b>" + LN[i] + ":</b> " + x; }).join(" ");
     }
-    var tubes = [];
-    TH.forEach(function (t, k) {
-      var off = (k - 5) * 0.045;
-      var pts = t[2].map(function (p) { var q = pos[p].clone(); var n = V(q.x, 0, q.z).normalize(); return q.add(n.multiplyScalar(off)).add(V(0, off, 0)); });
-      var m = tube(pts, 0.022, basicMat(t[1], 0.85)); m.userData.t = t[0]; S.root.add(m); tubes.push(m);
+    pills($("d7-btns"), CUTS, cur, function (v) { cur = v; caption(); place(); });
+    caption();
+    var S = make3D("d7-view", { height: 440, printHeight: 450, cam: [0, 6.6, 12.8], look: [0.2, 2.6, 0], fov: 34, sway: 0.25, rotY: -0.12, rotX: 0.02, phoneRatio: 0.66, fit: true, declutter: true });
+    var cutM = null;
+    function place() { if (!S) return; cutM.position.x = X(+cur); S.dirty = true; }
+    if (!S) return;
+    var R = S.root, STEP = 0.52, X0 = -((MO.length - 1) * STEP) / 2, LY = { m: 0, c: 1.3, f: 2.6, k: 3.9, km: 5.2 }, SW = MO.length * STEP + 0.7;
+    function X(i) { return X0 + i * STEP; }
+    [["m", "--rupa-mark", "MATTER"], ["c", "--nama", "CITTA"], ["f", "--nama-2", "FACTORS"], ["k", "--g6", "CONDITIONS"], ["km", "--kamma", "KAMMA"]].forEach(function (L) {
+      var g = new THREE.BoxGeometry(SW, 0.02, 1.5), sh = new THREE.Mesh(g, basicMat(L[1], 0.08)); sh.position.set(0, LY[L[0]] - 0.02, 0); R.add(sh);
+      var e = new THREE.LineSegments(new THREE.EdgesGeometry(g), lineMat(L[1], 0.45)); e.position.copy(sh.position); R.add(e);
+      label(S, L[2], anchor(S, -SW / 2 - 0.1, LY[L[0]], 0.75), "cap3 left", { pri: 9 });
     });
-    function apply() { tubes.forEach(function (m) { m.material.opacity = cur === "all" || cur === m.userData.t ? 0.9 : 0.06; }); S.dirty = true; }
-    apply();
+    /* matter */
+    var bar = new THREE.Mesh(new THREE.BoxGeometry(MO.length * STEP - 0.06, 0.1, 0.22), stdMat("--rupa-mark", { glow: 0.35 })); bar.position.set(0, LY.m + 0.05, 0.42); R.add(bar);
+    label(S, "the mango's colour: 17 moments", anchor(S, X(2), LY.m + 0.1, 0.62), "xs", { pri: 6, short: "colour · 17 moments" });
+    var eye = new THREE.Mesh(new THREE.BoxGeometry(MO.length * STEP + 0.4, 0.1, 0.18), stdMat("--rupa", { glow: 0.25 })); eye.position.set(-0.2, LY.m + 0.05, 0.02); R.add(eye);
+    label(S, "eye-sensitivity (arose before)", anchor(S, X(14), LY.m + 0.12, 0.1), "xs", { pri: 4, minW: 560 });
+    var mbG = new THREE.BoxGeometry(0.1, 0.1, 0.1), mbM = stdMat("--nama", { glow: 0.2, opacity: 0.85 });
+    MO.forEach(function (c, i) { if (c === "vi") return; var mb = new THREE.Mesh(mbG, mbM); mb.position.set(X(i), LY.m + 0.06, -0.42); R.add(mb); });
+    label(S, "mind-born matter", anchor(S, X(10), LY.m + 0.12, -0.42), "xs", { pri: 3, minW: 560 });
+    /* citta */
+    var cm = {};
+    MO.forEach(function (c, i) {
+      var h = H[c], k = c === "vi" ? "vi" : CO[c];
+      if (!cm[k]) cm[k] = c === "vi" ? stdMat("--nama", { glow: 0.2, opacity: 0.18 }) : stdMat(CO[c], { glow: 0.25, opacity: c === "bh" ? 0.6 : undefined });
+      var m = new THREE.Mesh(new THREE.BoxGeometry(0.36, h, 0.42), cm[k]); m.position.set(X(i), LY.c + h / 2, 0); R.add(m);
+      if (c === "vi") m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), lineMat("--nama", 0.95)));
+    });
+    [["bhavaṅga", 1], ["adverting", 3], ["seeing", 4], ["javana ×7", 11], ["registration", 15.5]].forEach(function (n, j) {
+      label(S, n[0], anchor(S, X(n[1]), LY.c - 0.12, 0.75), "xs", { pri: 5, short: n[0] === "registration" ? "reg." : n[0] === "adverting" ? "adv." : null });
+    });
+    /* factors: one stacked column per moment */
+    var U = 0.024, fm = { u: stdMat("--nama", { glow: 0.3 }), o: stdMat("--nama-2", { glow: 0.3 }), b: stdMat("--nama", { glow: 0.2, opacity: 0.4 }), a: stdMat("--bad", { glow: 0.3 }), v: stdMat("--bad", { glow: 0.2, opacity: 0.3 }) };
+    MO.forEach(function (c, i) {
+      var y = LY.f, f = FX[c];
+      [["u", f[0]], ["o", f[1]], ["b", f[2]], ["a", f[3]], ["v", f[4]]].forEach(function (seg) {
+        if (!seg[1]) return;
+        var h = seg[1] * U, m = new THREE.Mesh(new THREE.BoxGeometry(0.3, h - 0.006, 0.3), fm[seg[0]]); m.position.set(X(i), y + h / 2, 0); R.add(m); y += h;
+      });
+    });
+    [["33", 1, 33], ["7", 4, 7], ["18 (+1)", 11, 19], ["11", 15.5, 11]].forEach(function (n) { label(S, n[0], anchor(S, X(n[1]), LY.f + n[2] * U + 0.14, 0), "xs", { pri: 4 }); });
+    /* conditions: proximity chevrons along the layer, repetition arcs over the javanas */
+    var cone = new THREE.ConeGeometry(0.05, 0.14, 10), pm = stdMat("--g1", { glow: 0.3 });
+    for (var i = 0; i < MO.length - 1; i++) { var ch = new THREE.Mesh(cone, pm); ch.rotation.z = -Math.PI / 2; ch.position.set(X(i) + STEP / 2, LY.k + 0.08, 0.3); R.add(ch); }
+    label(S, "proximity: each citta → the next", anchor(S, X(4), LY.k + 0.12, 0.62), "xs", { pri: 5, short: "proximity" });
+    for (i = 8; i < 14; i++) R.add(tube([V(X(i), LY.k + 0.05, -0.2), V(X(i) + STEP / 2, LY.k + 0.45, -0.2), V(X(i + 1), LY.k + 0.05, -0.2)], 0.02, basicMat("--g1", 0.8)));
+    label(S, "repetition", anchor(S, X(11), LY.k + 0.5, -0.2), "xs", { pri: 5 });
+    /* threads between layers: object (colour → each process citta), prenascence (eye-base → seeing), kamma (javana → kamma layer) */
+    function thread(x, y0, y1, z, c, op) { var t = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, y1 - y0, 6), basicMat(c, op)); t.position.set(x, (y0 + y1) / 2, z); R.add(t); }
+    for (i = 3; i < MO.length; i++) thread(X(i) + 0.08, LY.m + 0.1, LY.c, 0.42, "--g5", 0.6);
+    label(S, "object", anchor(S, X(5.5) + 0.08, (LY.m + LY.c) / 2 + 0.1, 0.42), "xs", { pri: 4 });
+    thread(X(4) - 0.08, LY.m + 0.1, LY.c, 0.02, "--g4", 0.9);
+    label(S, "prenascence", anchor(S, X(4) - 0.15, (LY.m + LY.c) / 2 - 0.15, 0.02), "xs left", { pri: 4, minW: 560 });
+    for (i = 8; i < 15; i++) thread(X(i), LY.f + 19 * U, LY.km, 0, "--kamma", 0.55);
+    /* kamma: results arriving at the resultant cittas, new kamma made at the javanas */
+    var dn = new THREE.ConeGeometry(0.08, 0.2, 12), dm = stdMat("--kamma", { glow: 0.3, opacity: 0.55 }), sm = stdMat("--kamma", { glow: 0.55 }), seed = new THREE.OctahedronGeometry(0.11);
+    MO.forEach(function (c, i) {
+      if (RES[c]) { var m = new THREE.Mesh(dn, dm); m.rotation.x = Math.PI; m.position.set(X(i), LY.km + 0.14, 0); R.add(m); }
+      if (c === "ja") { var sd = new THREE.Mesh(seed, sm); sd.position.set(X(i), LY.km + 0.16, 0); R.add(sd); }
+    });
+    label(S, "results of past kamma arrive", anchor(S, X(2), LY.km + 0.42, 0), "xs", { pri: 5, short: "results" });
+    label(S, "new kamma made", anchor(S, X(11), LY.km + 0.48, 0), "xs", { pri: 5, short: "new kamma" });
+    [[8, 1.05, "this life only", "this life"], [11, 0.7, "lives after the next", "after next"], [14, 0.35, "the next life", "next life"]].forEach(function (k) {
+      var a = V(X(k[0]), LY.km + 0.22, 0), e = V(SW / 2 + 0.55, LY.km + k[1], 0);
+      R.add(tube([a, V((a.x + e.x) / 2, e.y + 0.25, 0), e], 0.018, basicMat("--kamma", 0.75)));
+      var tip = new THREE.Mesh(new THREE.SphereGeometry(0.06, 12, 8), sm); tip.position.copy(e); R.add(tip);
+      label(S, k[2], anchor(S, e.x + 0.1, e.y, 0), "xs right", { pri: 7, short: k[3] });
+    });
+    /* the cut */
+    var cg = new THREE.BoxGeometry(STEP * 0.9, LY.km + 0.9, 1.7);
+    cutM = new THREE.Mesh(cg, basicMat("--ink", 0.06)); cutM.position.set(0, (LY.km + 0.9) / 2 - 0.15, 0); cutM.userData.nofit = true; R.add(cutM);
+    cutM.add(new THREE.LineSegments(new THREE.EdgesGeometry(cg), lineMat("--ink", 0.35)));
+    S.beforePrint = function () { cur = "8"; setPressed($("d7-btns"), "8"); caption(); place(); };
+    place();
   })();
 
   if (scenes.length) requestAnimationFrame(loop);

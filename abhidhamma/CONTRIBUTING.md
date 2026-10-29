@@ -89,7 +89,15 @@ Add an object to `D.dhammas`. The nine lenses use these values:
 
 ### Add review cards
 
-Add `[level, question, answer]` rows to `D.deck`. Keep answers short enough to say aloud. The printed deck page holds about six per level.
+Add `[level, question, answer]` rows to `D.deck` for recall cards; add a fourth field (`"why"`, `"classify"`, `"relate"` or `"apply"`) for cards that ask for understanding. Keep answers short enough to say aloud and name the plate. The printed deck page lists only the recall cards, about six per level; every card is in the on-screen deck.
+
+### Add a glossary term
+
+Add `["pāli · english", "gloss of at most 14 words", "plate where taught"]` to `D.glossary` (printed on the two glossary pages) or to `D.glossaryExtra` (on-screen definitions only). Any italic Pāli word on a sheet that matches a term gets a dotted underline and shows the definition on screen.
+
+### Add a companion sheet
+
+A plate that needs a second page gets a companion: a section with id `p3b` (and so on) right after its plate, and an entry in `D.companions` (`after`, `lv`, `t`, `k`, `from`, `to`). The contents, the level page and the navigation strip pick it up; plates 1 to 15 keep their numbers.
 
 ### Add a plate
 
