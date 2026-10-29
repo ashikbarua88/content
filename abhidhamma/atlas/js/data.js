@@ -32,11 +32,11 @@ window.ATLAS = (function () {
   D.levels = [null,
     { name: "Foundations", q: "What is the Abhidhamma, and what does it take apart?", qs: "What is being taken apart?", plates: [1, 2],
       arrive: "No background is needed. A little familiarity with the five aggregates of the suttas helps.",
-      leave: ["Name the seven books and the main later works.", "Tell conventional truth from ultimate truth.", "Map the five aggregates onto the four ultimate realities.", "Read the four-part definition the commentaries give every dhamma."],
+      leave: ["Name the seven books and the main later works.", "Tell conventional truth from ultimate truth.", "Map the five aggregates onto the four ultimate realities.", "Read the four-part definition the commentaries give each dhamma."],
       learn: ["Name the four ultimate realities and how many kinds each has.", "Which book analyses, and which one relates everything by condition?"],
       reflect: ["The Abhidhamma calls “chariot” a convention, not a falsehood. What would be lost if conventions were simply false?", "Why might a four-part definition teach more than a one-line gloss?"],
       observe: ["Take one ordinary moment, such as drinking tea, and list which of the five aggregates were present in it."],
-      conf: ["“Ultimate” does not mean hidden or permanent. Dhammas are momentary events, and they are exactly what is directly experienced.", "The Abhidhamma does not throw persons away. One of its seven books, the Puggalapaññatti, is about types of people."],
+      conf: ["“Ultimate” does not mean hidden or permanent. Conditioned dhammas are momentary events, and they are exactly what is directly experienced. Nibbāna, the one unconditioned dhamma, is not an event in time.", "The Abhidhamma does not throw persons away. One of its seven books, the Puggalapaññatti, is about types of people."],
       tax: ["Name the 7 books and 4 realities", "Why a convention is not a falsehood", "See one moment as five aggregates"] },
     { name: "Elements", q: "What is experience made of?", qs: "What is experience made of?", plates: [3, 4, 5, 6],
       arrive: "Level I: the four realities and the two truths.",
@@ -162,10 +162,10 @@ window.ATLAS = (function () {
      Links with map: null are drawn on demand, when one of their ideas is selected. */
   D.links = [
     { from: "T", to: "CE", type: "ana", label: "analysed into",
-      text: "Ultimate analysis finds four kinds of reality; the mental factors are one of them.", p: [2],
+      text: "Ultimate analysis finds four kinds of reality; the mental factors (cetasika) are the second.", p: [2],
       map: { d: "M300 66 L100 120" } },
     { from: "T", to: "CI", type: "ana", label: "analysed into",
-      text: "Consciousness is the second reality.", p: [2],
+      text: "Consciousness (citta) is the first of the four realities.", p: [2],
       map: { d: "M330 66 L262 120", l: "analysed into", lx: 300, ly: 100, a: "end" } },
     { from: "T", to: "RU", type: "ana", label: "analysed into",
       text: "Matter is the third.", p: [2],
@@ -192,7 +192,7 @@ window.ATLAS = (function () {
       text: "The life-continuum vibrates and is cut off when an object strikes.", p: [7],
       map: { d: "M175 250 L223 250", l: "object interrupts", lx: 199, ly: 222, a: "middle" } },
     { from: "PR", to: "JV", type: "mind", label: "peaks in",
-      text: "Every complete process culminates in seven javanas.", p: [7],
+      text: "A complete sense-sphere process usually culminates in seven javanas.", p: [7],
       map: { d: "M375 250 L423 250", l: "peaks in", lx: 399, ly: 222, a: "middle" } },
     { from: "RU", to: "CI", type: "mm", label: "base and object",
       text: "Matter supplies the six bases and the five sense objects.", p: [5, 8],
@@ -210,10 +210,10 @@ window.ATLAS = (function () {
       text: "Kamma is cetanā, one of the seven universal mental factors.", p: [4, 10],
       map: null },
     { from: "DO", to: "KA", type: "kam", label: "formations and becoming",
-      text: "Links 2 and 10 of the wheel are kamma.", p: [9],
+      text: "Link 2, and the kamma side of link 10 (kamma-process becoming), are kamma.", p: [9],
       map: { d: "M395 375 L455 438", l: "formations,\nbecoming", lx: 432, ly: 397, a: "start" } },
     { from: "DO", to: "RB", type: "kam", label: "via consciousness",
-      text: "Link 3 is rebirth-linking consciousness.", p: [9, 10],
+      text: "Link 3 is resultant consciousness, beginning with rebirth-linking.", p: [9, 10],
       map: { d: "M290 375 L150 438", l: "via consciousness", lx: 206, ly: 410, a: "end" } },
     { from: "KA", to: "RB", type: "kam", label: "ripens as rebirth",
       text: "Productive kamma produces the next rebirth-linking.", p: [10],
@@ -282,7 +282,7 @@ window.ATLAS = (function () {
         q: "Why would the Abhidhamma class grief with aversion rather than with love?" },
       { k: "disc", t: "Why Moggallāna smiled", src: "SN 19.1",
         s: "Coming down Vulture Peak, Mahā Moggallāna smiled. Asked why, he said he had seen a skeleton moving through the air, pursued by crows and vultures. The Buddha confirmed that he too had seen such beings, and named the deeds that led there.",
-        r: "An arahant's smile comes from citta 30 on Plate 3, the smile-producing consciousness, found only in arahants and making no kamma. What he saw belongs to the woeful planes of Plate 11.", p: [3, 11],
+        r: "An arahant smiles with one of five cittas, none of which makes kamma: citta 30 on Plate 3, the smile-producing consciousness found only in arahants, or one of the four joyful great functional cittas. What he saw belongs to the woeful planes of Plate 11.", p: [3, 11],
         q: "In terms of citta, how does an ordinary person's smile differ from an arahant's?" },
       { k: "jataka", t: "Khantivādi, the teacher of patience", src: "Ja 313",
         s: "A drunken king, Kalābu, asked an ascetic what he taught. “Patience,” he said. To test him, the king had his hands, feet, nose and ears cut off. The ascetic felt no anger and wished the king long life. Leaving, the king was swallowed by the earth.",
@@ -306,7 +306,7 @@ window.ATLAS = (function () {
         s: "Bāhiya stopped the Buddha on his alms round, begging to be taught. The Buddha said: “In the seen there will be only the seen, in the heard only the heard, in the sensed only the sensed, in the cognized only the cognized.” Bāhiya became an arahant there and then, and was killed by a cow soon after.",
         r: "Plate 7 shows where the instruction bites. Seeing itself, at moment 5, is a result and makes no kamma. Liking, disliking and “I” enter only in the javanas.", p: [7, 2],
         q: "At which moment of Plate 7 does “the seen” become “a mango I want”?" },
-      { k: "disc", t: "Nanda, guardian of the doors", src: "Ud 3.2; AN 8.9",
+      { k: "disc", t: "Nanda, guardian of the doors", src: "Ud 3.2; AN 8.9; AN 1 (Etadagga)",
         s: "The Buddha's half-brother Nanda was ordained on his wedding day and pined for his bride. In time he became an arahant, and the Buddha named him foremost among those who guard the sense doors: whichever way Nanda looked, he looked with full awareness, so that longing and grief could not flow in.",
         r: "The doors of sense restraint are the doors of Plate 7. Guarding them means the seeing is not followed by unwholesome javanas.", p: [7, 4],
         q: "Can a door be guarded without being closed?" },
@@ -386,7 +386,7 @@ window.ATLAS = (function () {
         q: "Why is the going-out of a flame so often the image of Nibbāna?" },
       { k: "life", t: "Koṇḍañña's eye of Dhamma", src: "SN 56.11",
         s: "At the first sermon in the Deer Park, as the Buddha finished, Koṇḍañña understood: “Whatever is subject to arising is all subject to cessation.” The Buddha exclaimed, “Koṇḍañña has understood!”",
-        r: "Stream-entry (Plate 13): the first three fetters fall away, and path knowledge takes Nibbāna as its object for the first time.", p: [13],
+        r: "Stream-entry (Plate 13): just after change-of-lineage first turns to Nibbāna, path knowledge takes Nibbāna as its object and the first three fetters fall away.", p: [13],
         q: "Why is the insight put as a general rule rather than a particular experience?" }
     ],
     7: [
@@ -581,7 +581,7 @@ window.ATLAS = (function () {
       notice: "Not an object of ordinary noticing: it is known by path and fruition consciousness. What can be noticed is its opposite, craving, and the moments when craving is absent." }
   ];
   D.dhammaNotes = [
-    "¹ When it occurs in a mundane citta. In path consciousness the eight path factors (among them wisdom and mindfulness) are the truth of the path; other factors in supramundane cittas stand outside the four truths.",
+    "¹ When it occurs in a mundane citta. In path consciousness the path factors (eight, or seven in the higher-jhāna paths; among them wisdom and mindfulness) are the truth of the path; other factors in supramundane cittas stand outside the four truths.",
     "² Wholesome in wholesome cittas; indeterminate in resultant and functional ones. “Varies”: the factor takes the quality of the citta it arises in."
   ];
 
