@@ -49,7 +49,7 @@
       /* r2: arrive box and plate cards side by side; the concept map below at full width, cropped to this level's rows */
       '<div class="lvcols lvcols2">' +
       '<div class="box"><div class="lab">You arrive with</div><p class="small">' + L.arrive + '</p><div class="lab" style="margin-top:4px">You leave able to</div><ul class="tight small">' + L.leave.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>" +
-      '<div class="pcards' + (L.plates.length > 1 ? " two" : "") + '">' + cards + "</div></div>" +
+      '<div class="pcards' + (L.plates.length > 1 ? " two" : "") + ((cards.match(/class="pc"/g) || []).length >= 7 ? " brief" : "") + '">' + cards + "</div></div>" +
       '<div class="fig lvmap' + (n === 7 ? " whole" : "") + '"><svg class="cmap" data-hl="' + n + '" viewBox="0 0 680 610" role="img" aria-label="The part of the concept map around this level"></svg>' +
       '<p class="cap">' + (n === 7 ? "Synthesis uses the whole map (page 5)." : "The concept map around this level. Filled: this level. Outlined: earlier levels. Faded: what comes later. Bold arrows touch this level; the whole map is on page 5.") + '<span class="web"> Choose a box to open it on the main map.</span></p></div>' +
       pre + '<div class="lab">Check yourself at three depths</div>' +

@@ -594,6 +594,21 @@ details.prechk ol { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px
 #glossary .gloss i, #glossary-2 .gloss i { font-size: 10.8px; }
 #links .linklist { font-size: 10.2px; line-height: 1.27; }
 #links .lk { margin-bottom: 2px; }
+
+/* ---------- companion sheets 4b, 7b, 8b ---------- */
+#ac-grid .ac-row, #ac-grid .ac-col, #ls-grid .ls-row, #ls-grid .ls-col { cursor: pointer; transition: opacity .2s; }
+table.combt { width: 100%; border-collapse: collapse; font-size: 10.4px; line-height: 1.3; }
+table.combt th { text-align: left; font-family: var(--ui); font-size: 9.4px; font-weight: 600; padding: 2px 6px 2px 0; vertical-align: top; white-space: nowrap; }
+table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
+.prlist { display: grid; gap: 6px; }
+.pr { display: grid; gap: 2px; border-bottom: 1px dotted var(--line); padding-bottom: 5px; min-width: 0; }
+.pr > div { font-size: 12px; }
+.pr .src { font-size: 9px; }
+.pr p { font-size: 10.6px; line-height: 1.35; }
+#pr-legend b { font-family: var(--ui); }
+.pcards.brief a.pc p { display: none; }
+.prlist { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
+@media (max-width: 700px) { .prlist { grid-template-columns: 1fr; } }
 </style>
 <section class="sheet cover" id="cover">
   <div class="ph"><span><b>Abhidhamma Atlas</b> · a visual companion</span><span>After Bhikkhu Bodhi's <i>Comprehensive Manual</i></span></div>
@@ -602,7 +617,7 @@ details.prechk ol { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px
     <p class="sub">Mind, matter and the conditions that join them: fifteen plates on a seven-level path, with tools for slow study</p>
   </div>
   <div class="fig">
-    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:315px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
+    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:290px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
     <div class="legend" style="justify-content:center">
       <span><i style="background:var(--bad)"></i>unwholesome 12</span>
       <span><i style="background:var(--nama)"></i>wholesome 17</span>
@@ -963,6 +978,20 @@ details.prechk ol { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px
   <div class="pf"><span>Source: Bodhi, <i>CMA</i> II (association and combination of mental factors)</span><span class="pg"></span></div>
 </section>
 
+<section class="sheet" id="p4b">
+  <div class="ph"><span><b>Plate 4b</b> · continued · Chapter II · Sampayoga, saṅgaha</span><span>Abhidhamma Atlas</span></div>
+  <h2>Which factors meet which cittas</h2>
+  <p class="lede">Chapter II reads one table two ways. Across a row, the method of association: which cittas a factor joins. Down a column, the method of combination: which factors a citta takes. Rows follow Plate 4, columns Plate 3's numbering.<span class="web"> Choose a factor's name or a citta's column to read it.</span></p>
+  <div class="fig"><div class="scroll"><svg id="ac-grid" viewBox="0 0 680 540" role="img" aria-label="The 52 mental factors against the 89 cittas, with the count of factors in each citta beneath"></svg></div></div>
+  <p class="p2-info" id="ac-info" aria-live="polite"></p>
+  <div class="legend"><span><i style="background:var(--nama)"></i>always present (fixed)</span><span><i style="background:var(--sheet);border:1.5px solid var(--nama)"></i>may be present (one of the 11 unfixed)</span><span><i style="background:var(--nama-soft);border:1px solid var(--nama)"></i>by jhāna, in path and fruit cittas</span></div>
+  <div class="cols">
+    <div class="box tint"><h3>The two families never meet</h3><p class="small">The 14 unwholesome and the 25 beautiful factors never share a citta: their dots never fall in the same column. An unwholesome citta takes at most 22 factors; a great wholesome one 38 counted, but at most 34 at once.</p><div id="ac-unfixed" class="small"></div></div>
+    <div class="box"><h3>Counting a column</h3><div id="ac-comb" class="small"></div><p class="src">The margins give each factor's count out of 89 and out of 121; the Saṅgaha's own verse prints 55, 66, 78, 73, 51 and 69 for the six particulars, mixing the two bases.</p></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> II §§10–30; the round-2 research tables, derived from the Saṅgaha's inclusion rules</span><span class="pg"></span></div>
+</section>
+
 <section class="sheet" id="p5">
   <div class="ph"><span><b>Plate 5</b> · Chapter VI · Rūpa</span><span>Abhidhamma Atlas</span></div>
   <h2>How matter is made</h2>
@@ -1069,6 +1098,19 @@ details.prechk ol { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px
   <div class="pf"><span>Sources: Atthasālinī; Bodhi, <i>CMA</i> III–IV and its guide; Nārada, <i>The Buddha and His Teachings</i></span><span class="pg"></span></div>
 </section>
 
+<section class="sheet" id="p7b">
+  <div class="ph"><span><b>Plate 7b</b> · continued · Chapter IV · Vīthi</span><span>Abhidhamma Atlas</span></div>
+  <h2>Other processes</h2>
+  <p class="lede">Plate 7 followed one eye-door process. The same building blocks make every other process: the mind door, absorption in jhāna, the path, the attainment of cessation, and the last process of a life. Each strip below reads left to right, one cell per mind-moment, in the colours of Plate 7.</p>
+  <div class="legend" id="pr-legend"></div>
+  <div class="prlist" id="pr-list"></div>
+  <div class="cols">
+    <div class="box tint"><h3>When does it become “a mango”?</h3><p class="small" id="pr-teach"></p><ol class="tight small" id="pr-series"></ol><p class="src">The series of naming processes is later teaching (Ledi Sayadaw and others), not the Saṅgaha's own.</p></div>
+    <div class="box"><h3>Rules of the process</h3><div class="small" id="pr-rules"></div></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> IV §§12–29, IX; Visuddhimagga XXII–XXIII; Atthasālinī on attention</span><span class="pg"></span></div>
+</section>
+
 <!-- ================= LEVEL 3 IN 3D ================= -->
 <section class="sheet d3p" id="D3" data-level="3">
   <div class="ph"><span><b>Level III</b> · In 3D</span><span>Abhidhamma Atlas</span></div>
@@ -1105,6 +1147,21 @@ details.prechk ol { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px
     <div class="ex" id="example"></div>
   </div>
   <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VIII; Agganyani, overview of the 24 paccayas</span><span class="pg"></span></div>
+</section>
+
+<section class="sheet" id="p8b">
+  <div class="ph"><span><b>Plate 8b</b> · continued · Chapter VII · Samuccaya</span><span>Abhidhamma Atlas</span></div>
+  <h2>The lists reduced to their factors</h2>
+  <p class="lede">Chapter VII gathers the Abhidhamma's lists: taints, floods, bonds, ties, clingings, hindrances, latent tendencies, fetters, defilements. Dozens of names reduce to only fourteen unwholesome factors. Each circle counts the items of a list that are, ultimately, that factor.<span class="web"> Choose a list or a factor to read it.</span></p>
+  <div class="fig"><div class="scroll"><svg id="ls-grid" viewBox="0 0 680 352" role="img" aria-label="Ten lists of defilements reduced to the fourteen unwholesome factors"></svg></div></div>
+  <p class="p2-info" id="ls-info" aria-live="polite"></p>
+  <div class="lab">Six categories that are also conditions</div>
+  <div class="fig"><div class="scroll"><svg id="ls-mixed" viewBox="0 0 680 206" role="img" aria-label="Seven mixed categories, six of which are conditions of the Paṭṭhāna"></svg></div></div>
+  <div class="cols">
+    <div class="box tint"><h3>Two cautions</h3><ul class="tight small" id="ls-cautions"></ul></div>
+    <div class="box"><h3>The requisites of enlightenment</h3><p class="small" id="ls-req"></p><p class="small">The table is on the Level VI models page <a class="xr" href="#D6">D6</a>.</p></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> VII §§3–33, VIII; Dhammasaṅgaṇī</span><span class="pg"></span></div>
 </section>
 
 <section class="sheet" id="p9">
@@ -2178,7 +2235,10 @@ window.ATLAS = (function () {
   /* ---------- companion sheets: a second page that continues a plate (id p3b, …) ----------
      after: the plate it follows; from/to: plates for its navigation strip. */
   D.companions = {
-    "3b": { after: 3, lv: 2, t: "What each citta does", k: "The fourteen jobs of citta, its doors and bases.", from: [3], to: [7] }
+    "3b": { after: 3, lv: 2, t: "What each citta does", k: "The fourteen jobs of citta, its doors and bases.", from: [3], to: [7] },
+    "4b": { after: 4, lv: 2, t: "Which factors meet which cittas", k: "All 52 factors against all 89 cittas: chapter II's two methods.", from: [3, 4], to: [6, 7] },
+    "7b": { after: 7, lv: 3, t: "Other processes", k: "The mind door, absorption, the path, cessation and death.", from: [7], to: [8, 12, 13] },
+    "8b": { after: 8, lv: 4, t: "The lists reduced to their factors", k: "Chapter VII: defilement lists, and six categories that are conditions.", from: [4, 8], to: [9, 13] }
   };
 
   /* ---------- glossary: [term ("pāli · english"), gloss, plate where taught] ----------
@@ -2473,6 +2533,19 @@ window.ATLAS = (function () {
     ["14", "One moment, every lens", "Review: I, II, III §§8–22, IV §6, VI §§9–22, VIII; with the mango.json map"],
     ["15", "Other maps of the same ground", "Introduction (other schools); not covered by the CMA: Abhidharmakośa, Vasubandhu's Hundred Dharmas"]
   ];
+
+  /* ---------- companion sheets 4b, 7b, 8b: generated from the checked round-2 research packages ----------
+     4b rows: [pāli, english, group, cells for cittas 1-89 (F fixed, U unfixed, j by jhāna, . absent), in 89, in 121];
+     cols: [total, unfixed] per citta; comb: combination totals by class; unfixed: [factors, how]. */
+  D.sheet4b = { rows: [["phassa", "contact", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["vedanā", "feeling", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["saññā", "perception", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["cetanā", "volition", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["ekaggatā", "one-pointedness", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["jīvitindriya", "life faculty", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["manasikāra", "attention", "universal", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 89, 121], ["vitakka", "applied thought", "occasional", "FFFFFFFFFFFF.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF....F....F................jjjjjjjj", 55, 55], ["vicāra", "sustained thought", "occasional", "FFFFFFFFFFFF.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF...FF...FF...............jjjjjjjj", 58, 66], ["adhimokkha", "decision", "occasional", "FFFFFFFFFF.F.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 78, 110], ["viriya", "energy", "occasional", "FFFFFFFFFFFF................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 73, 105], ["pīti", "zest", "occasional", "FFFF.....................F...FFFFF....FFFF....FFFF....FFF..FFF..FFF..............jjjjjjjj", 35, 51], ["chanda", "desire to act", "occasional", "FFFFFFFFFF....................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 69, 101], ["moha", "delusion", "unwholesome", "FFFFFFFFFFFF.............................................................................", 12, 12], ["ahirika", "shamelessness", "unwholesome", "FFFFFFFFFFFF.............................................................................", 12, 12], ["anottappa", "fearlessness of wrongdoing", "unwholesome", "FFFFFFFFFFFF.............................................................................", 12, 12], ["uddhacca", "restlessness", "unwholesome", "FFFFFFFFFFFF.............................................................................", 12, 12], ["lobha", "greed", "unwholesome", "FFFFFFFF.................................................................................", 8, 8], ["diṭṭhi", "wrong view", "unwholesome", "FF..FF...................................................................................", 4, 4], ["māna", "conceit", "unwholesome", "..UU..UU.................................................................................", 4, 4], ["dosa", "hatred", "unwholesome", "........FF...............................................................................", 2, 2], ["issā", "envy", "unwholesome", "........UU...............................................................................", 2, 2], ["macchariya", "avarice", "unwholesome", "........UU...............................................................................", 2, 2], ["kukkucca", "worry", "unwholesome", "........UU...............................................................................", 2, 2], ["thīna", "sloth", "unwholesome", ".U.U.U.U.U...............................................................................", 5, 5], ["middha", "torpor", "unwholesome", ".U.U.U.U.U...............................................................................", 5, 5], ["vicikicchā", "doubt", "unwholesome", "..........F..............................................................................", 1, 1], ["saddhā", "faith", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["sati", "mindfulness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["hiri", "shame", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["ottappa", "fear of wrongdoing", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["alobha", "non-greed", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["adosa", "non-hatred", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["tatramajjhattatā", "neutrality of mind", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāya-passaddhi", "tranquillity of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["citta-passaddhi", "tranquillity of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāya-lahutā", "lightness of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["citta-lahutā", "lightness of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāya-mudutā", "malleability of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["citta-mudutā", "malleability of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāya-kammaññatā", "wieldiness of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["citta-kammaññatā", "wieldiness of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāya-pāguññatā", "proficiency of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["citta-pāguññatā", "proficiency of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["kāyujjukatā", "rectitude of factors", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["cittujjukatā", "rectitude of consciousness", "beautiful", "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 59, 91], ["sammā-vācā", "right speech", "beautiful", "..............................UUUUUUUU...........................................FFFFFFFF", 16, 48], ["sammā-kammanta", "right action", "beautiful", "..............................UUUUUUUU...........................................FFFFFFFF", 16, 48], ["sammā-ājīva", "right livelihood", "beautiful", "..............................UUUUUUUU...........................................FFFFFFFF", 16, 48], ["karuṇā", "compassion", "beautiful", "..............................UUUUUUUU........UUUUUUUUUUUU.UUUU.UUUU.....................", 28, 28], ["muditā", "appreciative joy", "beautiful", "..............................UUUUUUUU........UUUUUUUUUUUU.UUUU.UUUU.....................", 28, 28], ["paññindriya", "wisdom", "beautiful", "..............................FF..FF..FF..FF..FF..FF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", 47, 79]],
+    cols: [[19, 0], [21, 2], [19, 1], [21, 3], [18, 0], [20, 2], [18, 1], [20, 3], [20, 3], [22, 5], [15, 0], [15, 0], [7, 0], [7, 0], [7, 0], [7, 0], [7, 0], [10, 0], [10, 0], [7, 0], [7, 0], [7, 0], [7, 0], [7, 0], [10, 0], [11, 0], [10, 0], [10, 0], [11, 0], [12, 0], [38, 5], [38, 5], [37, 5], [37, 5], [37, 5], [37, 5], [36, 5], [36, 5], [33, 0], [33, 0], [32, 0], [32, 0], [32, 0], [32, 0], [31, 0], [31, 0], [35, 2], [35, 2], [34, 2], [34, 2], [34, 2], [34, 2], [33, 2], [33, 2], [35, 2], [34, 2], [33, 2], [32, 2], [30, 0], [35, 2], [34, 2], [33, 2], [32, 2], [30, 0], [35, 2], [34, 2], [33, 2], [32, 2], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], [30, 0], ["33–36", 0], ["33–36", 0], ["33–36", 0], ["33–36", 0], ["33–36", 0], ["33–36", 0], ["33–36", 0], ["33–36", 0]],
+    comb: [["supramundane", "13 variable less the occasionals each jhāna drops + 19 beautiful universals + 3 abstinences (fixed) + wisdom; no illimitables", {"jhāna 1": 36, "jhāna 2": 35, "jhāna 3": 34, "jhāna 4": 33, "jhāna 5": 33}], ["sublime (fine-material and immaterial)", "no abstinences; illimitables possible in jhānas 1–4", {"jhāna 1": 35, "jhāna 2": 34, "jhāna 3": 33, "jhāna 4": 32, "jhāna 5 and immaterial": 30}], ["great wholesome", "", {"joy + knowledge (31, 32)": 38, "joy, no knowledge (33, 34)": 37, "equanimity + knowledge (35, 36)": 37, "equanimity, no knowledge (37, 38)": 36}], ["great resultant", "no abstinences or illimitables (they are deliberate, not results)", {"39, 40": 33, "41, 42": 32, "43, 44": 32, "45, 46": 31}], ["great functional", "no abstinences (an arahant has nothing left to abstain from)", {"47, 48": 35, "49, 50": 34, "51, 52": 34, "53, 54": 33}], ["unwholesome", "the prompted cittas add sloth and torpor (+2); conceit counted in 3, 4, 7, 8 though unfixed", {"1 (and 2 prompted)": "19 (21)", "3 (4)": "19 (21)", "5 (6)": "18 (20)", "7 (8)": "18 (20)", "9 (10)": "20 (22)", "11 doubt": 15, "12 restlessness": 15}], ["rootless", "", {"smile 30": 12, "mind-door adverting 29, investigating with joy 26": 11, "five-door adverting 28, receiving 18 25, investigating with equanimity 19 27": 10, "sense consciousness 13–17, 20–24": 7}]],
+    unfixed: [[["issā", "macchariya", "kukkucca"], "separately and occasionally, in the hate-rooted cittas: envy, avarice and worry have different objects, so at most one is present"], [["sammā-vācā", "sammā-kammanta", "sammā-ājīva"], "in the great wholesome cittas: separately and occasionally (only when abstaining from a particular wrong); in the 8 supramundane cittas: always, all three together (fixed)"], [["karuṇā", "muditā"], "separately and occasionally: compassion takes beings who suffer as object, appreciative joy beings who prosper. The Saṅgaha records a dissent (keci): some teachers exclude them from the equanimous great wholesome and functional cittas; the 28 follows the Saṅgaha's own view."], [["māna"], "occasionally, in the 4 greed-rooted cittas without wrong view"], [["thīna", "middha"], "together, occasionally, in the 5 prompted unwholesome cittas"]] };
+  /* 7b strips: [id, title, source, moment keys, note]; keys as in Plate 7, plus pk preliminary, up access, an conformity,
+     go change-of-lineage, ap absorption, mg path, ph fruition, x cessation, cu death, ps rebirth-linking. */
+  D.sheet7b = {"strips": [["mind-door-following", "The mind-door processes that follow a five-door process (tadanuvattika manodvāra-vīthi)", "the first consequent process: CMA IV guide; the series: later teachers (Ledi Sayadaw; Sayadaw Nandamālābhivaṃsa's Vīthi chart), NOT in the Saṅgaha", "bh bu ma ja ja ja ja ja ja ja ta ta", "the same visible form, just past"], ["mind-door-clear", "Independent mind-door process, limited javana, clear object", "CMA IV §§12–13", "bh bu ma ja ja ja ja ja ja ja ta ta", "any object: past, present, future or timeless; for example, remembering the mango tomorrow"], ["mind-door-obscure", "Independent mind-door process, obscure object", "CMA IV §12", "bh bu ma ja ja ja ja ja ja ja", "no registration"], ["absorption-slow", "Absorption process, first attainment of jhāna, slow faculties", "CMA IV §§14–16", "bh bu ma pk up an go ap b", "Absorption is the 5th javana. The four preceding javanas are one of the four great wholesome cittas with knowledge (great functional with knowledge, 47 48 51 52, for an arahant); joyful before jhānas 1–4, equanimous before the 5th jhāna and the immaterial. At the first attainment absorption occurs once; in a later attainment it can run for as long as resolved."], ["absorption-keen", "Absorption process, keen faculties", "CMA IV §14", "bh bu ma up an go ap b", "The preliminary moment is omitted, so absorption is the 4th javana."], ["path-slow", "Path process (stream-entry), slow faculties", "CMA IV §14; IX (purification by knowledge and vision)", "bh bu ma pk up an go mg ph ph b", "Seven javanas: four preparatory, one path, two fruition. Change-of-lineage is the first citta to take Nibbāna as object, but it cannot cut defilements; the path does. Reviewing processes follow."], ["path-keen", "Path process, keen faculties", "CMA IV §14", "bh bu ma up an go mg ph ph ph b", "No preliminary moment, so three fruition moments follow the path: still seven javanas in all. (Round 1 had this reversed; corrected.)"], ["cessation", "Attainment of cessation (nirodha-samāpatti)", "CMA IV §22; IX", "ap ap x ph b", "Only non-returners and arahants who have all eight attainments, and not in the immaterial planes: cessation needs the eight attainments in succession, and the fine-material jhānas cannot arise there (Vism XXIII). The preparatory moments are not shown."], ["death", "Death and rebirth (reference: Plate 10)", "CMA IV §21; V §§34–41", "ma ja ja ja ja ja ta cu ps b", "Near death javanas run only five times, because the process is weak. Death can follow javana, registration or a life-continuum moment."]], "series": [["taking the past object", "the mind door takes up the colour that the eye-door process has just seen, now past"], ["taking the whole", "the colours of many successive processes are taken together as one"], ["taking the meaning or shape", "the thing is recognised: something round and yellow, a fruit"], ["taking the name", "the name is known: “a mango” (a concept of name). From step 3 on, the object is a concept; liking “the mango” takes a concept as object"]], "seriesNote": "After the eye-door process, at least three mind-door processes follow, according to later teachers: one takes the just-past colour, then the form or whole, then the meaning, and then (for a known thing) the name.", "teaching": "The five-door process knows only the visible datum. 'A mango' is known in later mind-door processes, after the eye-door process is over. So the Plate 7 simile's 'he decides: a ripe mango' at determining should not be read as recognition.", "javana": [["sense-sphere (limited) javana, normal", "7 (sometimes 6)"], ["weak process (e.g. fainting) and at the time of death", "5"], ["the Buddha's Twin Miracle and similar very rapid processes", "4 or 5"], ["first attainment of a jhāna", "absorption 1"], ["direct knowledge (abhiññā)", "1"], ["path", "1"], ["fruition right after the path", "2 (slow) or 3 (keen)"], ["jhāna attainment and fruition attainment", "many, as long as resolved"], ["before cessation", "the 4th immaterial javana 2"], ["emerging from cessation", "fruition 1"]], "registration": ["Registration occurs only after sense-sphere javanas, only in sense-sphere beings, and only with sense-sphere objects that are very great (five doors) or clear (mind door).", "Registration runs for two moments (some commentators allow one), or not at all.", "Feeling: joyful javanas are followed by joyful registration, equanimous by equanimous. With an extremely desirable object, investigating and registration are joyful.", "Desirability is fixed by the object's own nature, not by the person's temperament; the javana's feeling can still vary with the person.", "After javanas with displeasure, registration and life-continuum are equanimous. If the person's life-continuum is joyful, an 'adventitious life-continuum' (āgantuka-bhavaṅga), an investigating citta with equanimity, stands in.", "Registration can follow an arahant's sense-sphere functional javanas; it never follows sublime or supramundane javanas, and never occurs in Brahmā beings."], "attention": ["Whether the javanas are wholesome or unwholesome turns on wise or unwise attention at the turning point of determining.", "In an arahant the javanas are functional (smile-producing or great functional) whatever the attention: no kamma is made."], "byPlane": [80, 64, 42], "byPerson": [54, 56, 44], "notes": ["fine-material plane: no hate-rooted cittas, no nose/tongue/body consciousness, no great resultants (no registration), no sublime resultants in process", "immaterial plane: no five-door cittas at all, no smile, no hate, no great resultants, no fine-material cittas, no path of stream-entry", "stream-enterers and once-returners lack the 4 wrong-view cittas and doubt; non-returners also lack the 2 hate-rooted; arahants have only functional javanas and the arahant fruit"]};
+  /* 8b: unwholesome lists reduced to the 14 unwholesome factors (counts of items per factor), and the mixed lists as conditions. */
+  D.sheet8b = {"factors": [["lobha", "greed", 9, 17], ["diṭṭhi", "wrong view", 8, 14], ["moha", "delusion", 7, 8], ["dosa", "hatred", 5, 6], ["vicikicchā", "doubt", 4, 5], ["māna", "conceit", 3, 4], ["uddhacca", "restlessness", 3, 3], ["thīna", "sloth", 2, 2], ["ahirika", "shamelessness", 1, 1], ["anottappa", "fearlessness of wrongdoing", 1, 1], ["issā", "envy", 1, 1], ["macchariya", "avarice", 1, 1], ["kukkucca", "worry", 1, 1], ["middha", "torpor", 1, 1]], "cats": [["taints (āsava)", 4, [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [["sensual desire", "kāmāsava", "lobha"], ["attachment to existence", "bhavāsava", "lobha"], ["wrong views", "diṭṭhāsava", "diṭṭhi"], ["ignorance", "avijjāsava", "moha"]]], ["floods (ogha)", 4, [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [["sensual desire", "kāmogha", "lobha"], ["existence", "bhavogha", "lobha"], ["views", "diṭṭhogha", "diṭṭhi"], ["ignorance", "avijjogha", "moha"]]], ["bonds (yoga)", 4, [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [["sensual desire", "kāmayoga", "lobha"], ["existence", "bhavayoga", "lobha"], ["views", "diṭṭhiyoga", "diṭṭhi"], ["ignorance", "avijjāyoga", "moha"]]], ["bodily ties (kāyagantha)", 4, [1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [["covetousness", "abhijjhā", "lobha"], ["ill will", "vyāpāda", "dosa"], ["adherence to rites and rituals", "sīlabbataparāmāsa", "diṭṭhi"], ["dogmatic belief that 'this alone is true'", "idaṃsaccābhinivesa", "diṭṭhi"]]], ["clingings (upādāna)", 4, [1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [["sensual clinging", "kāmupādāna", "lobha"], ["clinging to views", "diṭṭhupādāna", "diṭṭhi"], ["clinging to rites and rituals", "sīlabbatupādāna", "diṭṭhi"], ["clinging to a doctrine of self", "attavādupādāna", "diṭṭhi"]]], ["hindrances (nīvaraṇa)", 6, [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1], [["sensual desire", "kāmacchanda", "lobha"], ["ill will", "vyāpāda", "dosa"], ["sloth and torpor", "thīna-middha", "thīna, middha"], ["restlessness and worry", "uddhacca-kukkucca", "uddhacca, kukkucca"], ["doubt", "vicikicchā", "vicikicchā"], ["ignorance", "avijjā", "moha"]]], ["latent tendencies (anusaya)", 7, [2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [["sensual lust", "kāmarāga", "lobha"], ["attachment to existence", "bhavarāga", "lobha"], ["aversion", "paṭigha", "dosa"], ["conceit", "māna", "māna"], ["wrong views", "diṭṭhi", "diṭṭhi"], ["doubt", "vicikicchā", "vicikicchā"], ["ignorance", "avijjā", "moha"]]], ["fetters, Suttanta method (saṃyojana)", 10, [3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0], [["sensual lust", "kāmarāga", "lobha"], ["lust for fine-material existence", "rūparāga", "lobha"], ["lust for immaterial existence", "arūparāga", "lobha"], ["aversion", "paṭigha", "dosa"], ["conceit", "māna", "māna"], ["wrong views", "diṭṭhi", "diṭṭhi"], ["adherence to rites and rituals", "sīlabbataparāmāsa", "diṭṭhi"], ["doubt", "vicikicchā", "vicikicchā"], ["restlessness", "uddhacca", "uddhacca"], ["ignorance", "avijjā", "moha"]]], ["fetters, Abhidhamma method", 10, [2, 2, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0], [["sensual lust", "kāmarāga", "lobha"], ["lust for existence", "bhavarāga", "lobha"], ["aversion", "paṭigha", "dosa"], ["conceit", "māna", "māna"], ["wrong views", "diṭṭhi", "diṭṭhi"], ["adherence to rites and rituals", "sīlabbataparāmāsa", "diṭṭhi"], ["doubt", "vicikicchā", "vicikicchā"], ["envy", "issā", "issā"], ["avarice", "macchariya", "macchariya"], ["ignorance", "avijjā", "moha"]]], ["defilements (kilesa)", 10, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0], [["greed", "lobha", "lobha"], ["hatred", "dosa", "dosa"], ["delusion", "moha", "moha"], ["conceit", "māna", "māna"], ["wrong views", "diṭṭhi", "diṭṭhi"], ["doubt", "vicikicchā", "vicikicchā"], ["sloth", "thīna", "thīna"], ["restlessness", "uddhacca", "uddhacca"], ["shamelessness", "ahirika", "ahirika"], ["fearlessness of wrongdoing", "anottappa", "anottappa"]]]], "headline": "Greed (lobha) is in all nine groups, 17 times across the ten lists; wrong view in 8 groups (14 times); delusion in 7. All 14 unwholesome factors appear somewhere.", "mixed": [["roots (hetu)", 6, 6, [1, "hetu", "root"], "The six roots are root condition to the cittas and factors they arise with and to the matter those cittas produce."], ["jhāna factors", 7, 5, [17, "jhāna", "jhāna"], "The seven jhāna factors are jhāna condition to the states they arise with and to mind-born matter: they make the mind 'contemplate' its object closely."], ["path factors", 12, 9, [18, "magga", "path"], "Path factors are path condition: they lead the mind toward a destination, good or bad."], ["faculties (indriya)", 22, 16, [16, "indriya", "faculty"], "Faculty condition covers 20 of the 22: femininity and masculinity are excluded (Nyanatiloka, Buddhist Dictionary, 'paccaya'). The 5 sensitivities are prenascent faculty condition to the sense consciousnesses; physical life to the kamma-born matter of its kalāpa; the mental faculties to the states they arise with."], ["powers (bala)", 9, 9, null, "No condition of its own: the powers are the same factors seen as unshakeable by their opposites."], ["predominants (adhipati)", 4, 4, [3, "adhipati", "predominance"], "The four predominants are the conascent kind of predominance condition: one at a time, in javanas with two or three roots. Object predominance (a strongly esteemed object) is the other kind and is not part of this category."], ["nutriments (āhāra)", 4, 4, [15, "āhāra", "nutriment"], "Material nutriment sustains the body; the three mental nutriments sustain the states they arise with and mind-born matter."]], "mixedHeadline": "Six of the seven mixed categories are six of the 24 conditions: roots → 1 root, predominants → 3 predominance (its conascent kind), nutriments → 15 nutriment, faculties → 16 faculty (20 of the 22: not the two sex faculties), jhāna factors → 17 jhāna, path factors → 18 path. The nine powers have no condition of their own.", "cautions": ["CMA counts no jhāna factors in the 10 sense consciousnesses and no path factors in the 18 rootless cittas: do not draw 'every citta with one-pointedness has a jhāna factor'.", "Predominance as a condition is wider than the four predominants (object predominance)."], "requisites": "The 37 requisites are 14 states: energy 9 times, mindfulness 8, wisdom 5, concentration 4, faith 2, and nine states once each (desire, consciousness, zest, tranquillity, equanimity, applied thought, the three abstinences)."};
 
   return D;
 })();
@@ -3775,6 +3848,188 @@ window.ATLAS = (function () {
     });
     $("compare").innerHTML = s;
   })();
+  /* ---------- plate 4b: which factors meet which cittas (CMA II, association and combination) ----------
+     One dot per factor per citta: rows in Plate 4's order, columns in Plate 3's numbering. Read across for
+     association, down for combination; the bars underneath count each citta's factors. */
+  (function () {
+    var svg = $("ac-grid"); if (!svg) return;
+    var D = window.ATLAS, S = D.sheet4b, CN = D.cittas;
+    var GC = { universal: "var(--nama-2)", occasional: "var(--muted)", unwholesome: "var(--bad)", beautiful: "var(--nama)" };
+    var X0 = 134, P = 5.5, Y0 = 34, RH = 7.3, s = "";
+    var BANDS = [[1, 12, "unwholesome", "var(--bad)"], [13, 30, "rootless", "var(--muted)"], [31, 54, "sense-sphere beautiful", "var(--nama)"], [55, 69, "fine-mat.", "var(--g2)"], [70, 81, "immat.", "var(--g2)"], [82, 89, "supra.", "var(--nib)"]];
+    function cx(n) { return X0 + (n - 1) * P + P / 2; }
+    var ry = [], y = Y0, prev = null;
+    S.rows.forEach(function (r) { if (prev && r[2] !== prev) y += 4; ry.push(y); y += RH; prev = r[2]; });
+    var gridEnd = y;
+    BANDS.forEach(function (b, i) {
+      var x = X0 + (b[0] - 1) * P, w = (b[1] - b[0] + 1) * P;
+      s += T("rect", { x: f1(x), y: Y0 - 3, width: f1(w), height: f1(gridEnd - Y0 + 4), style: "fill:" + (i % 2 ? "var(--faint)" : "none") });
+      s += T("rect", { x: f1(x + 0.5), y: 8, width: f1(w - 1), height: 3, rx: 1, style: "fill:" + b[3] });
+      s += T("text", { x: f1(x + w / 2), y: 22, "text-anchor": "middle", "class": "tx-xs tx-mu" }, b[2]);
+      s += T("text", { x: f1(x + 1), y: 30, "class": "tx-mu", style: "font-size:6px" }, b[0]);
+    });
+    s += T("text", { x: 664, y: 22, "text-anchor": "end", "class": "tx-xs tx-mu tx-b" }, "in 89");
+    s += T("text", { x: 678, y: 30, "text-anchor": "end", "class": "tx-xs tx-mu" }, "in 121");
+    S.rows.forEach(function (r, i) {
+      var yy = ry[i], col = GC[r[2]], g = '<g class="ac-row" data-r="' + i + '">';
+      g += T("rect", { x: 0, y: f1(yy - 1), width: 680, height: f1(RH), style: "fill:transparent" });
+      g += T("text", { x: X0 - 5, y: f1(yy + RH - 2.4), "text-anchor": "end", "class": "tx-mu", style: "font-size:6.8px" }, r[1]);
+      r[3].split("").forEach(function (c, j) {
+        if (c === ".") return;
+        var x = cx(j + 1), yc = yy + RH / 2 - 0.6, rad = 2.05;
+        if (c === "F") g += T("circle", { cx: f1(x), cy: f1(yc), r: rad, style: "fill:" + col });
+        else if (c === "U") g += T("circle", { cx: f1(x), cy: f1(yc), r: 1.6, style: "fill:var(--sheet);stroke:" + col + ";stroke-width:0.9" });
+        else g += T("circle", { cx: f1(x), cy: f1(yc), r: 1.7, style: "fill:var(--nama-soft);stroke:" + col + ";stroke-width:0.7" });
+      });
+      g += T("text", { x: 664, y: f1(yy + RH - 2.4), "text-anchor": "end", "class": "tx-mu", style: "font-size:6.6px" }, r[4]);
+      g += T("text", { x: 678, y: f1(yy + RH - 2.4), "text-anchor": "end", "class": "tx-mu", style: "font-size:6.6px" }, r[5]);
+      s += g + "</g>";
+    });
+    /* factor counts per citta, as bars under the grid */
+    var by = gridEnd + 46;
+    s += T("text", { x: X0 - 5, y: f1(by - 2), "text-anchor": "end", "class": "tx-xs tx-mu" }, "factors per citta");
+    S.cols.forEach(function (c, j) {
+      var tot = typeof c[0] === "number" ? c[0] : 36, h = tot * 1.05, x = X0 + j * P + 0.6;
+      var g = '<g class="ac-col" data-c="' + j + '">' + T("rect", { x: f1(X0 + j * P), y: f1(gridEnd + 2), width: P, height: f1(by - gridEnd - 2), style: "fill:transparent" });
+      g += T("rect", { x: f1(x), y: f1(by - h), width: f1(P - 1.2), height: f1(h), style: "fill:var(--line)" });
+      if (c[1]) g += T("rect", { x: f1(x), y: f1(by - h), width: f1(P - 1.2), height: f1(c[1] * 1.05), style: "fill:var(--nama-2)" });
+      if (typeof c[0] !== "number") g += T("rect", { x: f1(x), y: f1(by - h), width: f1(P - 1.2), height: f1(3 * 1.05), style: "fill:var(--nib-soft)" });
+      s += g + "</g>";
+    });
+    [10, 20, 30].forEach(function (v) { s += T("line", { x1: X0, x2: X0 + 89 * P, y1: f1(by - v * 1.05), y2: f1(by - v * 1.05), style: "stroke:var(--sheet);stroke-width:0.6" }); s += T("text", { x: X0 + 89 * P + 3, y: f1(by - v * 1.05 + 2), "class": "tx-mu", style: "font-size:6px" }, v); });
+    s += T("text", { x: X0, y: f1(by + 9), "class": "tx-xs tx-mu" }, "grey: always; light indigo: may join; supramundane totals vary by jhāna, 33–36");
+    svg.setAttribute("viewBox", "0 0 680 " + Math.ceil(by + 14));
+    svg.innerHTML = s;
+    var info = $("ac-info");
+    function rowText(i) { var r = S.rows[i]; return "<b>" + r[1] + " · <i>" + r[0] + "</i>.</b> Joins " + r[4] + " of the 89 cittas (" + r[5] + " of 121), " + (r[3].indexOf("U") >= 0 ? "as an unfixed factor: only sometimes." : "always, wherever it can occur."); }
+    function colText(j) { var c = CN[j], k = S.cols[j]; return "<b>Citta " + (j + 1) + ": " + c[1] + ".</b> " + (typeof k[0] === "number" ? k[0] + " factors" : k[0] + " factors, by jhāna") + (k[1] ? ", " + k[1] + " of them only sometimes." : "."); }
+    function show(kind, i) {
+      Array.prototype.forEach.call(svg.querySelectorAll(".ac-row"), function (g) { g.style.opacity = kind === "r" && +g.getAttribute("data-r") !== i ? 0.25 : ""; });
+      if (info) info.innerHTML = kind === "r" ? rowText(i) : (kind === "c" ? colText(i) : "Read across a row for the cittas a factor joins; read down a column for the factors a citta takes. Citta 31, the great wholesome citta with joy and knowledge, takes the most: 38 counted, 34 at most at once.");
+    }
+    svg.addEventListener("click", function (e) {
+      var r = e.target.closest(".ac-row"), c = e.target.closest(".ac-col");
+      if (c) show("c", +c.getAttribute("data-c")); else if (r) show("r", +r.getAttribute("data-r")); else show(null);
+    });
+    show(null);
+    var un = $("ac-unfixed");
+    if (un) un.innerHTML = "<b>The 11 unfixed factors</b> join only sometimes: envy, avarice and worry, one at a time, in the hate-rooted cittas; the three abstinences, one at a time when refraining from a wrong (all three in path and fruit); compassion and appreciative joy; conceit, in greed-rooted cittas without wrong view; sloth and torpor, together, in the prompted unwholesome cittas.";
+    var cb = $("ac-comb");
+    if (cb) cb.innerHTML = '<table class="combt">' + S.comb.map(function (m) {
+      return "<tr><th>" + m[0].replace(" (fine-material and immaterial)", "") + "</th><td>" + Object.keys(m[2]).map(function (k) { return "<b>" + m[2][k] + "</b>"; }).join(" · ") + "</td></tr>";
+    }).join("") + "</table>";
+  })();
+
+  /* ---------- plate 7b: other processes ----------
+     Each strip is one process, one cell per mind-moment, coloured as on Plate 7. */
+  (function () {
+    var host = $("pr-list"); if (!host) return;
+    var D = window.ATLAS, S = D.sheet7b;
+    var K = {
+      a: ["lc", "fill:var(--faint);stroke:var(--line)"], b: ["lc", "fill:var(--faint);stroke:var(--line)"], bh: ["vib", "fill:var(--line);stroke:var(--line)"], bu: ["arr", "fill:var(--line);stroke:var(--line)"],
+      pa: ["adv", "fill:var(--nama-soft);stroke:var(--nama-2)"], ma: ["adv", "fill:var(--nama-soft);stroke:var(--nama-2)"],
+      ja: ["J", "fill:var(--nama);stroke:var(--nama)", 1], ta: ["reg", "fill:var(--nama-soft);stroke:var(--nama);stroke-dasharray:2 1.5"],
+      pk: ["prep", "fill:var(--nama-2);stroke:var(--nama-2)", 1], up: ["acc", "fill:var(--nama-2);stroke:var(--nama-2)", 1], an: ["conf", "fill:var(--nama-2);stroke:var(--nama-2)", 1],
+      go: ["CoL", "fill:var(--nama-2);stroke:var(--nib);stroke-width:1.6", 1], ap: ["abs", "fill:var(--g2);stroke:var(--g2)", 1],
+      mg: ["path", "fill:var(--nib);stroke:var(--nib)", 1], ph: ["fruit", "fill:var(--nib-soft);stroke:var(--nib)"],
+      x: ["—", "fill:none;stroke:var(--muted);stroke-dasharray:2 2"], cu: ["death", "fill:var(--muted);stroke:var(--muted)", 1], ps: ["reb", "fill:var(--kamma);stroke:var(--kamma)", 1]
+    };
+    var NAMES = { lc: "life-continuum", vib: "vibrating", arr: "arrest", adv: "adverting", J: "javana", reg: "registration", prep: "preliminary", acc: "access", conf: "conformity", CoL: "change-of-lineage", abs: "absorption", path: "path", fruit: "fruition", "—": "cessation: no mind", death: "death", reb: "rebirth-linking" };
+    var lg = $("pr-legend");
+    if (lg) lg.innerHTML = Object.keys(NAMES).filter(function (k) { return k !== "lc" || true; }).map(function (ab) {
+      var key = Object.keys(K).filter(function (k) { return K[k][0] === ab; })[0];
+      return '<span><i style="' + K[key][1].replace(/fill:/, "background:").replace(/;stroke:([^;]+)/, ";border:1px solid $1").replace(/stroke-[^;]+;?/g, "") + '"></i><b>' + ab + "</b> " + NAMES[ab] + "</span>";
+    }).join("");
+    function strip(keys) {
+      var cw = 23, ch = 15, s = "";
+      keys.forEach(function (k, i) {
+        var d = K[k] || ["?", "fill:none;stroke:var(--line)"], x = i * (cw + 2);
+        s += T("rect", { x: x + 0.5, y: 0.5, width: cw - 1, height: ch - 1, rx: 2.5, style: d[1] });
+        s += T("text", { x: x + cw / 2, y: 10.4, "text-anchor": "middle", style: "font-size:6.8px;font-weight:600;fill:" + (d[2] ? "var(--on-accent)" : "var(--ink)") }, d[0]);
+      });
+      return '<svg viewBox="0 0 ' + (keys.length * (cw + 2)) + ' ' + ch + '" style="width:' + (keys.length * (cw + 2)) + 'px;max-width:100%">' + s + "</svg>";
+    }
+    host.innerHTML = S.strips.map(function (r) {
+      return '<div class="pr"><div><b>' + r[1].replace(/ \(tadanuvattika manodvāra-vīthi\)/, "") + '</b><span class="src"> · ' + r[2].split(";")[0] + "</span></div>" + strip(r[3].split(" ")) + '<p class="small muted">' + r[4].split(/(?<=\.) /)[0] + "</p></div>";
+    }).join("");
+    var te = $("pr-teach"); if (te) te.innerHTML = S.teaching.replace("So the Plate 7 simile's 'he decides: a ripe mango' at determining should not be read as recognition.", "The mango simile's “smells it” at determining is not yet recognition.");
+    var se = $("pr-series"); if (se) se.innerHTML = S.series.map(function (x) { return "<li><b>" + x[0] + ":</b> " + x[1] + "</li>"; }).join("");
+    var ru = $("pr-rules");
+    if (ru) ru.innerHTML = '<div class="lab">How many javanas</div><table class="combt">' + S.javana.filter(function (j, i) { return [0, 1, 3, 5, 6, 7].indexOf(i) >= 0; }).map(function (j) { return "<tr><th>" + j[0] + "</th><td><b>" + j[1] + "</b></td></tr>"; }).join("") + "</table>" +
+      '<div class="lab" style="margin-top:6px">Registration</div><ul class="tight">' + S.registration.slice(0, 2).map(function (r) { return "<li>" + r + "</li>"; }).join("") + "</ul>" +
+      '<div class="lab" style="margin-top:6px">Wise attention</div><p>' + S.attention[0] + " So the Atthasālinī explains it; determining itself makes no kamma, and in an arahant the javanas are functional.</p>";
+  })();
+
+  /* ---------- plate 8b: chapter VII, the lists reduced to their factors ----------
+     Rows: ten lists of defilements; columns: the fourteen unwholesome factors, most frequent first.
+     Each circle counts the items of that list that are that factor. Below, six mixed categories as conditions. */
+  (function () {
+    var svg = $("ls-grid"); if (!svg) return;
+    var D = window.ATLAS, S = D.sheet8b, F = S.factors, s = "";
+    var X0 = 176, PX = 33, Y0 = 92, PY = 21;
+    var SHORT = { "fearlessness of wrongdoing": "no fear of wrong", "shamelessness": "no shame" };
+    var NICE = { "taints (āsava)": "taints · āsava", "floods (ogha)": "floods · ogha", "bonds (yoga)": "bonds · yoga", "bodily ties (kāyagantha)": "bodily ties · gantha", "clingings (upādāna)": "clingings · upādāna", "hindrances (nīvaraṇa)": "hindrances · nīvaraṇa", "latent tendencies (anusaya)": "latent tendencies · anusaya", "fetters, Suttanta method (saṃyojana)": "fetters · suttanta list", "fetters, Abhidhamma method": "fetters · abhidhamma list", "defilements (kilesa)": "defilements · kilesa" };
+    F.forEach(function (f, j) {
+      var x = X0 + j * PX + PX / 2;
+      s += T("rect", { x: X0 + j * PX, y: 0, width: PX, height: Y0 + S.cats.length * PY + 34, style: "pointer-events:none;fill:" + (j % 2 ? "transparent" : "var(--faint)") });
+      s += '<g class="ls-col" data-f="' + j + '">' + T("rect", { x: X0 + j * PX, y: 0, width: PX, height: Y0 - 4, style: "fill:transparent" });
+      s += T("text", { x: f1(x - 2), y: Y0 - 8, transform: "rotate(-50 " + f1(x - 2) + " " + (Y0 - 8) + ")", "class": "tx-s" }, '<tspan class="tx-it">' + f[0] + '</tspan><tspan class="tx-mu" style="font-size:7.5px"> ' + (SHORT[f[1]] || f[1]) + "</tspan>") + "</g>";
+    });
+    S.cats.forEach(function (c, i) {
+      var y = Y0 + i * PY + PY / 2;
+      s += '<g class="ls-row" data-c="' + i + '">' + T("rect", { x: 0, y: f1(y - PY / 2), width: 680, height: PY, style: "fill:transparent" });
+      s += T("text", { x: 0, y: f1(y + 1), "class": "tx-s" }, NICE[c[0]] || c[0]);
+      s += T("text", { x: X0 - 6, y: f1(y + 1), "text-anchor": "end", "class": "tx-xs tx-mu" }, c[1] + " items");
+      c[2].forEach(function (n, j) {
+        if (!n) return;
+        var x = X0 + j * PX + PX / 2, r = 4.2 + n * 2.2;
+        s += T("circle", { cx: f1(x), cy: f1(y), r: f1(r), style: "fill:" + (j === 0 ? "var(--bad)" : "color-mix(in srgb, var(--bad) 55%, var(--sheet))") });
+        if (n > 1) s += T("text", { x: f1(x), y: f1(y + 3), "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:var(--sheet)" }, n);
+      });
+      s += "</g>";
+    });
+    var ty = Y0 + S.cats.length * PY + 18;
+    s += T("text", { x: X0 - 6, y: ty, "text-anchor": "end", "class": "tx-xs tx-b" }, "items, all ten lists");
+    F.forEach(function (f, j) { s += T("text", { x: X0 + j * PX + PX / 2, y: ty, "text-anchor": "middle", "class": "tx-s tx-b" + (j === 0 ? " tx-bd" : "") }, f[3]); });
+    svg.setAttribute("viewBox", "0 0 680 " + (ty + 8));
+    svg.innerHTML = s;
+    var info = $("ls-info");
+    function show(kind, i) {
+      Array.prototype.forEach.call(svg.querySelectorAll(".ls-row"), function (g) { g.style.opacity = kind === "c" && +g.getAttribute("data-c") !== i ? 0.3 : ""; });
+      if (!info) return;
+      if (kind === "c") { var c = S.cats[i]; info.innerHTML = "<b>" + (NICE[c[0]] || c[0]) + ".</b> " + c[3].map(function (it) { return it[0] + " (<i>" + it[1] + "</i>) = " + it[2]; }).join("; ") + "."; }
+      else if (kind === "f") { var f = F[i]; info.innerHTML = "<b>" + f[1] + " · <i>" + f[0] + "</i></b> appears in " + f[2] + (f[2] === 1 ? " group" : " of the nine groups") + ", " + f[3] + (f[3] === 1 ? " item" : " items") + " in all."; }
+      else info.innerHTML = S.headline + " The lists name the same few defilements again and again, each time from another angle: as what flows in, what sweeps away, what binds, what lies latent.";
+    }
+    svg.addEventListener("click", function (e) { var r = e.target.closest(".ls-row"), c = e.target.closest(".ls-col"); if (r) show("c", +r.getAttribute("data-c")); else if (c) show("f", +c.getAttribute("data-f")); else show(null); });
+    show(null);
+    /* mixed categories → conditions */
+    var mx = $("ls-mixed");
+    if (mx) {
+      var m = "", CO = [], LX = 0, RX = 448, W = 232;
+      S.mixed.forEach(function (c) { if (c[3] && CO.indexOf(c[3][0]) < 0) CO.push(c[3][0]); });
+      CO.sort(function (a, b) { return a - b; });
+      var cy = function (i) { return 12 + i * 24; };
+      S.mixed.forEach(function (c, i) {
+        var y = cy(i), ci = c[3] ? CO.indexOf(c[3][0]) : -1;
+        var y2 = ci >= 0 ? 12 + ci * 28 + 6 : null;
+        if (y2 !== null) m += T("path", { d: "M" + (LX + W) + " " + (y + 8) + " C" + (LX + W + 100) + " " + (y + 8) + " " + (RX - 100) + " " + y2 + " " + RX + " " + y2, style: "fill:none;stroke:var(--nama-2);stroke-width:1.6" });
+        m += T("rect", { x: LX, y: y - 2, width: W, height: 20, rx: 4, style: "fill:var(--faint)" });
+        m += T("text", { x: LX + 8, y: y + 11.5, "class": "tx-s tx-b" }, c[0]);
+        m += T("text", { x: LX + W - 8, y: y + 11.5, "text-anchor": "end", "class": "tx-xs tx-mu" }, c[1] + " items → " + c[2] + " states" + (c[3] ? "" : " · no condition"));
+      });
+      var NM = { 1: "root", 3: "predominance (conascent kind)", 15: "nutriment", 16: "faculty (20 of the 22)", 17: "jhāna", 18: "path" };
+      CO.forEach(function (n, i) {
+        var y = 12 + i * 28;
+        m += T("rect", { x: RX, y: y - 2, width: 680 - RX, height: 20, rx: 4, style: "fill:var(--sheet);stroke:var(--g6)" });
+        m += T("text", { x: RX + 8, y: y + 11.5, "class": "tx-s" }, '<tspan class="tx-b">' + n + "</tspan> · " + (NM[n] || "") + " condition");
+      });
+      mx.setAttribute("viewBox", "0 0 680 " + Math.max(cy(S.mixed.length), 12 + CO.length * 28));
+      mx.innerHTML = m;
+    }
+    var ca = $("ls-cautions"); if (ca) ca.innerHTML = S.cautions.map(function (c) { return "<li>" + c.replace(/: do not draw.*$/, ".") + "</li>"; }).join("") + "<li>The nine powers have no condition of their own; their members act through others, such as faculty and path.</li>";
+    var rq = $("ls-req"); if (rq) rq.textContent = S.requisites;
+  })();
 })();
 </script>
 <script>
@@ -3830,7 +4085,7 @@ window.ATLAS = (function () {
       /* r2: arrive box and plate cards side by side; the concept map below at full width, cropped to this level's rows */
       '<div class="lvcols lvcols2">' +
       '<div class="box"><div class="lab">You arrive with</div><p class="small">' + L.arrive + '</p><div class="lab" style="margin-top:4px">You leave able to</div><ul class="tight small">' + L.leave.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>" +
-      '<div class="pcards' + (L.plates.length > 1 ? " two" : "") + '">' + cards + "</div></div>" +
+      '<div class="pcards' + (L.plates.length > 1 ? " two" : "") + ((cards.match(/class="pc"/g) || []).length >= 7 ? " brief" : "") + '">' + cards + "</div></div>" +
       '<div class="fig lvmap' + (n === 7 ? " whole" : "") + '"><svg class="cmap" data-hl="' + n + '" viewBox="0 0 680 610" role="img" aria-label="The part of the concept map around this level"></svg>' +
       '<p class="cap">' + (n === 7 ? "Synthesis uses the whole map (page 5)." : "The concept map around this level. Filled: this level. Outlined: earlier levels. Faded: what comes later. Bold arrows touch this level; the whole map is on page 5.") + '<span class="web"> Choose a box to open it on the main map.</span></p></div>' +
       pre + '<div class="lab">Check yourself at three depths</div>' +

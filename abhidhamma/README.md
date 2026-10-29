@@ -6,7 +6,7 @@ Two visual companions to Bhikkhu Bodhi's *A Comprehensive Manual of Abhidhamma*,
 | --- | --- | --- |
 | **Abhidhamma Atlas**, source | `atlas/` | Edit these files. Open `atlas/index.html` in a browser to read it offline. |
 | Abhidhamma Atlas, one file | `abhidhamma-atlas.html` | Built from `atlas/`. Used for the Claude artifact. Do not edit by hand. |
-| Abhidhamma Atlas, PDF | `abhidhamma-atlas.pdf` | Built from `atlas/`. 51 A4 pages. |
+| Abhidhamma Atlas, PDF | `abhidhamma-atlas.pdf` | Built from `atlas/`. 54 A4 pages. |
 | Nāma–rūpa model | `nama-rupa-model.html` | A standalone interactive model of mind and matter. |
 | Landing page | `index.html` | The front page of the published site. |
 | Build tool | `tools/build.js` | Bundles the atlas and prints the PDF. |
@@ -14,7 +14,7 @@ Two visual companions to Bhikkhu Bodhi's *A Comprehensive Manual of Abhidhamma*,
 ## What is in the atlas
 
 - **Start here**: the seven-level learning path, how to study slowly, an 18-week plan, the concept map (clickable, with a path tracer), the map in 3D, every link explained, and the Buddha's life as a map.
-- **Seven levels**: fifteen plates, from the two truths to other schools' maps. Each level has a level page (what you arrive with, what you leave able to do, questions at three depths), 3D models, and stories from the Buddha's life, the Jātakas and the disciples.
+- **Seven levels**: fifteen plates, with four companion sheets that continue them (3b what each citta does, 4b which factors meet which cittas, 7b other processes, 8b chapter VII's lists reduced to their factors), from the two truths to other schools' maps. Each level has a level page (what you arrive with, what you leave able to do, questions at three depths), 3D models, and stories from the Buddha's life, the Jātakas and the disciples.
 - **Study tools**: one dhamma seen through nine of the Abhidhamma's lists, sixteen identity cards (characteristic, function, manifestation, proximate cause), a review deck of 77 cards in five boxes, and a 150-term glossary.
 - **One recurring example**: a moment of seeing a ripe mango and wanting it runs through Plate 7 (a timeline of the 17 mind-moments), Plate 3 (its cittas ringed), Plate 14 (every lens, with a thumbnail of each plate) and the D7 model.
 
