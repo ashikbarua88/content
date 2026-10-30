@@ -419,4 +419,15 @@
       if (d) { el.classList.add("gl"); el.title = d; }
     });
   })();
+  /* ---------------- new on this sheet: the terms met here first (screen only) ---------------- */
+  (function () {
+    var N = D.newTerms || {};
+    each("section.sheet", function (sec) {
+      var t = N[sec.id]; if (!t || !t.length) return;
+      var after = sec.querySelector(".nav") || sec.querySelector(".ph"); if (!after) return;
+      var d = document.createElement("div"); d.className = "newterms web";
+      d.innerHTML = '<span class="lab">New here</span>' + t.map(function (x) { var p = x.split(" · "); return "<span><i>" + p[0] + "</i>" + (p[1] ? " " + p[1] : "") + "</span>"; }).join("");
+      after.insertAdjacentElement("afterend", d);
+    });
+  })();
 })();

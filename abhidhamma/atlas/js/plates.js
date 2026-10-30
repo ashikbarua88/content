@@ -1476,4 +1476,59 @@
     var ca = $("ls-cautions"); if (ca) ca.innerHTML = S.cautions.map(function (c) { return "<li>" + c.replace(/: do not draw.*$/, ".") + "</li>"; }).join("") + "<li>The nine powers have no condition of their own; their members act through others, such as faculty and path.</li>";
     var rq = $("ls-req"); if (rq) rq.textContent = S.requisites;
   })();
+  /* ---------- plate 10b: from kamma to its results (CMA V) ----------
+     Seven rows: a kind of kamma → the rebirth-linking citta it can give (Plate 3 numbers) → the planes. */
+  (function () {
+    var svg = $("kr-flow"); if (!svg) return;
+    var K = window.ATLAS.sheet10b, s = "", RH = 46;
+    s += T("text", { x: 0, y: 12, "class": "tx-xs tx-mu tx-b", style: "letter-spacing:.08em" }, "KAMMA") + T("text", { x: 248, y: 12, "class": "tx-xs tx-mu tx-b", style: "letter-spacing:.08em" }, "REBIRTH-LINKING CITTA") + T("text", { x: 466, y: 12, "class": "tx-xs tx-mu tx-b", style: "letter-spacing:.08em" }, "PLANES");
+    K.rows.forEach(function (r, i) {
+      var y = 22 + i * RH, c = "var(" + r[5] + ")", none = r[2] === "none";
+      s += T("rect", { x: 0, y: y, width: 222, height: 38, rx: 5, style: "fill:var(--faint)" }) + T("rect", { x: 0, y: y, width: 4, height: 38, rx: 2, style: "fill:" + c });
+      s += T("text", { x: 11, y: y + 16, "class": "tx-m tx-b" }, r[0]) + T("text", { x: 11, y: y + 30, "class": "tx-xs tx-mu" }, r[1]);
+      s += T("path", { d: "M224 " + (y + 19) + " L244 " + (y + 19), style: "stroke:" + c + ";stroke-width:1.6" + (none ? ";stroke-dasharray:3 2" : "") });
+      s += T("rect", { x: 248, y: y, width: 196, height: 38, rx: 5, style: none ? "fill:none;stroke:" + c + ";stroke-dasharray:3 2" : "fill:" + c });
+      s += T("text", { x: 256, y: y + 16, "class": "tx-m tx-b", style: none ? "fill:var(--nib)" : "fill:var(--on-accent)" }, none ? "no rebirth-linking" : "citta " + r[2]);
+      s += T("text", { x: 256, y: y + 30, "class": "tx-xs", style: none ? "fill:var(--muted)" : "fill:var(--on-accent);opacity:.9" }, r[3]);
+      s += T("path", { d: "M446 " + (y + 19) + " L462 " + (y + 19), style: "stroke:" + c + ";stroke-width:1.6" });
+      var w = r[4].length > 46 ? r[4].split(", ") : [r[4]];
+      if (w.length > 2) w = [w.slice(0, w.length - 1).join(", ") + ",", w[w.length - 1]];
+      w.forEach(function (ln, k) { s += T("text", { x: 466, y: y + (w.length > 1 ? 15 + k * 13 : 23), "class": "tx-s" }, ln); });
+    });
+    s += T("text", { x: 0, y: 22 + K.rows.length * RH + 6, "class": "tx-xs tx-mu" }, "The twentieth kind: the non-percipient beings, reborn by a jhāna developed with dispassion for perception, have a rebirth of matter only, with no citta.");
+    svg.setAttribute("viewBox", "0 0 680 " + (22 + K.rows.length * RH + 12));
+    svg.innerHTML = s;
+    var rs = $("kr-results");
+    if (rs) rs.innerHTML = K.results.map(function (r) { return '<div class="krr"><b>' + r[1] + '</b><span class="krtrack"><span class="krbar" style="width:' + (r[1] * 6) + 'px"></span></span><span class="small">' + r[0] + '<br><span class="muted">' + r[2] + "</span></span></div>"; }).join("");
+    var jh = $("kr-jhana"); if (jh) jh.innerHTML = K.jhana.map(function (r) { return "<li><b>" + r[0] + ":</b> " + r[1] + "</li>"; }).join("");
+    var pe = $("kr-persons"); if (pe) pe.innerHTML = K.persons.map(function (r) { return "<li><b>" + r[0] + ":</b> " + r[1] + ".</li>"; }).join("") + "<li>So the Abhidhamma counts a human birth with a three-rooted rebirth-linking as the opening for the path; the planes and lives of Plates 10 and 11 are not just cosmology but the ground of practice.</li>";
+  })();
+
+  /* ---------- plate 8, on screen: the mango moment as a web of conditions ---------- */
+  (function () {
+    var svg = $("p8-web"); if (!svg) return;
+    var W = window.ATLAS.mangoWeb, s = "", P = {};
+    var POS = { PK: [70, 30], EB: [70, 110], CO: [70, 190], HB: [70, 270], AD: [260, 60], EC: [260, 140], RI: [260, 220], PS: [450, 30], GR: [450, 110], J: [450, 190], VO: [450, 270], J2: [605, 190], MB: [605, 100], FR: [605, 290] };
+    W.nodes.forEach(function (n) { P[n[0]] = { x: POS[n[0]][0], y: POS[n[0]][1], n: n }; });
+    W.edges.forEach(function (e, i) {
+      var a = P[e[0]], b = P[e[1]]; if (!a || !b) return;
+      var col = e[2].indexOf(13) >= 0 ? "var(--kamma)" : (e[2].indexOf(2) >= 0 && e[2][0] === 2 ? "var(--rupa-mark)" : (e[2].indexOf(4) >= 0 ? "var(--muted)" : "var(--nama-2)"));
+      var d = a === b ? "M" + (a.x - 20) + " " + (a.y - 14) + " q20 -26 40 0" : "M" + a.x + " " + a.y + " Q" + f1((a.x + b.x) / 2) + " " + f1((a.y + b.y) / 2 - 18) + " " + b.x + " " + b.y;
+      s += '<g class="cw-e" data-i="' + i + '">' + T("path", { d: d, style: "fill:none;stroke:transparent;stroke-width:10" }) + T("path", { d: d, style: "fill:none;stroke:" + col + ";stroke-width:1.5" + (e[2].indexOf(13) >= 0 && e[2].length === 1 ? ";stroke-dasharray:4 3" : "") }) +
+        T("text", { x: f1((a.x + b.x) / 2), y: f1((a.y + b.y) / 2 - (a === b ? 30 : 12)), "text-anchor": "middle", "class": "tx-mu", style: "font-size:7px;paint-order:stroke;stroke:var(--sheet);stroke-width:3px" }, e[2].join(" ")) + "</g>";
+    });
+    W.nodes.forEach(function (n) {
+      var p = P[n[0]], mat = n[2] === "matter", lab = n[1].length > 26 ? n[1].slice(0, 25) + "…" : n[1];
+      s += T("rect", { x: p.x - 62, y: p.y - 11, width: 124, height: 22, rx: mat ? 3 : 11, style: "fill:var(--sheet);stroke:" + (mat ? "var(--rupa-mark)" : "var(--nama)") + ";stroke-width:1.3" }) + T("text", { x: p.x, y: p.y + 3.5, "text-anchor": "middle", "class": "tx-xs" }, lab);
+    });
+    svg.innerHTML = s;
+    var info = $("p8-web-info");
+    function nm(id) { return P[id].n[1]; }
+    svg.addEventListener("click", function (ev) {
+      var g = ev.target.closest(".cw-e"); if (!g || !info) return;
+      var e = W.edges[+g.getAttribute("data-i")];
+      info.innerHTML = "<b>" + nm(e[0]) + " → " + nm(e[1]) + "</b> · conditions " + e[2].join(", ") + ". " + e[3];
+    });
+    if (info) info.innerHTML = "Colours: turmeric, the object; grey, one citta giving way to the next; indigo, conascent support; purple, kamma (dashed where it ripens later).";
+  })();
 })();

@@ -616,3 +616,15 @@ svg.ig { width: 175px; max-width: 100%; height: auto; overflow: visible; }
 .cm-long { color: var(--ink); border-left: 2px solid var(--line); padding-left: 8px; }
 #ideas .idea { grid-template-columns: 162px minmax(0, 1fr); }
 #ideas svg.ig { width: 162px; }
+
+/* ---------- 10b, the condition web, new terms ---------- */
+.krr { display: grid; grid-template-columns: 24px 100px 1fr; gap: 8px; align-items: center; margin: 3px 0; }
+.krr b { font-family: var(--display); font-size: 18px; color: var(--nama); font-weight: 500; }
+.krbar { display: block; height: 10px; border-radius: 3px; background: var(--nama-2); }
+details.cweb { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+details.cweb[open] { padding-bottom: 10px; }
+#p8-web .cw-e { cursor: pointer; }
+#p8-web .cw-e:hover path:last-of-type { stroke-width: 2.6; }
+.newterms { display: flex; flex-wrap: wrap; gap: 3px 10px; align-items: baseline; font-family: var(--ui); font-size: 10.5px; color: var(--muted); margin-top: -4px; }
+.newterms .lab { margin-right: 2px; }
+.newterms i { font-family: var(--body); color: var(--ink); }
