@@ -171,6 +171,14 @@
     }).join("");
   })();
 
+  /* ---------------- the sixteen ideas, described ---------------- */
+  (function () {
+    var host = $("ideas-list"); if (!host) return;
+    host.innerHTML = IDEAS.map(function (n) {
+      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')"><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div>";
+    }).join("");
+  })();
+
   /* ---------------- every link: matrix and list ---------------- */
   (function () {
     var list = $("lk-list");
@@ -226,7 +234,7 @@
       LINKS.forEach(function (l, i) { if (l.from === n.id) outs.push(linkLine(l, i, l.to)); if (l.to === n.id) ins.push(linkLine(l, i, l.from)); });
       var th = TH.filter(function (t) { return n.p.some(function (p) { return t[4].indexOf(p) >= 0; }); }).slice(0, 5);
       h += '<div class="cm-head"><a class="lvb" href="#L' + n.lv + '" style="background:' + lvc(n.lv) + '"><b>' + ROM[n.lv] + "</b>" + LV[n.lv].name + "</a><h3>" + n.t + '</h3><span class="muted ui small">' + n.s + "</span></div>" +
-        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" +
+        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<p class="small cm-long">' + n.long + "</p>" : "") +
         '<div class="cm-cols"><div><div class="lab">Leads to · ' + outs.length + "</div>" + (outs.length ? '<ul class="cm-list">' + outs.join("") + "</ul>" : '<p class="small muted">Nothing on the map flows out of it.</p>') + "</div>" +
         '<div><div class="lab">Depends on · ' + ins.length + "</div>" + (ins.length ? '<ul class="cm-list">' + ins.join("") + "</ul>" : '<p class="small muted">It is a starting point: nothing on the map leads into it.</p>') + "</div></div>" +
         '<div class="btnrow sm"><button type="button" class="pill" data-act="from">Trace a path from here</button><button type="button" class="pill" data-act="to">Trace a path to here</button><a class="pill" href="#map3d" data-act="3d">See it in 3D</a><button type="button" class="pill" data-act="clear">Clear</button>' +

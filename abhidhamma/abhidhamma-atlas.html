@@ -609,6 +609,15 @@ table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
 .pcards.brief a.pc p { display: none; }
 .prlist { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
 @media (max-width: 700px) { .prlist { grid-template-columns: 1fr; } }
+
+/* ---------- the sixteen ideas, described ---------- */
+.ideas { columns: 2; column-gap: 18px; }
+@media (max-width: 700px) { .ideas { columns: 1; } }
+.idea { break-inside: avoid; border-left: 3px solid var(--lvc); padding: 0 0 0 8px; margin-bottom: 5px; }
+.idea h3 { font-size: 13.5px; }
+.idea h3 span { font-family: var(--body); font-style: italic; font-weight: 400; font-size: 11.5px; color: var(--muted); }
+.idea p { font-size: 10.1px; line-height: 1.33; }
+.cm-long { color: var(--ink); border-left: 2px solid var(--line); padding-left: 8px; }
 </style>
 <section class="sheet cover" id="cover">
   <div class="ph"><span><b>Abhidhamma Atlas</b> · a visual companion</span><span>After Bhikkhu Bodhi's <i>Comprehensive Manual</i></span></div>
@@ -617,7 +626,7 @@ table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
     <p class="sub">Mind, matter and the conditions that join them: fifteen plates on a seven-level path, with tools for slow study</p>
   </div>
   <div class="fig">
-    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:290px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
+    <svg id="cover-svg" viewBox="0 0 640 560" style="max-width:265px;margin:0 auto" role="img" aria-label="The 89 kinds of consciousness arranged in four rings by plane, around Nibbāna"></svg>
     <div class="legend" style="justify-content:center">
       <span><i style="background:var(--bad)"></i>unwholesome 12</span>
       <span><i style="background:var(--nama)"></i>wholesome 17</span>
@@ -777,6 +786,15 @@ table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
   </div>
   <div class="linklist" id="lk-list"></div>
   <div class="pf"><span>Abhidhamma Atlas · links</span><span class="pg"></span></div>
+</section>
+
+<!-- ================= START HERE: THE IDEAS DESCRIBED ================= -->
+<section class="sheet" id="ideas">
+  <div class="ph"><span><b>Start here</b> · The sixteen ideas, described</span><span>Abhidhamma Atlas</span></div>
+  <h2>The sixteen ideas, described</h2>
+  <p class="lede">Each idea on the concept map, in the Abhidhamma's own vocabulary. Read one a day alongside its plate; the Pāli terms are in the glossary.</p>
+  <div class="ideas" id="ideas-list"></div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–IX; Visuddhimagga XIV–XXII; Atthasālinī; Dhammapada 1; AN 6.63; Milindapañha II</span><span class="pg"></span></div>
 </section>
 
 <!-- ================= START HERE: THE LIFE AS A MAP ================= -->
@@ -1567,52 +1585,52 @@ window.ATLAS = (function () {
      c: colour token of its sphere in 3D; map: centre and width of its box on the 2D map (680 × 610);
      orbit: angle on its floor in the 3D map (null puts it at the centre). */
   D.ideas = [
-    { id: "T", c: "--muted", lv: 1, t: "Two truths", s: "conventional, ultimate",
+    { id: "T", long: "The Abhidhamma speaks in two registers. Conventional truth (<i>sammuti-sacca</i>) names persons, chariots and selves; it is valid for living and speaking, and it is not a lie. Ultimate truth (<i>paramattha-sacca</i>) speaks of <i>dhammas</i>: phenomena that bear their own nature (<i>sabhāva</i>) and cannot be analysed further. Names and the things they designate are concepts (<i>paññatti</i>) and belong to the first register; the four ultimate realities belong to the second. Moving between them does not deny the world. It redescribes it so that the view of a lasting self (<i>sakkāya-diṭṭhi</i>) finds no ground.", c: "--muted", lv: 1, t: "Two truths", s: "conventional, ultimate",
       d: "Conventional speech and ultimate analysis; the starting point.", p: [2],
       map: { x: 340, y: 46, w: 170 }, orbit: null },
-    { id: "CE", c: "--nama-2", lv: 2, t: "Cetasika · 52", s: "mental factors",
+    { id: "CE", long: "Mental factors are the qualities that arise with consciousness and give it its character. Each is a dhamma in its own right, with its own characteristic, function, manifestation and proximate cause. They are joined to citta by four marks of association (<i>sampayutta-lakkhaṇa</i>): they arise together, cease together, share one object and one base. Fifty-two are counted: seven universals (<i>sabbacitta-sādhāraṇa</i>), six occasionals (<i>pakiṇṇaka</i>), fourteen unwholesome and twenty-five beautiful (<i>sobhana</i>). The ethical quality of a moment is decided by its factors, above all by its roots (<i>hetu</i>).", c: "--nama-2", lv: 2, t: "Cetasika · 52", s: "mental factors",
       d: "The mental factors that colour each citta.", p: [4, 6],
       map: { x: 85, y: 140, w: 140 }, orbit: 210 },
-    { id: "CI", c: "--nama", lv: 2, t: "Citta · 89", s: "consciousness",
+    { id: "CI", long: "Consciousness is the bare knowing of an object (<i>ārammaṇa-vijānana</i>); in the Dhammapada's words, mind is the forerunner (<i>pubbaṅgama</i>) of states. It never arises alone and never lasts: each citta arises, stands and dissolves in three sub-moments (<i>uppāda, ṭhiti, bhaṅga</i>), and conditions the next as it goes. The 89 kinds are sorted by plane (<i>bhūmi</i>), by kind (<i>jāti</i>: wholesome, unwholesome, resultant, functional), by roots and by feeling. Mind here is not a substance but a continuity (<i>santati</i>) of such events, with no owner behind them.", c: "--nama", lv: 2, t: "Citta · 89", s: "consciousness",
       d: "Kinds of consciousness, each one moment of knowing.", p: [3],
       map: { x: 245, y: 140, w: 130 }, orbit: 150 },
-    { id: "RU", c: "--rupa-mark", lv: 2, t: "Rūpa · 28", s: "matter",
+    { id: "RU", long: "Matter is so called because it is “afflicted” (<i>ruppati</i>): it is altered by cold, heat, hunger and thirst. Its core is the four great elements (<i>mahābhūta</i>): earth as hardness, water as cohesion, fire as heat, air as motion and support; twenty-four kinds are derived from them (<i>upādā-rūpa</i>). Matter knows no object (<i>anārammaṇa</i>). It arises in inseparable groups (<i>kalāpa</i>) of eight or more, from four origins (kamma, citta, temperature, nutriment), and a unit of it lasts seventeen mind-moments.", c: "--rupa-mark", lv: 2, t: "Rūpa · 28", s: "matter",
       d: "Kinds of matter, always in groups of eight or more.", p: [5],
       map: { x: 460, y: 140, w: 140 }, orbit: 35 },
-    { id: "NB", c: "--nib", lv: 2, t: "Nibbāna", s: "unconditioned",
+    { id: "NB", long: "Nibbāna is the one unconditioned element (<i>asaṅkhata-dhātu</i>). It does not arise, stand or cease, and nothing produces it; yet it serves as object for path and fruition consciousness, which know it directly. Its characteristic is peace (<i>santi</i>). It is described by negation, as the extinction of greed, hatred and delusion, and by image, as the deathless (<i>amata</i>). It is ultimate, not a concept, yet it lies outside the five aggregates and outside the three times. It is spoken of with residue (<i>sa-upādisesa</i>), while the aggregates of an arahant remain, and without residue (<i>anupādisesa</i>), when they cease.", c: "--nib", lv: 2, t: "Nibbāna", s: "unconditioned",
       d: "The unconditioned; the object of path and fruition.", p: [2, 13],
       map: { x: 575, y: 46, w: 150 }, orbit: 300 },
-    { id: "BH", c: "--nama-2", lv: 3, t: "Life-continuum", s: "bhavaṅga",
+    { id: "BH", long: "<i>Bhavaṅga</i>, the factor of becoming, is the resultant citta that keeps a life continuous whenever no active process is running, as in dreamless sleep. It is the same kind of citta as rebirth-linking (<i>paṭisandhi</i>) and death (<i>cuti</i>), and it takes the same object, the one presented at the end of the previous life. It is not a soul or a hidden self: it arises and dissolves like any other citta. It shows how continuity is possible without an enduring subject.", c: "--nama-2", lv: 3, t: "Life-continuum", s: "bhavaṅga",
       d: "The resultant citta that fills the gaps between processes.", p: [7, 10],
       map: { x: 100, y: 250, w: 150 }, orbit: 105 },
-    { id: "PR", c: "--nama", lv: 3, t: "Cognitive process", s: "17 mind-moments",
+    { id: "PR", long: "Cognition runs in fixed series, the order of mind (<i>citta-niyāma</i>). An object strikes a door, the life-continuum vibrates and is cut off, and adverting, sense consciousness, receiving, investigating, determining, javana and registration follow, each conditioning the next by proximity (<i>anantara</i>). Nobody directs the sequence; it is a lawful succession of impersonal events. Knowing a whole thing takes many such processes, five-door and mind-door in turn.", c: "--nama", lv: 3, t: "Cognitive process", s: "17 mind-moments",
       d: "The fixed sequence in which cittas take an object.", p: [7],
       map: { x: 300, y: 250, w: 150 }, orbit: 165 },
-    { id: "JV", c: "--nama", lv: 3, t: "Javana", s: "impulsion",
+    { id: "JV", long: "<i>Javana</i>, impulsion, is the active phase of a process: usually seven like cittas in which the moment's ethical quality is fixed. Only here is kamma made, by worldlings and trainees; in an arahant the javanas are merely functional (<i>kiriya</i>) and leave no result. It is here that wise or unwise attention (<i>yoniso / ayoniso manasikāra</i>) bears fruit, so the javana is the point of practical freedom within an otherwise conditioned process.", c: "--nama", lv: 3, t: "Javana", s: "impulsion",
       d: "The active phase, where volition becomes kamma.", p: [7],
       map: { x: 490, y: 250, w: 130 }, orbit: 235 },
-    { id: "CO", c: "--g6", lv: 4, t: "24 conditions", s: "Paṭṭhāna",
+    { id: "CO", long: "The Paṭṭhāna analyses every relation between dhammas into twenty-four modes: root, object, predominance, proximity, conascence, mutuality, support, decisive support, kamma, nutriment and the rest. A condition (<i>paccaya</i>) is a dhamma that helps another, the conditioned (<i>paccayuppanna</i>), to arise or to persist. The scheme puts a web of mutual support where other systems put a creator or a first cause: nothing arises from a single cause, and nothing from no cause.", c: "--g6", lv: 4, t: "24 conditions", s: "Paṭṭhāna",
       d: "The ways in which one dhamma supports another.", p: [8],
       map: { x: 130, y: 355, w: 150 }, orbit: 140 },
-    { id: "DO", c: "--g6", lv: 4, t: "Dependent origination", s: "12 links, 3 lives",
+    { id: "DO", long: "“When this is, that is; from the arising of this, that arises.” The twelve links show how ignorance and craving keep the round (<i>vaṭṭa</i>) of existence turning across three lives: past causes, present results, present causes, future results. Saṃsāra appears as a process with no self that transmigrates, which avoids both eternalism (<i>sassata-diṭṭhi</i>) and annihilationism (<i>uccheda-diṭṭhi</i>). Read in reverse order, the same formula describes cessation.", c: "--g6", lv: 4, t: "Dependent origination", s: "12 links, 3 lives",
       d: "The twelve links, read across three lives.", p: [9],
       map: { x: 330, y: 355, w: 170 }, orbit: 215 },
-    { id: "RB", c: "--kamma", lv: 5, t: "Death and rebirth", s: "rebirth-linking",
+    { id: "RB", long: "Death (<i>cuti</i>) is the cutting off of the life faculty in one existence. Rebirth-linking (<i>paṭisandhi</i>), the first citta of the next, follows without interval, conditioned by the kamma that ripens at death and taking the object shown to the last javanas: a kamma, a sign of kamma or a sign of destiny. Nothing passes across. The commentaries compare it to a seal and its impression, or an echo and its sound: the new being is “neither the same nor another” (<i>na ca so na ca añño</i>).", c: "--kamma", lv: 5, t: "Death and rebirth", s: "rebirth-linking",
       d: "The hinge between one life and the next.", p: [10],
       map: { x: 100, y: 460, w: 150 }, orbit: 160 },
-    { id: "PL", c: "--th11", lv: 5, t: "31 planes", s: "worlds of mind",
+    { id: "PL", long: "The cosmos is laid out as thirty-one planes of existence, matched to levels of mind: four woeful planes, seven happy sense-sphere planes, sixteen fine-material and four immaterial Brahmā worlds. Each is reached by the kamma or the jhāna that corresponds to it, so the cosmology is psychology projected along the axis of rebirth. Every plane belongs to saṃsāra and is impermanent; even the longest lifespan ends.", c: "--th11", lv: 5, t: "31 planes", s: "worlds of mind",
       d: "The worlds, matched to levels of mind.", p: [11],
       map: { x: 300, y: 460, w: 140 }, orbit: 85 },
-    { id: "KA", c: "--kamma", lv: 5, t: "Kamma", s: "volition",
+    { id: "KA", long: "Kamma is volition (<i>cetanā</i>): “It is intention, monks, that I call kamma” (AN 6.63). The volition ceases at once, but it leaves a potency in the mental continuum that ripens, when conditions allow, as resultant consciousness (<i>vipāka</i>) and kamma-born matter. Kamma is not fate: it is one condition among many, and present volition is always open. The Saṅgaha sorts it by function, by order of ripening, by time and by plane.", c: "--kamma", lv: 5, t: "Kamma", s: "volition",
       d: "Volition, and the way it ripens.", p: [10],
       map: { x: 490, y: 460, w: 130 }, orbit: 250 },
-    { id: "SA", c: "--nib", lv: 6, t: "Calm · jhāna", s: "samatha",
+    { id: "SA", long: "Calm (<i>samatha</i>) is the training of one-pointedness (<i>ekaggatā</i>) on a meditation subject until the hindrances are suppressed and the mind enters absorption (<i>appanā</i>) as jhāna. Jhāna is a sublime (<i>mahaggata</i>) state in which the jhāna factors (applied and sustained thought, zest, happiness, one-pointedness) are refined step by step. Calm suppresses the defilements but does not uproot them; it serves as the basis (<i>pādaka</i>) for insight.", c: "--nib", lv: 6, t: "Calm · jhāna", s: "samatha",
       d: "Concentration, from access to the five jhānas.", p: [12],
       map: { x: 100, y: 565, w: 150 }, orbit: 90 },
-    { id: "VI", c: "--nib", lv: 6, t: "Insight", s: "vipassanā",
+    { id: "VI", long: "Insight (<i>vipassanā</i>) is wisdom (<i>paññā</i>) that sees mind and matter as they are: marked by impermanence (<i>anicca</i>), suffering (<i>dukkha</i>) and non-self (<i>anattā</i>). It proceeds through the seven purifications and the ten insight knowledges, from defining mind and matter to equanimity about formations. Insight takes conditioned dhammas as its object: it ripens the mind for the path, but it does not itself realise Nibbāna.", c: "--nib", lv: 6, t: "Insight", s: "vipassanā",
       d: "The knowledges that see mind and matter rise and fall.", p: [13],
       map: { x: 300, y: 565, w: 150 }, orbit: 170 },
-    { id: "PA", c: "--nib", lv: 6, t: "Path and fruit", s: "four paths",
+    { id: "PA", long: "Path and fruit (<i>magga, phala</i>) are the supramundane (<i>lokuttara</i>) cittas that take Nibbāna as object. Each of the four paths arises only once and abandons defilements for good (<i>samuccheda-pahāna</i>): stream-entry, once-return, non-return, arahantship. Fruition follows at once, on the same object. Here the eightfold path is complete in a single moment, its factors working together. With the fourth path the round of kamma and rebirth is cut at its roots, ignorance and craving.", c: "--nib", lv: 6, t: "Path and fruit", s: "four paths",
       d: "The four paths, with Nibbāna as their object.", p: [13],
       map: { x: 490, y: 565, w: 130 }, orbit: 285 }
   ];
@@ -4430,7 +4448,7 @@ window.ATLAS = (function () {
   (function () {
     var toc = $("toc"); if (!toc) return;
     function row(href, num, label, cls) { return '<a class="row' + (cls ? " " + cls : "") + '" href="#' + href + '"><b>' + num + "</b><span>" + label + "</span><span>" + pageOf[href] + "</span></a>"; }
-    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("study", "→", "How to study slowly") + row("plan", "→", "A study plan, one plate a week") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("life", "→", "The Buddha's life as a map") + "</div>";
+    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("study", "→", "How to study slowly") + row("plan", "→", "A study plan, one plate a week") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("ideas", "→", "The sixteen ideas, described") + row("life", "→", "The Buddha's life as a map") + "</div>";
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); compsAfter(p).forEach(function (c) { h += row("p" + c, c, COMP[c].t); }); });
@@ -4632,6 +4650,14 @@ window.ATLAS = (function () {
     }).join("");
   })();
 
+  /* ---------------- the sixteen ideas, described ---------------- */
+  (function () {
+    var host = $("ideas-list"); if (!host) return;
+    host.innerHTML = IDEAS.map(function (n) {
+      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')"><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div>";
+    }).join("");
+  })();
+
   /* ---------------- every link: matrix and list ---------------- */
   (function () {
     var list = $("lk-list");
@@ -4687,7 +4713,7 @@ window.ATLAS = (function () {
       LINKS.forEach(function (l, i) { if (l.from === n.id) outs.push(linkLine(l, i, l.to)); if (l.to === n.id) ins.push(linkLine(l, i, l.from)); });
       var th = TH.filter(function (t) { return n.p.some(function (p) { return t[4].indexOf(p) >= 0; }); }).slice(0, 5);
       h += '<div class="cm-head"><a class="lvb" href="#L' + n.lv + '" style="background:' + lvc(n.lv) + '"><b>' + ROM[n.lv] + "</b>" + LV[n.lv].name + "</a><h3>" + n.t + '</h3><span class="muted ui small">' + n.s + "</span></div>" +
-        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" +
+        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<p class="small cm-long">' + n.long + "</p>" : "") +
         '<div class="cm-cols"><div><div class="lab">Leads to · ' + outs.length + "</div>" + (outs.length ? '<ul class="cm-list">' + outs.join("") + "</ul>" : '<p class="small muted">Nothing on the map flows out of it.</p>') + "</div>" +
         '<div><div class="lab">Depends on · ' + ins.length + "</div>" + (ins.length ? '<ul class="cm-list">' + ins.join("") + "</ul>" : '<p class="small muted">It is a starting point: nothing on the map leads into it.</p>') + "</div></div>" +
         '<div class="btnrow sm"><button type="button" class="pill" data-act="from">Trace a path from here</button><button type="button" class="pill" data-act="to">Trace a path to here</button><a class="pill" href="#map3d" data-act="3d">See it in 3D</a><button type="button" class="pill" data-act="clear">Clear</button>' +

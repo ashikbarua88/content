@@ -394,7 +394,7 @@
   (function () {
     var toc = $("toc"); if (!toc) return;
     function row(href, num, label, cls) { return '<a class="row' + (cls ? " " + cls : "") + '" href="#' + href + '"><b>' + num + "</b><span>" + label + "</span><span>" + pageOf[href] + "</span></a>"; }
-    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("study", "→", "How to study slowly") + row("plan", "→", "A study plan, one plate a week") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("life", "→", "The Buddha's life as a map") + "</div>";
+    var h = '<div class="grp">' + row("learn", "→", "How to learn with this atlas", "h") + row("study", "→", "How to study slowly") + row("plan", "→", "A study plan, one plate a week") + row("map", "→", "How the main ideas connect") + row("map3d", "→", "The map in 3D") + row("links", "→", "Every link explained") + row("ideas", "→", "The sixteen ideas, described") + row("life", "→", "The Buddha's life as a map") + "</div>";
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); compsAfter(p).forEach(function (c) { h += row("p" + c, c, COMP[c].t); }); });

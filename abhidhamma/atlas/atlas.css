@@ -601,3 +601,12 @@ table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
 .pcards.brief a.pc p { display: none; }
 .prlist { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
 @media (max-width: 700px) { .prlist { grid-template-columns: 1fr; } }
+
+/* ---------- the sixteen ideas, described ---------- */
+.ideas { columns: 2; column-gap: 18px; }
+@media (max-width: 700px) { .ideas { columns: 1; } }
+.idea { break-inside: avoid; border-left: 3px solid var(--lvc); padding: 0 0 0 8px; margin-bottom: 5px; }
+.idea h3 { font-size: 13.5px; }
+.idea h3 span { font-family: var(--body); font-style: italic; font-weight: 400; font-size: 11.5px; color: var(--muted); }
+.idea p { font-size: 10.1px; line-height: 1.33; }
+.cm-long { color: var(--ink); border-left: 2px solid var(--line); padding-left: 8px; }
