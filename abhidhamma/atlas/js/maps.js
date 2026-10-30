@@ -286,10 +286,171 @@
   }
   window.ATLAS.ideaGlyph = ideaGlyph;
 
+  /* ---------------- a literal picture for each idea (viewBox 180 × 112) ----------------
+     Each scene is the image the texts themselves use: Vajirā's chariot, the lamp, the stream,
+     the mango tree, the sheaves of reeds, the seed, the raft. Line drawings in the theme's ink. */
+  var PIC = (function () {
+    var INK = "stroke:var(--ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round";
+    function P(d, fill, extra) { return T("path", { d: d, style: INK + ";fill:" + (fill || "none") + (extra ? ";" + extra : "") }); }
+    function C(x, y, r, fill, extra) { return T("circle", { cx: x, cy: y, r: r, style: INK + ";fill:" + (fill || "none") + (extra ? ";" + extra : "") }); }
+    function ground(y) { return P("M6 " + y + " L174 " + y, "none", "stroke:var(--muted)"); }
+    function person(x, y, s, fill, crown) {
+      var o = C(x, y - 15 * s, 4 * s, "var(--sheet)") + P("M" + (x - 6 * s) + " " + y + " L" + (x - 4 * s) + " " + (y - 9 * s) + " Q" + x + " " + (y - 11.5 * s) + " " + (x + 4 * s) + " " + (y - 9 * s) + " L" + (x + 6 * s) + " " + y + " Z", fill || "var(--faint)");
+      if (crown) o += P("M" + (x - 4 * s) + " " + (y - 18 * s) + " l1.5 -4 l2.5 3 l2.5 -3 l2.5 3 l1.5 -3 l0 4", "var(--rupa-mark)");
+      return o;
+    }
+    function seated(x, y, s, fill) {
+      return C(x, y - 22 * s, 4.5 * s, "var(--sheet)") + P("M" + (x - 5 * s) + " " + (y - 8 * s) + " Q" + x + " " + (y - 20 * s) + " " + (x + 5 * s) + " " + (y - 8 * s) + " Z", fill || "var(--faint)") +
+        P("M" + (x - 14 * s) + " " + y + " Q" + x + " " + (y - 10 * s) + " " + (x + 14 * s) + " " + y + " Z", fill || "var(--faint)");
+    }
+    function lamp(x, y, flame) {
+      var o = P("M" + (x - 13) + " " + y + " Q" + x + " " + (y + 12) + " " + (x + 13) + " " + y + " Z", "var(--rupa-soft)") + P("M" + (x + 9) + " " + (y - 1) + " l6 -4", "none");
+      if (flame === "full") o += P("M" + (x + 15) + " " + (y - 6) + " q-5 -9 0 -18 q5 9 0 18 Z", "var(--f-joy)", "stroke:var(--rupa)");
+      if (flame === "low") o += P("M" + (x + 15) + " " + (y - 6) + " q-3 -5 0 -10 q3 5 0 10 Z", "var(--f-joy)", "stroke:var(--rupa)");
+      if (flame === "new") o += P("M" + (x + 15) + " " + (y - 6) + " q-2 -3 0 -6 q2 3 0 6 Z", "var(--f-joy)", "stroke:var(--rupa)");
+      if (flame === "out") o += P("M" + (x + 15) + " " + (y - 6) + " q-6 -8 0 -14 q6 -6 0 -14", "none", "stroke:var(--muted);stroke-dasharray:2 2");
+      return o;
+    }
+    function mangoTree(x, y, n) {
+      var o = P("M" + x + " " + y + " L" + x + " " + (y - 38) + " M" + x + " " + (y - 24) + " l-10 -10 M" + x + " " + (y - 28) + " l9 -9", "none", "stroke:var(--rupa);stroke-width:3");
+      [[-14, -48, 14], [6, -54, 15], [18, -42, 12], [-4, -38, 12]].forEach(function (c) { o += C(x + c[0], y + c[1], c[2], "var(--f-ple)", "stroke:var(--nib)"); });
+      for (var i = 0; i < (n || 3); i++) o += T("ellipse", { cx: x - 10 + i * 11, cy: y - 34 + (i % 2) * 5, rx: 3, ry: 4, style: "fill:var(--rupa-mark);stroke:var(--rupa);stroke-width:.8" });
+      return o;
+    }
+    var D = {
+      T: function () {
+        var o = ground(96);
+        o += C(32, 76, 19, "none") + C(32, 76, 3, "var(--ink)");
+        for (var i = 0; i < 8; i++) { var a = i * 0.785; o += P("M" + (32 + 3 * Math.cos(a)).toFixed(1) + " " + (76 + 3 * Math.sin(a)).toFixed(1) + " L" + (32 + 19 * Math.cos(a)).toFixed(1) + " " + (76 + 19 * Math.sin(a)).toFixed(1)); }
+        o += T("ellipse", { cx: 72, cy: 92, rx: 19, ry: 5, style: INK + ";fill:none" });
+        o += P("M96 90 L150 90", "none", "stroke:var(--rupa);stroke-width:4");
+        o += P("M104 70 L172 48", "none", "stroke:var(--rupa);stroke-width:3");
+        o += P("M112 40 L150 34 L156 56 L118 62 Z", "var(--rupa-soft)");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "“chariot”: only wheels, axle, pole, box");
+        return o;
+      },
+      CE: function () {
+        var o = ground(96) + person(90, 96, 1.5, "var(--nama)", true);
+        [[38, 96], [56, 92], [124, 92], [142, 96], [22, 98], [158, 98]].forEach(function (p) { o += person(p[0], p[1], 0.95, "var(--nama-soft)"); });
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "the king never comes without his retinue");
+        return o;
+      },
+      CI: function () {
+        var o = ground(96) + P("M20 96 L160 96", "none", "stroke:var(--line)");
+        o += lamp(36, 86, "new") + lamp(86, 86, "full") + lamp(136, 86, "low");
+        o += T("text", { x: 36, y: 108, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "arising") + T("text", { x: 101, y: 108, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "standing") + T("text", { x: 151, y: 108, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "dissolving");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "the same flame? neither the same nor another");
+        return o;
+      },
+      RU: function () {
+        var o = ground(92);
+        o += P("M14 92 L22 66 L40 60 L52 74 L48 92 Z", "var(--rupa-soft)");
+        o += P("M78 56 Q66 78 78 86 Q90 78 78 56 Z", "var(--water)", "stroke:var(--water)");
+        o += P("M118 90 Q100 70 112 56 Q116 70 122 62 Q134 76 118 90 Z", "var(--f-joy)", "stroke:var(--temp)");
+        o += P("M146 62 q12 -6 22 0 M140 74 q16 -6 30 0 M148 86 q10 -5 20 0", "none", "stroke:var(--air)");
+        ["earth", "water", "fire", "air"].forEach(function (w, i) { o += T("text", { x: [33, 78, 117, 158][i], y: 106, "text-anchor": "middle", "class": "tx-xs tx-mu" }, w); });
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "hard, cohesive, hot, moving");
+        return o;
+      },
+      NB: function () {
+        var o = ground(96) + lamp(84, 86, "out");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "the flame gone out: nibbāna, “blowing out”");
+        o += P("M140 30 l0 0", "none");
+        return o;
+      },
+      BH: function () {
+        var o = P("M4 40 Q50 34 90 40 T176 38", "none", "stroke:var(--muted)") + P("M4 90 Q50 96 90 90 T176 92", "none", "stroke:var(--muted)");
+        for (var i = 0; i < 4; i++) o += P("M" + (10 + i * 40) + " " + (56 + (i % 2) * 14) + " q8 -4 16 0 t16 0", "none", "stroke:var(--water)");
+        [10, 18, 26].forEach(function (r) { o += T("ellipse", { cx: 112, cy: 66, rx: r, ry: r / 3, style: "fill:none;stroke:var(--nama-2);stroke-width:1.1" }); });
+        o += P("M112 22 q-6 10 0 22 q6 -10 0 -22 Z", "var(--f-ple)", "stroke:var(--nib)");
+        o += T("text", { x: 90, y: 108, "text-anchor": "middle", "class": "tx-xs tx-it" }, "the stream of becoming, rippled by an object");
+        return o;
+      },
+      PR: function () {
+        var o = ground(98) + mangoTree(56, 98, 3);
+        o += T("ellipse", { cx: 96, cy: 52, rx: 3.5, ry: 4.5, style: "fill:var(--rupa-mark);stroke:var(--rupa);stroke-width:.9" }) + P("M96 38 l0 7 M92 40 l1 5 M100 40 l-1 5", "none", "stroke:var(--muted);stroke-width:1");
+        o += C(106, 88, 4, "var(--sheet)") + P("M111 92 L150 92 L150 86 Q130 82 112 84 Z", "var(--faint)");
+        o += T("text", { x: 152, y: 76, "class": "tx-xs tx-mu" }, "z z");
+        o += T("text", { x: 90, y: 110, "text-anchor": "middle", "class": "tx-xs tx-it" }, "asleep under a mango tree; a mango falls");
+        return o;
+      },
+      JV: function () {
+        var o = ground(98) + mangoTree(40, 98, 2) + seated(118, 96, 1.4, "var(--faint)");
+        o += P("M124 78 Q134 70 126 62", "none") + T("ellipse", { cx: 126, cy: 60, rx: 3.5, ry: 4.5, style: "fill:var(--rupa-mark);stroke:var(--rupa);stroke-width:.9" });
+        o += T("text", { x: 90, y: 110, "text-anchor": "middle", "class": "tx-xs tx-it" }, "he eats the mango: the javanas");
+        return o;
+      },
+      CO: function () {
+        var o = ground(98);
+        for (var i = 0; i < 6; i++) { o += P("M" + (52 + i * 3) + " 98 L" + (88 + i * 1.2) + " 22", "none", "stroke:var(--rupa)"); o += P("M" + (128 - i * 3) + " 98 L" + (92 - i * 1.2) + " 22", "none", "stroke:var(--rupa)"); }
+        o += P("M70 62 L110 62", "none", "stroke:var(--ink);stroke-width:2");
+        o += T("text", { x: 90, y: 12, "text-anchor": "middle", "class": "tx-xs tx-it" }, "two sheaves of reeds, each leaning on the other");
+        return o;
+      },
+      DO: function () {
+        var o = ground(100) + C(90, 58, 38, "none", "stroke-width:2.4") + C(90, 58, 7, "var(--rupa-soft)");
+        for (var i = 0; i < 12; i++) { var a = i * Math.PI / 6; o += P("M" + (90 + 7 * Math.cos(a)).toFixed(1) + " " + (58 + 7 * Math.sin(a)).toFixed(1) + " L" + (90 + 38 * Math.cos(a)).toFixed(1) + " " + (58 + 38 * Math.sin(a)).toFixed(1)); }
+        o += P("M140 30 q10 12 6 28", "none", "stroke:var(--muted)") + P("M142 54 l4 5 l3 -6", "none", "stroke:var(--muted)");
+        o += T("text", { x: 158, y: 104, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "turning");
+        return o;
+      },
+      RB: function () {
+        var o = ground(96) + lamp(38, 86, "low") + lamp(126, 86, "new");
+        o += P("M60 74 L110 70", "none", "stroke:var(--rupa);stroke-width:2") + P("M110 70 q-3 -6 0 -10 q3 4 0 10 Z", "var(--f-joy)", "stroke:var(--rupa)");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "one lamp lit from another: nothing passes over");
+        return o;
+      },
+      PL: function () {
+        var o = P("M50 96 L90 30 L130 96 Z", "var(--faint)");
+        [[70, 34], [80, 26], [90, 18], [100, 26], [110, 34]].forEach(function (p) { o += T("rect", { x: p[0] - 4, y: p[1] - 8, width: 8, height: 6, style: INK + ";fill:var(--f-joy)" }); });
+        o += P("M30 14 Q90 2 150 14", "none", "stroke:var(--g2)") + P("M40 8 Q90 -2 140 8", "none", "stroke:var(--nib)");
+        o += P("M20 96 L160 96", "none", "stroke:var(--muted)") + P("M60 100 Q90 112 120 100", "var(--bad-soft)", "stroke:var(--bad)");
+        o += T("text", { x: 150, y: 62, "class": "tx-xs tx-mu" }, "Meru") + T("text", { x: 90, y: 110, "text-anchor": "middle", "class": "tx-xs tx-bd" }, "below");
+        return o;
+      },
+      KA: function () {
+        var o = ground(96);
+        o += T("ellipse", { cx: 26, cy: 92, rx: 5, ry: 3.5, style: INK + ";fill:var(--rupa-mark)" });
+        o += P("M70 96 L70 80 M70 84 q-8 -4 -10 -12 q8 2 10 10 M70 82 q6 -6 12 -6 q-2 6 -12 8", "var(--f-ple)", "stroke:var(--nib)");
+        o += mangoTree(132, 96, 3);
+        o += P("M36 88 L56 88 M90 88 L104 88", "none", "stroke:var(--muted)") + P("M52 85 l4 3 l-4 3 M100 85 l4 3 l-4 3", "none", "stroke:var(--muted)");
+        o += T("text", { x: 90, y: 110, "text-anchor": "middle", "class": "tx-xs tx-it" }, "as the seed, so the fruit");
+        return o;
+      },
+      SA: function () {
+        var o = ground(98) + seated(64, 96, 1.6, "var(--rupa-soft)");
+        o += C(132, 66, 14, "var(--rupa-soft)", "stroke:var(--rupa)") + P("M132 80 L132 98 M124 98 L140 98", "none");
+        o += P("M78 72 L116 68", "none", "stroke:var(--muted);stroke-dasharray:2 3");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "gazing at an earth disc until the image is steady");
+        return o;
+      },
+      VI: function () {
+        var o = ground(98);
+        o += P("M80 96 L80 34 Q90 28 100 34 L100 96 Z", "var(--f-ple)", "stroke:var(--nib)");
+        o += T("ellipse", { cx: 90, cy: 34, rx: 10, ry: 3.5, style: INK + ";fill:var(--sheet)" });
+        o += P("M80 50 Q62 54 56 76 M100 44 Q122 48 128 72 M80 70 Q66 78 64 94", "none", "stroke:var(--nib)");
+        o += P("M140 96 L152 60", "none", "stroke:var(--rupa);stroke-width:2.4") + P("M146 58 L160 54 L156 66 Z", "var(--muted)");
+        o += T("text", { x: 90, y: 14, "text-anchor": "middle", "class": "tx-xs tx-it" }, "sheath after sheath: no heartwood at all");
+        return o;
+      },
+      PA: function () {
+        var o = T("rect", { x: 0, y: 52, width: 180, height: 34, style: "fill:var(--nama-soft)" });
+        for (var i = 0; i < 4; i++) o += P("M" + (8 + i * 44) + " " + (62 + (i % 2) * 12) + " q8 -4 16 0 t16 0", "none", "stroke:var(--water)");
+        o += P("M150 52 L180 52 L180 100 L144 100 Z", "var(--f-ple)", "stroke:var(--nib)") + mangoTree(164, 54, 0).replace(/var\(--rupa-mark\)/g, "var(--f-ple)");
+        o += T("rect", { x: 60, y: 66, width: 40, height: 6, rx: 2, style: INK + ";fill:var(--rupa-soft)" }) + person(80, 66, 1.1, "var(--faint)") + P("M88 46 L100 80", "none", "stroke:var(--rupa)");
+        o += T("text", { x: 10, y: 108, "class": "tx-xs tx-mu" }, "this shore") + T("text", { x: 172, y: 108, "text-anchor": "end", "class": "tx-xs tx-nb" }, "the far shore");
+        return o;
+      }
+    };
+    return function (id) { return '<svg class="ipic" viewBox="0 0 180 112" aria-hidden="true">' + (D[id] ? D[id]() : "") + "</svg>"; };
+  })();
+  window.ATLAS.ideaPicture = PIC;
+  var PSRC = { T: "SN 5.10; Milindapañha II.1", CE: "Atthasālinī", CI: "Milindapañha II.2", RU: "Visuddhimagga XI", NB: "Sn 5.7 (Upasīva); Therīgāthā 116", BH: "Atthasālinī: bhavaṅga-sota", PR: "Atthasālinī", JV: "Atthasālinī", CO: "SN 12.67", DO: "Visuddhimagga XVII", RB: "Milindapañha II.2", PL: "Visuddhimagga VII, XIII", KA: "AN 1.314; SN 5.10", SA: "Visuddhimagga IV", VI: "SN 22.95", PA: "MN 22" };
+
   /* ---------------- the sixteen ideas, described (two pages of eight) ---------------- */
   (function () {
     function one(n) {
-      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')">' + ideaGlyph(n.id) + '<div><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div></div>";
+      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')"><figure class="ifig">' + PIC(n.id) + "<figcaption>" + PSRC[n.id] + "</figcaption></figure>" + '<div><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div></div>";
     }
     if ($("ideas-list")) $("ideas-list").innerHTML = IDEAS.slice(0, 8).map(one).join("");
     if ($("ideas-list-2")) $("ideas-list-2").innerHTML = IDEAS.slice(8).map(one).join("");
@@ -350,7 +511,7 @@
       LINKS.forEach(function (l, i) { if (l.from === n.id) outs.push(linkLine(l, i, l.to)); if (l.to === n.id) ins.push(linkLine(l, i, l.from)); });
       var th = TH.filter(function (t) { return n.p.some(function (p) { return t[4].indexOf(p) >= 0; }); }).slice(0, 5);
       h += '<div class="cm-head"><a class="lvb" href="#L' + n.lv + '" style="background:' + lvc(n.lv) + '"><b>' + ROM[n.lv] + "</b>" + LV[n.lv].name + "</a><h3>" + n.t + '</h3><span class="muted ui small">' + n.s + "</span></div>" +
-        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<div class="cm-longw">' + ideaGlyph(n.id) + '<p class="small cm-long">' + n.long + "</p></div>" : "") +
+        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<div class="cm-longw"><div>' + PIC(n.id) + ideaGlyph(n.id) + "</div>" + '<p class="small cm-long">' + n.long + "</p></div>" : "") +
         '<div class="cm-cols"><div><div class="lab">Leads to · ' + outs.length + "</div>" + (outs.length ? '<ul class="cm-list">' + outs.join("") + "</ul>" : '<p class="small muted">Nothing on the map flows out of it.</p>') + "</div>" +
         '<div><div class="lab">Depends on · ' + ins.length + "</div>" + (ins.length ? '<ul class="cm-list">' + ins.join("") + "</ul>" : '<p class="small muted">It is a starting point: nothing on the map leads into it.</p>') + "</div></div>" +
         '<div class="btnrow sm"><button type="button" class="pill" data-act="from">Trace a path from here</button><button type="button" class="pill" data-act="to">Trace a path to here</button><a class="pill" href="#map3d" data-act="3d">See it in 3D</a><button type="button" class="pill" data-act="clear">Clear</button>' +

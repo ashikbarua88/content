@@ -628,3 +628,14 @@ details.cweb[open] { padding-bottom: 10px; }
 .newterms { display: flex; flex-wrap: wrap; gap: 3px 10px; align-items: baseline; font-family: var(--ui); font-size: 10.5px; color: var(--muted); margin-top: -4px; }
 .newterms .lab { margin-right: 2px; }
 .newterms i { font-family: var(--body); color: var(--ink); }
+
+/* literal pictures for the sixteen ideas */
+svg.ipic { width: 100%; height: auto; display: block; }
+figure.ifig { margin: 0; display: grid; gap: 1px; }
+figure.ifig figcaption { font-family: var(--ui); font-size: 8.5px; color: var(--muted); text-align: center; }
+.cm-longw > div { display: grid; gap: 6px; }
+#ideas .idea, #ideas-2 .idea { grid-template-columns: 148px minmax(0, 1fr); gap: 10px; }
+#ideas-2 .idea p { font-size: 10.8px; line-height: 1.38; }
+#ideas .idea { grid-template-columns: 136px minmax(0, 1fr); }
+#ideas .ideas { gap: 7px; }
+#ideas .idea p { font-size: 10.4px; line-height: 1.33; }
