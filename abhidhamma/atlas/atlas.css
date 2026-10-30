@@ -603,10 +603,16 @@ table.combt td { padding: 2px 0; border-bottom: 1px dotted var(--line); }
 @media (max-width: 700px) { .prlist { grid-template-columns: 1fr; } }
 
 /* ---------- the sixteen ideas, described ---------- */
-.ideas { columns: 2; column-gap: 18px; }
-@media (max-width: 700px) { .ideas { columns: 1; } }
-.idea { break-inside: avoid; border-left: 3px solid var(--lvc); padding: 0 0 0 8px; margin-bottom: 5px; }
+.ideas { display: grid; gap: 10px; }
+#ideas .idea p { font-size: 10.6px; line-height: 1.35; }
+.idea { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 12px; align-items: start; border-left: 3px solid var(--lvc); padding: 0 0 0 10px; }
+@media (max-width: 520px) { .idea { grid-template-columns: 1fr; } }
+svg.ig { width: 175px; max-width: 100%; height: auto; overflow: visible; }
+.cm-longw { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 10px; align-items: start; }
+@media (max-width: 520px) { .cm-longw { grid-template-columns: 1fr; } }
 .idea h3 { font-size: 13.5px; }
 .idea h3 span { font-family: var(--body); font-style: italic; font-weight: 400; font-size: 11.5px; color: var(--muted); }
-.idea p { font-size: 10.1px; line-height: 1.33; }
+.idea p { font-size: 11.2px; line-height: 1.42; }
 .cm-long { color: var(--ink); border-left: 2px solid var(--line); padding-left: 8px; }
+#ideas .idea { grid-template-columns: 162px minmax(0, 1fr); }
+#ideas svg.ig { width: 162px; }

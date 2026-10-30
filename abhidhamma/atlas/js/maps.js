@@ -171,12 +171,128 @@
     }).join("");
   })();
 
-  /* ---------------- the sixteen ideas, described ---------------- */
+  /* ---------------- a small drawing for each idea (viewBox 140 × 84) ----------------
+     The form follows the idea: strips of moments for processes, structures for things,
+     stacks and bars for counts. Shared by the described-ideas pages and the map's panel. */
+  function ideaGlyph(id) {
+    var s = "", t = function (x, y, txt, cls, extra) { return T("text", Object.assign({ x: x, y: y, "class": "tx-xs " + (cls || "") }, extra || {}), txt); };
+    function cells(x, y, keys, w, h, gap) {
+      var F = { l: "fill:var(--faint);stroke:var(--line)", v: "fill:var(--line);stroke:var(--line)", a: "fill:var(--nama-soft);stroke:var(--nama-2)", s: "fill:var(--sheet);stroke:var(--nama);stroke-width:1.4",
+        j: "fill:var(--nama);stroke:var(--nama)", r: "fill:var(--nama-soft);stroke:var(--nama);stroke-dasharray:2 1.5", d: "fill:var(--muted);stroke:var(--muted)", p: "fill:var(--kamma);stroke:var(--kamma)",
+        g: "fill:var(--nama-2);stroke:var(--nib);stroke-width:1.3", m: "fill:var(--nib);stroke:var(--nib)", f: "fill:var(--nib-soft);stroke:var(--nib)", k: "fill:var(--nama-2);stroke:var(--nama-2)" };
+      var o = "";
+      keys.split("").forEach(function (k, i) { o += T("rect", { x: f1(x + i * (w + gap)), y: y, width: w, height: h, rx: 1.5, style: F[k] }); });
+      return o;
+    }
+    switch (id) {
+      case "T":
+        s += T("rect", { x: 30, y: 4, width: 80, height: 22, rx: 11, style: "fill:none;stroke:var(--muted);stroke-dasharray:3 2" });
+        s += t(70, 19, "“a person”", "tx-it", { "text-anchor": "middle" });
+        s += T("path", { d: "M70 28 L70 40", style: "stroke:var(--muted);stroke-width:1.2" }) + T("path", { d: "M66 36 L70 41 L74 36", style: "fill:none;stroke:var(--muted);stroke-width:1.2" });
+        [["citta", "--nama"], ["cetasika", "--nama-2"], ["rūpa", "--rupa-mark"], ["Nibbāna", "--nib"]].forEach(function (r, i) {
+          s += T("rect", { x: 4 + i * 34, y: 46, width: 30, height: 18, rx: 3, style: "fill:var(" + r[1] + ")" }) + t(19 + i * 34, 76, r[0], "tx-mu", { "text-anchor": "middle" });
+        });
+        s += t(136, 15, "sammuti", "tx-it tx-mu", { "text-anchor": "end" }) + t(136, 43, "paramattha", "tx-it tx-mu", { "text-anchor": "end" });
+        break;
+      case "CE":
+        s += T("circle", { cx: 70, cy: 42, r: 13, style: "fill:var(--nama)" }) + t(70, 45, "citta", "", { "text-anchor": "middle", style: "fill:var(--on-accent)" });
+        for (var i = 0; i < 7; i++) { var a = i / 7 * 6.283 - 1.57; s += T("circle", { cx: f1(70 + 24 * Math.cos(a)), cy: f1(42 + 24 * Math.sin(a)), r: 3.2, style: "fill:var(--nama-2)" }); }
+        for (i = 0; i < 12; i++) { a = i / 12 * 6.283; s += T("circle", { cx: f1(70 + 36 * Math.cos(a)), cy: f1(42 + 36 * Math.sin(a)), r: 2.4, style: "fill:none;stroke:var(--nama-2);stroke-width:1" }); }
+        s += t(138, 10, "7 always", "tx-mu", { "text-anchor": "end" }) + t(138, 82, "others as fit", "tx-mu", { "text-anchor": "end" });
+        break;
+      case "CI":
+        for (i = 0; i < 5; i++) {
+          var x = 6 + i * 27;
+          s += T("rect", { x: x, y: 30, width: 6, height: 22, style: "fill:var(--nama-soft)" }) + T("rect", { x: x + 6, y: 30, width: 9, height: 22, style: "fill:var(--nama)" }) + T("rect", { x: x + 15, y: 30, width: 6, height: 22, style: "fill:var(--nama-2)" });
+          if (i < 4) s += T("path", { d: "M" + (x + 22) + " 41 L" + (x + 26) + " 41", style: "stroke:var(--muted)" });
+        }
+        s += t(9, 24, "arise · stand · cease", "tx-mu") + t(70, 68, "santati: a series, no owner", "tx-it", { "text-anchor": "middle" });
+        break;
+      case "RU":
+        var EL = [["earth", 0], ["water", 1], ["fire", 2], ["air", 3]];
+        EL.forEach(function (e, i) { var a = i / 4 * 6.283 - 0.785; s += T("circle", { cx: f1(52 + 15 * Math.cos(a)), cy: f1(42 + 15 * Math.sin(a)), r: 7, style: "fill:var(--rupa-mark)" }); });
+        for (i = 0; i < 4; i++) { a = i / 4 * 6.283; s += T("circle", { cx: f1(52 + 31 * Math.cos(a)), cy: f1(42 + 31 * Math.sin(a)), r: 4, style: "fill:var(--rupa-soft);stroke:var(--rupa)" }); }
+        s += t(92, 36, "4 great", "tx-b") + t(92, 47, "elements", "") + t(92, 60, "+ colour, smell,", "tx-mu") + t(92, 70, "taste, nutriment", "tx-mu");
+        break;
+      case "NB":
+        ["form", "feel.", "perc.", "form.", "cons."].forEach(function (k, i) { s += T("rect", { x: 4 + i * 17, y: 30, width: 15, height: 24, rx: 2, style: "fill:var(--faint);stroke:var(--line)" }) + t(11.5 + i * 17, 64, k, "tx-mu", { "text-anchor": "middle", style: "font-size:6px" }); });
+        s += t(46, 22, "five aggregates", "tx-mu", { "text-anchor": "middle" });
+        s += T("circle", { cx: 116, cy: 42, r: 17, style: "fill:var(--nib-soft);stroke:var(--nib);stroke-width:1.6" }) + t(116, 45, "santi", "tx-it tx-nb", { "text-anchor": "middle" });
+        s += t(116, 74, "unconditioned", "tx-nb", { "text-anchor": "middle" });
+        break;
+      case "BH":
+        s += cells(4, 34, "lllllvvaasssjjjrrlllll", 5, 14, 1);
+        s += t(4, 26, "life-continuum", "tx-mu") + t(70, 64, "interrupted, then resumes", "tx-mu", { "text-anchor": "middle" });
+        s += t(70, 78, "same citta as rebirth-linking", "tx-it", { "text-anchor": "middle" });
+        break;
+      case "PR":
+        s += T("rect", { x: 4, y: 24, width: 132, height: 4, rx: 2, style: "fill:var(--rupa-mark)" }) + t(4, 18, "the object: 17 moments of matter", "tx-mu");
+        s += cells(4, 34, "lvvasaaajjjjjjjrr", 6.8, 14, 0.9);
+        s += t(70, 64, "adverting, seeing … javana", "tx-mu", { "text-anchor": "middle" }) + t(70, 77, "citta-niyāma: a fixed order", "tx-it", { "text-anchor": "middle" });
+        break;
+      case "JV":
+        s += cells(4, 34, "lvvasaaajjjjjjjrr", 6.8, 14, 0.9);
+        s += T("path", { d: "M80 50 C80 66, 112 66, 118 70", style: "fill:none;stroke:var(--kamma);stroke-width:1.4" }) + T("circle", { cx: 121, cy: 71, r: 4, style: "fill:var(--kamma)" });
+        s += t(96, 27, "7 javanas", "tx-b", { "text-anchor": "middle" }) + t(110, 82, "kamma", "tx-b", { style: "fill:var(--kamma)" }) + t(4, 74, "only here is kamma made", "tx-mu");
+        break;
+      case "CO":
+        var P = [[22, 22], [70, 12], [118, 26], [40, 66], [100, 66]], E = [[0, 1, "--nama"], [1, 2, "--nama"], [0, 3, "--rupa-mark"], [3, 4, "--nama-2"], [4, 2, "--kamma"], [1, 4, "--nib"], [3, 1, "--muted"], [2, 0, "--nama-2"]];
+        E.forEach(function (e) { var a = P[e[0]], b = P[e[1]]; s += T("path", { d: "M" + a[0] + " " + a[1] + " L" + b[0] + " " + b[1], style: "stroke:var(" + e[2] + ");stroke-width:1.3" }); });
+        P.forEach(function (p) { s += T("circle", { cx: p[0], cy: p[1], r: 5, style: "fill:var(--sheet);stroke:var(--ink);stroke-width:1.2" }); });
+        s += t(70, 82, "held by many conditions", "tx-mu", { "text-anchor": "middle" });
+        break;
+      case "DO":
+        for (i = 0; i < 12; i++) { a = i / 12 * 6.283 - 1.57; var hl = i === 0 || i === 7;
+          s += T("circle", { cx: f1(46 + 30 * Math.cos(a)), cy: f1(42 + 30 * Math.sin(a)), r: hl ? 5 : 3.4, style: "fill:" + (hl ? "var(--bad)" : "var(--nama-2)") }); }
+        s += T("path", { d: "M46 6 A36 36 0 1 1 12 32", style: "fill:none;stroke:var(--muted);stroke-dasharray:2 2" });
+        s += t(86, 30, "12 links,", "tx-b") + t(86, 41, "3 lives", "") + t(86, 56, "roots:", "tx-mu") + t(86, 66, "ignorance (1)", "tx-bd") + t(86, 76, "craving (8)", "tx-bd");
+        break;
+      case "RB":
+        s += cells(4, 34, "jjjjjrd", 8, 14, 1) + cells(67, 34, "plllll", 8, 14, 1);
+        s += T("path", { d: "M63 30 L63 52", style: "stroke:var(--ink);stroke-width:1.2" });
+        s += t(4, 26, "last process", "tx-mu") + t(67, 26, "next life", "tx-mu");
+        s += t(52, 64, "death", "", { "text-anchor": "middle" }) + t(71, 64, "rebirth-linking", "", { style: "fill:var(--kamma)" });
+        s += t(70, 79, "na ca so na ca añño", "tx-it", { "text-anchor": "middle" });
+        break;
+      case "PL":
+        [[4, "--bad", "4 woeful"], [7, "--nama-2", "7 happy sense-sphere"], [16, "--g2", "16 fine-material"], [4, "--nib", "4 immaterial"]].reverse().forEach(function (r, i, arr) {
+          var y = 6 + i * 19; s += T("rect", { x: 4, y: y, width: f1(r[0] * 4.2), height: 14, rx: 2, style: "fill:var(" + r[1] + ")" }) + t(f1(8 + r[0] * 4.2), y + 10, r[2], "");
+        });
+        break;
+      case "KA":
+        s += T("path", { d: "M8 50 L132 50", style: "stroke:var(--line);stroke-width:1.2" });
+        s += T("circle", { cx: 16, cy: 50, r: 5, style: "fill:var(--kamma)" }) + t(16, 66, "volition", "", { "text-anchor": "middle" });
+        [[62, "this life"], [96, "next"], [128, "later"]].forEach(function (r) { s += T("path", { d: "M18 46 Q" + f1((18 + r[0]) / 2) + " 14 " + r[0] + " 44", style: "fill:none;stroke:var(--kamma);stroke-dasharray:2 2" }) + T("rect", { x: r[0] - 4, y: 45, width: 8, height: 10, rx: 1.5, style: "fill:var(--nama-soft);stroke:var(--nama)" }) + t(r[0], 66, r[1], "tx-mu", { "text-anchor": "middle" }); });
+        s += t(70, 80, "it ripens as result (vipāka)", "tx-it", { "text-anchor": "middle" });
+        break;
+      case "SA":
+        [5, 4, 3, 2, 2].forEach(function (n, i) { s += T("rect", { x: 10 + i * 25, y: 68 - n * 11, width: 18, height: n * 11, rx: 2, style: "fill:var(--nama-2)" }) + t(19 + i * 25, 78, i + 1, "tx-mu", { "text-anchor": "middle" }); });
+        s += t(70, 9, "jhāna factors, floor by floor", "tx-mu", { "text-anchor": "middle" });
+        break;
+      case "VI":
+        s += cells(4, 18, "kkkkkkkk", 10, 12, 4);
+        for (i = 0; i < 8; i++) s += T("rect", { x: 4 + i * 14, y: 18, width: 10, height: 12, rx: 1.5, style: "fill:var(--sheet);opacity:" + f1(i % 2 ? 0.75 : 0.15) });
+        s += t(4, 12, "rise and fall", "tx-mu");
+        [["anicca", 12, 52], ["dukkha", 58, 52], ["anattā", 104, 52]].forEach(function (m) { s += T("rect", { x: m[1] - 6, y: m[2] - 10, width: 44, height: 15, rx: 7, style: "fill:none;stroke:var(--nib)" }) + t(m[1] + 16, m[2], m[0], "tx-it tx-nb", { "text-anchor": "middle" }); });
+        s += t(70, 76, "the three marks, seen directly", "tx-mu", { "text-anchor": "middle" });
+        break;
+      case "PA":
+        s += cells(4, 22, "kkkgmff", 15, 15, 2);
+        s += t(4, 15, "conformity", "tx-mu") + t(55, 50, "change-of-lineage", "tx-mu") + t(72, 15, "path", "tx-nb tx-b") + t(110, 15, "fruit", "tx-nb");
+        [3, 0, 2, 5].forEach(function (n, i) { for (var k = 0; k < n; k++) s += T("path", { d: "M" + (8 + i * 34 + k * 5) + " 60 l4 10 M" + (12 + i * 34 + k * 5) + " 60 l-4 10", style: "stroke:var(--bad);stroke-width:1.2" }); s += t(8 + i * 34, 82, ["stream", "once", "non-ret.", "arahant"][i], "tx-mu"); });
+        break;
+    }
+    return '<svg class="ig" viewBox="0 0 140 84" aria-hidden="true">' + s + "</svg>";
+  }
+  window.ATLAS.ideaGlyph = ideaGlyph;
+
+  /* ---------------- the sixteen ideas, described (two pages of eight) ---------------- */
   (function () {
-    var host = $("ideas-list"); if (!host) return;
-    host.innerHTML = IDEAS.map(function (n) {
-      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')"><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div>";
-    }).join("");
+    function one(n) {
+      return '<div class="idea" style="--lvc:var(--lv' + n.lv + ')">' + ideaGlyph(n.id) + '<div><h3><a class="ilink" href="#idea-' + n.id + '">' + n.t + '</a> <span>' + n.s + "</span></h3><p>" + (n.long || n.d) + " " + n.p.map(xr).join(" ") + "</p></div></div>";
+    }
+    if ($("ideas-list")) $("ideas-list").innerHTML = IDEAS.slice(0, 8).map(one).join("");
+    if ($("ideas-list-2")) $("ideas-list-2").innerHTML = IDEAS.slice(8).map(one).join("");
   })();
 
   /* ---------------- every link: matrix and list ---------------- */
@@ -234,7 +350,7 @@
       LINKS.forEach(function (l, i) { if (l.from === n.id) outs.push(linkLine(l, i, l.to)); if (l.to === n.id) ins.push(linkLine(l, i, l.from)); });
       var th = TH.filter(function (t) { return n.p.some(function (p) { return t[4].indexOf(p) >= 0; }); }).slice(0, 5);
       h += '<div class="cm-head"><a class="lvb" href="#L' + n.lv + '" style="background:' + lvc(n.lv) + '"><b>' + ROM[n.lv] + "</b>" + LV[n.lv].name + "</a><h3>" + n.t + '</h3><span class="muted ui small">' + n.s + "</span></div>" +
-        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<p class="small cm-long">' + n.long + "</p>" : "") +
+        '<p class="small">' + n.d + " " + n.p.map(xr).join(" ") + "</p>" + (n.long ? '<div class="cm-longw">' + ideaGlyph(n.id) + '<p class="small cm-long">' + n.long + "</p></div>" : "") +
         '<div class="cm-cols"><div><div class="lab">Leads to · ' + outs.length + "</div>" + (outs.length ? '<ul class="cm-list">' + outs.join("") + "</ul>" : '<p class="small muted">Nothing on the map flows out of it.</p>') + "</div>" +
         '<div><div class="lab">Depends on · ' + ins.length + "</div>" + (ins.length ? '<ul class="cm-list">' + ins.join("") + "</ul>" : '<p class="small muted">It is a starting point: nothing on the map leads into it.</p>') + "</div></div>" +
         '<div class="btnrow sm"><button type="button" class="pill" data-act="from">Trace a path from here</button><button type="button" class="pill" data-act="to">Trace a path to here</button><a class="pill" href="#map3d" data-act="3d">See it in 3D</a><button type="button" class="pill" data-act="clear">Clear</button>' +
