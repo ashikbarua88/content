@@ -639,3 +639,7 @@ figure.ifig figcaption { font-family: var(--ui); font-size: 8.5px; color: var(--
 #ideas .idea { grid-template-columns: 136px minmax(0, 1fr); }
 #ideas .ideas { gap: 7px; }
 #ideas .idea p { font-size: 10.4px; line-height: 1.33; }
+
+.canon { display: block; font-family: var(--ui); font-size: 9.2px; color: var(--muted); margin-top: 2px; }
+svg.ipic { cursor: pointer; }
+@media print { svg.ipic title { display: none; } }
