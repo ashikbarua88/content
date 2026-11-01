@@ -671,6 +671,27 @@ table.twom thead th.bd { color: var(--bad); } table.twom thead th.nm { color: va
 @media (max-width: 560px) { .nb-here { display: none; } }
 body { padding-bottom: 72px; }
 @media print { .navbar { display: none !important; } body { padding-bottom: 0; } }
+
+/* ---------- recaps, reading guide, pronunciation ---------- */
+ol.rpoints { margin: 0; padding-left: 26px; display: grid; gap: 9px; font-size: 14.5px; line-height: 1.45; }
+ol.rpoints li::marker { font-family: var(--display); font-size: 18px; color: var(--lvc); }
+.drawframe { height: 300px; border: 1.5px dashed var(--line); border-radius: 6px; margin-top: 6px; }
+details.rguide { font-family: var(--ui); font-size: 11.5px; color: var(--muted); margin-top: -4px; }
+details.rguide p { margin: 2px 0; }
+.pron { display: flex; flex-wrap: wrap; gap: 2px 14px; font-family: var(--ui); font-size: 9.6px; color: var(--muted); background: var(--faint); border-radius: 6px; padding: 5px 8px; }
+.pron b { color: var(--ink); font-family: var(--body); font-size: 11px; }
+.nb-panel { position: fixed; z-index: 21; left: 50%; transform: translateX(-50%); bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  width: min(440px, calc(100vw - 24px)); max-height: min(70vh, 640px); overflow: auto; background: var(--sheet); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: 0 12px 40px -10px rgba(20, 22, 40, .45); font-family: var(--ui); font-size: 12px; padding: 0 0 6px; }
+.nb-ph { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--sheet); border-bottom: 1px solid var(--line); }
+.nb-close { border: 0; background: none; color: var(--ink); font-size: 18px; cursor: pointer; line-height: 1; }
+.nb-panel ol { list-style: none; margin: 0; padding: 4px 6px; }
+.nb-panel li button { width: 100%; display: flex; justify-content: space-between; gap: 10px; text-align: left; border: 0; background: none; color: var(--ink); font: inherit; padding: 4px 8px 4px 18px; border-radius: 6px; cursor: pointer; }
+.nb-panel li.h button { padding-left: 8px; font-weight: 600; margin-top: 4px; }
+.nb-panel li button em { font-style: normal; color: var(--muted); font-variant-numeric: tabular-nums; }
+.nb-panel li button:hover, .nb-panel li button:focus-visible { background: var(--faint); outline: none; }
+.nb-panel li button.cur { background: var(--nama-soft); }
+@media print { .nb-panel { display: none !important; } }
 </style>
 <section class="sheet cover" id="cover">
   <div class="ph"><span><b>Abhidhamma Atlas</b> · a visual companion</span><span>After Bhikkhu Bodhi's <i>Comprehensive Manual</i></span></div>
@@ -1506,6 +1527,7 @@ body { padding-bottom: 72px; }
   <div class="ph"><span><b>Glossary</b> · 1 of 2</span><span>Abhidhamma Atlas</span></div>
   <h2>Glossary</h2>
   <p class="lede">One hundred and fifty terms, each with the plate where it is taught. Terms with several senses are listed once for each sense. On screen, a Pāli word with a dotted underline shows its definition when you point at it.</p>
+  <div class="pron" id="pron" aria-label="How to pronounce Pāli"></div>
   <div class="gloss" id="gloss"></div>
   <div class="pf"><span>Abhidhamma Atlas · glossary</span><span class="pg"></span></div>
 </section>
@@ -2673,6 +2695,11 @@ window.ATLAS = (function () {
     [3, "Where is the mango known as “a mango”?", "Not in the eye-door process, but in the mind-door processes that follow it, according to later teachers (Plate 7b).", "relate"],
     [4, "Which mixed categories of CMA chapter VII are also conditions?", "Roots, jhāna factors, path factors, faculties, predominants and nutriments (Plate 8b).", "relate"]
   ]);
+
+  /* ---------- level recaps; the reading guide for each sheet; a Pāli pronunciation key ---------- */
+  D.recaps = {"1": {"points": ["Two registers of truth: conventional (sammuti), which speaks of persons and is not a lie, and ultimate (paramattha), which speaks of dhammas.", "Four ultimate realities: citta (89, or 121), cetasika (52), rūpa (28) and Nibbāna (1).", "The five aggregates map onto them: form is matter; feeling and perception are one factor each; formations are the other fifty; consciousness is citta. Nibbāna is in no aggregate.", "Each dhamma the commentaries define has four marks: characteristic, function, manifestation, proximate cause.", "Seven books: the Dhammasaṅgaṇī analyses, the Paṭṭhāna relates; Anuruddha's Saṅgaha is the manual this atlas follows."], "redraw": "Plate 2: a person, the five aggregates with their similes, the four realities sized by count.", "plates": "2"}, "2": {"points": ["The 89 cittas by plane: 54 sense-sphere, 15 fine-material, 12 immaterial, 8 supramundane; by kind: 12 unwholesome, 18 rootless, 24 beautiful sense-sphere.", "The 52 factors: 7 universals, 6 occasionals, 14 unwholesome, 25 beautiful; the unwholesome and the beautiful never share a citta.", "A citta and its factors arise together, cease together, share one object and one base.", "Matter: 4 great elements and 24 derived kinds, from 4 origins (kamma, citta, temperature, nutriment), always in groups of eight or more.", "Each citta does one or more of 14 jobs, through a door, on a base (3b)."], "redraw": "Plate 3: the grid of the 89 by plane and kind, coloured by feeling.", "plates": "3"}, "3": {"points": ["A five-door process with a very great object takes 17 mind-moments; seeing is the fifth.", "New kamma is made only in the javanas, usually seven; seeing itself is a result.", "Weaker objects cut the process short: no registration, then no javana, then only a tremor of the life-continuum.", "Mind-door processes follow the eye-door process; the thing is recognised and named there (7b).", "The life-continuum fills the gaps between processes; it is the same kind of citta as rebirth-linking."], "redraw": "Plate 7: the 17-moment strip, with the job of each moment.", "plates": "7"}, "4": {"points": ["The Paṭṭhāna's 24 conditions fall into six families; most hold between things that arise together.", "Four conditions include all 24: object, decisive support, kamma and presence.", "Twelve links across three lives, with two roots, ignorance and craving, and three connections.", "Feeling to craving is where present results turn into present causes, and where practice can intervene.", "Chapter VII's many lists reduce to fourteen unwholesome factors; six mixed categories are themselves conditions (8b)."], "redraw": "Plate 9: the wheel of twelve links across three lives.", "plates": "9"}, "5": {"points": ["Kamma is volition (AN 6.63), sorted by function, order of ripening, time and plane.", "At death the last javanas take a kamma, a sign of kamma or a sign of destiny; rebirth-linking takes the same object.", "Twenty kinds of rebirth-linking; only a three-rooted rebirth allows jhāna and the path in that life (10b).", "Thirty-one planes: 4 woeful, 7 happy sense-sphere, 16 fine-material, 4 immaterial, each matched to a kind of mind.", "Nothing passes from one life to the next: the new being is neither the same nor another."], "redraw": "Sheet 10b: seven kinds of kamma, their rebirth-linking and their planes.", "plates": "10b"}, "6": {"points": ["Forty meditation subjects suit different temperaments; the ten kasiṇas and the breath can reach all five jhānas.", "Concentration grows through three stages (preliminary, access, absorption) and three signs (preliminary, learning, counterpart).", "Seven purifications and ten insight knowledges lead from defining mind and matter to the path.", "Stream-entry ends three fetters; non-return ends two more; arahantship the last five.", "Calm suppresses the defilements; insight, maturing into the path, uproots them."], "redraw": "Plate 13: the tree of purification, roots to crown.", "plates": "13"}, "7": {"points": ["One moment can be read through every lens of the atlas at once (Plate 14).", "The mango wanted and the mango given are identical until the javanas (14b).", "Theravāda counts 82 kinds of ultimate reality, the Sarvāstivāda 75 dharmas, Yogācāra 100; they differ on time and on the storehouse consciousness.", "Citta is the thread that runs through the most plates.", "Some teachings are canonical, others mainly commentarial (bhavaṅga, the 17-moment process); the atlas marks which is which."], "redraw": "Plate 14: the mango moment at the centre, ten lenses around it.", "plates": "14"}};
+  D.readingGuide = {"cover": {"first": "The colour key, and the contents as a map of the path.", "second": "Name every ring and colour of the 89 dots without looking.", "redraw": null}, "learn": {"first": "The level ladder and the three depths; skip the three routes.", "second": "The build graph: say why each arrow is there.", "redraw": "The seven levels with their questions, in one column."}, "study": {"first": "The six steps and the week with one plate.", "second": "The research notes, and the five habits as a checklist.", "redraw": null}, "plan": {"first": "Your own week numbers; tick as you go.", "second": "Add the CMA reading for each week beside your ticks.", "redraw": null}, "map": {"first": "Look only at rows I and II and the three loops; the rest comes later.", "second": "Every arrow, read aloud as a sentence; then use the path tracer.", "redraw": "The three loops: the life, mind and matter, the way out."}, "map3d": {"first": "Skip.", "second": "Choose each loop and watch which floors it crosses.", "redraw": null}, "links": {"first": "Skip the matrix; read the sentences under Analysis and Mind and matter.", "second": "The matrix: which rows are busiest, and why.", "redraw": null}, "life": {"first": "Read both lines as a story; ignore the plate numbers.", "second": "Follow each plate number to its plate.", "redraw": null}, "L1": {"first": "Arrive-with, leave-able-to, and the Learn questions.", "second": "The Reflect questions, in writing.", "redraw": null}, "p1": {"first": "The seven spines: what the first and last books do.", "second": "The shelf of commentaries and manuals, and the northern parallel.", "redraw": "Seven spines, with analysis at one end and conditions at the other."}, "p2": {"first": "Left to right: person, five aggregates, four realities; the chariot.", "second": "The one-moment column and the identity-card template.", "redraw": "Person → five aggregates → four realities, with the arrows between."}, "D1": {"first": "Skip until after Plate 7; then the five aggregates shelf only.", "second": "All four shelves: bases, elements, truths over the four columns.", "redraw": "Four columns of reality with the five aggregates laid across them."}, "S1": {"first": "Read the stories for pleasure.", "second": "The Read-with-the-atlas notes and their Reflect questions.", "redraw": null}, "L2": {"first": "The leave-able-to list and the common confusions.", "second": "The Reflect and Observe questions.", "redraw": null}, "p3": {"first": "The six rows with their counts, and the five feelings.", "second": "The names of single cittas, and why 89 become 121.", "redraw": "Six rows with counts: 12, 18, 24, 15, 12, 8."}, "p3b": {"first": "The process track and which cittas can fill each slot.", "second": "Doors, objects and bases, and the cittas that do several jobs.", "redraw": "The ten stations of a life in order, from rebirth-linking to death."}, "p4": {"first": "The three rings: 7 universals, 6 occasionals, then the two families.", "second": "The subgroups of each family and the per-citta totals.", "redraw": "Three rings: 7, 6, then 14 unwholesome facing 25 beautiful."}, "p4b": {"first": "Read one row and one column only: greed, and citta 1.", "second": "The margin totals, and the unfixed factors.", "redraw": "The 19 factors of citta 1, grouped 7 + 6 + 4 + 2."}, "p5": {"first": "The four origins and the eight inseparables.", "second": "The matrix row by row, and the 21 kalāpas.", "redraw": "Four origin columns and the eight inseparables in a ring."}, "p6": {"first": "The coins, the rams and the cook.", "second": "Every simile, with what it is pointing at.", "redraw": null}, "D2": {"first": "The stupa only.", "second": "The factor sphere and the kalāpa cube.", "redraw": null}, "S2": {"first": "Kisāgotamī and Khantivādi.", "second": "All the readings, and their forward references.", "redraw": null}, "L3": {"first": "Leave-able-to and the Learn questions.", "second": "The Reflect questions, in writing.", "redraw": null}, "p7": {"first": "The 17 moments beside the mango story.", "second": "The four object strengths and the citta number in each slot.", "redraw": "The 17 boxes: 3 life-continuum, 5 process, 7 javana, 2 registration."}, "p7b": {"first": "The mind-door process and wise attention.", "second": "The absorption and path processes, and the javana rules.", "redraw": "A mind-door process: vibration, arrest, adverting, seven javanas, registration."}, "D3": {"first": "The top track.", "second": "The lower model of matter's lifelines.", "redraw": null}, "S3": {"first": "Bāhiya and Makhādeva.", "second": "Every Reflect question against Plate 7.", "redraw": null}, "L4": {"first": "Leave-able-to and the two common confusions.", "second": "The Reflect questions.", "redraw": null}, "p8": {"first": "The four conditions that include all 24, and the worked example.", "second": "The six families and every condition's name.", "redraw": "Six family boxes with their arrows: mind and matter on each side."}, "p8b": {"first": "How the unwholesome categories reduce to a few factors.", "second": "The mixed categories as conditions, and the 37 requisites.", "redraw": "Greed at the centre, with the nine categories it appears in."}, "p9": {"first": "The twelve links and the two roots.", "second": "Periods, rounds, connections, groups and twenty modes.", "redraw": "The wheel: twelve links, three lives, three connections."}, "D4": {"first": "The helix.", "second": "The six families of conditions.", "redraw": null}, "S4": {"first": "The night of awakening and Assaji.", "second": "The readings against Plates 8 and 9.", "redraw": null}, "L5": {"first": "Leave-able-to and the confusions.", "second": "The Reflect questions.", "redraw": null}, "p10": {"first": "The four ways to sort kamma, and the hinge.", "second": "Which javana ripens when; the three signs and four causes of death.", "redraw": "The hinge: last javanas, death, rebirth-linking, life-continuum."}, "p11": {"first": "The four groups of planes and what kind of mind each matches.", "second": "The lifespans and the log scale.", "redraw": "Four bands: woeful, sense heavens, fine-material by jhāna, immaterial."}, "D5": {"first": "The mountain as a picture of the cosmos.", "second": "The empty rings for the immaterial planes.", "redraw": null}, "S5": {"first": "Maṭṭhakuṇḍalī and Aṅgulimāla.", "second": "Each story against Plate 10's four sorts.", "redraw": null}, "L6": {"first": "Leave-able-to and the confusions.", "second": "The Reflect and Observe questions.", "redraw": null}, "p12": {"first": "The forty subjects by group, and the three signs.", "second": "Temperaments and depths for each subject.", "redraw": "Seven groups of subjects with how many jhānas each reaches."}, "p13": {"first": "The tree: soil, roots, trunk, crown.", "second": "The insight knowledges and the fetters by path.", "redraw": "The tree with the seven purifications in their places."}, "D6": {"first": "Skip.", "second": "The 37 requisites as 14 states.", "redraw": null}, "S6": {"first": "The rose-apple tree and Koṇḍañña.", "second": "Every reading against Plates 12 and 13.", "redraw": null}, "L7": {"first": "Leave-able-to.", "second": "The Reflect questions.", "redraw": null}, "p14": {"first": "The ten lenses on the mango moment, as a review.", "second": "The worksheet, for a moment of your own.", "redraw": "The mango at the centre with its ten lenses round it."}, "p15": {"first": "The three counts: 82, 75, 100.", "second": "The three boxes on time, dissociated formations and the base of mind.", "redraw": null}, "D7": {"first": "Skip.", "second": "Choose your weakest thread and follow it.", "redraw": null}, "S7": {"first": "Sumedha and the last night.", "second": "The readings that join several levels.", "redraw": null}, "threads": {"first": "The glossary as needed.", "second": "Pick the thread you know least and read its plates in order.", "redraw": null}, "explorer": {"first": "One row a day, read across.", "second": "One column a day, read down.", "redraw": null}, "idcards": {"first": "One card a day.", "second": "Say each card from memory, then check.", "redraw": null}, "deck": {"first": "Only your current level's cards, daily.", "second": "All levels, with the new why, classify, relate and apply cards.", "redraw": null}};
+  D.pronunciation = [["a, i, u", "short: as in “but”, “bit”, “put”"], ["ā, ī, ū", "long: as in “father”, “machine”, “rule”"], ["e, o", "always long: “they”, “go”"], ["c", "as “ch” in “church”: citta = chit-ta"], ["ṭ, ḍ, ṇ", "tongue curled back (retroflex)"], ["ñ", "as “ny” in “canyon”: paññā = pan-nyaa"], ["ṃ", "nasal “ng”: saṃsāra = sang-saa-ra"], ["th, ph, kh", "aspirated: t-h as in “hothouse”, never “th” in “this”"], ["double letters", "held longer: citta, dukkha"]];
 
   return D;
 })();
@@ -4641,6 +4668,29 @@ window.ATLAS = (function () {
       '<div class="rail last"><div class="lab">The last life · Siddhattha Gotama</div><ol>' + LIFE_LAST.map(item).join("") + "</ol></div>";
   })();
 
+  /* ---------------- level recaps: one page at the end of each level ---------------- */
+  (function () {
+    var R = D.recaps || {}, NT = D.newTerms || {};
+    for (var n = 1; n <= 7; n++) {
+      var r = R[n], after = document.getElementById("S" + n); if (!r || !after) continue;
+      var L = LV[n], sec = document.createElement("section");
+      sec.className = "sheet recap"; sec.id = "R" + n; sec.setAttribute("data-level", n); sec.style.setProperty("--lvc", lvc(n));
+      var ids = ["L" + n].concat(L.plates.map(function (p) { return "p" + p; })), terms = [];
+      ids.forEach(function (id) { (NT[id] || []).forEach(function (t) { if (terms.indexOf(t) < 0) terms.push(t); }); });
+      var cards = D.deck.filter(function (c) { return c[0] === n && !c[3]; }).slice(0, 3);
+      sec.innerHTML = '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · Recap</span><span>Abhidhamma Atlas</span></div>" +
+        '<div class="nav"><a class="lvb" href="#L' + n + '" style="background:' + lvc(n) + ';border:0"><b>' + ROM[n] + "</b>" + L.name + "</a><span>Review this page in a day, a week and a month</span></div>" +
+        "<h2>" + L.name + ": what to keep</h2>" +
+        '<ol class="rpoints">' + r.points.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>" +
+        '<div class="cols"><div class="box redraw"><h3>Redraw from memory</h3><p class="small">' + r.redraw + ' Then compare with the plate <a class="xr" href="#p' + r.plates + '">→ ' + r.plates + '</a>.</p><div class="drawframe" aria-hidden="true"></div></div>' +
+        '<div style="display:grid;gap:10px;align-content:start"><div class="box"><h3>Check yourself</h3><ol class="tight small">' + cards.map(function (c) { return "<li>" + c[1] + '<details class="web qhint"><summary>answer</summary>' + c[2] + "</details></li>"; }).join("") + "</ol></div>" +
+        '<div class="box tint"><h3>Common confusions</h3><ul class="conf">' + L.conf.map(function (c) { return "<li><span>" + c + "</span></li>"; }).join("") + "</ul></div></div></div>" +
+        (terms.length ? '<div class="small"><span class="lab">Terms of this level</span> ' + terms.map(function (t) { return "<i>" + t.split(" · ")[0] + "</i>"; }).join(" · ") + "</div>" : "") +
+        '<div class="pf"><span>Level ' + ROM[n] + " · recap</span><span class=\"pg\"></span></div>";
+      after.insertAdjacentElement("afterend", sec);
+    }
+  })();
+
   /* ---------------- page numbers and contents ---------------- */
   var sheets = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
   var pageOf = {};
@@ -4656,7 +4706,7 @@ window.ATLAS = (function () {
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); compsAfter(p).forEach(function (c) { h += row("p" + c, c, COMP[c].t); }); });
-      h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, then in the stories</span><span>' + pageOf["D" + l] + "–" + pageOf["S" + l] + "</span></a>";
+      h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, in the stories, and a recap</span><span>' + pageOf["D" + l] + "–" + pageOf["R" + l] + "</span></a>";
       if (l === 7) { h += row("threads", "↯", "Threads, and reading with the Manual"); h += row("glossary", "↯", "Glossary of 150 terms"); }
       h += "</div>";
     }
@@ -4687,6 +4737,19 @@ window.ATLAS = (function () {
       d.innerHTML = '<span class="lab">New here</span>' + t.map(function (x) { var p = x.split(" · "); return "<span><i>" + p[0] + "</i>" + (p[1] ? " " + p[1] : "") + "</span>"; }).join("");
       after.insertAdjacentElement("afterend", d);
     });
+  })();
+  /* ---------------- reading guide for each sheet (screen only) ---------------- */
+  (function () {
+    var G = D.readingGuide || {};
+    each("section.sheet", function (sec) {
+      var g = G[sec.id]; if (!g) return;
+      var after = sec.querySelector(".newterms") || sec.querySelector(".nav") || sec.querySelector(".ph"); if (!after) return;
+      var d = document.createElement("details"); d.className = "rguide web";
+      d.innerHTML = "<summary>Reading guide</summary><p><b>First pass:</b> " + g.first + "</p><p><b>Second pass:</b> " + g.second + "</p>" + (g.redraw ? "<p><b>Redraw:</b> " + g.redraw + "</p>" : "");
+      after.insertAdjacentElement("afterend", d);
+    });
+    var pr = $("pron");
+    if (pr) pr.innerHTML = (D.pronunciation || []).map(function (x) { return "<span><b>" + x[0] + "</b> " + x[1] + "</span>"; }).join("");
   })();
 })();
 </script>
@@ -5847,7 +5910,7 @@ window.ATLAS = (function () {
     '<button type="button" class="nb-prev" aria-label="Previous sheet">‹</button>' +
     '<span class="nb-here" aria-live="polite"></span>' +
     '<button type="button" class="nb-next" aria-label="Next sheet">›</button>' +
-    '<a class="nb-toc" href="#cover" aria-label="Contents">Contents</a>';
+    '<button type="button" class="nb-toc" aria-expanded="false" aria-controls="nb-panel">Contents</button>';
   document.body.appendChild(bar);
   var here = bar.querySelector(".nb-here"), back = bar.querySelector(".nb-back"), stack = [], cur = 0;
 
@@ -5878,7 +5941,33 @@ window.ATLAS = (function () {
   });
   bar.querySelector(".nb-prev").addEventListener("click", function () { go(currentIndex() - 1); });
   bar.querySelector(".nb-next").addEventListener("click", function () { go(currentIndex() + 1); });
-  bar.querySelector(".nb-toc").addEventListener("click", function () { stack.push({ y: window.scrollY, i: currentIndex() }); });
+  /* floating table of contents */
+  var panel = document.createElement("div");
+  panel.className = "nb-panel web"; panel.id = "nb-panel"; panel.hidden = true;
+  panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "Contents");
+  panel.innerHTML = '<div class="nb-ph"><b>Contents</b><button type="button" class="nb-close" aria-label="Close contents">×</button></div><ol>' + sheets.map(function (sec, i) {
+    var head = /^L\d$/.test(sec.id) || sec.id === "cover" || sec.id === "explorer";
+    return '<li class="' + (head ? "h" : "") + '"><button type="button" data-i="' + i + '"><span>' + title(sec) + "</span><em>" + (i + 1) + "</em></button></li>";
+  }).join("") + "</ol>";
+  document.body.appendChild(panel);
+  var tocBtn = bar.querySelector(".nb-toc");
+  function openToc(open) {
+    panel.hidden = !open; tocBtn.setAttribute("aria-expanded", String(open));
+    if (open) {
+      var c = currentIndex();
+      Array.prototype.forEach.call(panel.querySelectorAll("li button"), function (b) { b.classList.toggle("cur", +b.getAttribute("data-i") === c); });
+      var cb = panel.querySelector("button.cur"); if (cb) { cb.scrollIntoView({ block: "center" }); cb.focus({ preventScroll: true }); }
+    } else tocBtn.focus({ preventScroll: true });
+  }
+  tocBtn.addEventListener("click", function () { openToc(panel.hidden); });
+  panel.addEventListener("click", function (e) {
+    if (e.target.closest(".nb-close")) { openToc(false); return; }
+    var b = e.target.closest("li button"); if (!b) return;
+    stack.push({ y: window.scrollY, i: currentIndex() });
+    openToc(false); go(+b.getAttribute("data-i")); setTimeout(update, 60);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) openToc(false); });
+  document.addEventListener("click", function (e) { if (!panel.hidden && !panel.contains(e.target) && !bar.contains(e.target)) openToc(false); });
   document.addEventListener("keydown", function (e) {
     if (e.target.closest && e.target.closest("input, select, textarea")) return;
     if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); back.click(); }

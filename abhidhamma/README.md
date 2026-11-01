@@ -6,7 +6,7 @@ Two visual companions to Bhikkhu Bodhi's *A Comprehensive Manual of Abhidhamma*,
 | --- | --- | --- |
 | **Abhidhamma Atlas**, source | `atlas/` | Edit these files. Open `atlas/index.html` in a browser to read it offline. |
 | Abhidhamma Atlas, one file | `abhidhamma-atlas.html` | Built from `atlas/`. Used for the Claude artifact. Do not edit by hand. |
-| Abhidhamma Atlas, PDF | `abhidhamma-atlas.pdf` | Built from `atlas/`. 58 A4 pages. |
+| Abhidhamma Atlas, PDF | `abhidhamma-atlas.pdf` | Built from `atlas/`. 65 A4 pages. |
 | Nāma–rūpa model | `nama-rupa-model.html` | A standalone interactive model of mind and matter. |
 | Landing page | `index.html` | The front page of the published site. |
 | Build tool | `tools/build.js` | Bundles the atlas and prints the PDF. |

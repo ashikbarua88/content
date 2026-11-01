@@ -384,6 +384,29 @@
       '<div class="rail last"><div class="lab">The last life · Siddhattha Gotama</div><ol>' + LIFE_LAST.map(item).join("") + "</ol></div>";
   })();
 
+  /* ---------------- level recaps: one page at the end of each level ---------------- */
+  (function () {
+    var R = D.recaps || {}, NT = D.newTerms || {};
+    for (var n = 1; n <= 7; n++) {
+      var r = R[n], after = document.getElementById("S" + n); if (!r || !after) continue;
+      var L = LV[n], sec = document.createElement("section");
+      sec.className = "sheet recap"; sec.id = "R" + n; sec.setAttribute("data-level", n); sec.style.setProperty("--lvc", lvc(n));
+      var ids = ["L" + n].concat(L.plates.map(function (p) { return "p" + p; })), terms = [];
+      ids.forEach(function (id) { (NT[id] || []).forEach(function (t) { if (terms.indexOf(t) < 0) terms.push(t); }); });
+      var cards = D.deck.filter(function (c) { return c[0] === n && !c[3]; }).slice(0, 3);
+      sec.innerHTML = '<div class="ph"><span><b>Level ' + ROM[n] + "</b> · Recap</span><span>Abhidhamma Atlas</span></div>" +
+        '<div class="nav"><a class="lvb" href="#L' + n + '" style="background:' + lvc(n) + ';border:0"><b>' + ROM[n] + "</b>" + L.name + "</a><span>Review this page in a day, a week and a month</span></div>" +
+        "<h2>" + L.name + ": what to keep</h2>" +
+        '<ol class="rpoints">' + r.points.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>" +
+        '<div class="cols"><div class="box redraw"><h3>Redraw from memory</h3><p class="small">' + r.redraw + ' Then compare with the plate <a class="xr" href="#p' + r.plates + '">→ ' + r.plates + '</a>.</p><div class="drawframe" aria-hidden="true"></div></div>' +
+        '<div style="display:grid;gap:10px;align-content:start"><div class="box"><h3>Check yourself</h3><ol class="tight small">' + cards.map(function (c) { return "<li>" + c[1] + '<details class="web qhint"><summary>answer</summary>' + c[2] + "</details></li>"; }).join("") + "</ol></div>" +
+        '<div class="box tint"><h3>Common confusions</h3><ul class="conf">' + L.conf.map(function (c) { return "<li><span>" + c + "</span></li>"; }).join("") + "</ul></div></div></div>" +
+        (terms.length ? '<div class="small"><span class="lab">Terms of this level</span> ' + terms.map(function (t) { return "<i>" + t.split(" · ")[0] + "</i>"; }).join(" · ") + "</div>" : "") +
+        '<div class="pf"><span>Level ' + ROM[n] + " · recap</span><span class=\"pg\"></span></div>";
+      after.insertAdjacentElement("afterend", sec);
+    }
+  })();
+
   /* ---------------- page numbers and contents ---------------- */
   var sheets = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
   var pageOf = {};
@@ -399,7 +422,7 @@
     for (var l = 1; l <= 7; l++) {
       h += '<div class="grp">' + row("L" + l, ROM[l], "Level " + ROM[l] + " · " + LV[l].name, "h");
       LV[l].plates.forEach(function (p) { h += row("p" + p, p, PL[p].t); compsAfter(p).forEach(function (c) { h += row("p" + c, c, COMP[c].t); }); });
-      h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, then in the stories</span><span>' + pageOf["D" + l] + "–" + pageOf["S" + l] + "</span></a>";
+      h += '<a class="row" href="#D' + l + '"><b>◈</b><span>In 3D, in the stories, and a recap</span><span>' + pageOf["D" + l] + "–" + pageOf["R" + l] + "</span></a>";
       if (l === 7) { h += row("threads", "↯", "Threads, and reading with the Manual"); h += row("glossary", "↯", "Glossary of 150 terms"); }
       h += "</div>";
     }
@@ -430,5 +453,18 @@
       d.innerHTML = '<span class="lab">New here</span>' + t.map(function (x) { var p = x.split(" · "); return "<span><i>" + p[0] + "</i>" + (p[1] ? " " + p[1] : "") + "</span>"; }).join("");
       after.insertAdjacentElement("afterend", d);
     });
+  })();
+  /* ---------------- reading guide for each sheet (screen only) ---------------- */
+  (function () {
+    var G = D.readingGuide || {};
+    each("section.sheet", function (sec) {
+      var g = G[sec.id]; if (!g) return;
+      var after = sec.querySelector(".newterms") || sec.querySelector(".nav") || sec.querySelector(".ph"); if (!after) return;
+      var d = document.createElement("details"); d.className = "rguide web";
+      d.innerHTML = "<summary>Reading guide</summary><p><b>First pass:</b> " + g.first + "</p><p><b>Second pass:</b> " + g.second + "</p>" + (g.redraw ? "<p><b>Redraw:</b> " + g.redraw + "</p>" : "");
+      after.insertAdjacentElement("afterend", d);
+    });
+    var pr = $("pron");
+    if (pr) pr.innerHTML = (D.pronunciation || []).map(function (x) { return "<span><b>" + x[0] + "</b> " + x[1] + "</span>"; }).join("");
   })();
 })();

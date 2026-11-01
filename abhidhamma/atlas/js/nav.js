@@ -16,7 +16,7 @@
     '<button type="button" class="nb-prev" aria-label="Previous sheet">‹</button>' +
     '<span class="nb-here" aria-live="polite"></span>' +
     '<button type="button" class="nb-next" aria-label="Next sheet">›</button>' +
-    '<a class="nb-toc" href="#cover" aria-label="Contents">Contents</a>';
+    '<button type="button" class="nb-toc" aria-expanded="false" aria-controls="nb-panel">Contents</button>';
   document.body.appendChild(bar);
   var here = bar.querySelector(".nb-here"), back = bar.querySelector(".nb-back"), stack = [], cur = 0;
 
@@ -47,7 +47,33 @@
   });
   bar.querySelector(".nb-prev").addEventListener("click", function () { go(currentIndex() - 1); });
   bar.querySelector(".nb-next").addEventListener("click", function () { go(currentIndex() + 1); });
-  bar.querySelector(".nb-toc").addEventListener("click", function () { stack.push({ y: window.scrollY, i: currentIndex() }); });
+  /* floating table of contents */
+  var panel = document.createElement("div");
+  panel.className = "nb-panel web"; panel.id = "nb-panel"; panel.hidden = true;
+  panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "Contents");
+  panel.innerHTML = '<div class="nb-ph"><b>Contents</b><button type="button" class="nb-close" aria-label="Close contents">×</button></div><ol>' + sheets.map(function (sec, i) {
+    var head = /^L\d$/.test(sec.id) || sec.id === "cover" || sec.id === "explorer";
+    return '<li class="' + (head ? "h" : "") + '"><button type="button" data-i="' + i + '"><span>' + title(sec) + "</span><em>" + (i + 1) + "</em></button></li>";
+  }).join("") + "</ol>";
+  document.body.appendChild(panel);
+  var tocBtn = bar.querySelector(".nb-toc");
+  function openToc(open) {
+    panel.hidden = !open; tocBtn.setAttribute("aria-expanded", String(open));
+    if (open) {
+      var c = currentIndex();
+      Array.prototype.forEach.call(panel.querySelectorAll("li button"), function (b) { b.classList.toggle("cur", +b.getAttribute("data-i") === c); });
+      var cb = panel.querySelector("button.cur"); if (cb) { cb.scrollIntoView({ block: "center" }); cb.focus({ preventScroll: true }); }
+    } else tocBtn.focus({ preventScroll: true });
+  }
+  tocBtn.addEventListener("click", function () { openToc(panel.hidden); });
+  panel.addEventListener("click", function (e) {
+    if (e.target.closest(".nb-close")) { openToc(false); return; }
+    var b = e.target.closest("li button"); if (!b) return;
+    stack.push({ y: window.scrollY, i: currentIndex() });
+    openToc(false); go(+b.getAttribute("data-i")); setTimeout(update, 60);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) openToc(false); });
+  document.addEventListener("click", function (e) { if (!panel.hidden && !panel.contains(e.target) && !bar.contains(e.target)) openToc(false); });
   document.addEventListener("keydown", function (e) {
     if (e.target.closest && e.target.closest("input, select, textarea")) return;
     if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); back.click(); }

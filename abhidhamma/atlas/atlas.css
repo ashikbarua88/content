@@ -663,3 +663,24 @@ table.twom thead th.bd { color: var(--bad); } table.twom thead th.nm { color: va
 @media (max-width: 560px) { .nb-here { display: none; } }
 body { padding-bottom: 72px; }
 @media print { .navbar { display: none !important; } body { padding-bottom: 0; } }
+
+/* ---------- recaps, reading guide, pronunciation ---------- */
+ol.rpoints { margin: 0; padding-left: 26px; display: grid; gap: 9px; font-size: 14.5px; line-height: 1.45; }
+ol.rpoints li::marker { font-family: var(--display); font-size: 18px; color: var(--lvc); }
+.drawframe { height: 300px; border: 1.5px dashed var(--line); border-radius: 6px; margin-top: 6px; }
+details.rguide { font-family: var(--ui); font-size: 11.5px; color: var(--muted); margin-top: -4px; }
+details.rguide p { margin: 2px 0; }
+.pron { display: flex; flex-wrap: wrap; gap: 2px 14px; font-family: var(--ui); font-size: 9.6px; color: var(--muted); background: var(--faint); border-radius: 6px; padding: 5px 8px; }
+.pron b { color: var(--ink); font-family: var(--body); font-size: 11px; }
+.nb-panel { position: fixed; z-index: 21; left: 50%; transform: translateX(-50%); bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  width: min(440px, calc(100vw - 24px)); max-height: min(70vh, 640px); overflow: auto; background: var(--sheet); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: 0 12px 40px -10px rgba(20, 22, 40, .45); font-family: var(--ui); font-size: 12px; padding: 0 0 6px; }
+.nb-ph { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--sheet); border-bottom: 1px solid var(--line); }
+.nb-close { border: 0; background: none; color: var(--ink); font-size: 18px; cursor: pointer; line-height: 1; }
+.nb-panel ol { list-style: none; margin: 0; padding: 4px 6px; }
+.nb-panel li button { width: 100%; display: flex; justify-content: space-between; gap: 10px; text-align: left; border: 0; background: none; color: var(--ink); font: inherit; padding: 4px 8px 4px 18px; border-radius: 6px; cursor: pointer; }
+.nb-panel li.h button { padding-left: 8px; font-weight: 600; margin-top: 4px; }
+.nb-panel li button em { font-style: normal; color: var(--muted); font-variant-numeric: tabular-nums; }
+.nb-panel li button:hover, .nb-panel li button:focus-visible { background: var(--faint); outline: none; }
+.nb-panel li button.cur { background: var(--nama-soft); }
+@media print { .nb-panel { display: none !important; } }
