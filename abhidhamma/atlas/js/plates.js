@@ -1623,4 +1623,71 @@
     svg.addEventListener("click", function (e) { var g = e.target.closest(".cat-s"); show(g ? +g.getAttribute("data-i") : null); });
     show(null);
   })();
+  /* ---------- plate 2b: the six doors as bases and elements ---------- */
+  (function () {
+    var svg = $("doors-grid"); if (!svg) return;
+    var R = window.ATLAS.doors, s = "", X = [0, 92, 268, 444], W = [86, 170, 170, 236], RH = 44;
+    [["door", ""], ["internal base · element", "the organ"], ["external base · element", "the object"], ["consciousness element", "what arises from their meeting"]].forEach(function (h, i) {
+      s += T("text", { x: X[i], y: 12, "class": "tx-xs tx-b tx-mu", style: "letter-spacing:.06em" }, h[0].toUpperCase()) + T("text", { x: X[i], y: 24, "class": "tx-xs tx-it tx-mu" }, h[1]);
+    });
+    R.forEach(function (r, k) {
+      var y = 32 + k * RH, mind = k === 5;
+      s += T("text", { x: 0, y: y + 18, "class": "tx-m tx-b" }, r[0]) + T("text", { x: 0, y: y + 31, "class": "tx-xs tx-it tx-mu" }, r[1]);
+      s += T("rect", { x: X[1], y: y, width: W[1], height: RH - 6, rx: 4, style: "fill:" + (mind ? "var(--nama)" : "var(--rupa)") });
+      s += T("text", { x: X[1] + 8, y: y + 16, "class": "tx-s tx-b", style: "fill:var(--on-accent)" }, r[2]) + T("text", { x: X[1] + 8, y: y + 29, "class": "tx-xs", style: "fill:var(--on-accent);opacity:.85" }, mind ? "mind base" : r[1] + " base");
+      s += T("rect", { x: X[2], y: y, width: W[2], height: RH - 6, rx: 4, style: "fill:" + (mind ? "var(--g2)" : "var(--rupa-soft)") });
+      var o = r[3].length > 30 ? r[3].split(": ") : [r[3]]; if (mind) o = ["mental objects", "factors, subtle matter, Nibbāna"];
+      s += T("text", { x: X[2] + 8, y: y + 16, "class": "tx-s tx-b", style: mind ? "fill:var(--on-accent)" : "" }, o[0]) + T("text", { x: X[2] + 8, y: y + 29, "class": "tx-xs", style: mind ? "fill:var(--on-accent);opacity:.85" : "fill:var(--muted)" }, o[1] || (r[4] + " base"));
+      s += T("path", { d: "M" + (X[3] - 18) + " " + (y + 19) + " l10 0", style: "stroke:var(--muted);stroke-width:1.4" }) + T("path", { d: "M" + (X[3] - 12) + " " + (y + 15) + " l4 4 l-4 4", style: "fill:none;stroke:var(--muted);stroke-width:1.4" });
+      s += T("rect", { x: X[3], y: y, width: W[3], height: RH - 6, rx: 4, style: "fill:var(--nama-soft);stroke:var(--nama-2)" });
+      s += T("text", { x: X[3] + 8, y: y + 16, "class": "tx-s tx-b" }, mind ? "mind element · mind-consc. element" : r[5]) + T("text", { x: X[3] + 8, y: y + 29, "class": "tx-xs tx-mu" }, mind ? "3 + 76 cittas" : r[6] + ": wholesome and unwholesome result");
+    });
+    var y = 32 + 6 * RH + 6;
+    s += T("text", { x: X[1], y: y + 8, "class": "tx-xs tx-mu" }, "12 bases = the two left columns · 18 elements = all three columns, with the mind base split into its seven consciousness elements");
+    svg.setAttribute("viewBox", "0 0 680 " + (y + 14));
+    svg.innerHTML = s;
+  })();
+
+  /* ---------- plate 13b: the truths in twelve aspects, the path as a wheel ---------- */
+  (function () {
+    var g = $("truths-grid"); if (!g) return;
+    var TR = window.ATLAS.truths, s = "", COLS = ["the truth", "what is to be done", "done"], X = [0, 150, 440, 566], C = ["var(--muted)", "var(--bad)", "var(--nib)", "var(--nama)"];
+    COLS.forEach(function (c, i) { s += T("text", { x: X[i + 1], y: 12, "class": "tx-xs tx-b tx-mu", style: "letter-spacing:.06em" }, c.toUpperCase()); });
+    TR.forEach(function (t, k) {
+      var y = 22 + k * 44;
+      s += T("rect", { x: 0, y: y, width: 140, height: 38, rx: 4, style: "fill:" + C[k] }) + T("text", { x: 8, y: y + 16, "class": "tx-m tx-b", style: "fill:var(--on-accent)" }, t[0]) + T("text", { x: 8, y: y + 30, "class": "tx-xs tx-it", style: "fill:var(--on-accent);opacity:.9" }, t[1]);
+      s += T("text", { x: X[1], y: y + 15, "class": "tx-xs" }, t[5].length > 50 ? t[5].slice(0, t[5].lastIndexOf(" ", 50)) : t[5]) + (t[5].length > 50 ? T("text", { x: X[1], y: y + 27, "class": "tx-xs" }, t[5].slice(t[5].lastIndexOf(" ", 50) + 1)) : "");
+      s += T("text", { x: X[1], y: y + 39, "class": "tx-xs tx-mu" }, "in the Abhidhamma: " + t[4]);
+      s += T("rect", { x: X[2], y: y + 4, width: 116, height: 26, rx: 13, style: "fill:none;stroke:" + C[k] }) + T("text", { x: X[2] + 58, y: y + 21, "text-anchor": "middle", "class": "tx-s" }, t[2]);
+      s += T("rect", { x: X[3], y: y + 4, width: 112, height: 26, rx: 13, style: "fill:" + C[k] + ";opacity:.85" }) + T("text", { x: X[3] + 56, y: y + 21, "text-anchor": "middle", "class": "tx-s tx-b", style: "fill:var(--on-accent)" }, t[3]);
+    });
+    g.setAttribute("viewBox", "0 0 680 " + (22 + 4 * 44 + 4));
+    g.innerHTML = s;
+    var w = $("path-wheel"); if (!w) return;
+    var P = window.ATLAS.pathFactors, cx = 196, cy = 130, R = 92, s2 = "", TC = { wis: "var(--nib)", vir: "var(--rupa-mark)", con: "var(--nama)" };
+    s2 += T("circle", { cx: cx, cy: cy, r: R, style: "fill:none;stroke:var(--line);stroke-width:2" }) + T("circle", { cx: cx, cy: cy, r: 16, style: "fill:var(--nib-soft);stroke:var(--nib)" });
+    P.forEach(function (p, i) {
+      var a = -Math.PI / 2 + i * Math.PI / 4, x = cx + R * Math.cos(a), y = cy + R * Math.sin(a);
+      s2 += T("path", { d: "M" + f1(cx + 16 * Math.cos(a)) + " " + f1(cy + 16 * Math.sin(a)) + " L" + f1(x) + " " + f1(y), style: "stroke:" + TC[p[4]] + ";stroke-width:4;stroke-linecap:round" });
+      s2 += T("circle", { cx: f1(x), cy: f1(y), r: 5, style: "fill:" + TC[p[4]] });
+      var lx = cx + (R + 12) * Math.cos(a), ly = cy + (R + 12) * Math.sin(a), anc = Math.cos(a) > 0.2 ? "start" : (Math.cos(a) < -0.2 ? "end" : "middle");
+      s2 += T("text", { x: f1(lx), y: f1(ly + (Math.sin(a) > 0.5 ? 10 : (Math.sin(a) < -0.5 ? -4 : 3))), "text-anchor": anc, "class": "tx-xs tx-b" }, p[0]);
+    });
+    s2 += T("text", { x: cx, y: cy + 4, "text-anchor": "middle", "class": "tx-xs tx-nb tx-b" }, "path");
+    var lx0 = 398;
+    s2 += T("text", { x: lx0, y: 16, "class": "tx-xs tx-b tx-mu", style: "letter-spacing:.06em" }, "EACH FACTOR IS A MENTAL FACTOR");
+    P.forEach(function (p, i) { var y = 34 + i * 17; s2 += T("circle", { cx: lx0 + 5, cy: y - 3, r: 4, style: "fill:" + TC[p[4]] }) + T("text", { x: lx0 + 14, y: y, "class": "tx-xs" }, '<tspan class="tx-b">' + p[0] + '</tspan><tspan class="tx-mu"> = ' + p[2] + "</tspan>"); });
+    var y0 = 34 + 8 * 17 + 8;
+    [["wisdom", "wis"], ["virtue", "vir"], ["concentration", "con"]].forEach(function (t, i) { s2 += T("rect", { x: lx0 + i * 90, y: y0, width: 10, height: 10, rx: 2, style: "fill:" + TC[t[1]] }) + T("text", { x: lx0 + 14 + i * 90, y: y0 + 9, "class": "tx-xs" }, t[0]); });
+    var yy = y0 + 30;
+    s2 += T("text", { x: lx0, y: yy, "class": "tx-xs tx-b tx-mu", style: "letter-spacing:.06em" }, "MUNDANE → SUPRAMUNDANE");
+    for (var k = 0; k < 8; k++) s2 += T("circle", { cx: lx0 + 8 + k * 16, cy: yy + 16 + (k % 3) * 9, r: 4, style: "fill:" + TC[P[k][4]] + ";opacity:.75" });
+    s2 += T("path", { d: "M" + (lx0 + 140) + " " + (yy + 24) + " l40 0", style: "stroke:var(--muted);stroke-width:1.4" }) + T("path", { d: "M" + (lx0 + 176) + " " + (yy + 20) + " l4 4 l-4 4", style: "fill:none;stroke:var(--muted);stroke-width:1.4" });
+    s2 += T("circle", { cx: lx0 + 210, cy: yy + 24, r: 18, style: "fill:var(--nib-soft);stroke:var(--nib);stroke-width:1.6" });
+    for (k = 0; k < 8; k++) { var a = k * Math.PI / 4; s2 += T("circle", { cx: f1(lx0 + 210 + 10 * Math.cos(a)), cy: f1(yy + 24 + 10 * Math.sin(a)), r: 2.6, style: "fill:" + TC[P[k][4]] }); }
+    s2 += T("path", { d: "M" + (lx0 + 230) + " " + (yy + 24) + " l26 0", style: "stroke:var(--nib);stroke-width:1.4" }) + T("circle", { cx: lx0 + 266, cy: yy + 24, r: 8, style: "fill:var(--nib)" });
+    s2 += T("text", { x: lx0, y: yy + 52, "class": "tx-xs tx-mu" }, "in different moments of practice") + T("text", { x: 678, y: yy + 52, "text-anchor": "end", "class": "tx-xs tx-nb" }, "in one path moment → Nibbāna");
+    w.setAttribute("viewBox", "0 0 680 " + (yy + 60));
+    w.innerHTML = s2;
+  })();
 })();
