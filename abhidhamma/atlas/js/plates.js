@@ -1531,4 +1531,43 @@
     });
     if (info) info.innerHTML = "Colours: turmeric, the object; grey, one citta giving way to the next; indigo, conascent support; purple, kamma (dashed where it ripens later).";
   })();
+  /* ---------- plate 14b: two moments, side by side ---------- */
+  (function () {
+    var svg = $("tm-strips"); if (!svg) return;
+    var D2 = window.ATLAS.twoMoments, s = "", K = "a b b p s r i d j j j j j j j t t".split(" ");
+    var F = { a: "var(--faint)", b: "var(--line)", p: "var(--nama-soft)", s: "var(--sheet)", r: "var(--nama-soft)", i: "var(--nama-soft)", d: "var(--nama-soft)", t: "var(--nama-soft)" };
+    [["wanting it", "var(--bad)", 22], ["giving it away", "var(--nama)", 70]].forEach(function (row) {
+      s += T("text", { x: 0, y: row[2] + 13, "class": "tx-s tx-b" }, row[0]);
+      K.forEach(function (k, i) {
+        var x = 104 + i * 33;
+        s += T("rect", { x: x, y: row[2], width: 30, height: 18, rx: 3, style: "fill:" + (k === "j" ? row[1] : F[k]) + ";stroke:" + (k === "s" ? "var(--nama)" : "var(--line)") });
+      });
+    });
+    s += T("rect", { x: 102, y: 16, width: 8 * 33, height: 78, rx: 5, style: "fill:none;stroke:var(--muted);stroke-dasharray:3 3" });
+    s += T("text", { x: 102 + 4 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "moments 1–8: identical");
+    s += T("text", { x: 104 + 11 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-b" }, "javanas 9–15: they part here");
+    s += T("text", { x: 104 + 15.5 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "registration");
+    svg.innerHTML = s;
+    $("tm-table").innerHTML = "<thead><tr><th></th><th class=\"bd\">Wanting the mango</th><th class=\"nm\">Giving it away</th></tr></thead><tbody>" +
+      D2.map(function (r) { return "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>"; }).join("") + "</tbody>";
+  })();
+
+  /* ---------- quick checks on the plates (screen only) ---------- */
+  (function () {
+    var C = window.ATLAS.checks || {};
+    Object.keys(C).forEach(function (id) {
+      var sec = document.getElementById(id); if (!sec) return;
+      var c = C[id], box = document.createElement("div"), pf = sec.querySelector(".pf");
+      box.className = "qcheck web";
+      box.innerHTML = '<span class="lab">Quick check</span> <b>' + c[0] + '</b><div class="btnrow sm">' + c[1].map(function (o, i) { return '<button type="button" class="pill" data-i="' + i + '">' + o + "</button>"; }).join("") + '</div><p class="small qfb" aria-live="polite"></p>';
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        var right = +b.getAttribute("data-i") === c[2];
+        Array.prototype.forEach.call(box.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        box.querySelector(".qfb").innerHTML = (right ? "<b>Yes.</b> " : "<b>Not quite.</b> The answer is “" + c[1][c[2]] + "”. ") + c[3];
+      });
+      if (pf) sec.insertBefore(box, pf); else sec.appendChild(box);
+    });
+  })();
 })();

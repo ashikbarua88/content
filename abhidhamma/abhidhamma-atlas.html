@@ -651,6 +651,26 @@ figure.ifig figcaption { font-family: var(--ui); font-size: 8.5px; color: var(--
 .canon { display: block; font-family: var(--ui); font-size: 9.2px; color: var(--muted); margin-top: 2px; }
 svg.ipic { cursor: pointer; }
 @media print { svg.ipic title { display: none; } }
+
+/* ---------- feedback, the second worked example, navigation ---------- */
+details.qans summary { color: var(--nib); }
+.qcheck { border: 1px dashed var(--nama-2); border-radius: 8px; padding: 8px 12px; display: grid; gap: 6px; font-size: 12.5px; }
+.qcheck .qfb:empty { display: none; }
+table.twom { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 11.6px; line-height: 1.38; }
+table.twom th, table.twom td { text-align: left; vertical-align: top; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line); }
+table.twom thead th { font-family: var(--ui); font-size: 10.5px; border-bottom: 1px solid var(--ink); }
+table.twom tbody th { font-family: var(--ui); font-size: 10px; font-weight: 600; color: var(--muted); width: 150px; }
+table.twom thead th.bd { color: var(--bad); } table.twom thead th.nm { color: var(--nama); }
+.navbar { position: fixed; z-index: 20; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 4px; max-width: calc(100vw - 24px); padding: 5px 6px; border-radius: 999px;
+  background: var(--sheet); border: 1px solid var(--line); box-shadow: 0 6px 24px -8px rgba(20, 22, 40, .35); font-family: var(--ui); font-size: 12px; }
+.navbar button, .navbar a { border: 1px solid var(--line); background: var(--faint); color: var(--ink); border-radius: 999px; padding: 4px 11px; font: inherit; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.navbar button:disabled { opacity: .4; cursor: default; }
+.navbar button:focus-visible, .navbar a:focus-visible { outline: 2px solid var(--nama); outline-offset: 2px; }
+.nb-here { padding: 0 8px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 360px; }
+@media (max-width: 560px) { .nb-here { display: none; } }
+body { padding-bottom: 72px; }
+@media print { .navbar { display: none !important; } body { padding-bottom: 0; } }
 </style>
 <section class="sheet cover" id="cover">
   <div class="ph"><span><b>Abhidhamma Atlas</b> · a visual companion</span><span>After Bhikkhu Bodhi's <i>Comprehensive Manual</i></span></div>
@@ -1414,6 +1434,23 @@ svg.ipic { cursor: pointer; }
 </section>
 
 
+<section class="sheet" id="p14b">
+  <div class="ph"><span><b>Plate 14b</b> · continued · A second worked example</span><span>Abhidhamma Atlas</span></div>
+  <h2>Two moments, side by side</h2>
+  <p class="lede">The same ripe mango, seen twice. In the first moment it is wanted; in the second it is given away. Up to determining, the two processes are identical, moment for moment. They part at the javanas, and everything downstream of that, roots, kamma, the turn of the wheel, parts with them. Contrast is how the categories become clear.</p>
+  <div class="fig"><div class="scroll"><svg id="tm-strips" viewBox="0 0 680 120" role="img" aria-label="Two seventeen-moment processes, identical until the javanas, which are unwholesome in the first and wholesome in the second"></svg></div></div>
+  <div class="scroll"><table class="twom" id="tm-table"></table></div>
+  <div class="cols">
+    <div class="box tint"><h3>What the contrast teaches</h3><ul class="tight small">
+      <li>Seeing is never the problem: the first eight moments are the same in both.</li>
+      <li>The same feeling, joy, can go with opposite qualities; the roots decide.</li>
+      <li>Kamma is made only where the processes differ, in the javanas.</li>
+    </ul></div>
+    <div class="box"><h3>Try it on your own day</h3><p class="small">Take one ordinary moment of liking and imagine its wholesome twin. Which rows of this table change, and which stay the same?</p></div>
+  </div>
+  <div class="pf"><span>Sources: Bodhi, <i>CMA</i> I–V; Atthasālinī on attention; MA 1:201 on covetousness</span><span class="pg"></span></div>
+</section>
+
 <section class="sheet" id="p15">
   <div class="ph"><span><b>Plate 15</b> · Comparison</span><span>Abhidhamma Atlas</span></div>
   <h2>Other maps of the same ground</h2>
@@ -1511,7 +1548,7 @@ svg.ipic { cursor: pointer; }
 <section class="sheet" id="deck">
   <div class="ph"><span><b>Study tools</b> · Review deck</span><span>Abhidhamma Atlas</span></div>
   <h2>A review deck in five boxes</h2>
-  <p class="lede">Seventy-seven questions. Six recall cards for each level are printed below; on screen, 35 more ask why, classify and relate. Answer before you look: the effort of recalling is what fixes the answer. A card you know moves up a box and comes back later; a card you miss goes back to box 1 and comes back tomorrow. Add a level's cards only when you reach it.</p>
+  <p class="lede">Eighty-one questions. Six recall cards for each level are printed below; on screen, 39 more ask why, classify and relate. Answer before you look: the effort of recalling is what fixes the answer. A card you know moves up a box and comes back later; a card you miss goes back to box 1 and comes back tomorrow. Add a level's cards only when you reach it.</p>
   <div class="deck web" id="deck-app">
     <div class="btnrow sm" id="deck-lv" role="group" aria-label="Cards up to level"></div>
     <div id="deck-card" aria-live="polite"></div>
@@ -2310,6 +2347,7 @@ window.ATLAS = (function () {
     "4b": { after: 4, lv: 2, t: "Which factors meet which cittas", k: "All 52 factors against all 89 cittas: chapter II's two methods.", from: [3, 4], to: [6, 7] },
     "7b": { after: 7, lv: 3, t: "Other processes", k: "The mind door, absorption, the path, cessation and death.", from: [7], to: [8, 12, 13] },
     "10b": { after: 10, lv: 5, t: "From kamma to its results", k: "Which kamma gives which rebirth, and which results in life.", from: [10], to: [11] },
+    "14b": { after: 14, lv: 7, t: "Two moments, side by side", k: "The same mango, wanted and given: where they part, and why.", from: [7, 14], to: [15] },
     "8b": { after: 8, lv: 4, t: "The lists reduced to their factors", k: "Chapter VII: defilement lists, and six categories that are conditions.", from: [4, 8], to: [9, 13] }
   };
 
@@ -2624,6 +2662,17 @@ window.ATLAS = (function () {
   D.sheet10b = {"rows": [["Unwholesome kamma", "11 of the 12 unwholesome cittas", "19", "unwholesome-resultant investigating", "the four woeful planes", "--bad"], ["Weak wholesome kamma", "great wholesome, two roots, done inferiorly", "27", "wholesome-resultant investigating", "humans born blind, deaf or dull, and some lower spirits", "--muted"], ["Middling wholesome kamma", "two roots done well, or three roots done inferiorly", "41–42, 45–46", "great resultants without knowledge", "human beings and the six deva worlds", "--nama-2"], ["Excellent wholesome kamma", "three roots (with knowledge), done well", "39–40, 43–44", "great resultants with knowledge", "human beings and the six deva worlds", "--nama"], ["Fine-material jhāna", "jhāna 1 to 5 (55–59)", "60–64", "fine-material resultants, the same jhāna", "the 16 fine-material planes, by jhāna and its grade", "--g2"], ["Immaterial jhāna", "the four immaterial attainments (70–73)", "74–77", "immaterial resultants", "the four immaterial planes, one each", "--g2"], ["The four paths", "supramundane (82–85)", "none", "fruition follows at once; no rebirth-linking", "fewer rebirths: at most seven, one, none beyond the Pure Abodes, none at all", "--nib"]], "jhana": [["jhāna 1", "3 planes of the first-jhāna realm"], ["jhānas 2 and 3", "3 planes of the second-jhāna realm"], ["jhāna 4", "3 planes of the third-jhāna realm"], ["jhāna 5", "Vehapphala; with dispassion for perception, the non-percipient beings; for non-returners, the five Pure Abodes"]], "results": [["three roots, done well", 16, "8 great resultants + 8 rootless wholesome resultants"], ["two roots done well, or three done inferiorly", 12, "4 great resultants without knowledge + 8 rootless"], ["two roots, done inferiorly", 8, "the 8 rootless wholesome resultants only"]], "persons": [["rootless rebirth (19 or 27)", "cannot attain jhāna or a path in this life"], ["two-rooted rebirth", "can do much good, but cannot attain jhāna or a path in this life"], ["three-rooted rebirth", "can attain jhāna, and the paths up to arahantship, in this life"]]};
   D.mangoWeb = {"nodes": [["EB", "eye-base", "matter", "eye-sensitivity, kamma-born"], ["CO", "the mango's colour", "matter", "visible form, temperature-born"], ["HB", "heart-base", "matter", "kamma-born"], ["PK", "past kamma", "mind", "a past wholesome volition (asynchronous)"], ["AD", "five-door adverting (28)", "mind", ""], ["EC", "eye-consciousness (20) and its 7 factors", "mind", ""], ["RI", "receiving, investigating, determining (25, 26, 29)", "mind", ""], ["J", "javana (3) and its factors", "mind", ""], ["J2", "the next javana", "mind", ""], ["GR", "greed and delusion (the roots)", "mind", ""], ["VO", "volition in the javana", "mind", ""], ["PS", "past liking for mangoes", "mind", "earlier greed, pleasant memories, habit"], ["MB", "mind-born matter", "matter", "the hand reaching, a smile"], ["FR", "future results", "mind", "unwholesome-resultant cittas 13–19, or rebirth-linking 19"]], "edges": [["EB", "EC", [8, 10, 16, 20, 21, 24], "base-prenascent: support, prenascence, faculty, dissociation, presence, non-disappearance"], ["CO", "EC", [2, 10, 21, 24], "object, object-prenascence, presence, non-disappearance"], ["CO", "J", [2, 10, 21, 24], "the same colour is the object of every citta of the process"], ["AD", "EC", [4, 5, 9, 22, 23], "each citta gives way to the next: proximity, contiguity, proximity-decisive support, absence, disappearance"], ["EC", "RI", [4, 5, 9, 22, 23], "the same, down the whole process"], ["RI", "J", [4, 5, 9, 22, 23], "determining gives way to the first javana (no repetition: different kind)"], ["J", "J2", [4, 5, 9, 12, 22, 23], "javana to javana adds repetition"], ["HB", "J", [8, 10, 20, 21, 24], "base-prenascent support for every process citta except eye-consciousness"], ["PK", "EC", [13], "asynchronous kamma: past wholesome volition produced this resultant seeing"], ["PK", "EB", [13], "kamma also produced the eye-sensitivity"], ["GR", "J", [1, 6, 7, 8, 19, 21, 24], "root, and the conascent set (conascence, mutuality, support, association, presence, non-disappearance)"], ["GR", "MB", [1, 6, 8, 20, 21, 24], "roots also condition the matter the javana produces (no mutuality, no association with matter)"], ["VO", "J", [13, 15], "conascent kamma and mental nutriment"], ["VO", "FR", [13], "asynchronous kamma: the volition can ripen later (javana 1 this life, 7 next, 2–6 later)"], ["PS", "J", [9], "natural decisive support: earlier liking, a habit, a pleasant memory"], ["J", "MB", [6, 8, 20, 21, 24], "the javana produces mind-born matter; also jhāna (17) and path (18) factors and nutriment act on it"], ["J", "EB", [11, 20, 21, 24], "postnascence: later cittas sustain the body that arose before them"], ["EC", "EC", [6, 7, 8, 14, 19, 21, 24], "inside eye-consciousness: the citta and its 7 factors are conascent and mutual; being results they are result condition (14) to each other"]]};
   D.newTerms = {"cover": ["kāmāvacara · sense-sphere", "kusala · wholesome", "vipāka · resultant", "kiriya · functional", "lokuttara · supramundane", "nibbāna"], "learn": ["sutamayā · cintāmayā · bhāvanāmayā paññā", "javana · impulsion", "saṃyojana · fetter", "visuddhi · purification", "samatha · calm", "vipassanā · insight"], "study": ["Abhidhammattha Saṅgaha", "nissaya · word-by-word text", "lakkhaṇa · characteristic", "dvāra · door"], "plan": [], "map": ["cetasika · mental factor", "bhavaṅga · life-continuum", "vīthi · cognitive process", "paṭisandhi · rebirth-linking", "paṭicca-samuppāda · dependent origination", "jhāna · absorption"], "map3d": [], "links": ["hadaya-vatthu · heart-base", "sabbacittasādhāraṇa · universals", "Brahmā", "vipassanā-ñāṇa · insight knowledge"], "life": ["Jātaka", "Bodhisatta", "deva", "arahant", "asaṅkheyya · incalculable (the Bodhisatta's career)"], "L1": ["khandha · aggregate", "paramattha · ultimate", "sammuti · convention"], "p1": ["Abhidhamma Piṭaka", "Dhammasaṅgaṇī", "Paṭṭhāna", "mātikā · matrix", "Atthasālinī · The Expositor", "Sarvāstivāda"], "p2": ["dhamma", "nāma · mind", "saṅkhāra · formations (aggregate)", "121 · the cittas counted in detail", "pasāda · sensitivity", "rasa · function (of a dhamma)"], "D1": ["āyatana · base (the twelve)", "dhātu · element (the eighteen)", "mano · mind (base and door)", "mano-dhātu · mind element", "sacca · noble truth", "lokiya · mundane"], "S1": [], "L2": ["sobhana · beautiful", "pakiṇṇaka · occasionals", "avinibbhoga · inseparables", "kalāpa"], "p3": ["ahetuka · rootless", "hetu · root", "asaṅkhārika · unprompted", "sasaṅkhārika · prompted", "somanassa · joy", "hasituppāda · smile-producing"], "p3b": ["kicca · function (of a citta)", "cuti · death consciousness", "dvāravimutta · door-freed", "vatthu · physical base", "santīraṇa · investigating", "tadārammaṇa · registration"], "p4": ["vitakka · applied thought", "pīti · zest", "alobha · adosa · amoha", "kāya · body (two senses)", "tatramajjhattatā · equanimity (factor)", "appamaññā · illimitables (factors)"], "p4b": ["sampayoga · association", "saṅgaha · combination", "niyata · aniyata · fixed and unfixed"], "p5": ["mahābhūta · great elements", "upādā-rūpa · derived matter", "nipphanna · concrete matter", "viññatti · intimation", "utu · temperature", "cittakkhaṇa · mind-moment"], "p6": [], "D2": [], "S2": ["anusaya · latent tendencies", "apāya · woeful planes", "anāgāmī · non-returner", "puthujjana · worldling"], "L3": ["visayappavatti · presentation of objects", "manodvāra-vīthi · mind-door process"], "p7": ["atīta-bhavaṅga · past life-continuum", "visayappavatti · presentation of objects", "vibhūta · avibhūta · clear and obscure"], "p7b": ["manodvāra-vīthi · mind-door process", "yoniso manasikāra · wise attention", "upacāra · access", "anuloma · conformity", "gotrabhū · change of lineage", "appanā · absorption"], "D3": [], "S3": [], "L4": ["sandhi · connection", "vaṭṭa · round"], "p8": ["paccaya · condition", "sahajāta · conascence", "purejāta · prenascence", "pacchājāta · postnascence", "upanissaya · decisive support", "nissaya · support (condition 8)"], "p8b": ["āsava · ogha · yoga", "upādāna · clinging", "nīvaraṇa · hindrances", "kilesa · defilement", "jhānaṅga · jhāna factors", "bodhipakkhiyā dhammā · 37 requisites"], "p9": ["saṅkhāra · formations (link 2)", "viññāṇa · consciousness (link 3)", "nāmarūpa · mentality-materiality (link 4)", "bhava · kamma-becoming", "bhava · rebirth-becoming", "ākāra · mode"], "D4": [], "S4": [], "L5": [], "p10": ["garuka · weighty kamma", "āsanna · death-proximate kamma", "āciṇṇa · habitual kamma", "kamma-nimitta · kamma sign", "gati-nimitta · destiny sign", "ānantariya · heinous deeds"], "p11": ["bhūmi · plane", "mahākappa · great aeon", "asaṅkheyya-kappa · incalculable aeon (Plate 11)", "suddhāvāsa · pure abodes", "asaññasatta · non-percipient beings"], "D5": [], "S5": [], "L6": ["carita · temperament", "nimitta · meditation sign", "sotāpanna · stream-enterer"], "p12": ["kammaṭṭhāna · meditation subject", "kasiṇa", "appamaññā · illimitables (meditation)"], "p13": ["tilakkhaṇa · the three marks", "vipassanā-ñāṇa · insight knowledge", "udayabbaya-ñāṇa · rise and fall", "saṅkhāra · all conditioned things", "ariya · noble one", "vimokkhamukha · doors to liberation"], "D6": [], "S6": [], "L7": [], "p14": [], "p15": ["Yogācāra", "ālaya-vijñāna · storehouse consciousness", "cittaviprayukta · dissociated formations"], "D7": [], "S7": [], "threads": [], "explorer": ["abyākata · indeterminate"], "idcards": [], "deck": []};
+
+  /* ---------- model answers for the Reflect questions; quick checks on the plates; the second worked example ---------- */
+  D.reflectAnswers = {"1": ["Conventions let us live, speak and keep vows; the Buddha himself says “I” and “you”. If they were false, ethics, teaching and even the persons who walk the path could not be stated. The point is that their referents are not ultimate, not that the words lie.", "A gloss only names. The four parts tell you how to recognise the dhamma: what it is by nature, what it does, how it shows up in experience, and what it depends on. A term becomes something you can observe and connect."], "2": ["Mental pain is never neutral toward its object: whenever displeasure arises, aversion arises in the same citta. Grief, fear and frustration are forms of aversion, so working with aversion is working with mental pain. Bodily pain, a result, is different: it can come without aversion.", "No. Every citta has feeling, even when it is neutral (upekkhā); neutral is still a feeling-tone. Because it is subtle, neutral feeling is easy to miss, which is why MN 44 links it with ignorance."], "3": ["Not in the seeing, which is a result, nor in adverting, which only turns. The room is in the javanas, shaped (the commentaries say) by how attention turns at determining and by past habit. What is cultivated now shapes the javanas to come.", "A weak object strikes late in its seventeen-moment life, so there are not enough moments left for a full process: it lapses at determining, or only stirs the life-continuum. The rule is about timing, not only intensity."], "4": ["A conditional order, not a temporal one. Contact is a condition for feeling even though they arise together (conascence): the list shows dependence, like the legs of a tripod, not a sequence in time.", "Because minds really do take concepts as objects: names, persons, the kasiṇa's counterpart sign, the breath as a whole. To explain those moments the Paṭṭhāna lets concepts serve as object condition, though they are not ultimate realities."], "5": ["Rebirth-linking takes as its object the kamma, sign of kamma or sign of destiny that appeared to the last javanas. The death process is a cognitive process of the kind on Plate 7, and its object carries over: one moment's structure links two lives.", "A single act may be weak, or overridden by other kamma. A habit is repeated: it shapes character, colours the javanas of every day, and is likely to supply the object at the time of death."], "6": ["Defining mind and matter matches Levels I and II (the realities and elements); discerning their conditions matches Level IV (the conditions and dependent origination), with Level III's process between them.", "Insight grows from a stable base. Virtue frees the mind from remorse; concentration gives it the steadiness to see clearly. They nourish insight without being insight, so they belong in the roots."], "7": ["The plates built on momentariness would change: the timing of the process (7), matter's seventeen-moment life (5), how kamma ripens (10), the three-life wheel (9). If past and future dhammas existed, kamma could act from the past directly, as the Sarvāstivāda held (15).", "A concept map gives an overview and paths between ideas at a human scale. It leaves out most of the conditions' precision, the timing, and the momentary dhammas themselves: it is a map of ideas, not of experience."]};
+  D.checks = {"p2": ["Which aggregate holds fifty mental factors?", ["feeling", "perception", "formations", "consciousness"], 2, "Feeling and perception are one factor each; formations are the other fifty."], "p3": ["How many kinds of citta are unwholesome?", ["8", "12", "18", "24"], 1, "Eight rooted in greed, two in hatred, two in delusion."], "p4": ["Which factor arises in every citta?", ["greed", "mindfulness", "contact", "wisdom"], 2, "Contact is one of the seven universals; mindfulness and wisdom are beautiful, greed unwholesome."], "p5": ["Which kind of matter is produced only by kamma?", ["colour", "eye-sensitivity", "sound", "nutritive essence"], 1, "The sense-sensitivities, sex, heart-base and life faculty come only from kamma."], "p7": ["In which moments is new kamma made?", ["seeing", "determining", "the javanas", "registration"], 2, "Seeing and registration are results; determining is functional; volition in the javanas is kamma."], "p7b": ["In a path process, what first takes Nibbāna as object?", ["conformity", "change-of-lineage", "the path", "fruition"], 1, "Change-of-lineage first turns to Nibbāna; only the path cuts the defilements."], "p8": ["Contact and feeling arise together. Which condition holds between them?", ["proximity", "conascence", "prenascence", "repetition"], 1, "Things arising together support each other by conascence; proximity links one moment to the next."], "p9": ["Where does the wheel turn from present results to present causes?", ["ignorance to formations", "feeling to craving", "becoming to birth"], 1, "Feeling is a result; craving is a new cause. This is the second of the three connections."], "p10": ["What is kamma, strictly?", ["the bodily act", "volition", "its result", "rebirth"], 1, "“It is intention that I call kamma” (AN 6.63)."], "p10b": ["Excellent three-rooted wholesome kamma can give how many kinds of result in life?", ["8", "12", "16"], 2, "Eight great resultants and eight rootless wholesome resultants."], "p11": ["Which planes have mind but no matter?", ["the immaterial planes", "the non-percipient beings", "the fine-material planes"], 0, "The non-percipient beings are the reverse: matter without mind."], "p12": ["Which subjects can lead to all five jhānas?", ["loving-kindness", "the ten kasiṇas and the breath", "foulness", "recollection of the Buddha"], 1, "The divine abodes reach four (equanimity the fifth); foulness reaches the first; recollections reach access only."], "p13": ["Which fetters end at stream-entry?", ["sensual desire and ill will", "identity view, doubt, rites and rituals", "conceit, restlessness, ignorance"], 1, "Sensual desire and ill will end at non-return; conceit, restlessness and ignorance at arahantship."], "p14b": ["The wanting and the giving share which of these?", ["the javana citta", "the roots", "the feeling of joy", "the kamma"], 2, "Both are joyful. The same feeling-tone can go with opposite qualities: the roots decide."]};
+  D.twoMoments = [["Door and object", "the eye door; the same ripe mango, very desirable", "the same"], ["Adverting to determining", "28, 20, 25, 26, 29: results and functions, no kamma yet", "identical, moment for moment"], ["Attention, at determining", "unwise: “pleasant, for me”", "wise: “this would delight someone” (the commentaries' account)"], ["The javanas", "citta 3: greed-rooted, joyful, no wrong view, unprompted", "citta 31: great wholesome, joyful, with knowledge, unprompted"], ["Factors", "18, or 19 with conceit: the 13 variables, delusion, shamelessness, no fear of wrong, restlessness, greed", "33: the 13 variables, the 19 beautiful universals and wisdom; compassion may join"], ["Roots", "greed and delusion", "non-greed, non-hatred, non-delusion"], ["Feeling", "joy", "joy: the same feeling, the opposite quality"], ["Mind-born matter", "a hand reaching to take", "a hand reaching to give"], ["Dependent origination", "feeling is followed by craving: the wheel turns", "no craving here; for a worldling the volition is still a meritorious formation"], ["Kamma", "unwholesome, and weak: wanting is not yet the course of action “covetousness”", "wholesome and three-rooted: done well, excellent kamma (Plate 10b)"], ["Practice", "notice the wanting, and know it as greed", "giving (dāna), the first of the ten wholesome deeds; it supports virtue and calm"]];
+  D.deck = D.deck.concat([
+    [2, "Why does the first greed-rooted citta have 19 factors?", "7 universals + 6 occasionals + 4 unwholesome universals + greed + wrong view (Plates 4, 4b).", "relate"],
+    [3, "Why does a mind-door process have no receiving or investigating?", "It meets its object at the mind door, so it begins with mind-door adverting and needs no sense consciousness (Plate 7b).", "why"],
+    [3, "Where is the mango known as “a mango”?", "Not in the eye-door process, but in the mind-door processes that follow it, according to later teachers (Plate 7b).", "relate"],
+    [4, "Which mixed categories of CMA chapter VII are also conditions?", "Roots, jhāna factors, path factors, faculties, predominants and nutriments (Plate 8b).", "relate"]
+  ]);
 
   return D;
 })();
@@ -4163,6 +4212,45 @@ window.ATLAS = (function () {
     });
     if (info) info.innerHTML = "Colours: turmeric, the object; grey, one citta giving way to the next; indigo, conascent support; purple, kamma (dashed where it ripens later).";
   })();
+  /* ---------- plate 14b: two moments, side by side ---------- */
+  (function () {
+    var svg = $("tm-strips"); if (!svg) return;
+    var D2 = window.ATLAS.twoMoments, s = "", K = "a b b p s r i d j j j j j j j t t".split(" ");
+    var F = { a: "var(--faint)", b: "var(--line)", p: "var(--nama-soft)", s: "var(--sheet)", r: "var(--nama-soft)", i: "var(--nama-soft)", d: "var(--nama-soft)", t: "var(--nama-soft)" };
+    [["wanting it", "var(--bad)", 22], ["giving it away", "var(--nama)", 70]].forEach(function (row) {
+      s += T("text", { x: 0, y: row[2] + 13, "class": "tx-s tx-b" }, row[0]);
+      K.forEach(function (k, i) {
+        var x = 104 + i * 33;
+        s += T("rect", { x: x, y: row[2], width: 30, height: 18, rx: 3, style: "fill:" + (k === "j" ? row[1] : F[k]) + ";stroke:" + (k === "s" ? "var(--nama)" : "var(--line)") });
+      });
+    });
+    s += T("rect", { x: 102, y: 16, width: 8 * 33, height: 78, rx: 5, style: "fill:none;stroke:var(--muted);stroke-dasharray:3 3" });
+    s += T("text", { x: 102 + 4 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "moments 1–8: identical");
+    s += T("text", { x: 104 + 11 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-b" }, "javanas 9–15: they part here");
+    s += T("text", { x: 104 + 15.5 * 33, y: 112, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "registration");
+    svg.innerHTML = s;
+    $("tm-table").innerHTML = "<thead><tr><th></th><th class=\"bd\">Wanting the mango</th><th class=\"nm\">Giving it away</th></tr></thead><tbody>" +
+      D2.map(function (r) { return "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>"; }).join("") + "</tbody>";
+  })();
+
+  /* ---------- quick checks on the plates (screen only) ---------- */
+  (function () {
+    var C = window.ATLAS.checks || {};
+    Object.keys(C).forEach(function (id) {
+      var sec = document.getElementById(id); if (!sec) return;
+      var c = C[id], box = document.createElement("div"), pf = sec.querySelector(".pf");
+      box.className = "qcheck web";
+      box.innerHTML = '<span class="lab">Quick check</span> <b>' + c[0] + '</b><div class="btnrow sm">' + c[1].map(function (o, i) { return '<button type="button" class="pill" data-i="' + i + '">' + o + "</button>"; }).join("") + '</div><p class="small qfb" aria-live="polite"></p>';
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        var right = +b.getAttribute("data-i") === c[2];
+        Array.prototype.forEach.call(box.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        box.querySelector(".qfb").innerHTML = (right ? "<b>Yes.</b> " : "<b>Not quite.</b> The answer is “" + c[1][c[2]] + "”. ") + c[3];
+      });
+      if (pf) sec.insertBefore(box, pf); else sec.appendChild(box);
+    });
+  })();
 })();
 </script>
 <script>
@@ -4201,10 +4289,11 @@ window.ATLAS = (function () {
       cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
     }
     if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, what to read in the Manual, and 150 terms.</p></div></a>';
-    var HN = (D.hints || {})[n] || [];
+    var HN = (D.hints || {})[n] || [], AN = (D.reflectAnswers || {})[n] || [];
     function col(title, pali, hint, list, hints) {
       return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q, i) {
-        return "<li>" + q + (hints && hints[i] ? '<details class="web qhint"><summary>hint</summary>' + hints[i] + "</details>" : "") + "</li>";
+        return "<li>" + q + (hints && hints[i] ? '<details class="web qhint"><summary>hint</summary>' + hints[i] + "</details>" : "") +
+          (hints && AN[i] ? '<details class="web qhint qans"><summary>one way to see it, after you have tried</summary>' + AN[i] + "</details>" : "") + "</li>";
       }).join("") + "</ol></div>";
     }
     var PQ = (D.prereq || {})[n];
@@ -5736,6 +5825,67 @@ window.ATLAS = (function () {
     });
     build(); render();
   })();
+})();
+</script>
+<script>
+/* js/nav.js */
+/* Abhidhamma Atlas: on-screen navigation.
+   A small bar that shows which sheet you are on, takes you Back to where you were before
+   following a link, and steps to the previous or next sheet in reading order. Screen only. */
+(function () {
+  "use strict";
+  var sheets = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
+  if (!sheets.length) return;
+  function title(sec) {
+    var b = sec.querySelector(".ph b"), h = sec.querySelector("h2");
+    return (b ? b.textContent : "") + (h ? " · " + h.textContent : "");
+  }
+  var bar = document.createElement("nav");
+  bar.className = "navbar web";
+  bar.setAttribute("aria-label", "Atlas navigation");
+  bar.innerHTML = '<button type="button" class="nb-back" disabled aria-label="Back to where you were">← Back</button>' +
+    '<button type="button" class="nb-prev" aria-label="Previous sheet">‹</button>' +
+    '<span class="nb-here" aria-live="polite"></span>' +
+    '<button type="button" class="nb-next" aria-label="Next sheet">›</button>' +
+    '<a class="nb-toc" href="#cover" aria-label="Contents">Contents</a>';
+  document.body.appendChild(bar);
+  var here = bar.querySelector(".nb-here"), back = bar.querySelector(".nb-back"), stack = [], cur = 0;
+
+  function currentIndex() {
+    var mid = window.innerHeight * 0.35, best = 0;
+    sheets.forEach(function (s, i) { if (s.getBoundingClientRect().top <= mid) best = i; });
+    return best;
+  }
+  function update() {
+    cur = currentIndex();
+    here.textContent = title(sheets[cur]) + "  ·  " + (cur + 1) + " / " + sheets.length;
+    back.disabled = !stack.length;
+    back.title = stack.length ? "Back to " + title(sheets[stack[stack.length - 1].i]) : "";
+  }
+  function go(i) { sheets[Math.max(0, Math.min(sheets.length - 1, i))].scrollIntoView({ block: "start" }); }
+
+  /* remember where you were before following any in-page link */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.closest(".navbar")) return;
+    stack.push({ y: window.scrollY, i: currentIndex() });
+    if (stack.length > 50) stack.shift();
+    setTimeout(update, 60);
+  }, true);
+  back.addEventListener("click", function () {
+    var p = stack.pop(); if (!p) return;
+    window.scrollTo(0, p.y); setTimeout(update, 60);
+  });
+  bar.querySelector(".nb-prev").addEventListener("click", function () { go(currentIndex() - 1); });
+  bar.querySelector(".nb-next").addEventListener("click", function () { go(currentIndex() + 1); });
+  bar.querySelector(".nb-toc").addEventListener("click", function () { stack.push({ y: window.scrollY, i: currentIndex() }); });
+  document.addEventListener("keydown", function (e) {
+    if (e.target.closest && e.target.closest("input, select, textarea")) return;
+    if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); back.click(); }
+  });
+  var t = null;
+  window.addEventListener("scroll", function () { if (!t) t = setTimeout(function () { t = null; update(); }, 120); }, { passive: true });
+  update();
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

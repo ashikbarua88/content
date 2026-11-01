@@ -643,3 +643,23 @@ figure.ifig figcaption { font-family: var(--ui); font-size: 8.5px; color: var(--
 .canon { display: block; font-family: var(--ui); font-size: 9.2px; color: var(--muted); margin-top: 2px; }
 svg.ipic { cursor: pointer; }
 @media print { svg.ipic title { display: none; } }
+
+/* ---------- feedback, the second worked example, navigation ---------- */
+details.qans summary { color: var(--nib); }
+.qcheck { border: 1px dashed var(--nama-2); border-radius: 8px; padding: 8px 12px; display: grid; gap: 6px; font-size: 12.5px; }
+.qcheck .qfb:empty { display: none; }
+table.twom { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 11.6px; line-height: 1.38; }
+table.twom th, table.twom td { text-align: left; vertical-align: top; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line); }
+table.twom thead th { font-family: var(--ui); font-size: 10.5px; border-bottom: 1px solid var(--ink); }
+table.twom tbody th { font-family: var(--ui); font-size: 10px; font-weight: 600; color: var(--muted); width: 150px; }
+table.twom thead th.bd { color: var(--bad); } table.twom thead th.nm { color: var(--nama); }
+.navbar { position: fixed; z-index: 20; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 4px; max-width: calc(100vw - 24px); padding: 5px 6px; border-radius: 999px;
+  background: var(--sheet); border: 1px solid var(--line); box-shadow: 0 6px 24px -8px rgba(20, 22, 40, .35); font-family: var(--ui); font-size: 12px; }
+.navbar button, .navbar a { border: 1px solid var(--line); background: var(--faint); color: var(--ink); border-radius: 999px; padding: 4px 11px; font: inherit; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.navbar button:disabled { opacity: .4; cursor: default; }
+.navbar button:focus-visible, .navbar a:focus-visible { outline: 2px solid var(--nama); outline-offset: 2px; }
+.nb-here { padding: 0 8px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 360px; }
+@media (max-width: 560px) { .nb-here { display: none; } }
+body { padding-bottom: 72px; }
+@media print { .navbar { display: none !important; } body { padding-bottom: 0; } }

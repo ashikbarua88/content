@@ -32,10 +32,11 @@
       cards += '<a class="pc" href="#S' + n + '"><b>✦</b><div><h3>In the stories</h3><p>Episodes from the Buddha\'s life, the Jātakas and the disciples, read with these plates.</p></div></a>';
     }
     if (n === 7) cards += '<a class="pc" href="#threads"><b>↯</b><div><h3>Threads and glossary</h3><p>Every key idea traced across the plates, what to read in the Manual, and 150 terms.</p></div></a>';
-    var HN = (D.hints || {})[n] || [];
+    var HN = (D.hints || {})[n] || [], AN = (D.reflectAnswers || {})[n] || [];
     function col(title, pali, hint, list, hints) {
       return '<div class="qcol"><h3>' + title + " <i>" + pali + '</i></h3><div class="hint">' + hint + "</div><ol>" + list.map(function (q, i) {
-        return "<li>" + q + (hints && hints[i] ? '<details class="web qhint"><summary>hint</summary>' + hints[i] + "</details>" : "") + "</li>";
+        return "<li>" + q + (hints && hints[i] ? '<details class="web qhint"><summary>hint</summary>' + hints[i] + "</details>" : "") +
+          (hints && AN[i] ? '<details class="web qhint qans"><summary>one way to see it, after you have tried</summary>' + AN[i] + "</details>" : "") + "</li>";
       }).join("") + "</ol></div>";
     }
     var PQ = (D.prereq || {})[n];
