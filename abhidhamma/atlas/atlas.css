@@ -684,3 +684,5 @@ details.rguide p { margin: 2px 0; }
 .nb-panel li button:hover, .nb-panel li button:focus-visible { background: var(--faint); outline: none; }
 .nb-panel li button.cur { background: var(--nama-soft); }
 @media print { .nb-panel { display: none !important; } }
+#cat-map .cat-s { cursor: pointer; }
+#cat-map .cat-s:hover rect { stroke: var(--ink); stroke-width: 1.5; }

@@ -1570,4 +1570,57 @@
       if (pf) sec.insertBefore(box, pf); else sec.appendChild(box);
     });
   })();
+  /* ---------- D1: the categories, mapped ----------
+     One bar of all 170 kinds of ultimate reality (89 cittas, 52 factors, 28 kinds of matter, Nibbāna),
+     cut four ways below it. Widths are to scale except Nibbāna and single factors, drawn at a minimum. */
+  (function () {
+    var svg = $("cat-map"); if (!svg) return;
+    var X0 = 120, U = 3.05, G = 4, NBW = 30, s = "";
+    var SP = { ci: [X0, 89 * U] }; SP.ce = [SP.ci[0] + SP.ci[1] + G, 52 * U]; SP.ru = [SP.ce[0] + SP.ce[1] + G, 28 * U]; SP.nb = [SP.ru[0] + SP.ru[1] + G, NBW];
+    var COL = { ci: "var(--nama)", ce: "var(--nama-2)", ru: "var(--rupa-mark)", nb: "var(--nib)", mo: "var(--g2)", org: "var(--rupa)", obj: "var(--rupa-soft)", suf: "var(--faint)", ori: "var(--bad)", ces: "var(--nib)", out: "none" };
+    var INK = { ci: "var(--on-accent)", ce: "var(--on-accent)", ru: "var(--ink)", nb: "var(--on-accent)", mo: "var(--on-accent)", org: "var(--on-accent)", obj: "var(--ink)", suf: "var(--ink)", ori: "var(--on-accent)", ces: "var(--on-accent)", out: "var(--muted)" };
+    var ROWS = [["The four realities", "paramattha"], ["Five aggregates", "khandha"], ["Twelve bases", "āyatana"], ["Eighteen elements", "dhātu"], ["Four noble truths", "sacca"]];
+    var Y = [24, 98, 168, 238, 308], H = 40;
+    /* a row is a list of [span, start unit, units, colour key, label, note]; units within the span */
+    function seg(span, u0, n, key, lab, note, minw) {
+      var sp = SP[span], scale = span === "nb" ? NBW : U;
+      return { x: sp[0] + (span === "nb" ? 0 : u0 * scale), w: span === "nb" ? NBW : Math.max(minw || 0, n * scale), key: key, lab: lab, note: note };
+    }
+    var R = [
+      [seg("ci", 0, 89, "ci", "citta · 89", "Citta: the 89 kinds of consciousness, 121 when the supramundane are counted by jhāna."), seg("ce", 0, 52, "ce", "cetasika · 52", "The 52 mental factors."), seg("ru", 0, 28, "ru", "rūpa · 28", "The 28 kinds of matter."), seg("nb", 0, 1, "nb", "", "Nibbāna, the one unconditioned reality.")],
+      [seg("ci", 0, 89, "ci", "consciousness", "The consciousness aggregate is all 89 cittas."), seg("ce", 0, 1, "ce", "f", "The feeling aggregate: a single factor, vedanā.", 12), seg("ce", 4, 1, "ce", "p", "The perception aggregate: a single factor, saññā.", 12), { x: SP.ce[0] + 28, w: SP.ce[1] - 28, key: "ce", lab: "formations · 50", note: "The formations aggregate: the other 50 factors, led by volition." }, seg("ru", 0, 28, "ru", "form", "The form aggregate: all 28 kinds of matter."), seg("nb", 0, 1, "out", "–", "Nibbāna belongs to no aggregate: the aggregates are conditioned.")],
+      [seg("ci", 0, 89, "ci", "mind base", "The mind base: all 89 cittas."), seg("ce", 0, 52, "mo", "mental-object base", "The mental-object base: the 52 factors, the 16 subtle kinds of matter and Nibbāna."), seg("ru", 0, 5, "org", "5", "Five bases are the sense organs: eye, ear, nose, tongue and body sensitivity."), seg("ru", 5, 7, "obj", "5", "Five bases are their objects: visible form, sound, smell, taste and the tangible, which counts earth, fire and air."), seg("ru", 12, 16, "mo", "16", "The 16 subtle kinds of matter belong to the mental-object base: they are known only at the mind door."), seg("nb", 0, 1, "mo", "", "Nibbāna too is in the mental-object base.")],
+      [seg("ci", 0, 10, "ci", "10", "Five sense-consciousness elements: eye, ear, nose, tongue and body consciousness, two each (wholesome and unwholesome result)."), seg("ci", 10, 3, "ci", "3", "The mind element: five-door adverting and the two receiving cittas.", 10), seg("ci", 13, 76, "ci", "mind-consciousness · 76", "The mind-consciousness element: the other 76 cittas."), seg("ce", 0, 52, "mo", "mental-object element", "The mental-object element: factors, subtle matter and Nibbāna, as in the bases."), seg("ru", 0, 5, "org", "5", "Five elements of sense organs."), seg("ru", 5, 7, "obj", "5", "Five elements of sense objects."), seg("ru", 12, 16, "mo", "16", "Subtle matter: mental-object element."), seg("nb", 0, 1, "mo", "", "Nibbāna: mental-object element.")],
+      [seg("ci", 0, 81, "suf", "suffering · 81 mundane", "The truth of suffering: the 81 mundane cittas, the factors other than greed, and all matter."), seg("ci", 81, 8, "out", "8", "The 8 supramundane cittas stand outside the four truths.", 14), seg("ce", 0, 51, "suf", "suffering · 51", "All factors but greed belong to suffering when they arise in mundane cittas."), seg("ce", 51, 1, "ori", "", "The truth of the origin: craving, which the Abhidhamma identifies with greed.", 10), seg("ru", 0, 28, "suf", "suffering", "All matter belongs to the truth of suffering."), seg("nb", 0, 1, "ces", "", "The truth of cessation: Nibbāna.")]
+    ];
+    /* guides down from each reality */
+    ["ci", "ce", "ru", "nb"].forEach(function (k) { [SP[k][0], SP[k][0] + SP[k][1]].forEach(function (x) { s += T("line", { x1: f1(x), x2: f1(x), y1: Y[0] + H, y2: Y[4] + H + 4, style: "stroke:var(--line);stroke-dasharray:2 3" }); }); });
+    var all = [];
+    R.forEach(function (row, r) {
+      s += T("text", { x: 0, y: Y[r] + 17, "class": "tx-s tx-b" }, ROWS[r][0]) + T("text", { x: 0, y: Y[r] + 30, "class": "tx-xs tx-it tx-mu" }, ROWS[r][1]);
+      row.forEach(function (g) {
+        var i = all.push(g) - 1;
+        s += '<g class="cat-s" data-i="' + i + '">' + T("rect", { x: f1(g.x + 0.5), y: Y[r], width: f1(g.w - 1), height: H, rx: 3, style: "fill:" + COL[g.key] + ";stroke:" + (g.key === "out" ? "var(--muted);stroke-dasharray:3 2" : (g.key === "suf" ? "var(--line)" : "var(--sheet)")) }) +
+          (g.lab && g.w > 9 * g.lab.length * 0.62 ? T("text", { x: f1(g.x + g.w / 2), y: Y[r] + 24, "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:" + INK[g.key] }, g.lab) : "") + T("title", {}, g.note) + "</g>";
+      });
+    });
+    /* labels for the slices too narrow to hold them */
+    s += T("text", { x: SP.ce[0] + 6, y: Y[1] - 4, "text-anchor": "middle", "class": "tx-xs" }, "feeling") + T("text", { x: SP.ce[0] + 20, y: Y[1] + H + 11, "text-anchor": "middle", "class": "tx-xs" }, "perception");
+    s += T("text", { x: SP.nb[0] + NBW / 2, y: Y[0] + 24, "text-anchor": "middle", "class": "tx-xs tx-b", style: "fill:var(--on-accent)" }, "N");
+    s += T("text", { x: f1(SP.nb[0] + NBW), y: Y[0] - 4, "text-anchor": "end", "class": "tx-xs tx-nb" }, "Nibbāna · 1");
+    s += T("text", { x: SP.ci[0] + 11.5 * U, y: Y[3] - 4, "text-anchor": "middle", "class": "tx-xs" }, "sense consc. 10 · mind element 3");
+    s += T("text", { x: SP.ce[0] + 51 * U, y: Y[4] - 4, "text-anchor": "middle", "class": "tx-xs tx-bd" }, "origin: greed");
+    s += T("text", { x: f1(SP.nb[0] + NBW), y: Y[4] - 4, "text-anchor": "end", "class": "tx-xs tx-nb" }, "cessation");
+    s += T("text", { x: SP.ci[0] + 85 * U, y: Y[4] + H + 11, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "outside");
+    s += T("text", { x: f1(SP.ru[0] + SP.ru[1] / 2), y: Y[2] + H + 11, "text-anchor": "middle", "class": "tx-xs tx-mu" }, "organs · objects · subtle");
+    var py = Y[4] + H + 22;
+    s += T("path", { d: "M" + f1(SP.ce[0]) + " " + py + " l0 -5 l" + f1(SP.ce[1]) + " 0 l0 5", style: "fill:none;stroke:var(--nib);stroke-width:1.4" });
+    s += T("text", { x: f1(SP.ce[0] + SP.ce[1] / 2), y: py + 12, "text-anchor": "middle", "class": "tx-xs tx-nb" }, "path: the eight path factors, when they arise in path consciousness");
+    svg.setAttribute("viewBox", "0 0 680 " + (py + 18));
+    svg.innerHTML = s;
+    var info = $("cat-info");
+    function show(i) { if (info) info.innerHTML = i == null ? "The same 170 kinds of reality appear in every row; only the cuts change. Mind is cut finely by the elements, matter by the bases, and the truths cut across both by what is mundane and what is not." : all[i].note; }
+    svg.addEventListener("click", function (e) { var g = e.target.closest(".cat-s"); show(g ? +g.getAttribute("data-i") : null); });
+    show(null);
+  })();
 })();
