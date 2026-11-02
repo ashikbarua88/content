@@ -22,7 +22,11 @@ The checks cover every number and list, every attribution (canonical or commenta
 | a-map-of-the-89 | "Equanimity occurs in the dullest mind and in the arahant's" | "Neutral feeling, equanimity, occurs …" | Makes clear this is the feeling, not the factor of neutrality of mind. |
 | what-each-citta-does | "beings reborn without wholesome roots" | "beings with a rootless rebirth" | Correct for both investigating cittas: the unwholesome-resultant one (woeful states) and the wholesome-resultant one (deficient human birth). |
 
-### Open: please decide
+### Open: decided 2 November 2026, all accepted
+
+The changes made: 1, softened to "hundreds of points". 2, "most of them". 3, Braun added to the sources. 4, kept. 5, the sources added. 6, replaced with "ferocity".
+
+The points as they were raised:
 
 1. **the-library: Ledi Sayadaw's "two hundred and forty-five points".** The figure is in the atlas and on Wikipedia, but I found no primary or scholarly confirmation. Erik Braun's *The Birth of Insight* (2013), chapter "The Great War of the Commentaries", is the place to check it. *Suggestion:* keep it, or soften it to "on hundreds of points" until it is checked.
 2. **the-library: the Vibhaṅga "analyses each three ways".** True of most of its eighteen chapters, but not all have all three sections. *Suggestion:* change it to "analyses most of them three ways".
