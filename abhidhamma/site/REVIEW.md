@@ -54,7 +54,11 @@ These were checked and need no change:
 | how-matter-is-made | figure label: "The 21 groups of matter, sorted by their four origins" | "The 28 kinds of matter, their four origins, and the 21 groups …" | The figure is now the whole Plate 5, not only its table of groups. |
 | the-mango-and-the-moment | "The *Atthasālinī* makes the point directly: … wise or unwise attention at the determining stage" | "The commentaries make the point …", adding that later teachers discuss where attention is placed, at adverting or at determining | The *Atthasālinī* links wise attention to adverting (*āvajjana*). Placing it at determining is a later teaching. The old sentence attributed more to the *Atthasālinī* than it says. |
 
-### Open: please decide
+### Open: decided 2 November 2026, all accepted
+
+The changes made: 1, the raft simile (MN 22) replaced the finger and the moon. 2, the "figure of speech" sentence added. 3, kept. 4, "In any single beautiful moment" added.
+
+The points as they were raised:
 
 1. **the-commentators-picture-book: "A simile is a finger, not a moon".** The image comes from the Mahāyāna (*Śūraṅgama Sūtra*) and Chan, not from the Pāli tradition. *Suggestion:* use the Buddha's own simile of the raft (MN 22): "A simile is a raft, for crossing over, not for carrying."
 2. **the-mango-and-the-moment: "many thousands of millions of cittas arise and pass in the time of a lightning flash".** This follows the commentaries' *anekakoṭisatasahassa*, "many hundred thousand crores", for the time of a blink or a lightning flash. The figure is an illustration, not a measurement. *Suggestion:* keep it, and add "the commentaries' figure of speech for 'more than can be counted'".
