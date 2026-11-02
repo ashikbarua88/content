@@ -53,6 +53,8 @@ If the three.js CDN is unreachable (some sandboxes block it), pass a local copy:
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). In short: words live in `atlas/js/data.js` and `atlas/index.html`; drawings live in `atlas/js/plates.js` and `atlas/js/models3d.js`. Every claim needs a source, every sheet must still fit on an A4 page, and every page must work in both light and dark themes and at phone width.
 
-## License
+## Licence
 
-Not chosen yet. The repository's root `LICENSE` belongs to the CS109 course material elsewhere in the repository and does not cover this folder. A common choice for study material like this is CC BY-SA 4.0 for the text and drawings and MIT for the code; add a `LICENSE` file here once the owner decides.
+Text, drawings and data: CC BY-SA 4.0. Code: MIT. See [LICENSE.md](LICENSE.md).
+
+The repository's root `LICENSE` belongs to the CS109 course material elsewhere in the repository; this folder is covered by its own `LICENSE.md`.
