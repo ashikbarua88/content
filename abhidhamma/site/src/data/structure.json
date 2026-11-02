@@ -1,0 +1,1072 @@
+{
+ "linkTypes": {
+  "ana": [
+   "--muted",
+   "Analysis"
+  ],
+  "mind": [
+   "--nama",
+   "Within mind"
+  ],
+  "mm": [
+   "--rupa-mark",
+   "Mind and matter"
+  ],
+  "kam": [
+   "--kamma",
+   "Kamma and rebirth"
+  ],
+  "path": [
+   "--nib",
+   "The path"
+  ]
+ },
+ "storyKinds": {
+  "life": [
+   "The Buddha's life",
+   "var(--ink)"
+  ],
+  "jataka": [
+   "Jātaka",
+   "var(--g3)"
+  ],
+  "disc": [
+   "Disciples",
+   "var(--muted)"
+  ]
+ },
+ "plates": {
+  "1": {
+   "t": "The library",
+   "s": "Library",
+   "lv": 1,
+   "k": "Seven books, and the commentaries and manuals that grew around them."
+  },
+  "2": {
+   "t": "From a person to dhammas",
+   "s": "Two truths",
+   "lv": 1,
+   "k": "How “a person” resolves into four kinds of ultimate reality."
+  },
+  "3": {
+   "t": "A map of the 89",
+   "s": "The 89",
+   "lv": 2,
+   "k": "Every kind of consciousness, coloured by the feeling it carries."
+  },
+  "4": {
+   "t": "The 52 factors as an ensemble",
+   "s": "The 52",
+   "lv": 2,
+   "k": "Seven factors in every moment, and two families that never mix."
+  },
+  "5": {
+   "t": "How matter is made",
+   "s": "Matter",
+   "lv": 2,
+   "k": "28 kinds of matter, four origins, 21 kalāpas."
+  },
+  "6": {
+   "t": "The commentators' picture-book",
+   "s": "Similes",
+   "lv": 2,
+   "k": "The similes that make the elements memorable."
+  },
+  "7": {
+   "t": "The mango and the moment",
+   "s": "Seeing",
+   "lv": 3,
+   "k": "A 17-moment process of seeing, told through the mango simile."
+  },
+  "8": {
+   "t": "The web of 24 conditions",
+   "s": "Conditions",
+   "lv": 4,
+   "k": "How each dhamma helps another, sorted by direction."
+  },
+  "9": {
+   "t": "The wheel across three lives",
+   "s": "The wheel",
+   "lv": 4,
+   "k": "Dependent origination and its whole vocabulary in one drawing."
+  },
+  "10": {
+   "t": "Kamma, death and rebirth",
+   "s": "Kamma",
+   "lv": 5,
+   "k": "Four ways to sort kamma, and the hinge between two lives."
+  },
+  "11": {
+   "t": "Thirty-one planes",
+   "s": "Planes",
+   "lv": 5,
+   "k": "The worlds of each level of mind, on a scale of deep time."
+  },
+  "12": {
+   "t": "Forty meditation subjects",
+   "s": "Calm",
+   "lv": 6,
+   "k": "Subjects matched to temperaments, and how deep each can go."
+  },
+  "13": {
+   "t": "The tree of purification",
+   "s": "Insight",
+   "lv": 6,
+   "k": "The path of insight as soil, roots, trunk and crown."
+  },
+  "14": {
+   "t": "One moment, every lens",
+   "s": "Every lens",
+   "lv": 7,
+   "k": "One moment of seeing and wanting, read through ten frameworks."
+  },
+  "15": {
+   "t": "Other maps of the same ground",
+   "s": "Other maps",
+   "lv": 7,
+   "k": "How two other schools counted the elements."
+  }
+ },
+ "cmaMap": [
+  [
+   "1",
+   "The library",
+   "Introduction (the Abhidhamma Piṭaka, commentaries, the Saṅgaha and its commentaries); I §1 (opening verse)"
+  ],
+  [
+   "2",
+   "From a person to dhammas",
+   "I §2 (the four ultimate realities); VII §§34–40 (compendium of the whole: aggregates, bases, elements, truths); Introduction on the two truths"
+  ],
+  [
+   "3",
+   "A map of the 89",
+   "I §§3–32 (all 89/121 cittas); III §§2–4 (compendium of feeling)"
+  ],
+  [
+   "3b",
+   "What each citta does",
+   "III §§5–7 (roots), §§8–11 (functions), §§12–15 (doors), §§16–19 (objects), §§20–22 (bases)"
+  ],
+  [
+   "4",
+   "The 52 factors",
+   "II §§1–9 (the 52 in four groups), with the guide's definitions"
+  ],
+  [
+   "5",
+   "How matter is made",
+   "VI §§2–5 (enumeration), §§6–8 (classification), §§9–15 (origination), §§16–22 (kalāpas), §§23–29 (occurrence)"
+  ],
+  [
+   "6",
+   "The commentators' picture-book",
+   "II guide (each factor's characteristic, function, manifestation, proximate cause); Vism XIV; Atthasālinī"
+  ],
+  [
+   "7",
+   "The mango and the moment",
+   "IV §§1–11 (six kinds of process, the five-door process and intensity of objects); IV guide on the mango simile"
+  ],
+  [
+   "8",
+   "The web of 24 conditions",
+   "VIII §§11–28 (the Paṭṭhāna method; the six kinds of relation; synthesis: all conditions fold into four)"
+  ],
+  [
+   "9",
+   "The wheel across three lives",
+   "VIII §§2–10 (dependent origination: formula, periods, factors, modes, connections, groups, rounds, roots)"
+  ],
+  [
+   "10",
+   "Kamma, death and rebirth",
+   "V §§18–33 (kamma: four ways, unwholesome and wholesome kamma, results), §§34–41 (death and rebirth); IV §21 (death-proximate javana)"
+  ],
+  [
+   "11",
+   "Thirty-one planes",
+   "V §§2–8 (the four planes), §§9–17 (four kinds of rebirth-linking, lifespans)"
+  ],
+  [
+   "12",
+   "Forty meditation subjects",
+   "IX §§2–21 (calm: subjects, temperaments, stages of development, signs, jhānas, direct knowledges)"
+  ],
+  [
+   "13",
+   "The tree of purification",
+   "IX §§22–44 (insight: purifications, knowledges, emancipations, individuals, attainments)"
+  ],
+  [
+   "14",
+   "One moment, every lens",
+   "Review: I, II, III §§8–22, IV §6, VI §§9–22, VIII; with the mango.json map"
+  ],
+  [
+   "15",
+   "Other maps of the same ground",
+   "Introduction (other schools); not covered by the CMA: Abhidharmakośa, Vasubandhu's Hundred Dharmas"
+  ]
+ ],
+ "factorCounts": {
+  "phassa": {
+   "n89": 89,
+   "n121": 121
+  },
+  "vedanā": {
+   "n89": 89,
+   "n121": 121
+  },
+  "saññā": {
+   "n89": 89,
+   "n121": 121
+  },
+  "cetanā": {
+   "n89": 89,
+   "n121": 121
+  },
+  "ekaggatā": {
+   "n89": 89,
+   "n121": 121
+  },
+  "jīvitindriya": {
+   "n89": 89,
+   "n121": 121
+  },
+  "manasikāra": {
+   "n89": 89,
+   "n121": 121
+  },
+  "vitakka": {
+   "n89": 55,
+   "n121": 55
+  },
+  "vicāra": {
+   "n89": 58,
+   "n121": 66
+  },
+  "adhimokkha": {
+   "n89": 78,
+   "n121": 110
+  },
+  "viriya": {
+   "n89": 73,
+   "n121": 105
+  },
+  "pīti": {
+   "n89": 35,
+   "n121": 51
+  },
+  "chanda": {
+   "n89": 69,
+   "n121": 101
+  },
+  "moha": {
+   "n89": 12,
+   "n121": 12
+  },
+  "ahirika": {
+   "n89": 12,
+   "n121": 12
+  },
+  "anottappa": {
+   "n89": 12,
+   "n121": 12
+  },
+  "uddhacca": {
+   "n89": 12,
+   "n121": 12
+  },
+  "lobha": {
+   "n89": 8,
+   "n121": 8
+  },
+  "diṭṭhi": {
+   "n89": 4,
+   "n121": 4
+  },
+  "māna": {
+   "n89": 4,
+   "n121": 4
+  },
+  "dosa": {
+   "n89": 2,
+   "n121": 2
+  },
+  "issā": {
+   "n89": 2,
+   "n121": 2
+  },
+  "macchariya": {
+   "n89": 2,
+   "n121": 2
+  },
+  "kukkucca": {
+   "n89": 2,
+   "n121": 2
+  },
+  "thīna": {
+   "n89": 5,
+   "n121": 5
+  },
+  "middha": {
+   "n89": 5,
+   "n121": 5
+  },
+  "vicikicchā": {
+   "n89": 1,
+   "n121": 1
+  },
+  "saddhā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "sati": {
+   "n89": 59,
+   "n121": 91
+  },
+  "hiri": {
+   "n89": 59,
+   "n121": 91
+  },
+  "ottappa": {
+   "n89": 59,
+   "n121": 91
+  },
+  "alobha": {
+   "n89": 59,
+   "n121": 91
+  },
+  "adosa": {
+   "n89": 59,
+   "n121": 91
+  },
+  "tatramajjhattatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāya-passaddhi": {
+   "n89": 59,
+   "n121": 91
+  },
+  "citta-passaddhi": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāya-lahutā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "citta-lahutā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāya-mudutā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "citta-mudutā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāya-kammaññatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "citta-kammaññatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāya-pāguññatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "citta-pāguññatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "kāyujjukatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "cittujjukatā": {
+   "n89": 59,
+   "n121": 91
+  },
+  "sammā-vācā": {
+   "n89": 16,
+   "n121": 48
+  },
+  "sammā-kammanta": {
+   "n89": 16,
+   "n121": 48
+  },
+  "sammā-ājīva": {
+   "n89": 16,
+   "n121": 48
+  },
+  "karuṇā": {
+   "n89": 28,
+   "n121": 28
+  },
+  "muditā": {
+   "n89": 28,
+   "n121": 28
+  },
+  "paññindriya": {
+   "n89": 47,
+   "n121": 79
+  }
+ },
+ "unfixed": [
+  [
+   [
+    "issā",
+    "macchariya",
+    "kukkucca"
+   ],
+   "separately and occasionally, in the hate-rooted cittas: envy, avarice and worry have different objects, so at most one is present"
+  ],
+  [
+   [
+    "sammā-vācā",
+    "sammā-kammanta",
+    "sammā-ājīva"
+   ],
+   "in the great wholesome cittas: separately and occasionally (only when abstaining from a particular wrong); in the 8 supramundane cittas: always, all three together (fixed)"
+  ],
+  [
+   [
+    "karuṇā",
+    "muditā"
+   ],
+   "separately and occasionally: compassion takes beings who suffer as object, appreciative joy beings who prosper. The Saṅgaha records a dissent (keci): some teachers exclude them from the equanimous great wholesome and functional cittas; the 28 follows the Saṅgaha's own view."
+  ],
+  [
+   [
+    "māna"
+   ],
+   "occasionally, in the 4 greed-rooted cittas without wrong view"
+  ],
+  [
+   [
+    "thīna",
+    "middha"
+   ],
+   "together, occasionally, in the 5 prompted unwholesome cittas"
+  ]
+ ],
+ "chapter7": [
+  [
+   "taints (āsava)",
+   4,
+   [
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual desire",
+     "kāmāsava",
+     "lobha"
+    ],
+    [
+     "attachment to existence",
+     "bhavāsava",
+     "lobha"
+    ],
+    [
+     "wrong views",
+     "diṭṭhāsava",
+     "diṭṭhi"
+    ],
+    [
+     "ignorance",
+     "avijjāsava",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "floods (ogha)",
+   4,
+   [
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual desire",
+     "kāmogha",
+     "lobha"
+    ],
+    [
+     "existence",
+     "bhavogha",
+     "lobha"
+    ],
+    [
+     "views",
+     "diṭṭhogha",
+     "diṭṭhi"
+    ],
+    [
+     "ignorance",
+     "avijjogha",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "bonds (yoga)",
+   4,
+   [
+    2,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual desire",
+     "kāmayoga",
+     "lobha"
+    ],
+    [
+     "existence",
+     "bhavayoga",
+     "lobha"
+    ],
+    [
+     "views",
+     "diṭṭhiyoga",
+     "diṭṭhi"
+    ],
+    [
+     "ignorance",
+     "avijjāyoga",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "bodily ties (kāyagantha)",
+   4,
+   [
+    1,
+    2,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "covetousness",
+     "abhijjhā",
+     "lobha"
+    ],
+    [
+     "ill will",
+     "vyāpāda",
+     "dosa"
+    ],
+    [
+     "adherence to rites and rituals",
+     "sīlabbataparāmāsa",
+     "diṭṭhi"
+    ],
+    [
+     "dogmatic belief that 'this alone is true'",
+     "idaṃsaccābhinivesa",
+     "diṭṭhi"
+    ]
+   ]
+  ],
+  [
+   "clingings (upādāna)",
+   4,
+   [
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual clinging",
+     "kāmupādāna",
+     "lobha"
+    ],
+    [
+     "clinging to views",
+     "diṭṭhupādāna",
+     "diṭṭhi"
+    ],
+    [
+     "clinging to rites and rituals",
+     "sīlabbatupādāna",
+     "diṭṭhi"
+    ],
+    [
+     "clinging to a doctrine of self",
+     "attavādupādāna",
+     "diṭṭhi"
+    ]
+   ]
+  ],
+  [
+   "hindrances (nīvaraṇa)",
+   6,
+   [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   [
+    [
+     "sensual desire",
+     "kāmacchanda",
+     "lobha"
+    ],
+    [
+     "ill will",
+     "vyāpāda",
+     "dosa"
+    ],
+    [
+     "sloth and torpor",
+     "thīna-middha",
+     "thīna, middha"
+    ],
+    [
+     "restlessness and worry",
+     "uddhacca-kukkucca",
+     "uddhacca, kukkucca"
+    ],
+    [
+     "doubt",
+     "vicikicchā",
+     "vicikicchā"
+    ],
+    [
+     "ignorance",
+     "avijjā",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "latent tendencies (anusaya)",
+   7,
+   [
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual lust",
+     "kāmarāga",
+     "lobha"
+    ],
+    [
+     "attachment to existence",
+     "bhavarāga",
+     "lobha"
+    ],
+    [
+     "aversion",
+     "paṭigha",
+     "dosa"
+    ],
+    [
+     "conceit",
+     "māna",
+     "māna"
+    ],
+    [
+     "wrong views",
+     "diṭṭhi",
+     "diṭṭhi"
+    ],
+    [
+     "doubt",
+     "vicikicchā",
+     "vicikicchā"
+    ],
+    [
+     "ignorance",
+     "avijjā",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "fetters, Suttanta method (saṃyojana)",
+   10,
+   [
+    3,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual lust",
+     "kāmarāga",
+     "lobha"
+    ],
+    [
+     "lust for fine-material existence",
+     "rūparāga",
+     "lobha"
+    ],
+    [
+     "lust for immaterial existence",
+     "arūparāga",
+     "lobha"
+    ],
+    [
+     "aversion",
+     "paṭigha",
+     "dosa"
+    ],
+    [
+     "conceit",
+     "māna",
+     "māna"
+    ],
+    [
+     "wrong views",
+     "diṭṭhi",
+     "diṭṭhi"
+    ],
+    [
+     "adherence to rites and rituals",
+     "sīlabbataparāmāsa",
+     "diṭṭhi"
+    ],
+    [
+     "doubt",
+     "vicikicchā",
+     "vicikicchā"
+    ],
+    [
+     "restlessness",
+     "uddhacca",
+     "uddhacca"
+    ],
+    [
+     "ignorance",
+     "avijjā",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "fetters, Abhidhamma method",
+   10,
+   [
+    2,
+    2,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   [
+    [
+     "sensual lust",
+     "kāmarāga",
+     "lobha"
+    ],
+    [
+     "lust for existence",
+     "bhavarāga",
+     "lobha"
+    ],
+    [
+     "aversion",
+     "paṭigha",
+     "dosa"
+    ],
+    [
+     "conceit",
+     "māna",
+     "māna"
+    ],
+    [
+     "wrong views",
+     "diṭṭhi",
+     "diṭṭhi"
+    ],
+    [
+     "adherence to rites and rituals",
+     "sīlabbataparāmāsa",
+     "diṭṭhi"
+    ],
+    [
+     "doubt",
+     "vicikicchā",
+     "vicikicchā"
+    ],
+    [
+     "envy",
+     "issā",
+     "issā"
+    ],
+    [
+     "avarice",
+     "macchariya",
+     "macchariya"
+    ],
+    [
+     "ignorance",
+     "avijjā",
+     "moha"
+    ]
+   ]
+  ],
+  [
+   "defilements (kilesa)",
+   10,
+   [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    [
+     "greed",
+     "lobha",
+     "lobha"
+    ],
+    [
+     "hatred",
+     "dosa",
+     "dosa"
+    ],
+    [
+     "delusion",
+     "moha",
+     "moha"
+    ],
+    [
+     "conceit",
+     "māna",
+     "māna"
+    ],
+    [
+     "wrong views",
+     "diṭṭhi",
+     "diṭṭhi"
+    ],
+    [
+     "doubt",
+     "vicikicchā",
+     "vicikicchā"
+    ],
+    [
+     "sloth",
+     "thīna",
+     "thīna"
+    ],
+    [
+     "restlessness",
+     "uddhacca",
+     "uddhacca"
+    ],
+    [
+     "shamelessness",
+     "ahirika",
+     "ahirika"
+    ],
+    [
+     "fearlessness of wrongdoing",
+     "anottappa",
+     "anottappa"
+    ]
+   ]
+  ]
+ ],
+ "mixed": [
+  [
+   "roots (hetu)",
+   6,
+   6,
+   [
+    1,
+    "hetu",
+    "root"
+   ],
+   "The six roots are root condition to the cittas and factors they arise with and to the matter those cittas produce."
+  ],
+  [
+   "jhāna factors",
+   7,
+   5,
+   [
+    17,
+    "jhāna",
+    "jhāna"
+   ],
+   "The seven jhāna factors are jhāna condition to the states they arise with and to mind-born matter: they make the mind 'contemplate' its object closely."
+  ],
+  [
+   "path factors",
+   12,
+   9,
+   [
+    18,
+    "magga",
+    "path"
+   ],
+   "Path factors are path condition: they lead the mind toward a destination, good or bad."
+  ],
+  [
+   "faculties (indriya)",
+   22,
+   16,
+   [
+    16,
+    "indriya",
+    "faculty"
+   ],
+   "Faculty condition covers 20 of the 22: femininity and masculinity are excluded (Nyanatiloka, Buddhist Dictionary, 'paccaya'). The 5 sensitivities are prenascent faculty condition to the sense consciousnesses; physical life to the kamma-born matter of its kalāpa; the mental faculties to the states they arise with."
+  ],
+  [
+   "powers (bala)",
+   9,
+   9,
+   null,
+   "No condition of its own: the powers are the same factors seen as unshakeable by their opposites."
+  ],
+  [
+   "predominants (adhipati)",
+   4,
+   4,
+   [
+    3,
+    "adhipati",
+    "predominance"
+   ],
+   "The four predominants are the conascent kind of predominance condition: one at a time, in javanas with two or three roots. Object predominance (a strongly esteemed object) is the other kind and is not part of this category."
+  ],
+  [
+   "nutriments (āhāra)",
+   4,
+   4,
+   [
+    15,
+    "āhāra",
+    "nutriment"
+   ],
+   "Material nutriment sustains the body; the three mental nutriments sustain the states they arise with and mind-born matter."
+  ]
+ ]
+}

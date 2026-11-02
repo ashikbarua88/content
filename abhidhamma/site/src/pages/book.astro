@@ -1,0 +1,111 @@
+---
+// The whole site as one book, in reading order: readings, concepts, dhamma entries, glossary,
+// stories. Readable on screen, and printed to dist/abhidhamma-book.pdf by tools/export-book.mjs.
+import Base from "../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import { READING_PARTS, GROUPS, concept, withGlosses, glossary, stories, storyKinds, levels, u, cmaMap } from "../lib/atlas.js";
+import { KINDS } from "../lib/dhammas.js";
+
+const readings = (await getCollection("readings")).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(readings.map(async (r) => ({ r, Content: (await render(r)).Content })));
+const today = new Date().toISOString().slice(0, 10);
+const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
+---
+<Base title="The book" description="The whole site as one book: readings, concepts, dhammas, glossary and stories." nav="">
+  <div class="book" data-pagefind-ignore="all">
+    <div class="book-tools" data-pagefind-ignore>
+      <a class="btn primary" href={u("abhidhamma-book.pdf")} download>Download the PDF</a>
+      <button class="btn" type="button" onclick="window.print()">Print, or save as PDF</button>
+      <span class="muted ui">Made from this site on {today}. Everything below is also on the site's own pages.</span>
+    </div>
+
+    <section class="cover">
+      <p class="lab">A reading companion to the Abhidhamma</p>
+      <h1>Mind, matter and the conditions that join them</h1>
+      <p class="dek">Readings, concepts and dhammas, following Bhikkhu Bodhi's <i>A Comprehensive Manual of Abhidhamma</i>. Retold and cited, not quoted.</p>
+      <p class="muted ui">Edition of {today}</p>
+    </section>
+
+    <nav class="toc" aria-label="Contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#b-readings">Readings</a>
+          <ol>{readings.map((r) => <li><a href={"#r-" + r.id}>{r.data.title}</a></li>)}</ol></li>
+        <li><a href="#b-concepts">Sixteen ideas</a></li>
+        <li><a href="#b-dhammas">Dhammas: factors, matter, conditions</a></li>
+        <li><a href="#b-glossary">Glossary</a></li>
+        <li><a href="#b-stories">Stories</a></li>
+      </ol>
+    </nav>
+
+    <section class="chapter" id="b-readings">
+      <h2 class="part">Readings</h2>
+      {READING_PARTS.map((p) => (
+        <>
+          <h3 class="partname">{p.t}</h3>
+          {rendered.filter(({ r }) => r.data.part === p.t).map(({ r, Content }) => (
+            <article class="essay reading" id={"r-" + r.id}>
+              <h2>{r.data.title}</h2>
+              <p class="dek">{r.data.dek}</p>
+              <p class="meta ui">Plate {r.data.plate.slice(1)} in the atlas{cmaMap[r.data.plate.slice(1)] && ` · Manual ${cmaMap[r.data.plate.slice(1)].refs.split(";")[0]}`}</p>
+              <div class="body"><Content /></div>
+              <p class="q"><b>To reflect on.</b> {r.data.question}</p>
+              <p class="src ui"><b>Sources.</b> <Fragment set:html={r.data.sources.join(" ")} /></p>
+            </article>
+          ))}
+        </>
+      ))}
+    </section>
+
+    <section class="chapter" id="b-concepts">
+      <h2 class="part">Sixteen ideas</h2>
+      {GROUPS.map((g) => g.ids.map(concept).map((c) => (
+        <article class="entry" id={"c-" + c.slug}>
+          <h3>{c.title} <i lang="pi">{c.pali}</i></h3>
+          <p><b>{c.def}</b></p>
+          <p set:html={withGlosses(c.long)} />
+          {c.canon && <p class="src ui"><b>In the texts.</b> {c.canon.refs.join("; ")}. {c.canon.note}</p>}
+          <p class="q"><b>To reflect on.</b> {c.reflect.q}</p>
+        </article>
+      )))}
+    </section>
+
+    <section class="chapter" id="b-dhammas">
+      <h2 class="part">Dhammas</h2>
+      {Object.entries(KINDS).map(([k, K]) => (
+        <>
+          <h3 class="partname">{K.t}</h3>
+          <p class="muted">{K.d} Manual {K.ch}.</p>
+          <dl class="dlist">
+            {K.list.map((e) => (
+              <div><dt>{e.n ? e.n + ". " : ""}{e.en} <i lang="pi">{e.pali}</i></dt><dd set:html={ital(e.text)} /></div>
+            ))}
+          </dl>
+        </>
+      ))}
+    </section>
+
+    <section class="chapter" id="b-glossary">
+      <h2 class="part">Glossary</h2>
+      <dl class="dlist gloss2">{glossary.map((g) => <div><dt lang="pi">{g.term}</dt><dd>{g.gloss}</dd></div>)}</dl>
+    </section>
+
+    <section class="chapter" id="b-stories">
+      <h2 class="part">Stories</h2>
+      <p class="muted">How a story is read here is a study aid, not the tradition's own reading.</p>
+      {Object.keys(stories).map((lv) => (
+        <>
+          <h3 class="partname">{levels[lv]?.name}</h3>
+          {stories[lv].map((s) => (
+            <div class="story">
+              <h4>{s.t}</h4>
+              <span class="src ui">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
+              <p>{s.s}</p>
+              <p class="r" set:html={ital(s.r)} />
+            </div>
+          ))}
+        </>
+      ))}
+    </section>
+  </div>
+</Base>

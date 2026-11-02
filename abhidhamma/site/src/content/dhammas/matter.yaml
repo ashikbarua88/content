@@ -1,0 +1,173 @@
+# The 28 kinds of matter (Manual VI). 'origins': k kamma, c mind, u temperature, a nutriment.
+- id: pathavi
+  pali: pathavī
+  en: earth
+  origins: kcua
+  text: >-
+    The earth element: extension, felt as hardness or softness. It is the foundation the other kinds of matter
+    stand on.
+  card:
+    characteristic: hardness
+    function: acting as a foundation
+    manifestation: receiving
+    proximateCause: the other three great elements
+    tryIt: Press a fingertip on the table. Hardness or softness, felt directly, is the earth element.
+- id: apo
+  pali: āpo
+  en: water
+  origins: kcua
+  text: >-
+    The water element: cohesion and fluidity. It holds the other elements together and cannot be touched
+    directly.
+- id: tejo
+  pali: tejo
+  en: fire
+  origins: kcua
+  text: >-
+    The fire element: heat and cold. It ripens and matures matter, and as temperature it is one of the four
+    origins of matter.
+- id: vayo
+  pali: vāyo
+  en: air
+  origins: kcua
+  text: "The air element: motion and support, felt as pressure and distension. It moves and steadies the body."
+- id: cakkhu
+  pali: cakkhu
+  en: eye-sensitivity
+  origins: k
+  text: >-
+    Eye-sensitivity: the sensitive matter in the eye that visible form can strike. It is the base and door of
+    seeing.
+  card:
+    characteristic: the sensitivity of the great elements, ready for the impact of visible objects
+    function: picking up visible objects
+    manifestation: being the base of eye-consciousness
+    proximateCause: great elements born of kamma, from a desire to see
+    tryIt: You never see the eye-sensitivity; you know it only through seeing. Close your eyes and open them.
+- id: sota
+  pali: sota
+  en: ear-sensitivity
+  origins: k
+  text: "Ear-sensitivity: the matter in the ear that sound can strike. It is the base and door of hearing."
+- id: ghana
+  pali: ghāna
+  en: nose-sensitivity
+  origins: k
+  text: "Nose-sensitivity: the matter in the nose that smells can strike."
+- id: jivha
+  pali: jivhā
+  en: tongue-sensitivity
+  origins: k
+  text: "Tongue-sensitivity: the matter in the tongue that tastes can strike."
+- id: kaya
+  pali: kāya
+  en: body-sensitivity
+  origins: k
+  text: >-
+    Body-sensitivity: the matter spread through the body that tangibles can strike. Its object is three of the
+    great elements themselves.
+- id: vanna
+  pali: vaṇṇa
+  en: visible form
+  origins: kcua
+  text: "Visible form: colour, the object of seeing. Shape, as the commentaries note, is inferred rather than seen."
+- id: sadda
+  pali: sadda
+  en: sound
+  origins: cu
+  text: "Sound: the object of hearing. It is the only sense object that is not one of the eight inseparables."
+- id: gandha
+  pali: gandha
+  en: smell
+  origins: kcua
+  text: "Smell: the object of the nose."
+- id: rasa
+  pali: rasa
+  en: taste
+  origins: kcua
+  text: "Taste: the object of the tongue."
+- id: itthibhava
+  pali: itthibhāva
+  en: femininity
+  origins: k
+  text: "Femininity: the kamma-born faculty that shapes the marks and manner of a female body."
+- id: purisabhava
+  pali: purisabhāva
+  en: masculinity
+  origins: k
+  text: "Masculinity: the kamma-born faculty that shapes the marks and manner of a male body."
+- id: hadaya
+  pali: hadaya
+  en: heart-base
+  origins: k
+  text: >-
+    The heart-base: the matter named by the commentaries as the physical support of mind-consciousness. The
+    canonical Paṭṭhāna speaks only of "that matter" on which mind depends.
+- id: jivita
+  pali: jīvita
+  en: life faculty
+  origins: k
+  text: >-
+    The material life faculty: it sustains the kamma-born matter of its group for that group's span, as water
+    sustains lotuses.
+- id: oja
+  pali: ojā
+  en: nutritive essence
+  origins: kcua
+  text: >-
+    Nutritive essence: the nourishment in matter. It is one of the eight inseparables, and taken as food it is
+    one of the four origins of matter.
+- id: akasa
+  pali: ākāsa
+  en: space
+  origins: kcua
+  text: >-
+    Space: the gap that separates one group of matter from another. It is not a thing but the boundary between
+    things.
+- id: kaya-vinnatti
+  pali: kāya-viññatti
+  en: bodily intimation
+  origins: c
+  text: >-
+    Bodily intimation: the movement by which a body expresses an intention, the gesture that makes a mind
+    known.
+- id: vaci-vinnatti
+  pali: vacī-viññatti
+  en: vocal intimation
+  origins: c
+  text: "Vocal intimation: the movement by which speech expresses an intention."
+- id: lahuta
+  pali: lahutā
+  en: lightness
+  origins: cua
+  text: "Lightness of matter: its buoyancy, the body's ease of movement in health."
+- id: muduta
+  pali: mudutā
+  en: malleability
+  origins: cua
+  text: "Malleability of matter: its pliancy, the opposite of stiffness."
+- id: kammannata
+  pali: kammaññatā
+  en: wieldiness
+  origins: cua
+  text: "Wieldiness of matter: its fitness for action."
+- id: upacaya
+  pali: upacaya
+  en: production
+  origins: ""
+  text: "Production: the first arising of a group of matter."
+- id: santati
+  pali: santati
+  en: continuity
+  origins: ""
+  text: "Continuity: the renewed arising of matter in a series."
+- id: jarata
+  pali: jaratā
+  en: decay
+  origins: ""
+  text: "Decay: matter's ageing, its maturing toward dissolution."
+- id: aniccata
+  pali: aniccatā
+  en: impermanence
+  origins: ""
+  text: "Impermanence: matter's breaking up and vanishing."

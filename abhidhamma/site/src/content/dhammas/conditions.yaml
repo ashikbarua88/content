@@ -1,0 +1,177 @@
+# The 24 conditions of the Paṭṭhāna (Manual VIII). 'direction': A–F as in structure.json.
+- id: hetu
+  "n": 1
+  pali: hetu
+  en: root
+  direction: B
+  text: >-
+    The six roots, greed, hatred, delusion and their opposites, make the states they arise with firm, like the
+    roots of a tree.
+- id: arammana
+  "n": 2
+  pali: ārammaṇa
+  en: object
+  direction: E
+  text: >-
+    Anything at all that a citta takes as its object helps it simply by being known: a colour, a thought, a
+    concept, Nibbāna.
+- id: adhipati
+  "n": 3
+  pali: adhipati
+  en: predominance
+  direction: F
+  text: >-
+    A predominant leads the mind, as a king leads ministers: desire, energy, consciousness or investigation in
+    its conascent kind, or a highly esteemed object in its object kind.
+- id: anantara
+  "n": 4
+  pali: anantara
+  en: proximity
+  direction: A
+  text: >-
+    Each citta, as it ceases, makes way for the next and determines what kind can follow, so the stream of
+    mind has no gaps.
+- id: samanantara
+  "n": 5
+  pali: samanantara
+  en: contiguity
+  direction: A
+  text: >-
+    Contiguity is proximity seen from another angle: the immediate, seamless succession of one citta by the
+    next.
+- id: sahajata
+  "n": 6
+  pali: sahajāta
+  en: conascence
+  direction: F
+  text: >-
+    States that arise together help one another to arise, as a flame and its light: a citta and its factors,
+    the four great elements.
+- id: annamanna
+  "n": 7
+  pali: aññamañña
+  en: mutuality
+  direction: F
+  text: >-
+    Mutuality is help in both directions at once, like the legs of a tripod: each state supports and is
+    supported by the others.
+- id: nissaya
+  "n": 8
+  pali: nissaya
+  en: support
+  direction: F
+  text: >-
+    Support is help by being a foundation, as the earth supports trees: the great elements for derived matter,
+    the eye for seeing.
+- id: upanissaya
+  "n": 9
+  pali: upanissaya
+  en: decisive support
+  direction: E
+  text: >-
+    Decisive support is strong help, often from far away: a good friend, a climate, a past habit, a resolve,
+    even Nibbāna as an object.
+- id: purejata
+  "n": 10
+  pali: purejāta
+  en: prenascence
+  direction: D
+  text: >-
+    Prenascence is help from something that arose earlier and still exists: a sense base or an object already
+    present when the citta arises.
+- id: pacchajata
+  "n": 11
+  pali: pacchājāta
+  en: postnascence
+  direction: C
+  text: >-
+    Postnascence is help from something that arises later, to matter already there: later cittas sustain the
+    body, as feeding sustains a young vulture.
+- id: asevana
+  "n": 12
+  pali: āsevana
+  en: repetition
+  direction: A
+  text: Repetition is the way each javana strengthens the next, as a lesson is learned by reciting it.
+- id: kamma
+  "n": 13
+  pali: kamma
+  en: kamma
+  direction: B
+  text: >-
+    A volition helps its result: at the same moment, by organising the citta, and across time, as past kamma
+    that ripens later.
+- id: vipaka
+  "n": 14
+  pali: vipāka
+  en: result
+  direction: B
+  text: Resultant states help one another by their passivity, effortlessly, as fruit ripens.
+- id: ahara
+  "n": 15
+  pali: āhāra
+  en: nutriment
+  direction: F
+  text: >-
+    The four nutriments sustain what they feed: edible food the body; contact, volition and consciousness the
+    states they arise with.
+- id: indriya
+  "n": 16
+  pali: indriya
+  en: faculty
+  direction: F
+  text: >-
+    A faculty controls its own domain, as a governor rules a province: the sense faculties, the life
+    faculties, and the mental faculties such as faith and wisdom.
+- id: jhana
+  "n": 17
+  pali: jhāna
+  en: jhāna
+  direction: B
+  text: >-
+    The jhāna factors help by making the mind look closely at its object, in ordinary moments as well as in
+    meditation.
+- id: magga
+  "n": 18
+  pali: magga
+  en: path
+  direction: B
+  text: The path factors lead the mind toward a destination, a good one or a bad one.
+- id: sampayutta
+  "n": 19
+  pali: sampayutta
+  en: association
+  direction: A
+  text: >-
+    Association is the help mental states give one another by sharing a base, an object, an arising and a
+    ceasing.
+- id: vippayutta
+  "n": 20
+  pali: vippayutta
+  en: dissociation
+  direction: F
+  text: Dissociation is help between mind and matter, which cannot be associated but still support each other.
+- id: atthi
+  "n": 21
+  pali: atthi
+  en: presence
+  direction: F
+  text: Presence is help by being there at the same time, without which the other could not stand.
+- id: natthi
+  "n": 22
+  pali: natthi
+  en: absence
+  direction: A
+  text: "Absence is help by ceasing: a citta that has gone gives the next its opportunity."
+- id: vigata
+  "n": 23
+  pali: vigata
+  en: disappearance
+  direction: A
+  text: Disappearance is absence seen as the vanishing that makes room.
+- id: avigata
+  "n": 24
+  pali: avigata
+  en: non-disappearance
+  direction: F
+  text: Non-disappearance is presence seen as not having vanished.

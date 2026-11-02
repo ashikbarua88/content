@@ -1,0 +1,29 @@
+# The seven levels of the atlas's path.
+- id: L1
+  "n": 1
+  name: Foundations
+  question: What is the Abhidhamma, and what does it take apart?
+- id: L2
+  "n": 2
+  name: Elements
+  question: What is experience made of?
+- id: L3
+  "n": 3
+  name: Process
+  question: How does experience unfold, moment by moment?
+- id: L4
+  "n": 4
+  name: Relations
+  question: How does everything hold together?
+- id: L5
+  "n": 5
+  name: Lives and worlds
+  question: What carries on from one life to the next, and where?
+- id: L6
+  "n": 6
+  name: Practice
+  question: What do I do with all this?
+- id: L7
+  "n": 7
+  name: Synthesis
+  question: How does it all fit together, and how do others see it?

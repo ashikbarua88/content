@@ -10,7 +10,7 @@ const asImage = SHEETS.includes(sheet);
 // Interactive parts of atlas drawings stay in the atlas: strip their focus and button roles here,
 // and point their internal links (#p3) at the atlas. A drawing that keeps links is a group, not an image.
 let svg = !asImage && (P[sheet] || "")
-  .replace(/ tabindex="[^"]*"/g, "").replace(/ role="button"/g, "").replace(/ aria-pressed="[^"]*"/g, "")
+  .replace(/ tabindex="[^"]*"/g, "").replace(/(<(?:rect|circle|ellipse|path|line|polygon|g|text)\b[^>]*?) aria-label="[^"]*"/g, "$1").replace(/ role="button"/g, "").replace(/ aria-pressed="[^"]*"/g, "")
   .replace(/href="#([\w-]+)"/g, (m, id) => `href="${atlasUrl(id)}"`)
   .replace(/^<svg([^>]*?) role="[^"]*"/, "<svg$1").replace(/^<svg([^>]*?) aria-label="[^"]*"/, "<svg$1");
 if (svg) svg = svg.replace("<svg", `<svg role="${svg.includes("<a ") ? "group" : "img"}" aria-label="${label.replace(/"/g, "&quot;")}"`);

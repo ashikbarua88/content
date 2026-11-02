@@ -8,9 +8,9 @@ A website for reading the Abhidhamma slowly. It is built from the atlas in `../a
 | --- | --- |
 | **Home** (`/`) | `src/pages/index.astro` |
 | **Readings** (`/readings/…`) | Twenty-three MDX essays in `src/content/readings/`, in four parts (what there is, how it unfolds, the way out, looking back): one per atlas plate, and one per companion sheet (2b, 3b, 4b, 7b, 8b, 10b, 13b, 14b). |
-| **Dhammas** (`/dhammas/…`) | 104 entries: the 52 mental factors, 28 kinds of matter and 24 conditions. Descriptions are in `src/lib/dhamma-text.js`; counts, origins and lists come from the atlas data (`src/lib/dhammas.js`). The glossary links to them. |
+| **Dhammas** (`/dhammas/…`) | 104 entries: the 52 mental factors, 28 kinds of matter and 24 conditions. Descriptions are in `src/content/dhammas/`; counts and lists are in `src/data/structure.json`. The glossary links to them. |
 | **Explore** | The atlas's concept map, with each idea linked to its page and its connections lit on hover, and links to the 3D models. |
-| **Concepts** (`/concepts/…`) | The atlas's 16 ideas. Each page has its picture, its description, where it sits, the ideas it connects to, its sources in the Canon, stories, and a question to reflect on. The questions are in `src/lib/reflect.js`. |
+| **Concepts** (`/concepts/…`) | The atlas's 16 ideas. Each page has its picture, its description, where it sits, the ideas it connects to, its sources in the Canon, stories, and a question to reflect on. Everything on the page is in `src/content/concepts/<slug>.md`. |
 | **Glossary** | The atlas's 223 terms. |
 | **Stories** | The atlas's stories, by level. |
 | **Library** | The atlas, its PDF, the nāma–rūpa model, and books. |
@@ -18,6 +18,38 @@ A website for reading the Abhidhamma slowly. It is built from the atlas in `../a
 | **Search** | Pagefind. Diacritics are optional: *bhavanga* finds *bhavaṅga*. |
 
 Every Pāli word the glossary knows shows its gloss when you hover over it or tap it; this works without script. Readings have sidenotes in the margin, which become numbered notes you can open on a phone.
+
+## Where the words live
+
+The website is the single source of truth. Every word is in `src/content/`, never in a `.js` file. Edit a file there and rebuild; the site and the book PDF both change.
+
+| Text | File |
+| --- | --- |
+| Readings (essays) | `src/content/readings/<slug>.mdx` |
+| The sixteen ideas: definition, long description, sources in the Canon, question and answer | `src/content/concepts/<slug>.md` |
+| The sentences on the links between ideas | `src/content/links.yaml` |
+| Mental factors, matter, conditions: descriptions and four-part definitions | `src/content/dhammas/factors.yaml`, `matter.yaml`, `conditions.yaml` |
+| How the three lists are introduced and grouped | `src/content/dhammas/kinds.yaml` |
+| Glossary | `src/content/glossary.yaml` |
+| Stories | `src/content/stories.yaml` |
+| Levels; the parts that group concepts and readings | `src/content/levels.yaml`, `parts.yaml` |
+| Page chrome (home, about, library) | `src/pages/*.astro` |
+
+Tables that are not prose are in `src/data/structure.json`: the following.
+
+- link types
+- plate titles
+- chapter references to the *Manual*
+- counts of factors in cittas
+- the chapter VII lists
+
+Drawings come from the atlas, through `npm run extract` and `tools/render-sheets.mjs`. These copy pictures only, never text. The atlas itself, in `../atlas`, is left as it is. The site no longer reads its text.
+
+## The book
+
+`/book/` is the whole site as one document. The build prints it to `dist/abhidhamma-book.pdf` (`tools/export-book.mjs`, needs Playwright). Every reading and concept page also has a *Save as PDF* button.
+
+If Playwright is missing, the build still succeeds without the PDF; the book page can then be printed from the browser.
 
 ## Building
 
@@ -30,20 +62,17 @@ npm run build     # dist/, with the search index
 npm run preview
 ```
 
-`npm run extract` renders the atlas in Chromium, through Playwright as in `../tools/build.js`. It refreshes these generated files:
+`npm run extract` copies the atlas's drawings, never its text. It renders the atlas in Chromium, through Playwright as in `../tools/build.js`, and writes these files:
 
-- `src/data/` (atlas data, idea pictures, plate drawings, sources)
-- `src/styles/atlas-tokens.css` (the atlas colours)
+- `src/data/pictures.json`: the idea pictures.
+- `src/data/plates.json`: the plate drawings.
+- `src/data/map.json`: the concept map.
+- `public/js/pictures.js`: the pictures' animations.
+- `src/styles/atlas-tokens.css`: the colours.
 
-It also writes these:
+`node tools/render-sheets.mjs` renders the dense atlas sheets, light and dark, to `public/sheets/`. The list of sheets is in `src/lib/sheets.js`. Run both only after the atlas's drawings change, then commit the results.
 
-- `src/data/lists.json` (matter and conditions)
-- `src/data/map.json` (the concept map)
-- `public/js/pictures.js` (the idea pictures' animations)
-
-`node tools/render-sheets.mjs` renders the dense atlas sheets, light and dark, to `public/sheets/` (list in `src/lib/sheets.js`).
-
-Run both after changing the atlas, then commit the results. CI does not need a browser.
+The build itself needs a browser only for the book PDF, which CI installs.
 
 ## Writing a reading
 

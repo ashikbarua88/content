@@ -218,3 +218,48 @@ figure.pic.mapfig svg { display: block; width: 100%; height: auto; max-height: n
 :where(.pic, .card, .mapfig) svg { font-size: 13.5px; } /* the atlas base size its drawings were made at */
 :where(.pic, .card, .mapfig) svg text { font-family: var(--ui); fill: var(--ink); }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- the book (screen) ---------- */
+.book { max-width: calc(var(--measure) + 2rem); margin: 0 auto; padding: 30px 16px 0; }
+.book-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font-size: 15px; padding: 12px 0 18px; border-bottom: 1px solid var(--line); }
+.book-tools .btn { cursor: pointer; background: none; font: inherit; color: var(--accent); }
+.book-tools .btn.primary { color: var(--ground); background: var(--accent); }
+.book .cover { padding: 60px 0 40px; }
+.book .toc ol { padding-left: 1.3em; } .book .toc li { margin: 4px 0; } .book .toc ol ol { columns: 2; font-size: 16px; }
+.book h2.part { font-size: 40px; margin: 70px 0 10px; color: var(--accent); }
+.book h3.partname { font-size: 26px; margin: 40px 0 6px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.book .essay { margin: 40px 0 0; }
+.book .essay > h2 { font-size: 32px; margin: 0 0 6px; }
+.book .essay .sn { display: block; float: none; width: auto; margin: .5em 0 .8em; padding-left: 12px; border-left: 2px solid var(--line); }
+.book .essay label.sn-ref { pointer-events: none; }
+.book .essay .wide { margin-right: 0; }
+.book .entry { margin: 26px 0; } .book .entry h3 { margin: 0 0 6px; font-size: 24px; } .book .entry h3 i { color: var(--muted); font-size: .8em; }
+.book .q { font-style: italic; } .book .src { font-size: 14px; color: var(--muted); }
+.book .dlist div { padding: 8px 0; border-bottom: 1px solid var(--line); } .book .dlist dt { font-family: var(--display); font-size: 19px; } .book .dlist dt i { color: var(--muted); font-size: .85em; } .book .dlist dd { margin: 2px 0 0; font-size: 17px; }
+.book .gloss2 div { display: grid; grid-template-columns: 12em 1fr; gap: 14px; padding: 4px 0; } .book .gloss2 dt { font-style: italic; font-size: 17px; } .book .gloss2 dd { margin: 0; font-size: 16px; }
+.book .story h4 { font: 500 20px var(--display); margin: 20px 0 2px; }
+.book .reading .body > p:first-of-type::first-letter { float: none; font: inherit; margin: 0; color: inherit; }
+.book .discussion, .book .reflect { display: none; }
+.savepdf { font: 600 13px var(--ui); color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.savepdf:hover { border-color: var(--accent); }
+
+/* ---------- print: any page, and the book ---------- */
+@media print {
+  :root { --ground: #fff; --sheet: #fff; --ink: #111; --muted: #444; --line: #ccc; --faint: #f3f3f3; --accent: #2b3190; }
+  body { font-size: 11pt; background: #fff; }
+  .top, .foot, .skip, aside, .discussion, .reflect details, .book-tools, .pn, .savepdf, .play, .searchlink, .theme { display: none !important; }
+  .page { display: block; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  .term { border: 0; } .term .gloss { display: none !important; }
+  figure, .story, .entry, .dlist div, .facts { break-inside: avoid; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  .sn { display: block !important; float: none !important; width: auto !important; margin: .4em 0 .6em !important; padding-left: 10px; border-left: 2px solid #ccc; font-size: 9pt; }
+  label.sn-ref::after { color: #2b3190; }
+  .wide { margin-right: 0 !important; }
+  figure.sheetimg .dk { display: none !important; } figure.sheetimg .lt { display: block !important; }
+  .reading, .book { max-width: none; padding: 0; }
+  .book .chapter { break-before: page; } .book .essay, .book h3.partname { break-before: page; } .book h2.part + h3.partname, .book h3.partname + .essay { break-before: avoid; } .book .cover { break-after: page; padding-top: 30vh; } .book .toc { break-after: page; }
+  .book h2.part { margin-top: 0; }
+}
+.booklink { color: var(--muted); text-decoration: none; font-size: 15px; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 4px 12px; }
+.booklink:hover { background: var(--accent); color: var(--ground); }

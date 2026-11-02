@@ -1,67 +1,44 @@
-// Entries for the 52 mental factors, the 28 kinds of matter and the 24 conditions:
-// the descriptions from dhamma-text.js, with counts, origins and lists from the atlas data.
-import D from "../data/atlas.json";
-import L from "../data/lists.json";
-import { FACTOR_TEXT, MATTER_TEXT, CONDITION_TEXT } from "./dhamma-text.js";
+// Entries for the 52 mental factors, the 28 kinds of matter and the 24 conditions.
+// Words come from src/content/dhammas/*.yaml; counts and lists from src/data/structure.json.
+import { getCollection } from "astro:content";
+import S from "../data/structure.json";
 import { u, slugify } from "./atlas.js";
 
-const CARD = Object.fromEntries(D.dhammas.map((d) => [d.pali.split("-")[0], d]));
-const cardFor = (pali) => CARD[pali] || CARD[pali.split("-")[0]] || null;
+const [F, M, CO, K] = await Promise.all(["factors", "matter", "conditions", "kinds"].map((c) => getCollection(c)));
+const kind = Object.fromEntries(K.map((k) => [k.id, k.data]));
+const groupTitle = (k, key) => kind[k].groups.find((g) => g.key === key)?.title || key;
+const cardOf = (c) => c && { card: [c.characteristic, c.function, c.manifestation, c.proximateCause], notice: c.tryIt };
 
-const FACTOR_GROUP = {
-  universal: ["Universals", "Present in every citta, whatever its kind."],
-  occasional: ["Occasionals", "Present in many cittas but not all; ethically neutral, they take the colour of the citta."],
-  unwholesome: ["Unwholesome factors", "Found only in the twelve unwholesome cittas."],
-  beautiful: ["Beautiful factors", "Found only in beautiful cittas, never with an unwholesome factor."],
-};
-const lists = D.sheet8b.cats;
-const unfixed = D.sheet4b.unfixed || [];
 
-export const factors = D.sheet4b.rows.map(([pali, en, group, , n89, n121]) => ({
-  kind: "factors", pali, en, group, groupName: FACTOR_GROUP[group][0], slug: slugify(pali),
-  text: FACTOR_TEXT[pali], n89, n121, card: cardFor(pali),
-  lists: lists.flatMap(([name, , , items]) => items.filter((it) => it[2].split(", ").includes(pali)).map((it) => ({ list: name, en: it[0], pali: it[1] }))),
-  note: (unfixed.find(([ps]) => ps.includes(pali)) || [])[1],
+export const factors = F.map(({ id, data: d }) => ({
+  kind: "factors", pali: d.pali, en: d.en, group: d.group, groupName: groupTitle("factors", d.group), slug: id,
+  text: d.text, card: cardOf(d.card), n89: S.factorCounts[d.pali]?.n89, n121: S.factorCounts[d.pali]?.n121,
+  lists: S.chapter7.flatMap(([name, , , items]) => items.filter((it) => it[2].split(", ").includes(d.pali)).map((it) => ({ list: name, en: it[0], pali: it[1] }))),
+  note: ((S.unfixed || []).find(([ps]) => ps.includes(d.pali)) || [])[1],
 }));
 
 const ORIGIN = { k: "kamma", c: "mind", u: "temperature", a: "nutriment" };
-const MATTER_GROUP = [
-  [0, 4, "Great elements", "The four primary qualities on which all other matter depends."],
-  [4, 9, "Sensitive matter", "The five sense faculties, which objects can strike."],
-  [9, 13, "Objective matter", "The objects of four senses; touch is three of the great elements."],
-  [13, 15, "Sex", "The two faculties of femininity and masculinity."],
-  [15, 16, "Heart", "The physical base of mind-consciousness, in the commentaries."],
-  [16, 17, "Life", "The faculty that sustains kamma-born matter."],
-  [17, 18, "Nutriment", "The nourishment in matter."],
-  [18, 19, "Limiting", "Space, which separates groups of matter."],
-  [19, 21, "Communicating", "The two intimations, of body and of speech."],
-  [21, 24, "Mutable", "The qualities of healthy, workable matter."],
-  [24, 28, "Characteristics", "The four marks of matter's life: arising, continuing, ageing, ending."],
-];
-export const matter = L.matter.map(([pali, en, o], i) => {
-  const g = MATTER_GROUP.find(([a, b]) => i >= a && i < b);
+const MG = kind.matter.groups.map((g) => { const [a, b] = g.key.split("-").map(Number); return { a, b, ...g }; });
+export const matter = M.map(({ id, data: d }, i) => {
+  const g = MG.find(({ a, b }) => i >= a && i < b);
   return {
-    kind: "matter", pali, en, slug: slugify(pali), text: MATTER_TEXT[pali], card: cardFor(pali),
-    group: g[2], groupNote: g[3], concrete: i < 18,
-    origins: o.split("").map((k) => ORIGIN[k]), inseparable: o === "kcua" && [0, 1, 2, 3, 9, 11, 12, 17].includes(i),
+    kind: "matter", pali: d.pali, en: d.en, slug: id, text: d.text, card: cardOf(d.card),
+    group: g.title, groupNote: g.desc, concrete: i < 18,
+    origins: d.origins.split("").map((k) => ORIGIN[k]), inseparable: d.origins === "kcua" && [0, 1, 2, 3, 9, 11, 12, 17].includes(i),
   };
 });
 
-const MIXED = Object.fromEntries(D.sheet8b.mixed.filter((m) => m[3]).map((m) => [m[3][0], { cat: m[0], note: m[4] }]));
+const MIXED = Object.fromEntries(S.mixed.filter((m) => m[3]).map((m) => [m[3][0], { cat: m[0], note: m[4] }]));
 const SYNTH = { 2: "object", 9: "decisive support", 13: "kamma", 21: "presence" };
-export const conditions = L.conditions.map(([n, pali, en, g]) => ({
-  kind: "conditions", n, pali, en, slug: slugify(pali), text: CONDITION_TEXT[pali], group: L.conditionGroups[g],
-  mixed: MIXED[n] || null, synthesis: SYNTH[n] || null,
+export const conditions = CO.sort((a, b) => a.data.n - b.data.n).map(({ id, data: d }) => ({
+  kind: "conditions", n: d.n, pali: d.pali, en: d.en, slug: id, text: d.text, group: groupTitle("conditions", d.direction),
+  mixed: MIXED[d.n] || null, synthesis: SYNTH[d.n] || null,
 }));
 
-export const KINDS = {
-  factors: { t: "The 52 mental factors", short: "Mental factors", pali: "cetasika", plate: "p4", plates: ["p4", "p4b"], concept: "CE", list: factors,
-    d: "What colours each moment of knowing: seven present in every citta, six that come and go, fourteen unwholesome and twenty-five beautiful.", ch: "II §§1–9" },
-  matter: { t: "The 28 kinds of matter", short: "Matter", pali: "rūpa", plate: "p5", plates: ["p5"], concept: "RU", list: matter,
-    d: "Four great elements and twenty-four kinds derived from them, with the four origins that produce them.", ch: "VI §§2–15" },
-  conditions: { t: "The 24 conditions", short: "Conditions", pali: "paccaya", plate: "p8", plates: ["p8", "p8b"], concept: "CO", list: conditions,
-    d: "The ways one dhamma helps another, from the Paṭṭhāna, sorted by direction between mind and matter.", ch: "VIII §§11–28" },
-};
+const LIST = { factors, matter, conditions };
+export const KINDS = Object.fromEntries(Object.entries(kind).map(([k, d]) => [k, {
+  t: d.title, short: d.short, pali: d.pali, plate: d.plates[0], plates: d.plates, concept: d.concept, ch: d.chapter, d: d.desc, list: LIST[k],
+}]));
 export const dhammaUrl = (e) => u(`dhammas/${e.kind}/${e.slug}/`);
 
 // Every entry by its Pāli headword, for linking from the glossary.

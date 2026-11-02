@@ -1,8 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import M from "../data/map.json";
-import D from "../data/atlas.json";
-import { conceptUrl, atlasUrl, u, levels } from "../lib/atlas.js";
+import { conceptUrl, atlasUrl, u, levels, links, linkTypes } from "../lib/atlas.js";
 
 // The atlas's concept map, with every idea a link to its concept page and every arrow
 // carrying its two ends, so hovering an idea can light up its connections.
@@ -11,9 +10,9 @@ let svg = M.svg
   .replace(/<g class="cmn" id="idea-(\w+)" data-id="\1"[^>]*aria-label="([^"]*)"[^>]*>([\s\S]*?)<\/g>/g,
     (m, id, label, inner) => `<a class="cmn-a" href="${conceptUrl(id)}" data-id="${id}" aria-label="${label}"><g class="cmn">${inner}</g></a>`)
   .replace(/<g class="cme" id="link-(\d+)" data-li="\1" role="button"[^>]*>/g,
-    (m, i) => `<g class="cme" data-from="${D.links[i].from}" data-to="${D.links[i].to}">`)
+    (m, i) => `<g class="cme" data-from="${links[i].from}" data-to="${links[i].to}">`)
   .replace(/aria-label="Concept map[^"]*"/, 'aria-label="Concept map of the sixteen ideas in six rows, joined by labelled arrows. Each idea links to its page."');
-const types = Object.entries(D.linkTypes);
+const types = Object.entries(linkTypes);
 const models = [
   ["D1", "The categories, mapped", 1], ["D2", "Elements in 3D", 2], ["D3", "Process in 3D", 3],
   ["D4", "Relations in 3D", 4], ["D5", "Thirty-one planes as a world-mountain", 5], ["D6", "Practice as a climb", 6], ["D7", "One moment, every lens", 7],

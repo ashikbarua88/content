@@ -1,0 +1,899 @@
+# Every Pāli term used on the site, with a short gloss and the atlas plate that introduces it.
+- id: abhidhamma
+  term: abhidhamma
+  gloss: "the “higher teaching”: experience analysed into ultimate realities, dhammas"
+  plate: "1"
+- id: abhidhammattha-sangaha
+  term: Abhidhammattha Saṅgaha
+  gloss: Anuruddha's manual of the whole Abhidhamma in nine chapters; Bodhi's CMA translates it
+  plate: "1"
+- id: dhamma
+  term: dhamma
+  gloss: an ultimate reality, bearing its own nature; not a mere name or concept
+  plate: "2"
+- id: paramattha-ultimate
+  term: paramattha · ultimate
+  gloss: "what remains after analysis: citta, cetasika, matter and Nibbāna"
+  plate: "2"
+- id: sammuti-convention
+  term: sammuti · convention
+  gloss: "conventional truth: speech about persons and things; true, but not ultimate"
+  plate: "2"
+- id: pannatti-concept
+  term: paññatti · concept
+  gloss: "a concept: a name, or what a name refers to, such as “chariot”"
+  plate: "2"
+- id: khandha-aggregate
+  term: khandha · aggregate
+  gloss: one of the five heaps into which the suttas sort all experience
+  plate: "2"
+- id: rupa-matter
+  term: rūpa · matter
+  gloss: "matter: the third reality, 28 kinds; as an aggregate it is called form"
+  plate: "2"
+- id: rupa-visible-form
+  term: rūpa · visible form
+  gloss: "visible form: colour, the object of seeing; one of the 28 kinds of matter"
+  plate: "5"
+- id: vedana-feeling
+  term: vedanā · feeling
+  gloss: "feeling: the pleasant, painful or neutral tone of a moment; not emotion"
+  plate: "2"
+- id: sanna-perception
+  term: saññā · perception
+  gloss: "perception: marks an object's features so it can be recognised again"
+  plate: "2"
+- id: sankhara-formations-aggregate
+  term: saṅkhāra · formations (aggregate)
+  gloss: "formations, the fourth aggregate: the fifty factors besides feeling and perception"
+  plate: "2"
+- id: sankhara-formations-link-2
+  term: saṅkhāra · formations (link 2)
+  gloss: "kamma-formations, link 2: wholesome and unwholesome volition in the past life"
+  plate: "9"
+- id: sankhara-all-conditioned-things
+  term: saṅkhāra · all conditioned things
+  gloss: "widest sense: everything conditioned, as in “all formations are impermanent”"
+  plate: "13"
+- id: vinnana-consciousness-aggregate
+  term: viññāṇa · consciousness (aggregate)
+  gloss: "consciousness, the fifth aggregate: all 89 cittas, the same reality as citta"
+  plate: "2"
+- id: vinnana-consciousness-link-3
+  term: viññāṇa · consciousness (link 3)
+  gloss: "consciousness, link 3: the 32 mundane resultant cittas, from rebirth-linking on"
+  plate: "9"
+- id: citta-consciousness
+  term: citta · consciousness
+  gloss: one moment of knowing an object; 89 kinds, or 121 counted in detail
+  plate: 2, 3
+- id: cetasika-mental-factor
+  term: cetasika · mental factor
+  gloss: "a mental factor: arises and ceases with a citta, sharing its object and base"
+  plate: 2, 4
+- id: nama-mind
+  term: nāma · mind
+  gloss: "mind: citta with its factors, which “bend” toward objects; the word also means “name”"
+  plate: "2"
+- id: nibbana
+  term: nibbāna
+  gloss: "the unconditioned: the ending of craving; object of path and fruition"
+  plate: 2, 13
+- id: lakkhana-characteristic
+  term: lakkhaṇa · characteristic
+  gloss: "a dhamma's own nature: the first part of its identity card"
+  plate: "2"
+- id: rasa-function-of-a-dhamma
+  term: rasa · function (of a dhamma)
+  gloss: "what a dhamma does: the second part of its identity card"
+  plate: "2"
+- id: ayatana-base-the-twelve
+  term: āyatana · base (the twelve)
+  gloss: "one of twelve bases: six internal (five sense organs and the mind base) and their six objects"
+  plate: D1
+- id: dhatu-element-the-eighteen
+  term: dhātu · element (the eighteen)
+  gloss: "one of eighteen elements: the twelve bases, with the mind base split into seven"
+  plate: D1
+- id: mano-mind-base-and-door
+  term: mano · mind (base and door)
+  gloss: as a base, all 89 cittas; as the mind door, the life-continuum
+  plate: D1, 3b
+- id: sacca-noble-truth
+  term: sacca · noble truth
+  gloss: "suffering, its origin, its cessation, the path: the four noble truths"
+  plate: D1
+- id: lokiya-mundane
+  term: lokiya · mundane
+  gloss: "within the round of rebirth: all cittas but the eight supramundane, and all matter"
+  plate: D1, 3
+- id: kamavacara-sense-sphere
+  term: kāmāvacara · sense-sphere
+  gloss: the 54 cittas, and 11 planes, where sense desire holds sway
+  plate: "3"
+- id: rupavacara-fine-material-sphere
+  term: rūpāvacara · fine-material sphere
+  gloss: the 15 cittas of form-jhāna and the 16 planes they lead to
+  plate: 3, 11
+- id: arupavacara-immaterial-sphere
+  term: arūpāvacara · immaterial sphere
+  gloss: the 12 cittas of formless jhāna and the 4 formless planes
+  plate: 3, 11
+- id: lokuttara-supramundane
+  term: lokuttara · supramundane
+  gloss: "beyond the world: the four paths, four fruits and Nibbāna"
+  plate: 3, 13
+- id: kusala-wholesome
+  term: kusala · wholesome
+  gloss: healthy, blameless, bringing pleasant results; rooted in non-greed and non-hatred
+  plate: "3"
+- id: akusala-unwholesome
+  term: akusala · unwholesome
+  gloss: unhealthy, blameworthy, bringing painful results; rooted in greed, hatred or delusion
+  plate: "3"
+- id: vipaka-resultant
+  term: vipāka · resultant
+  gloss: a citta that is the ripening of past kamma; it makes no new kamma
+  plate: 3, 10
+- id: kiriya-functional
+  term: kiriya · functional
+  gloss: a citta that neither makes kamma nor results from it, such as adverting
+  plate: "3"
+- id: ahetuka-rootless
+  term: ahetuka · rootless
+  gloss: a citta with none of the six roots; there are 18
+  plate: "3"
+- id: sobhana-beautiful
+  term: sobhana · beautiful
+  gloss: the 59 cittas other than unwholesome and rootless ones, and their 25 factors
+  plate: 3, 4
+- id: hetu-root
+  term: hetu · root
+  gloss: "one of six factors that steady a citta: greed, hatred, delusion, or their opposites"
+  plate: 3, 4
+- id: asankharika-unprompted
+  term: asaṅkhārika · unprompted
+  gloss: arising spontaneously, without urging by oneself or another
+  plate: "3"
+- id: sasankharika-prompted
+  term: sasaṅkhārika · prompted
+  gloss: arising after urging or persuasion, by oneself or by another
+  plate: "3"
+- id: nanasampayutta-with-knowledge
+  term: ñāṇasampayutta · with knowledge
+  gloss: accompanied by wisdom that understands the object as it is
+  plate: "3"
+- id: somanassa-joy
+  term: somanassa · joy
+  gloss: pleasant mental feeling; it accompanies 62 of the 121 cittas
+  plate: "3"
+- id: domanassa-displeasure
+  term: domanassa · displeasure
+  gloss: painful mental feeling; only in the two hate-rooted cittas
+  plate: "3"
+- id: upekkha-equanimity-feeling
+  term: upekkhā · equanimity (feeling)
+  gloss: neutral feeling, neither pleasant nor painful; in 55 of the 121 cittas
+  plate: "3"
+- id: hasituppada-smile-producing
+  term: hasituppāda · smile-producing
+  gloss: an arahant's rootless functional citta that causes smiling at sense-sphere things
+  plate: "3"
+- id: 121-the-cittas-counted-in-detail
+  term: 121 · the cittas counted in detail
+  gloss: the 89, with each path and fruit counted at five jhāna levels
+  plate: "3"
+- id: magga-path-citta
+  term: magga · path (citta)
+  gloss: a supramundane citta that arises once, cutting defilements, with Nibbāna as object
+  plate: 3, 13
+- id: phala-fruition
+  term: phala · fruition
+  gloss: the supramundane resultant citta that follows its path, also taking Nibbāna as object
+  plate: 3, 13
+- id: jhana-absorption
+  term: jhāna · absorption
+  gloss: "deep concentration fixed on one object: five fine-material levels, then four immaterial"
+  plate: "12"
+- id: kicca-function-of-a-citta
+  term: kicca · function (of a citta)
+  gloss: one of fourteen jobs a citta can do, such as seeing or javana
+  plate: 3b
+- id: patisandhi-rebirth-linking
+  term: paṭisandhi · rebirth-linking
+  gloss: "the first citta of a life: a resultant that links it to the last"
+  plate: 3b, 10
+- id: bhavanga-life-continuum
+  term: bhavaṅga · life-continuum
+  gloss: the resultant citta, of the same kind as rebirth-linking, that runs between processes
+  plate: 3b, 7
+- id: cuti-death-consciousness
+  term: cuti · death consciousness
+  gloss: the last citta of a life, of the same kind as its life-continuum
+  plate: 3b, 10
+- id: pancadvaravajjana-five-door-adverting
+  term: pañcadvārāvajjana · five-door adverting
+  gloss: "citta 28: turns toward an object arriving at one of the five sense doors"
+  plate: 3b, 7
+- id: manodvaravajjana-mind-door-adverting
+  term: manodvārāvajjana · mind-door adverting
+  gloss: "citta 29: opens mind-door processes, and does determining in five-door ones"
+  plate: 3b, 7b
+- id: sampaticchana-receiving
+  term: sampaṭicchana · receiving
+  gloss: the citta that takes up the object just after sense consciousness
+  plate: 3b, 7
+- id: santirana-investigating
+  term: santīraṇa · investigating
+  gloss: the rootless resultant citta that examines the object just received
+  plate: 3b, 7
+- id: votthapana-determining
+  term: voṭṭhapana · determining
+  gloss: the moment that defines the object; done by mind-door adverting, citta 29
+  plate: 3b, 7
+- id: javana-impulsion
+  term: javana · impulsion
+  gloss: the active phase of a process, usually seven alike cittas; here kamma is made
+  plate: 3b, 7
+- id: tadarammana-registration
+  term: tadārammaṇa · registration
+  gloss: resultant cittas that hold the javanas' object after a strong object
+  plate: 3b, 7
+- id: dvara-door
+  term: dvāra · door
+  gloss: "the channel by which a process meets its object: five senses and mind"
+  plate: 3b
+- id: vatthu-physical-base
+  term: vatthu · physical base
+  gloss: "the matter a citta arises from: a sense organ or the heart-base"
+  plate: 3b
+- id: hadaya-vatthu-heart-base
+  term: hadaya-vatthu · heart-base
+  gloss: in beings with bodies, the matter supporting every citta except sense consciousness
+  plate: 3b
+- id: arammana-object
+  term: ārammaṇa · object
+  gloss: "whatever a citta knows: a sight, a sound, a thought, a concept, Nibbāna"
+  plate: 3b, 8
+- id: sabbacittasadharana-universals
+  term: sabbacittasādhāraṇa · universals
+  gloss: the seven factors present in every citta, from contact to attention
+  plate: "4"
+- id: pakinnaka-occasionals
+  term: pakiṇṇaka · occasionals
+  gloss: six ethically variable factors that join some cittas but not all
+  plate: "4"
+- id: phassa-contact
+  term: phassa · contact
+  gloss: the meeting of object, base and consciousness; the first universal factor
+  plate: 2, 4
+- id: cetana-volition
+  term: cetanā · volition
+  gloss: the willing that organises the other factors; as kamma, it bears results
+  plate: 4, 10
+- id: jivitindriya-life-faculty-mental
+  term: jīvitindriya · life faculty (mental)
+  gloss: sustains the mental factors it arises with, for as long as they last
+  plate: "4"
+- id: manasikara-attention
+  term: manasikāra · attention
+  gloss: turns the citta and its factors toward the object; present in every citta
+  plate: "4"
+- id: vitakka-applied-thought
+  term: vitakka · applied thought
+  gloss: lays the mind onto its object; a factor of the first jhāna only
+  plate: 4, 6
+- id: vicara-sustained-thought
+  term: vicāra · sustained thought
+  gloss: keeps the mind moving over its object; a factor of the first two jhānas
+  plate: 4, 6
+- id: piti-zest
+  term: pīti · zest
+  gloss: delight in the object; a jhāna factor up to the third jhāna
+  plate: "4"
+- id: lobha-greed
+  term: lobha · greed
+  gloss: grasping at an object; roots eight cittas; as craving, a root of the wheel
+  plate: "4"
+- id: dosa-hatred
+  term: dosa · hatred
+  gloss: aversion, from irritation to rage; root of two cittas, always with displeasure
+  plate: "4"
+- id: moha-delusion
+  term: moha · delusion
+  gloss: mental blindness to an object's true nature; present in every unwholesome citta
+  plate: "4"
+- id: ditthi-wrong-view
+  term: diṭṭhi · wrong view
+  gloss: a mistaken belief, such as a lasting self; joins four greed-rooted cittas
+  plate: 3, 4
+- id: alobha-adosa-amoha
+  term: alobha · adosa · amoha
+  gloss: "non-greed, non-hatred, non-delusion: the three wholesome roots; non-delusion is wisdom"
+  plate: "4"
+- id: sati-mindfulness
+  term: sati · mindfulness
+  gloss: not floating away from the object; a beautiful universal factor
+  plate: 2, 4
+- id: kaya-body-two-senses
+  term: kāya · body (two senses)
+  gloss: the physical body; or, in factor names like kāya-passaddhi, the mental factors
+  plate: "4"
+- id: tatramajjhattata-equanimity-factor
+  term: tatramajjhattatā · equanimity (factor)
+  gloss: neutrality of mind, balancing its fellows; not a feeling; the divine abiding of equanimity
+  plate: 4, 12
+- id: appamanna-illimitables-factors
+  term: appamaññā · illimitables (factors)
+  gloss: compassion and appreciative joy as mental factors, taking suffering or happy beings as object
+  plate: "4"
+- id: panna-wisdom
+  term: paññā · wisdom
+  gloss: understanding things as they are; also called non-delusion and the faculty of wisdom
+  plate: 4, 6
+- id: sangaha-combination
+  term: saṅgaha · combination
+  gloss: "reading down: which factors each citta contains (also, elsewhere, “compendium”)"
+  plate: "4"
+- id: mahabhuta-great-elements
+  term: mahābhūta · great elements
+  gloss: "earth, water, fire and air: the primary matter all other matter depends on"
+  plate: "5"
+- id: pasada-sensitivity
+  term: pasāda · sensitivity
+  gloss: the matter of eye, ear, nose, tongue or body that receives sense impacts
+  plate: "5"
+- id: avinibbhoga-inseparables
+  term: avinibbhoga · inseparables
+  gloss: "the eight kinds in every kalāpa: four elements, colour, smell, taste, nutritive essence"
+  plate: "5"
+- id: kalapa
+  term: kalāpa
+  gloss: "the smallest group of matter: eight or more kinds arising and ceasing together"
+  plate: "5"
+- id: vinnatti-intimation
+  term: viññatti · intimation
+  gloss: "bodily or vocal expression of intention: mind-born matter that communicates"
+  plate: "5"
+- id: oja-nutritive-essence
+  term: ojā · nutritive essence
+  gloss: the essence in food, and in every kalāpa, that sustains matter
+  plate: "5"
+- id: jivita-life-faculty-material
+  term: jīvita · life faculty (material)
+  gloss: sustains kamma-born matter in its kalāpa while it lasts
+  plate: "5"
+- id: cittakkhana-mind-moment
+  term: cittakkhaṇa · mind-moment
+  gloss: "the life of one citta, in three sub-moments: arising, presence, dissolution"
+  plate: 5, 7
+- id: vithi-cognitive-process
+  term: vīthi · cognitive process
+  gloss: a fixed series of cittas taking one object at one door
+  plate: "7"
+- id: visayappavatti-presentation-of-objects
+  term: visayappavatti · presentation of objects
+  gloss: "very great, great, slight or very slight: decides how far a process runs"
+  plate: "7"
+- id: manodvara-vithi-mind-door-process
+  term: manodvāra-vīthi · mind-door process
+  gloss: "a process at the mind door alone: adverting, javanas, perhaps registration"
+  plate: "7"
+- id: yoniso-manasikara-wise-attention
+  term: yoniso manasikāra · wise attention
+  gloss: attending in a way that leads to wholesome javanas; unwise attention leads to unwholesome
+  plate: "7"
+- id: upacara-access
+  term: upacāra · access
+  gloss: concentration just short of jhāna; also a javana in the run-up to absorption
+  plate: 7b, 12
+- id: gotrabhu-change-of-lineage
+  term: gotrabhū · change of lineage
+  gloss: the javana that leaves the sense-sphere lineage for jhāna, or turns to Nibbāna
+  plate: 7b, 13
+- id: appana-absorption
+  term: appanā · absorption
+  gloss: the jhāna or path javana itself, after access; the third stage of concentration
+  plate: 7b, 12
+- id: paccaya-condition
+  term: paccaya · condition
+  gloss: a dhamma that helps another to arise or persist, in a specific way
+  plate: "8"
+- id: sahajata-conascence
+  term: sahajāta · conascence
+  gloss: support between things arising at the same moment, like a lamp and its light
+  plate: "8"
+- id: upanissaya-decisive-support
+  term: upanissaya · decisive support
+  gloss: a strong earlier cause, such as a habit, a teacher or a climate
+  plate: "8"
+- id: nissaya-support-condition-8
+  term: nissaya · support (condition 8)
+  gloss: a foundation, as the earth is for trees; arising together or before
+  plate: "8"
+- id: nissaya-word-by-word-text
+  term: nissaya · word-by-word text
+  gloss: a study text giving each Pāli phrase, then its meaning; a Burmese teaching form
+  plate: study
+- id: indriya-faculty
+  term: indriya · faculty
+  gloss: a dhamma that governs its own domain; 22 faculties, and condition 16
+  plate: 8, 8b
+- id: ahara-nutriment-four
+  term: āhāra · nutriment (four)
+  gloss: edible food, contact, volition and consciousness, each sustaining its results
+  plate: "8"
+- id: upadana-clinging
+  term: upādāna · clinging
+  gloss: "intense grasping: at sense pleasures, views, rites, a self; link 9 of the wheel"
+  plate: 8b, 9
+- id: anusaya-latent-tendencies
+  term: anusaya · latent tendencies
+  gloss: seven defilements lying dormant, ready to arise when conditions meet
+  plate: "8"
+- id: samyojana-fetter
+  term: saṃyojana · fetter
+  gloss: one of ten defilements that bind to rebirth; the four paths cut them
+  plate: 8b, 13
+- id: jhananga-jhana-factors
+  term: jhānaṅga · jhāna factors
+  gloss: "applied and sustained thought, zest, one-pointedness and feeling: seven in CMA VII, five distinct states"
+  plate: 8b, 12
+- id: magganga-path-factors
+  term: maggaṅga · path factors
+  gloss: >-
+    twelve: eight right factors and four wrong ones; the eight right ones in path consciousness are the truth
+    of the path
+  plate: "8"
+- id: bodhipakkhiya-dhamma-37-requisites
+  term: bodhipakkhiyā dhammā · 37 requisites
+  gloss: the suttas' 37 aids to awakening, which reduce to 14 states
+  plate: "8"
+- id: paticca-samuppada-dependent-origination
+  term: paṭicca-samuppāda · dependent origination
+  gloss: the twelve links by which suffering arises, and by whose ending it ceases
+  plate: "9"
+- id: avijja-ignorance
+  term: avijjā · ignorance
+  gloss: not knowing the four noble truths; delusion as a root of the wheel
+  plate: 9, 13
+- id: tanha-craving
+  term: taṇhā · craving
+  gloss: "greed as thirst: for sense objects, for existence or for non-existence; a root"
+  plate: "9"
+- id: namarupa-mentality-materiality-link-4
+  term: nāmarūpa · mentality-materiality (link 4)
+  gloss: "link 4: the resultant mental factors and kamma-born matter of a new life"
+  plate: "9"
+- id: bhava-kamma-becoming
+  term: bhava · kamma-becoming
+  gloss: "link 10, active side: volition and the deeds that lead to rebirth"
+  plate: "9"
+- id: bhava-rebirth-becoming
+  term: bhava · rebirth-becoming
+  gloss: "link 10, passive side: the new life's resultant mind and kamma-born matter"
+  plate: "9"
+- id: akara-mode
+  term: ākāra · mode
+  gloss: "one of twenty factors in the three-life reading: five for each group"
+  plate: "9"
+- id: sandhi-connection
+  term: sandhi · connection
+  gloss: one of three joints between the groups of causes and effects
+  plate: "9"
+- id: sankhepa-group
+  term: saṅkhepa · group
+  gloss: "one of four sets of five: past causes, present effects, present causes, future effects"
+  plate: "9"
+- id: vatta-round
+  term: vaṭṭa · round
+  gloss: "one of three cycles turning in the wheel: defilements, kamma, results"
+  plate: "9"
+- id: kamma
+  term: kamma
+  gloss: wholesome or unwholesome volition, which later ripens as results
+  plate: "10"
+- id: garuka-weighty-kamma
+  term: garuka · weighty kamma
+  gloss: jhāna kept to death, a heinous deed or fixed wrong view; ripens first
+  plate: "10"
+- id: asanna-death-proximate-kamma
+  term: āsanna · death-proximate kamma
+  gloss: done or recalled just before death; it ripens next if no weighty kamma does
+  plate: "10"
+- id: acinna-habitual-kamma
+  term: āciṇṇa · habitual kamma
+  gloss: what one does again and again; next in line after death-proximate kamma
+  plate: "10"
+- id: kamma-nimitta-kamma-sign
+  term: kamma-nimitta · kamma sign
+  gloss: at death, an object linked with a past deed, such as offered flowers
+  plate: "10"
+- id: gati-nimitta-destiny-sign
+  term: gati-nimitta · destiny sign
+  gloss: at death, an image of the coming birth
+  plate: "10"
+- id: anantariya-heinous-deeds
+  term: ānantariya · heinous deeds
+  gloss: killing mother, father or an arahant, wounding a Buddha, splitting the Saṅgha
+  plate: "10"
+- id: bhumi-plane
+  term: bhūmi · plane
+  gloss: one of 31 planes of existence, each matched to a kind of mind
+  plate: "11"
+- id: apaya-woeful-planes
+  term: apāya · woeful planes
+  gloss: "hell, animals, ghosts and titans: the four unhappy destinations"
+  plate: "11"
+- id: deva
+  term: deva
+  gloss: a being of the six sense-sphere heavens, above the human world
+  plate: "11"
+- id: brahma
+  term: Brahmā
+  gloss: a being of the fine-material planes, reborn there through jhāna
+  plate: "11"
+- id: mahakappa-great-aeon
+  term: mahākappa · great aeon
+  gloss: one cycle of a world's arising and passing; four incalculable aeons
+  plate: "11"
+- id: asankheyya-kappa-incalculable-aeon-plate-11
+  term: asaṅkheyya-kappa · incalculable aeon (Plate 11)
+  gloss: a quarter of a great aeon, one phase of a world-cycle
+  plate: "11"
+- id: asankheyya-incalculable-the-bodhisatta-s-career
+  term: asaṅkheyya · incalculable (the Bodhisatta's career)
+  gloss: in the Bodhisatta's story, a countless number of great aeons
+  plate: life
+- id: samatha-calm
+  term: samatha · calm
+  gloss: meditation that develops concentration, up to the jhānas
+  plate: "12"
+- id: kasina
+  term: kasiṇa
+  gloss: a device for concentration, such as a disc of earth or a colour
+  plate: "12"
+- id: nimitta-meditation-sign
+  term: nimitta · meditation sign
+  gloss: the preliminary, learning or counterpart image of the meditation object
+  plate: "12"
+- id: appamanna-illimitables-meditation
+  term: appamaññā · illimitables (meditation)
+  gloss: "loving-kindness, compassion, appreciative joy and equanimity, toward all beings: the divine abidings"
+  plate: "12"
+- id: vipassana-insight
+  term: vipassanā · insight
+  gloss: seeing mind and matter as impermanent, suffering and non-self
+  plate: "13"
+- id: tilakkhana-the-three-marks
+  term: tilakkhaṇa · the three marks
+  gloss: "impermanence, suffering and non-self: the marks that insight sees"
+  plate: "13"
+- id: dukkha-suffering
+  term: dukkha · suffering
+  gloss: the unsatisfactoriness of all that is conditioned; first noble truth and second mark
+  plate: D1, 13
+- id: visuddhi-purification
+  term: visuddhi · purification
+  gloss: one of seven stages of the path, from virtue to knowledge and vision
+  plate: "13"
+- id: vipassana-nana-insight-knowledge
+  term: vipassanā-ñāṇa · insight knowledge
+  gloss: one of ten stages of direct insight, from comprehension to conformity
+  plate: "13"
+- id: sotapanna-stream-enterer
+  term: sotāpanna · stream-enterer
+  gloss: one who has cut the first three fetters; at most seven more lives
+  plate: "13"
+- id: anagami-non-returner
+  term: anāgāmī · non-returner
+  gloss: has cut sensual desire and ill will; reborn only in higher planes
+  plate: "13"
+- id: arahant
+  term: arahant
+  gloss: one who has cut all ten fetters; makes no new kamma and ends rebirth
+  plate: "13"
+- id: puthujjana-worldling
+  term: puthujjana · worldling
+  gloss: an ordinary person who has reached no path
+  plate: "13"
+- id: ariya-noble-one
+  term: ariya · noble one
+  gloss: anyone who has reached a path or fruit, from stream-entry up
+  plate: "13"
+- id: abhidhamma-pitaka
+  term: Abhidhamma Piṭaka
+  gloss: "the third basket of the Pāli Canon: seven books of analysis"
+  plate: "1"
+- id: dhammasangani
+  term: Dhammasaṅgaṇī
+  gloss: "the first Abhidhamma book: lists every kind of citta and its factors"
+  plate: "1"
+- id: patthana
+  term: Paṭṭhāna
+  gloss: "the seventh Abhidhamma book: relates all dhammas by 24 conditions"
+  plate: "1"
+- id: atthasalini-the-expositor
+  term: Atthasālinī · The Expositor
+  gloss: Buddhaghosa's commentary on the Dhammasaṅgaṇī; source of the mango simile
+  plate: "1"
+- id: visuddhimagga-path-of-purification
+  term: Visuddhimagga · Path of Purification
+  gloss: Buddhaghosa's fifth-century manual of practice and doctrine; source of Plates 12–13
+  plate: "1"
+- id: matika-matrix
+  term: mātikā · matrix
+  gloss: the Dhammasaṅgaṇī's opening lists, 22 triads and 100 dyads, that sort every dhamma
+  plate: "1"
+- id: jataka
+  term: Jātaka
+  gloss: a birth story of the Bodhisatta, ending by naming who was who
+  plate: life
+- id: bodhisatta
+  term: Bodhisatta
+  gloss: a being bound for Buddhahood; the Buddha in his past lives and before awakening
+  plate: life
+- id: paccupatthana-manifestation
+  term: paccupaṭṭhāna · manifestation
+  gloss: "how a dhamma shows itself in experience: the third part of its card"
+  plate: "2"
+- id: padatthana-proximate-cause
+  term: padaṭṭhāna · proximate cause
+  gloss: "what a dhamma most directly depends on: the fourth part of its card"
+  plate: "2"
+- id: sutamaya-cintamaya-bhavanamaya-panna
+  term: sutamayā · cintāmayā · bhāvanāmayā paññā
+  gloss: "wisdom from study, from reflection, from development: the atlas's three depths"
+  plate: learn
+- id: mano-dhatu-mind-element
+  term: mano-dhātu · mind element
+  gloss: the three cittas of five-door adverting and receiving
+  plate: D1
+- id: manovinnana-dhatu-mind-consciousness-element
+  term: manoviññāṇa-dhātu · mind-consciousness element
+  gloss: the 76 cittas that are neither sense consciousness nor mind element
+  plate: D1
+- id: abyakata-indeterminate
+  term: abyākata · indeterminate
+  gloss: "neither wholesome nor unwholesome: resultants, functionals, matter and Nibbāna"
+  plate: explorer
+- id: sukha-bodily-pleasure
+  term: sukha · bodily pleasure
+  gloss: "pleasant bodily feeling: only in wholesome-resultant body-consciousness"
+  plate: "3"
+- id: dukkha-bodily-pain
+  term: dukkha · bodily pain
+  gloss: "painful bodily feeling: only in unwholesome-resultant body-consciousness"
+  plate: "3"
+- id: mahakusala-great-wholesome
+  term: mahākusala · great wholesome
+  gloss: the eight beautiful sense-sphere wholesome cittas, numbers 31–38 on Plate 3
+  plate: "3"
+- id: dvaravimutta-door-freed
+  term: dvāravimutta · door-freed
+  gloss: "rebirth-linking, life-continuum and death: cittas that arise without any door"
+  plate: 3b
+- id: ekaggata-one-pointedness
+  term: ekaggatā · one-pointedness
+  gloss: unifies the mind on its object; when strong it is concentration (samādhi)
+  plate: "4"
+- id: adhimokkha-decision
+  term: adhimokkha · decision
+  gloss: resolves on the object; absent from doubt and from sense consciousness
+  plate: "4"
+- id: viriya-energy
+  term: viriya · energy
+  gloss: effort that upholds the other factors; also a faculty and a power
+  plate: "4"
+- id: chanda-desire-to-do
+  term: chanda · desire-to-do
+  gloss: the wish to act or attain; not greed, and can be wholesome
+  plate: "4"
+- id: mana-conceit
+  term: māna · conceit
+  gloss: measuring oneself as better, equal or worse; may join greed without wrong view
+  plate: "4"
+- id: ahirika-anottappa
+  term: ahirika · anottappa
+  gloss: "shamelessness and fearlessness of wrongdoing: no self-respect, no dread of evil's results"
+  plate: "4"
+- id: uddhacca-restlessness
+  term: uddhacca · restlessness
+  gloss: agitation of mind, like wind-tossed water; in every unwholesome citta
+  plate: "4"
+- id: issa-macchariya-kukkucca
+  term: issā · macchariya · kukkucca
+  gloss: "envy, avarice and worry: three factors found only in hate-rooted cittas"
+  plate: "4"
+- id: thina-middha
+  term: thīna · middha
+  gloss: "sloth and torpor: sluggishness of mind and its factors; only in the five prompted unwholesome cittas"
+  plate: "4"
+- id: vicikiccha-doubt
+  term: vicikicchā · doubt
+  gloss: sceptical wavering; found in one delusion-rooted citta, and abandoned at stream-entry
+  plate: "4"
+- id: saddha-faith
+  term: saddhā · faith
+  gloss: confidence that clarifies the mind, like a gem clearing muddy water
+  plate: "4"
+- id: hiri-ottappa
+  term: hiri · ottappa
+  gloss: "moral shame and moral dread: recoiling from evil from self-respect, and fear of results"
+  plate: "4"
+- id: passaddhi-ujjukata-the-six-pairs
+  term: passaddhi … ujjukatā · the six pairs
+  gloss: "tranquillity, lightness, malleability, wieldiness, proficiency, rectitude: of the factors and of the mind"
+  plate: "4"
+- id: virati-abstinences
+  term: virati · abstinences
+  gloss: right speech, right action, right livelihood; singly in mundane cittas, together in a path
+  plate: "4"
+- id: sampayoga-association
+  term: sampayoga · association
+  gloss: "reading across: which cittas each mental factor joins"
+  plate: "4"
+- id: niyata-aniyata-fixed-and-unfixed
+  term: niyata · aniyata · fixed and unfixed
+  gloss: fixed factors always arise in their cittas; the eleven unfixed only sometimes
+  plate: "4"
+- id: pathavi-earth-element
+  term: pathavī · earth element
+  gloss: hardness or softness; the foundation for other matter
+  plate: "5"
+- id: apo-water-element
+  term: āpo · water element
+  gloss: cohesion, which holds matter together; known by mind, not by touch
+  plate: "5"
+- id: tejo-fire-element
+  term: tejo · fire element
+  gloss: heat and cold; it matures matter and, as temperature, produces it
+  plate: "5"
+- id: vayo-air-element
+  term: vāyo · air element
+  gloss: motion and pressure; it supports and moves other matter
+  plate: "5"
+- id: upada-rupa-derived-matter
+  term: upādā-rūpa · derived matter
+  gloss: the 24 kinds of matter that depend on the four great elements
+  plate: "5"
+- id: atthaka-navaka-dasaka
+  term: aṭṭhaka · navaka · dasaka
+  gloss: "kalāpa sizes: octad eight kinds, nonad nine, decad ten, undecad eleven"
+  plate: "5"
+- id: nipphanna-concrete-matter
+  term: nipphanna · concrete matter
+  gloss: the 18 kinds with a nature of their own, fit objects for insight
+  plate: "5"
+- id: anipphanna-non-concrete-matter
+  term: anipphanna · non-concrete matter
+  gloss: the 10 qualities and modes of concrete matter, such as space and decay
+  plate: "5"
+- id: lakkhana-rupa-characteristics-of-matter
+  term: lakkhaṇa-rūpa · characteristics of matter
+  gloss: "production, continuity, decay and impermanence: marks of matter's arising and passing"
+  plate: "5"
+- id: samutthana-origin-of-matter
+  term: samuṭṭhāna · origin of matter
+  gloss: "what produces matter: kamma, citta, temperature or nutriment"
+  plate: "5"
+- id: utu-temperature
+  term: utu · temperature
+  gloss: the fire element as a producer of matter, inside and outside the body
+  plate: "5"
+- id: atita-bhavanga-past-life-continuum
+  term: atīta-bhavaṅga · past life-continuum
+  gloss: >-
+    the life-continuum moment during which the object arises, before it registers at the door; counted first
+    of the 17
+  plate: "7"
+- id: vibhuta-avibhuta-clear-and-obscure
+  term: vibhūta · avibhūta · clear and obscure
+  gloss: an object's strength at the mind door; only a clear one gets registration
+  plate: "7"
+- id: parikamma-preliminary
+  term: parikamma · preliminary
+  gloss: the first stage of concentration; also the first javana leading into absorption
+  plate: 7b, 12
+- id: anuloma-conformity
+  term: anuloma · conformity
+  gloss: the javana that fits the mind to what follows, just before change-of-lineage
+  plate: 7b, 13
+- id: paccavekkhana-reviewing
+  term: paccavekkhaṇa · reviewing
+  gloss: after attainment, knowledge looking back on path, fruit, Nibbāna and defilements
+  plate: 7b, 13
+- id: paccayuppanna-conditioned-state
+  term: paccayuppanna · conditioned state
+  gloss: the dhamma that a condition helps to arise or persist
+  plate: "8"
+- id: purejata-prenascence
+  term: purejāta · prenascence
+  gloss: support from matter that arose earlier and still exists, such as the eye
+  plate: "8"
+- id: pacchajata-postnascence
+  term: pacchājāta · postnascence
+  gloss: support from later cittas to a body that arose before them
+  plate: "8"
+- id: adhipati-predominance
+  term: adhipati · predominance
+  gloss: >-
+    the one factor leading a citta: desire, energy, citta or investigation; or, as object predominance, an
+    object held in high regard
+  plate: 8, 8b
+- id: asava-ogha-yoga
+  term: āsava · ogha · yoga
+  gloss: "taints, floods, bonds: sense desire, desire for existence, views, ignorance"
+  plate: "8"
+- id: nivarana-hindrances
+  term: nīvaraṇa · hindrances
+  gloss: "obstacles to concentration: sensual desire, ill will, sloth, restlessness, doubt, ignorance"
+  plate: "8"
+- id: kilesa-defilement
+  term: kilesa · defilement
+  gloss: one of ten states that torment the mind, from greed to fearlessness of wrongdoing
+  plate: "8"
+- id: bala-power
+  term: bala · power
+  gloss: a state unshaken by its opposite; nine, among them faith, energy and wisdom
+  plate: "8"
+- id: salayatana-six-bases-link-5
+  term: saḷāyatana · six bases (link 5)
+  gloss: "link 5: the five sense organs and the mind, as results of kamma"
+  plate: "9"
+- id: janaka-upaghataka-kamma-by-function
+  term: janaka … upaghātaka · kamma by function
+  gloss: "productive, supportive, obstructive or destructive: what a kamma does"
+  plate: "10"
+- id: katatta-reserve-kamma
+  term: kaṭattā · reserve kamma
+  gloss: any act done once, which ripens if nothing stronger is there
+  plate: "10"
+- id: ahosi-defunct-kamma
+  term: ahosi · defunct kamma
+  gloss: kamma whose chance to ripen has passed
+  plate: "10"
+- id: suddhavasa-pure-abodes
+  term: suddhāvāsa · pure abodes
+  gloss: the five highest fine-material planes, where only non-returners are reborn
+  plate: "11"
+- id: asannasatta-non-percipient-beings
+  term: asaññasatta · non-percipient beings
+  gloss: a fine-material plane of matter with no mind, for 500 great aeons
+  plate: "11"
+- id: kammatthana-meditation-subject
+  term: kammaṭṭhāna · meditation subject
+  gloss: one of forty objects for calm; literally “place of work”
+  plate: "12"
+- id: carita-temperament
+  term: carita · temperament
+  gloss: a person's dominant tendency, such as lustful or faithful, guiding the choice of subject
+  plate: "12"
+- id: udayabbaya-nana-rise-and-fall
+  term: udayabbaya-ñāṇa · rise and fall
+  gloss: knowledge seeing dhammas arise and pass; first tender, then mature
+  plate: "13"
+- id: sakadagami-once-returner
+  term: sakadāgāmī · once-returner
+  gloss: has weakened sensual desire and ill will; returns to this world once
+  plate: "13"
+- id: vimokkhamukha-doors-to-liberation
+  term: vimokkhamukha · doors to liberation
+  gloss: "signless, desireless or void: the entry set by the mark insight dwelt on"
+  plate: "13"
+- id: sarvastivada
+  term: Sarvāstivāda
+  gloss: a northern school holding that dhammas exist in past, present and future
+  plate: 1, 15
+- id: yogacara
+  term: Yogācāra
+  gloss: a Mahāyāna school counting 100 dharmas and eight kinds of consciousness
+  plate: 1, 15
+- id: alaya-vijnana-storehouse-consciousness
+  term: ālaya-vijñāna · storehouse consciousness
+  gloss: Yogācāra's eighth consciousness, said to hold the seeds of past action
+  plate: "15"
+- id: cittaviprayukta-dissociated-formations
+  term: cittaviprayukta · dissociated formations
+  gloss: a northern category of things neither mind nor matter, such as life force
+  plate: "15"

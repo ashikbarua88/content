@@ -26,6 +26,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
         <h1>{c.title}</h1>
         <p class="pali-line" lang="pi">{c.pali}</p>
         <p class="dek">{c.def}</p>
+        <p style="margin-top:12px"><button type="button" class="savepdf" onclick="window.print()">Save as PDF</button></p>
       </header>
 
       {pic && (

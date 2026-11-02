@@ -1,0 +1,185 @@
+# The thirty links between the sixteen ideas: each is one sentence of explanation.
+- id: link-0
+  from: T
+  to: CE
+  type: ana
+  label: analysed into
+  text: Ultimate analysis finds four kinds of reality; the mental factors (cetasika) are the second.
+- id: link-1
+  from: T
+  to: CI
+  type: ana
+  label: analysed into
+  text: Consciousness (citta) is the first of the four realities.
+- id: link-2
+  from: T
+  to: RU
+  type: ana
+  label: analysed into
+  text: Matter is the third.
+- id: link-3
+  from: T
+  to: NB
+  type: ana
+  label: and the unconditioned
+  text: Nibbāna is the fourth reality, and the only unconditioned one.
+- id: link-4
+  from: CO
+  to: PR
+  type: ana
+  label: explains every step
+  text: "Each step of a process is held by specific conditions: proximity, support, object and more."
+- id: link-5
+  from: CO
+  to: DO
+  type: ana
+  label: applied to a life
+  text: The twelve links are related by the same 24 conditions.
+- id: link-6
+  from: PL
+  to: CI
+  type: ana
+  label: each world its minds
+  text: Each plane allows certain kinds of citta; the immaterial planes have no matter at all.
+- id: link-7
+  from: CE
+  to: CI
+  type: mind
+  label: arise together
+  text: A citta and its factors arise and cease together, with one object and one base.
+- id: link-8
+  from: CI
+  to: PR
+  type: mind
+  label: strung into processes
+  text: Cittas never occur at random; they follow fixed sequences.
+- id: link-9
+  from: BH
+  to: PR
+  type: mind
+  label: an object interrupts
+  text: The life-continuum vibrates and is cut off when an object strikes.
+- id: link-10
+  from: PR
+  to: JV
+  type: mind
+  label: peaks in
+  text: A complete sense-sphere process usually culminates in seven javanas.
+- id: link-11
+  from: RU
+  to: CI
+  type: mm
+  label: base and object
+  text: Matter supplies the six bases and the five sense objects.
+- id: link-12
+  from: CI
+  to: RU
+  type: mm
+  label: mind-born matter
+  text: "75 kinds of citta produce matter as they arise: posture, gesture, speech."
+- id: link-13
+  from: KA
+  to: RU
+  type: mm
+  label: kamma-born matter
+  text: Past kamma produces the sense organs, sex, heart-base and life faculty.
+- id: link-14
+  from: JV
+  to: KA
+  type: kam
+  label: its volition is kamma
+  text: Wholesome or unwholesome volition in the javanas is new kamma.
+- id: link-15
+  from: CE
+  to: KA
+  type: kam
+  label: volition is a factor
+  text: Kamma is cetanā, one of the seven universal mental factors.
+- id: link-16
+  from: DO
+  to: KA
+  type: kam
+  label: formations and becoming
+  text: Link 2, and the kamma side of link 10 (kamma-process becoming), are kamma.
+- id: link-17
+  from: DO
+  to: RB
+  type: kam
+  label: via consciousness
+  text: Link 3 is resultant consciousness, beginning with rebirth-linking.
+- id: link-18
+  from: KA
+  to: RB
+  type: kam
+  label: ripens as rebirth
+  text: Productive kamma produces the next rebirth-linking.
+- id: link-19
+  from: RB
+  to: BH
+  type: kam
+  label: continues as
+  text: The rebirth-linking citta recurs as the life-continuum for the whole life.
+- id: link-20
+  from: RB
+  to: PL
+  type: kam
+  label: in one of 31
+  text: Rebirth takes place in a plane that fits the ripening kamma.
+- id: link-21
+  from: SA
+  to: PL
+  type: path
+  label: jhāna ripens here
+  text: Jhāna kamma ripens in the Brahmā planes.
+- id: link-22
+  from: SA
+  to: VI
+  type: path
+  label: supports
+  text: Concentration is a root of the tree of purification.
+- id: link-23
+  from: VI
+  to: CI
+  type: path
+  label: sees mind and matter
+  text: Insight begins by defining mind and matter, then watches them rise and fall.
+- id: link-24
+  from: DO
+  to: VI
+  type: path
+  label: discerning conditions
+  text: Overcoming doubt, the fourth purification, is seeing the conditions of mind and matter.
+- id: link-25
+  from: VI
+  to: PA
+  type: path
+  label: matures into
+  text: The insight knowledges culminate in path knowledge.
+- id: link-26
+  from: PA
+  to: DO
+  type: path
+  label: cuts its roots
+  text: The paths abandon ignorance and craving, the two roots of the wheel.
+- id: link-27
+  from: PA
+  to: NB
+  type: path
+  label: takes as object
+  text: Path and fruition cittas take Nibbāna as their object.
+- id: link-28
+  from: JV
+  to: VI
+  type: path
+  label: where insight arises
+  text: >-
+    Insight knowledge arises in wholesome (for an arahant, functional) javanas of the mind-door process,
+    taking mind and matter as object.
+- id: link-29
+  from: CE
+  to: PA
+  type: path
+  label: path factors are mental factors
+  text: >-
+    The factors of the path (wisdom, applied thought, the abstinences, energy, mindfulness, one-pointedness)
+    are cetasikas arising in path consciousness.

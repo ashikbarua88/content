@@ -19,7 +19,7 @@ const plateNo = d.plate.replace(/^p/, "");
       <p class="crumbs"><a href={u("readings/")}>Readings</a> › {d.part}</p>
       <h1>{d.title}</h1>
       <p class="dek">{d.dek}</p>
-      <p class="meta"><span>About {d.minutes} minutes</span><span>Plate {plateNo} in the atlas</span>{cmaMap[plateNo] && <span>Manual {cmaMap[plateNo].refs.split(";")[0]}</span>}</p>
+      <p class="meta"><button type="button" class="savepdf" onclick="window.print()">Save as PDF</button><span>About {d.minutes} minutes</span><span>Plate {plateNo} in the atlas</span>{cmaMap[plateNo] && <span>Manual {cmaMap[plateNo].refs.split(";")[0]}</span>}</p>
     </header>
     <div class="body">
       <Content />

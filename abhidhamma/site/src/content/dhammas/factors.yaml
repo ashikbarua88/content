@@ -1,0 +1,402 @@
+# The 52 mental factors (Manual II). 'text' is written for this site, after the commentaries.
+- id: phassa
+  pali: phassa
+  en: contact
+  group: universal
+  text: >-
+    The meeting of mind and object. Contact is what makes an experience happen at all: the coming together of
+    a sense base, an object and consciousness. Feeling follows from it.
+  card:
+    characteristic: touching the object
+    function: impingement
+    manifestation: the coming together of base, object and consciousness
+    proximateCause: an object that has come into focus
+    tryIt: When a sound arrives, notice the meeting of ear, sound and hearing, before liking or naming.
+- id: vedana
+  pali: vedanā
+  en: feeling
+  group: universal
+  text: >-
+    The tone of an experience: pleasant, painful or neither. Feeling is said to "enjoy" the object, the way a
+    king enjoys a meal that others have only tasted. Five kinds are counted: bodily pleasure and pain, joy,
+    displeasure, and equanimity.
+  card:
+    characteristic: being felt
+    function: experiencing the taste of the object
+    manifestation: relishing by the factors that arise with it
+    proximateCause: for joy, tranquillity; in the suttas, feeling arises with contact as its condition
+    tryIt: "Note the tone of the next thing you see or hear: pleasant, unpleasant or neither."
+- id: sanna
+  pali: saññā
+  en: perception
+  group: universal
+  text: >-
+    Perception marks an object so that it can be known again, as a carpenter marks timber. It recognises by
+    signs, which is why it can also mislead, as a scarecrow fools deer.
+  card:
+    characteristic: perceiving the qualities of the object
+    function: making a sign for perceiving again “this is the same”, as a carpenter marks timber
+    manifestation: interpreting by the features it has picked up
+    proximateCause: the object as it appears
+    tryIt: >-
+      Notice recognising: a face in a crowd, a word on a page. Notice a misrecognition too, a rope taken for a
+      snake.
+- id: cetana
+  pali: cetanā
+  en: volition
+  group: universal
+  text: >-
+    Volition gathers the other factors and directs them on the object, like a foreman who works and keeps
+    others working. In wholesome and unwholesome cittas it is kamma.
+  card:
+    characteristic: the state of willing
+    function: accumulating kamma
+    manifestation: coordinating, like a head carpenter who does his own work and keeps others at theirs
+    proximateCause: the factors that arise with it
+    tryIt: Before you speak, notice the intending that steers the words. That intending is kamma.
+- id: ekaggata
+  pali: ekaggatā
+  en: one-pointedness
+  group: universal
+  text: >-
+    One-pointedness holds the citta on its single object without wavering. Present in every moment, developed
+    it becomes concentration, the factor that defines jhāna.
+- id: jivitindriya
+  pali: jīvitindriya
+  en: life faculty
+  group: universal
+  text: >-
+    The life faculty sustains the mental factors it arises with for the span of their moment, as water keeps
+    lotuses alive. Matter has a life faculty of its own.
+- id: manasikara
+  pali: manasikāra
+  en: attention
+  group: universal
+  text: >-
+    Attention turns the mind toward the object, as a rudder steers a ship. Whether it turns wisely (yoniso) or
+    unwisely decides much of what follows.
+  card:
+    characteristic: conducting the factors that arise with it toward the object
+    function: yoking them to the object
+    manifestation: confronting an object
+    proximateCause: the object
+    tryIt: >-
+      Notice the mind turning toward something before it knows what it is. Wise or unwise attention decides
+      what follows.
+- id: vitakka
+  pali: vitakka
+  en: applied thought
+  group: occasional
+  text: >-
+    Applied thought lifts the mind onto its object, like striking a bell. It is the first factor of the first
+    jhāna and falls away in the higher ones; as wrong or right intention it is also a path factor.
+- id: vicara
+  pali: vicāra
+  en: sustained thought
+  group: occasional
+  text: >-
+    Sustained thought keeps the mind moving over its object, like the bell's resonance after the strike. It is
+    subtler than applied thought and lasts one jhāna longer in the fivefold scheme.
+- id: adhimokkha
+  pali: adhimokkha
+  en: decision
+  group: occasional
+  text: >-
+    Decision settles the mind on its object, like a firm pillar. It is absent from moments of doubt, since
+    doubt is exactly the failure to settle.
+- id: viriya
+  pali: viriya
+  en: energy
+  group: occasional
+  text: >-
+    Energy supports the other factors and keeps them from collapsing, like new timbers propping a sagging
+    house. It serves wholesome and unwholesome states alike; rightly directed it is right effort.
+- id: piti
+  pali: pīti
+  en: zest
+  group: occasional
+  text: >-
+    Zest is delight in the object, the gladness that refreshes body and mind. The commentaries describe five
+    grades, from a slight thrill to an uplifting rapture. It occurs only with joyful feeling.
+- id: chanda
+  pali: chanda
+  en: desire to act
+  group: occasional
+  text: >-
+    Desire to act is wanting to do something with the object. It is not greed: it can be the wish to give, to
+    learn or to practise, and as a predominant it can lead the whole mind.
+- id: moha
+  pali: moha
+  en: delusion
+  group: unwholesome
+  text: >-
+    Delusion blinds the mind to the true nature of its object. It is the root of all unwholesome states and is
+    present in every one of them.
+  card:
+    characteristic: mental blindness, or unknowing
+    function: not penetrating, or concealing the object's true nature
+    manifestation: absence of right understanding, or mental darkness
+    proximateCause: unwise attention
+    tryIt: "Notice dullness or confusion: a moment when you do not know what the mind is doing."
+- id: ahirika
+  pali: ahirika
+  en: shamelessness
+  group: unwholesome
+  text: >-
+    Shamelessness is the absence of disgust at wrongdoing, the lack of an inner conscience that would recoil
+    from it.
+- id: anottappa
+  pali: anottappa
+  en: fearlessness of wrongdoing
+  group: unwholesome
+  text: >-
+    Fearlessness of wrongdoing is the absence of dread at the consequences of bad action, the lack of the
+    outer conscience that would hold one back.
+- id: uddhacca
+  pali: uddhacca
+  en: restlessness
+  group: unwholesome
+  text: >-
+    Restlessness is the mind's agitation, like water whipped by wind. It is present in every unwholesome citta
+    and gives its name to one of the two delusion-rooted cittas.
+- id: lobha
+  pali: lobha
+  en: greed
+  group: unwholesome
+  text: >-
+    Greed grasps its object and does not let go, like birdlime. It ranges from faint liking to raging lust and
+    appears in more of the Manual's lists of defilements than any other factor.
+  card:
+    characteristic: grasping an object
+    function: sticking, as meat sticks to a hot pan
+    manifestation: not letting go
+    proximateCause: seeing enjoyment in things that lead to bondage
+    tryIt: When something pleasant appears, look for the sticking. Do not push it away; know it as greed.
+- id: ditthi
+  pali: diṭṭhi
+  en: wrong view
+  group: unwholesome
+  text: >-
+    Wrong view is adherence to a mistaken interpretation, above all the view of a self. It accompanies only
+    greed-rooted cittas, since a view is always held because it is liked.
+- id: mana
+  pali: māna
+  en: conceit
+  group: unwholesome
+  text: >-
+    Conceit is measuring oneself against others, as better, equal or worse. It too arises only in greed-rooted
+    cittas, never together with wrong view.
+- id: dosa
+  pali: dosa
+  en: hatred
+  group: unwholesome
+  text: >-
+    Hatred is the mind's striking out against its object, from mild irritation to fury. It always comes with
+    displeasure, and roots two cittas.
+  card:
+    characteristic: ferocity
+    function: spreading, or burning up its own support
+    manifestation: persecuting
+    proximateCause: grounds for annoyance
+    tryIt: Notice even slight aversion. Impatience at a delay, and fear, are dosa too.
+- id: issa
+  pali: issā
+  en: envy
+  group: unwholesome
+  text: >-
+    Envy is resentment at another's success or good fortune. It arises only in the hate-rooted cittas, and
+    only occasionally.
+- id: macchariya
+  pali: macchariya
+  en: avarice
+  group: unwholesome
+  text: >-
+    Avarice is the wish to keep one's own good fortune from others. It shares the hate-rooted cittas with envy
+    and worry, but never with them.
+- id: kukkucca
+  pali: kukkucca
+  en: worry
+  group: unwholesome
+  text: Worry is regret over what was done or left undone, the mind going back over the past with distress.
+- id: thina
+  pali: thīna
+  en: sloth
+  group: unwholesome
+  text: >-
+    Sloth is the mind's sluggishness, its loss of drive. It occurs only in the prompted unwholesome cittas,
+    always with torpor.
+- id: middha
+  pali: middha
+  en: torpor
+  group: unwholesome
+  text: >-
+    Torpor is the unwieldiness of the mental factors, their heaviness. With sloth it forms one of the five
+    hindrances.
+- id: vicikiccha
+  pali: vicikicchā
+  en: doubt
+  group: unwholesome
+  text: >-
+    Doubt is the mind's indecision about the Buddha, the Dhamma, the path and the nature of things. It roots
+    one citta of its own, and stream-entry ends it.
+- id: saddha
+  pali: saddhā
+  en: faith
+  group: beautiful
+  text: >-
+    Faith is confidence in what deserves it, which clears the mind as a water-clearing gem settles mud. It is
+    present in every beautiful citta and is the first of the five faculties.
+  card:
+    characteristic: placing faith, trusting
+    function: clarifying, like a gem that clears muddy water; or setting out, like crossing a flood
+    manifestation: non-fogginess, or resolution
+    proximateCause: something worthy of faith, or hearing the good Dhamma
+    tryIt: Notice the clearing of the mind when you think of something worthy of trust.
+- id: sati
+  pali: sati
+  en: mindfulness
+  group: beautiful
+  text: >-
+    Mindfulness keeps the mind from floating away from its object, as a post anchors a boat. It is present in
+    every beautiful citta and is the seventh path factor.
+  card:
+    characteristic: not wobbling, not floating away from the object
+    function: absence of confusion, non-forgetfulness
+    manifestation: guarding, or facing the object
+    proximateCause: strong perception, or the four foundations of mindfulness
+    tryIt: Notice the moment you remember to be present. The mind stops floating and stays with what is here.
+- id: hiri
+  pali: hiri
+  en: shame
+  group: beautiful
+  text: >-
+    Shame is recoiling from wrongdoing out of self-respect: the inner guardian of the world, the commentaries
+    call it.
+- id: ottappa
+  pali: ottappa
+  en: fear of wrongdoing
+  group: beautiful
+  text: >-
+    Fear of wrongdoing is recoiling from it out of regard for its consequences and for others: the outer
+    guardian of the world.
+- id: alobha
+  pali: alobha
+  en: non-greed
+  group: beautiful
+  text: >-
+    Non-greed is not clinging to the object, like a drop of water on a lotus leaf. It shows as generosity and
+    renunciation.
+- id: adosa
+  pali: adosa
+  en: non-hatred
+  group: beautiful
+  text: Non-hatred is the absence of ill will. Developed toward beings it becomes loving-kindness.
+- id: tatramajjhattata
+  pali: tatramajjhattatā
+  en: neutrality of mind
+  group: beautiful
+  text: >-
+    Neutrality of mind keeps the citta and its factors in balance, as a charioteer watches well-trained
+    horses. Developed toward beings it becomes the equanimity of the illimitables.
+- id: kaya-passaddhi
+  pali: kāya-passaddhi
+  en: tranquillity of factors
+  group: beautiful
+  text: Tranquillity of the mental factors calms their disturbance; it is the opposite of restlessness and worry.
+- id: citta-passaddhi
+  pali: citta-passaddhi
+  en: tranquillity of consciousness
+  group: beautiful
+  text: Tranquillity of consciousness calms the citta itself, as tranquillity of factors calms its companions.
+- id: kaya-lahuta
+  pali: kāya-lahutā
+  en: lightness of factors
+  group: beautiful
+  text: Lightness of the mental factors removes their heaviness; it is the opposite of sloth and torpor.
+- id: citta-lahuta
+  pali: citta-lahutā
+  en: lightness of consciousness
+  group: beautiful
+  text: Lightness of consciousness removes heaviness from the citta itself.
+- id: kaya-muduta
+  pali: kāya-mudutā
+  en: malleability of factors
+  group: beautiful
+  text: Malleability of the mental factors removes their rigidity, the stiffness of views and conceit.
+- id: citta-muduta
+  pali: citta-mudutā
+  en: malleability of consciousness
+  group: beautiful
+  text: Malleability of consciousness makes the citta itself supple.
+- id: kaya-kammannata
+  pali: kāya-kammaññatā
+  en: wieldiness of factors
+  group: beautiful
+  text: Wieldiness of the mental factors makes them fit for work, like gold made workable.
+- id: citta-kammannata
+  pali: citta-kammaññatā
+  en: wieldiness of consciousness
+  group: beautiful
+  text: Wieldiness of consciousness makes the citta itself fit for any task.
+- id: kaya-pagunnata
+  pali: kāya-pāguññatā
+  en: proficiency of factors
+  group: beautiful
+  text: >-
+    Proficiency of the mental factors is their health and skill, the opposite of faithlessness and sickliness
+    of mind.
+- id: citta-pagunnata
+  pali: citta-pāguññatā
+  en: proficiency of consciousness
+  group: beautiful
+  text: Proficiency of consciousness is the citta's own health and skill.
+- id: kayujjukata
+  pali: kāyujjukatā
+  en: rectitude of factors
+  group: beautiful
+  text: Rectitude of the mental factors is their straightness, the opposite of deceit and crookedness.
+- id: cittujjukata
+  pali: cittujjukatā
+  en: rectitude of consciousness
+  group: beautiful
+  text: Rectitude of consciousness is the straightness of the citta itself.
+- id: samma-vaca
+  pali: sammā-vācā
+  en: right speech
+  group: beautiful
+  text: >-
+    Right speech is the deliberate abstaining from false, divisive, harsh and idle speech. It is present only
+    when one actually refrains, and always in the moment of the path.
+- id: samma-kammanta
+  pali: sammā-kammanta
+  en: right action
+  group: beautiful
+  text: >-
+    Right action is the deliberate abstaining from killing, stealing and sexual misconduct, when an occasion
+    for them arises, and always in the path.
+- id: samma-ajiva
+  pali: sammā-ājīva
+  en: right livelihood
+  group: beautiful
+  text: Right livelihood is the deliberate abstaining from wrong ways of making a living, and always in the path.
+- id: karuna
+  pali: karuṇā
+  en: compassion
+  group: beautiful
+  text: >-
+    Compassion is the wish that suffering be removed from others; its near enemy is grief, its far enemy
+    cruelty. It occurs occasionally, and never in the path.
+- id: mudita
+  pali: muditā
+  en: appreciative joy
+  group: beautiful
+  text: >-
+    Appreciative joy is gladness at others' success; its far enemy is envy. Like compassion it occurs
+    occasionally and is a basis for jhāna.
+- id: pannindriya
+  pali: paññindriya
+  en: wisdom
+  group: beautiful
+  text: >-
+    Wisdom understands things as they are, like a lamp lighting a dark room. It is non-delusion, the third
+    wholesome root, and as right view it leads the path.

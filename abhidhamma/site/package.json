@@ -5,7 +5,7 @@
   "scripts": {
     "extract": "node tools/extract.mjs",
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && node tools/export-book.mjs && pagefind --site dist",
     "preview": "astro preview",
     "prebuild": "node tools/companions.mjs",
     "predev": "node tools/companions.mjs"

@@ -1,0 +1,537 @@
+# Stories from the Buddha's life, the Jātakas and the disciples, by level. 'reading' links each to an idea and is marked on the site as a study aid.
+- id: s01
+  level: 1
+  kind: life
+  title: Where the Abhidhamma was first taught
+  source: Atthasālinī, introduction
+  story: >-
+    The commentary tells that the Buddha spent a rainy season in the Tāvatiṃsa heaven, teaching the Abhidhamma
+    to the devas, among them his mother, reborn as a deva. Each day he came down to Lake Anotatta, where he
+    gave Sāriputta the outline, and Sāriputta taught it to five hundred monks. At the end of the rains he
+    descended at Saṅkassa. The Tipiṭaka itself does not tell this story.
+  reading: >-
+    This is the tradition's account of where the seven books of Plate 1 came from, and why Sāriputta is
+    honoured as the first teacher of the Abhidhamma.
+  question: Why might a tradition place the first teaching of the Abhidhamma among devas rather than humans?
+  plates:
+    - "1"
+    - "11"
+- id: s02
+  level: 1
+  kind: jataka
+  title: The last line of every Jātaka
+  source: Jātaka, closing identification
+  story: >-
+    Each Jātaka ends by naming who was who: “At that time, so-and-so was the king, and I myself was the
+    ascetic.” One continuity is followed across many lives as if it were one person.
+  reading: >-
+    Conventional truth at work (Plate 2). Ultimately there is only a stream of cittas and matter, each moment
+    conditioning the next. “The Bodhisatta” names the stream: neither the same person, nor a different one.
+  question: What does the word “I” refer to in “I was the ascetic”?
+  plates:
+    - "2"
+    - "10"
+- id: s03
+  level: 1
+  kind: disc
+  title: Vakkali and the body
+  source: SN 22.87
+  story: >-
+    The monk Vakkali longed to keep looking at the Buddha. The Buddha said: “Enough, Vakkali. What is there to
+    see in this foul body? Whoever sees the Dhamma sees me.”
+  reading: >-
+    Even “the Buddha” is a convention for aggregates. What is really to be seen are dhammas and their
+    characteristics, the shift Plate 2 asks of you.
+  question: What would it mean to see a teacher in dhammas rather than as a person?
+  plates:
+    - "2"
+- id: s04
+  level: 1
+  kind: disc
+  title: Nun Vajirā's chariot
+  source: SN 5.10
+  story: >-
+    Māra asked the nun Vajirā who had created “this being”. She answered: “Why do you assume a being? This is
+    a heap of formations. As the word ‘chariot’ is used when the parts are assembled, so ‘a being’ is the
+    convention when the aggregates are present.”
+  reading: >-
+    Her reply is the hinge of Plate 2: the five aggregates on the left of its diagram, the convention “a
+    being” on top of them.
+  question: Is Vajirā saying that beings do not exist, or saying what the word refers to?
+  plates:
+    - "2"
+- id: s05
+  level: 2
+  kind: disc
+  title: Kisāgotamī and the mustard seed
+  source: Dhammapada commentary, v. 114
+  story: >-
+    Mad with grief, Kisāgotamī carried her dead child from house to house asking for medicine. The Buddha
+    asked her for a mustard seed from a house where no one had died. She found none, laid the child down, and
+    understood that death comes to all.
+  reading: >-
+    Her grief is displeasure (domanassa), which on Plate 3 occurs only in the two hate-rooted cittas: grief is
+    aversion toward loss. The search turned a private wound into a universal fact.
+  question: Why would the Abhidhamma class grief with aversion rather than with love?
+  plates:
+    - "3"
+    - "4"
+- id: s06
+  level: 2
+  kind: disc
+  title: Why Moggallāna smiled
+  source: SN 19.1
+  story: >-
+    Coming down Vulture Peak, Mahā Moggallāna smiled. Asked why, he said he had seen a skeleton moving through
+    the air, pursued by crows and vultures. The Buddha confirmed that he too had seen such beings, and named
+    the deeds that led there.
+  reading: >-
+    An arahant smiles with one of five cittas, none of which makes kamma: citta 30 on Plate 3, the
+    smile-producing consciousness found only in arahants, or one of the four joyful great functional cittas.
+    What he saw belongs to the woeful planes of Plate 11.
+  question: In terms of citta, how does an ordinary person's smile differ from an arahant's?
+  plates:
+    - "3"
+    - "11"
+- id: s07
+  level: 2
+  kind: jataka
+  title: Khantivādi, the teacher of patience
+  source: Ja 313
+  story: >-
+    A drunken king, Kalābu, asked an ascetic what he taught. “Patience,” he said. To test him, the king had
+    his hands, feet, nose and ears cut off. The ascetic felt no anger and wished the king long life. Leaving,
+    the king was swallowed by the earth.
+  reading: >-
+    Plate 4 at its sharpest: non-hatred (adosa) and hatred (dosa) never share a citta. The king's fate returns
+    on Plate 10 as kamma that ripens in this very life.
+  question: Is patience only the absence of anger, or the presence of something else?
+  plates:
+    - "4"
+    - "10"
+- id: s08
+  level: 2
+  kind: jataka
+  title: The monkey king's bridge
+  source: Ja 407
+  story: >-
+    To save his troop from archers, a monkey king stretched himself across a river as a living bridge. The
+    troop crossed over his back, but a jealous monkey leapt on him and broke it. The king of Benares, moved,
+    tended him as he died.
+  reading: >-
+    Compassion (karuṇā) is one of the variable beautiful factors on Plate 4. It joins a wholesome citta only
+    now and then, when the suffering of others is the object.
+  question: Why does compassion need suffering as its object, while loving-kindness does not?
+  plates:
+    - "4"
+    - "12"
+- id: s09
+  level: 2
+  kind: disc
+  title: Dhammadinnā on feeling
+  source: MN 44
+  story: >-
+    Questioned by the layman Visākha, the nun Dhammadinnā explained that lust lies latent in pleasant feeling,
+    aversion in painful feeling and ignorance in neutral feeling. The Buddha said he would have answered in
+    the same way.
+  reading: "This joins Plate 3's colours to Plate 9's wheel: feeling (link 7) is where craving (link 8) takes hold."
+  question: Which tendency does neutral feeling feed, and why is it the hardest to notice?
+  plates:
+    - "3"
+    - "9"
+- id: s10
+  level: 2
+  kind: disc
+  title: Pukkusāti and the elements
+  source: MN 140
+  story: >-
+    One night in a potter's shed, the Buddha taught a stranger, Pukkusāti, to see his body as earth, water,
+    fire, air, space and consciousness, none of it “mine”. Pukkusāti recognised his teacher, but while seeking
+    robes for ordination he was killed by a cow. The Buddha declared him a non-returner.
+  reading: >-
+    The four great elements are the core of the 28 kinds of matter on Plate 5. Analysing the body into
+    elements is also one of the forty meditation subjects on Plate 12.
+  question: If hardness, cohesion, heat and motion are all there is in “my hand”, what does “my” point to?
+  plates:
+    - "5"
+    - "12"
+- id: s11
+  level: 3
+  kind: disc
+  title: "Bāhiya: in the seen, only the seen"
+  source: Ud 1.10
+  story: >-
+    Bāhiya stopped the Buddha on his alms round, begging to be taught. The Buddha said: “In the seen there
+    will be only the seen, in the heard only the heard, in the sensed only the sensed, in the cognized only
+    the cognized.” Bāhiya became an arahant there and then, and was killed by a cow soon after.
+  reading: >-
+    Plate 7 shows where the instruction bites. Seeing itself, at moment 5, is a result and makes no kamma.
+    Liking, disliking and “I” enter only in the javanas.
+  question: At which moment of Plate 7 does “the seen” become “a mango I want”?
+  plates:
+    - "7"
+    - "2"
+- id: s12
+  level: 3
+  kind: disc
+  title: Nanda, guardian of the doors
+  source: Ud 3.2; AN 8.9; AN 1.230
+  story: >-
+    The Buddha's half-brother Nanda was ordained on his wedding day and pined for his bride. In time he became
+    an arahant, and the Buddha named him foremost among those who guard the sense doors: whichever way Nanda
+    looked, he looked with full awareness, so that longing and grief could not flow in.
+  reading: >-
+    The doors of sense restraint are the doors of Plate 7. Guarding them means the seeing is not followed by
+    unwholesome javanas.
+  question: Can a door be guarded without being closed?
+  plates:
+    - "7"
+    - "4"
+- id: s13
+  level: 3
+  kind: jataka
+  title: Makhādeva's first grey hair
+  source: Ja 9
+  story: >-
+    King Makhādeva told his barber to report the first grey hair. When it came, the king held it in his hand,
+    saw death approaching, handed the kingdom to his son and went forth.
+  reading: >-
+    A small object can carry a large process. The same sight of a grey hair could run javanas of vanity or of
+    urgency; which one runs depends on attention at the turning point of determining (Plate 7).
+  question: What decides whether a grey hair produces worry or wisdom?
+  plates:
+    - "7"
+    - "13"
+- id: s14
+  level: 3
+  kind: life
+  title: Rāhula and the mirror
+  source: MN 61
+  story: >-
+    The Buddha asked his young son Rāhula what a mirror is for. “For reflection, sir.” “In the same way,” said
+    the Buddha, “reflect before, during and after every action of body, speech and mind: does it lead to harm
+    for myself, for others, or both?”
+  reading: Reflection is a discipline for the javanas, where volition becomes kamma (Plates 7 and 10).
+  question: Why reflect after an action, when its kamma is already made?
+  plates:
+    - "7"
+    - "10"
+- id: s15
+  level: 4
+  kind: life
+  title: The night of awakening
+  source: MN 36; Ud 1.1–1.3
+  story: >-
+    Under the Bodhi tree, in the first watch of the night he recalled his past lives; in the second he saw
+    beings pass away and reappear according to their kamma; in the third he realised the destruction of the
+    taints. In the days that followed he reviewed dependent origination forward and in reverse.
+  reading: >-
+    The three watches map onto the atlas: past lives and the planes (Plates 10–11), kamma and its fruit (Plate
+    10), and the wheel with its ending (Plates 9 and 13).
+  question: Why must dependent origination be seen in reverse as well as forward?
+  plates:
+    - "9"
+    - "10"
+    - "13"
+- id: s16
+  level: 4
+  kind: disc
+  title: Assaji's four lines
+  source: Vinaya, Mahāvagga I.23
+  story: >-
+    The wanderer Upatissa saw the monk Assaji on alms round and asked for his teacher's doctrine. Assaji gave
+    it in one verse: “Of things that arise from a cause, the Tathāgata has told the cause, and also their
+    cessation.” Upatissa, later Sāriputta, gained the eye of Dhamma on hearing it.
+  reading: >-
+    The shortest summary of Plates 8 and 9: whatever is conditioned has conditions, and they can cease.
+    Sāriputta went on to become the Abhidhamma's first teacher (Plate 1).
+  question: Why might a statement about conditions be enough to open the eye of Dhamma?
+  plates:
+    - "8"
+    - "9"
+    - "1"
+- id: s17
+  level: 4
+  kind: life
+  title: “Do not say so, Ānanda”
+  source: DN 15
+  story: >-
+    Ānanda remarked that dependent origination, though called deep, seemed clear to him. The Buddha replied:
+    “Do not say so, Ānanda. This dependent origination is deep and appears deep. Through not understanding it,
+    this generation has become like a tangled skein.”
+  reading: >-
+    Plates 8 and 9 make the structure visible, but reading a diagram is learning (suta). Seeing a link happen
+    is development (bhāvanā).
+  question: What would it take to move from knowing the twelve links to seeing one of them happen?
+  plates:
+    - "9"
+- id: s18
+  level: 4
+  kind: life
+  title: Rays from the Jewel House
+  source: Atthasālinī, introduction
+  story: >-
+    In the fourth week after the awakening, the commentary says, the Buddha sat in a jewelled chamber and
+    contemplated the Abhidhamma. Through the first six books no rays appeared; when he reached the Paṭṭhāna,
+    rays of six colours streamed from his body.
+  reading: >-
+    The tradition marks the Paṭṭhāna, the book behind Plate 8, as the vastest of all. Its colours inspired the
+    modern Buddhist flag.
+  question: Why might the relations between things be harder to see than the things themselves?
+  plates:
+    - "8"
+    - "1"
+- id: s19
+  level: 5
+  kind: disc
+  title: Maṭṭhakuṇḍalī's last thought
+  source: Dhammapada commentary, v. 2
+  story: >-
+    A miserly brahmin's son lay dying, left on the veranda so visitors would not see inside the house. The
+    Buddha passed and let himself be seen. The boy's mind filled with faith, he died with that thought, and he
+    was reborn in the Tāvatiṃsa heaven.
+  reading: >-
+    Death-proximate kamma on Plate 10: the last javanas were full of faith, and the rebirth-linking that
+    followed took up their object.
+  question: If one last thought can decide a rebirth, why do teachers stress habitual kamma?
+  plates:
+    - "10"
+    - "11"
+- id: s20
+  level: 5
+  kind: disc
+  title: Queen Mallikā's seven days
+  source: Dhammapada commentary, v. 151
+  story: >-
+    Queen Mallikā was generous and devout, but as she died her mind went to one wrong deed she had hidden from
+    the king. She was reborn in a woeful state for seven days, and then in the Tusita heaven.
+  reading: >-
+    The other face of death-proximate kamma: one unwholesome last thought outweighed a good life, but only for
+    a while. Her stored good kamma then took its turn (Plate 10).
+  question: "Which shapes rebirth more: a whole life, or its last moments?"
+  plates:
+    - "10"
+    - "11"
+- id: s21
+  level: 5
+  kind: disc
+  title: Aṅgulimāla and the stones
+  source: MN 86
+  story: >-
+    The bandit Aṅgulimāla had killed many. Meeting the Buddha, he went forth and became an arahant. On alms
+    round people threw stones and sticks at him. The Buddha said: “Bear it, brahmin. You are experiencing here
+    and now the result of deeds for which you might have suffered in hell for many years.”
+  reading: >-
+    Kamma by time (Plate 10): what could ripen in this life did. With arahantship there is no next life, so
+    kamma waiting for later lives could never ripen.
+  question: What does Aṅgulimāla's story say about whether kamma is fate?
+  plates:
+    - "10"
+- id: s22
+  level: 5
+  kind: disc
+  title: Devadatta's weighty kamma
+  source: Vinaya, Cūḷavagga VII; Dhammapada commentary, v. 17
+  story: >-
+    The Buddha's cousin Devadatta drew the Buddha's blood with a rock hurled from Vulture Peak, and split the
+    Saṅgha. The commentary says that as he came at last to ask forgiveness, the earth swallowed him and he was
+    reborn in the Avīci hell.
+  reading: >-
+    Wounding a Buddha and splitting the Saṅgha are two of the five heinous deeds: weighty kamma, which ripens
+    before any other kind (Plate 10).
+  question: Why should weighty kamma override even death-proximate kamma?
+  plates:
+    - "10"
+    - "11"
+- id: s23
+  level: 5
+  kind: disc
+  title: Why Moggallāna was beaten
+  source: Dhammapada commentary, vv. 137–140
+  story: >-
+    Late in life the great disciple Mahā Moggallāna was beaten to death by hired bandits. The commentary
+    traces this to a deed many lives before, when he turned on his own blind parents; versions differ on
+    whether he went through with it.
+  reading: >-
+    Kamma that can ripen “in any later life” (Plate 10) waits for its chance, even for an arahant. What
+    arahantship ends is new kamma and any further rebirth.
+  question: If even an arahant meets old kamma, what exactly does arahantship end?
+  plates:
+    - "10"
+- id: s24
+  level: 5
+  kind: jataka
+  title: King Nimi's chariot
+  source: Ja 541
+  story: >-
+    Sakka sent his charioteer Mātali to bring the righteous King Nimi to the Tāvatiṃsa heaven. On the way
+    Mātali showed him the hells, naming the deeds that led there, and then the heavenly mansions, naming the
+    deeds that earned them.
+  reading: >-
+    A guided tour of Plate 11. Each world is paired with a kind of deed, the same pairing as kamma “by place”
+    on Plate 10.
+  question: Why does the story always show the deed alongside the world?
+  plates:
+    - "11"
+    - "10"
+- id: s25
+  level: 6
+  kind: life
+  title: The rose-apple tree
+  source: MN 36
+  story: >-
+    As a boy, the Bodhisatta sat in the shade of a rose-apple tree while his father worked at a ploughing
+    ceremony, and entered the first jhāna. Years later, worn out by austerities, he remembered it and asked:
+    “Could that be the path to awakening?”
+  reading: >-
+    On Plate 13's tree, concentration is a root. The commentaries say his subject was the breath, one of the
+    eleven that can reach all five jhānas on Plate 12.
+  question: Why was a pleasant, blameless state the clue, after years of pain?
+  plates:
+    - "12"
+    - "13"
+- id: s26
+  level: 6
+  kind: disc
+  title: Cūḷapanthaka's white cloth
+  source: Dhammapada commentary, v. 25
+  story: >-
+    Cūḷapanthaka could not learn a single verse in four months, and his brother told him to leave. The Buddha
+    gave him a clean white cloth to rub while repeating “removing dirt”. As the cloth grew soiled he saw
+    impermanence, and he became an arahant.
+  reading: >-
+    A subject fitted to the person (Plate 12): a simple object you can see and touch, which ripened into
+    insight (Plate 13).
+  question: Why might a slow learner of words be a quick learner of seeing?
+  plates:
+    - "12"
+    - "13"
+- id: s27
+  level: 6
+  kind: disc
+  title: The goldsmith and the lotus
+  source: Dhammapada commentary, v. 285; Ja 25
+  story: >-
+    A young monk, a goldsmith for five hundred lives, made no progress with meditation on the foulness of the
+    body. The Buddha gave him a lotus instead. Its beauty steadied his mind; then the flower withered, and he
+    saw impermanence.
+  reading: >-
+    Plate 12's temperaments in action: the usual remedy for lust did not fit this mind, and a beautiful object
+    did.
+  question: Which of Plate 12's six temperaments sounds most like your own?
+  plates:
+    - "12"
+- id: s28
+  level: 6
+  kind: life
+  title: Āḷāra and Uddaka
+  source: MN 26
+  story: >-
+    Before his awakening, the Bodhisatta reached the base of nothingness under Āḷāra Kālāma, and neither
+    perception nor non-perception under Uddaka Rāmaputta. He left both, seeing they did not lead to Nibbāna.
+    After awakening he thought first of teaching them, but both had died.
+  reading: >-
+    The highest calm leads to the highest immaterial planes of Plate 11, with lifespans of 60,000 and 84,000
+    aeons, but not out of the round. That is why Plate 13's tree needs a trunk of insight.
+  question: What does insight supply that even the highest jhāna lacks?
+  plates:
+    - "11"
+    - "12"
+    - "13"
+- id: s29
+  level: 6
+  kind: disc
+  title: Paṭācārā and the water
+  source: Therīgāthā 112–116
+  story: >-
+    Having lost her whole family, Paṭācārā became a nun. Washing her feet, she watched the water trickle down,
+    some a little way, some further, like the stages of a life. That night, as she drew down the wick of her
+    lamp, her mind was freed.
+  reading: >-
+    The knowledge of rise and fall on Plate 13, seen first in water and then in her own mind. The lamp going
+    out echoes Plate 10's image of death.
+  question: Why is the going-out of a flame so often the image of Nibbāna?
+  plates:
+    - "13"
+    - "10"
+- id: s30
+  level: 6
+  kind: life
+  title: Koṇḍañña's eye of Dhamma
+  source: SN 56.11
+  story: >-
+    At the first sermon in the Deer Park, as the Buddha finished, Koṇḍañña understood: “Whatever is subject to
+    arising is all subject to cessation.” The Buddha exclaimed, “Koṇḍañña has understood!”
+  reading: >-
+    Stream-entry (Plate 13): just after change-of-lineage first turns to Nibbāna, path knowledge takes Nibbāna
+    as its object and the first three fetters fall away.
+  question: Why is the insight put as a general rule rather than a particular experience?
+  plates:
+    - "13"
+- id: s31
+  level: 7
+  kind: jataka
+  title: Sumedha's vow
+  source: Buddhavaṃsa II; Jātaka introduction
+  story: >-
+    Ages ago, the ascetic Sumedha lay down in the mud so that the Buddha Dīpaṅkara could walk across him, and
+    resolved to become a Buddha himself. Dīpaṅkara foretold it. Four incalculable aeons and a hundred thousand
+    aeons of perfections followed.
+  reading: >-
+    One volition (Plate 4), renewed and fulfilled across lives (Plate 10), in worlds measured in aeons (Plate
+    11): the whole atlas in a single vow.
+  question: In Abhidhamma terms, what continues from Sumedha to Siddhattha?
+  plates:
+    - "4"
+    - "10"
+    - "11"
+- id: s32
+  level: 7
+  kind: jataka
+  title: Vessantara's gifts
+  source: Ja 547
+  story: >-
+    In the last human life before the final one, the Bodhisatta as Prince Vessantara gave away the kingdom's
+    white elephant, his wealth, and in the end his children and his wife. After that life he was reborn in the
+    Tusita heaven.
+  reading: >-
+    Sense-sphere wholesome kamma at its fullest (Plate 10). The tradition counts it as the completion of the
+    perfection of giving.
+  question: Can giving be wholesome kamma and also a step toward ending kamma?
+  plates:
+    - "10"
+    - "11"
+- id: s33
+  level: 7
+  kind: disc
+  title: Ajātasattu's lost chance
+  source: DN 2
+  story: >-
+    King Ajātasattu, who had killed his father to take the throne, heard the Buddha's discourse on the fruits
+    of the recluse's life and went for refuge. When he had left, the Buddha said that had he not killed his
+    father, the eye of Dhamma would have arisen in him then and there.
+  reading: >-
+    Weighty kamma (Plate 10) can bar the path (Plate 13). A heinous deed closes the door to path attainment in
+    that life.
+  question: Why can one past act close a door that a good present act cannot open?
+  plates:
+    - "10"
+    - "13"
+- id: s34
+  level: 7
+  kind: life
+  title: The last night at Kusinārā
+  source: DN 16
+  story: >-
+    The Buddha's last words were: “All conditioned things are subject to decay. Strive on with diligence.” He
+    then rose through the jhānas to the cessation of perception and feeling, came back down to the first
+    jhāna, rose again to the fourth, and on emerging from it attained final Nibbāna.
+  reading: >-
+    Every level at once: the jhānas of Plates 3 and 12, the planes he would not return to (11), and a death
+    followed by no rebirth-linking (10).
+  question: In terms of Plate 10, how does an arahant's death differ from anyone else's?
+  plates:
+    - "3"
+    - "10"
+    - "12"
+    - "13"

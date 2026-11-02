@@ -1,0 +1,92 @@
+# How the three lists are introduced and grouped.
+- id: factors
+  title: The 52 mental factors
+  short: Mental factors
+  pali: cetasika
+  plates:
+    - p4
+    - p4b
+  concept: CE
+  chapter: II §§1–9
+  desc: >-
+    What colours each moment of knowing: seven present in every citta, six that come and go, fourteen
+    unwholesome and twenty-five beautiful.
+  groups:
+    - key: universal
+      title: Universals
+      desc: Present in every citta, whatever its kind.
+    - key: occasional
+      title: Occasionals
+      desc: Present in many cittas but not all; ethically neutral, they take the colour of the citta.
+    - key: unwholesome
+      title: Unwholesome factors
+      desc: Found only in the twelve unwholesome cittas.
+    - key: beautiful
+      title: Beautiful factors
+      desc: Found only in beautiful cittas, never with an unwholesome factor.
+- id: matter
+  title: The 28 kinds of matter
+  short: Matter
+  pali: rūpa
+  plates:
+    - p5
+  concept: RU
+  chapter: VI §§2–15
+  desc: Four great elements and twenty-four kinds derived from them, with the four origins that produce them.
+  groups:
+    - key: 0-4
+      title: Great elements
+      desc: The four primary qualities on which all other matter depends.
+    - key: 4-9
+      title: Sensitive matter
+      desc: The five sense faculties, which objects can strike.
+    - key: 9-13
+      title: Objective matter
+      desc: The objects of four senses; touch is three of the great elements.
+    - key: 13-15
+      title: Sex
+      desc: The two faculties of femininity and masculinity.
+    - key: 15-16
+      title: Heart
+      desc: The physical base of mind-consciousness, in the commentaries.
+    - key: 16-17
+      title: Life
+      desc: The faculty that sustains kamma-born matter.
+    - key: 17-18
+      title: Nutriment
+      desc: The nourishment in matter.
+    - key: 18-19
+      title: Limiting
+      desc: Space, which separates groups of matter.
+    - key: 19-21
+      title: Communicating
+      desc: The two intimations, of body and of speech.
+    - key: 21-24
+      title: Mutable
+      desc: The qualities of healthy, workable matter.
+    - key: 24-28
+      title: Characteristics
+      desc: "The four marks of matter's life: arising, continuing, ageing, ending."
+- id: conditions
+  title: The 24 conditions
+  short: Conditions
+  pali: paccaya
+  plates:
+    - p8
+    - p8b
+  concept: CO
+  chapter: VIII §§11–28
+  desc: The ways one dhamma helps another, from the Paṭṭhāna, sorted by direction between mind and matter.
+  groups:
+    - key: A
+      title: Mind → mind
+    - key: B
+      title: Mind → mind & matter
+    - key: C
+      title: Mind → matter
+    - key: D
+      title: Matter → mind
+    - key: E
+      title: Anything → mind
+    - key: F
+      title: Mind & matter → both
