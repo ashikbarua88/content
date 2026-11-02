@@ -54,3 +54,25 @@ Readers can edit or delete their comments, and delete their whole account from t
 ## Moderation
 
 When signed in as an admin, every comment shows **Hide** or **Unhide**. A hidden comment disappears for everyone except its author and admins. Admins cannot edit anyone's words; they can only hide them.
+
+## Backups
+
+`supabase/backup.sh` copies the site's tables and the accounts to your computer as plain SQL files, in a new dated folder each time. It needs the Postgres client tools (`pg_dump`; on Fedora `sudo dnf install postgresql`, on Debian or Ubuntu `sudo apt install postgresql-client`) and the database connection string. The comments at the top of the script say where to find it. Keep the backup folder private: it contains email addresses.
+
+## Moving to your own computer later
+
+Supabase is open source, and the website talks to a self-hosted copy exactly as it talks to the hosted one. Moving changes two settings, not the code.
+
+1. **Run Supabase on your computer.** Install Docker, then follow Supabase's self-hosting guide: clone `github.com/supabase/supabase`, `cd docker`, copy `.env.example` to `.env`, set new secrets as the guide explains, and run `docker compose up -d`. The dashboard opens at `http://localhost:8000`.
+2. **Recreate the tables:** run `schema.sql` in the new dashboard's SQL Editor.
+3. **Copy the data** from the last backup, accounts first, then the rest:
+   ```sh
+   psql "$LOCAL_DB_URL" -f supabase-backups/<date>/auth-users.sql
+   psql "$LOCAL_DB_URL" -f supabase-backups/<date>/public.sql
+   ```
+4. **Make it reachable from the internet over HTTPS**, if readers outside your home should use it. A free Cloudflare Tunnel (`cloudflared`) gives a public address without opening ports on your router.
+5. **Point the site at it:** set `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` to the new address and the new anon key, in `.env` and in the GitHub repository variables, then rebuild.
+6. **Update sign-in:** set the same Site URL and Redirect URLs as before, and change the callback URL in the Google and GitHub OAuth apps to the new address's `/auth/v1/callback`.
+7. **Check it,** then pause the hosted project. Readers sign in once more; their accounts, comments and reflections are all there.
+
+What self-hosting asks of you: the computer must stay on, because sign-in and comments stop when it is off (the reading pages, on GitHub Pages, carry on); backups become yours to run; and you install Supabase updates yourself.
