@@ -41,3 +41,37 @@ These were checked and need no change:
 - **Bases, elements, doors:** the 12 bases and 18 elements. The mind element as three cittas. The mental-object base: the 52 factors, 16 kinds of subtle matter, and Nibbāna. The 14 functions: 68 cittas with one each; the two equanimous investigating cittas with five; the 8 great resultants with four; the 9 sublime resultants with three. The doors: 46 cittas at the eye door, 67 at the mind door, 19 door-freed. The bases, including the immaterial planes, which have none.
 - **Citations:** SN 5.10, SN 22.95, SN 35.23, MN 18, Ud 1.10, AN 2.25 and *Milindapañha* II.1.
 - **History:** the seven books and what each does. The Third Council and Moggaliputta Tissa. Anuruddha's dates and nine chapters. Bodhi's 1993 revision of Nārada's translation.
+
+## Batch 2: readings 6 to 10 (2 November 2026)
+
+*An ensemble of fifty-two*, *Which factors meet which cittas*, *How matter is made*, *The commentators' picture-book*, *The mango and the moment*.
+
+### Fixed
+
+| File | Was | Now | Why |
+| --- | --- | --- | --- |
+| the-52-factors | the giver's later wish for thanks "is the next citta, or one a little later" | "a later citta, in another process: the seven javanas of one process are all of one kind" | Javanas within one process are of one kind, so a change of motive needs a new process. |
+| how-matter-is-made | figure label: "The 21 groups of matter, sorted by their four origins" | "The 28 kinds of matter, their four origins, and the 21 groups …" | The figure is now the whole Plate 5, not only its table of groups. |
+| the-mango-and-the-moment | "The *Atthasālinī* makes the point directly: … wise or unwise attention at the determining stage" | "The commentaries make the point …", adding that later teachers discuss where attention is placed, at adverting or at determining | The *Atthasālinī* links wise attention to adverting (*āvajjana*). Placing it at determining is a later teaching. The old sentence attributed more to the *Atthasālinī* than it says. |
+
+### Open: please decide
+
+1. **the-commentators-picture-book: "A simile is a finger, not a moon".** The image comes from the Mahāyāna (*Śūraṅgama Sūtra*) and Chan, not from the Pāli tradition. *Suggestion:* use the Buddha's own simile of the raft (MN 22): "A simile is a raft, for crossing over, not for carrying."
+2. **the-mango-and-the-moment: "many thousands of millions of cittas arise and pass in the time of a lightning flash".** This follows the commentaries' *anekakoṭisatasahassa*, "many hundred thousand crores", for the time of a blink or a lightning flash. The figure is an illustration, not a measurement. *Suggestion:* keep it, and add "the commentaries' figure of speech for 'more than can be counted'".
+3. **the-mango-and-the-moment: the three opening moments.** The essay says the object "has already struck the eye" in the first moment (*atīta-bhavaṅga*). That is the standard reading, but a few teachers count the past life-continuum differently. *Suggestion:* keep it.
+4. **the-52-factors: "You cannot have mindfulness without faith".** True of the nineteen beautiful universals arising together. But it might be read as a claim about practice in general, where faith and mindfulness are trained separately. *Suggestion:* add "in any single beautiful moment".
+
+### Checked and correct
+
+These were checked and need no change:
+- **The factors:**
+  - The 7 universals, 6 occasionals, 14 unwholesome factors (4 universal to them, plus the greed, hatred, sloth and doubt groups) and 25 beautiful factors (19, 3, 2 and 1).
+  - Loving-kindness as non-hatred and equanimity as neutrality of mind.
+  - The 11 unfixed factors. Compassion and appreciative joy in 28 cittas. At most 21 factors in an unwholesome citta and 34 in a great wholesome one. The sense consciousnesses with the universals only.
+- **Matter:**
+  - The 18 concrete and 10 unconcrete kinds. The origins of kamma-born and mind-born matter. Sound born of mind or of temperature.
+  - The pure octad and 21 kinds of group. A lifespan of 17 mind-moments.
+  - MN 28 on the elements inside and outside the body.
+- **The similes:** the coins (Vism XIV), and the bell, bird and bee (Vism IV). Contact's four-part definition.
+- **The mango simile:** its steps as in the *Atthasālinī*, with the swallowing and sleeping added later (*Vibhāvinī-ṭīkā*). The functions and kinds of each moment. Registration only after a very great object.
+- **Citations:** MN 18, MN 43 and Ud 1.10.
