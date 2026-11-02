@@ -12,6 +12,7 @@ import { u } from "../lib/atlas.js";
       var s = document.createElement("script"); s.src = b + "pagefind-ui.js";
       s.onload = function () {
         var ui = new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+        var inp = document.querySelector("#search input"); if (inp) inp.setAttribute("aria-label", "Search the site");
         var q = new URLSearchParams(location.search).get("q"); if (q) ui.triggerSearch(q);
       };
       document.head.appendChild(s);

@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/atlas.js";
+---
+<Base title="Not found" description="This page does not exist.">
+  <div class="wrap" style="max-width:var(--measure);padding-top:60px" data-pagefind-ignore="all">
+    <p class="lab">404</p>
+    <h1>Nothing arises here</h1>
+    <p class="dek">This page does not exist, or has moved. Like every conditioned thing, links pass away.</p>
+    <div class="btns" style="margin-top:24px">
+      <a class="btn primary" href={u()}>The home page</a>
+      <a class="btn" href={u("search/")}>Search</a>
+      <a class="btn" href={u("readings/")}>Readings</a>
+    </div>
+  </div>
+</Base>

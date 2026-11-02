@@ -16,7 +16,7 @@ const PART = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 1, 8: 1, 9: 1, 10: 1, 11: 
         <h2>{g.t}</h2>
         <p class="muted">{g.d}</p>
         <ol class="list">
-          {Object.keys(plates).filter((p) => PART[p] === gi).map((p) => {
+          {Object.keys(plates).filter((p) => PART[p] === gi).flatMap((p) => byPlate[p + "b"] ? [p, p + "b"] : [p]).map((p) => {
             const r = byPlate[p];
             return r
               ? <li><a href={u("readings/" + r.id + "/")}><span class="t">{p}. {r.data.title}</span><span class="d">{r.data.dek} · about {r.data.minutes} minutes</span></a></li>

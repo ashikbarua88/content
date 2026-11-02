@@ -2,4 +2,4 @@
 // A sidenote. In the margin on wide screens; behind a numbered marker on narrow ones (CSS only).
 const id = "sn-" + Math.random().toString(36).slice(2, 8);
 ---
-<span class="sn-wrap"><label class="sn-ref" for={id} aria-label="Note"></label><input type="checkbox" id={id} class="sn-toggle" /><span class="sn"><slot /></span></span>
+<span class="sn-wrap"><label class="sn-ref" for={id}><span class="vh">Note</span></label><input type="checkbox" id={id} class="sn-toggle" /><span class="sn"><slot /></span></span>

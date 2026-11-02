@@ -1,0 +1,87 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { KINDS, dhammaUrl } from "../../../lib/dhammas.js";
+import { conceptUrl, concept, atlasUrl, u, withGlosses } from "../../../lib/atlas.js";
+
+export function getStaticPaths() {
+  return Object.entries(KINDS).flatMap(([kind, K]) =>
+    K.list.map((e, i) => ({ params: { kind, slug: e.slug }, props: { e, prev: K.list[i - 1], next: K.list[i + 1] } })));
+}
+const { e, prev, next } = Astro.props;
+const K = KINDS[e.kind];
+const card = e.card?.card;
+const groupName = e.groupName || e.group;
+const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
+---
+<Base title={`${e.en} (${e.pali})`} description={e.text} nav="dhammas">
+  <div class="wrap page">
+    <article>
+      <p class="crumbs"><a href={u("dhammas/")}>Dhammas</a> › <a href={u("dhammas/#" + e.kind)}>{K.short}</a> › {groupName}</p>
+      <header>
+        <h1>{e.n ? `${e.n}. ` : ""}{e.en[0].toUpperCase() + e.en.slice(1)}</h1>
+        <p class="pali-line" lang="pi">{e.pali}</p>
+        <p class="dek" set:html={ital(e.text)} />
+      </header>
+
+      {card && (
+        <section>
+          <h2>Four ways to know it</h2>
+          <dl class="facts">
+            <dt>Characteristic</dt><dd>{card[0]}</dd>
+            <dt>Function</dt><dd>{card[1]}</dd>
+            <dt>Manifestation</dt><dd>{card[2]}</dd>
+            <dt>Proximate cause</dt><dd>{card[3]}</dd>
+          </dl>
+          {e.card.notice && <p class="note" style="margin-top:14px">Try it: {e.card.notice}</p>}
+        </section>
+      )}
+
+      <section>
+        <h2>Where it sits</h2>
+        <dl class="facts">
+          <dt>Kind</dt><dd>{K.short}: {groupName}</dd>
+          {e.kind === "factors" && <><dt>Occurs in</dt><dd>{e.n89 === 89 ? "every citta: all 89, or 121 counted in detail" : `${e.n89} of the 89 cittas (${e.n121} of 121)`}</dd></>}
+          {e.note && <><dt>How</dt><dd>{e.note}</dd></>}
+          {e.kind === "matter" && <><dt>Concrete</dt><dd>{e.concrete ? "yes: it has a nature of its own" : "no: it is a mode or quality of concrete matter"}</dd>
+            <dt>Produced by</dt><dd>{e.origins.length ? e.origins.join(", ") : "none: it is a mark of matter, not produced in its own right"}</dd>
+            {e.inseparable && <><dt>Inseparable</dt><dd>one of the eight present in every group of matter</dd></>}</>}
+          {e.kind === "conditions" && <><dt>Direction</dt><dd>{e.group}</dd>
+            {e.synthesis && <><dt>Synthesis</dt><dd>one of the four into which the <i>Manual</i> folds all twenty-four</dd></>}</>}
+          <dt>In the Manual</dt><dd>{K.ch}</dd>
+          <dt>In the atlas</dt><dd>{K.plates.map((p, i) => <>{i ? ", " : ""}<a href={atlasUrl(p)}>Plate {p.slice(1)}</a></>)}</dd>
+        </dl>
+      </section>
+
+      {e.lists?.length > 0 && (
+        <section>
+          <h2>In the lists of chapter VII</h2>
+          <p class="muted">The <i>Manual</i>'s lists of defilements are made of a few factors under many names. This one appears as:</p>
+          <ul class="canon">{e.lists.map((l) => <li><i lang="pi">{l.pali}</i>, {l.en} <span class="muted ui" style="font-size:14px">· {l.list}</span></li>)}</ul>
+        </section>
+      )}
+
+      {e.mixed && (
+        <section>
+          <h2>The same factors, as a category</h2>
+          <p>In chapter VII, the {e.mixed.cat} work as this condition. {e.mixed.note}</p>
+        </section>
+      )}
+
+      <p class="note" style="margin-top:28px">Part of <a href={conceptUrl(K.concept)}>{concept(K.concept).title}</a>. Described after the commentaries, in the order of the <i>Manual</i>; not quoted from it.</p>
+
+      <nav class="pn" aria-label="Previous and next entry">
+        {prev && <a href={dhammaUrl(prev)}><small>Previous</small><span class="t">{prev.en}</span></a>}
+        {next && <a class="next" href={dhammaUrl(next)}><small>Next</small><span class="t">{next.en}</span></a>}
+      </nav>
+    </article>
+    <aside data-pagefind-ignore>
+      <div class="box">
+        <div>
+          <p class="lab">{groupName}</p>
+          <ul>{K.list.filter((x) => (x.groupName || x.group) === groupName).map((x) => <li><a href={dhammaUrl(x)} aria-current={x === e ? "page" : undefined}>{x.en}</a></li>)}</ul>
+        </div>
+        <div><p class="lab">All entries</p><a href={u("dhammas/#" + e.kind)}>{K.t}</a></div>
+      </div>
+    </aside>
+  </div>
+</Base>

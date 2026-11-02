@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import M from "../data/map.json";
+import D from "../data/atlas.json";
+import { conceptUrl, atlasUrl, u, levels } from "../lib/atlas.js";
+
+// The atlas's concept map, with every idea a link to its concept page and every arrow
+// carrying its two ends, so hovering an idea can light up its connections.
+let svg = M.svg
+  .replace(/^<svg([^>]*?) width="[^"]*"/, "<svg$1").replace(/^<svg([^>]*?) height="[^"]*"/, "<svg$1")
+  .replace(/<g class="cmn" id="idea-(\w+)" data-id="\1"[^>]*aria-label="([^"]*)"[^>]*>([\s\S]*?)<\/g>/g,
+    (m, id, label, inner) => `<a class="cmn-a" href="${conceptUrl(id)}" data-id="${id}" aria-label="${label}"><g class="cmn">${inner}</g></a>`)
+  .replace(/<g class="cme" id="link-(\d+)" data-li="\1" role="button"[^>]*>/g,
+    (m, i) => `<g class="cme" data-from="${D.links[i].from}" data-to="${D.links[i].to}">`)
+  .replace(/aria-label="Concept map[^"]*"/, 'aria-label="Concept map of the sixteen ideas in six rows, joined by labelled arrows. Each idea links to its page."');
+const types = Object.entries(D.linkTypes);
+const models = [
+  ["D1", "The categories, mapped", 1], ["D2", "Elements in 3D", 2], ["D3", "Process in 3D", 3],
+  ["D4", "Relations in 3D", 4], ["D5", "Thirty-one planes as a world-mountain", 5], ["D6", "Practice as a climb", 6], ["D7", "One moment, every lens", 7],
+];
+---
+<Base title="Explore" nav="explore" description="The concept map of the sixteen ideas, and the atlas's 3D models.">
+  <div class="wrap" style="padding-top:34px">
+    <h1>Explore</h1>
+    <p class="dek" style="max-width:36em">The sixteen ideas on one map. Point at an idea to light up what it connects to; choose it to read about it.</p>
+    <figure class="pic mapfig">
+      <Fragment set:html={svg} />
+      <figcaption>
+        <span class="legend">{types.map(([k, [c, t]]) => <span><i style={`background:var(${c})`}></i>{t}</span>)}</span>
+        Rows are the levels of the atlas's path, from foundations at the top to the path at the bottom. <a href={atlasUrl("map")}>The map in the atlas</a> also traces a path between any two ideas.
+      </figcaption>
+    </figure>
+
+    <section class="band" style="border:0">
+      <h2 style="margin-top:0">In three dimensions</h2>
+      <p class="muted" style="max-width:40em">The atlas has a 3D model for each level, which you can turn and take apart. They open in the atlas.</p>
+      <ul class="list cols" style="border:0">
+        {models.map(([id, t, lv]) => <li><a href={atlasUrl(id)}><span class="t">{t}</span><span class="d">Level {lv}: {levels[lv]?.name}</span></a></li>)}
+        <li><a href={u("nama-rupa-model.html")}><span class="t">The nāma–rūpa model</span><span class="d">Mind and matter in relation, a lifespan of moments, the kalāpas</span></a></li>
+      </ul>
+    </section>
+  </div>
+  <script is:inline>
+    (function () {
+      var svg = document.querySelector(".mapfig svg"); if (!svg) return;
+      function on(id) {
+        svg.classList.toggle("hl", !!id);
+        svg.querySelectorAll(".cme").forEach(function (l) { l.classList.toggle("on", !!id && (l.dataset.from === id || l.dataset.to === id)); });
+        svg.querySelectorAll(".cmn-a").forEach(function (n) {
+          var near = id && (n.dataset.id === id || svg.querySelector('.cme.on[data-from="' + n.dataset.id + '"], .cme.on[data-to="' + n.dataset.id + '"]'));
+          n.classList.toggle("on", !!near);
+        });
+      }
+      svg.querySelectorAll(".cmn-a").forEach(function (n) {
+        n.addEventListener("mouseenter", function () { on(n.dataset.id); });
+        n.addEventListener("focus", function () { on(n.dataset.id); });
+        n.addEventListener("mouseleave", function () { on(null); });
+        n.addEventListener("blur", function () { on(null); });
+      });
+    })();
+  </script>
+</Base>

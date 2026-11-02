@@ -31,7 +31,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
       {pic && (
         <figure class="pic">
           <Fragment set:html={pic} />
-          <figcaption>A literal picture of the idea, after {c.pictureSource}. Drawn for the atlas.</figcaption>
+          <figcaption><button type="button" class="play" data-play={c.id}>▶ Play the picture</button> A literal picture of the idea, after {c.pictureSource}. Drawn for the atlas.</figcaption>
         </figure>
       )}
 
@@ -121,4 +121,5 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
       </div>
     </aside>
   </div>
+  <script is:inline src={u("js/pictures.js")} defer></script>
 </Base>

@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import { KINDS, dhammaUrl } from "../../lib/dhammas.js";
+import { conceptUrl, atlasUrl } from "../../lib/atlas.js";
+---
+<Base title="Dhammas" nav="dhammas" description="Reference entries for the 52 mental factors, the 28 kinds of matter and the 24 conditions.">
+  <div class="wrap" style="max-width:980px;padding-top:34px">
+    <h1>Dhammas</h1>
+    <p class="dek" style="max-width:36em">The Abhidhamma's three great lists, one entry each: what it is, where it occurs, and how it is counted. The concept pages explain the ideas; these entries are for looking things up.</p>
+    {Object.entries(KINDS).map(([k, K]) => (
+      <section id={k}>
+        <h2>{K.t}</h2>
+        <p class="muted" style="max-width:40em">{K.d} <span class="ui" style="font-size:14px">Manual {K.ch} · <a href={conceptUrl(K.concept)}>the concept</a> · <a href={atlasUrl(K.plate)}>the plate</a></span></p>
+        {[...new Set(K.list.map((e) => e.groupName || e.group))].map((g) => (
+          <>
+            <h3 class="lab" style="margin-top:22px">{g}</h3>
+            <ul class="chips">
+              {K.list.filter((e) => (e.groupName || e.group) === g).map((e) => (
+                <li><a href={dhammaUrl(e)}>{e.n && <span class="n">{e.n}</span>}<i lang="pi">{e.pali}</i> <span>{e.en}</span></a></li>
+              ))}
+            </ul>
+          </>
+        ))}
+      </section>
+    ))}
+  </div>
+</Base>

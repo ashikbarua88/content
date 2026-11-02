@@ -7,7 +7,9 @@ A website for reading the Abhidhamma slowly. It is built from the atlas in `../a
 | Page | Where it comes from |
 | --- | --- |
 | **Home** (`/`) | `src/pages/index.astro` |
-| **Readings** (`/readings/…`) | Fifteen MDX essays, one per atlas plate, in `src/content/readings/`, in four parts: what there is, how it unfolds, the way out, looking back. |
+| **Readings** (`/readings/…`) | Twenty-three MDX essays in `src/content/readings/`, in four parts (what there is, how it unfolds, the way out, looking back): one per atlas plate, and one per companion sheet (2b, 3b, 4b, 7b, 8b, 10b, 13b, 14b). |
+| **Dhammas** (`/dhammas/…`) | 104 entries: the 52 mental factors, 28 kinds of matter and 24 conditions. Descriptions are in `src/lib/dhamma-text.js`; counts, origins and lists come from the atlas data (`src/lib/dhammas.js`). The glossary links to them. |
+| **Explore** | The atlas's concept map, with each idea linked to its page and its connections lit on hover, and links to the 3D models. |
 | **Concepts** (`/concepts/…`) | The atlas's 16 ideas. Each page has its picture, its description, where it sits, the ideas it connects to, its sources in the Canon, stories, and a question to reflect on. The questions are in `src/lib/reflect.js`. |
 | **Glossary** | The atlas's 223 terms. |
 | **Stories** | The atlas's stories, by level. |
@@ -33,7 +35,15 @@ npm run preview
 - `src/data/` (atlas data, idea pictures, plate drawings, sources)
 - `src/styles/atlas-tokens.css` (the atlas colours)
 
-Run it after changing the atlas, then commit the results. CI does not need a browser.
+It also writes these:
+
+- `src/data/lists.json` (matter and conditions)
+- `src/data/map.json` (the concept map)
+- `public/js/pictures.js` (the idea pictures' animations)
+
+`node tools/render-sheets.mjs` renders the dense atlas sheets, light and dark, to `public/sheets/` (list in `src/lib/sheets.js`).
+
+Run both after changing the atlas, then commit the results. CI does not need a browser.
 
 ## Writing a reading
 

@@ -178,3 +178,43 @@ label.sn-ref { cursor: pointer; }
 /* ---------- pagefind ---------- */
 .search-page { max-width: var(--measure); margin: 0 auto; padding: 34px 16px 0; }
 .search-page { --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--sheet); --pagefind-ui-border: var(--line); --pagefind-ui-tag: var(--faint); --pagefind-ui-font: var(--ui); }
+
+/* ---------- dhamma lists ---------- */
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips a { display: inline-flex; align-items: baseline; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; text-decoration: none; color: var(--ink); background: var(--sheet); font-size: 16px; }
+.chips a:hover { border-color: var(--accent); }
+.chips a span { font: 13.5px var(--ui); color: var(--muted); }
+.chips a .n { font-weight: 600; color: var(--accent); }
+
+/* ---------- atlas sheets as images ---------- */
+figure.sheetimg { padding: 10px; max-width: 680px; }
+figure.sheetimg img { display: block; width: 100%; height: auto; border-radius: 6px; }
+figure.sheetimg .dk { display: none; }
+:root[data-theme="dark"] figure.sheetimg .lt { display: none; }
+:root[data-theme="dark"] figure.sheetimg .dk { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) figure.sheetimg .lt { display: none; }
+  :root:not([data-theme="light"]) figure.sheetimg .dk { display: block; }
+}
+figure.sheetimg figcaption { padding: 0 6px; }
+
+/* ---------- explore: the concept map ---------- */
+.mapfig { max-width: 980px; margin: 24px auto; }
+figure.pic.mapfig svg { display: block; width: 100%; height: auto; max-height: none; }
+.mapfig .cmn-a { cursor: pointer; }
+.mapfig .cmn-a:hover .bx, .mapfig .cmn-a:focus .bx { stroke-width: 2.6; }
+.mapfig .cmn-a:focus { outline: none; } .mapfig .cmn-a:focus-visible .bx { stroke: var(--ink); stroke-width: 3; }
+.mapfig .cme .hit { fill: none; stroke: transparent; stroke-width: 12; }
+.mapfig svg.hl .cme:not(.on), .mapfig svg.hl .cmn-a:not(.on) { opacity: .18; transition: opacity .15s; }
+.mapfig svg.hl .cme.on path:not(.hit) { stroke-width: 2.2; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+@media (max-width: 640px) { .mapfig { overflow-x: auto; } .mapfig svg { min-width: 620px; } }
+.play { font: 600 13px var(--ui); color: var(--accent); background: var(--nama-soft); border: 0; border-radius: 999px; padding: 4px 12px; margin-right: 8px; cursor: pointer; }
+.play:hover { background: var(--accent); color: var(--ground); }
+
+/* Drawings from the atlas expect its default text colour; :where keeps it below their own classes. */
+:where(.pic, .card, .mapfig) svg { font-size: 13.5px; } /* the atlas base size its drawings were made at */
+:where(.pic, .card, .mapfig) svg text { font-family: var(--ui); fill: var(--ink); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

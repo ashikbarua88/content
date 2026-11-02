@@ -5,10 +5,15 @@ import { site } from "../site.config.mjs";
 import { u } from "../lib/atlas.js";
 interface Props { title?: string; description?: string; nav?: string; search?: boolean }
 const { title, description = site.tagline, nav = "", search = true } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(u("og.png"), Astro.site).href;
+const ogType = Astro.url.pathname.includes("/readings/") ? "article" : "website";
 const full = title ? `${title} · ${site.title}` : `${site.title}: ${site.tagline}`;
 const links = [
   ["read", "Read", "readings/"],
   ["concepts", "Concepts", "concepts/"],
+  ["dhammas", "Dhammas", "dhammas/"],
+  ["explore", "Explore", "explore/"],
   ["glossary", "Glossary", "glossary/"],
   ["stories", "Stories", "stories/"],
   ["library", "Library", "library/"],
@@ -21,6 +26,20 @@ const links = [
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{full}</title>
   <meta name="description" content={description}>
+  <link rel="icon" href={u("favicon.svg")} type="image/svg+xml">
+  <link rel="sitemap" href={u("sitemap-index.xml")}>
+  <link rel="canonical" href={canonical}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:site_name" content={site.title}>
+  <meta property="og:title" content={title || site.tagline}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12141d" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;600&family=Noto+Serif+Display:ital,wght@0,500;1,400&display=swap">
