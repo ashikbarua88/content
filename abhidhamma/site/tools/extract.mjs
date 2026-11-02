@@ -34,7 +34,10 @@ const result = await page.evaluate(() => {
   });
   const plates = {};
   document.querySelectorAll("section.sheet[id^=p]").forEach((s) => {
-    const svg = s.querySelector("svg.plate, svg"); if (svg) plates[s.id] = clean(svg);
+    // The plate's main drawing is its largest svg.
+    const svgs = [...s.querySelectorAll("svg")].filter((v) => !v.closest(".nav, .tocp"));
+    const svg = svgs.sort((a, b) => b.outerHTML.length - a.outerHTML.length)[0];
+    if (svg && svg.outerHTML.length > 2000) plates[s.id] = clean(svg);
   });
   const data = JSON.parse(JSON.stringify(D, (k, v) => (typeof v === "function" ? undefined : v)));
   return { pictures, plates, data };

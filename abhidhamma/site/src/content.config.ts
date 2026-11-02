@@ -8,7 +8,7 @@ const readings = defineCollection({
   schema: z.object({
     title: z.string(),
     dek: z.string(),
-    part: z.enum(["What there is", "How it unfolds", "The way out"]),
+    part: z.enum(["What there is", "How it unfolds", "The way out", "Looking back"]),
     order: z.number(),
     plate: z.string(),
     concepts: z.array(z.string()),

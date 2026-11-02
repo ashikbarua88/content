@@ -7,7 +7,7 @@ A website for reading the Abhidhamma slowly. It is built from the atlas in `../a
 | Page | Where it comes from |
 | --- | --- |
 | **Home** (`/`) | `src/pages/index.astro` |
-| **Readings** (`/readings/…`) | One MDX essay per atlas plate, in `src/content/readings/`. Two are written so far: *A chariot of parts* (Plate 2) and *The mango and the moment* (Plate 7). The index lists every plate, and links to the atlas for plates that have no essay yet. |
+| **Readings** (`/readings/…`) | Fifteen MDX essays, one per atlas plate, in `src/content/readings/`, in four parts: what there is, how it unfolds, the way out, looking back. |
 | **Concepts** (`/concepts/…`) | The atlas's 16 ideas. Each page has its picture, its description, where it sits, the ideas it connects to, its sources in the Canon, stories, and a question to reflect on. The questions are in `src/lib/reflect.js`. |
 | **Glossary** | The atlas's 223 terms. |
 | **Stories** | The atlas's stories, by level. |

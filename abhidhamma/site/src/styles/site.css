@@ -61,6 +61,8 @@ p { margin: 0 0 1em; }
 .band > .wrap > header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 22px; }
 .band h2 { margin: 0; }
 .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.cols.four { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 1100px) { .cols.four { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
 .col h3 { margin: 0 0 4px; font-size: 21px; }
 .col > p { font-size: 16px; color: var(--muted); margin-bottom: 10px; }
