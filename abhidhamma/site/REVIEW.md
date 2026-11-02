@@ -79,3 +79,30 @@ These were checked and need no change:
 - **The similes:** the coins (Vism XIV), and the bell, bird and bee (Vism IV). Contact's four-part definition.
 - **The mango simile:** its steps as in the *Atthasālinī*, with the swallowing and sleeping added later (*Vibhāvinī-ṭīkā*). The functions and kinds of each moment. Registration only after a very great object.
 - **Citations:** MN 18, MN 43 and Ud 1.10.
+
+## Batch 3: readings 11 to 15 (2 November 2026)
+
+*Other processes*, *The web of twenty-four conditions*, *The lists reduced to their factors*, *The wheel across three lives*, *Kamma, death and rebirth*.
+
+### Fixed
+
+| File | Was | Now | Why |
+| --- | --- | --- | --- |
+| the-web-of-conditions | a note pairing "presence and absence, association and dissociation" as "the same relation from two sides" | Absence and disappearance restate proximity; presence and non-disappearance restate co-presence; association and dissociation are two *different* relations | Association (between mental states) and dissociation (between mind and matter) are not two views of one relation. |
+| the-wheel-across-three-lives | craving, clinging and becoming belong to the present "as new kamma" | "as causes: the defilements and the kamma of this life" | In the three rounds, craving and clinging are the round of defilements; only kamma-becoming (with formations) is the round of kamma. |
+| the-wheel-across-three-lives | "Craving … is new kamma, arising in the javanas" | "a defilement arising in the javanas, where new kamma is made" | The same distinction. |
+| kamma-death-and-rebirth | weighty unwholesome kamma: "the five heinous deeds" | adds "and fixed wrong views" | The *Manual* counts both as weighty. |
+
+### Open: please decide
+
+1. **the-web-of-conditions: "The printed edition runs to thousands of pages."** The Burmese Sixth Council edition fills several volumes. The page count depends on the edition and is not checked. *Suggestion:* "The printed text fills several volumes."
+2. **the-wheel-across-three-lives: "The tradition points to the joint between feeling and craving."** It is a common teaching emphasis: the suttas (SN 36) and modern teachers, notably in the Burmese insight schools. But the commentaries do not single it out in this way. *Suggestion:* "Teachers often point to the joint …"
+
+### Checked and correct
+
+These were checked and need no change:
+- **Processes:** absorption at the fourth or fifth javana, lasting one moment in a first attainment. Change-of-lineage as the first moment that takes Nibbāna as object; one moment of path; two or three of fruition. Cessation for up to seven days, ending in fruition. Five javanas at death. Registration at the mind door only for clear objects, and only in sense-sphere beings. The naming series marked as a later teaching.
+- **Conditions:** the root, object, proximity, conascence, mutuality, support, decisive support, repetition and kamma conditions, and their similes. The six directions (*Manual* VIII). The synthesis into object, decisive support, kamma and presence. SN 12.67, the sheaves of reeds.
+- **Chapter VII lists:** the taints, clingings and hindrances (six in the *Manual*). Greed in all nine groups, under seventeen names; wrong view in eight; delusion in seven. Six of the seven mixed categories are conditions; the nine powers have none of their own. The 37 requisites reduce to 14 states: energy 9 times, mindfulness 8, wisdom 5, concentration 4, faith 2.
+- **The wheel:** the twelve links and the formula. The Vibhaṅga's one-moment reading. The three periods, twenty modes and three rounds. Ignorance and craving as roots, with ignorance conditioned by the taints (MN 9).
+- **Kamma:** the four ways of classifying it, and the four causes of death. The three death signs. Death-consciousness with the object of the life-continuum, and rebirth-linking with the object of the last process. The similes of the seal, the echo and the flame (Vism XVII). AN 6.63.
