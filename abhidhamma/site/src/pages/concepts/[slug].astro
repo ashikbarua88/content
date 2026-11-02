@@ -1,0 +1,124 @@
+---
+import Base from "../../layouts/Base.astro";
+import Discuss from "../../components/Discuss.astro";
+import { concepts, concept, connections, storiesFor, storyKinds, conceptUrl, withGlosses, GROUPS, atlasUrl, plateTitle, cmaMap, u, SLUG, scLink } from "../../lib/atlas.js";
+
+export function getStaticPaths() {
+  return concepts.map((c) => ({ params: { slug: c.slug }, props: { id: c.id } }));
+}
+const c = concept(Astro.props.id);
+const group = GROUPS.find((g) => g.ids.includes(c.id));
+const { out, inn } = connections(c.id);
+const tales = storiesFor(c.id);
+const pic = c.picture && c.picture.svg
+  .replace(/<title>[^<]*<\/title>/, "")
+  .replace(/aria-label="[^"]*"/, `aria-label="Picture of ${c.title.replace(/"/g, "")}"`);
+const order = GROUPS.flatMap((g) => g.ids);
+const i = order.indexOf(c.id);
+const prev = i > 0 ? concept(order[i - 1]) : null, next = i < order.length - 1 ? concept(order[i + 1]) : null;
+const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
+---
+<Base title={c.title} description={c.def} nav="concepts">
+  <div class="wrap page">
+    <article>
+      <p class="crumbs"><a href={u("concepts/")}>Concepts</a> › {group.t} › {c.title}</p>
+      <header>
+        <h1>{c.title}</h1>
+        <p class="pali-line" lang="pi">{c.pali}</p>
+        <p class="dek">{c.def}</p>
+      </header>
+
+      {pic && (
+        <figure class="pic">
+          <Fragment set:html={pic} />
+          <figcaption>A literal picture of the idea, after {c.pictureSource}. Drawn for the atlas.</figcaption>
+        </figure>
+      )}
+
+      <section id="what">
+        <h2>What it is</h2>
+        <p set:html={withGlosses(c.long)} />
+      </section>
+
+      <section id="lists">
+        <h2>Where it sits</h2>
+        <dl class="facts">
+          <dt>Part</dt><dd>{group.t}: {group.d.toLowerCase()}</dd>
+          <dt>Level</dt><dd>{c.level}. {c.levelName}</dd>
+          <dt>In the Manual</dt><dd>{cma.length ? cma.join("; ") : "see the atlas plates"}</dd>
+          <dt>In the atlas</dt><dd>{c.plates.map((p, k) => <>{k ? ", " : ""}<a href={atlasUrl("p" + p)}>Plate {p}, {plateTitle(p)}</a></>)}</dd>
+        </dl>
+      </section>
+
+      <section id="connected">
+        <h2>Connected ideas</h2>
+        <div class="conn">
+          <div>
+            <p class="lab">What it rests on</p>
+            <ul>{inn.map((l) => <li><a href={conceptUrl(l.other.id)}>{l.other.title}</a> <span class="rel">{l.type}: {l.label}</span>{l.text}</li>)}</ul>
+            {!inn.length && <p class="muted">Nothing: it is where the map begins.</p>}
+          </div>
+          <div>
+            <p class="lab">What it opens onto</p>
+            <ul>{out.map((l) => <li><a href={conceptUrl(l.other.id)}>{l.other.title}</a> <span class="rel">{l.type}: {l.label}</span>{l.text}</li>)}</ul>
+            {!out.length && <p class="muted">Nothing further: it is where the map ends.</p>}
+          </div>
+        </div>
+      </section>
+
+      {c.canon && (
+        <section id="texts">
+          <h2>In the texts</h2>
+          <ul class="canon">{c.canon.refs.map((r) => <li set:html={scLink(r)} />)}</ul>
+          <p class="note">{c.canon.note}</p>
+        </section>
+      )}
+
+      {tales.length > 0 && (
+        <section id="stories">
+          <h2>Stories that show it</h2>
+          <div class="stories">
+            {tales.map((s) => (
+              <div class="story">
+                <h3>{s.t}</h3>
+                <span class="src">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
+                <p>{s.s}</p>
+                <p class="r" set:html={withGlosses(s.r.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"))} />
+              </div>
+            ))}
+          </div>
+          <p class="note">How a story is read here is a study aid, not the tradition's own reading.</p>
+        </section>
+      )}
+
+      <section id="discuss">
+        <h2>Reflect and discuss</h2>
+        {c.reflect && <Discuss term={"concept:" + c.slug} q={c.reflect.q} a={c.reflect.a} />}
+      </section>
+
+      <nav class="pn" aria-label="Previous and next concept">
+        {prev && <a href={conceptUrl(prev.id)}><small>Previous</small><span class="t">{prev.title}</span></a>}
+        {next && <a class="next" href={conceptUrl(next.id)}><small>Next</small><span class="t">{next.title}</span></a>}
+      </nav>
+    </article>
+    <aside data-pagefind-ignore>
+      <div class="box">
+        <div>
+          <p class="lab">On this page</p>
+          <ol>
+            <li><a href="#what">What it is</a></li><li><a href="#lists">Where it sits</a></li><li><a href="#connected">Connected ideas</a></li>
+            {c.canon && <li><a href="#texts">In the texts</a></li>}{tales.length > 0 && <li><a href="#stories">Stories</a></li>}<li><a href="#discuss">Reflect and discuss</a></li>
+          </ol>
+        </div>
+        <div>
+          <p class="lab">{group.t}</p>
+          <ul>{group.ids.map((id) => <li><a href={conceptUrl(id)} aria-current={id === c.id ? "page" : undefined}>{concept(id).title}</a></li>)}</ul>
+        </div>
+        <div>
+          <p class="lab">See it on the map</p>
+          <a href={atlasUrl("idea-" + c.id)}>{c.title} on the atlas's concept map</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</Base>

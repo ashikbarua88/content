@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/atlas.js";
+---
+<Base title="Library" nav="library" description="The atlas, its PDF, the nāma–rūpa model, and the books behind this site.">
+  <div class="wrap" style="max-width:820px;padding-top:34px">
+    <h1>Library</h1>
+    <p class="dek">The study tools this site grew from, and the books to read next.</p>
+    <h2>Made here</h2>
+    <ul class="list">
+      <li><a href={u("atlas/")}><span class="t">The Abhidhamma Atlas</span><span class="d">Fifteen plates on a seven-level path, with 3D models, a clickable concept map, stories, and tools for slow study.</span></a></li>
+      <li><a href={u("abhidhamma-atlas.pdf")}><span class="t">The atlas as a PDF</span><span class="d">Sixty-seven A4 pages for reading offline or printing.</span></a></li>
+      <li><a href={u("nama-rupa-model.html")}><span class="t">The nāma–rūpa model</span><span class="d">An interactive model of mind and matter: their relations, a lifespan of moments, the kalāpas.</span></a></li>
+    </ul>
+    <h2>Books</h2>
+    <ul class="list">
+      <li><span class="t">Bhikkhu Bodhi (ed.), <i>A Comprehensive Manual of Abhidhamma</i></span><span class="d">The Abhidhammattha Saṅgaha of Ācariya Anuruddha, with Nārada's translation revised and a full guide. Buddhist Publication Society; BPS Pariyatti in the Americas. The book this site follows.</span></li>
+      <li><span class="t">Nyanatiloka Thera, <i>Guide through the Abhidhamma-Piṭaka</i></span><span class="d">A synopsis of the seven canonical books.</span></li>
+      <li><span class="t">Bhikkhu Ñāṇamoli (tr.), <i>The Path of Purification</i></span><span class="d">Buddhaghosa's Visuddhimagga, where the Abhidhamma meets practice.</span></li>
+      <li><span class="t">Pe Maung Tin (tr.), <i>The Expositor</i></span><span class="d">The Atthasālinī, the commentary on the Dhammasaṅgaṇī, with the mango simile.</span></li>
+    </ul>
+    <h2>Online</h2>
+    <ul class="list">
+      <li><a href="https://suttacentral.net/"><span class="t">SuttaCentral</span><span class="d">The suttas and the Abhidhamma books in Pāli, with Bhikkhu Sujato's public-domain translations.</span></a></li>
+      <li><a href="https://www.dpdict.net/"><span class="t">Digital Pāḷi Dictionary</span><span class="d">The fullest Pāli–English dictionary online, with grammar for every word.</span></a></li>
+    </ul>
+  </div>
+</Base>

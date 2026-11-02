@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../site.config.mjs";
+---
+<Base title="About" description="What this site is, what it quotes and does not, and how discussion works.">
+  <div class="wrap" style="max-width:var(--measure);padding-top:34px">
+    <h1>About</h1>
+    <p class="dek">A reading companion to the Theravāda Abhidhamma, made as a study aid and not as an authority.</p>
+    <h2>What it follows</h2>
+    <p>The order and the numbers follow Bhikkhu Bodhi's <i>A Comprehensive Manual of Abhidhamma</i>. The site retells and cites the <i>Manual</i>; it does not reproduce its text or tables, which belong to the Buddhist Publication Society. References like "IV §6" are to its chapters and sections, so you can read the source alongside.</p>
+    <p>Suttas are cited by their SuttaCentral numbers. Short sutta passages are retold, or quoted from Bhikkhu Sujato's translations, which he has placed in the public domain.</p>
+    <h2>What is commentarial</h2>
+    <p>Much of the Abhidhamma's system, such as the seventeen-moment process or the count of thirty-one planes, comes from the commentaries rather than the canonical books. Each concept page says so in "In the texts". Readings of stories are marked as study aids.</p>
+    <h2 id="discussion">How discussion works</h2>
+    <p>Each concept and reading ends with an opening question and one way of answering it, kept closed until you have tried. Below it is the page's discussion, which uses <a href="https://giscus.app/">giscus</a>: each page has one thread in the project's GitHub Discussions, and you sign in with GitHub to take part. Nothing else on the site tracks you.</p>
+    <p>Discussion is switched off until the project's Discussions are set up.</p>
+    <h2>Corrections</h2>
+    <p>Every page can be wrong. To point out an error or suggest a source, open an issue or a pull request at <a href={site.repo}>the source</a>.</p>
+  </div>
+</Base>

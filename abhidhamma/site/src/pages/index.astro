@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { GROUPS, concept, conceptUrl, u, atlasUrl } from "../lib/atlas.js";
+const readings = (await getCollection("readings")).sort((a, b) => a.data.order - b.data.order);
+const cards = ["T", "CI", "PR", "JV", "KA", "DO", "VI", "NB"].map(concept);
+const pic = (c) => c.picture?.svg.replace(/<title>[^<]*<\/title>/, "").replace(/aria-label="[^"]*"/, 'aria-hidden="true"') || "";
+// A ring of seventeen moments: the hero picture.
+const R = 150, cells = Array.from({ length: 17 }, (_, i) => {
+  const a = -Math.PI / 2 + (i / 17) * Math.PI * 2;
+  return { x: 200 + R * Math.cos(a), y: 190 + R * Math.sin(a), k: i < 3 ? "b" : i < 8 ? "p" : i < 15 ? "j" : "t" };
+});
+---
+<Base nav="">
+  <div class="wrap hero">
+    <div>
+      <p class="lab">A reading companion to the Abhidhamma</p>
+      <h1>Mind, matter and the conditions that join them</h1>
+      <p class="sub">The Theravāda's analysis of experience into moments, told slowly: essays to read, concepts to look up, stories to remember, and questions to sit with.</p>
+      <div class="btns">
+        <a class="btn primary" href={u("readings/")}>Start reading</a>
+        <a class="btn" href={u("concepts/")}>Browse the sixteen ideas</a>
+      </div>
+    </div>
+    <svg viewBox="0 0 400 380" role="img" aria-label="Seventeen moments of a process of seeing drawn as a ring: three of the life-continuum, five that receive the object, seven javanas, and two of registration">
+      <circle cx="200" cy="190" r={R} fill="none" stroke="var(--line)" stroke-dasharray="2 5" />
+      {cells.map((c, i) => <circle cx={c.x} cy={c.y} r={c.k === "j" ? 15 : 12}
+        fill={c.k === "j" ? "var(--nama)" : c.k === "t" ? "var(--nama-soft)" : c.k === "p" ? "var(--sheet)" : "var(--faint)"}
+        stroke={c.k === "b" ? "var(--line)" : "var(--nama)"} stroke-width="1.5" stroke-dasharray={c.k === "t" ? "3 2" : undefined} />)}
+      <circle cx="200" cy="190" r="34" fill="var(--rupa-mark)" opacity=".9" />
+      <path d="M200 156 q6 -16 18 -18" fill="none" stroke="var(--nib)" stroke-width="3" stroke-linecap="round" />
+      <text x="200" y="256" text-anchor="middle" class="tx-it" font-size="15" fill="var(--muted)">one sight, seventeen moments</text>
+      <text x="200" y="22" text-anchor="middle" font-family="var(--ui)" font-size="12" fill="var(--muted)">life-continuum</text>
+      <text x="16" y="372" font-family="var(--ui)" font-size="12" fill="var(--nama)">seven javanas: kamma is made</text>
+    </svg>
+  </div>
+
+  <section class="band">
+    <div class="wrap">
+      <header><h2>Readings</h2><a class="ui" href={u("readings/")}>All readings</a></header>
+      <div class="cols">
+        {GROUPS.map((g) => {
+          const rs = readings.filter((r) => r.data.part === g.t);
+          return (
+            <div class="col">
+              <h3>{g.t}</h3>
+              <p>{g.d}</p>
+              <ul class="list">
+                {rs.map((r) => <li><a href={u("readings/" + r.id + "/")}><span class="t">{r.data.title}</span><span class="d">{r.data.dek}</span></a></li>)}
+                {rs.length === 0 && <li class="muted ui inline" style="font-size:15px">The first essays here are being written. The <a href={atlasUrl("L6")}>atlas plates</a> cover this part now.</li>}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <header><h2>Sixteen ideas</h2><a class="ui" href={u("concepts/")}>All sixteen</a></header>
+      <div class="cards">
+        {cards.map((c) => (
+          <a class="card" href={conceptUrl(c.id)}>
+            <figure set:html={pic(c)} />
+            <div><span class="t">{c.title}</span> <span class="pali">{c.pali}</span><p>{c.def}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="quote">“When the parts are put together we say ‘chariot’. When the aggregates are present, we say ‘a being’.”</p>
+      <p>The nun Vajirā to Māra, retold after SN 5.10. <a href={u("readings/a-chariot-of-parts/")}>Read the essay</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap cols">
+      <div class="col"><h3><a href={u("glossary/")}>Glossary</a></h3><p>Every Pāli term used on the site, with a short English gloss. Hover or tap a dotted word anywhere to see its entry.</p></div>
+      <div class="col"><h3><a href={u("stories/")}>Stories</a></h3><p>The Buddha's life, the Jātakas and the disciples, each read against the idea it shows.</p></div>
+      <div class="col"><h3><a href={u("library/")}>Library</a></h3><p>The atlas of plates, its printable PDF, the interactive model of mind and matter, and the books behind them.</p></div>
+    </div>
+  </section>
+</Base>

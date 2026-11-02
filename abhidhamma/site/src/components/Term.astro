@@ -1,0 +1,9 @@
+---
+// A Pāli word with its gloss from the glossary: <Term>javana</Term>, or <Term g="cetanā">volition</Term>.
+import { gloss, termHtml } from "../lib/atlas.js";
+interface Props { g?: string }
+const text = (await Astro.slots.render("default")).trim();
+const entry = gloss(Astro.props.g || text.replace(/<[^>]+>/g, ""));
+if (!entry) console.warn("[Term] no glossary entry for", Astro.props.g || text);
+---
+{entry ? <Fragment set:html={termHtml(text, entry)} /> : <i lang="pi">{text}</i>}

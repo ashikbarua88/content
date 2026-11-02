@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { GROUPS, plates, cmaMap, atlasUrl, u } from "../../lib/atlas.js";
+const readings = await getCollection("readings");
+const byPlate = Object.fromEntries(readings.map((r) => [r.data.plate.replace(/^p/, ""), r]));
+// Which part each plate belongs to, for plates whose essay is not written yet.
+const PART = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1, 12: 2, 13: 2, 14: 2, 15: 2 };
+---
+<Base title="Readings" nav="read" description="Essays on the Abhidhamma, one for each plate of the atlas, in reading order.">
+  <div class="wrap" style="max-width:860px;padding-top:34px">
+    <h1>Readings</h1>
+    <p class="dek">Essays written to be read slowly, one for each plate of the atlas, in the order of the <i>Manual</i>. Each ends with a question to take away.</p>
+    {GROUPS.map((g, gi) => (
+      <section>
+        <h2>{g.t}</h2>
+        <p class="muted">{g.d}</p>
+        <ol class="list">
+          {Object.keys(plates).filter((p) => PART[p] === gi).map((p) => {
+            const r = byPlate[p];
+            return r
+              ? <li><a href={u("readings/" + r.id + "/")}><span class="t">{p}. {r.data.title}</span><span class="d">{r.data.dek} · about {r.data.minutes} minutes</span></a></li>
+              : <li><span class="t muted">{p}. {plates[p].t}</span><span class="d">{plates[p].k} The essay is being written; <a href={atlasUrl("p" + p)}>read the plate</a>.</span></li>;
+          })}
+        </ol>
+      </section>
+    ))}
+  </div>
+</Base>

@@ -8,7 +8,8 @@ Two visual companions to Bhikkhu Bodhi's *A Comprehensive Manual of Abhidhamma*,
 | Abhidhamma Atlas, one file | `abhidhamma-atlas.html` | Built from `atlas/`. Used for the Claude artifact. Do not edit by hand. |
 | Abhidhamma Atlas, PDF | `abhidhamma-atlas.pdf` | Built from `atlas/`. 67 A4 pages. |
 | Nāma–rūpa model | `nama-rupa-model.html` | A standalone interactive model of mind and matter. |
-| Landing page | `index.html` | The front page of the published site. |
+| **Reading website** | `site/` | The published website: readings, concepts, glossary, stories, search and discussion, built with Astro. See `site/README.md`. |
+| Landing page | `index.html` | A one-page index of the companions, kept for offline use. |
 | Build tool | `tools/build.js` | Bundles the atlas and prints the PDF. |
 
 ## What is in the atlas
@@ -25,7 +26,7 @@ On screen the atlas is interactive. Deep links work: `atlas/#idea-KA` opens *Kam
 There are three ways to put the atlas in front of readers. They can be used together.
 
 1. **The Claude artifact.** The atlas is published as a private Claude artifact. Its owner can make it public from the artifact page's *Share* menu; anyone with the link can then read it. To update it, rebuild `abhidhamma-atlas.html` and republish it to the same artifact.
-2. **GitHub Pages.** The workflow in `.github/workflows/abhidhamma-pages.yml` publishes this folder whenever it changes on `master`. Turn it on once: *Settings → Pages → Build and deployment → Source: GitHub Actions*. The site is then at `https://<owner>.github.io/<repo>/`, with the atlas at `…/atlas/`. Pages on a free account needs a public repository.
+2. **GitHub Pages.** The workflow in `.github/workflows/abhidhamma-pages.yml` builds the reading website in `site/` (with the atlas, PDF and model copied in) whenever this folder changes on `master`. Turn it on once: *Settings → Pages → Build and deployment → Source: GitHub Actions*. The site is then at `https://<owner>.github.io/<repo>/`, with the atlas at `…/atlas/`. Pages on a free account needs a public repository.
 3. **The PDF.** Attach `abhidhamma-atlas.pdf` to a GitHub release, or share it from any drive. It needs nothing but a PDF reader.
 
 Readers' progress in the study plan and the review deck is kept in their own browser only. Nothing is collected or shared.

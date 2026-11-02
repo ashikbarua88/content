@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import { glossary, fold, atlasUrl, concepts, conceptUrl } from "../lib/atlas.js";
+const letters = [...new Set(glossary.map((g) => fold(g.term)[0].toUpperCase()))];
+const groups = letters.map((L) => [L, glossary.filter((g) => fold(g.term)[0].toUpperCase() === L)]);
+// A glossary entry links to its concept page when the headword names one of the sixteen ideas.
+const conceptFor = (g) => concepts.find((c) => fold(g.term.split(" · ")[0]) === fold(c.pali.split(" · ")[0]) || fold(g.term) === fold(c.title));
+---
+<Base title="Glossary" nav="glossary" description="Every Pāli term used on the site, with a short English gloss.">
+  <div class="wrap" style="max-width:900px;padding-top:34px">
+    <h1>Glossary</h1>
+    <p class="dek">{glossary.length} terms, in Pāli alphabetical order without diacritics. Search finds the English as well as the Pāli.</p>
+    <nav class="letters" aria-label="Letters">{letters.map((L) => <a href={"#" + L}>{L}</a>)}</nav>
+    {groups.map(([L, gs]) => (
+      <section>
+        <h2 id={L}>{L}</h2>
+        <dl class="gl">
+          {gs.map((g) => { const c = conceptFor(g); return (
+            <div id={g.id}><dt lang="pi">{g.term}</dt><dd>{g.gloss}. {c && <a href={conceptUrl(c.id)}>The concept</a>}{c && " · "}<span class="x"><a href={atlasUrl("p" + g.plate)}>Plate {g.plate}</a></span></dd></div>
+          ); })}
+        </dl>
+      </section>
+    ))}
+  </div>
+</Base>

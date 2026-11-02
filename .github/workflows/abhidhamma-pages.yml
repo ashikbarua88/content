@@ -1,7 +1,8 @@
-# Publishes the abhidhamma/ folder as a GitHub Pages site whenever it changes on master.
+# Builds the Abhidhamma reading website (abhidhamma/site) and publishes it with GitHub Pages
+# whenever abhidhamma/ changes on master. The atlas, its PDF and the model are copied in under it.
 # One-time setup: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 # The site then lives at https://<owner>.github.io/<repo>/ (the atlas under atlas/).
-name: Publish the Abhidhamma Atlas
+name: Publish the Abhidhamma website
 
 on:
   push:
@@ -27,8 +28,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: abhidhamma/site/package-lock.json
+      - name: Build the site
+        working-directory: abhidhamma/site
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io
+          SITE_BASE: /${{ github.event.repository.name }}/
+        run: |
+          npm ci
+          npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: abhidhamma
+          path: abhidhamma/site/dist
       - id: deploy
         uses: actions/deploy-pages@v4

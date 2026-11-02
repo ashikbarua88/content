@@ -1,0 +1,18 @@
+{
+  "name": "abhidhamma-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract": "node tools/extract.mjs",
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "prebuild": "node tools/companions.mjs",
+    "predev": "node tools/companions.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.6",
+    "astro": "^6.4.8",
+    "pagefind": "^1.6.0"
+  }
+}

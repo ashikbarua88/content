@@ -1,0 +1,59 @@
+---
+import "../styles/atlas-tokens.css";
+import "../styles/site.css";
+import { site } from "../site.config.mjs";
+import { u } from "../lib/atlas.js";
+interface Props { title?: string; description?: string; nav?: string; search?: boolean }
+const { title, description = site.tagline, nav = "", search = true } = Astro.props;
+const full = title ? `${title} · ${site.title}` : `${site.title}: ${site.tagline}`;
+const links = [
+  ["read", "Read", "readings/"],
+  ["concepts", "Concepts", "concepts/"],
+  ["glossary", "Glossary", "glossary/"],
+  ["stories", "Stories", "stories/"],
+  ["library", "Library", "library/"],
+];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{full}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;600&family=Noto+Serif+Display:ital,wght@0,500;1,400&display=swap">
+  <script is:inline>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the text</a>
+  <header class="top">
+    <nav aria-label="Site">
+      <a class="brand" href={u()}>Abhidhamma</a>
+      <ul>
+        {links.map(([k, t, href]) => <li><a href={u(href)} aria-current={nav === k ? "page" : undefined}>{t}</a></li>)}
+      </ul>
+      {search && <a class="searchlink" href={u("search/")} aria-label="Search">Search</a>}
+      <button class="theme" type="button" aria-label="Switch light and dark" title="Light or dark">◐</button>
+    </nav>
+  </header>
+  <main id="main" data-pagefind-body>
+    <slot />
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>A study companion to Bhikkhu Bodhi's <i>A Comprehensive Manual of Abhidhamma</i>, which it retells and cites but does not reproduce. Every page names its sources; the readings of stories are marked as study aids.</p>
+      <p><a href={u("about/")}>About and sources</a> · <a href={site.repo}>Source and corrections</a> · <a href={u("atlas/")}>The atlas</a></p>
+    </div>
+  </footer>
+  <script is:inline>
+    document.querySelector(".theme").addEventListener("click", function () {
+      var r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+      r.dataset.theme = dark ? "light" : "dark";
+      try { localStorage.setItem("theme", r.dataset.theme); } catch (e) {}
+      document.dispatchEvent(new CustomEvent("themechange", { detail: r.dataset.theme }));
+    });
+  </script>
+</body>
+</html>

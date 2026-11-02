@@ -1,0 +1,12 @@
+---
+// A drawing from the atlas, by sheet id (p7, p3b, …), with a caption and a link to the full sheet.
+import P from "../data/plates.json";
+import { atlasUrl } from "../lib/atlas.js";
+interface Props { sheet: string; wide?: boolean; label: string }
+const { sheet, wide, label } = Astro.props;
+const svg = (P[sheet] || "").replace("<svg", `<svg role="img" aria-label="${label.replace(/"/g, "&quot;")}"`);
+---
+<figure class:list={["pic", { wide }]}>
+  <Fragment set:html={svg} />
+  <figcaption><slot /> <a href={atlasUrl(sheet)}>The full sheet in the atlas</a>.</figcaption>
+</figure>

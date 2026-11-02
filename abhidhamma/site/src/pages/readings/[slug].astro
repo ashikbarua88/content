@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+import Discuss from "../../components/Discuss.astro";
+import { getCollection, render } from "astro:content";
+import { concept, conceptUrl, atlasUrl, u, cmaMap } from "../../lib/atlas.js";
+
+export async function getStaticPaths() {
+  const all = (await getCollection("readings")).sort((a, b) => a.data.order - b.data.order);
+  return all.map((r, i) => ({ params: { slug: r.id }, props: { r, prev: all[i - 1], next: all[i + 1] } }));
+}
+const { r, prev, next } = Astro.props;
+const { Content } = await render(r);
+const d = r.data;
+const plateNo = d.plate.replace(/^p/, "");
+---
+<Base title={d.title} description={d.dek} nav="read">
+  <article class="reading">
+    <header>
+      <p class="crumbs"><a href={u("readings/")}>Readings</a> › {d.part}</p>
+      <h1>{d.title}</h1>
+      <p class="dek">{d.dek}</p>
+      <p class="meta"><span>About {d.minutes} minutes</span><span>Plate {plateNo} in the atlas</span>{cmaMap[plateNo] && <span>Manual {cmaMap[plateNo].refs.split(";")[0]}</span>}</p>
+    </header>
+    <div class="body">
+      <Content />
+    </div>
+    <div class="after">
+      <h2 id="concepts">The ideas in this reading</h2>
+      <ul class="list">
+        {d.concepts.map((id) => { const c = concept(id); return <li><a href={conceptUrl(id)}><span class="t">{c.title}</span> <i lang="pi">{c.pali}</i><span class="d">{c.def}</span></a></li>; })}
+      </ul>
+      <h2 id="sources">Sources</h2>
+      <ul class="canon">{d.sources.map((s) => <li set:html={s} />)}</ul>
+      <p class="note">Retold for study, not quoted. The full drawing and its notes are on <a href={atlasUrl(d.plate)}>Plate {plateNo} of the atlas</a>.</p>
+      <h2 id="discuss">Reflect and discuss</h2>
+      <Discuss term={"reading:" + r.id} q={d.question} a={d.answer} />
+      <nav class="pn" aria-label="Previous and next reading">
+        {prev && <a href={u("readings/" + prev.id + "/")}><small>Previous reading</small><span class="t">{prev.data.title}</span></a>}
+        {next && <a class="next" href={u("readings/" + next.id + "/")}><small>Next reading</small><span class="t">{next.data.title}</span></a>}
+      </nav>
+    </div>
+  </article>
+</Base>

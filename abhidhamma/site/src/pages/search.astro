@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/atlas.js";
+---
+<Base title="Search" search={false} description="Search the readings, concepts, glossary and stories.">
+  <div class="search-page" data-pagefind-ignore="all">
+    <h1>Search</h1>
+    <p class="muted ui" style="font-size:15px">Pāli or English. Diacritics are optional: <i>bhavanga</i> finds <i>bhavaṅga</i>.</p>
+    <link href={u("pagefind/pagefind-ui.css")} rel="stylesheet" />
+    <div id="search"></div>
+    <script is:inline define:vars={{ b: u("pagefind/") }}>
+      var s = document.createElement("script"); s.src = b + "pagefind-ui.js";
+      s.onload = function () {
+        var ui = new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+        var q = new URLSearchParams(location.search).get("q"); if (q) ui.triggerSearch(q);
+      };
+      document.head.appendChild(s);
+    </script>
+  </div>
+</Base>
