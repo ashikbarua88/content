@@ -131,3 +131,27 @@ These were checked and need no change:
 - **The planes:** the four woeful planes (including the asuras), the seven happy sense-sphere planes, the sixteen fine-material planes (with the beings without perception and the five Pure Abodes), and the four immaterial planes. Lifespans: one Tāvatiṃsa day is a hundred human years, and a life there a thousand divine years (AN 8.43). The highest plane, 84,000 great aeons. The mountain simile (SN 15.5). The five destinations (MN 12).
 - **Meditation:** the forty subjects, and the six temperaments with their subjects. The three signs, with the mirror simile, and the three stages. How far each subject goes: the eight recollections to access, foulness and the body to the first jhāna, the first three illimitables short of the last jhāna, equanimity only in it, and the kasiṇas and breathing to all of them.
 - **Insight:** the tree's soil, roots, trunk and crown (Vism XIV). The relay of chariots (MN 24). The seven purifications and the ten imperfections of insight. The *Manual*'s ten insight knowledges. The three doors. Change-of-lineage, path and fruition. The ten fetters and the four paths.
+
+## Batch 5: readings 20 to 23 (2 November 2026)
+
+*The four noble truths and the eightfold path*, *One moment, every lens*, *Two moments, side by side*, *Other maps of the same ground*. The 23 readings are now all reviewed.
+
+### Fixed
+
+| File | Was | Now | Why |
+| --- | --- | --- | --- |
+| one-moment-every-lens | "A being in a fine-material world, without eyes in the human sense, would not have this process at all." | A Brahmā of the fine-material worlds has eyes and could see the mango, but has no nose or tongue; a being of the immaterial worlds would not have this process | Fine-material beings have the eye and ear bases; they lack only nose, tongue and body sensitivity. |
+| one-moment-every-lens | "At determining, wise attention could have led …" | "At the turn of attention …" | Consistent with batch 2: the commentaries place wise attention at adverting, and later teachers discuss determining. |
+| other-maps-of-the-same-ground | Vasubandhu "summarised its system in the *Abhidharmakośa*" | "… often critically" | The *Kośa*'s own commentary frequently argues against Vaibhāṣika positions from a Sautrāntika view. |
+
+### Open
+
+None.
+
+### Checked and correct
+
+These were checked and need no change:
+- **The truths and the path:** the twelve aspects (SN 56.11). The truths in Abhidhamma terms: suffering is the mundane cittas, all the factors except greed, and matter; origin, greed; cessation, Nibbāna; path, the eight factors. Each path factor named as a mental factor. Seven factors in paths at the second jhāna and above. The mundane and supramundane path, with all three abstinences together in the path moment. The three trainings (MN 44), with view first (MN 117).
+- **The mango through every lens:** the six kinds of citta in the process, plus registration. The factors of the greed-rooted javana, with conceit possible and wrong view absent. Mind-born matter. The conditions named. The *Vibhaṅga*'s one-moment dependent origination.
+- **Two moments:** identical for eight moments. Joy with opposite roots. Kamma only in the javanas.
+- **Other maps:** the counts of 82, 75 and 100, by category. The formations dissociated from mind. The Sarvāstivāda's view of the three times (only a dharma's activity is present). The *Kathāvatthu*'s reply. The storehouse consciousness and *manas*. The unconditioned: three, six and one.
