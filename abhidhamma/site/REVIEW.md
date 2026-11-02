@@ -155,3 +155,35 @@ These were checked and need no change:
 - **The mango through every lens:** the six kinds of citta in the process, plus registration. The factors of the greed-rooted javana, with conceit possible and wrong view absent. Mind-born matter. The conditions named. The *Vibhaṅga*'s one-moment dependent origination.
 - **Two moments:** identical for eight moments. Joy with opposite roots. Kamma only in the javanas.
 - **Other maps:** the counts of 82, 75 and 100, by category. The formations dissociated from mind. The Sarvāstivāda's view of the three times (only a dharma's activity is present). The *Kathāvatthu*'s reply. The storehouse consciousness and *manas*. The unconditioned: three, six and one.
+
+## Batch 6: the 104 dhamma entries and the 16 concepts' questions (2 November 2026)
+
+The descriptions in `src/content/dhammas/factors.yaml`, `matter.yaml` and `conditions.yaml`, and the questions and answers in `src/content/concepts/*.md`. The concepts' long descriptions come from the atlas, where they were fact-checked in its two analysis rounds; they were read again for consistency, not re-researched.
+
+### Fixed
+
+| Entry | Was | Now | Why |
+| --- | --- | --- | --- |
+| doubt (*vicikicchā*) | "It roots one citta of its own" | "It is not a root: it occurs in one citta only, the delusion-rooted citta accompanied by doubt" | Doubt is not one of the six roots; that citta's root is delusion. |
+| appreciative joy (*muditā*) | "its far enemy is envy" | The *Visuddhimagga* names its near enemy as worldly joy and its far enemy as discontent (*arati*); envy is what it most directly overcomes | Follows *Visuddhimagga* IX. |
+
+### Open
+
+None.
+
+### Checked and correct
+
+These were checked and need no change:
+- **The 52 factors:** the commentarial similes. Perception as the carpenter's mark and the deer's scarecrow. Volition as the foreman. The life faculty as water for lotuses. Attention as the rudder. Applied and sustained thought as the bell and its resonance. Decision as the pillar. Energy as the props. Faith as the water-clearing gem. Mindfulness as the post. Non-greed as the drop on a lotus leaf. Neutrality as the charioteer.
+- **Placements and counts:** wrong view and conceit only in greed-rooted cittas, never together. Envy, avarice and worry one at a time. Sloth and torpor only in the five prompted unwholesome cittas. Shame and fear of wrongdoing as the guardians of the world. The six pairs and what each counters. The abstinences only when refraining, and always in the path. Compassion's enemies, and the illimitables never in the path.
+- **The 28 kinds of matter:** the characteristic of each. Shape as inferred, not seen. Sound as the one sense object outside the inseparables. The heart-base named only by the commentaries, the *Paṭṭhāna* saying only "that matter". Space as the boundary between groups. The mutable qualities and the four characteristics.
+- **The 24 conditions:** each condition's sense and simile, including the young vulture (postnascence), the governor (faculty) and the flame and its light (conascence). The four predominants. The four nutriments.
+- **The 16 questions and answers:**
+  - the Milindapañha's "neither the same nor another"
+  - volition present but making no kamma in resultant cittas
+  - Nibbāna as object and decisive support
+  - the *Vibhaṅga*'s dependent origination in one moment
+  - the similes of rebirth (Vism XVII)
+  - the three-rooted gift and three-rooted rebirth
+  - jhāna suppressing, not uprooting, the hindrances
+  - the path removing conditions rather than adding anything

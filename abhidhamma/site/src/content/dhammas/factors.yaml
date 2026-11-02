@@ -237,8 +237,9 @@
   en: doubt
   group: unwholesome
   text: >-
-    Doubt is the mind's indecision about the Buddha, the Dhamma, the path and the nature of things. It roots
-    one citta of its own, and stream-entry ends it.
+    Doubt is the mind's indecision about the Buddha, the Dhamma, the path and the nature of things. It is
+    not a root: it occurs in one citta only, the delusion-rooted citta accompanied by doubt, and stream-entry
+    ends it.
 - id: saddha
   pali: saddhā
   en: faith
@@ -391,7 +392,8 @@
   en: appreciative joy
   group: beautiful
   text: >-
-    Appreciative joy is gladness at others' success; its far enemy is envy. Like compassion it occurs
+    Appreciative joy is gladness at others' success. The Visuddhimagga names its near enemy as worldly
+    joy and its far enemy as discontent; envy is what it most directly overcomes. Like compassion it occurs
     occasionally and is a basis for jhāna.
 - id: pannindriya
   pali: paññindriya
