@@ -57,11 +57,11 @@ const card = z.object({
 }).optional();
 const factors = defineCollection({
   loader: file("src/content/dhammas/factors.yaml"),
-  schema: z.object({ pali: z.string(), en: z.string(), group: z.enum(["universal", "occasional", "unwholesome", "beautiful"]), text: z.string(), card }),
+  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), group: z.enum(["universal", "occasional", "unwholesome", "beautiful"]), text: z.string(), card }),
 });
 const matter = defineCollection({
   loader: file("src/content/dhammas/matter.yaml"),
-  schema: z.object({ pali: z.string(), en: z.string(), origins: z.string(), text: z.string(), card }),
+  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), origins: z.string(), text: z.string(), card }),
 });
 const conditions = defineCollection({
   loader: file("src/content/dhammas/conditions.yaml"),

@@ -1,0 +1,76 @@
+{
+ "lens": {
+  "2": "Conventionally: “I see a mango and want it.” Ultimately: cittas, mental factors, an eye-base and a visible form, with no owner behind them.",
+  "3": "Six kinds of citta in one process: adverting #28, seeing #20, receiving #25, investigating #26, determining #29, then javanas of #3, greed with joy, without wrong view, unprompted.",
+  "4": "Seeing carries only the 7 universals. Each javana carries 18: the 7, the 6 occasionals, the 4 unwholesome universals and greed. Conceit may join as a 19th.",
+  "5": "Eye-sensitivity is kamma-born; the mango's colour is temperature-born. The javanas make mind-born matter: perhaps a smile, or a hand reaching out.",
+  "7": "A very great object: seeing at moment 5, the wanting in javanas 9–15, registration at 16–17, then back to the life-continuum.",
+  "8": "Eye-base: prenascence and support. Colour: object. Adverting: proximity. Greed: root. Each javana: repetition. Volition: kamma.",
+  "9": "Contact → feeling → craving. This is the second connection, where present results turn into present causes.",
+  "10": "Unwholesome kamma. By time: J1 may ripen in this life, J7 in the next, J2–6 in any later life. Repeated often, it becomes habitual kamma.",
+  "11": "If kamma like this produces rebirth, it leads to a woeful plane; within a human life it ripens as unwelcome sights and sounds.",
+  "13": "Mindfulness notes “wanting”. Insight sees it arise and pass. Sensual desire is weakened at once-return and ended at non-return."
+ },
+ "moments": [
+  {
+   "from": 1,
+   "to": 1,
+   "kind": "a",
+   "name": "life-continuum"
+  },
+  {
+   "from": 2,
+   "to": 3,
+   "kind": "bu",
+   "name": "vibrating, arrest"
+  },
+  {
+   "from": 4,
+   "to": 4,
+   "kind": "pa",
+   "name": "adverting"
+  },
+  {
+   "from": 5,
+   "to": 5,
+   "kind": "vi",
+   "name": "seeing"
+  },
+  {
+   "from": 6,
+   "to": 6,
+   "kind": "pr",
+   "name": "receiving"
+  },
+  {
+   "from": 7,
+   "to": 7,
+   "kind": "pr",
+   "name": "investigating"
+  },
+  {
+   "from": 8,
+   "to": 8,
+   "kind": "pr",
+   "name": "determining"
+  },
+  {
+   "from": 9,
+   "to": 15,
+   "kind": "ja",
+   "name": "javana ×7"
+  },
+  {
+   "from": 16,
+   "to": 17,
+   "kind": "ta",
+   "name": "registration"
+  },
+  {
+   "from": 18,
+   "to": 18,
+   "kind": "b",
+   "name": "life-continuum"
+  }
+ ]
+}

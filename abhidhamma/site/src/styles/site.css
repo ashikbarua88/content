@@ -186,17 +186,7 @@ label.sn-ref { cursor: pointer; }
 .chips a span { font: 13.5px var(--ui); color: var(--muted); }
 .chips a .n { font-weight: 600; color: var(--accent); }
 
-/* ---------- atlas sheets as images ---------- */
-figure.sheetimg { padding: 10px; max-width: 680px; }
-figure.sheetimg img { display: block; width: 100%; height: auto; border-radius: 6px; }
-figure.sheetimg .dk { display: none; }
-:root[data-theme="dark"] figure.sheetimg .lt { display: none; }
-:root[data-theme="dark"] figure.sheetimg .dk { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) figure.sheetimg .lt { display: none; }
-  :root:not([data-theme="light"]) figure.sheetimg .dk { display: block; }
-}
-figure.sheetimg figcaption { padding: 0 6px; }
+
 
 /* ---------- explore: the concept map ---------- */
 .mapfig { max-width: 980px; margin: 24px auto; }
@@ -256,7 +246,6 @@ figure.pic.mapfig svg { display: block; width: 100%; height: auto; max-height: n
   .sn { display: block !important; float: none !important; width: auto !important; margin: .4em 0 .6em !important; padding-left: 10px; border-left: 2px solid #ccc; font-size: 9pt; }
   label.sn-ref::after { color: #2b3190; }
   .wide { margin-right: 0 !important; }
-  figure.sheetimg .dk { display: none !important; } figure.sheetimg .lt { display: block !important; }
   .reading, .book { max-width: none; padding: 0; }
   .book .chapter { break-before: page; } .book .essay, .book h3.partname { break-before: page; } .book h2.part + h3.partname, .book h3.partname + .essay { break-before: avoid; } .book .cover { break-after: page; padding-top: 30vh; } .book .toc { break-after: page; }
   .book h2.part { margin-top: 0; }
@@ -285,3 +274,11 @@ figure.pic.mapfig svg { display: block; width: 100%; height: auto; max-height: n
 .acctlink { font: 15px var(--ui); color: var(--muted); text-decoration: none; } .acctlink:hover { color: var(--accent); }
 .refl .q { font-style: italic; color: var(--muted); }
 @media print { .journal textarea { border: 1px solid #ccc; } .discussion { display: none !important; } }
+
+/* ---------- figures drawn by the site (src/figures/) ---------- */
+figure.drawn svg.fig { display: block; width: 100%; height: auto; max-height: none; font-family: var(--ui); }
+svg.fig text { fill: var(--ink); }
+svg.fig .fg-xxs { font-size: 8px; } svg.fig .fg-xs { font-size: 10px; } svg.fig .fg-s { font-size: 12px; } svg.fig .fg-m { font-size: 14px; } svg.fig .fg-l { font-size: 17px; }
+svg.fig .fg-b { font-weight: 600; } svg.fig .fg-it { font-family: var(--body); font-style: italic; }
+svg.fig .fg-mu { fill: var(--muted); } svg.fig .fg-nm { fill: var(--nama); } svg.fig .fg-rp { fill: var(--rupa); } svg.fig .fg-nb { fill: var(--nib); } svg.fig .fg-on { fill: var(--on-accent); }
+@media (max-width: 640px) { figure.drawn .fig-scroll { overflow-x: auto; } figure.drawn svg.fig { min-width: 600px; } }

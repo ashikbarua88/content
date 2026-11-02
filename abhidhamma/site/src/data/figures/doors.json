@@ -1,0 +1,58 @@
+{
+ "doors": [
+  {
+   "en": "eye",
+   "pali": "cakkhu",
+   "organ": "eye-sensitivity",
+   "object": "visible form",
+   "objPali": "rūpa",
+   "consciousness": "eye-consciousness",
+   "cittas": "2 cittas"
+  },
+  {
+   "en": "ear",
+   "pali": "sota",
+   "organ": "ear-sensitivity",
+   "object": "sound",
+   "objPali": "sadda",
+   "consciousness": "ear-consciousness",
+   "cittas": "2 cittas"
+  },
+  {
+   "en": "nose",
+   "pali": "ghāna",
+   "organ": "nose-sensitivity",
+   "object": "smell",
+   "objPali": "gandha",
+   "consciousness": "nose-consciousness",
+   "cittas": "2 cittas"
+  },
+  {
+   "en": "tongue",
+   "pali": "jivhā",
+   "organ": "tongue-sensitivity",
+   "object": "taste",
+   "objPali": "rasa",
+   "consciousness": "tongue-consciousness",
+   "cittas": "2 cittas"
+  },
+  {
+   "en": "body",
+   "pali": "kāya",
+   "organ": "body-sensitivity",
+   "object": "the tangible: earth, fire, air",
+   "objPali": "phoṭṭhabba",
+   "consciousness": "body-consciousness",
+   "cittas": "2 cittas"
+  },
+  {
+   "en": "mind",
+   "pali": "mano",
+   "organ": "all 89 cittas (as base)",
+   "object": "mental objects: 52 factors, 16 subtle kinds of matter, Nibbāna",
+   "objPali": "dhamma",
+   "consciousness": "mind element (3) + mind-consciousness element (76)",
+   "cittas": "79 cittas"
+  }
+ ]
+}

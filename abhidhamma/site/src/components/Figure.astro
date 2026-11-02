@@ -1,0 +1,19 @@
+---
+// A figure drawn by the site at build time: <Figure name="planes" label="…" sheet="p11">caption</Figure>.
+// The drawing code is in src/figures/, its data in src/data/figures/ and src/content/.
+import { FIGURES } from "../figures/index.js";
+import { getCollection } from "astro:content";
+import S from "../data/structure.json";
+import { matter } from "../lib/dhammas.js";
+import { atlasUrl } from "../lib/atlas.js";
+interface Props { name: string; label?: string; sheet?: string; wide?: boolean }
+const { name, sheet, wide } = Astro.props;
+const conditions = (await getCollection("conditions")).map((c) => ({ n: c.data.n, en: c.data.en, dir: c.data.direction })).sort((a, b) => a.n - b.n);
+const fig = FIGURES[name];
+if (!fig) throw new Error(`No figure named "${name}" in src/figures/index.js`);
+const svg = fig.draw({ matter, conditions, structure: S });
+---
+<figure class:list={["pic", "drawn", { wide }]}>
+  <div class="fig-scroll" tabindex="0"><Fragment set:html={svg} /></div>
+  <figcaption><slot />{sheet && <> <a href={atlasUrl(sheet)}>Also in the atlas</a>.</>}</figcaption>
+</figure>

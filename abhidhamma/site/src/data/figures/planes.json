@@ -1,0 +1,221 @@
+{
+ "planes": [
+  {
+   "tier": "Immaterial",
+   "pali": "Nevasaññānāsaññāyatana",
+   "en": "neither perception nor non-perception",
+   "kind": "N",
+   "aeons": 84000
+  },
+  {
+   "tier": "Immaterial",
+   "pali": "Ākiñcaññāyatana",
+   "en": "nothingness",
+   "kind": "N",
+   "aeons": 60000
+  },
+  {
+   "tier": "Immaterial",
+   "pali": "Viññāṇañcāyatana",
+   "en": "infinite consciousness",
+   "kind": "N",
+   "aeons": 40000
+  },
+  {
+   "tier": "Immaterial",
+   "pali": "Ākāsānañcāyatana",
+   "en": "infinite space",
+   "kind": "N",
+   "aeons": 20000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Akaniṭṭha",
+   "en": "highest · pure abode",
+   "kind": "NR",
+   "aeons": 16000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Sudassī",
+   "en": "clear-sighted · pure abode",
+   "kind": "NR",
+   "aeons": 8000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Sudassa",
+   "en": "beautiful · pure abode",
+   "kind": "NR",
+   "aeons": 4000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Atappa",
+   "en": "serene · pure abode",
+   "kind": "NR",
+   "aeons": 2000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Aviha",
+   "en": "durable · pure abode",
+   "kind": "NR",
+   "aeons": 1000
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Asaññasatta",
+   "en": "non-percipient beings",
+   "kind": "R",
+   "aeons": 500
+  },
+  {
+   "tier": "4th jhāna",
+   "pali": "Vehapphala",
+   "en": "great reward",
+   "kind": "NR",
+   "aeons": 500
+  },
+  {
+   "tier": "3rd jhāna",
+   "pali": "Subhakiṇha",
+   "en": "steady aura",
+   "kind": "NR",
+   "aeons": 64
+  },
+  {
+   "tier": "3rd jhāna",
+   "pali": "Appamāṇasubha",
+   "en": "infinite aura",
+   "kind": "NR",
+   "aeons": 32
+  },
+  {
+   "tier": "3rd jhāna",
+   "pali": "Parittasubha",
+   "en": "minor aura",
+   "kind": "NR",
+   "aeons": 16
+  },
+  {
+   "tier": "2nd jhāna",
+   "pali": "Ābhassara",
+   "en": "radiant lustre",
+   "kind": "NR",
+   "aeons": 8
+  },
+  {
+   "tier": "2nd jhāna",
+   "pali": "Appamāṇābha",
+   "en": "infinite lustre",
+   "kind": "NR",
+   "aeons": 4
+  },
+  {
+   "tier": "2nd jhāna",
+   "pali": "Parittābha",
+   "en": "minor lustre",
+   "kind": "NR",
+   "aeons": 2
+  },
+  {
+   "tier": "1st jhāna",
+   "pali": "Mahābrahmā",
+   "en": "Great Brahmās · 1 incalculable aeon",
+   "kind": "NR",
+   "aeons": 0.25
+  },
+  {
+   "tier": "1st jhāna",
+   "pali": "Brahmapurohita",
+   "en": "Brahmā's ministers · ½ incalculable",
+   "kind": "NR",
+   "aeons": 0.125
+  },
+  {
+   "tier": "1st jhāna",
+   "pali": "Brahmapārisajja",
+   "en": "Brahmā's retinue · ⅓ incalculable",
+   "kind": "NR",
+   "aeons": 0.08333333333333333
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Paranimmitavasavattī",
+   "en": "wielding power over others' creations",
+   "kind": "NR",
+   "aeons": 9216000000
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Nimmānarati",
+   "en": "delighting in creation",
+   "kind": "NR",
+   "aeons": 2304000000
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Tusita",
+   "en": "the contented",
+   "kind": "NR",
+   "aeons": 576000000
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Yāma",
+   "en": "the Yāma gods",
+   "kind": "NR",
+   "aeons": 144000000
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Tāvatiṃsa",
+   "en": "the Thirty-three",
+   "kind": "NR",
+   "aeons": 36000000
+  },
+  {
+   "tier": "Sense heavens",
+   "pali": "Cātumahārājika",
+   "en": "the Four Great Kings",
+   "kind": "NR",
+   "aeons": 9000000
+  },
+  {
+   "tier": "Human",
+   "pali": "Manussa",
+   "en": "human beings",
+   "kind": "NR",
+   "aeons": null
+  },
+  {
+   "tier": "Woeful",
+   "pali": "Asurakāya",
+   "en": "titans",
+   "kind": "NR",
+   "aeons": null
+  },
+  {
+   "tier": "Woeful",
+   "pali": "Pettivisaya",
+   "en": "hungry ghosts",
+   "kind": "NR",
+   "aeons": null
+  },
+  {
+   "tier": "Woeful",
+   "pali": "Tiracchānayoni",
+   "en": "animals",
+   "kind": "NR",
+   "aeons": null
+  },
+  {
+   "tier": "Woeful",
+   "pali": "Niraya",
+   "en": "hell",
+   "kind": "NR",
+   "aeons": null
+  }
+ ]
+}

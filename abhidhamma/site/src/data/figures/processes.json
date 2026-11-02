@@ -1,0 +1,164 @@
+{
+ "strips": [
+  {
+   "id": "mind-door-following",
+   "title": "The mind-door processes that follow a five-door process (tadanuvattika manodvāra-vīthi)",
+   "src": "the first consequent process: CMA IV guide; the series: later teachers (Ledi Sayadaw; Sayadaw Nandamālābhivaṃsa's Vīthi chart), NOT in the Saṅgaha",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ta",
+    "ta"
+   ],
+   "note": "the same visible form, just past"
+  },
+  {
+   "id": "mind-door-clear",
+   "title": "Independent mind-door process, limited javana, clear object",
+   "src": "CMA IV §§12–13",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ta",
+    "ta"
+   ],
+   "note": "any object: past, present, future or timeless; for example, remembering the mango tomorrow"
+  },
+  {
+   "id": "mind-door-obscure",
+   "title": "Independent mind-door process, obscure object",
+   "src": "CMA IV §12",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja"
+   ],
+   "note": "no registration"
+  },
+  {
+   "id": "absorption-slow",
+   "title": "Absorption process, first attainment of jhāna, slow faculties",
+   "src": "CMA IV §§14–16",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "pk",
+    "up",
+    "an",
+    "go",
+    "ap",
+    "b"
+   ],
+   "note": "Absorption is the 5th javana. The four preceding javanas are one of the four great wholesome cittas with knowledge (great functional with knowledge, 47 48 51 52, for an arahant); joyful before jhānas 1–4, equanimous before the 5th jhāna and the immaterial. At the first attainment absorption occurs once; in a later attainment it can run for as long as resolved."
+  },
+  {
+   "id": "absorption-keen",
+   "title": "Absorption process, keen faculties",
+   "src": "CMA IV §14",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "up",
+    "an",
+    "go",
+    "ap",
+    "b"
+   ],
+   "note": "The preliminary moment is omitted, so absorption is the 4th javana."
+  },
+  {
+   "id": "path-slow",
+   "title": "Path process (stream-entry), slow faculties",
+   "src": "CMA IV §14; IX (purification by knowledge and vision)",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "pk",
+    "up",
+    "an",
+    "go",
+    "mg",
+    "ph",
+    "ph",
+    "b"
+   ],
+   "note": "Seven javanas: four preparatory, one path, two fruition. Change-of-lineage is the first citta to take Nibbāna as object, but it cannot cut defilements; the path does. Reviewing processes follow."
+  },
+  {
+   "id": "path-keen",
+   "title": "Path process, keen faculties",
+   "src": "CMA IV §14",
+   "cells": [
+    "bh",
+    "bu",
+    "ma",
+    "up",
+    "an",
+    "go",
+    "mg",
+    "ph",
+    "ph",
+    "ph",
+    "b"
+   ],
+   "note": "No preliminary moment, so three fruition moments follow the path: still seven javanas in all. (Round 1 had this reversed; corrected.)"
+  },
+  {
+   "id": "cessation",
+   "title": "Attainment of cessation (nirodha-samāpatti)",
+   "src": "CMA IV §22; IX",
+   "cells": [
+    "ap",
+    "ap",
+    "x",
+    "ph",
+    "b"
+   ],
+   "note": "Only non-returners and arahants who have all eight attainments, and not in the immaterial planes: cessation needs the eight attainments in succession, and the fine-material jhānas cannot arise there (Vism XXIII). The preparatory moments are not shown."
+  },
+  {
+   "id": "death",
+   "title": "Death and rebirth (reference: Plate 10)",
+   "src": "CMA IV §21; V §§34–41",
+   "cells": [
+    "ma",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ta",
+    "cu",
+    "ps",
+    "b"
+   ],
+   "note": "Near death javanas run only five times, because the process is weak. Death can follow javana, registration or a life-continuum moment."
+  }
+ ]
+}

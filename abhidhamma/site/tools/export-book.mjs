@@ -18,7 +18,7 @@ try { ({ chromium } = require("playwright")); }
 catch { try { ({ chromium } = require(path.join(execSync("npm root -g").toString().trim(), "playwright"))); } catch {} }
 if (!chromium) { console.warn("export-book: Playwright not found, so no PDF this time (npm i -g playwright && npx playwright install chromium)."); process.exit(0); }
 
-// A small static server for dist/, so the book's absolute links (/sheets/…, /_astro/…) resolve.
+// A small static server for dist/, so the book's absolute links (/_astro/…, /js/…) resolve.
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png", ".json": "application/json", ".pdf": "application/pdf" };
 const server = createServer(async (req, res) => {
   let p = decodeURIComponent(new URL(req.url, "http://x").pathname);

@@ -1,5 +1,6 @@
 # The 52 mental factors (Manual II). 'text' is written for this site, after the commentaries.
 - id: phassa
+  order: 1
   pali: phassa
   en: contact
   group: universal
@@ -13,6 +14,7 @@
     proximateCause: an object that has come into focus
     tryIt: When a sound arrives, notice the meeting of ear, sound and hearing, before liking or naming.
 - id: vedana
+  order: 2
   pali: vedanā
   en: feeling
   group: universal
@@ -27,6 +29,7 @@
     proximateCause: for joy, tranquillity; in the suttas, feeling arises with contact as its condition
     tryIt: "Note the tone of the next thing you see or hear: pleasant, unpleasant or neither."
 - id: sanna
+  order: 3
   pali: saññā
   en: perception
   group: universal
@@ -42,6 +45,7 @@
       Notice recognising: a face in a crowd, a word on a page. Notice a misrecognition too, a rope taken for a
       snake.
 - id: cetana
+  order: 4
   pali: cetanā
   en: volition
   group: universal
@@ -55,6 +59,7 @@
     proximateCause: the factors that arise with it
     tryIt: Before you speak, notice the intending that steers the words. That intending is kamma.
 - id: ekaggata
+  order: 5
   pali: ekaggatā
   en: one-pointedness
   group: universal
@@ -62,6 +67,7 @@
     One-pointedness holds the citta on its single object without wavering. Present in every moment, developed
     it becomes concentration, the factor that defines jhāna.
 - id: jivitindriya
+  order: 6
   pali: jīvitindriya
   en: life faculty
   group: universal
@@ -69,6 +75,7 @@
     The life faculty sustains the mental factors it arises with for the span of their moment, as water keeps
     lotuses alive. Matter has a life faculty of its own.
 - id: manasikara
+  order: 7
   pali: manasikāra
   en: attention
   group: universal
@@ -84,6 +91,7 @@
       Notice the mind turning toward something before it knows what it is. Wise or unwise attention decides
       what follows.
 - id: vitakka
+  order: 8
   pali: vitakka
   en: applied thought
   group: occasional
@@ -91,6 +99,7 @@
     Applied thought lifts the mind onto its object, like striking a bell. It is the first factor of the first
     jhāna and falls away in the higher ones; as wrong or right intention it is also a path factor.
 - id: vicara
+  order: 9
   pali: vicāra
   en: sustained thought
   group: occasional
@@ -98,6 +107,7 @@
     Sustained thought keeps the mind moving over its object, like the bell's resonance after the strike. It is
     subtler than applied thought and lasts one jhāna longer in the fivefold scheme.
 - id: adhimokkha
+  order: 10
   pali: adhimokkha
   en: decision
   group: occasional
@@ -105,6 +115,7 @@
     Decision settles the mind on its object, like a firm pillar. It is absent from moments of doubt, since
     doubt is exactly the failure to settle.
 - id: viriya
+  order: 11
   pali: viriya
   en: energy
   group: occasional
@@ -112,6 +123,7 @@
     Energy supports the other factors and keeps them from collapsing, like new timbers propping a sagging
     house. It serves wholesome and unwholesome states alike; rightly directed it is right effort.
 - id: piti
+  order: 12
   pali: pīti
   en: zest
   group: occasional
@@ -119,6 +131,7 @@
     Zest is delight in the object, the gladness that refreshes body and mind. The commentaries describe five
     grades, from a slight thrill to an uplifting rapture. It occurs only with joyful feeling.
 - id: chanda
+  order: 13
   pali: chanda
   en: desire to act
   group: occasional
@@ -126,6 +139,7 @@
     Desire to act is wanting to do something with the object. It is not greed: it can be the wish to give, to
     learn or to practise, and as a predominant it can lead the whole mind.
 - id: moha
+  order: 14
   pali: moha
   en: delusion
   group: unwholesome
@@ -139,6 +153,7 @@
     proximateCause: unwise attention
     tryIt: "Notice dullness or confusion: a moment when you do not know what the mind is doing."
 - id: ahirika
+  order: 15
   pali: ahirika
   en: shamelessness
   group: unwholesome
@@ -146,6 +161,7 @@
     Shamelessness is the absence of disgust at wrongdoing, the lack of an inner conscience that would recoil
     from it.
 - id: anottappa
+  order: 16
   pali: anottappa
   en: fearlessness of wrongdoing
   group: unwholesome
@@ -153,6 +169,7 @@
     Fearlessness of wrongdoing is the absence of dread at the consequences of bad action, the lack of the
     outer conscience that would hold one back.
 - id: uddhacca
+  order: 17
   pali: uddhacca
   en: restlessness
   group: unwholesome
@@ -160,6 +177,7 @@
     Restlessness is the mind's agitation, like water whipped by wind. It is present in every unwholesome citta
     and gives its name to one of the two delusion-rooted cittas.
 - id: lobha
+  order: 18
   pali: lobha
   en: greed
   group: unwholesome
@@ -173,6 +191,7 @@
     proximateCause: seeing enjoyment in things that lead to bondage
     tryIt: When something pleasant appears, look for the sticking. Do not push it away; know it as greed.
 - id: ditthi
+  order: 19
   pali: diṭṭhi
   en: wrong view
   group: unwholesome
@@ -180,6 +199,7 @@
     Wrong view is adherence to a mistaken interpretation, above all the view of a self. It accompanies only
     greed-rooted cittas, since a view is always held because it is liked.
 - id: mana
+  order: 20
   pali: māna
   en: conceit
   group: unwholesome
@@ -187,6 +207,7 @@
     Conceit is measuring oneself against others, as better, equal or worse. It too arises only in greed-rooted
     cittas, never together with wrong view.
 - id: dosa
+  order: 21
   pali: dosa
   en: hatred
   group: unwholesome
@@ -200,6 +221,7 @@
     proximateCause: grounds for annoyance
     tryIt: Notice even slight aversion. Impatience at a delay, and fear, are dosa too.
 - id: issa
+  order: 22
   pali: issā
   en: envy
   group: unwholesome
@@ -207,6 +229,7 @@
     Envy is resentment at another's success or good fortune. It arises only in the hate-rooted cittas, and
     only occasionally.
 - id: macchariya
+  order: 23
   pali: macchariya
   en: avarice
   group: unwholesome
@@ -214,11 +237,13 @@
     Avarice is the wish to keep one's own good fortune from others. It shares the hate-rooted cittas with envy
     and worry, but never with them.
 - id: kukkucca
+  order: 24
   pali: kukkucca
   en: worry
   group: unwholesome
   text: Worry is regret over what was done or left undone, the mind going back over the past with distress.
 - id: thina
+  order: 25
   pali: thīna
   en: sloth
   group: unwholesome
@@ -226,6 +251,7 @@
     Sloth is the mind's sluggishness, its loss of drive. It occurs only in the prompted unwholesome cittas,
     always with torpor.
 - id: middha
+  order: 26
   pali: middha
   en: torpor
   group: unwholesome
@@ -233,6 +259,7 @@
     Torpor is the unwieldiness of the mental factors, their heaviness. With sloth it forms one of the five
     hindrances.
 - id: vicikiccha
+  order: 27
   pali: vicikicchā
   en: doubt
   group: unwholesome
@@ -241,6 +268,7 @@
     not a root: it occurs in one citta only, the delusion-rooted citta accompanied by doubt, and stream-entry
     ends it.
 - id: saddha
+  order: 28
   pali: saddhā
   en: faith
   group: beautiful
@@ -254,6 +282,7 @@
     proximateCause: something worthy of faith, or hearing the good Dhamma
     tryIt: Notice the clearing of the mind when you think of something worthy of trust.
 - id: sati
+  order: 29
   pali: sati
   en: mindfulness
   group: beautiful
@@ -267,6 +296,7 @@
     proximateCause: strong perception, or the four foundations of mindfulness
     tryIt: Notice the moment you remember to be present. The mind stops floating and stays with what is here.
 - id: hiri
+  order: 30
   pali: hiri
   en: shame
   group: beautiful
@@ -274,6 +304,7 @@
     Shame is recoiling from wrongdoing out of self-respect: the inner guardian of the world, the commentaries
     call it.
 - id: ottappa
+  order: 31
   pali: ottappa
   en: fear of wrongdoing
   group: beautiful
@@ -281,6 +312,7 @@
     Fear of wrongdoing is recoiling from it out of regard for its consequences and for others: the outer
     guardian of the world.
 - id: alobha
+  order: 32
   pali: alobha
   en: non-greed
   group: beautiful
@@ -288,11 +320,13 @@
     Non-greed is not clinging to the object, like a drop of water on a lotus leaf. It shows as generosity and
     renunciation.
 - id: adosa
+  order: 33
   pali: adosa
   en: non-hatred
   group: beautiful
   text: Non-hatred is the absence of ill will. Developed toward beings it becomes loving-kindness.
 - id: tatramajjhattata
+  order: 34
   pali: tatramajjhattatā
   en: neutrality of mind
   group: beautiful
@@ -300,46 +334,55 @@
     Neutrality of mind keeps the citta and its factors in balance, as a charioteer watches well-trained
     horses. Developed toward beings it becomes the equanimity of the illimitables.
 - id: kaya-passaddhi
+  order: 35
   pali: kāya-passaddhi
   en: tranquillity of factors
   group: beautiful
   text: Tranquillity of the mental factors calms their disturbance; it is the opposite of restlessness and worry.
 - id: citta-passaddhi
+  order: 36
   pali: citta-passaddhi
   en: tranquillity of consciousness
   group: beautiful
   text: Tranquillity of consciousness calms the citta itself, as tranquillity of factors calms its companions.
 - id: kaya-lahuta
+  order: 37
   pali: kāya-lahutā
   en: lightness of factors
   group: beautiful
   text: Lightness of the mental factors removes their heaviness; it is the opposite of sloth and torpor.
 - id: citta-lahuta
+  order: 38
   pali: citta-lahutā
   en: lightness of consciousness
   group: beautiful
   text: Lightness of consciousness removes heaviness from the citta itself.
 - id: kaya-muduta
+  order: 39
   pali: kāya-mudutā
   en: malleability of factors
   group: beautiful
   text: Malleability of the mental factors removes their rigidity, the stiffness of views and conceit.
 - id: citta-muduta
+  order: 40
   pali: citta-mudutā
   en: malleability of consciousness
   group: beautiful
   text: Malleability of consciousness makes the citta itself supple.
 - id: kaya-kammannata
+  order: 41
   pali: kāya-kammaññatā
   en: wieldiness of factors
   group: beautiful
   text: Wieldiness of the mental factors makes them fit for work, like gold made workable.
 - id: citta-kammannata
+  order: 42
   pali: citta-kammaññatā
   en: wieldiness of consciousness
   group: beautiful
   text: Wieldiness of consciousness makes the citta itself fit for any task.
 - id: kaya-pagunnata
+  order: 43
   pali: kāya-pāguññatā
   en: proficiency of factors
   group: beautiful
@@ -347,21 +390,25 @@
     Proficiency of the mental factors is their health and skill, the opposite of faithlessness and sickliness
     of mind.
 - id: citta-pagunnata
+  order: 44
   pali: citta-pāguññatā
   en: proficiency of consciousness
   group: beautiful
   text: Proficiency of consciousness is the citta's own health and skill.
 - id: kayujjukata
+  order: 45
   pali: kāyujjukatā
   en: rectitude of factors
   group: beautiful
   text: Rectitude of the mental factors is their straightness, the opposite of deceit and crookedness.
 - id: cittujjukata
+  order: 46
   pali: cittujjukatā
   en: rectitude of consciousness
   group: beautiful
   text: Rectitude of consciousness is the straightness of the citta itself.
 - id: samma-vaca
+  order: 47
   pali: sammā-vācā
   en: right speech
   group: beautiful
@@ -369,6 +416,7 @@
     Right speech is the deliberate abstaining from false, divisive, harsh and idle speech. It is present only
     when one actually refrains, and always in the moment of the path.
 - id: samma-kammanta
+  order: 48
   pali: sammā-kammanta
   en: right action
   group: beautiful
@@ -376,11 +424,13 @@
     Right action is the deliberate abstaining from killing, stealing and sexual misconduct, when an occasion
     for them arises, and always in the path.
 - id: samma-ajiva
+  order: 49
   pali: sammā-ājīva
   en: right livelihood
   group: beautiful
   text: Right livelihood is the deliberate abstaining from wrong ways of making a living, and always in the path.
 - id: karuna
+  order: 50
   pali: karuṇā
   en: compassion
   group: beautiful
@@ -388,6 +438,7 @@
     Compassion is the wish that suffering be removed from others; its near enemy is grief, its far enemy
     cruelty. It occurs occasionally, and never in the path.
 - id: mudita
+  order: 51
   pali: muditā
   en: appreciative joy
   group: beautiful
@@ -396,6 +447,7 @@
     joy and its far enemy as discontent; envy is what it most directly overcomes. Like compassion it occurs
     occasionally and is a basis for jhāna.
 - id: pannindriya
+  order: 52
   pali: paññindriya
   en: wisdom
   group: beautiful

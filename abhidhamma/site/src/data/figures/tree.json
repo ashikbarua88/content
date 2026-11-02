@@ -1,0 +1,191 @@
+{
+ "roots": [
+  {
+   "n": "1",
+   "t": "Purification of virtue",
+   "s": "sīla-visuddhi · a root"
+  },
+  {
+   "n": "2",
+   "t": "Purification of mind",
+   "s": "citta-visuddhi · access or jhāna"
+  }
+ ],
+ "trunk": [
+  {
+   "n": "3",
+   "t": "Purification of view",
+   "s": "defining nāma-rūpa · pl. 2–5",
+   "knowledges": []
+  },
+  {
+   "n": "4",
+   "t": "Overcoming doubt",
+   "s": "discerning conditions · pl. 8–9",
+   "knowledges": []
+  },
+  {
+   "n": "5",
+   "t": "Knowledge of path and not-path",
+   "s": "telling true insight from its imitations",
+   "knowledges": [
+    "comprehension",
+    "rise and fall (tender)"
+   ]
+  },
+  {
+   "n": "6",
+   "t": "Knowledge of the way",
+   "s": "nine insight knowledges",
+   "knowledges": [
+    "rise and fall (mature)",
+    "dissolution",
+    "fearfulness",
+    "danger",
+    "disenchantment",
+    "desire for deliverance",
+    "reflection",
+    "equanimity about formations",
+    "conformity"
+   ]
+  },
+  {
+   "n": "7",
+   "t": "Knowledge and vision",
+   "s": "path knowledge",
+   "knowledges": []
+  }
+ ],
+ "crown": [
+  {
+   "t": "change of lineage",
+   "s": "gotrabhū"
+  },
+  {
+   "t": "path",
+   "s": "1 moment"
+  },
+  {
+   "t": "fruition",
+   "s": "2–3 moments"
+  },
+  {
+   "t": "reviewing",
+   "s": "paccavekkhaṇa"
+  }
+ ],
+ "fetters": [
+  {
+   "name": "personality view",
+   "by": [
+    "f",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "name": "doubt",
+   "by": [
+    "f",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "name": "clinging to rites and rules",
+   "by": [
+    "f",
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "name": "sensual desire",
+   "by": [
+    "",
+    "w",
+    "f",
+    ""
+   ]
+  },
+  {
+   "name": "ill will",
+   "by": [
+    "",
+    "w",
+    "f",
+    ""
+   ]
+  },
+  {
+   "name": "lust for fine-material being",
+   "by": [
+    "",
+    "",
+    "",
+    "f"
+   ]
+  },
+  {
+   "name": "lust for immaterial being",
+   "by": [
+    "",
+    "",
+    "",
+    "f"
+   ]
+  },
+  {
+   "name": "conceit",
+   "by": [
+    "",
+    "",
+    "",
+    "f"
+   ]
+  },
+  {
+   "name": "restlessness",
+   "by": [
+    "",
+    "",
+    "",
+    "f"
+   ]
+  },
+  {
+   "name": "ignorance",
+   "by": [
+    "",
+    "",
+    "",
+    "f"
+   ]
+  }
+ ],
+ "soil": [
+  "aggregates",
+  "sense bases",
+  "elements",
+  "faculties",
+  "noble truths",
+  "dependent origination"
+ ],
+ "doors": [
+  [
+   "impermanence",
+   "the signless"
+  ],
+  [
+   "suffering",
+   "the desireless"
+  ],
+  [
+   "not-self",
+   "the void"
+  ]
+ ]
+}

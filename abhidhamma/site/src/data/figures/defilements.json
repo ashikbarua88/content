@@ -1,0 +1,88 @@
+{
+ "factors": [
+  {
+   "pali": "lobha",
+   "en": "greed",
+   "groups": 9,
+   "times": 17
+  },
+  {
+   "pali": "diṭṭhi",
+   "en": "wrong view",
+   "groups": 8,
+   "times": 14
+  },
+  {
+   "pali": "moha",
+   "en": "delusion",
+   "groups": 7,
+   "times": 8
+  },
+  {
+   "pali": "dosa",
+   "en": "hatred",
+   "groups": 5,
+   "times": 6
+  },
+  {
+   "pali": "vicikicchā",
+   "en": "doubt",
+   "groups": 4,
+   "times": 5
+  },
+  {
+   "pali": "māna",
+   "en": "conceit",
+   "groups": 3,
+   "times": 4
+  },
+  {
+   "pali": "uddhacca",
+   "en": "restlessness",
+   "groups": 3,
+   "times": 3
+  },
+  {
+   "pali": "thīna",
+   "en": "sloth",
+   "groups": 2,
+   "times": 2
+  },
+  {
+   "pali": "ahirika",
+   "en": "shamelessness",
+   "groups": 1,
+   "times": 1
+  },
+  {
+   "pali": "anottappa",
+   "en": "fearlessness of wrongdoing",
+   "groups": 1,
+   "times": 1
+  },
+  {
+   "pali": "issā",
+   "en": "envy",
+   "groups": 1,
+   "times": 1
+  },
+  {
+   "pali": "macchariya",
+   "en": "avarice",
+   "groups": 1,
+   "times": 1
+  },
+  {
+   "pali": "kukkucca",
+   "en": "worry",
+   "groups": 1,
+   "times": 1
+  },
+  {
+   "pali": "middha",
+   "en": "torpor",
+   "groups": 1,
+   "times": 1
+  }
+ ]
+}

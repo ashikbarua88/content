@@ -1,0 +1,90 @@
+{
+ "truths": [
+  {
+   "en": "Suffering",
+   "pali": "dukkha",
+   "task": "to be fully understood",
+   "done": "fully understood",
+   "abhidhamma": "all mundane mind and all matter"
+  },
+  {
+   "en": "Its origin",
+   "pali": "samudaya",
+   "task": "to be abandoned",
+   "done": "abandoned",
+   "abhidhamma": "craving, the factor greed"
+  },
+  {
+   "en": "Its cessation",
+   "pali": "nirodha",
+   "task": "to be realised",
+   "done": "realised",
+   "abhidhamma": "Nibbāna"
+  },
+  {
+   "en": "The path",
+   "pali": "magga",
+   "task": "to be developed",
+   "done": "developed",
+   "abhidhamma": "the path factors in path consciousness"
+  }
+ ],
+ "path": [
+  {
+   "en": "right view",
+   "pali": "sammā-diṭṭhi",
+   "factor": "wisdom (paññā)",
+   "training": "pañña",
+   "key": "wis"
+  },
+  {
+   "en": "right intention",
+   "pali": "sammā-saṅkappa",
+   "factor": "applied thought (vitakka)",
+   "training": "pañña",
+   "key": "wis"
+  },
+  {
+   "en": "right speech",
+   "pali": "sammā-vācā",
+   "factor": "abstinence from wrong speech",
+   "training": "sīla",
+   "key": "vir"
+  },
+  {
+   "en": "right action",
+   "pali": "sammā-kammanta",
+   "factor": "abstinence from wrong action",
+   "training": "sīla",
+   "key": "vir"
+  },
+  {
+   "en": "right livelihood",
+   "pali": "sammā-ājīva",
+   "factor": "abstinence from wrong livelihood",
+   "training": "sīla",
+   "key": "vir"
+  },
+  {
+   "en": "right effort",
+   "pali": "sammā-vāyāma",
+   "factor": "energy (viriya)",
+   "training": "samādhi",
+   "key": "con"
+  },
+  {
+   "en": "right mindfulness",
+   "pali": "sammā-sati",
+   "factor": "mindfulness (sati)",
+   "training": "samādhi",
+   "key": "con"
+  },
+  {
+   "en": "right concentration",
+   "pali": "sammā-samādhi",
+   "factor": "one-pointedness (ekaggatā)",
+   "training": "samādhi",
+   "key": "con"
+  }
+ ]
+}

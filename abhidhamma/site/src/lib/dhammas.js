@@ -5,6 +5,7 @@ import S from "../data/structure.json";
 import { u, slugify } from "./atlas.js";
 
 const [F, M, CO, K] = await Promise.all(["factors", "matter", "conditions", "kinds"].map((c) => getCollection(c)));
+F.sort((a, b) => a.data.order - b.data.order); M.sort((a, b) => a.data.order - b.data.order);
 const kind = Object.fromEntries(K.map((k) => [k.id, k.data]));
 const groupTitle = (k, key) => kind[k].groups.find((g) => g.key === key)?.title || key;
 const cardOf = (c) => c && { card: [c.characteristic, c.function, c.manifestation, c.proximateCause], notice: c.tryIt };
@@ -36,7 +37,7 @@ export const conditions = CO.sort((a, b) => a.data.n - b.data.n).map(({ id, data
 }));
 
 const LIST = { factors, matter, conditions };
-export const KINDS = Object.fromEntries(Object.entries(kind).map(([k, d]) => [k, {
+export const KINDS = Object.fromEntries(["factors", "matter", "conditions"].map((k) => [k, kind[k]]).map(([k, d]) => [k, {
   t: d.title, short: d.short, pali: d.pali, plate: d.plates[0], plates: d.plates, concept: d.concept, ch: d.chapter, d: d.desc, list: LIST[k],
 }]));
 export const dhammaUrl = (e) => u(`dhammas/${e.kind}/${e.slug}/`);

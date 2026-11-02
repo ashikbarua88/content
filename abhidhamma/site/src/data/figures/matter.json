@@ -1,0 +1,169 @@
+{
+ "kalapas": [
+  {
+   "origin": "Kamma-born",
+   "rows": [
+    {
+     "name": "eye-decad",
+     "extra": [
+      "life",
+      "eye"
+     ]
+    },
+    {
+     "name": "ear-decad",
+     "extra": [
+      "life",
+      "ear"
+     ]
+    },
+    {
+     "name": "nose-decad",
+     "extra": [
+      "life",
+      "nose"
+     ]
+    },
+    {
+     "name": "tongue-decad",
+     "extra": [
+      "life",
+      "tongue"
+     ]
+    },
+    {
+     "name": "body-decad",
+     "extra": [
+      "life",
+      "body"
+     ]
+    },
+    {
+     "name": "female-decad",
+     "extra": [
+      "life",
+      "fem."
+     ]
+    },
+    {
+     "name": "male-decad",
+     "extra": [
+      "life",
+      "masc."
+     ]
+    },
+    {
+     "name": "heart-base decad",
+     "extra": [
+      "life",
+      "heart"
+     ]
+    },
+    {
+     "name": "vital nonad",
+     "extra": [
+      "life"
+     ]
+    }
+   ]
+  },
+  {
+   "origin": "Mind-born",
+   "rows": [
+    {
+     "name": "pure octad",
+     "extra": []
+    },
+    {
+     "name": "bodily intimation nonad",
+     "extra": [
+      "b.int"
+     ]
+    },
+    {
+     "name": "vocal intimation decad",
+     "extra": [
+      "v.int",
+      "sound"
+     ]
+    },
+    {
+     "name": "undecad of mutability",
+     "extra": [
+      "m",
+      "m",
+      "m"
+     ]
+    },
+    {
+     "name": "bodily int. + mutability",
+     "extra": [
+      "b.int",
+      "m",
+      "m",
+      "m"
+     ]
+    },
+    {
+     "name": "vocal int. + sound + mut.",
+     "extra": [
+      "v.int",
+      "sound",
+      "m",
+      "m",
+      "m"
+     ]
+    }
+   ]
+  },
+  {
+   "origin": "Temperature-born",
+   "rows": [
+    {
+     "name": "pure octad",
+     "extra": []
+    },
+    {
+     "name": "sound nonad",
+     "extra": [
+      "sound"
+     ]
+    },
+    {
+     "name": "undecad of mutability",
+     "extra": [
+      "m",
+      "m",
+      "m"
+     ]
+    },
+    {
+     "name": "sound + mutability",
+     "extra": [
+      "sound",
+      "m",
+      "m",
+      "m"
+     ]
+    }
+   ]
+  },
+  {
+   "origin": "Nutriment-born",
+   "rows": [
+    {
+     "name": "pure octad",
+     "extra": []
+    },
+    {
+     "name": "undecad of mutability",
+     "extra": [
+      "m",
+      "m",
+      "m"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,33 +1,20 @@
 ---
-// A drawing from the atlas, by sheet id (p7, p3b, …). Dense or HTML-laid-out sheets are shown as
-// rendered images (light and dark, with a full-size view); the rest as their inline svg.
+// A drawing copied from the atlas (phase 2 replaces these with figures drawn by the site).
 import P from "../data/plates.json";
-import { SHEETS } from "../lib/sheets.js";
-import { atlasUrl, u } from "../lib/atlas.js";
+import { atlasUrl } from "../lib/atlas.js";
 interface Props { sheet: string; wide?: boolean; label: string }
 const { sheet, wide, label } = Astro.props;
-const asImage = SHEETS.includes(sheet);
 // Interactive parts of atlas drawings stay in the atlas: strip their focus and button roles here,
 // and point their internal links (#p3) at the atlas. A drawing that keeps links is a group, not an image.
-let svg = !asImage && (P[sheet] || "")
+let svg = (P[sheet] || "")
   .replace(/ tabindex="[^"]*"/g, "").replace(/(<(?:rect|circle|ellipse|path|line|polygon|g|text)\b[^>]*?) aria-label="[^"]*"/g, "$1").replace(/ role="button"/g, "").replace(/ aria-pressed="[^"]*"/g, "")
   .replace(/href="#([\w-]+)"/g, (m, id) => `href="${atlasUrl(id)}"`)
   .replace(/^<svg([^>]*?) role="[^"]*"/, "<svg$1").replace(/^<svg([^>]*?) aria-label="[^"]*"/, "<svg$1");
 if (svg) svg = svg.replace("<svg", `<svg role="${svg.includes("<a ") ? "group" : "img"}" aria-label="${label.replace(/"/g, "&quot;")}"`);
-const img = (t) => u(`sheets/${sheet}-${t}.webp`);
-const no = sheet.slice(1);
 ---
-{asImage ? (
-  <figure class="pic sheetimg">
-    <a href={img("light")} class="zoom" aria-label={"Open Plate " + no + " full size"}>
-      <img class="lt" src={img("light")} alt={label} width="1400" height="1980" loading="lazy" decoding="async" />
-      <img class="dk" src={img("dark")} alt="" width="1400" height="1980" loading="lazy" decoding="async" />
-    </a>
-    <figcaption><slot /> <a href={img("light")}>Full size</a> · <a href={atlasUrl(sheet)}>the sheet in the atlas</a>.</figcaption>
-  </figure>
-) : svg ? (
+{svg && (
   <figure class:list={["pic", { wide }]}>
     <Fragment set:html={svg} />
     <figcaption><slot /> <a href={atlasUrl(sheet)}>The full sheet in the atlas</a>.</figcaption>
   </figure>
-) : null}
+)}

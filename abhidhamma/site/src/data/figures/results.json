@@ -1,0 +1,60 @@
+{
+ "rows": [
+  {
+   "kamma": "Unwholesome kamma",
+   "cittas": "11 of the 12 unwholesome cittas",
+   "rebirth": "19",
+   "rebirthName": "unwholesome-resultant investigating",
+   "planes": "the four woeful planes",
+   "colour": "--bad"
+  },
+  {
+   "kamma": "Weak wholesome kamma",
+   "cittas": "great wholesome, two roots, done inferiorly",
+   "rebirth": "27",
+   "rebirthName": "wholesome-resultant investigating",
+   "planes": "humans born blind, deaf or dull, and some lower spirits",
+   "colour": "--muted"
+  },
+  {
+   "kamma": "Middling wholesome kamma",
+   "cittas": "two roots done well, or three roots done inferiorly",
+   "rebirth": "41–42, 45–46",
+   "rebirthName": "great resultants without knowledge",
+   "planes": "human beings and the six deva worlds",
+   "colour": "--nama-2"
+  },
+  {
+   "kamma": "Excellent wholesome kamma",
+   "cittas": "three roots (with knowledge), done well",
+   "rebirth": "39–40, 43–44",
+   "rebirthName": "great resultants with knowledge",
+   "planes": "human beings and the six deva worlds",
+   "colour": "--nama"
+  },
+  {
+   "kamma": "Fine-material jhāna",
+   "cittas": "jhāna 1 to 5 (55–59)",
+   "rebirth": "60–64",
+   "rebirthName": "fine-material resultants, the same jhāna",
+   "planes": "the 16 fine-material planes, by jhāna and its grade",
+   "colour": "--g2"
+  },
+  {
+   "kamma": "Immaterial jhāna",
+   "cittas": "the four immaterial attainments (70–73)",
+   "rebirth": "74–77",
+   "rebirthName": "immaterial resultants",
+   "planes": "the four immaterial planes, one each",
+   "colour": "--g2"
+  },
+  {
+   "kamma": "The four paths",
+   "cittas": "supramundane (82–85)",
+   "rebirth": "none",
+   "rebirthName": "fruition follows at once; no rebirth-linking",
+   "planes": "fewer rebirths: at most seven, one, none beyond the Pure Abodes, none at all",
+   "colour": "--nib"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "books": [
+  {
+   "pali": "Dhammasaṅgaṇī",
+   "en": "Enumeration of phenomena",
+   "note": "Opens with the mātikā, 22 triads and 100 dyads, then analyses each kind of citta into its factors.",
+   "key": true
+  },
+  {
+   "pali": "Vibhaṅga",
+   "en": "Book of analysis",
+   "note": "Eighteen chapters, most treated by the sutta method, the Abhidhamma method and by questions.",
+   "key": false
+  },
+  {
+   "pali": "Dhātukathā",
+   "en": "Discussion of elements",
+   "note": "Shows how each dhamma is included in, or excluded from, the aggregates, bases and elements.",
+   "key": false
+  },
+  {
+   "pali": "Puggalapaññatti",
+   "en": "Designation of persons",
+   "note": "Types of people. The one book about conventional rather than ultimate reality.",
+   "key": false
+  },
+  {
+   "pali": "Kathāvatthu",
+   "en": "Points of controversy",
+   "note": "Refutes the views of other early schools in debate form.",
+   "key": false
+  },
+  {
+   "pali": "Yamaka",
+   "en": "Book of pairs",
+   "note": "Pins down the scope of each term with paired, converse questions.",
+   "key": false
+  },
+  {
+   "pali": "Paṭṭhāna",
+   "en": "Conditional relations",
+   "note": "Applies 24 conditions to every dhamma. The largest book, called the Great Treatise.",
+   "key": true
+  }
+ ]
+}

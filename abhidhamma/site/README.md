@@ -34,6 +34,7 @@ The website is the single source of truth. Every word is in `src/content/`, neve
 | Stories | `src/content/stories.yaml` |
 | Levels; the parts that group concepts and readings | `src/content/levels.yaml`, `parts.yaml` |
 | Page chrome (home, about, library) | `src/pages/*.astro` |
+| Figures: drawing code, and the tables they draw | `src/figures/<name>.js`, `src/data/figures/<name>.json` |
 
 Tables that are not prose are in `src/data/structure.json`: the following.
 
@@ -43,7 +44,7 @@ Tables that are not prose are in `src/data/structure.json`: the following.
 - counts of factors in cittas
 - the chapter VII lists
 
-Drawings come from the atlas, through `npm run extract` and `tools/render-sheets.mjs`. These copy pictures only, never text. The atlas itself, in `../atlas`, is left as it is. The site no longer reads its text.
+The site draws its own figures at build time (`src/figures/`, used as `<Figure name="…">` in a reading). Some drawings are still copied from the atlas through `npm run extract`, which copies pictures only, never text: the 16 plate svgs, the idea pictures and the concept map. They are being redrawn in the site in phases. The atlas itself, in `../atlas`, is left as it is. The site no longer reads its text.
 
 ## The book
 
@@ -70,7 +71,7 @@ npm run preview
 - `public/js/pictures.js`: the pictures' animations.
 - `src/styles/atlas-tokens.css`: the colours.
 
-`node tools/render-sheets.mjs` renders the dense atlas sheets, light and dark, to `public/sheets/`. The list of sheets is in `src/lib/sheets.js`. Run both only after the atlas's drawings change, then commit the results.
+Run it only after the atlas's drawings change, then commit the results.
 
 The build itself needs a browser only for the book PDF, which CI installs.
 

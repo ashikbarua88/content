@@ -1,0 +1,674 @@
+{
+ "rows": [
+  {
+   "pali": "phassa",
+   "en": "contact",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "vedanā",
+   "en": "feeling",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "saññā",
+   "en": "perception",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "cetanā",
+   "en": "volition",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "ekaggatā",
+   "en": "one-pointedness",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "jīvitindriya",
+   "en": "life faculty",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "manasikāra",
+   "en": "attention",
+   "group": "universal",
+   "occ": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "vitakka",
+   "en": "applied thought",
+   "group": "occasional",
+   "occ": "FFFFFFFFFFFF.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF....F....F................jjjjjjjj"
+  },
+  {
+   "pali": "vicāra",
+   "en": "sustained thought",
+   "group": "occasional",
+   "occ": "FFFFFFFFFFFF.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF...FF...FF...............jjjjjjjj"
+  },
+  {
+   "pali": "adhimokkha",
+   "en": "decision",
+   "group": "occasional",
+   "occ": "FFFFFFFFFF.F.....FF.....FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "viriya",
+   "en": "energy",
+   "group": "occasional",
+   "occ": "FFFFFFFFFFFF................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "pīti",
+   "en": "zest",
+   "group": "occasional",
+   "occ": "FFFF.....................F...FFFFF....FFFF....FFFF....FFF..FFF..FFF..............jjjjjjjj"
+  },
+  {
+   "pali": "chanda",
+   "en": "desire to act",
+   "group": "occasional",
+   "occ": "FFFFFFFFFF....................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "moha",
+   "en": "delusion",
+   "group": "unwholesome",
+   "occ": "FFFFFFFFFFFF............................................................................."
+  },
+  {
+   "pali": "ahirika",
+   "en": "shamelessness",
+   "group": "unwholesome",
+   "occ": "FFFFFFFFFFFF............................................................................."
+  },
+  {
+   "pali": "anottappa",
+   "en": "fearlessness of wrongdoing",
+   "group": "unwholesome",
+   "occ": "FFFFFFFFFFFF............................................................................."
+  },
+  {
+   "pali": "uddhacca",
+   "en": "restlessness",
+   "group": "unwholesome",
+   "occ": "FFFFFFFFFFFF............................................................................."
+  },
+  {
+   "pali": "lobha",
+   "en": "greed",
+   "group": "unwholesome",
+   "occ": "FFFFFFFF................................................................................."
+  },
+  {
+   "pali": "diṭṭhi",
+   "en": "wrong view",
+   "group": "unwholesome",
+   "occ": "FF..FF..................................................................................."
+  },
+  {
+   "pali": "māna",
+   "en": "conceit",
+   "group": "unwholesome",
+   "occ": "..UU..UU................................................................................."
+  },
+  {
+   "pali": "dosa",
+   "en": "hatred",
+   "group": "unwholesome",
+   "occ": "........FF..............................................................................."
+  },
+  {
+   "pali": "issā",
+   "en": "envy",
+   "group": "unwholesome",
+   "occ": "........UU..............................................................................."
+  },
+  {
+   "pali": "macchariya",
+   "en": "avarice",
+   "group": "unwholesome",
+   "occ": "........UU..............................................................................."
+  },
+  {
+   "pali": "kukkucca",
+   "en": "worry",
+   "group": "unwholesome",
+   "occ": "........UU..............................................................................."
+  },
+  {
+   "pali": "thīna",
+   "en": "sloth",
+   "group": "unwholesome",
+   "occ": ".U.U.U.U.U..............................................................................."
+  },
+  {
+   "pali": "middha",
+   "en": "torpor",
+   "group": "unwholesome",
+   "occ": ".U.U.U.U.U..............................................................................."
+  },
+  {
+   "pali": "vicikicchā",
+   "en": "doubt",
+   "group": "unwholesome",
+   "occ": "..........F.............................................................................."
+  },
+  {
+   "pali": "saddhā",
+   "en": "faith",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "sati",
+   "en": "mindfulness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "hiri",
+   "en": "shame",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "ottappa",
+   "en": "fear of wrongdoing",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "alobha",
+   "en": "non-greed",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "adosa",
+   "en": "non-hatred",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "tatramajjhattatā",
+   "en": "neutrality of mind",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāya-passaddhi",
+   "en": "tranquillity of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "citta-passaddhi",
+   "en": "tranquillity of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāya-lahutā",
+   "en": "lightness of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "citta-lahutā",
+   "en": "lightness of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāya-mudutā",
+   "en": "malleability of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "citta-mudutā",
+   "en": "malleability of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāya-kammaññatā",
+   "en": "wieldiness of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "citta-kammaññatā",
+   "en": "wieldiness of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāya-pāguññatā",
+   "en": "proficiency of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "citta-pāguññatā",
+   "en": "proficiency of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "kāyujjukatā",
+   "en": "rectitude of factors",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "cittujjukatā",
+   "en": "rectitude of consciousness",
+   "group": "beautiful",
+   "occ": "..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  },
+  {
+   "pali": "sammā-vācā",
+   "en": "right speech",
+   "group": "beautiful",
+   "occ": "..............................UUUUUUUU...........................................FFFFFFFF"
+  },
+  {
+   "pali": "sammā-kammanta",
+   "en": "right action",
+   "group": "beautiful",
+   "occ": "..............................UUUUUUUU...........................................FFFFFFFF"
+  },
+  {
+   "pali": "sammā-ājīva",
+   "en": "right livelihood",
+   "group": "beautiful",
+   "occ": "..............................UUUUUUUU...........................................FFFFFFFF"
+  },
+  {
+   "pali": "karuṇā",
+   "en": "compassion",
+   "group": "beautiful",
+   "occ": "..............................UUUUUUUU........UUUUUUUUUUUU.UUUU.UUUU....................."
+  },
+  {
+   "pali": "muditā",
+   "en": "appreciative joy",
+   "group": "beautiful",
+   "occ": "..............................UUUUUUUU........UUUUUUUUUUUU.UUUU.UUUU....................."
+  },
+  {
+   "pali": "paññindriya",
+   "en": "wisdom",
+   "group": "beautiful",
+   "occ": "..............................FF..FF..FF..FF..FF..FF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+  }
+ ],
+ "cols": [
+  [
+   19,
+   0
+  ],
+  [
+   21,
+   2
+  ],
+  [
+   19,
+   1
+  ],
+  [
+   21,
+   3
+  ],
+  [
+   18,
+   0
+  ],
+  [
+   20,
+   2
+  ],
+  [
+   18,
+   1
+  ],
+  [
+   20,
+   3
+  ],
+  [
+   20,
+   3
+  ],
+  [
+   22,
+   5
+  ],
+  [
+   15,
+   0
+  ],
+  [
+   15,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   7,
+   0
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   11,
+   0
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   10,
+   0
+  ],
+  [
+   11,
+   0
+  ],
+  [
+   12,
+   0
+  ],
+  [
+   38,
+   5
+  ],
+  [
+   38,
+   5
+  ],
+  [
+   37,
+   5
+  ],
+  [
+   37,
+   5
+  ],
+  [
+   37,
+   5
+  ],
+  [
+   37,
+   5
+  ],
+  [
+   36,
+   5
+  ],
+  [
+   36,
+   5
+  ],
+  [
+   33,
+   0
+  ],
+  [
+   33,
+   0
+  ],
+  [
+   32,
+   0
+  ],
+  [
+   32,
+   0
+  ],
+  [
+   32,
+   0
+  ],
+  [
+   32,
+   0
+  ],
+  [
+   31,
+   0
+  ],
+  [
+   31,
+   0
+  ],
+  [
+   35,
+   2
+  ],
+  [
+   35,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   33,
+   2
+  ],
+  [
+   33,
+   2
+  ],
+  [
+   35,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   33,
+   2
+  ],
+  [
+   32,
+   2
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   35,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   33,
+   2
+  ],
+  [
+   32,
+   2
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   35,
+   2
+  ],
+  [
+   34,
+   2
+  ],
+  [
+   33,
+   2
+  ],
+  [
+   32,
+   2
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   30,
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ],
+  [
+   "33–36",
+   0
+  ]
+ ]
+}

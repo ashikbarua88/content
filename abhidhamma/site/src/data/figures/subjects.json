@@ -1,0 +1,305 @@
+{
+ "temperaments": {
+  "lust": [
+   "var(--t-lust)",
+   "lustful"
+  ],
+  "hate": [
+   "var(--t-hate)",
+   "hateful"
+  ],
+  "del": [
+   "var(--t-del)",
+   "deluded"
+  ],
+  "spec": [
+   "var(--t-spec)",
+   "speculative"
+  ],
+  "faith": [
+   "var(--t-faith)",
+   "faithful"
+  ],
+  "int": [
+   "var(--t-int)",
+   "intelligent"
+  ],
+  "all": [
+   "var(--t-all)",
+   "all temperaments"
+  ]
+ },
+ "reach": {
+  "acc": [
+   0,
+   "access"
+  ],
+  "j1": [
+   1
+  ],
+  "j4": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "j5o": [
+   5
+  ],
+  "j5": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ar": [
+   0,
+   "immaterial"
+  ]
+ },
+ "groups": [
+  {
+   "name": "Kasiṇas",
+   "count": "10",
+   "items": [
+    {
+     "en": "earth",
+     "temper": "all",
+     "reach": "j5"
+    },
+    {
+     "en": "water",
+     "temper": "all",
+     "reach": "j5"
+    },
+    {
+     "en": "fire",
+     "temper": "all",
+     "reach": "j5"
+    },
+    {
+     "en": "air",
+     "temper": "all",
+     "reach": "j5"
+    },
+    {
+     "en": "blue",
+     "temper": "hate",
+     "reach": "j5"
+    },
+    {
+     "en": "yellow",
+     "temper": "hate",
+     "reach": "j5"
+    },
+    {
+     "en": "red",
+     "temper": "hate",
+     "reach": "j5"
+    },
+    {
+     "en": "white",
+     "temper": "hate",
+     "reach": "j5"
+    },
+    {
+     "en": "light",
+     "temper": "all",
+     "reach": "j5"
+    },
+    {
+     "en": "limited space",
+     "temper": "all",
+     "reach": "j5"
+    }
+   ]
+  },
+  {
+   "name": "Foulness",
+   "count": "10 corpses",
+   "items": [
+    {
+     "en": "bloated",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "livid",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "festering",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "cut up",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "gnawed",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "scattered",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "hacked and scattered",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "bleeding",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "worm-infested",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "skeleton",
+     "temper": "lust",
+     "reach": "j1"
+    }
+   ]
+  },
+  {
+   "name": "Recollections",
+   "count": "10",
+   "items": [
+    {
+     "en": "the Buddha",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "the Dhamma",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "the Saṅgha",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "virtue",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "generosity",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "deities",
+     "temper": "faith",
+     "reach": "acc"
+    },
+    {
+     "en": "peace",
+     "temper": "int",
+     "reach": "acc"
+    },
+    {
+     "en": "death",
+     "temper": "int",
+     "reach": "acc"
+    },
+    {
+     "en": "the body",
+     "temper": "lust",
+     "reach": "j1"
+    },
+    {
+     "en": "breathing",
+     "temper": "del+spec",
+     "reach": "j5"
+    }
+   ]
+  },
+  {
+   "name": "Illimitables",
+   "count": "4",
+   "items": [
+    {
+     "en": "loving-kindness",
+     "temper": "hate",
+     "reach": "j4"
+    },
+    {
+     "en": "compassion",
+     "temper": "hate",
+     "reach": "j4"
+    },
+    {
+     "en": "appreciative joy",
+     "temper": "hate",
+     "reach": "j4"
+    },
+    {
+     "en": "equanimity",
+     "temper": "hate",
+     "reach": "j5o"
+    }
+   ]
+  },
+  {
+   "name": "Perception",
+   "count": "1",
+   "items": [
+    {
+     "en": "repulsiveness of food",
+     "temper": "int",
+     "reach": "acc"
+    }
+   ]
+  },
+  {
+   "name": "Analysis",
+   "count": "1",
+   "items": [
+    {
+     "en": "the four elements",
+     "temper": "int",
+     "reach": "acc"
+    }
+   ]
+  },
+  {
+   "name": "Immaterial",
+   "count": "4",
+   "items": [
+    {
+     "en": "infinite space",
+     "temper": "all",
+     "reach": "ar"
+    },
+    {
+     "en": "infinite consciousness",
+     "temper": "all",
+     "reach": "ar"
+    },
+    {
+     "en": "nothingness",
+     "temper": "all",
+     "reach": "ar"
+    },
+    {
+     "en": "neither perception nor non-perception",
+     "temper": "all",
+     "reach": "ar"
+    }
+   ]
+  }
+ ]
+}
