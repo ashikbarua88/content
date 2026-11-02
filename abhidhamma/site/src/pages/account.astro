@@ -1,0 +1,88 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/atlas.js";
+---
+<Base title="Your account" description="Sign in to join the discussion and keep your reflections in your account." search={false}>
+  <div class="wrap acct" style="max-width:34em;padding-top:34px" data-pagefind-ignore="all">
+    <h1>Your account</h1>
+    <div id="acct-off" hidden>
+      <p class="dek">Accounts are not connected yet.</p>
+      <p>Your reflections are still kept in this browser. See <a href={u("reflections/")}>My reflections</a>.</p>
+    </div>
+
+    <div id="acct-out" hidden>
+      <p class="dek">Sign in to join the discussion, and to keep your reflections in your account on any device.</p>
+      <div class="btns oauth">
+        <button class="btn" type="button" data-provider="google">Continue with Google</button>
+        <button class="btn" type="button" data-provider="github">Continue with GitHub</button>
+      </div>
+      <p class="or ui muted">or with email</p>
+      <form id="email-form" class="acct-form">
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+        <label>Password <input type="password" name="password" required minlength="8" autocomplete="current-password"></label>
+        <label class="signup-only" hidden>Name shown with your comments <input type="text" name="name" maxlength="60" autocomplete="nickname"></label>
+        <div class="btns">
+          <button class="btn primary" type="submit" id="email-go">Sign in</button>
+          <button class="btn" type="button" id="mode">New here? Create an account</button>
+          <button class="linkbtn ui" type="button" id="forgot">Forgot password</button>
+        </div>
+        <p class="msg ui" aria-live="polite"></p>
+      </form>
+      <p class="muted ui small-print">We keep your name, email and what you write here, and nothing else; see <a href={u("about/#privacy")}>privacy</a>. Comments are public; reflections are private to you.</p>
+    </div>
+
+    <div id="acct-in" hidden>
+      <p class="dek">Signed in as <b id="who"></b>.</p>
+      <form id="name-form" class="acct-form">
+        <label>Name shown with your comments <input type="text" name="name" maxlength="60" required></label>
+        <div class="btns"><button class="btn" type="submit">Save name</button><span class="msg ui muted" aria-live="polite"></span></div>
+      </form>
+      <ul class="list">
+        <li><a href={u("reflections/")}><span class="t">My reflections</span><span class="d">Everything you have written under the opening questions, with an export.</span></a></li>
+      </ul>
+      <div class="btns" style="margin-top:22px">
+        <button class="btn" type="button" id="signout">Sign out</button>
+        <button class="linkbtn ui danger" type="button" id="delete">Delete my account and everything I wrote</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    import { connected, onAuth, startAuth, signInWith, signInEmail, signUpEmail, resetPassword, signOut, saveName, deleteAccount } from "../scripts/community.js";
+    const $ = (s) => document.querySelector(s);
+    const next = new URLSearchParams(location.search).get("next");
+    if (!connected) { $("#acct-off").hidden = false; }
+    else {
+      let signup = false;
+      document.querySelectorAll("[data-provider]").forEach((b) => b.addEventListener("click", () => signInWith(b.dataset.provider)));
+      $("#mode").addEventListener("click", () => {
+        signup = !signup; $(".signup-only").hidden = !signup;
+        $("#email-go").textContent = signup ? "Create account" : "Sign in";
+        $("#mode").textContent = signup ? "Have an account? Sign in" : "New here? Create an account";
+      });
+      const msg = (t) => { $("#email-form .msg").textContent = t; };
+      $("#email-form").addEventListener("submit", async (e) => {
+        e.preventDefault(); const f = new FormData(e.target);
+        const { error, data } = signup ? await signUpEmail(f.get("email"), f.get("password"), f.get("name") || "") : await signInEmail(f.get("email"), f.get("password"));
+        if (error) msg(error.message);
+        else if (signup && !data.session) msg("Check your email to confirm your account, then sign in.");
+      });
+      $("#forgot").addEventListener("click", async () => {
+        const email = $("#email-form [name=email]").value; if (!email) { msg("Enter your email first."); return; }
+        const { error } = await resetPassword(email); msg(error ? error.message : "A reset link is on its way to your email.");
+      });
+      $("#signout").addEventListener("click", () => signOut());
+      $("#name-form").addEventListener("submit", async (e) => { e.preventDefault(); await saveName(new FormData(e.target).get("name")); $("#name-form .msg").textContent = "Saved."; });
+      $("#delete").addEventListener("click", async () => {
+        if (!confirm("Delete your account, your comments and your synced reflections? This cannot be undone.")) return;
+        const { error } = await deleteAccount(); if (error) { alert(error.message); return; } await signOut();
+      });
+      let first = true;
+      onAuth((s, p) => {
+        $("#acct-out").hidden = Boolean(s); $("#acct-in").hidden = !s;
+        if (s) { $("#who").textContent = p?.display_name || s.user.email; $("#name-form [name=name]").value = p?.display_name || ""; if (next && first) location.href = next; }
+        if (p || !s) first = false;
+      });
+    }
+    startAuth();
+  </script>
+</Base>

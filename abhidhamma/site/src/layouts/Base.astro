@@ -2,7 +2,7 @@
 import "../styles/atlas-tokens.css";
 import "../styles/site.css";
 import { site } from "../site.config.mjs";
-import { u } from "../lib/atlas.js";
+import { u, base } from "../lib/atlas.js";
 interface Props { title?: string; description?: string; nav?: string; search?: boolean }
 const { title, description = site.tagline, nav = "", search = true } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -20,7 +20,7 @@ const links = [
 ];
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-base={base}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,6 +54,7 @@ const links = [
         {links.map(([k, t, href]) => <li><a href={u(href)} aria-current={nav === k ? "page" : undefined}>{t}</a></li>)}
       </ul>
       <a class="booklink" href={u("book/")}>The book</a>
+      <a class="acctlink" href={u("account/")} hidden>Sign in</a>
       {search && <a class="searchlink" href={u("search/")} aria-label="Search">Search</a>}
       <button class="theme" type="button" aria-label="Switch light and dark" title="Light or dark">◐</button>
     </nav>
@@ -68,6 +69,12 @@ const links = [
       <p>Text and drawings <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>; code MIT. <a href={u("about/#licence")}>Licence</a></p>
     </div>
   </footer>
+  <script>
+    import { startAuth, initHeader } from "../scripts/community.js";
+    const a = document.querySelector(".acctlink");
+    if (a) { a.hidden = false; initHeader(a); }
+    startAuth();
+  </script>
   <script is:inline>
     document.querySelector(".theme").addEventListener("click", function () {
       var r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;

@@ -7,3 +7,4 @@ public/nama-rupa-model.html
 
 # The repository root ignores every "lib" folder; this one is source.
 !src/lib/
+.env

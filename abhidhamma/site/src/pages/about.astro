@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { site } from "../site.config.mjs";
+import { u } from "../lib/atlas.js";
 ---
 <Base title="About" description="What this site is, what it quotes and does not, and how discussion works.">
   <div class="wrap" style="max-width:var(--measure);padding-top:34px">
@@ -11,9 +12,11 @@ import { site } from "../site.config.mjs";
     <p>Suttas are cited by their SuttaCentral numbers. Short sutta passages are retold, or quoted from Bhikkhu Sujato's translations, which he has placed in the public domain.</p>
     <h2>What is commentarial</h2>
     <p>Much of the Abhidhamma's system, such as the seventeen-moment process or the count of thirty-one planes, comes from the commentaries rather than the canonical books. Each concept page says so in "In the texts". Readings of stories are marked as study aids.</p>
-    <h2 id="discussion">How discussion works</h2>
-    <p>Each concept and reading ends with an opening question and one way of answering it, kept closed until you have tried. Below it is the page's discussion, which uses <a href="https://giscus.app/">giscus</a>: each page has one thread in the project's GitHub Discussions, and you sign in with GitHub to take part. Nothing else on the site tracks you.</p>
-    <p>Discussion is switched off until the project's Discussions are set up.</p>
+    <h2 id="discussion">Reflect and discuss</h2>
+    <p>Each concept and reading ends with an opening question. Under it is a box for your own answer: write before you read the model answer. Your reflections are private. They are kept in your browser, and, if you sign in, in your account too, so they follow you between devices. <a href={u("reflections/")}>My reflections</a> collects them and lets you download them.</p>
+    <p>Below that is the page's discussion. Anyone can read it. To write, <a href={u("account/")}>sign in</a> with Google, GitHub or an email address. You can edit or delete your own comments at any time.</p>
+    <h2 id="privacy">Privacy</h2>
+    <p>The site keeps only what you give it: your name, the email you sign in with, your comments (public) and your reflections (private to you). It uses no analytics and no advertising. Deleting your account from <a href={u("account/")}>your account page</a> deletes your profile, comments and synced reflections. Reflections kept only in your browser never leave it.</p>
     <h2 id="licence">Licence</h2>
     <p>The text, drawings and data on this site are licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">Creative Commons Attribution-ShareAlike 4.0</a>. You may share and adapt them for any purpose, with credit to <i>Abhidhamma: a reading companion</i> and a link back. Anything you make from them must carry the same licence. The code is MIT. Bodhi's <i>Manual</i> and other people's translations keep their own terms; see <code>LICENSE.md</code> in the source.</p>
     <h2>Corrections</h2>

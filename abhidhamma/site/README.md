@@ -88,13 +88,17 @@ The rules:
 - Quote suttas only from Bhikkhu Sujato's public-domain (CC0) translations, and credit them.
 - Mark what is commentarial.
 
-## Discussion
+## Accounts, discussion and reflection
 
-Each concept and reading ends with an opening question, a model answer kept closed until the reader opens it, and a giscus thread. giscus uses one GitHub Discussion per page, found by the fixed term `concept:<slug>` or `reading:<slug>`. To turn it on:
+Every concept and reading ends with:
+- the opening question
+- a private journal box for the reader's own answer, saved in their browser and, when signed in, in their account
+- the model answer, kept closed
+- a discussion thread for the page
 
-1. Enable Discussions in the repository.
-2. Install the [giscus app](https://github.com/apps/giscus).
-3. Copy the ids from [giscus.app](https://giscus.app) into `src/site.config.mjs`.
+Readers sign in with Google, GitHub or email at `/account/`, and find all their answers at `/reflections/`, where they can export them.
+
+All of this runs on Supabase: the schema and access rules are in `supabase/schema.sql`, and setup is in [supabase/README.md](supabase/README.md). The browser code is `src/scripts/community.js`. Without a Supabase project the site still builds and the journal still works, kept in the browser.
 
 ## Publishing
 

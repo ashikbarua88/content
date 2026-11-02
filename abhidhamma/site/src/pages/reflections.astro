@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/atlas.js";
+---
+<Base title="My reflections" description="Your own answers to the opening questions, private to you." search={false}>
+  <div class="wrap" style="max-width:var(--measure);padding-top:34px" data-pagefind-ignore="all">
+    <h1>My reflections</h1>
+    <p class="dek">Your answers to the opening questions, newest first. Only you can see them.</p>
+    <p class="muted ui" id="where"></p>
+    <div class="btns" style="margin:16px 0 8px">
+      <button class="btn" type="button" id="export">Download as a text file</button>
+      <button class="btn" type="button" onclick="window.print()">Print or save as PDF</button>
+    </div>
+    <div id="refl"></div>
+  </div>
+  <script>
+    import { onAuth, allReflections, toMarkdown, connected, h, paragraphs, when } from "../scripts/community.js";
+    const box = document.getElementById("refl");
+    let current = [];
+    async function render(signedIn) {
+      document.getElementById("where").textContent = signedIn ? "From your account and this browser." : connected ? "From this browser. Sign in to keep them in your account on every device." : "From this browser.";
+      current = await allReflections();
+      box.replaceChildren(...(current.length ? current.map((r) => h("article", { class: "entry refl" },
+        h("h3", {}, h("a", { href: r.url, text: r.title || r.page })),
+        h("p", { class: "q", text: r.question }), ...paragraphs(r.body), h("p", { class: "muted ui", text: when(r.updated_at) })))
+        : [h("p", { class: "off", text: "Nothing yet. Every concept and reading ends with an opening question and a box for your answer." })]));
+    }
+    onAuth((s) => render(Boolean(s)));
+    document.getElementById("export").addEventListener("click", () => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([toMarkdown(current)], { type: "text/markdown" }));
+      a.download = "my-reflections.md"; a.click();
+    });
+  </script>
+</Base>

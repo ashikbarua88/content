@@ -33,7 +33,7 @@ const plateNo = d.plate.replace(/^p/, "");
       <ul class="canon">{d.sources.map((s) => <li set:html={s} />)}</ul>
       <p class="note">Retold for study, not quoted. The full drawing and its notes are on <a href={atlasUrl(d.plate)}>Plate {plateNo} of the atlas</a>.</p>
       <h2 id="discuss">Reflect and discuss</h2>
-      <Discuss term={"reading:" + r.id} q={d.question} a={d.answer} />
+      <Discuss term={"reading:" + r.id} q={d.question} a={d.answer} title={d.title} />
       <nav class="pn" aria-label="Previous and next reading">
         {prev && <a href={u("readings/" + prev.id + "/")}><small>Previous reading</small><span class="t">{prev.data.title}</span></a>}
         {next && <a class="next" href={u("readings/" + next.id + "/")}><small>Next reading</small><span class="t">{next.data.title}</span></a>}

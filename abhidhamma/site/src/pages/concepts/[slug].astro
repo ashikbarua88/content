@@ -94,7 +94,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
 
       <section id="discuss">
         <h2>Reflect and discuss</h2>
-        {c.reflect && <Discuss term={"concept:" + c.slug} q={c.reflect.q} a={c.reflect.a} />}
+        {c.reflect && <Discuss term={"concept:" + c.slug} q={c.reflect.q} a={c.reflect.a} title={c.title} />}
       </section>
 
       <nav class="pn" aria-label="Previous and next concept">

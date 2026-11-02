@@ -1,25 +1,28 @@
 ---
-// "Reflect and discuss": an opening question, one way of answering it (closed until the reader
-// opens it), then the page's discussion. Discussion is giscus, one GitHub Discussion per page,
-// found by a fixed term so that it survives a renamed or moved page.
-import { site, giscusOn } from "../site.config.mjs";
-import { u } from "../lib/atlas.js";
-interface Props { term: string; q: string; a?: string }
-const { term, q, a } = Astro.props;
-const g = site.giscus;
+// "Reflect and discuss": the opening question, a private journal for the reader's own answer
+// (kept in their browser, and in their account when signed in), one way of answering it, closed
+// until opened, and the page's discussion. See src/scripts/community.js and supabase/.
+interface Props { term: string; q: string; a?: string; title?: string }
+const { term, q, a, title = "" } = Astro.props;
 ---
 <section class="reflect" id="reflect" data-pagefind-ignore>
   <p class="lab">Opening question</p>
   <p class="q">{q}</p>
+  <div class="journal" data-page={term} data-title={title} data-q={q}>
+    <label class="lab" for={"j-" + term}>Your reflection</label>
+    <textarea id={"j-" + term} rows="5" placeholder="Write your own answer first. Only you can see it."></textarea>
+    <p class="jstatus muted ui" aria-live="polite"></p>
+  </div>
   {a && <details><summary>One way to see it, after you have tried</summary><p>{a}</p></details>}
 </section>
-<div class="discussion" data-pagefind-ignore>
-  {giscusOn() ? (
-    <script src="https://giscus.app/client.js" data-repo={g.repo} data-repo-id={g.repoId} data-category={g.category}
-      data-category-id={g.categoryId} data-mapping="specific" data-term={term} data-strict="1" data-reactions-enabled="1"
-      data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="en"
-      data-loading="lazy" crossorigin="anonymous" async></script>
-  ) : (
-    <p class="off">Discussion opens here once the site's GitHub Discussions are switched on. Until then, take the question into your own notes, or to a friend. <a href={u("about/#discussion")}>How discussion will work</a></p>
-  )}
-</div>
+<section class="discussion" id="discuss-thread" data-page={term} data-pagefind-ignore>
+  <h3>Discussion <span class="cm-count muted"></span></h3>
+  <div class="cm-gate"></div>
+  <div class="cm-form" hidden></div>
+  <div class="cm-list" aria-live="polite"></div>
+</section>
+<script>
+  import { initJournal, initDiscussion } from "../scripts/community.js";
+  document.querySelectorAll(".journal").forEach((el) => initJournal(el));
+  document.querySelectorAll(".discussion[data-page]").forEach((el) => initDiscussion(el));
+</script>
