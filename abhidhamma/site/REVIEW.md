@@ -106,3 +106,28 @@ These were checked and need no change:
 - **Chapter VII lists:** the taints, clingings and hindrances (six in the *Manual*). Greed in all nine groups, under seventeen names; wrong view in eight; delusion in seven. Six of the seven mixed categories are conditions; the nine powers have none of their own. The 37 requisites reduce to 14 states: energy 9 times, mindfulness 8, wisdom 5, concentration 4, faith 2.
 - **The wheel:** the twelve links and the formula. The Vibhaṅga's one-moment reading. The three periods, twenty modes and three rounds. Ignorance and craving as roots, with ignorance conditioned by the taints (MN 9).
 - **Kamma:** the four ways of classifying it, and the four causes of death. The three death signs. Death-consciousness with the object of the life-continuum, and rebirth-linking with the object of the last process. The similes of the seal, the echo and the flame (Vism XVII). AN 6.63.
+
+## Batch 4: readings 16 to 19 (2 November 2026)
+
+*From kamma to its results*, *Thirty-one planes*, *Forty meditation subjects*, *The tree of purification*.
+
+### Fixed
+
+| File | Was | Now | Why |
+| --- | --- | --- | --- |
+| from-kamma-to-its-results | "Within each level, a jhāna developed weakly, moderately or fully leads to the lowest, middle or highest plane" | That holds for the first three levels. The highest jhāna leads to the plane of great fruit, or, with a turning away from perception, to beings without perception; the Pure Abodes receive only non-returners. | The fourth level is not divided into three planes in that way. |
+| thirty-one-planes | sense-sphere planes, "where beings have all five senses" | "the worlds of the five senses and the desires that go with them" | Not every being there has all five senses: some are born blind or deaf. |
+| forty-meditation-subjects | kasiṇas as "a disc of earth, water, fire, air …" | Earth is often a prepared disc of clay; air is the wind seen moving in leaves | The air kasiṇa is not a disc. |
+| forty-meditation-subjects | "The *Visuddhimagga* says that some subjects, loving-kindness and mindfulness of breathing among them, are suitable for everyone" | The *Visuddhimagga* presents the matching as what most directly counters each temperament, and adds that every wholesome development suppresses greed and the rest. Giving loving-kindness and breathing to almost everyone is teachers' practice. | The old note attributed to the *Visuddhimagga* a recommendation it does not make in those words. |
+
+### Open: please decide
+
+1. **from-kamma-to-its-results: "Twenty kinds of rebirth-linking cover all thirty-one planes."** The figure is consistent with the atlas. Nineteen kinds of rebirth-linking citta plus the purely material rebirth of beings without perception make twenty. *Suggestion:* add that explanation in a short note, so readers who know the figure of nineteen are not confused.
+
+### Checked and correct
+
+These were checked and need no change:
+- **Kamma and rebirth:** weak, middling and excellent kamma, and the rootless, two-rooted and three-rooted rebirths each gives. Only three-rooted beings attain jhāna or the paths. Weighty jhāna kamma. The seven unwholesome-resultant cittas. The restlessness citta gives no rebirth.
+- **The planes:** the four woeful planes (including the asuras), the seven happy sense-sphere planes, the sixteen fine-material planes (with the beings without perception and the five Pure Abodes), and the four immaterial planes. Lifespans: one Tāvatiṃsa day is a hundred human years, and a life there a thousand divine years (AN 8.43). The highest plane, 84,000 great aeons. The mountain simile (SN 15.5). The five destinations (MN 12).
+- **Meditation:** the forty subjects, and the six temperaments with their subjects. The three signs, with the mirror simile, and the three stages. How far each subject goes: the eight recollections to access, foulness and the body to the first jhāna, the first three illimitables short of the last jhāna, equanimity only in it, and the kasiṇas and breathing to all of them.
+- **Insight:** the tree's soil, roots, trunk and crown (Vism XIV). The relay of chariots (MN 24). The seven purifications and the ten imperfections of insight. The *Manual*'s ten insight knowledges. The three doors. Change-of-lineage, path and fruition. The ten fetters and the four paths.
