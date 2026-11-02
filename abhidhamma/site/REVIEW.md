@@ -93,7 +93,11 @@ These were checked and need no change:
 | the-wheel-across-three-lives | "Craving … is new kamma, arising in the javanas" | "a defilement arising in the javanas, where new kamma is made" | The same distinction. |
 | kamma-death-and-rebirth | weighty unwholesome kamma: "the five heinous deeds" | adds "and fixed wrong views" | The *Manual* counts both as weighty. |
 
-### Open: please decide
+### Open: decided 2 November 2026, all accepted
+
+The changes made: 1, "The printed text fills several volumes." 2, "Teachers often point to …".
+
+The points as they were raised:
 
 1. **the-web-of-conditions: "The printed edition runs to thousands of pages."** The Burmese Sixth Council edition fills several volumes. The page count depends on the edition and is not checked. *Suggestion:* "The printed text fills several volumes."
 2. **the-wheel-across-three-lives: "The tradition points to the joint between feeling and craving."** It is a common teaching emphasis: the suttas (SN 36) and modern teachers, notably in the Burmese insight schools. But the commentaries do not single it out in this way. *Suggestion:* "Teachers often point to the joint …"
@@ -120,7 +124,11 @@ These were checked and need no change:
 | forty-meditation-subjects | kasiṇas as "a disc of earth, water, fire, air …" | Earth is often a prepared disc of clay; air is the wind seen moving in leaves | The air kasiṇa is not a disc. |
 | forty-meditation-subjects | "The *Visuddhimagga* says that some subjects, loving-kindness and mindfulness of breathing among them, are suitable for everyone" | The *Visuddhimagga* presents the matching as what most directly counters each temperament, and adds that every wholesome development suppresses greed and the rest. Giving loving-kindness and breathing to almost everyone is teachers' practice. | The old note attributed to the *Visuddhimagga* a recommendation it does not make in those words. |
 
-### Open: please decide
+### Open: decided 2 November 2026, accepted
+
+The change made: a note added explaining nineteen kinds of citta plus the material rebirth of beings without perception.
+
+The point as it was raised:
 
 1. **from-kamma-to-its-results: "Twenty kinds of rebirth-linking cover all thirty-one planes."** The figure is consistent with the atlas. Nineteen kinds of rebirth-linking citta plus the purely material rebirth of beings without perception make twenty. *Suggestion:* add that explanation in a short note, so readers who know the figure of nineteen are not confused.
 
