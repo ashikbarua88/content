@@ -55,17 +55,19 @@ const levels = defineCollection({
 const card = z.object({
   characteristic: z.string(), function: z.string(), manifestation: z.string(), proximateCause: z.string(), tryIt: z.string().optional(),
 }).optional();
+const related = z.array(z.object({ kind: z.enum(["factors", "matter", "conditions"]), id: z.string(), how: z.string() })).optional();
+const role = z.enum(["root", "jhana", "path", "faculty", "power", "predominant", "nutriment", "requisite"]);
 const factors = defineCollection({
   loader: file("src/content/dhammas/factors.yaml"),
-  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), group: z.enum(["universal", "occasional", "unwholesome", "beautiful"]), text: z.string(), card }),
+  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), group: z.enum(["universal", "occasional", "unwholesome", "beautiful"]), text: z.string(), card, related, roles: z.array(role).optional() }),
 });
 const matter = defineCollection({
   loader: file("src/content/dhammas/matter.yaml"),
-  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), origins: z.string(), text: z.string(), card }),
+  schema: z.object({ order: z.number(), pali: z.string(), en: z.string(), origins: z.string(), text: z.string(), card, related }),
 });
 const conditions = defineCollection({
   loader: file("src/content/dhammas/conditions.yaml"),
-  schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), direction: z.enum(["A", "B", "C", "D", "E", "F"]), text: z.string() }),
+  schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), direction: z.enum(["A", "B", "C", "D", "E", "F"]), text: z.string(), related }),
 });
 const kinds = defineCollection({
   loader: file("src/content/dhammas/kinds.yaml"),

@@ -1,27 +1,97 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { KINDS, dhammaUrl } from "../../lib/dhammas.js";
-import { conceptUrl, atlasUrl } from "../../lib/atlas.js";
+import { KINDS, dhammaUrl, gist, FIGURE_READING } from "../../lib/dhammas.js";
+import { conceptUrl, concept, fold, u } from "../../lib/atlas.js";
+
+const COLOR = { factors: "var(--nama)", matter: "var(--rupa)", conditions: "var(--nib)" };
+// Groups in the order kinds.yaml gives them (for conditions, the six directions A to F).
+const groupsOf = (K) => K.groups.map((x) => ({ g: x.title, list: K.list.filter((e) => (e.groupName || e.group) === x.title) })).filter((x) => x.list.length);
+const anchor = (k, g) => `${k}-${fold(g).replace(/[^a-z0-9]+/g, "-")}`;
+const ORIG = ["kamma", "mind", "temperature", "nutriment"];
 ---
-<Base title="Dhammas" nav="dhammas" description="Reference entries for the 52 mental factors, the 28 kinds of matter and the 24 conditions.">
-  <div class="wrap" style="max-width:980px;padding-top:34px">
-    <h1>Dhammas</h1>
-    <p class="dek" style="max-width:36em">The Abhidhamma's three great lists, one entry each: what it is, where it occurs, and how it is counted. The concept pages explain the ideas; these entries are for looking things up.</p>
-    {Object.entries(KINDS).map(([k, K]) => (
-      <section id={k}>
-        <h2>{K.t}</h2>
-        <p class="muted" style="max-width:40em">{K.d} <span class="ui" style="font-size:14px">Manual {K.ch} · <a href={conceptUrl(K.concept)}>the concept</a> · <a href={atlasUrl(K.plate)}>the plate</a></span></p>
-        {[...new Set(K.list.map((e) => e.groupName || e.group))].map((g) => (
-          <>
-            <h3 class="lab" style="margin-top:22px">{g}</h3>
-            <ul class="chips">
-              {K.list.filter((e) => (e.groupName || e.group) === g).map((e) => (
-                <li><a href={dhammaUrl(e)}>{e.n && <span class="n">{e.n}</span>}<i lang="pi">{e.pali}</i> <span>{e.en}</span></a></li>
-              ))}
-            </ul>
-          </>
+<Base title="Dhammas" nav="dhammas" description="The 52 mental factors, the 28 kinds of matter and the 24 conditions: what each is, how they group, and how they connect.">
+  <div class="wrap page dh">
+    <article>
+      <h1>Dhammas</h1>
+      <p class="dek">The Abhidhamma's three great lists. Two say what there is: the mental factors that colour each moment of mind (<i>Manual</i> II) and the kinds of matter (VI). The third says how it all hangs together: the conditions by which one dhamma helps another (VIII).</p>
+
+      <div class="dh-overview">
+        {Object.entries(KINDS).map(([k, K]) => (
+          <a class="dh-card" href={"#" + k} style={`--c:${COLOR[k]}`}>
+            <span class="dh-num">{K.list.length}</span>
+            <span class="t">{K.short}</span>
+            <span class="pali" lang="pi">{K.pali}</span>
+            <span class="dh-bar" aria-hidden="true">{groupsOf(K).map(({ list }) => <i style={`flex:${list.length}`}></i>)}</span>
+            <span class="d">{groupsOf(K).map(({ g, list }) => `${g} ${list.length}`).join(" · ")}</span>
+          </a>
         ))}
-      </section>
-    ))}
+      </div>
+
+      <div class="dh-filter" data-pagefind-ignore>
+        <label for="dh-q" class="lab">Find an entry</label>
+        <input id="dh-q" type="search" placeholder="Pāli or English: lobha, greed, kamma…" autocomplete="off" />
+        <p class="muted ui" id="dh-count" aria-live="polite"></p>
+      </div>
+
+      {Object.entries(KINDS).map(([k, K]) => (
+        <section id={k} class="dh-list" style={`--c:${COLOR[k]}`}>
+          <h2>{K.t}</h2>
+          <p class="muted">{K.d}</p>
+          <p class="ui dh-links">
+            <span><i>Manual</i> {K.ch}</span>
+            <a href={conceptUrl(K.concept)}>The concept: {concept(K.concept).title}</a>
+            <a href={u(`readings/${FIGURE_READING[k][0]}/`)}>The reading, with its figure: {FIGURE_READING[k][1]}</a>
+          </p>
+          {groupsOf(K).map(({ g, list }) => {
+            const desc = K.groups.find((x) => x.title === g)?.desc || null;
+            return (
+              <div class="dh-group" id={anchor(k, g)}>
+                <h3>{g} <span class="muted">· {list.length}</span></h3>
+                {desc && <p class="muted ui dh-gdesc">{desc}</p>}
+                <ul class="dh-rows">
+                  {list.map((e) => (
+                    <li data-q={fold(`${e.pali} ${e.en} ${e.n || ""}`)}>
+                      <a href={dhammaUrl(e)}>
+                        <span class="dh-name">{e.n && <b class="dh-n">{e.n}</b>}<i lang="pi">{e.pali}</i> <span class="en">{e.en}</span></span>
+                        <span class="dh-gist">{gist(e.text)}</span>
+                        <span class="dh-fact" aria-hidden="true">
+                          {k === "factors" && e.n89 != null && <><span class="dh-meter"><i style={`width:${(e.n89 / 89) * 100}%`}></i></span><small>{e.n89}/89</small></>}
+                          {k === "matter" && <span class="dh-dots">{ORIG.map((o) => <i class={e.origins.includes(o) ? "on" : ""} title={o}></i>)}</span>}
+                          {k === "conditions" && <small>{e.synthesis ? "★ " : ""}{e.group}</small>}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </section>
+      ))}
+      <p class="muted ui" style="margin-top:20px">Matter's dots are its four origins: kamma, mind, temperature, nutriment. ★ marks the four conditions into which the <i>Manual</i> folds all twenty-four.</p>
+    </article>
+    <aside data-pagefind-ignore>
+      <div class="box">
+        {Object.entries(KINDS).map(([k, K]) => (
+          <div>
+            <p class="lab"><a href={"#" + k}>{K.short}</a></p>
+            <ul>{groupsOf(K).map(({ g, list }) => <li><a href={"#" + anchor(k, g)}>{g} <span class="muted">{list.length}</span></a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </aside>
   </div>
+  <script>
+    const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+    const q = document.getElementById("dh-q"), count = document.getElementById("dh-count");
+    const rows = [...document.querySelectorAll(".dh-rows li")];
+    q?.addEventListener("input", () => {
+      const v = fold(q.value.trim());
+      let shown = 0;
+      rows.forEach((li) => { const on = !v || li.dataset.q.includes(v); li.hidden = !on; if (on) shown++; });
+      document.querySelectorAll(".dh-group").forEach((g) => { g.hidden = !g.querySelector("li:not([hidden])"); });
+      document.querySelectorAll(".dh-list").forEach((s) => { s.hidden = !s.querySelector(".dh-group:not([hidden])"); });
+      count.textContent = v ? `${shown} of ${rows.length}` : "";
+    });
+  </script>
 </Base>

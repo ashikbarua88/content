@@ -1,5 +1,12 @@
 # The 24 conditions of the Paṭṭhāna (Manual VIII). 'direction': A–F as in structure.json.
 - id: hetu
+  related:
+    - { kind: factors, id: lobha, how: "one of the six roots" }
+    - { kind: factors, id: dosa, how: "one of the six roots" }
+    - { kind: factors, id: moha, how: "one of the six roots" }
+    - { kind: factors, id: alobha, how: "one of the six roots" }
+    - { kind: factors, id: adosa, how: "one of the six roots" }
+    - { kind: factors, id: pannindriya, how: "one of the six roots" }
   "n": 1
   pali: hetu
   en: root
@@ -8,6 +15,8 @@
     The six roots, greed, hatred, delusion and their opposites, make the states they arise with firm, like the
     roots of a tree.
 - id: arammana
+  related:
+    - { kind: conditions, id: upanissaya, how: "its strong form: object decisive support" }
   "n": 2
   pali: ārammaṇa
   en: object
@@ -16,6 +25,10 @@
     Anything at all that a citta takes as its object helps it simply by being known: a colour, a thought, a
     concept, Nibbāna.
 - id: adhipati
+  related:
+    - { kind: factors, id: chanda, how: "a predominant" }
+    - { kind: factors, id: viriya, how: "a predominant" }
+    - { kind: factors, id: pannindriya, how: "a predominant" }
   "n": 3
   pali: adhipati
   en: predominance
@@ -24,6 +37,10 @@
     A predominant leads the mind, as a king leads ministers: desire, energy, consciousness or investigation in
     its conascent kind, or a highly esteemed object in its object kind.
 - id: anantara
+  related:
+    - { kind: conditions, id: samanantara, how: "the same relation from another side" }
+    - { kind: conditions, id: natthi, how: "the same relation from another side" }
+    - { kind: conditions, id: vigata, how: "the same relation from another side" }
   "n": 4
   pali: anantara
   en: proximity
@@ -32,6 +49,10 @@
     Each citta, as it ceases, makes way for the next and determines what kind can follow, so the stream of
     mind has no gaps.
 - id: samanantara
+  related:
+    - { kind: conditions, id: anantara, how: "the same relation from another side" }
+    - { kind: conditions, id: natthi, how: "the same relation from another side" }
+    - { kind: conditions, id: vigata, how: "the same relation from another side" }
   "n": 5
   pali: samanantara
   en: contiguity
@@ -40,6 +61,11 @@
     Contiguity is proximity seen from another angle: the immediate, seamless succession of one citta by the
     next.
 - id: sahajata
+  related:
+    - { kind: conditions, id: annamanna, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: nissaya, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: atthi, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: avigata, how: "the same family: help by arising or being together" }
   "n": 6
   pali: sahajāta
   en: conascence
@@ -48,6 +74,11 @@
     States that arise together help one another to arise, as a flame and its light: a citta and its factors,
     the four great elements.
 - id: annamanna
+  related:
+    - { kind: conditions, id: sahajata, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: nissaya, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: atthi, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: avigata, how: "the same family: help by arising or being together" }
   "n": 7
   pali: aññamañña
   en: mutuality
@@ -56,6 +87,11 @@
     Mutuality is help in both directions at once, like the legs of a tripod: each state supports and is
     supported by the others.
 - id: nissaya
+  related:
+    - { kind: conditions, id: sahajata, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: annamanna, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: atthi, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: avigata, how: "the same family: help by arising or being together" }
   "n": 8
   pali: nissaya
   en: support
@@ -72,6 +108,8 @@
     Decisive support is strong help, often from far away: a good friend, a climate, a past habit, a resolve,
     even Nibbāna as an object.
 - id: purejata
+  related:
+    - { kind: conditions, id: pacchajata, how: "its counterpart: help from what came before" }
   "n": 10
   pali: purejāta
   en: prenascence
@@ -80,6 +118,8 @@
     Prenascence is help from something that arose earlier and still exists: a sense base or an object already
     present when the citta arises.
 - id: pacchajata
+  related:
+    - { kind: conditions, id: purejata, how: "its counterpart: help from what comes after" }
   "n": 11
   pali: pacchājāta
   en: postnascence
@@ -94,6 +134,9 @@
   direction: A
   text: Repetition is the way each javana strengthens the next, as a lesson is learned by reciting it.
 - id: kamma
+  related:
+    - { kind: factors, id: cetana, how: "the volition that is this condition" }
+    - { kind: conditions, id: vipaka, how: "what its ripening becomes" }
   "n": 13
   pali: kamma
   en: kamma
@@ -102,12 +145,18 @@
     A volition helps its result: at the same moment, by organising the citta, and across time, as past kamma
     that ripens later.
 - id: vipaka
+  related:
+    - { kind: conditions, id: kamma, how: "what ripens into it" }
   "n": 14
   pali: vipāka
   en: result
   direction: B
   text: Resultant states help one another by their passivity, effortlessly, as fruit ripens.
 - id: ahara
+  related:
+    - { kind: factors, id: phassa, how: "a mental nutriment" }
+    - { kind: factors, id: cetana, how: "a mental nutriment" }
+    - { kind: matter, id: oja, how: "edible food, as nutritive essence" }
   "n": 15
   pali: āhāra
   en: nutriment
@@ -116,6 +165,14 @@
     The four nutriments sustain what they feed: edible food the body; contact, volition and consciousness the
     states they arise with.
 - id: indriya
+  related:
+    - { kind: factors, id: saddha, how: "a faculty" }
+    - { kind: factors, id: viriya, how: "a faculty" }
+    - { kind: factors, id: sati, how: "a faculty" }
+    - { kind: factors, id: ekaggata, how: "a faculty" }
+    - { kind: factors, id: pannindriya, how: "a faculty" }
+    - { kind: factors, id: jivitindriya, how: "a faculty" }
+    - { kind: factors, id: vedana, how: "a faculty" }
   "n": 16
   pali: indriya
   en: faculty
@@ -124,6 +181,12 @@
     A faculty controls its own domain, as a governor rules a province: the sense faculties, the life
     faculties, and the mental faculties such as faith and wisdom.
 - id: jhana
+  related:
+    - { kind: factors, id: vitakka, how: "a jhāna factor" }
+    - { kind: factors, id: vicara, how: "a jhāna factor" }
+    - { kind: factors, id: piti, how: "a jhāna factor" }
+    - { kind: factors, id: vedana, how: "a jhāna factor" }
+    - { kind: factors, id: ekaggata, how: "a jhāna factor" }
   "n": 17
   pali: jhāna
   en: jhāna
@@ -132,12 +195,23 @@
     The jhāna factors help by making the mind look closely at its object, in ordinary moments as well as in
     meditation.
 - id: magga
+  related:
+    - { kind: factors, id: pannindriya, how: "a path factor" }
+    - { kind: factors, id: vitakka, how: "a path factor" }
+    - { kind: factors, id: samma-vaca, how: "a path factor" }
+    - { kind: factors, id: samma-kammanta, how: "a path factor" }
+    - { kind: factors, id: samma-ajiva, how: "a path factor" }
+    - { kind: factors, id: viriya, how: "a path factor" }
+    - { kind: factors, id: sati, how: "a path factor" }
+    - { kind: factors, id: ekaggata, how: "a path factor" }
   "n": 18
   pali: magga
   en: path
   direction: B
   text: The path factors lead the mind toward a destination, a good one or a bad one.
 - id: sampayutta
+  related:
+    - { kind: conditions, id: vippayutta, how: "its contrast: between mind and matter" }
   "n": 19
   pali: sampayutta
   en: association
@@ -146,30 +220,50 @@
     Association is the help mental states give one another by sharing a base, an object, an arising and a
     ceasing.
 - id: vippayutta
+  related:
+    - { kind: conditions, id: sampayutta, how: "its contrast: among mental states" }
   "n": 20
   pali: vippayutta
   en: dissociation
   direction: F
   text: Dissociation is help between mind and matter, which cannot be associated but still support each other.
 - id: atthi
+  related:
+    - { kind: conditions, id: sahajata, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: annamanna, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: nissaya, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: avigata, how: "the same family: help by arising or being together" }
   "n": 21
   pali: atthi
   en: presence
   direction: F
   text: Presence is help by being there at the same time, without which the other could not stand.
 - id: natthi
+  related:
+    - { kind: conditions, id: anantara, how: "the same relation from another side" }
+    - { kind: conditions, id: samanantara, how: "the same relation from another side" }
+    - { kind: conditions, id: vigata, how: "the same relation from another side" }
   "n": 22
   pali: natthi
   en: absence
   direction: A
   text: "Absence is help by ceasing: a citta that has gone gives the next its opportunity."
 - id: vigata
+  related:
+    - { kind: conditions, id: anantara, how: "the same relation from another side" }
+    - { kind: conditions, id: samanantara, how: "the same relation from another side" }
+    - { kind: conditions, id: natthi, how: "the same relation from another side" }
   "n": 23
   pali: vigata
   en: disappearance
   direction: A
   text: Disappearance is absence seen as the vanishing that makes room.
 - id: avigata
+  related:
+    - { kind: conditions, id: sahajata, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: annamanna, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: nissaya, how: "the same family: help by arising or being together" }
+    - { kind: conditions, id: atthi, how: "the same family: help by arising or being together" }
   "n": 24
   pali: avigata
   en: non-disappearance

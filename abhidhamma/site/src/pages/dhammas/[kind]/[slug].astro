@@ -1,7 +1,8 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { KINDS, dhammaUrl } from "../../../lib/dhammas.js";
+import { KINDS, dhammaUrl, readingsFor, ROLES, conditionBySlug, FIGURE_READING } from "../../../lib/dhammas.js";
 import { conceptUrl, concept, atlasUrl, u, withGlosses } from "../../../lib/atlas.js";
+import { BLOCKS } from "../../../figures/common.js";
 
 export function getStaticPaths() {
   return Object.entries(KINDS).flatMap(([kind, K]) =>
@@ -12,16 +13,30 @@ const K = KINDS[e.kind];
 const card = e.card?.card;
 const groupName = e.groupName || e.group;
 const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
+const readings = readingsFor(e);
+const KIND_LABEL = { factors: "Mental factor", matter: "Matter", conditions: "Condition" };
+const COLOR = { factors: "var(--nama)", matter: "var(--rupa)", conditions: "var(--nib)" };
+
+// At a glance: the few facts that place this entry.
+const glance = [];
+if (e.kind === "factors") glance.push(["Occurs in", e.n89 === 89 ? "every citta" : `${e.n89} of 89 cittas`]);
+if (e.kind === "matter") glance.push(["Origins", e.origins.length ? e.origins.join(", ") : "none of its own"], ["Kind", e.concrete ? "concrete" : "a quality of matter"]);
+if (e.kind === "conditions") glance.push(["Direction", e.group], ...(e.synthesis ? [["Synthesis", `one of the four: ${e.synthesis}`]] : []));
+glance.push(["Group", groupName], ["Manual", K.ch]);
+const fig = FIGURE_READING[e.kind];
 ---
 <Base title={`${e.en} (${e.pali})`} description={e.text} nav="dhammas">
-  <div class="wrap page">
+  <div class="wrap page dh-entry" style={`--c:${COLOR[e.kind]}`}>
     <article>
       <p class="crumbs"><a href={u("dhammas/")}>Dhammas</a> › <a href={u("dhammas/#" + e.kind)}>{K.short}</a> › {groupName}</p>
       <header>
-        <h1>{e.n ? `${e.n}. ` : ""}{e.en[0].toUpperCase() + e.en.slice(1)}</h1>
+        <p class="dh-badge ui">{KIND_LABEL[e.kind]}{e.n ? ` · ${e.n} of 24` : ""}</p>
+        <h1>{e.en[0].toUpperCase() + e.en.slice(1)}</h1>
         <p class="pali-line" lang="pi">{e.pali}</p>
         <p class="dek" set:html={ital(e.text)} />
       </header>
+
+      <dl class="dh-glance">{glance.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
 
       {card && (
         <section>
@@ -36,38 +51,74 @@ const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\
         </section>
       )}
 
-      <section>
-        <h2>Where it sits</h2>
-        <dl class="facts">
-          <dt>Kind</dt><dd>{K.short}: {groupName}</dd>
-          {e.kind === "factors" && <><dt>Occurs in</dt><dd>{e.n89 === 89 ? "every citta: all 89, or 121 counted in detail" : `${e.n89} of the 89 cittas (${e.n121} of 121)`}</dd></>}
-          {e.note && <><dt>How</dt><dd>{e.note}</dd></>}
-          {e.kind === "matter" && <><dt>Concrete</dt><dd>{e.concrete ? "yes: it has a nature of its own" : "no: it is a mode or quality of concrete matter"}</dd>
-            <dt>Produced by</dt><dd>{e.origins.length ? e.origins.join(", ") : "none: it is a mark of matter, not produced in its own right"}</dd>
-            {e.inseparable && <><dt>Inseparable</dt><dd>one of the eight present in every group of matter</dd></>}</>}
-          {e.kind === "conditions" && <><dt>Direction</dt><dd>{e.group}</dd>
-            {e.synthesis && <><dt>Synthesis</dt><dd>one of the four into which the <i>Manual</i> folds all twenty-four</dd></>}</>}
-          <dt>In the Manual</dt><dd>{K.ch}</dd>
-          <dt>In the atlas</dt><dd>{K.plates.map((p, i) => <>{i ? ", " : ""}<a href={atlasUrl(p)}>Plate {p.slice(1)}</a></>)}</dd>
-        </dl>
+      <section id="connections">
+        <h2>Connections</h2>
+
+        {e.related?.length > 0 && (
+          <div class="dh-block">
+            <h3 class="lab">Related entries</h3>
+            <ul class="dh-rel">
+              {e.related.map((r) => (
+                <li><a href={dhammaUrl(r.entry)}><i lang="pi">{r.entry.pali}</i> <span>{r.entry.en}</span></a><span class="how">{r.how}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {e.kind === "factors" && e.roles.length > 0 && (
+          <div class="dh-block">
+            <h3 class="lab">Roles in the other lists</h3>
+            <ul class="dh-roles">
+              {e.roles.map((r) => { const [label, cond] = ROLES[r]; const c = cond && conditionBySlug(cond); return (
+                <li>{label}{c && <> · as <a href={dhammaUrl(c)}>{c.en} condition</a></>}</li>
+              ); })}
+            </ul>
+          </div>
+        )}
+
+        {e.kind === "factors" && e.occurrence && (
+          <div class="dh-block">
+            <h3 class="lab">Where it occurs</h3>
+            <div class="dh-strip" role="img" aria-label={`Occurrence across the 89 cittas: ${e.occurrence.parts.map((p) => p.text).join("; ")}`}>
+              {[...e.occurrence.occ].map((ch, i) => <i class={ch === "F" ? "f" : ch === "." ? "" : "u"} style={`--b:${BLOCKS.find((b) => i + 1 >= b.from && i + 1 <= b.to).style.replace("fill:", "")}`}></i>)}
+            </div>
+            <ul class="dh-occ">{e.occurrence.parts.map((p) => <li>{p.text}</li>)}</ul>
+            {e.occurrence.never.length > 0 && <p class="muted ui dh-never">Never in: {e.occurrence.never.join(", ")}.</p>}
+            {e.note && <p class="note">{e.note}</p>}
+          </div>
+        )}
+
+        {e.kind === "matter" && (
+          <div class="dh-block">
+            <h3 class="lab">In the groups of matter</h3>
+            {e.kalapas.all ? <p>In every one of the 21 groups: it is one of the eight inseparables.</p>
+              : e.kalapas.list.length ? <ul class="dh-occ">{e.kalapas.list.map((g) => <li>{g}</li>)}</ul>
+              : <p class="muted">Not a member of any group: it is a mode or mark of the groups, not counted among them.</p>}
+          </div>
+        )}
+
+        {e.lists?.length > 0 && (
+          <div class="dh-block">
+            <h3 class="lab">In the lists of chapter VII</h3>
+            <ul class="dh-occ">{e.lists.map((l) => <li><i lang="pi">{l.pali}</i>, {l.en} <span class="muted ui">· {l.list}</span></li>)}</ul>
+          </div>
+        )}
+
+        {e.mixed && (
+          <div class="dh-block">
+            <h3 class="lab">The same factors, as a category</h3>
+            <p>In chapter VII, the {e.mixed.cat} work as this condition. {e.mixed.note}</p>
+          </div>
+        )}
+
+        <div class="dh-block">
+          <h3 class="lab">In the readings</h3>
+          {readings.length ? <ul class="dh-occ">{readings.map((r) => <li><a href={u(`readings/${r.id}/`)}>{r.title}</a></li>)}</ul>
+            : <p class="muted">Not named in a reading yet. Its list is drawn in <a href={u(`readings/${fig[0]}/`)}>{fig[1]}</a>.</p>}
+        </div>
       </section>
 
-      {e.lists?.length > 0 && (
-        <section>
-          <h2>In the lists of chapter VII</h2>
-          <p class="muted">The <i>Manual</i>'s lists of defilements are made of a few factors under many names. This one appears as:</p>
-          <ul class="canon">{e.lists.map((l) => <li><i lang="pi">{l.pali}</i>, {l.en} <span class="muted ui" style="font-size:14px">· {l.list}</span></li>)}</ul>
-        </section>
-      )}
-
-      {e.mixed && (
-        <section>
-          <h2>The same factors, as a category</h2>
-          <p>In chapter VII, the {e.mixed.cat} work as this condition. {e.mixed.note}</p>
-        </section>
-      )}
-
-      <p class="note" style="margin-top:28px">Part of <a href={conceptUrl(K.concept)}>{concept(K.concept).title}</a>. Described after the commentaries, in the order of the <i>Manual</i>; not quoted from it.</p>
+      <p class="note" style="margin-top:28px">Part of <a href={conceptUrl(K.concept)}>{concept(K.concept).title}</a>. Described after the commentaries, in the order of the <i>Manual</i>; not quoted from it. <a href={atlasUrl(K.plate)}>The atlas plate</a>.</p>
 
       <nav class="pn" aria-label="Previous and next entry">
         {prev && <a href={dhammaUrl(prev)}><small>Previous</small><span class="t">{prev.en}</span></a>}
@@ -80,6 +131,7 @@ const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\
           <p class="lab">{groupName}</p>
           <ul>{K.list.filter((x) => (x.groupName || x.group) === groupName).map((x) => <li><a href={dhammaUrl(x)} aria-current={x === e ? "page" : undefined}>{x.en}</a></li>)}</ul>
         </div>
+        <div><p class="lab">In a figure</p><a href={u(`readings/${fig[0]}/`)}>{fig[1]}</a></div>
         <div><p class="lab">All entries</p><a href={u("dhammas/#" + e.kind)}>{K.t}</a></div>
       </div>
     </aside>

@@ -1,5 +1,10 @@
 # The 28 kinds of matter (Manual VI). 'origins': k kamma, c mind, u temperature, a nutriment.
 - id: pathavi
+  related:
+    - { kind: matter, id: apo, how: "a fellow great element" }
+    - { kind: matter, id: tejo, how: "a fellow great element" }
+    - { kind: matter, id: vayo, how: "a fellow great element" }
+    - { kind: matter, id: kaya, how: "known by body-sensitivity" }
   order: 1
   pali: pathavī
   en: earth
@@ -14,6 +19,10 @@
     proximateCause: the other three great elements
     tryIt: Press a fingertip on the table. Hardness or softness, felt directly, is the earth element.
 - id: apo
+  related:
+    - { kind: matter, id: pathavi, how: "a fellow great element" }
+    - { kind: matter, id: tejo, how: "a fellow great element" }
+    - { kind: matter, id: vayo, how: "a fellow great element" }
   order: 2
   pali: āpo
   en: water
@@ -22,6 +31,11 @@
     The water element: cohesion and fluidity. It holds the other elements together and cannot be touched
     directly.
 - id: tejo
+  related:
+    - { kind: matter, id: pathavi, how: "a fellow great element" }
+    - { kind: matter, id: apo, how: "a fellow great element" }
+    - { kind: matter, id: vayo, how: "a fellow great element" }
+    - { kind: matter, id: kaya, how: "known by body-sensitivity" }
   order: 3
   pali: tejo
   en: fire
@@ -30,12 +44,20 @@
     The fire element: heat and cold. It ripens and matures matter, and as temperature it is one of the four
     origins of matter.
 - id: vayo
+  related:
+    - { kind: matter, id: pathavi, how: "a fellow great element" }
+    - { kind: matter, id: apo, how: "a fellow great element" }
+    - { kind: matter, id: tejo, how: "a fellow great element" }
+    - { kind: matter, id: kaya, how: "known by body-sensitivity" }
   order: 4
   pali: vāyo
   en: air
   origins: kcua
   text: "The air element: motion and support, felt as pressure and distension. It moves and steadies the body."
 - id: cakkhu
+  related:
+    - { kind: matter, id: vanna, how: "its object" }
+    - { kind: conditions, id: purejata, how: "supports seeing as prenascence" }
   order: 5
   pali: cakkhu
   en: eye-sensitivity
@@ -50,24 +72,34 @@
     proximateCause: great elements born of kamma, from a desire to see
     tryIt: You never see the eye-sensitivity; you know it only through seeing. Close your eyes and open them.
 - id: sota
+  related:
+    - { kind: matter, id: sadda, how: "its object" }
   order: 6
   pali: sota
   en: ear-sensitivity
   origins: k
   text: "Ear-sensitivity: the matter in the ear that sound can strike. It is the base and door of hearing."
 - id: ghana
+  related:
+    - { kind: matter, id: gandha, how: "its object" }
   order: 7
   pali: ghāna
   en: nose-sensitivity
   origins: k
   text: "Nose-sensitivity: the matter in the nose that smells can strike."
 - id: jivha
+  related:
+    - { kind: matter, id: rasa, how: "its object" }
   order: 8
   pali: jivhā
   en: tongue-sensitivity
   origins: k
   text: "Tongue-sensitivity: the matter in the tongue that tastes can strike."
 - id: kaya
+  related:
+    - { kind: matter, id: pathavi, how: "its object: the tangible" }
+    - { kind: matter, id: tejo, how: "its object: the tangible" }
+    - { kind: matter, id: vayo, how: "its object: the tangible" }
   order: 9
   pali: kāya
   en: body-sensitivity
@@ -76,42 +108,56 @@
     Body-sensitivity: the matter spread through the body that tangibles can strike. Its object is three of the
     great elements themselves.
 - id: vanna
+  related:
+    - { kind: matter, id: cakkhu, how: "the sense that knows it" }
   order: 10
   pali: vaṇṇa
   en: visible form
   origins: kcua
   text: "Visible form: colour, the object of seeing. Shape, as the commentaries note, is inferred rather than seen."
 - id: sadda
+  related:
+    - { kind: matter, id: sota, how: "the sense that knows it" }
   order: 11
   pali: sadda
   en: sound
   origins: cu
   text: "Sound: the object of hearing. It is the only sense object that is not one of the eight inseparables."
 - id: gandha
+  related:
+    - { kind: matter, id: ghana, how: "the sense that knows it" }
   order: 12
   pali: gandha
   en: smell
   origins: kcua
   text: "Smell: the object of the nose."
 - id: rasa
+  related:
+    - { kind: matter, id: jivha, how: "the sense that knows it" }
   order: 13
   pali: rasa
   en: taste
   origins: kcua
   text: "Taste: the object of the tongue."
 - id: itthibhava
+  related:
+    - { kind: matter, id: purisabhava, how: "its counterpart" }
   order: 14
   pali: itthibhāva
   en: femininity
   origins: k
   text: "Femininity: the kamma-born faculty that shapes the marks and manner of a female body."
 - id: purisabhava
+  related:
+    - { kind: matter, id: itthibhava, how: "its counterpart" }
   order: 15
   pali: purisabhāva
   en: masculinity
   origins: k
   text: "Masculinity: the kamma-born faculty that shapes the marks and manner of a male body."
 - id: hadaya
+  related:
+    - { kind: conditions, id: nissaya, how: "supports mind-consciousness: support condition" }
   order: 16
   pali: hadaya
   en: heart-base
@@ -120,6 +166,8 @@
     The heart-base: the matter named by the commentaries as the physical support of mind-consciousness. The
     canonical Paṭṭhāna speaks only of "that matter" on which mind depends.
 - id: jivita
+  related:
+    - { kind: factors, id: jivitindriya, how: "its counterpart in mind" }
   order: 17
   pali: jīvita
   en: life faculty
@@ -128,6 +176,8 @@
     The material life faculty: it sustains the kamma-born matter of its group for that group's span, as water
     sustains lotuses.
 - id: oja
+  related:
+    - { kind: conditions, id: ahara, how: "as food, it is nutriment condition" }
   order: 18
   pali: ojā
   en: nutritive essence
@@ -144,6 +194,8 @@
     Space: the gap that separates one group of matter from another. It is not a thing but the boundary between
     things.
 - id: kaya-vinnatti
+  related:
+    - { kind: matter, id: vaci-vinnatti, how: "its counterpart in speech" }
   order: 20
   pali: kāya-viññatti
   en: bodily intimation
@@ -152,48 +204,69 @@
     Bodily intimation: the movement by which a body expresses an intention, the gesture that makes a mind
     known.
 - id: vaci-vinnatti
+  related:
+    - { kind: matter, id: kaya-vinnatti, how: "its counterpart in the body" }
   order: 21
   pali: vacī-viññatti
   en: vocal intimation
   origins: c
   text: "Vocal intimation: the movement by which speech expresses an intention."
 - id: lahuta
+  related:
+    - { kind: matter, id: muduta, how: "a fellow mutable quality" }
+    - { kind: matter, id: kammannata, how: "a fellow mutable quality" }
   order: 22
   pali: lahutā
   en: lightness
   origins: cua
   text: "Lightness of matter: its buoyancy, the body's ease of movement in health."
 - id: muduta
+  related:
+    - { kind: matter, id: lahuta, how: "a fellow mutable quality" }
+    - { kind: matter, id: kammannata, how: "a fellow mutable quality" }
   order: 23
   pali: mudutā
   en: malleability
   origins: cua
   text: "Malleability of matter: its pliancy, the opposite of stiffness."
 - id: kammannata
+  related:
+    - { kind: matter, id: lahuta, how: "a fellow mutable quality" }
+    - { kind: matter, id: muduta, how: "a fellow mutable quality" }
   order: 24
   pali: kammaññatā
   en: wieldiness
   origins: cua
   text: "Wieldiness of matter: its fitness for action."
 - id: upacaya
+  related:
+    - { kind: matter, id: santati, how: "what follows it" }
   order: 25
   pali: upacaya
   en: production
   origins: ""
   text: "Production: the first arising of a group of matter."
 - id: santati
+  related:
+    - { kind: matter, id: upacaya, how: "what comes before it" }
+    - { kind: matter, id: jarata, how: "what follows it" }
   order: 26
   pali: santati
   en: continuity
   origins: ""
   text: "Continuity: the renewed arising of matter in a series."
 - id: jarata
+  related:
+    - { kind: matter, id: santati, how: "what comes before it" }
+    - { kind: matter, id: aniccata, how: "what follows it" }
   order: 27
   pali: jaratā
   en: decay
   origins: ""
   text: "Decay: matter's ageing, its maturing toward dissolution."
 - id: aniccata
+  related:
+    - { kind: matter, id: jarata, how: "what comes before it" }
   order: 28
   pali: aniccatā
   en: impermanence
