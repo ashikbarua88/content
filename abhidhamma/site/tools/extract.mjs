@@ -33,22 +33,14 @@ const result = await page.evaluate(() => {
     const id = a && a.getAttribute("href").replace("#idea-", "");
     if (id && svg) pictures[id] = { svg: clean(svg), caption: el.querySelector("figcaption")?.textContent || "" };
   });
-  const plates = {};
-  document.querySelectorAll("section.sheet[id^=p]").forEach((s) => {
-    // The plate's main drawing is its largest svg.
-    const svgs = [...s.querySelectorAll("svg")].filter((v) => !v.closest(".nav, .tocp"));
-    const svg = svgs.sort((a, b) => b.outerHTML.length - a.outerHTML.length)[0];
-    if (svg && svg.outerHTML.length > 2000) plates[s.id] = clean(svg);
-  });
   const map = document.querySelector("#map svg.cmap").outerHTML;
-  return { pictures, plates, map };
+  return { pictures, map };
 });
 await browser.close();
 
 writeFileSync(path.join(out, "pictures.json"), JSON.stringify(result.pictures));
-writeFileSync(path.join(out, "plates.json"), JSON.stringify(result.plates));
 writeFileSync(path.join(out, "map.json"), JSON.stringify({ svg: result.map }));
-console.log("ideas pictured:", Object.keys(result.pictures).length, "plates:", Object.keys(result.plates).length);
+console.log("ideas pictured:", Object.keys(result.pictures).length);
 
 // The site draws with the atlas's own colours: copy its tokens (light and dark) and the svg text classes.
 const css = readFileSync(path.resolve(here, "../../atlas/atlas.css"), "utf8");

@@ -1,0 +1,76 @@
+{
+ "links": [
+  {
+   "n": 1,
+   "pali": "avijjā",
+   "en": "ignorance",
+   "round": "D"
+  },
+  {
+   "n": 2,
+   "pali": "saṅkhārā",
+   "en": "formations",
+   "round": "K"
+  },
+  {
+   "n": 3,
+   "pali": "viññāṇa",
+   "en": "consciousness",
+   "round": "R"
+  },
+  {
+   "n": 4,
+   "pali": "nāmarūpa",
+   "en": "mind and matter",
+   "round": "R"
+  },
+  {
+   "n": 5,
+   "pali": "saḷāyatana",
+   "en": "six sense bases",
+   "round": "R"
+  },
+  {
+   "n": 6,
+   "pali": "phassa",
+   "en": "contact",
+   "round": "R"
+  },
+  {
+   "n": 7,
+   "pali": "vedanā",
+   "en": "feeling",
+   "round": "R"
+  },
+  {
+   "n": 8,
+   "pali": "taṇhā",
+   "en": "craving",
+   "round": "D"
+  },
+  {
+   "n": 9,
+   "pali": "upādāna",
+   "en": "clinging",
+   "round": "D"
+  },
+  {
+   "n": 10,
+   "pali": "bhava",
+   "en": "becoming",
+   "round": "KR"
+  },
+  {
+   "n": 11,
+   "pali": "jāti",
+   "en": "birth",
+   "round": "R"
+  },
+  {
+   "n": 12,
+   "pali": "jarāmaraṇa",
+   "en": "decay and death",
+   "round": "R"
+  }
+ ]
+}

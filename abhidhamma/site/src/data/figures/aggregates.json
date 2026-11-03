@@ -1,0 +1,44 @@
+{
+ "aggregates": [
+  {
+   "key": "rupa",
+   "pali": "rūpa",
+   "en": "form",
+   "simile": "a lump of foam",
+   "count": "all 28 kinds of matter",
+   "real": "RU"
+  },
+  {
+   "key": "vedana",
+   "pali": "vedanā",
+   "en": "feeling",
+   "simile": "a water bubble",
+   "count": "1 mental factor, in every citta",
+   "real": "CE"
+  },
+  {
+   "key": "sanna",
+   "pali": "saññā",
+   "en": "perception",
+   "simile": "a mirage",
+   "count": "1 mental factor, in every citta",
+   "real": "CE"
+  },
+  {
+   "key": "sankhara",
+   "pali": "saṅkhāra",
+   "en": "formations",
+   "simile": "a plantain trunk",
+   "count": "the other 50 mental factors",
+   "real": "CE"
+  },
+  {
+   "key": "vinnana",
+   "pali": "viññāṇa",
+   "en": "consciousness",
+   "simile": "a magic show",
+   "count": "all 89 kinds of citta",
+   "real": "CI"
+  }
+ ]
+}

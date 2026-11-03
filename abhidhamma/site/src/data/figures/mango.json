@@ -1,0 +1,114 @@
+{
+ "moments": [
+  {
+   "from": 1,
+   "to": 1,
+   "kind": "a",
+   "job": "life-continuum",
+   "pali": "atīta-bhavaṅga",
+   "citta": "39",
+   "options": "one of 19",
+   "simile": "A man sleeps at the foot of a mango tree, his head covered.",
+   "added": false
+  },
+  {
+   "from": 2,
+   "to": 3,
+   "kind": "bu",
+   "job": "vibrating, arrest",
+   "pali": "bhavaṅga-calana, -upaccheda",
+   "citta": "39–46",
+   "options": "",
+   "simile": "A breeze stirs the branches and a mango falls beside his head.",
+   "added": false
+  },
+  {
+   "from": 4,
+   "to": 4,
+   "kind": "pa",
+   "job": "adverting",
+   "pali": "pañcadvārāvajjana",
+   "citta": "28",
+   "options": "the only one at a sense door",
+   "simile": "He wakes and turns toward the sound.",
+   "added": false
+  },
+  {
+   "from": 5,
+   "to": 5,
+   "kind": "vi",
+   "job": "seeing",
+   "pali": "cakkhu-viññāṇa",
+   "citta": "20",
+   "options": "one of 2 (#13 for an unpleasant sight)",
+   "simile": "He opens his eyes and sees it.",
+   "added": false
+  },
+  {
+   "from": 6,
+   "to": 6,
+   "kind": "pr",
+   "job": "receiving",
+   "pali": "sampaṭicchana",
+   "citta": "25",
+   "options": "one of 2",
+   "simile": "He stretches out his hand and takes it.",
+   "added": false
+  },
+  {
+   "from": 7,
+   "to": 7,
+   "kind": "pr",
+   "job": "investigating",
+   "pali": "santīraṇa",
+   "citta": "26",
+   "options": "one of 3",
+   "simile": "He squeezes it.",
+   "added": false
+  },
+  {
+   "from": 8,
+   "to": 8,
+   "kind": "pr",
+   "job": "determining",
+   "pali": "voṭṭhapana",
+   "citta": "29",
+   "options": "the only one",
+   "simile": "He smells it.",
+   "added": false
+  },
+  {
+   "from": 9,
+   "to": 15,
+   "kind": "ja",
+   "job": "javana ×7",
+   "pali": "javana",
+   "citta": "3",
+   "options": "one of the 29 sense-sphere javanas",
+   "simile": "He eats it. Here, and only here, the mind acts: this is where kamma is made.",
+   "added": false
+  },
+  {
+   "from": 16,
+   "to": 17,
+   "kind": "ta",
+   "job": "registration",
+   "pali": "tadārammaṇa",
+   "citta": "26",
+   "options": "one of 11",
+   "simile": "He swallows the last of it. †",
+   "added": true
+  },
+  {
+   "from": 18,
+   "to": 18,
+   "kind": "b",
+   "job": "life-continuum",
+   "pali": "bhavaṅga",
+   "citta": "39–46",
+   "options": "",
+   "simile": "He lies down and sleeps again. †",
+   "added": true
+  }
+ ]
+}

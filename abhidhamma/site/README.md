@@ -44,7 +44,7 @@ Tables that are not prose are in `src/data/structure.json`: the following.
 - counts of factors in cittas
 - the chapter VII lists
 
-The site draws its own figures at build time (`src/figures/`, used as `<Figure name="…">` in a reading). Some drawings are still copied from the atlas through `npm run extract`, which copies pictures only, never text: the 16 plate svgs, the idea pictures and the concept map. They are being redrawn in the site in phases. The atlas itself, in `../atlas`, is left as it is. The site no longer reads its text.
+The site draws its own figures at build time (`src/figures/`, used as `<Figure name="…">` in a reading). Every reading's figure is drawn by the site. Only the idea pictures, their animations and the concept map are still copied from the atlas, through `npm run extract`, which copies pictures only, never text; they are next to be redrawn. The atlas itself, in `../atlas`, is left as it is. The site no longer reads its text.
 
 ## The book
 

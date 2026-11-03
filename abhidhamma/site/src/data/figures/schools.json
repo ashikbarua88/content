@@ -1,0 +1,64 @@
+{
+ "cats": [
+  {
+   "pali": "citta",
+   "en": "consciousness",
+   "colour": "var(--nama)"
+  },
+  {
+   "pali": "cetasika",
+   "en": "mental factors",
+   "colour": "var(--nama-2)"
+  },
+  {
+   "pali": "rūpa",
+   "en": "matter",
+   "colour": "var(--rupa-mark)"
+  },
+  {
+   "pali": "viprayukta",
+   "en": "dissociated formations",
+   "colour": "var(--g3)"
+  },
+  {
+   "pali": "asaṅkhata",
+   "en": "unconditioned",
+   "colour": "var(--nib)"
+  }
+ ],
+ "rows": [
+  {
+   "school": "Theravāda",
+   "total": 82,
+   "counts": [
+    1,
+    52,
+    28,
+    0,
+    1
+   ]
+  },
+  {
+   "school": "Sarvāstivāda",
+   "total": 75,
+   "counts": [
+    1,
+    46,
+    11,
+    14,
+    3
+   ]
+  },
+  {
+   "school": "Yogācāra",
+   "total": 100,
+   "counts": [
+    8,
+    51,
+    11,
+    24,
+    6
+   ]
+  }
+ ]
+}
