@@ -1021,6 +1021,95 @@
     apply();
   })();
 
+  /* ================= NR: nine ways mind and matter meet =================
+     From the nāma–rūpa model, now part of the reading "Mind and matter together". Mind on the left: a citta
+     with its factors circling it. A body on the right, as a cloud of small groups of matter, with the
+     heart-base and the eye inside it; around them a visible object, past kamma, temperature and food. Each
+     relation is a thread with particles moving along it, in its own direction. Data: namarupa.yaml, passed in
+     by the reading as #nr-rel-data, with each condition already resolved to its name and entry link. */
+  (function () {
+    var REL = jsonData("nr-rel-data"); if (!$("nr-rel") || !REL) return;
+    var cur = "all";
+    function info() {
+      var box = $("nr-rel-info"); if (!box) return;
+      if (cur === "all") {
+        box.innerHTML = '<p class="lab">Overview</p><h3>Mind and matter, held together</h3><p class="small">Nine relations, drawn as moving threads. Matter gives mind its bases and its objects; mind produces matter and keeps the body going; past kamma builds the sense organs; food and heat renew the body; and at conception the two arise together.</p><p class="small muted">Choose a relation to see it alone.</p>';
+        return;
+      }
+      var r = REL.filter(function (x) { return x.id === cur; })[0];
+      box.innerHTML = '<p class="lab">' + esc3(r.dir) + " · " + esc3(r.when) + '</p><h3><span class="sw3" style="background:var(' + r.color + ')"></span>' + esc3(r.label) + '</h3><p class="small">' + esc3(r.text) + "</p>" +
+        '<p class="small nr-conds"><b>Conditions:</b> ' + (r.conds.map(function (c) { return '<a href="' + c.url + '">' + esc3(c.en) + "</a>"; }).concat((r.extra || []).map(function (x) { return "<i>" + esc3(x) + "</i>"; })).join(" · ") || "<i>none of the 24</i>") + "</p>";
+    }
+    pills($("nr-rel-btns"), [{ id: "all", label: "All nine" }].concat(REL.map(function (r) { return { id: r.id, label: r.label, c: r.color }; })), cur, function (v) { cur = v; info(); if (S) S.dirty = true; });
+    info();
+    var S = make3D("nr-rel", { height: 470, cam: [0, 1.3, 12.2], look: [0, -0.05, 0], fov: 34, sway: 0.38, rotX: 0.06, phoneRatio: 1.05, fit: true });
+    if (!S) return;
+    var OX = -0.55;
+    function P(x, y, z) { return V(x + OX, y, z); }
+    var R = S.root, N = P(-2.3, 0.15, 0), B = P(2.1, -0.05, 0);
+    var heartP = P(1.85, 0.22, 0.25), eyeP = P(2.0, 1.2, 0.55), mangoP = P(4.25, 1.4, 0.5), kammaP = P(-0.2, -2.05, -1.0), tempP = P(4.05, -1.35, -0.7), foodP = P(3.25, -2.0, 1.0);
+    var core = new THREE.Mesh(new THREE.SphereGeometry(0.55, 40, 28), stdMat("--nama", { glow: 0.35 })); core.position.copy(N); R.add(core);
+    var shell = new THREE.Mesh(new THREE.SphereGeometry(1.3, 28, 18), basicMat("--nama-2", 0.1, true)); shell.position.copy(N); R.add(shell);
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.01, 8, 80), basicMat("--nama", 0.5)); ring.position.copy(N); ring.rotation.x = 1.25; R.add(ring);
+    var unis = [];
+    for (var i = 0; i < 7; i++) { var un = new THREE.Mesh(new THREE.SphereGeometry(0.085, 16, 12), stdMat("--nama-2", { glow: 0.3 })); R.add(un); unis.push(un); }
+    var rand = rng(7), cloud = new THREE.Group(); cloud.position.copy(B); R.add(cloud);
+    var cubeG = new THREE.BoxGeometry(0.075, 0.075, 0.075), cubeM = stdMat("--rupa-mark", { opacity: 0.62, glow: 0.1 });
+    for (var c = 0; c < 240; c++) {
+      var x, y, z; do { x = rand() * 2 - 1; y = rand() * 2 - 1; z = rand() * 2 - 1; } while (x * x + y * y + z * z > 1);
+      var m = new THREE.Mesh(cubeG, cubeM); m.position.set(x * 0.95, y * 1.35, z * 0.72); m.rotation.set(rand() * 3, rand() * 3, 0); cloud.add(m);
+    }
+    function obj(g, v, p, glow) { var o = new THREE.Mesh(g, stdMat(v, { glow: glow })); o.position.copy(p); R.add(o); return o; }
+    obj(new THREE.BoxGeometry(0.2, 0.2, 0.2), "--heart", heartP, 0.4);
+    obj(new THREE.SphereGeometry(0.14, 20, 14), "--rupa", eyeP, 0.3);
+    var mango = obj(new THREE.SphereGeometry(0.33, 28, 20), "--f-joy", mangoP, 0.2); mango.scale.set(0.85, 1, 0.85);
+    var kam = obj(new THREE.OctahedronGeometry(0.34), "--kamma", kammaP, 0.3), tmp = obj(new THREE.IcosahedronGeometry(0.27), "--temp", tempP, 0.3), food = obj(new THREE.DodecahedronGeometry(0.27), "--food", foodP, 0.25);
+    function mid(a, b, dx, dy, dz) { return a.clone().add(b).multiplyScalar(0.5).add(V(dx, dy, dz)); }
+    function Q(a, ctl, b) { return new THREE.QuadraticBezierCurve3(a, ctl, b); }
+    var curves = {
+      heart: Q(heartP, mid(heartP, N, 0, 1.05, 0.5), N.clone().add(V(0.5, 0.1, 0.1))),
+      rebirth: Q(N.clone().add(V(0.45, -0.3, 0.15)), mid(N, heartP, 0, -1.2, 0.8), heartP),
+      eye: Q(eyeP, mid(eyeP, N, 0, 1.55, 0.3), N.clone().add(V(0.35, 0.42, 0.1))),
+      object: Q(mangoP, mid(mangoP, N, 0, 2.4, 0), N.clone().add(V(0.1, 0.55, 0))),
+      mindborn: Q(N.clone().add(V(0.5, 0, 0.25)), mid(N, B, 0, 0.35, 1.5), B.clone().add(V(-0.8, 0, 0.3))),
+      post: Q(N.clone().add(V(0.5, -0.15, -0.25)), mid(N, B, 0, -0.55, -1.45), B.clone().add(V(-0.8, -0.2, -0.3))),
+      kamma: Q(kammaP, mid(kammaP, B, 0, -0.9, 0), B.clone().add(V(-0.3, -1.1, 0))),
+      food: Q(foodP, mid(foodP, B, 0, -0.35, 0.4), B.clone().add(V(0.3, -1.0, 0.35))),
+      temp: Q(tempP, mid(tempP, B, 0, 0.3, -0.3), B.clone().add(V(0.75, -0.4, -0.3)))
+    };
+    var tubes = {}, parts = {};
+    REL.forEach(function (r) {
+      if (!curves[r.id]) return;
+      var tb = new THREE.Mesh(new THREE.TubeGeometry(curves[r.id], 64, 0.022, 8, false), basicMat(r.color, 0.4)); R.add(tb); tubes[r.id] = tb;
+      var ps = []; for (var k = 0; k < 5; k++) { var p = new THREE.Mesh(new THREE.SphereGeometry(0.055, 12, 10), basicMat(r.color, 1)); R.add(p); ps.push(p); }
+      parts[r.id] = ps;
+    });
+    label(S, "nāma · mind", anchor(S, N.x, N.y + 1.65, N.z), "p nd");
+    label(S, "a citta and its factors", anchor(S, N.x, N.y - 1.6, N.z), "sm");
+    label(S, "rūpa · a body of kalāpas", anchor(S, B.x, B.y - 1.75, B.z), "p nd");
+    label(S, "heart-base", anchor(S, heartP.x - 0.05, heartP.y + 0.3, heartP.z + 0.2), "sm");
+    label(S, "eye-base", anchor(S, eyeP.x, eyeP.y + 0.3, eyeP.z), "sm");
+    label(S, "visible form", anchor(S, mangoP.x, mangoP.y + 0.55, mangoP.z), "sm");
+    label(S, "past volition · kamma", anchor(S, kammaP.x, kammaP.y - 0.55, kammaP.z), "sm");
+    label(S, "temperature", anchor(S, tempP.x, tempP.y - 0.45, tempP.z), "sm");
+    label(S, "nutriment", anchor(S, foodP.x, foodP.y - 0.45, foodP.z), "sm");
+    S.update = function (dt, t) {
+      unis.forEach(function (u, j) { var a = t * 0.5 + j * Math.PI * 2 / 7, v3 = V(Math.cos(a) * 0.95, Math.sin(a) * 0.95, 0); v3.applyEuler(ring.rotation); u.position.copy(N).add(v3); });
+      if (!RM) { kam.rotation.y += dt * 0.5; tmp.rotation.y -= dt * 0.4; food.rotation.x += dt * 0.3; cloud.rotation.y += dt * 0.05; }
+      Object.keys(tubes).forEach(function (id) {
+        var on = cur === "all" || cur === id;
+        tubes[id].material.opacity = cur === "all" ? 0.45 : (on ? 0.95 : 0.07);
+        var speed = cur === "all" ? 0.12 : 0.3;
+        parts[id].forEach(function (p, k) {
+          p.visible = on && !RM; if (!p.visible) return;
+          var u2 = ((t * speed) + k / parts[id].length) % 1; if (id === "rebirth" && k % 2) u2 = 1 - u2;
+          p.position.copy(curves[id].getPoint(u2));
+        });
+      });
+      S.dirty = true;
+    };
+  })();
+
   /* ================= 10. D5: planes as a world-mountain =================
      The model is round, so it turns (sways) under labels that stay put: plane labels sit in two fixed columns
      with leader lines to their discs; the four group names sit on chips in front of their groups.

@@ -86,10 +86,15 @@ const models3d = defineCollection({
   schema: z.object({ level: z.number(), title: z.string(), lede: z.string(), sources: z.string(), html: z.string(),
     notes: z.array(z.object({ id: z.string(), label: z.string(), text: z.string() })).optional() }),
 });
+// The nāma–rūpa model's data: relations, which cittas produce matter, and the bases by plane (namarupa.yaml).
+const namarupa = defineCollection({
+  loader: file("src/content/namarupa.yaml"),
+  schema: z.object({ items: z.array(z.record(z.string(), z.any())) }),
+});
 const links12 = defineCollection({
   loader: file("src/content/links12.yaml"),
   schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), round: z.enum(["D", "K", "R", "KR"]), life: z.enum(["past", "this", "next"]),
     group: z.number(), what: z.string(), leads: z.string().optional() }),
 });
 
-export const collections = { models3d, links12, readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };
+export const collections = { models3d, links12, namarupa, readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };

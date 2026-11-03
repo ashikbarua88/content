@@ -22,4 +22,5 @@ import * as mango from "./mango.js";
 import * as wheel from "./wheel.js";
 import * as rebirth from "./rebirth.js";
 import * as schools from "./schools.js";
-export const FIGURES = { aggregates, cittas, factors, coins, mango, wheel, rebirth, schools, library, matter, conditions, planes, subjects, tree, lenses, doors, functions, combination, processes, defilements, results, truths, twomoments };
+import * as namarupa from "./namarupa.js";
+export const FIGURES = { namarupa, aggregates, cittas, factors, coins, mango, wheel, rebirth, schools, library, matter, conditions, planes, subjects, tree, lenses, doors, functions, combination, processes, defilements, results, truths, twomoments };

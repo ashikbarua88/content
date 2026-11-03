@@ -1,0 +1,41 @@
+---
+// Mind makes matter: which of the 89 cittas produce matter, gestures and speech, posture, or a smile.
+// The grid is drawn at build time with the first set lit; a few lines of script switch sets. Data: namarupa.yaml.
+import { getEntry } from "astro:content";
+const sets = (await getEntry("namarupa", "produce")).data.items;
+const expand = (s) => s.split(",").flatMap((r) => { const [a, b] = r.split("-").map(Number); return Array.from({ length: (b || a) - a + 1 }, (_, i) => a + i); });
+const SETS = sets.map((x) => ({ ...x, nums: expand(x.cittas) }));
+const ROWS = [["Unwholesome", [8, 2, 2], 1], ["Rootless", [7, 8, 3], 13], ["Beautiful", [8, 8, 8], 31], ["Fine-material", [5, 5, 5], 55], ["Immaterial", [4, 4, 4], 70], ["Supramundane", [4, 4], 82]];
+const first = SETS[0];
+let svg = ""; const x0 = 118, cell = 19, step = 21, gap = 12, rowH = 40;
+ROWS.forEach(([name, groups, start], ri) => {
+  const y = 8 + ri * rowH; let x = x0, n = start;
+  svg += `<text x="0" y="${y + 23}" class="fg-s">${name}</text>`;
+  groups.forEach((g) => { for (let i = 0; i < g; i++, n++) {
+    const cx = x + i * step, on = first.nums.includes(n);
+    svg += `<g class="nrc${on ? " on" : ""}" data-n="${n}"><rect x="${cx}" y="${y + 9}" width="${cell}" height="${cell}" rx="3"/><text x="${cx + cell / 2}" y="${y + 22}" text-anchor="middle" class="fg-xxs">${n}</text></g>`;
+  } x += g * step + gap; });
+});
+const W = x0 + 26 * step + 3 * gap;
+---
+<figure class="pic drawn nr-produce" data-sets={JSON.stringify(SETS.map((s) => ({ id: s.id, nums: s.nums, count: s.count, text: s.text })))}>
+  <div class="btnrow ctl3 sm" role="group" aria-label="What the citta produces">
+    {SETS.map((s, i) => <button type="button" class="pill" data-v={s.id} aria-pressed={i === 0 ? "true" : "false"}>{s.label}</button>)}
+  </div>
+  <p class="nr-status"><span class="big">{first.count}</span> <span class="desc">{first.text}</span></p>
+  <div class="fig-scroll" tabindex="0"><svg class="fig" viewBox={`0 0 ${W} ${8 + ROWS.length * rowH}`} role="img" aria-label="The 89 cittas in the order of the Manual; the lit cells are those that produce the chosen kind of matter."><Fragment set:html={svg} /></svg></div>
+  <figcaption><slot /></figcaption>
+</figure>
+<script>
+  document.querySelectorAll(".nr-produce").forEach((fig) => {
+    const sets = JSON.parse(fig.dataset.sets), cells = [...fig.querySelectorAll(".nrc")];
+    const big = fig.querySelector(".nr-status .big"), desc = fig.querySelector(".nr-status .desc");
+    fig.querySelector(".btnrow").addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      const s = sets.find((x) => x.id === b.dataset.v);
+      fig.querySelectorAll(".btnrow button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      cells.forEach((c) => c.classList.toggle("on", s.nums.includes(+c.dataset.n)));
+      big.textContent = s.count; desc.textContent = s.text;
+    });
+  });
+</script>

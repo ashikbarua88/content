@@ -389,3 +389,26 @@ svg.graph.hl .gedge.on { opacity: 1 !important; stroke-width: 2.2 !important; }
 @media (prefers-reduced-motion: reduce) { .viz3d .tip3c { transition: none; } }
 @media print { .viz3d .tip3c, .d4-step { display: none !important; } }
 .d4-step .btn { background: none; color: var(--accent); font: 14px var(--ui); padding: 6px 14px; cursor: pointer; } .d4-step .btn[aria-pressed="true"] { background: var(--accent); color: var(--ground); }
+/* The nāma–rūpa model, inside the reading "Mind and matter together" */
+.reading .m3in { margin: 22px 0; } .reading .m3in .viz3d { margin-top: 6px; }
+.nr-info { margin-top: 10px; } .nr-info h3 { margin: 2px 0 6px; } .nr-info .lab { margin: 0; } .nr-conds a { white-space: nowrap; }
+.nr-list li { margin-bottom: 8px; }
+.nr-ways { display: grid; gap: 14px; margin: 14px 0 20px; }
+.nr-dir { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: var(--sheet); }
+.nr-dir h3 { margin: 2px 0 6px; font-size: 17px; } .nr-dir ul { list-style: none; padding: 0; margin: 0; }
+.nr-dir li { display: grid; grid-template-columns: 9.5em 1fr; gap: 10px; padding: 5px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.nr-dir li:first-child { border-top: 0; } .nr-dir li a { font-family: var(--ui); font-size: 14px; }
+@media (max-width: 560px) { .nr-dir li { grid-template-columns: 1fr; gap: 2px; } }
+.nr-planes table, table.nr-el { border-collapse: collapse; width: 100%; font: 14px var(--ui); margin: 6px 0; }
+.nr-planes th, .nr-planes td, table.nr-el th, table.nr-el td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; }
+.nr-planes thead th, table.nr-el thead th { font-size: 12px; color: var(--muted); font-weight: 600; }
+.nr-planes tbody th span { display: block; color: var(--muted); font-weight: 400; font-size: 12.5px; }
+.nr-planes td { text-align: center; } .nr-planes td.kal { text-align: left; min-width: 14em; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--line); vertical-align: middle; }
+td.r .dot, .dot.r { background: var(--rupa-mark); border-color: var(--rupa-mark); } td.m .dot, .dot.m { background: var(--nama); border-color: var(--nama); }
+.nr-key .dot { margin: 0 4px 0 12px; } .nr-key .dot:first-child { margin-left: 0; }
+.nr-produce .nrc rect { fill: var(--sheet); stroke: var(--line); } .nr-produce .nrc text { fill: var(--muted); }
+.nr-produce .nrc.on rect { fill: var(--nama); stroke: var(--nama); } .nr-produce .nrc.on text { fill: var(--on-accent); }
+.nr-status { display: flex; gap: 12px; align-items: baseline; margin: 10px 0 6px; } .nr-status .big { font: 600 30px var(--display); color: var(--nama); } .nr-status .desc { font-size: 15.5px; }
+.nr-planes table { min-width: 620px; } .nr-planes th, .nr-planes td { padding: 6px 5px; } .nr-planes tbody th { min-width: 8.5em; } .nr-planes td.kal { min-width: 12em; font-size: 13px; }
+.reading .fig-scroll, .nr-planes { overflow-x: auto; max-width: 100%; min-width: 0; width: 100%; position: relative; }

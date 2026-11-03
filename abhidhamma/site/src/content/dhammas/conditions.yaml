@@ -13,7 +13,7 @@
   direction: B
   ways:
     - { from: mind, to: mind, text: "The roots, such as greed or non-greed, make firm the citta and the factors they arise with." }
-    - { from: mind, to: matter, text: "They also support the matter that citta produces, and, at rebirth, the kamma-born matter arising with it." }
+    - { from: mind, to: matter, text: "The roots also support the matter their citta produces, and, at rebirth, the kamma-born matter arising with it." }
   text: >-
     The six roots, greed, hatred, delusion and their opposites, make the states they arise with firm, like the
     roots of a tree.
@@ -42,7 +42,7 @@
   direction: F
   ways:
     - { from: mind, to: mind, text: "Conascent predominance: desire, energy, consciousness or investigation leads the citta and factors it arises with." }
-    - { from: mind, to: matter, text: "The same predominant also leads the matter produced by that citta." }
+    - { from: mind, to: matter, text: "A conascent predominant also leads the matter produced by its citta." }
     - { from: matter, to: mind, text: "Object predominance: an object esteemed highly, such as a cherished possession, dominates the mind that takes it. A mental state, or Nibbāna, can do the same." }
   text: >-
     A predominant leads the mind, as a king leads ministers: desire, energy, consciousness or investigation in
@@ -106,8 +106,8 @@
   ways:
     - { from: mind, to: mind, text: "A citta and its factors hold each other up, like the three sticks of a tripod." }
     - { from: matter, to: matter, text: "The four great elements support one another, each by the others." }
-    - { from: matter, to: mind, text: "At rebirth the heart-base supports the rebirth-linking citta and its factors," }
-    - { from: mind, to: matter, text: "and they support the heart-base in return." }
+    - { from: matter, to: mind, text: "At rebirth the heart-base supports the rebirth-linking citta and its factors, and is supported by them in return." }
+    - { from: mind, to: matter, text: "At rebirth the rebirth-linking citta and its factors support the heart-base, as it supports them." }
   text: >-
     Mutuality is help in both directions at once, like the legs of a tripod: each state supports and is
     supported by the others.
@@ -196,7 +196,7 @@
   direction: B
   ways:
     - { from: mind, to: mind, text: "Resultant cittas and factors, arising without effort, support one another." }
-    - { from: mind, to: matter, text: "They also support the matter arising with them, such as kamma-born matter at rebirth." }
+    - { from: mind, to: matter, text: "Resultant cittas also support the matter arising with them, such as kamma-born matter at rebirth." }
   text: Resultant states help one another by their passivity, effortlessly, as fruit ripens.
 - id: ahara
   related:
@@ -209,8 +209,8 @@
   direction: F
   ways:
     - { from: matter, to: matter, text: "Edible food nourishes this body." }
-    - { from: mind, to: mind, text: "The three mental nutriments, contact, volition and consciousness, sustain the mind they arise with," }
-    - { from: mind, to: matter, text: "and the matter arising with them." }
+    - { from: mind, to: mind, text: "The three mental nutriments, contact, volition and consciousness, sustain the mind they arise with." }
+    - { from: mind, to: matter, text: "The mental nutriments also sustain the matter that arises with them." }
   text: >-
     The four nutriments sustain what they feed: edible food the body; contact, volition and consciousness the
     states they arise with.
@@ -230,8 +230,8 @@
   ways:
     - { from: matter, to: mind, text: "The five sense faculties, eye and the rest, govern the five kinds of sense consciousness." }
     - { from: matter, to: matter, text: "The physical life faculty sustains the kamma-born matter it is part of." }
-    - { from: mind, to: mind, text: "The mental faculties, such as mindfulness and wisdom, each govern its own domain in the citta," }
-    - { from: mind, to: matter, text: "and the matter that citta produces." }
+    - { from: mind, to: mind, text: "The mental faculties, such as mindfulness and wisdom, each govern their own domain in the citta." }
+    - { from: mind, to: matter, text: "The mental faculties also govern the matter that their citta produces." }
   text: >-
     A faculty controls its own domain, as a governor rules a province: the sense faculties, the life
     faculties, and the mental faculties such as faith and wisdom.
@@ -247,8 +247,8 @@
   en: jhāna
   direction: B
   ways:
-    - { from: mind, to: mind, text: "The jhāna factors, such as applied thought and one-pointedness, fix the citta closely on its object," }
-    - { from: mind, to: matter, text: "and support the matter that citta produces." }
+    - { from: mind, to: mind, text: "The jhāna factors, such as applied thought and one-pointedness, fix the citta closely on its object." }
+    - { from: mind, to: matter, text: "The jhāna factors also support the matter that their citta produces." }
   text: >-
     The jhāna factors help by making the mind look closely at its object, in ordinary moments as well as in
     meditation.
@@ -267,8 +267,8 @@
   en: path
   direction: B
   ways:
-    - { from: mind, to: mind, text: "The path factors, right or wrong, lead the mind in their direction," }
-    - { from: mind, to: matter, text: "and support the matter it produces." }
+    - { from: mind, to: mind, text: "The path factors, right or wrong, lead the mind in their direction." }
+    - { from: mind, to: matter, text: "The path factors also support the matter that their citta produces." }
   text: The path factors lead the mind toward a destination, a good one or a bad one.
 - id: sampayutta
   related:

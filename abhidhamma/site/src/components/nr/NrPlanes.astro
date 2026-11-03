@@ -1,0 +1,24 @@
+---
+// Which bases exist in which kind of plane, and the matter present at rebirth-linking (namarupa.yaml).
+import { getEntry } from "astro:content";
+const rows = (await getEntry("namarupa", "planes")).data.items;
+const COLS = [["eye", "eye"], ["ear", "ear"], ["nose", "nose"], ["tongue", "tongue"], ["body", "body"], ["sex", "sex"], ["heart", "heart-base"], ["life", "life"], ["mind", "mind"]];
+---
+<div class="fig-scroll nr-planes" tabindex="0">
+  <table>
+    <caption class="vh">Bases present in each kind of plane, and the matter at rebirth-linking</caption>
+    <thead><tr><th scope="col">Plane and birth</th>{COLS.map(([, t]) => <th scope="col">{t}</th>)}<th scope="col">Matter at rebirth-linking</th></tr></thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row"><b>{r.label}</b><span>{r.who}</span></th>
+          {COLS.map(([k, t]) => { const on = r.bases.includes(k), later = (r.later || []).includes(k); return (
+            <td class={on ? (k === "mind" ? "m" : "r") : "no"}><span class="dot" aria-hidden="true"></span><span class="vh">{on ? (later ? `${t}: develops later` : `${t}: present`) : `${t}: absent`}</span></td>
+          ); })}
+          <td class="kal">{r.rebirth}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="muted ui nr-key"><span class="dot r"></span> matter present <span class="dot m"></span> mind present <span class="dot no"></span> absent</p>

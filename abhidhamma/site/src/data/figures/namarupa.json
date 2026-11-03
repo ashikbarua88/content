@@ -1,0 +1,15 @@
+{
+  "mind": { "t": "NĀMA · MIND", "s": ["citta and its", "52 mental factors"] },
+  "matter": { "t": "RŪPA · MATTER", "s": ["28 kinds, always", "in small groups (kalāpa)"] },
+  "toMind": [
+    { "t": "base (vatthu)", "s": "the five sense organs and the heart-base" },
+    { "t": "object (ārammaṇa)", "s": "colour, sound, smell, taste, the tangible" }
+  ],
+  "toMatter": [
+    { "t": "mind-born matter (cittaja)", "s": "75 cittas, each as it arises" },
+    { "t": "kamma-born matter (kammaja)", "s": "from past volition, every sub-moment" }
+  ],
+  "loop": { "t": "temperature and nutriment", "s": "keep renewing matter" },
+  "nib": { "t": "NIBBĀNA", "s": "unconditioned: neither mind nor matter" },
+  "nibArrow": "object of path and fruition only"
+}

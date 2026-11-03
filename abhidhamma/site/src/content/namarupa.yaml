@@ -1,0 +1,159 @@
+# The nāma–rūpa model's data, used by the reading "Mind and matter together" (readings/mind-and-matter.mdx).
+# relations: the nine ways mind and matter meet, for the 3D scene. conds are condition entry ids
+#   (conditions.yaml); extra names conditions or notes that have no entry of their own.
+# produce: which of the 89 cittas produce matter, intimation, posture or a smile (Manual VI §11).
+# planes: which bases exist in which kind of plane, and the matter at rebirth-linking (Manual VI §§23–28).
+- id: relations
+  items:
+    - id: heart
+      label: Heart-base supports mind
+      color: --heart
+      dir: matter → mind
+      when: Every moment of life, in worlds with matter
+      conds: [nissaya, purejata, vippayutta, atthi, avigata]
+      text: >-
+        Every citta except the ten sense consciousnesses rests on the heart-base, a piece of matter that arose
+        before it and is still present. The Paṭṭhāna names it only as “the matter in dependence on which the
+        mind-element and mind-consciousness element occur”; the commentaries identify it with the heart.
+    - id: eye
+      label: A sense organ supports its consciousness
+      color: --rupa
+      dir: matter → mind
+      when: Whenever a five-door process occurs
+      conds: [nissaya, purejata, indriya, vippayutta, atthi, avigata]
+      text: >-
+        Eye-sensitivity, already arisen and still present, is the base of eye-consciousness and governs it as a
+        faculty. The same holds for ear, nose, tongue and body. Seeing depends on the eye; it is not produced by
+        it.
+    - id: object
+      label: Matter as object
+      color: --f-joy
+      dir: matter → mind
+      when: Whenever matter is known
+      conds: [arammana, purejata, atthi]
+      extra: [object predominance or object decisive support, when the object is esteemed]
+      text: >-
+        The mango's colour is a piece of matter in its presence phase. It strikes the eye door and becomes the
+        object of the whole process of seventeen mind-moments. At the mind door, any of the 28 kinds of matter
+        can be an object, past, present or future.
+    - id: mindborn
+      label: Mind produces matter
+      color: --nama
+      dir: mind → matter
+      when: From the first life-continuum after conception until death
+      conds: [sahajata, nissaya, vippayutta, atthi, avigata, hetu, adhipati, kamma, ahara, indriya, jhana, magga]
+      text: >-
+        Seventy-five of the 89 cittas produce matter at their arising sub-moment: posture, gestures, speech, a
+        smile. The factors of that citta, its roots, its volition, its jhāna and path factors, support the same
+        matter. Intimation, the matter of a gesture or a word, lasts only as long as the citta that makes it.
+    - id: post
+      label: Later mind sustains earlier body
+      color: --nama-2
+      dir: mind → matter
+      when: Throughout life
+      conds: [pacchajata, vippayutta, atthi, avigata]
+      text: >-
+        A citta supports the bodily matter that arose before it and is still present. It is the one condition in
+        which what is conditioned is older than its condition.
+    - id: kamma
+      label: Past volition builds the body
+      color: --kamma
+      dir: mind → matter
+      when: From conception until seventeen mind-moments before death
+      conds: [kamma]
+      extra: [asynchronous kamma, from a past life]
+      text: >-
+        Volition from a past life produces the eye, ear, nose, tongue and body sensitivities, sex, the heart-base
+        and the life faculty, with their eight inseparables. It does so at every sub-moment, from rebirth-linking
+        until seventeen mind-moments before the death consciousness.
+    - id: rebirth
+      label: At conception, they arise together
+      color: --nib
+      dir: mind ⇄ matter
+      when: Only at rebirth-linking
+      conds: [sahajata, annamanna, nissaya, vipaka, vippayutta, atthi, avigata]
+      text: >-
+        For a being born from a womb, the resultant rebirth-linking citta arises together with three groups of
+        kamma-born matter, the body, sex and heart-base decads (some beings lack the sex decad). The mental
+        aggregates and the heart-base support each other. It is the only moment in a life when mind and matter
+        condition each other mutually.
+    - id: food
+      label: Food sustains the body
+      color: --food
+      dir: matter → matter
+      when: Whenever food is absorbed
+      conds: [ahara, atthi, avigata]
+      text: >-
+        Edible food conditions the body as nutriment, and its nutritive essence produces new matter in its
+        presence phase. The mind has nutriments too: contact, volition and consciousness nourish the mind and
+        matter that arise with them.
+    - id: temp
+      label: Heat keeps matter renewing
+      color: --temp
+      dir: matter → matter
+      when: From conception, through life, and after death
+      conds: []
+      extra: [temperature, the fourth origin of matter, not one of the 24 conditions]
+      text: >-
+        The fire element in each group of matter, in its presence phase, gives rise to new groups. This begins
+        at the presence phase of rebirth-linking and continues all life. It is the only origin that outlasts
+        death: the matter of a corpse is temperature-born.
+- id: produce
+  items:
+    - id: matter
+      label: Produce matter
+      count: 75
+      text: >-
+        of the 89 cittas produce matter. The exceptions are the ten sense consciousnesses, too weak, and the four
+        immaterial resultants, which arise where there is no matter. Two moments also produce none:
+        rebirth-linking, and an arahant's death consciousness.
+      cittas: "1-12,18-19,25-73,78-89"
+    - id: intimation
+      label: Gesture and speech
+      count: 32
+      text: >-
+        cittas can produce bodily and vocal intimation, the matter of gestures and speech: mind-door adverting,
+        the 29 sense-sphere javanas and the 2 cittas of direct knowledge.
+      cittas: "1-12,29,30-38,47-54,59,69"
+    - id: posture
+      label: Uphold posture
+      count: 26
+      text: >-
+        absorption javanas, in jhāna, on the path and in fruition, uphold the body's posture without moving it.
+      cittas: "55-59,65-69,70-73,78-81,82-89"
+    - id: smile
+      label: Smile
+      count: 13
+      text: >-
+        cittas can produce a smile, and all of them are accompanied by joy. Ordinary people smile with eight (the
+        four joyful greed-rooted and four joyful wholesome cittas); trainees with six; arahants with five (the
+        smile-producing citta and the four joyful great functional cittas).
+      cittas: "1-4,30,31-34,47-50"
+- id: planes
+  items:
+    - id: womb
+      label: Sense-sphere, womb-born
+      who: humans, many animals
+      bases: [eye, ear, nose, tongue, body, sex, heart, life, mind]
+      later: [eye, ear, nose, tongue]
+      rebirth: "3 decads: body, sex, heart-base. The other organs develop later."
+    - id: spontaneous
+      label: Sense-sphere, spontaneous
+      who: devas, hell beings, petas
+      bases: [eye, ear, nose, tongue, body, sex, heart, life, mind]
+      rebirth: "Up to 7 decads at once: eye, ear, nose, tongue, body, sex, heart-base."
+    - id: fine
+      label: Fine-material
+      who: the Brahmā worlds
+      bases: [eye, ear, heart, life, mind]
+      rebirth: "4 groups: eye, ear and heart-base decads, and the vital nonad."
+    - id: nonpercipient
+      label: Non-percipient
+      who: beings without mind
+      bases: [life]
+      rebirth: "The vital nonad only: matter with no mind at all."
+    - id: immaterial
+      label: Immaterial
+      who: the four formless worlds
+      bases: [mind]
+      rebirth: "None: mind with no matter at all, and a citta that needs no base."

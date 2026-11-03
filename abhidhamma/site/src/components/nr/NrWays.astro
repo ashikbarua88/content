@@ -1,0 +1,17 @@
+---
+// Who supports whom: every condition that runs between mind and matter, by direction, from the ways
+// recorded for each condition in conditions.yaml (the same data as the 3D model of the 24 conditions).
+import { conditions, dhammaUrl } from "../../lib/dhammas.js";
+import { u } from "../../lib/atlas.js";
+const DIRS = [["matter", "mind", "Matter → mind"], ["mind", "matter", "Mind → matter"], ["matter", "matter", "Matter → matter"], ["mind", "mind", "Mind → mind"]];
+const rows = DIRS.map(([f, t, title]) => ({ title, list: conditions.flatMap((c) => c.ways.filter((w) => w.from === f && w.to === t).map((w) => ({ c, text: w.text }))) }));
+---
+<div class="nr-ways">
+  {rows.map((r) => (
+    <section class="nr-dir">
+      <h3>{r.title} <span class="muted">· {r.list.length}</span></h3>
+      <ul>{r.list.map(({ c, text }) => <li><a href={dhammaUrl(c)}>{c.n}. {c.en}</a> <span>{text}</span></li>)}</ul>
+    </section>
+  ))}
+  <p class="muted ui">The same ways are drawn as strands in the <a href={u("explore/3d/#D4")}>3D model of the 24 conditions</a>.</p>
+</div>

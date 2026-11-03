@@ -1,0 +1,34 @@
+---
+// A 3D scene from src/scripts/models3d.js, placed inside a reading. The scene code finds its host by id
+// and builds itself; these are the bare hosts and controls it expects. In the book (print), a short note
+// stands in for the model.
+import { u } from "../../lib/atlas.js";
+interface Props { name: "loom" | "kalapa" | "factors" }
+const { name } = Astro.props;
+const inBook = Astro.url.pathname.includes("/book");
+const LINK = { loom: "explore/3d/#D3", kalapa: "explore/3d/#D2", factors: "explore/3d/#D2" };
+---
+{inBook ? (
+  <p class="note">An interactive 3D model goes here on the site: <a href={u(LINK[name])}>{u(LINK[name])}</a>.</p>
+) : (
+  <figure class="pic m3in">
+    {name === "loom" && <>
+      <div class="btnrow ctl3" id="d3-loom-modes" role="group" aria-label="Stage of life"></div>
+      <div class="viz3d" id="d3-loom"><span class="hint3">drag to turn</span></div>
+      <div class="legend"><span><i style="background:var(--kamma)"></i>kamma-born · every sub-moment</span><span><i style="background:var(--nama)"></i>mind-born · at each citta's arising</span><span><i style="background:var(--temp)"></i>temperature-born · rate illustrative</span><span><i style="background:var(--food)"></i>nutriment-born · rate illustrative</span></div>
+      <figcaption><b id="d3-loom-title"></b> <span id="d3-loom-text"></span></figcaption>
+    </>}
+    {name === "kalapa" && <>
+      <div class="btnrow ctl3 sm" id="d2-kal-btns" role="group" aria-label="Kalāpa"></div>
+      <div class="viz3d" id="d2-kal"><span class="hint3">drag to turn</span></div>
+      <figcaption id="d2-kal-cap"></figcaption>
+    </>}
+    {name === "factors" && <>
+      <div class="btnrow ctl3 sm" id="d2-ceta-btns" role="group" aria-label="Citta"></div>
+      <div class="viz3d" id="d2-ceta"><div class="tip3" id="d2-ceta-tip"></div><span class="hint3">drag to turn · point at a factor</span></div>
+      <figcaption id="d2-ceta-cap"></figcaption>
+    </>}
+    <slot />
+  </figure>
+)}
+{!inBook && <script>import "../../scripts/three-models.js";</script>}

@@ -1,0 +1,25 @@
+---
+// The nine ways mind and matter meet, as a 3D scene (models3d.js, section NR). Text from namarupa.yaml;
+// each condition named links to its entry.
+import { getEntry } from "astro:content";
+import { conditions, dhammaUrl } from "../../lib/dhammas.js";
+import { u } from "../../lib/atlas.js";
+const rel = (await getEntry("namarupa", "relations")).data.items;
+const C = Object.fromEntries(conditions.map((c) => [c.slug, { en: c.en, url: dhammaUrl(c) }]));
+const data = rel.map((r) => ({ ...r, conds: r.conds.map((id) => C[id]).filter(Boolean) }));
+const inBook = Astro.url.pathname.includes("/book");
+---
+{inBook ? (
+  <ol class="nr-list">
+    {data.map((r) => <li><b>{r.label}</b> <span class="muted">({r.dir}; {r.when.toLowerCase()})</span>. {r.text} <i>Conditions: {r.conds.map((c) => c.en).concat(r.extra || []).join(", ") || "none of the 24"}.</i></li>)}
+  </ol>
+) : (
+  <figure class="pic m3in">
+    <div class="btnrow ctl3 sm" id="nr-rel-btns" role="group" aria-label="Relation"></div>
+    <div class="viz3d" id="nr-rel"><span class="hint3">drag to turn</span></div>
+    <div class="box nr-info" id="nr-rel-info" aria-live="polite"></div>
+    <script type="application/json" id="nr-rel-data" set:html={JSON.stringify(data)} />
+    <noscript><ol class="nr-list">{data.map((r) => <li><b>{r.label}</b>. {r.text}</li>)}</ol></noscript>
+  </figure>
+)}
+{!inBook && <script>import "../../scripts/three-models.js";</script>}
