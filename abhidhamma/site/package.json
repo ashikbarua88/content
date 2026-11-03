@@ -8,7 +8,7 @@
     "build": "astro build && node tools/export-book.mjs && pagefind --site dist",
     "preview": "astro preview",
     "prebuild": "node tools/companions.mjs",
-    "predev": "node tools/companions.mjs"
+    "predev": "npm install --no-audit --no-fund --prefer-offline && node tools/companions.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
