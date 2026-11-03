@@ -31,7 +31,7 @@ const graph = listsGraph({ factors, matter, conditions, roleCond, url: dhammaUrl
 
       <figure class="pic drawn dh-graph">
         <div class="fig-scroll" tabindex="0"><Fragment set:html={graph} /></div>
-        <figcaption>How the three lists connect. Mental factors and kinds of matter, on either side, become the conditions in the middle: greed, for instance, is a root, and as a root it is root condition. Every name opens its entry.</figcaption>
+        <figcaption>How the three lists connect. Mental factors and kinds of matter, on either side, become the conditions in the middle: greed, for instance, is a root, and as a root it is root condition. Point at a name to see only what it joins; choose it to open its entry.</figcaption>
       </figure>
 
       <div class="dh-filter" data-pagefind-ignore>
@@ -89,6 +89,7 @@ const graph = listsGraph({ factors, matter, conditions, roleCond, url: dhammaUrl
     </aside>
   </div>
   <script>
+    import "../../scripts/graph-hover.js";
     const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
     const q = document.getElementById("dh-q"), count = document.getElementById("dh-count");
     const rows = [...document.querySelectorAll(".dh-rows li")];

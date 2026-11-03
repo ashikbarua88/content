@@ -355,3 +355,9 @@ svg.graph .gnode { cursor: pointer; } svg.graph .gnode:hover rect { stroke-width
 .m3cards .lv { font: 11px var(--ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 10px 12px 0; }
 .m3cards .t { font: 500 17px/1.25 var(--display); padding: 2px 12px 12px; }
 .sw3 { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: baseline; }
+/* Graph hover: the pointed box and what it joins stay; the rest fades. */
+svg.graph .gnode, svg.graph .gedge { transition: opacity .15s; }
+svg.graph.hl .gnode:not(.on) { opacity: .18; }
+svg.graph.hl .gedge:not(.on) { opacity: .06 !important; }
+svg.graph.hl .gedge.on { opacity: 1 !important; stroke-width: 2.2 !important; }
+@media (prefers-reduced-motion: reduce) { svg.graph .gnode, svg.graph .gedge { transition: none; } }
