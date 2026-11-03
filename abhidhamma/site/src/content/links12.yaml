@@ -1,0 +1,111 @@
+# The twelve links of dependent origination as the Manual reads them across three lives (VIII §§3–10).
+# round: D defilement, K kamma, R result, KR kamma and result. life: past, this, next.
+# group: 0 past causes, 1 present results, 2 present causes, 3 future results.
+# what: what the link is in this reading. leads: how it conditions the next link.
+- id: avijja
+  "n": 1
+  pali: avijjā
+  en: ignorance
+  round: D
+  life: past
+  group: 0
+  what: Not knowing the four noble truths. The delusion behind the deeds of a past life, and one of the wheel's two roots.
+  leads: Not seeing suffering for what it is, one acts to get or to avoid, and so makes kamma.
+- id: sankhara
+  "n": 2
+  pali: saṅkhārā
+  en: formations
+  round: K
+  life: past
+  group: 0
+  what: Kamma formations, the wholesome and unwholesome volitions of the past life.
+  leads: That kamma, ripening at death, produces the rebirth-linking consciousness of a new life and the resultant cittas that follow.
+- id: vinnana
+  "n": 3
+  pali: viññāṇa
+  en: consciousness
+  round: R
+  life: this
+  group: 1
+  what: Resultant consciousness. The rebirth-linking citta, the life-continuum, and the other resultant cittas of this life.
+  leads: Consciousness never arises alone. With it arise its mental factors and, in planes with matter, kamma-born matter.
+- id: namarupa
+  "n": 4
+  pali: nāmarūpa
+  en: mind and matter
+  round: R
+  life: this
+  group: 1
+  what: The mental factors joined to resultant consciousness, and the kamma-born matter arising with it.
+  leads: With mind and matter come the six sense bases, the five physical sense organs and the mind base.
+- id: salayatana
+  "n": 5
+  pali: saḷāyatana
+  en: six sense bases
+  round: R
+  life: this
+  group: 1
+  what: The bases of eye, ear, nose, tongue, body and mind, through which experience comes in.
+  leads: When base, object and consciousness meet, contact arises.
+- id: phassa
+  "n": 6
+  pali: phassa
+  en: contact
+  round: R
+  life: this
+  group: 1
+  what: The meeting of consciousness with its object through a base, at each of the six doors.
+  leads: Whatever is contacted is felt. Contact conditions feeling.
+- id: vedana
+  "n": 7
+  pali: vedanā
+  en: feeling
+  round: R
+  life: this
+  group: 1
+  what: The pleasant, painful or neutral tone of each experience, itself a result of past kamma.
+  leads: "Here the wheel can turn or stop: craving takes hold of feeling, to keep the pleasant, escape the painful, or, through ignorance, the neutral."
+- id: tanha
+  "n": 8
+  pali: taṇhā
+  en: craving
+  round: D
+  life: this
+  group: 2
+  what: Craving for the six kinds of object, as craving for sense pleasure, for existence, or for non-existence. The second root.
+  leads: Craving made strong becomes clinging.
+- id: upadana
+  "n": 9
+  pali: upādāna
+  en: clinging
+  round: D
+  life: this
+  group: 2
+  what: Intensified craving, and the clinging to views, to rules and rituals, and to a doctrine of self.
+  leads: Clinging drives action. It conditions becoming, the kamma that makes for a new existence.
+- id: bhava
+  "n": 10
+  pali: bhava
+  en: becoming
+  round: KR
+  life: this
+  group: 2
+  what: Becoming in two senses. Kamma-process becoming, the volitions of this life; and rebirth-process becoming, the existence they lead to.
+  leads: Kamma-process becoming produces birth in a new life.
+- id: jati
+  "n": 11
+  pali: jāti
+  en: birth
+  round: R
+  life: next
+  group: 3
+  what: The arising of the aggregates in a new existence, at the moment of rebirth-linking.
+  leads: Whatever is born must age and die.
+- id: jaramarana
+  "n": 12
+  pali: jarāmaraṇa
+  en: decay and death
+  round: R
+  life: next
+  group: 3
+  what: The decay and death of those aggregates, with sorrow, lamentation, pain, grief and despair. Then, unless ignorance is gone, the wheel turns again.

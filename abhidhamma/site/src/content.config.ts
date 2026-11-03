@@ -70,7 +70,8 @@ const matter = defineCollection({
 });
 const conditions = defineCollection({
   loader: file("src/content/dhammas/conditions.yaml"),
-  schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), direction: z.enum(["A", "B", "C", "D", "E", "F"]), text: z.string(), related }),
+  schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), direction: z.enum(["A", "B", "C", "D", "E", "F"]), text: z.string(), related,
+    ways: z.array(z.object({ from: z.enum(["mind", "matter", "concepts"]), to: z.enum(["mind", "matter"]), text: z.string() })).optional() }),
 });
 const kinds = defineCollection({
   loader: file("src/content/dhammas/kinds.yaml"),
@@ -82,7 +83,13 @@ const kinds = defineCollection({
 
 const models3d = defineCollection({
   loader: file("src/content/models3d.yaml"),
-  schema: z.object({ level: z.number(), title: z.string(), lede: z.string(), sources: z.string(), html: z.string() }),
+  schema: z.object({ level: z.number(), title: z.string(), lede: z.string(), sources: z.string(), html: z.string(),
+    notes: z.array(z.object({ id: z.string(), label: z.string(), text: z.string() })).optional() }),
+});
+const links12 = defineCollection({
+  loader: file("src/content/links12.yaml"),
+  schema: z.object({ n: z.number(), pali: z.string(), en: z.string(), round: z.enum(["D", "K", "R", "KR"]), life: z.enum(["past", "this", "next"]),
+    group: z.number(), what: z.string(), leads: z.string().optional() }),
 });
 
-export const collections = { models3d, readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };
+export const collections = { models3d, links12, readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };

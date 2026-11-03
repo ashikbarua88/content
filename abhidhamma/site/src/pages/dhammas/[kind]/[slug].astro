@@ -106,6 +106,14 @@ const ego = nbs.length ? egoGraph(e, nbs, dhammaUrl) : null;
           </div>
         )}
 
+        {e.kind === "conditions" && e.ways?.length > 0 && (
+          <div class="dh-block">
+            <h3 class="lab">Which way it works</h3>
+            <ul class="dh-occ">{e.ways.map((w) => <li><b>{w.from} → {w.to}.</b> {w.text}</li>)}</ul>
+            <p class="muted ui">Drawn as strands in the <a href={u("explore/3d/#D4")}>3D model of the 24 conditions</a>.</p>
+          </div>
+        )}
+
         {e.lists?.length > 0 && (
           <div class="dh-block">
             <h3 class="lab">In the lists of chapter VII</h3>

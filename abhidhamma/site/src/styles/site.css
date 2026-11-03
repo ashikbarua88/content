@@ -378,3 +378,14 @@ svg.graph.hl .gedge.on { opacity: 1 !important; stroke-width: 2.2 !important; }
 .st-links, .st-texts li { font-size: 15px; }
 .st-texts ul { padding-left: 1.2em; } .st-texts li { margin-bottom: 4px; }
 @media (max-width: 560px) { .st-facts div { grid-template-columns: 1fr; gap: 2px; } }
+/* 3D tooltip cards and the level-4 step controls */
+.viz3d .tip3c { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; max-width: 270px; font: 12.5px/1.4 var(--ui); color: var(--ink); background: var(--sheet); border: 1px solid var(--line); box-shadow: 0 4px 16px rgb(0 0 0 / .14); padding: 7px 10px; border-radius: 8px; opacity: 0; transition: opacity .12s; }
+.viz3d .tip3c.on { opacity: 1; }
+.viz3d .tip3c b { display: block; font-size: 13px; } .viz3d .tip3c b i { font-family: var(--body); }
+.viz3d .tip3c span { display: block; margin-top: 3px; } .viz3d .tip3c .mu { color: var(--muted); font-size: 11.5px; margin-top: 1px; }
+.d4-step { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 0; } .d4-step[hidden] { display: none; }
+.d4-legend { margin-top: 10px; } .d4-legend h3 { margin: 2px 0 4px; } .d4-legend .lab { margin: 0; }
+.m3ways { margin: 8px 0 0; } .m3ways dt { margin-top: 8px; font-weight: 600; } .m3ways dd { margin: 2px 0 0 1em; }
+@media (prefers-reduced-motion: reduce) { .viz3d .tip3c { transition: none; } }
+@media print { .viz3d .tip3c, .d4-step { display: none !important; } }
+.d4-step .btn { background: none; color: var(--accent); font: 14px var(--ui); padding: 6px 14px; cursor: pointer; } .d4-step .btn[aria-pressed="true"] { background: var(--accent); color: var(--ground); }

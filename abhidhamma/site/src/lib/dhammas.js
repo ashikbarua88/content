@@ -64,7 +64,7 @@ const MIXED = Object.fromEntries(S.mixed.filter((m) => m[3]).map((m) => [m[3][0]
 const SYNTH = { 2: "object", 9: "decisive support", 13: "kamma", 21: "presence" };
 export const conditions = CO.sort((a, b) => a.data.n - b.data.n).map(({ id, data: d }) => ({
   kind: "conditions", n: d.n, pali: d.pali, en: d.en, slug: id, text: d.text, group: groupTitle("conditions", d.direction),
-  mixed: MIXED[d.n] || null, synthesis: SYNTH[d.n] || null, dir: d.direction, relatedRaw: d.related || [],
+  mixed: MIXED[d.n] || null, synthesis: SYNTH[d.n] || null, dir: d.direction, relatedRaw: d.related || [], ways: d.ways || [],
 }));
 matter.forEach((m) => { m.kalapas = groupsOf(m.slug, m.inseparable); });
 

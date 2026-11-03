@@ -2,11 +2,15 @@
 import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 import { levels, u } from "../../lib/atlas.js";
-import { KINDS, conditions, dhammaUrl } from "../../lib/dhammas.js";
+import { KINDS, conditions, dhammaUrl, gist } from "../../lib/dhammas.js";
+const models = (await getCollection("models3d")).sort((a, b) => a.data.level - b.data.level);
 // The 24 conditions by direction, for the level-4 model (from kinds.yaml and conditions.yaml).
 const condData = KINDS.conditions.groups.map((g) => ({ key: g.key, title: g.title, desc: g.desc, from: g.from, to: g.to,
-  conds: conditions.filter((c) => c.dir === g.key).map((c) => ({ n: c.n, pali: c.pali, en: c.en, url: dhammaUrl(c) })) }));
-const models = (await getCollection("models3d")).sort((a, b) => a.data.level - b.data.level);
+  conds: conditions.filter((c) => c.dir === g.key).map((c) => ({ n: c.n, pali: c.pali, en: c.en, url: dhammaUrl(c), gist: gist(c.text), ways: c.ways })) }));
+// The twelve links (links12.yaml) and the level-4 notes (views of the helix, and the three kinds of state).
+const d4 = models.find((m) => m.id === "D4");
+const notes = Object.fromEntries((d4?.data.notes || []).map((n) => [n.id, n]));
+const links = (await getCollection("links12")).map((l) => l.data).sort((a, b) => a.n - b.n);
 ---
 <Base title="In three dimensions" nav="explore" description="Seven 3D models, one for each level of study: turn them, take them apart, and see the categories, elements, processes, conditions, planes, practice and one moment in depth.">
   <div class="wrap m3page" style="max-width:980px;padding-top:34px">
@@ -26,7 +30,8 @@ const models = (await getCollection("models3d")).sort((a, b) => a.data.level - b
       </section>
     ))}
   </div>
-  <script type="application/json" id="d4-comp-data" set:html={JSON.stringify(condData)} />
+  <script type="application/json" id="d4-comp-data" set:html={JSON.stringify({ fams: condData, notes })} />
+  <script type="application/json" id="d4-helix-data" set:html={JSON.stringify({ links, notes })} />
   <script>
     import "../../scripts/three-models.js";
   </script>

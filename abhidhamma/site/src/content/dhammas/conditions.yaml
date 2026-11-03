@@ -11,6 +11,9 @@
   pali: hetu
   en: root
   direction: B
+  ways:
+    - { from: mind, to: mind, text: "The roots, such as greed or non-greed, make firm the citta and the factors they arise with." }
+    - { from: mind, to: matter, text: "They also support the matter that citta produces, and, at rebirth, the kamma-born matter arising with it." }
   text: >-
     The six roots, greed, hatred, delusion and their opposites, make the states they arise with firm, like the
     roots of a tree.
@@ -21,6 +24,10 @@
   pali: ārammaṇa
   en: object
   direction: E
+  ways:
+    - { from: concepts, to: mind, text: "A concept, such as a kasiṇa disc in meditation or a person's name, can be the object of a citta." }
+    - { from: mind, to: mind, text: "Any citta or factor, past, present or future, can be the object of a later citta, as when one recollects." }
+    - { from: matter, to: mind, text: "A visible form is the object of eye-consciousness, a sound of ear-consciousness; any matter can be the object of mind-consciousness." }
   text: >-
     Anything at all that a citta takes as its object helps it simply by being known: a colour, a thought, a
     concept, Nibbāna.
@@ -33,6 +40,10 @@
   pali: adhipati
   en: predominance
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "Conascent predominance: desire, energy, consciousness or investigation leads the citta and factors it arises with." }
+    - { from: mind, to: matter, text: "The same predominant also leads the matter produced by that citta." }
+    - { from: matter, to: mind, text: "Object predominance: an object esteemed highly, such as a cherished possession, dominates the mind that takes it. A mental state, or Nibbāna, can do the same." }
   text: >-
     A predominant leads the mind, as a king leads ministers: desire, energy, consciousness or investigation in
     its conascent kind, or a highly esteemed object in its object kind.
@@ -45,6 +56,8 @@
   pali: anantara
   en: proximity
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "Each citta, as it ceases, conditions the very next one: the life-continuum gives way to adverting, adverting to seeing, and so on." }
   text: >-
     Each citta, as it ceases, makes way for the next and determines what kind can follow, so the stream of
     mind has no gaps.
@@ -57,6 +70,8 @@
   pali: samanantara
   en: contiguity
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "The same relation stressed as seamless: no gap between one citta and the next." }
   text: >-
     Contiguity is proximity seen from another angle: the immediate, seamless succession of one citta by the
     next.
@@ -70,6 +85,11 @@
   pali: sahajāta
   en: conascence
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "A citta and its factors arise together and help one another to arise." }
+    - { from: mind, to: matter, text: "A citta helps the mind-born matter that arises with it." }
+    - { from: matter, to: matter, text: "The four great elements arise together and help each other and the derived matter arising with them." }
+    - { from: matter, to: mind, text: "At rebirth, the heart-base and the rebirth-linking citta arise together and help each other." }
   text: >-
     States that arise together help one another to arise, as a flame and its light: a citta and its factors,
     the four great elements.
@@ -83,6 +103,11 @@
   pali: aññamañña
   en: mutuality
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "A citta and its factors hold each other up, like the three sticks of a tripod." }
+    - { from: matter, to: matter, text: "The four great elements support one another, each by the others." }
+    - { from: matter, to: mind, text: "At rebirth the heart-base supports the rebirth-linking citta and its factors," }
+    - { from: mind, to: matter, text: "and they support the heart-base in return." }
   text: >-
     Mutuality is help in both directions at once, like the legs of a tripod: each state supports and is
     supported by the others.
@@ -96,6 +121,11 @@
   pali: nissaya
   en: support
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "A citta and its factors are each other's support, as the earth supports trees." }
+    - { from: matter, to: matter, text: "The great elements are the support of all derived matter." }
+    - { from: matter, to: mind, text: "The eye-base supports eye-consciousness, and so on for the five senses; the heart-base supports the other cittas." }
+    - { from: mind, to: matter, text: "A citta supports the matter that arises with it." }
   text: >-
     Support is help by being a foundation, as the earth supports trees: the great elements for derived matter,
     the eye for seeing.
@@ -104,6 +134,10 @@
   pali: upanissaya
   en: decisive support
   direction: E
+  ways:
+    - { from: concepts, to: mind, text: "A strong object, even a concept, can decisively support a citta that cherishes it." }
+    - { from: mind, to: mind, text: "Faith, a past resolve, or a habit of anger strongly supports later states; each citta also strongly supports the next." }
+    - { from: matter, to: mind, text: "Climate, food and lodging can decisively support good or bad states of mind." }
   text: >-
     Decisive support is strong help, often from far away: a good friend, a climate, a past habit, a resolve,
     even Nibbāna as an object.
@@ -114,6 +148,8 @@
   pali: purejāta
   en: prenascence
   direction: D
+  ways:
+    - { from: matter, to: mind, text: "The six bases, arisen earlier and still standing, support the cittas that depend on them; an object already arisen supports the consciousness that knows it." }
   text: >-
     Prenascence is help from something that arose earlier and still exists: a sense base or an object already
     present when the citta arises.
@@ -124,6 +160,8 @@
   pali: pacchājāta
   en: postnascence
   direction: C
+  ways:
+    - { from: mind, to: matter, text: "A later citta sustains the body that arose before it; the commentaries compare it to young vultures' longing for food, which keeps their bodies going." }
   text: >-
     Postnascence is help from something that arises later, to matter already there: later cittas sustain the
     body, as feeding sustains a young vulture.
@@ -132,6 +170,8 @@
   pali: āsevana
   en: repetition
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "Each javana repeats and strengthens the next, like a lesson made firm by practice." }
   text: Repetition is the way each javana strengthens the next, as a lesson is learned by reciting it.
 - id: kamma
   related:
@@ -141,6 +181,9 @@
   pali: kamma
   en: kamma
   direction: B
+  ways:
+    - { from: mind, to: mind, text: "Volition coordinates the citta and factors it arises with; past volition, ripening later, produces resultant cittas." }
+    - { from: mind, to: matter, text: "Past volition also produces kamma-born matter, from rebirth onwards; present volition supports the matter its citta produces." }
   text: >-
     A volition helps its result: at the same moment, by organising the citta, and across time, as past kamma
     that ripens later.
@@ -151,6 +194,9 @@
   pali: vipāka
   en: result
   direction: B
+  ways:
+    - { from: mind, to: mind, text: "Resultant cittas and factors, arising without effort, support one another." }
+    - { from: mind, to: matter, text: "They also support the matter arising with them, such as kamma-born matter at rebirth." }
   text: Resultant states help one another by their passivity, effortlessly, as fruit ripens.
 - id: ahara
   related:
@@ -161,6 +207,10 @@
   pali: āhāra
   en: nutriment
   direction: F
+  ways:
+    - { from: matter, to: matter, text: "Edible food nourishes this body." }
+    - { from: mind, to: mind, text: "The three mental nutriments, contact, volition and consciousness, sustain the mind they arise with," }
+    - { from: mind, to: matter, text: "and the matter arising with them." }
   text: >-
     The four nutriments sustain what they feed: edible food the body; contact, volition and consciousness the
     states they arise with.
@@ -177,6 +227,11 @@
   pali: indriya
   en: faculty
   direction: F
+  ways:
+    - { from: matter, to: mind, text: "The five sense faculties, eye and the rest, govern the five kinds of sense consciousness." }
+    - { from: matter, to: matter, text: "The physical life faculty sustains the kamma-born matter it is part of." }
+    - { from: mind, to: mind, text: "The mental faculties, such as mindfulness and wisdom, each govern its own domain in the citta," }
+    - { from: mind, to: matter, text: "and the matter that citta produces." }
   text: >-
     A faculty controls its own domain, as a governor rules a province: the sense faculties, the life
     faculties, and the mental faculties such as faith and wisdom.
@@ -191,6 +246,9 @@
   pali: jhāna
   en: jhāna
   direction: B
+  ways:
+    - { from: mind, to: mind, text: "The jhāna factors, such as applied thought and one-pointedness, fix the citta closely on its object," }
+    - { from: mind, to: matter, text: "and support the matter that citta produces." }
   text: >-
     The jhāna factors help by making the mind look closely at its object, in ordinary moments as well as in
     meditation.
@@ -208,6 +266,9 @@
   pali: magga
   en: path
   direction: B
+  ways:
+    - { from: mind, to: mind, text: "The path factors, right or wrong, lead the mind in their direction," }
+    - { from: mind, to: matter, text: "and support the matter it produces." }
   text: The path factors lead the mind toward a destination, a good one or a bad one.
 - id: sampayutta
   related:
@@ -216,6 +277,8 @@
   pali: sampayutta
   en: association
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "A citta and its factors are associated: they arise and cease together, with one object and one base." }
   text: >-
     Association is the help mental states give one another by sharing a base, an object, an arising and a
     ceasing.
@@ -226,6 +289,9 @@
   pali: vippayutta
   en: dissociation
   direction: F
+  ways:
+    - { from: mind, to: matter, text: "Mind helps matter, a different kind of thing: the matter its citta produces, and, later, the body arisen earlier." }
+    - { from: matter, to: mind, text: "The bases help the cittas that depend on them, across the divide of mind and matter." }
   text: Dissociation is help between mind and matter, which cannot be associated but still support each other.
 - id: atthi
   related:
@@ -237,6 +303,11 @@
   pali: atthi
   en: presence
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "A citta and its factors help each other by being present together." }
+    - { from: mind, to: matter, text: "Present cittas sustain matter, both what arises with them and the body arisen earlier." }
+    - { from: matter, to: matter, text: "Present great elements, food and the life faculty sustain matter." }
+    - { from: matter, to: mind, text: "Present bases and objects support the cittas that depend on them." }
   text: Presence is help by being there at the same time, without which the other could not stand.
 - id: natthi
   related:
@@ -247,6 +318,8 @@
   pali: natthi
   en: absence
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "A citta helps the next by ceasing: its absence gives the next room to arise." }
   text: "Absence is help by ceasing: a citta that has gone gives the next its opportunity."
 - id: vigata
   related:
@@ -257,6 +330,8 @@
   pali: vigata
   en: disappearance
   direction: A
+  ways:
+    - { from: mind, to: mind, text: "The same as absence, seen from the side of disappearing." }
   text: Disappearance is absence seen as the vanishing that makes room.
 - id: avigata
   related:
@@ -268,4 +343,9 @@
   pali: avigata
   en: non-disappearance
   direction: F
+  ways:
+    - { from: mind, to: mind, text: "The same as presence, seen from the side of not disappearing: a citta and its factors, while they last." }
+    - { from: mind, to: matter, text: "Cittas that have not disappeared sustain matter." }
+    - { from: matter, to: matter, text: "Great elements, food and life faculty, while they last, sustain matter." }
+    - { from: matter, to: mind, text: "Bases and objects, while they last, support the cittas that depend on them." }
   text: Non-disappearance is presence seen as not having vanished.

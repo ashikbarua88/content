@@ -197,6 +197,29 @@
       onPick(b.getAttribute("data-v"));
     });
   }
+  /* A tooltip card inside a scene's host: show(ev, html) places it beside the pointer, kept inside the canvas. */
+  function tipCard(S, el) {
+    if (!el) return { show: function () {}, hide: function () {} };
+    return {
+      show: function (ev, html) {
+        if (el.innerHTML !== html) el.innerHTML = html;
+        var r = S.cv.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight, x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+        if (x + w > r.width - 4) x = Math.max(4, ev.clientX - r.left - w - 14);
+        if (y + h > r.height - 4) y = Math.max(4, ev.clientY - r.top - h - 14);
+        el.style.transform = "translate(" + Math.round(x) + "px," + Math.round(y) + "px)"; el.classList.add("on");
+      },
+      hide: function () { el.classList.remove("on"); }
+    };
+  }
+  /* A cone arrowhead whose tip sits at p, pointing along the unit tangent t. */
+  var UP = HAS3 ? new THREE.Vector3(0, 1, 0) : null;
+  function arrow(p, t, mat, r, h) {
+    var c = new THREE.Mesh(new THREE.ConeGeometry(r || 0.075, h || 0.2, 14), mat);
+    c.position.copy(p).sub(t.clone().multiplyScalar((h || 0.2) / 2)); c.quaternion.setFromUnitVectors(UP, t); return c;
+  }
+  function esc3(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+  function jsonData(id) { var el = $(id); try { return el ? JSON.parse(el.textContent) : null; } catch (e) { return null; } }
+
   function setPressed(host, v) { if (host) Array.prototype.forEach.call(host.children, function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-v") === v)); }); }
 
   var tmpV = HAS3 ? new THREE.Vector3() : null;
@@ -714,75 +737,153 @@
     build();
   })();
 
-  /* ================= 8. D4: helix of dependent origination =================
-     One turn for the twelve links, a steeper pitch and a higher camera, so no two links share a screen row;
-     each label sits on the outer side of its link (left or right, recomputed as the helix turns).
-     The helix sways instead of spinning, and the life bands are labelled at their front rims. */
+  /* ================= 8. D4: the twelve links as a helix through three lives =================
+     Time climbs upward. Twelve links on one turn of a helix, with an arrow on each step between them; floors
+     for the three lives, tabbed at the left; a spine inside carrying the four groups; rings at the three
+     connections; halos on the two roots. Views: step through (default), three rounds, four groups, three
+     lives; the legend box below says what the view shows. Point at a link for what it is.
+     Data: links12.yaml and the D4 notes in models3d.yaml, passed in by the page as #d4-helix-data. */
   (function () {
-    var L = [["avijjā", "ignorance", "D", 0], ["saṅkhārā", "formations", "K", 0], ["viññāṇa", "consciousness", "R", 1], ["nāmarūpa", "mind and matter", "R", 1], ["saḷāyatana", "six bases", "R", 1], ["phassa", "contact", "R", 1],
-      ["vedanā", "feeling", "R", 1], ["taṇhā", "craving", "D", 2], ["upādāna", "clinging", "D", 2], ["bhava", "becoming", "KR", 2], ["jāti", "birth", "R", 3], ["jarāmaraṇa", "decay and death", "R", 3]];
-    var RC = { D: "--bad", K: "--nama", R: "--rupa-mark", KR: "--rupa-mark" };
-    var GC = ["--muted", "--nama", "--kamma", "--nib"];
-    var PC = ["--muted", "--nama", "--nama", "--nib"];
-    var mode = "round";
-    pills($("d4-helix-btns"), [{ id: "round", label: "Three rounds" }, { id: "group", label: "Four groups" }, { id: "period", label: "Three lives" }], mode, function (v) { mode = v; apply(); });
-    var S = make3D("d4-helix", { height: 380, printHeight: 400, cam: [0, 1.4, 10.6], look: [0, 0, 0], fov: 36, sway: 0.35, rotY: 0.2, phoneRatio: 1.15, fit: true, declutter: true,
+    var D = jsonData("d4-helix-data"); if (!$("d4-helix") || !D) return;
+    var L = D.links, NOTE = D.notes || {}, N = L.length;
+    var RC = { D: "--bad", K: "--nama", R: "--rupa-mark", KR: "--rupa-mark" }, RN = { D: "round of defilements", K: "round of kamma", R: "round of results", KR: "kamma and result" };
+    var GC = ["--muted", "--nama", "--kamma", "--nib"], GN = ["past causes", "present results", "present causes", "future results"];
+    var LC = { past: "--muted", "this": "--nama", next: "--nib" }, LN = { past: "past life", "this": "this life", next: "next life" };
+    var VIEWS = ["step", "rounds", "groups", "lives"], view = "step", cur = 0, timer = null;
+    pills($("d4-helix-btns"), VIEWS.map(function (v) { return { id: v, label: (NOTE[v] || {}).label || v }; }), view, function (v) { view = v; stop(); apply(); });
+    var S = make3D("d4-helix", { height: 440, printHeight: 420, cam: [0, 1.3, 10.6], look: [0, 0, 0], fov: 36, sway: 0.3, rotY: 0.2, phoneRatio: 1.25, fit: true, declutter: true,
       printSearch: [-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3] });
-    if (!S) return;
-    var pts = [], nodes = [], labs = [], STEP = 0.62, Y0 = -3.4;
+    if (!S) { legend(); return; }
+    var RAD = 2.3, STEP = 0.62, Y0 = -3.4;
+    function at(t) { var a = t * 30 * Math.PI / 180 - Math.PI / 2 - 0.2; return V(Math.cos(a) * RAD, Y0 + t * STEP, Math.sin(a) * RAD); }
+    var mats = {};
+    function mat(v, dim) { var k = v + (dim ? "/d" : ""); if (!mats[k]) mats[k] = stdMat(v, { glow: dim ? 0.15 : 0.35, opacity: dim ? 0.22 : 1 }); return mats[k]; }
+    /* links */
+    var nodes = [], labs = [];
     L.forEach(function (l, i) {
-      var a = i * 30 * Math.PI / 180 - Math.PI / 2 - 0.2, y = Y0 + i * STEP, p = V(Math.cos(a) * 2.3, y, Math.sin(a) * 2.3); pts.push(p);
-      var m = new THREE.Mesh(new THREE.SphereGeometry(0.25, 28, 20)); m.position.copy(p); S.root.add(m); nodes.push(m);
-      if (l[2] === "KR") { var k2 = new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 14), stdMat("--nama", { glow: 0.35 })); k2.position.copy(p).add(V(0, 0.3, 0)); S.root.add(k2); }
-      if (i === 0 || i === 7) { var halo = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.03, 8, 40), stdMat("--ink", { glow: 0.2 })); halo.position.copy(p); halo.rotation.x = Math.PI / 2; S.root.add(halo); }
-      labs.push(label(S, (i + 1) + " <i>" + l[0] + "</i> · " + l[1], anchor(S, p.x * 1.16, p.y, p.z * 1.16), "sm right", { pri: 5, short: (i + 1) + " " + l[1] }));
+      var p = at(i), m = new THREE.Mesh(new THREE.SphereGeometry(0.25, 28, 20), mat("--muted")); m.position.copy(p); m.userData.i = i; S.root.add(m); nodes.push(m);
+      if (l.round === "KR") { var k2 = new THREE.Mesh(new THREE.SphereGeometry(0.12, 20, 14), mat("--nama")); k2.position.copy(p).add(V(0, 0.32, 0)); S.root.add(k2); m.userData.moon = k2; }
+      labs.push(label(S, l.n + " <i>" + l.pali + "</i> · " + l.en, anchor(S, p.x * 1.17, p.y, p.z * 1.17), "sm right", { pri: 5, short: l.n + " " + l.en }));
     });
+    /* steps between links, each with its arrowhead */
+    var segOn = basicMat("--ink", 0.9), segOff = basicMat("--muted", 0.45), segDim = basicMat("--muted", 0.15);
+    var arrOn = stdMat("--ink", { glow: 0.3 }), arrOff = stdMat("--muted", { glow: 0.2 });
+    var segs = [];
+    for (var i = 0; i < N - 1; i++) {
+      var ps = []; for (var k = 0; k <= 6; k++) ps.push(at(i + 0.12 + 0.62 * k / 6));
+      var tb = tube(ps, 0.03, segOff); S.root.add(tb);
+      var tip = at(i + 0.86), tan = at(i + 0.87).sub(at(i + 0.85)).normalize(), ar = arrow(tip, tan, arrOff, 0.08, 0.22); S.root.add(ar);
+      segs.push({ tb: tb, ar: ar });
+    }
+    /* floors for the three lives, with tabs */
+    var cut1 = Y0 + 1.5 * STEP, cut2 = Y0 + 9.5 * STEP, top = Y0 + (N - 1) * STEP + 0.5, bot = Y0 - 0.45;
+    var lives = [["past", bot, cut1], ["this", cut1, cut2], ["next", cut2, top]].map(function (b) {
+      var h = b[2] - b[1], walls = new THREE.Mesh(new THREE.CylinderGeometry(2.8, 2.8, h, 48, 1, true), basicMat(LC[b[0]], 0.06)); walls.position.y = b[1] + h / 2; walls.material.side = THREE.DoubleSide; S.root.add(walls);
+      var floor = new THREE.Mesh(new THREE.CircleGeometry(2.8, 48), basicMat(LC[b[0]], 0.1)); floor.rotation.x = -Math.PI / 2; floor.position.y = b[1]; floor.material.side = THREE.DoubleSide; S.root.add(floor);
+      var ns = L.filter(function (l) { return l.life === b[0]; }), rng = ns[0].n + (ns.length > 1 ? "–" + ns[ns.length - 1].n : "");
+      var tab = label(S, LN[b[0]].toUpperCase() + " · " + rng, anchor(S, -3.15, b[1] + h / 2, 0, S.scene), "cap3 left", { pri: 6, short: b[0].toUpperCase() + " · " + rng });
+      return { walls: walls, floor: floor, tab: tab, c: LC[b[0]] };
+    });
+    /* the spine of four groups */
+    var groups = [0, 1, 2, 3].map(function (g) {
+      var idx = L.map(function (l, j) { return l.group === g ? j : -1; }).filter(function (j) { return j >= 0; });
+      var y0 = Y0 + idx[0] * STEP - 0.22, y1 = Y0 + idx[idx.length - 1] * STEP + 0.22;
+      var sp = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, y1 - y0, 16), mat(GC[g])); sp.position.y = (y0 + y1) / 2; S.root.add(sp);
+      var lb = label(S, GN[g], anchor(S, 0, (y0 + y1) / 2, 0), "xs", { pri: 4 });
+      return { sp: sp, lb: lb, c: GC[g] };
+    });
+    /* the three connections and the two roots */
+    var joins = [[1, "cause → result"], [6, "result → cause"], [9, "cause → result"]].map(function (c) {
+      var p = at(c[0] + 0.5), r = new THREE.Mesh(new THREE.TorusGeometry(0.17, 0.04, 8, 24), stdMat("--ink", { glow: 0.2 })); r.position.copy(p); r.lookAt(at(c[0] + 0.6)); S.root.add(r);
+      return { r: r, lb: label(S, c[1], anchor(S, p.x * 1.25, p.y + 0.02, p.z * 1.25), "xs", { pri: 3 }) };
+    });
+    var roots = [[0, "root: ignorance"], [7, "root: craving"]].map(function (c) {
+      var p = at(c[0]), h = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.03, 8, 40), stdMat("--ink", { glow: 0.2 })); h.position.copy(p); h.rotation.x = Math.PI / 2; S.root.add(h);
+      return { h: h, lb: label(S, c[1], anchor(S, p.x * 0.72, p.y - 0.38, p.z * 0.72), "xs", { pri: 2 }) };
+    });
+    /* labels sit on the outer side of their link, recomputed as the helix turns */
     var hubV = new THREE.Vector3(), lv = new THREE.Vector3();
     function sideLabels() {
       S.root.updateMatrixWorld(true);
-      labs.forEach(function (Lb, i) {
-        nodes[i].getWorldPosition(lv); hubV.set(0, lv.y, 0);
+      labs.forEach(function (Lb, j) {
+        nodes[j].getWorldPosition(lv); hubV.set(0, lv.y, 0);
         var right = lv.sub(hubV).applyQuaternion(S.camera.quaternion.clone().invert()).x >= 0;
         Lb.el.classList.toggle("right", right); Lb.el.classList.toggle("left", !right);
       });
     }
-    S.beforeFit = sideLabels;
-    S.root.add(tube(pts, 0.035, basicMat("--muted", 0.5)));
-    [[1, 2], [6, 7], [9, 10]].forEach(function (c) {
-      var mid = pts[c[0]].clone().add(pts[c[1]]).multiplyScalar(0.5);
-      var r = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.035, 8, 24), stdMat("--ink", { glow: 0.2 })); r.position.copy(mid); r.lookAt(pts[c[1]]); S.root.add(r);
-    });
-    var cut1 = Y0 + 1.5 * STEP, cut2 = Y0 + 9.5 * STEP;
-    var bands = [["past life", Y0 - 0.4, cut1 - (Y0 - 0.4), "--muted"], ["this life", cut1, cut2 - cut1, "--nama"], ["next life", cut2, Y0 + 11 * STEP + 0.45 - cut2, "--nib"]];
-    bands.forEach(function (b) {
-      var cyl = new THREE.Mesh(new THREE.CylinderGeometry(2.75, 2.75, b[2], 48, 1, true), basicMat(b[3], 0.07)); cyl.position.y = b[1] + b[2] / 2; cyl.material.side = THREE.DoubleSide; S.root.add(cyl);
-      label(S, b[0].toUpperCase(), anchor(S, 0, b[1] + 0.14, 2.95, S.scene), "cap3", { pri: 3 });
-    });
-    var mats = {};
-    function mat(v) { if (!mats[v]) mats[v] = stdMat(v, { glow: 0.35 }); return mats[v]; }
-    function apply() {
-      nodes.forEach(function (m, i) {
-        var l = L[i];
-        m.material = mode === "round" ? mat(RC[l[2]]) : mode === "group" ? mat(GC[l[3]]) : mat(PC[l[3]]);
-      });
-      S.dirty = true;
+    S.beforeFit = sideLabels; S.update = function () { sideLabels(); };
+
+    function legend() {
+      var box = $("d4-helix-legend"); if (!box) return;
+      var n = NOTE[view] || {}, html = "";
+      if (view === "step") {
+        var l = L[cur], nx = L[cur + 1];
+        html = '<p class="lab">Link ' + l.n + " of " + N + "</p><h3>" + l.n + " <i lang=\"pi\">" + esc3(l.pali) + "</i> · " + esc3(l.en) +
+          (nx ? ' <span class="muted">→ ' + nx.n + " " + esc3(nx.en) + "</span>" : "") + "</h3>" +
+          '<p class="small muted">' + LN[l.life] + " · " + RN[l.round] + " · " + GN[l.group] + "</p>" +
+          '<p class="small">' + esc3(l.what) + "</p>" + (l.leads ? '<p class="small"><b>Then:</b> ' + esc3(l.leads) + "</p>" : "") +
+          '<p class="small muted">' + (n.text || "") + "</p>";
+      } else html = "<h3>" + (n.label || "") + '</h3><p class="small">' + (n.text || "") + "</p>";
+      box.innerHTML = html;
     }
-    S.update = function () { sideLabels(); };
+    function apply() {
+      var step = view === "step";
+      nodes.forEach(function (m, j) {
+        var l = L[j], v = view === "rounds" ? RC[l.round] : view === "groups" ? GC[l.group] : view === "lives" ? LC[l.life] : (j === cur ? RC[l.round] : "--muted");
+        var dim = step && j !== cur && j !== cur + 1;
+        m.material = mat(step && j === cur + 1 ? RC[l.round] : v, dim);
+        m.scale.setScalar(step && j === cur ? 1.35 : 1);
+        if (m.userData.moon) m.userData.moon.material = mat("--nama", view !== "rounds" && !(step && (j === cur || j === cur + 1)));
+        labs[j].alpha = !step || j === cur || j === cur + 1 ? 1 : 0.35;
+      });
+      segs.forEach(function (s, j) { var on = step && j === cur; s.tb.material = on ? segOn : step ? segDim : segOff; s.ar.material = on ? arrOn : arrOff; s.tb.scale.setScalar(1); });
+      groups.forEach(function (g) { g.sp.material = mat(g.c, view !== "groups"); g.lb.alpha = view === "groups" ? 1 : 0; });
+      joins.forEach(function (j) { j.r.visible = view === "groups"; j.lb.alpha = view === "groups" ? 1 : 0; });
+      roots.forEach(function (r) { r.h.visible = view === "rounds"; r.lb.alpha = view === "rounds" ? 1 : 0; });
+      lives.forEach(function (b) { b.walls.material.opacity = view === "lives" ? 0.14 : 0.05; b.floor.material.opacity = view === "lives" ? 0.22 : 0.08; b.tab.alpha = 1; });
+      var ctl = $("d4-step"); if (ctl) ctl.hidden = !step;
+      legend(); S.dirty = true;
+    }
+    function go(j) { cur = Math.max(0, Math.min(N - 1, j)); if (view !== "step") { view = "step"; setPressed($("d4-helix-btns"), view); } apply(); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } var b = document.querySelector('#d4-step [data-s="play"]'); if (b) { b.textContent = "Play"; b.setAttribute("aria-pressed", "false"); } }
+    var ctl = $("d4-step");
+    if (ctl) ctl.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return; var s = b.getAttribute("data-s");
+      if (s === "prev") { stop(); go(cur - 1); } else if (s === "next") { stop(); go(cur + 1); }
+      else if (timer) stop();
+      else {
+        if (cur >= N - 1) go(0);
+        b.textContent = "Pause"; b.setAttribute("aria-pressed", "true");
+        timer = setInterval(function () { if (cur >= N - 1) { stop(); return; } go(cur + 1); }, 3200);
+      }
+    });
+    /* point at a link: what it is; click a link: step to it */
+    var tipc = tipCard(S, $("d4-helix-tip"));
+    function card(j) { var l = L[j]; return "<b>" + l.n + " <i>" + esc3(l.pali) + "</i> · " + esc3(l.en) + '</b><span class="mu">' + LN[l.life] + " · " + RN[l.round] + " · " + GN[l.group] + "</span><span>" + esc3(l.what) + "</span>"; }
+    S.cv.addEventListener("pointermove", function (ev) {
+      if (S.isDragging()) { tipc.hide(); return; }
+      var o = S.pick(ev, nodes); if (!o) { tipc.hide(); S.cv.style.cursor = ""; return; }
+      S.cv.style.cursor = "pointer"; tipc.show(ev, card(o.userData.i));
+    });
+    S.cv.addEventListener("pointerleave", function () { tipc.hide(); });
+    S.onClick = function (ev) { var o = S.pick(ev, nodes); if (o) { stop(); go(o.userData.i); tipc.show(ev, card(o.userData.i)); } else tipc.hide(); };
     apply();
   })();
 
   /* ================= 9. D4: the 24 conditions, by direction =================
      Left, what conditions (paccaya): concepts, mind, matter. Right, what is conditioned (paccayuppanna): mind,
-     matter. Each condition is one bead in the middle, in a row with the others of its direction; its strands run
-     from the states that condition to the states conditioned, with an arrowhead at each. So a family's count is
-     the number of its beads, and its direction is the shape of its strands. Data: kinds.yaml and conditions.yaml,
-     passed in by the page as #d4-comp-data. */
+     matter. Each condition is one bead, in a row with the others of its direction. Its strands come from its
+     own ways (conditions.yaml): one strand in from each kind of state that can be the condition, one strand
+     out, with an arrowhead, to each kind it conditions. Point at a strand, bead or shape for what it means;
+     wide invisible tubes along each strand make the thin lines easy to hit. Data: kinds.yaml and
+     conditions.yaml, passed in by the page as #d4-comp-data. */
   (function () {
-    var dataEl = $("d4-comp-data"); if (!$("d4-comp") || !dataEl) return;
-    var FAMS = JSON.parse(dataEl.textContent), FC = { A: "--g1", B: "--g2", C: "--g3", D: "--g4", E: "--g5", F: "--g6" };
-    FAMS.forEach(function (f) { f.c = FC[f.key]; });
+    var DATA = jsonData("d4-comp-data"); if (!$("d4-comp") || !DATA) return;
+    var FAMS = DATA.fams, NOTE = DATA.notes || {}, FC = { A: "--g1", B: "--g2", C: "--g3", D: "--g4", E: "--g5", F: "--g6" };
+    FAMS.forEach(function (f) { f.c = FC[f.key]; f.conds.forEach(function (c) { c.f = f; }); });
     var cur = "all";
     function names(f) { return f.conds.map(function (c) { return c.en; }).join(", "); }
+    function wayLine(w) { return "<i>" + w.from + " → " + w.to + ".</i> " + esc3(w.text); }
     function info() {
       var box = $("d4-comp-info"); if (!box) return;
       if (cur === "all") {
@@ -792,55 +893,70 @@
       }
       var f = FAMS.filter(function (x) { return x.key === cur; })[0];
       box.innerHTML = '<h3><span class="sw3" style="background:var(' + f.c + ')"></span>' + f.title + " · " + f.conds.length + '</h3><p class="small">' + (f.desc || "") + "</p>" +
-        '<ul class="small m3conds">' + f.conds.map(function (c) { return '<li><a href="' + c.url + '">' + c.n + ". " + c.en + "</a> <i lang=\"pi\">" + c.pali + "</i></li>"; }).join("") + "</ul>";
+        '<dl class="small m3ways">' + f.conds.map(function (c) {
+          return '<dt><a href="' + c.url + '">' + c.n + ". " + c.en + "</a> <i lang=\"pi\">" + c.pali + "</i></dt>" + (c.ways || []).map(function (w) { return "<dd>" + wayLine(w) + "</dd>"; }).join("");
+        }).join("") + "</dl>";
     }
-    pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAMS.map(function (f) { return { id: f.key, label: f.title, c: f.c }; })), cur, function (v) { cur = v; info(); apply(); });
+    pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAMS.map(function (f) { return { id: f.key, label: f.title, c: f.c }; })), cur, function (v) { cur = v; info(); if (S) { hl(null); apply(); } });
     info();
     var S = make3D("d4-comp", { height: 480, cam: [0, 3.4, 9.4], look: [0, 0, 0], fov: 36, sway: 0.22, rotY: -0.62, rotX: 0.05, phoneRatio: 1.15, fit: true, declutter: true });
     if (!S) return;
     var X = 3.1, RAD = 0.4;
     var SRC = { concepts: V(-X, 1.95, 0), mind: V(-X, 0.3, 0), matter: V(-X, -1.55, 0) }, TGT = { mind: V(X, 0.75, 0), matter: V(X, -1.15, 0) };
-    function body(kind, p) {
+    var bodies = [];
+    function body(kind, p, side) {
       var m = kind === "mind" ? new THREE.Mesh(new THREE.SphereGeometry(RAD, 32, 22), stdMat("--nama", { glow: 0.35 }))
         : kind === "matter" ? new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.66, 0.66), stdMat("--rupa-mark", { glow: 0.3 }))
         : new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.08, 12, 40), stdMat("--muted", { glow: 0.25 }));
-      m.position.copy(p); S.root.add(m);
+      m.position.copy(p); m.userData = { kind: "body", k: kind, side: side }; S.root.add(m); bodies.push(m);
       label(S, kind, anchor(S, p.x, p.y - 0.62, p.z), "p", { pri: 3 });
     }
-    Object.keys(SRC).forEach(function (k) { body(k, SRC[k]); });
-    Object.keys(TGT).forEach(function (k) { body(k, TGT[k]); });
+    Object.keys(SRC).forEach(function (k) { body(k, SRC[k], "src"); });
+    Object.keys(TGT).forEach(function (k) { body(k, TGT[k], "tgt"); });
     label(S, "WHAT CONDITIONS · <i>paccaya</i>", anchor(S, -X, 2.85, 0), "cap3", { pri: 4, short: "CONDITIONS" });
     label(S, "WHAT IS CONDITIONED · <i>paccayuppanna</i>", anchor(S, X, 2.85, 0), "cap3", { pri: 4, short: "CONDITIONED" });
     /* one row of beads per direction, ordered so the strands cross as little as possible */
     var ROW = { E: 2.05, A: 1.25, B: 0.45, D: -0.35, C: -1.1, F: -1.95 }, STEP = 0.42;
-    var up = V(0, 1, 0);
-    function strand(a, b, mats, arrow) {
-      var ctl = V((a.x + b.x) / 2, arrow ? a.y : b.y, arrow ? a.z : b.z);
-      var s = arrow ? a.clone() : a.clone().add(ctl.clone().sub(a).normalize().multiplyScalar(RAD));
-      var e = arrow ? b.clone().add(ctl.clone().sub(b).normalize().multiplyScalar(RAD + 0.17)) : b.clone();
-      var m = tube([s, ctl, e], 0.02, mats.tube); S.root.add(m);
-      if (arrow) {
-        var t = m.userData.curve.getTangent(1).normalize(), c = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.2, 14), mats.bead);
-        c.position.copy(e).add(t.clone().multiplyScalar(0.08)); c.quaternion.setFromUnitVectors(up, t); S.root.add(c);
+    var pickMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
+    var dimTube = basicMat("--muted", 0.05), dimBead = stdMat("--muted", { glow: 0.1, opacity: 0.18 });
+    var strands = [], picks = [], beads = [];
+    function strand(a, b, c, dir, end) {
+      var arrowEnd = dir === "out";
+      var ctl = V((a.x + b.x) / 2, arrowEnd ? a.y : b.y, arrowEnd ? a.z : b.z);
+      var s = arrowEnd ? a.clone() : a.clone().add(ctl.clone().sub(a).normalize().multiplyScalar(RAD));
+      var e = arrowEnd ? b.clone().add(ctl.clone().sub(b).normalize().multiplyScalar(RAD + 0.17)) : b.clone();
+      var cv = new THREE.QuadraticBezierCurve3(s, ctl, e), ud = { kind: dir, c: c, end: end };
+      var m = new THREE.Mesh(new THREE.TubeGeometry(cv, 48, 0.02, 8, false), c.f.mats.tube); m.userData = ud; S.root.add(m);
+      var pk = new THREE.Mesh(new THREE.TubeGeometry(cv, 24, 0.09, 6, false), pickMat);
+      pk.userData = ud; S.root.add(pk); picks.push(pk);
+      var rec = { m: m, ud: ud, cone: null };
+      if (arrowEnd) {
+        var t = cv.getTangent(1).normalize();
+        rec.cone = arrow(e.clone().add(t.clone().multiplyScalar(0.18)), t, c.f.mats.bead); rec.cone.userData = ud; S.root.add(rec.cone); picks.push(rec.cone);
       }
+      strands.push(rec);
     }
     FAMS.forEach(function (f) {
       f.mats = { tube: basicMat(f.c, 0.85), bead: stdMat(f.c, { glow: 0.35, opacity: 1 }) };
       var n = f.conds.length;
       f.beads = f.conds.map(function (c, i) {
-        var b = V(0, ROW[f.key], (i - (n - 1) / 2) * STEP);
-        (f.from || []).forEach(function (k) { strand(SRC[k], b, f.mats, false); });
-        (f.to || []).forEach(function (k) { strand(b, TGT[k], f.mats, true); });
-        var m = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), f.mats.bead); m.position.copy(b); S.root.add(m);
+        var b = V(0, ROW[f.key], (i - (n - 1) / 2) * STEP), ways = c.ways || [];
+        var froms = [], tos = [];
+        ways.forEach(function (w) { if (froms.indexOf(w.from) < 0) froms.push(w.from); if (tos.indexOf(w.to) < 0) tos.push(w.to); });
+        froms.forEach(function (k) { strand(SRC[k], b, c, "in", k); });
+        tos.forEach(function (k) { strand(b, TGT[k], c, "out", k); });
+        var m = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), f.mats.bead); m.position.copy(b); m.userData = { kind: "bead", c: c }; S.root.add(m); beads.push(m);
+        var big = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), pickMat); big.position.copy(b); big.userData = m.userData; S.root.add(big); picks.push(big);
         return label(S, c.n + "", anchor(S, b.x - 0.14, b.y + 0.02, b.z), "xs left", { pri: 1 });
       });
       var zEnd = ((n - 1) / 2) * STEP + 0.35;
       f.L = label(S, '<span class="sw3" style="background:var(' + f.c + ')"></span>' + f.title + " · " + n, anchor(S, 0.1, ROW[f.key], zEnd), "nd right", { pri: 2, minW: 560 });
       f.L.el.style.boxShadow = "inset 0 0 0 1.5px var(" + f.c + ")";
     });
+    function active(c) { return cur === "all" || cur === c.f.key; }
     function apply() {
       FAMS.forEach(function (f) {
-        var on = cur === "all" || cur === f.key, sel = cur === f.key;
+        var on = cur === "all" || cur === f.key;
         f.mats.tube.opacity = on ? 0.85 : 0.06; f.mats.bead.opacity = on ? 1 : 0.15; f.mats.bead.depthWrite = on;
         f.L.alpha = on ? 1 : 0.15;
         f.beads.forEach(function (L) { L.alpha = on ? 1 : 0; });
@@ -850,6 +966,58 @@
     /* a selected direction names its beads; on a phone the list under the model does that instead */
     function names3() { FAMS.forEach(function (f) { f.beads.forEach(function (L, i) { var c = f.conds[i]; relabel(L, cur === f.key && S.w >= 560 ? c.n + ". " + c.en : c.n + ""); }); }); }
     S.onSize = names3;
+
+    /* highlighting: keep(rec) says which strands stay lit; beads of conditions with a lit strand stay too */
+    var lit = null;
+    function hl(keep) {
+      lit = keep;
+      var litC = [];
+      strands.forEach(function (r) {
+        var on = !keep || keep(r.ud);
+        r.m.material = on ? r.ud.c.f.mats.tube : dimTube; if (r.cone) r.cone.material = on ? r.ud.c.f.mats.bead : dimBead;
+        if (on && keep && litC.indexOf(r.ud.c) < 0) litC.push(r.ud.c);
+      });
+      beads.forEach(function (b) { b.material = !keep || litC.indexOf(b.userData.c) >= 0 ? b.userData.c.f.mats.bead : dimBead; });
+      S.dirty = true;
+    }
+    function head(c) { return "<b>" + c.n + ". " + esc3(c.en) + " <i>" + esc3(c.pali) + "</i></b>"; }
+    function describe(u) {
+      var c = u.c, ways = c && (c.ways || []);
+      if (u.kind === "in") {
+        var ws = ways.filter(function (w) { return w.from === u.end; });
+        return { html: head(c) + '<span class="mu">from ' + u.end + " · " + c.f.title + "</span>" + ws.map(function (w) { return "<span>" + wayLine(w) + "</span>"; }).join(""),
+          keep: function (x) { return x.c === c && (x.kind === "in" ? x.end === u.end : ws.some(function (w) { return w.to === x.end; })); } };
+      }
+      if (u.kind === "out") {
+        var wo = ways.filter(function (w) { return w.to === u.end; });
+        return { html: head(c) + '<span class="mu">to ' + u.end + " · " + c.f.title + "</span>" + wo.map(function (w) { return "<span>" + wayLine(w) + "</span>"; }).join(""),
+          keep: function (x) { return x.c === c && (x.kind === "out" ? x.end === u.end : wo.some(function (w) { return w.from === x.end; })); } };
+      }
+      if (u.kind === "bead") return { html: head(c) + '<span class="mu">' + c.f.title + "</span><span>" + esc3(c.gist || "") + "</span>" + ways.map(function (w) { return "<span>" + wayLine(w) + "</span>"; }).join(""),
+        keep: function (x) { return x.c === c; } };
+      /* a body: what it is, and how many conditions it gives or receives in */
+      var all = [].concat.apply([], FAMS.map(function (f) { return f.conds; })), k = u.k;
+      var gives = all.filter(function (c) { return (c.ways || []).some(function (w) { return w.from === k; }); }).length;
+      var gets = all.filter(function (c) { return (c.ways || []).some(function (w) { return w.to === k; }); }).length;
+      var n = NOTE[k] || { text: k };
+      return { html: "<b>" + esc3(n.label || k) + '</b><span class="mu">' + (u.side === "src" ? "as what conditions" : "as what is conditioned") + "</span><span>" + esc3(n.text) + "</span><span>" +
+          (u.side === "src" ? "Gives help in " + gives + " of the 24 conditions." : "Receives help in " + gets + " of the 24 conditions.") + "</span>",
+        keep: function (x) { return x.end === k && (u.side === "src" ? x.kind === "in" : x.kind === "out"); } };
+    }
+    var tipc = tipCard(S, $("d4-comp-tip"));
+    function hit(ev) {
+      var o = S.pick(ev, picks.concat(bodies));
+      if (o && o.userData.c && !active(o.userData.c)) o = null;
+      return o;
+    }
+    function point(ev) {
+      var o = hit(ev);
+      if (!o) { tipc.hide(); if (lit) hl(null); S.cv.style.cursor = ""; return; }
+      var d = describe(o.userData); S.cv.style.cursor = "help"; tipc.show(ev, d.html); hl(d.keep);
+    }
+    S.cv.addEventListener("pointermove", function (ev) { if (S.isDragging()) { tipc.hide(); return; } if (ev.pointerType === "mouse") point(ev); });
+    S.cv.addEventListener("pointerleave", function () { tipc.hide(); if (lit) hl(null); });
+    S.onClick = point;
     apply();
   })();
 

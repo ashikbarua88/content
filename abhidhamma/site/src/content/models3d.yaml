@@ -65,9 +65,67 @@
 - id: D4
   level: 4
   title: Relations in 3D
-  lede: "The wheel of twelve links opened into a helix that climbs through three lives; then the 24 conditions, each shown running from the states that condition to the states conditioned."
+  lede: The wheel of twelve links opened into a helix that climbs through three lives, to step through link by link;
+    then the 24 conditions, each shown running from the states that condition to the states conditioned.
   sources: 'Sources: Bodhi, <i>CMA</i> VIII; Visuddhimagga XVII'
-  html: "<div class=\"btnrow ctl3\" id=\"d4-helix-btns\" role=\"group\" aria-label=\"Colour by\"></div>\n  <div class=\"viz3d\" id=\"d4-helix\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">Red links are defilements, indigo kamma, turmeric results; becoming (10) is both kamma and result. The three rings are the connections between the four groups, and the halos mark the two roots, ignorance and craving. At rebirth, the Visuddhimagga says, mentality supports the mind base, the sixth of the six bases, in at least seven ways: conascence, mutuality, support, association, result, presence and non-disappearance. It supports the five physical bases in fewer ways, since association holds only between mental states.</p>\n  <h3 class=\"m3sub\">The 24 conditions, by direction</h3>\n  <div class=\"btnrow ctl3 sm\" id=\"d4-comp-btns\" role=\"group\" aria-label=\"Direction\"></div>\n  <div class=\"viz3d\" id=\"d4-comp\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">On the left, what gives the help; on the right, what receives it. Each bead is one of the 24 conditions, numbered as in the Paṭṭhāna, and its strands show the direction: a strand leaves each kind of state that can be the condition and ends, with an arrowhead, at each kind it conditions. So mind → mind has six beads with one strand in and one out; mind &amp; matter → both has nine, each with two in and two out. Choose a direction to name its conditions.</p>\n  <div class=\"box\" id=\"d4-comp-info\"></div>"
+  html: "<div class=\"btnrow ctl3\" id=\"d4-helix-btns\" role=\"group\" aria-label=\"View\"></div>\n  <div class=\"\
+    viz3d\" id=\"d4-helix\"><span class=\"hint3\">drag to turn · point at a link</span><div class=\"tip3c\" id=\"\
+    d4-helix-tip\" aria-hidden=\"true\"></div></div>\n  <div class=\"d4-step\" id=\"d4-step\" role=\"group\" aria-label=\"\
+    Step through the links\"><button type=\"button\" class=\"btn\" data-s=\"prev\">← Previous</button><button type=\"\
+    button\" class=\"btn\" data-s=\"play\" aria-pressed=\"false\">Play</button><button type=\"button\" class=\"\
+    btn\" data-s=\"next\">Next →</button></div>\n  <div class=\"box d4-legend\" id=\"d4-helix-legend\" aria-live=\"\
+    polite\"></div>\n  <p class=\"cap\">The links climb upward through time. Between them, arrows show which way\
+    \ each conditions the next; the spine inside the helix carries the four groups. At rebirth, the Visuddhimagga\
+    \ says, mentality supports the mind base, the sixth of the six bases, in at least seven ways: conascence, mutuality,\
+    \ support, association, result, presence and non-disappearance.</p>\n  <h3 class=\"m3sub\">The 24 conditions,\
+    \ by direction</h3>\n  <div class=\"btnrow ctl3 sm\" id=\"d4-comp-btns\" role=\"group\" aria-label=\"Direction\"\
+    ></div>\n  <div class=\"viz3d\" id=\"d4-comp\"><span class=\"hint3\">drag to turn · point at a strand, bead\
+    \ or shape</span><div class=\"tip3c\" id=\"d4-comp-tip\" aria-hidden=\"true\"></div></div>\n  <p class=\"cap\">On\
+    \ the left, what gives the help; on the right, what receives it. Each bead is one of the 24 conditions, numbered\
+    \ as in the Paṭṭhāna. A strand runs from each kind of state that can be the condition and ends, with an arrowhead,\
+    \ at each kind it conditions, so the strands show the ways each condition actually works. Within “mind &amp;\
+    \ matter → both”, not every condition runs every way: dissociation, for instance, only crosses between mind\
+    \ and matter. Point at any strand for what it means there, or choose a direction to list its conditions.</p>\n\
+    \  <div class=\"box\" id=\"d4-comp-info\"></div>"
+  notes:
+  - id: step
+    label: Step through
+    text: Follow the wheel one link at a time. Each link is a condition for the next, and the arrow shows which
+      way. Use Next and Previous, or Play.
+  - id: rounds
+    label: Three rounds
+    text: 'Three rounds keep the wheel turning. <span class="sw3" style="background:var(--bad)"></span><b>Defilements</b>:
+      ignorance, craving, clinging. <span class="sw3" style="background:var(--nama)"></span><b>Kamma</b>: formations,
+      and becoming as kamma. <span class="sw3" style="background:var(--rupa-mark)"></span><b>Results</b>: consciousness
+      to feeling, birth, decay and death; becoming is also result, marked by its small indigo moon. Defilements
+      lead to kamma, kamma ripens as results, and results are the ground on which new defilements arise. The ringed
+      links are the two roots: ignorance, which looks back to the past, and craving, which looks forward to the
+      future.'
+  - id: groups
+    label: Four groups
+    text: 'Four groups, joined at three connections (the small rings). <span class="sw3" style="background:var(--muted)"></span><b>Past
+      causes</b> (1–2) give <span class="sw3" style="background:var(--nama)"></span><b>present results</b> (3–7):
+      cause to result. Present results give rise to <span class="sw3" style="background:var(--kamma)"></span><b>present
+      causes</b> (8–10): result to cause. Present causes give <span class="sw3" style="background:var(--nib)"></span><b>future
+      results</b> (11–12): cause to result. Each group really holds five: where ignorance and formations are named,
+      craving, clinging and becoming are meant too, and birth, decay and death are the five results seen from outside.
+      Four groups of five are the twenty modes.'
+  - id: lives
+    label: Three lives
+    text: 'Three lives. <span class="sw3" style="background:var(--muted)"></span>Links 1–2 belong to the <b>past
+      life</b>, <span class="sw3" style="background:var(--nama)"></span>3–10 to <b>this life</b>, <span class="sw3"
+      style="background:var(--nib)"></span>11–12 to the <b>next</b>. The division is a way of teaching: the commentaries
+      also show the whole wheel turning within a single moment of mind.'
+  - id: mind
+    label: Mind
+    text: 'Mind (nāma): citta and its mental factors.'
+  - id: matter
+    label: Matter
+    text: 'Matter (rūpa): the 28 kinds, from the great elements to the qualities of matter.'
+  - id: concepts
+    label: Concepts
+    text: 'Concepts (paññatti): names and ideas, such as a person or a kasiṇa disc. Not ultimately real, but they
+      can still be known, so they can be an object.'
 - id: D5
   level: 5
   title: Thirty-one planes as a world-mountain
