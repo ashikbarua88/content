@@ -65,19 +65,9 @@
 - id: D4
   level: 4
   title: Relations in 3D
-  lede: The wheel of twelve links opened into a helix that climbs through three lives, and the 24 conditions drawn
-    as arcs between mind, matter and concepts.
+  lede: "The wheel of twelve links opened into a helix that climbs through three lives; then the 24 conditions, each shown running from the states that condition to the states conditioned."
   sources: 'Sources: Bodhi, <i>CMA</i> VIII; Visuddhimagga XVII'
-  html: "<div class=\"btnrow ctl3\" id=\"d4-helix-btns\" role=\"group\" aria-label=\"Colour by\"></div>\n  <div\
-    \ class=\"viz3d\" id=\"d4-helix\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">Red links\
-    \ are defilements, indigo kamma, turmeric results; becoming (10) is both kamma and result. The three rings are\
-    \ the connections between the four groups, and the halos mark the two roots, ignorance and craving. At rebirth,\
-    \ the Visuddhimagga says, mentality supports the mind base, the sixth of the six bases, in at least seven ways:\
-    \ conascence, mutuality, support, association, result, presence and non-disappearance. It supports the five\
-    \ physical bases in fewer ways, since association holds only between mental states.</p>\n  <div class=\"cols\"\
-    >\n    <div class=\"fig\"><div class=\"viz3d\" id=\"d4-comp\"><span class=\"hint3\">drag to turn</span></div></div>\n\
-    \    <div class=\"fig\"><div class=\"btnrow ctl3 sm\" id=\"d4-comp-btns\" role=\"group\" aria-label=\"Family\"\
-    ></div><div class=\"box\" id=\"d4-comp-info\"></div></div>\n  </div>"
+  html: "<div class=\"btnrow ctl3\" id=\"d4-helix-btns\" role=\"group\" aria-label=\"Colour by\"></div>\n  <div class=\"viz3d\" id=\"d4-helix\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">Red links are defilements, indigo kamma, turmeric results; becoming (10) is both kamma and result. The three rings are the connections between the four groups, and the halos mark the two roots, ignorance and craving. At rebirth, the Visuddhimagga says, mentality supports the mind base, the sixth of the six bases, in at least seven ways: conascence, mutuality, support, association, result, presence and non-disappearance. It supports the five physical bases in fewer ways, since association holds only between mental states.</p>\n  <h3 class=\"m3sub\">The 24 conditions, by direction</h3>\n  <div class=\"btnrow ctl3 sm\" id=\"d4-comp-btns\" role=\"group\" aria-label=\"Direction\"></div>\n  <div class=\"viz3d\" id=\"d4-comp\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">On the left, what gives the help; on the right, what receives it. Each bead is one of the 24 conditions, numbered as in the Paṭṭhāna, and its strands show the direction: a strand leaves each kind of state that can be the condition and ends, with an arrowhead, at each kind it conditions. So mind → mind has six beads with one strand in and one out; mind &amp; matter → both has nine, each with two in and two out. Choose a direction to name its conditions.</p>\n  <div class=\"box\" id=\"d4-comp-info\"></div>"
 - id: D5
   level: 5
   title: Thirty-one planes as a world-mountain

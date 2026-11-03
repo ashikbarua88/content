@@ -80,13 +80,31 @@
   groups:
     - key: A
       title: Mind → mind
+      from: [mind]
+      to: [mind]
+      desc: Each citta gives way to the next and shapes it; repeated javanas strengthen their successors; factors arising together are associated.
     - key: B
       title: Mind → mind & matter
+      from: [mind]
+      to: [mind, matter]
+      desc: Roots, jhāna and path factors, volition and resultant mind support both the mind and the matter that arise with them. Kamma also works across time, from a past volition to its results.
     - key: C
       title: Mind → matter
+      from: [mind]
+      to: [matter]
+      desc: Later cittas sustain the body that arose before them, as a later rain sustains a plant already growing.
     - key: D
       title: Matter → mind
+      from: [matter]
+      to: [mind]
+      desc: Bases and sense objects, already arisen, support the cittas that follow.
     - key: E
       title: Anything → mind
+      from: [concepts, mind, matter]
+      to: [mind]
+      desc: Anything at all, a concept, a state of mind, a piece of matter, Nibbāna, can be an object; and a strong past experience can decisively support what arises now.
     - key: F
       title: Mind & matter → both
+      from: [mind, matter]
+      to: [mind, matter]
+      desc: Mind and matter hold each other up, mostly as things that arise together, like the legs of a tripod. Support, presence and non-disappearance also work from a base that arose earlier or a citta that arises later.

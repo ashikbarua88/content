@@ -771,51 +771,85 @@
     apply();
   })();
 
-  /* ================= 9. D4: conditions compass ================= */
+  /* ================= 9. D4: the 24 conditions, by direction =================
+     Left, what conditions (paccaya): concepts, mind, matter. Right, what is conditioned (paccayuppanna): mind,
+     matter. Each condition is one bead in the middle, in a row with the others of its direction; its strands run
+     from the states that condition to the states conditioned, with an arrowhead at each. So a family's count is
+     the number of its beads, and its direction is the shape of its strands. Data: kinds.yaml and conditions.yaml,
+     passed in by the page as #d4-comp-data. */
   (function () {
-    var FAM = [
-      { id: "A", c: "--g1", t: "Mind → mind", n: 6, list: "proximity, contiguity, absence, disappearance, repetition, association", d: "Each citta gives way to the next; javanas strengthen their successors; factors arising together are associated." },
-      { id: "B", c: "--g2", t: "Mind → mind and matter", n: 5, list: "root, jhāna, path, kamma, result", d: "Roots, jhāna and path factors, volition and resultant mind support both the mind and the matter that arise with them." },
-      { id: "C", c: "--g3", t: "Mind → matter", n: 1, list: "postnascence", d: "Later cittas sustain the body that arose before them." },
-      { id: "D", c: "--g4", t: "Matter → mind", n: 1, list: "prenascence", d: "Bases and sense objects, already arisen, support the cittas that follow." },
-      { id: "E", c: "--g5", t: "Concepts, mind, matter → mind", n: 2, list: "object, decisive support", d: "Anything can be an object; a strong past experience can decisively support what arises now." },
-      { id: "F", c: "--g6", t: "Mind and matter → both", n: 9, list: "predominance, conascence, mutuality, support, nutriment, faculty, dissociation, presence, non-disappearance", d: "Mind and matter hold each other up, mostly as things that arise together, like the legs of a tripod; support, presence and non-disappearance also work from a base that arose earlier or a citta that arises later." }
-    ];
+    var dataEl = $("d4-comp-data"); if (!$("d4-comp") || !dataEl) return;
+    var FAMS = JSON.parse(dataEl.textContent), FC = { A: "--g1", B: "--g2", C: "--g3", D: "--g4", E: "--g5", F: "--g6" };
+    FAMS.forEach(function (f) { f.c = FC[f.key]; });
     var cur = "all";
+    function names(f) { return f.conds.map(function (c) { return c.en; }).join(", "); }
     function info() {
       var box = $("d4-comp-info"); if (!box) return;
-      /* "All" (and print) lists the six families with their conditions, so the panel is never empty on paper */
       if (cur === "all") {
-        box.innerHTML = "<h3>Six families, 24 conditions</h3><p class=\"small\">Arcs between mind (sphere), matter (cube) and concepts (ring); an arc's thickness shows how many conditions its family holds.</p>" +
-          FAM.map(function (f) { return '<p class="small"><span class="sw3" style="background:var(' + f.c + ')"></span><b>' + f.t + " · " + f.n + "</b> <i>" + f.list + ".</i></p>"; }).join(""); // ink text beside a colour swatch, so every colour stays legible
+        box.innerHTML = "<h3>24 conditions, six directions</h3><p class=\"small\">Left: what conditions. Right: what is conditioned. Each bead is one condition; its strands run from the states that give the help to the states that receive it.</p>" +
+          FAMS.map(function (f) { return '<p class="small"><span class="sw3" style="background:var(' + f.c + ')"></span><b>' + f.title + " · " + f.conds.length + "</b> <i>" + names(f) + ".</i></p>"; }).join("");
         return;
       }
-      var f = FAM.filter(function (x) { return x.id === cur; })[0];
-      box.innerHTML = '<h3 style="color:var(' + f.c + ')">' + f.t + " · " + f.n + '</h3><p class="small"><i>' + f.list + '.</i></p><p class="small">' + f.d + "</p>";
+      var f = FAMS.filter(function (x) { return x.key === cur; })[0];
+      box.innerHTML = '<h3><span class="sw3" style="background:var(' + f.c + ')"></span>' + f.title + " · " + f.conds.length + '</h3><p class="small">' + (f.desc || "") + "</p>" +
+        '<ul class="small m3conds">' + f.conds.map(function (c) { return '<li><a href="' + c.url + '">' + c.n + ". " + c.en + "</a> <i lang=\"pi\">" + c.pali + "</i></li>"; }).join("") + "</ul>";
     }
-    pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAM.map(function (f) { return { id: f.id, label: f.t.replace(" and ", " & "), c: f.c }; })), cur, function (v) { cur = v; info(); apply(); });
+    pills($("d4-comp-btns"), [{ id: "all", label: "All" }].concat(FAMS.map(function (f) { return { id: f.key, label: f.title, c: f.c }; })), cur, function (v) { cur = v; info(); apply(); });
     info();
-    var S = make3D("d4-comp", { height: 300, cam: [0, 2.2, 9.6], look: [0, 0.1, 0], fov: 36, sway: 0.45, rotX: 0.1, phoneRatio: 0.85, fit: true });
+    var S = make3D("d4-comp", { height: 480, cam: [0, 3.4, 9.4], look: [0, 0, 0], fov: 36, sway: 0.22, rotY: -0.62, rotX: 0.05, phoneRatio: 1.15, fit: true, declutter: true });
     if (!S) return;
-    var Mi = V(-1.9, 0, 0), Ma = V(1.9, 0, 0), Co = V(0, 0.2, -2.1);
-    var mind = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 22), stdMat("--nama", { glow: 0.35 })); mind.position.copy(Mi); S.root.add(mind);
-    var matter = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.8, 0.8), stdMat("--rupa-mark", { glow: 0.3 })); matter.position.copy(Ma); S.root.add(matter);
-    var conc = new THREE.Mesh(new THREE.TorusGeometry(0.38, 0.06, 10, 40), stdMat("--muted", { glow: 0.2 })); conc.position.copy(Co); S.root.add(conc);
-    label(S, "mind", anchor(S, Mi.x, Mi.y - 0.8, Mi.z), "p"); label(S, "matter", anchor(S, Ma.x, Ma.y - 0.8, Ma.z), "p"); label(S, "concepts", anchor(S, Co.x, Co.y - 0.65, Co.z), "p");
-    function R(n) { return 0.02 + n * 0.009; }
-    var arcs = [];
-    function add(fid, pts, closed) { var f = FAM.filter(function (x) { return x.id === fid; })[0]; var m = tube(pts, R(f.n), basicMat(f.c, 0.8), closed); m.userData.f = fid; S.root.add(m); arcs.push(m); return m; }
-    var loopA = []; for (var i = 0; i <= 24; i++) { var a = i / 24 * Math.PI * 2; loopA.push(V(Mi.x - 0.2 + Math.cos(a) * 0.9, Mi.y + 0.9 + Math.sin(a) * 0.45, Mi.z + Math.sin(a) * 0.3)); }
-    add("A", loopA, true);
-    add("B", [V(Mi.x + 0.4, -0.2, 0.3), V(0, -0.5, 1.9), V(Ma.x - 0.4, -0.2, 0.3)]);
-    add("C", [V(Mi.x + 0.4, 0.4, 0), V(0, 1.5, 0), V(Ma.x - 0.4, 0.4, 0)]);
-    add("D", [V(Ma.x - 0.4, -0.45, 0), V(0, -1.55, 0), V(Mi.x + 0.4, -0.45, 0)]);
-    add("E", [V(Co.x - 0.3, Co.y, Co.z + 0.2), V(-1.2, 0.4, -1.1), V(Mi.x + 0.3, 0.1, -0.3)]);
-    var loopF = []; for (i = 0; i <= 40; i++) { a = i / 40 * Math.PI * 2; loopF.push(V(Math.cos(a) * 3.1, -0.05 + Math.sin(a * 2) * 0.12, Math.sin(a) * 1.15)); }
-    add("F", loopF, true);
-    var lab = { A: V(Mi.x - 0.2, 1.62, 0), B: V(0, -0.65, 2.0), C: V(0, 1.15, 0), D: V(0, -1.3, 0), E: V(-1.05, 0.62, -1.25), F: V(3.2, 0.25, 0.4) };
-    FAM.forEach(function (f) { f.L = label(S, f.t.split(" ")[0] === "Mind" && f.id !== "F" ? f.n + "" : f.n + "", anchor(S, lab[f.id].x, lab[f.id].y, lab[f.id].z), "badge"); f.L.el.style.background = "var(" + f.c + ")"; });
-    function apply() { arcs.forEach(function (m) { m.material.opacity = cur === "all" || cur === m.userData.f ? 0.85 : 0.08; }); FAM.forEach(function (f) { f.L.alpha = cur === "all" || cur === f.id ? 1 : 0.2; }); S.dirty = true; }
+    var X = 3.1, RAD = 0.4;
+    var SRC = { concepts: V(-X, 1.95, 0), mind: V(-X, 0.3, 0), matter: V(-X, -1.55, 0) }, TGT = { mind: V(X, 0.75, 0), matter: V(X, -1.15, 0) };
+    function body(kind, p) {
+      var m = kind === "mind" ? new THREE.Mesh(new THREE.SphereGeometry(RAD, 32, 22), stdMat("--nama", { glow: 0.35 }))
+        : kind === "matter" ? new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.66, 0.66), stdMat("--rupa-mark", { glow: 0.3 }))
+        : new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.08, 12, 40), stdMat("--muted", { glow: 0.25 }));
+      m.position.copy(p); S.root.add(m);
+      label(S, kind, anchor(S, p.x, p.y - 0.62, p.z), "p", { pri: 3 });
+    }
+    Object.keys(SRC).forEach(function (k) { body(k, SRC[k]); });
+    Object.keys(TGT).forEach(function (k) { body(k, TGT[k]); });
+    label(S, "WHAT CONDITIONS · <i>paccaya</i>", anchor(S, -X, 2.85, 0), "cap3", { pri: 4, short: "CONDITIONS" });
+    label(S, "WHAT IS CONDITIONED · <i>paccayuppanna</i>", anchor(S, X, 2.85, 0), "cap3", { pri: 4, short: "CONDITIONED" });
+    /* one row of beads per direction, ordered so the strands cross as little as possible */
+    var ROW = { E: 2.05, A: 1.25, B: 0.45, D: -0.35, C: -1.1, F: -1.95 }, STEP = 0.42;
+    var up = V(0, 1, 0);
+    function strand(a, b, mats, arrow) {
+      var ctl = V((a.x + b.x) / 2, arrow ? a.y : b.y, arrow ? a.z : b.z);
+      var s = arrow ? a.clone() : a.clone().add(ctl.clone().sub(a).normalize().multiplyScalar(RAD));
+      var e = arrow ? b.clone().add(ctl.clone().sub(b).normalize().multiplyScalar(RAD + 0.17)) : b.clone();
+      var m = tube([s, ctl, e], 0.02, mats.tube); S.root.add(m);
+      if (arrow) {
+        var t = m.userData.curve.getTangent(1).normalize(), c = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.2, 14), mats.bead);
+        c.position.copy(e).add(t.clone().multiplyScalar(0.08)); c.quaternion.setFromUnitVectors(up, t); S.root.add(c);
+      }
+    }
+    FAMS.forEach(function (f) {
+      f.mats = { tube: basicMat(f.c, 0.85), bead: stdMat(f.c, { glow: 0.35, opacity: 1 }) };
+      var n = f.conds.length;
+      f.beads = f.conds.map(function (c, i) {
+        var b = V(0, ROW[f.key], (i - (n - 1) / 2) * STEP);
+        (f.from || []).forEach(function (k) { strand(SRC[k], b, f.mats, false); });
+        (f.to || []).forEach(function (k) { strand(b, TGT[k], f.mats, true); });
+        var m = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), f.mats.bead); m.position.copy(b); S.root.add(m);
+        return label(S, c.n + "", anchor(S, b.x - 0.14, b.y + 0.02, b.z), "xs left", { pri: 1 });
+      });
+      var zEnd = ((n - 1) / 2) * STEP + 0.35;
+      f.L = label(S, '<span class="sw3" style="background:var(' + f.c + ')"></span>' + f.title + " · " + n, anchor(S, 0.1, ROW[f.key], zEnd), "nd right", { pri: 2, minW: 560 });
+      f.L.el.style.boxShadow = "inset 0 0 0 1.5px var(" + f.c + ")";
+    });
+    function apply() {
+      FAMS.forEach(function (f) {
+        var on = cur === "all" || cur === f.key, sel = cur === f.key;
+        f.mats.tube.opacity = on ? 0.85 : 0.06; f.mats.bead.opacity = on ? 1 : 0.15; f.mats.bead.depthWrite = on;
+        f.L.alpha = on ? 1 : 0.15;
+        f.beads.forEach(function (L) { L.alpha = on ? 1 : 0; });
+      });
+      names3(); S.refit(); S.dirty = true;
+    }
+    /* a selected direction names its beads; on a phone the list under the model does that instead */
+    function names3() { FAMS.forEach(function (f) { f.beads.forEach(function (L, i) { var c = f.conds[i]; relabel(L, cur === f.key && S.w >= 560 ? c.n + ". " + c.en : c.n + ""); }); }); }
+    S.onSize = names3;
     apply();
   })();
 

@@ -361,3 +361,6 @@ svg.graph.hl .gnode:not(.on) { opacity: .18; }
 svg.graph.hl .gedge:not(.on) { opacity: .06 !important; }
 svg.graph.hl .gedge.on { opacity: 1 !important; stroke-width: 2.2 !important; }
 @media (prefers-reduced-motion: reduce) { svg.graph .gnode, svg.graph .gedge { transition: none; } }
+.m3sub { margin: 30px 0 8px; font-size: 1.15rem; }
+#d4-comp-info { margin-top: 12px; } #d4-comp-info h3 .sw3 { margin-right: 6px; }
+.m3conds { columns: 2 14em; padding-left: 1.1em; margin: 6px 0 0; } .m3conds li { break-inside: avoid; margin-bottom: 3px; }

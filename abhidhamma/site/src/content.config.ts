@@ -73,7 +73,7 @@ const kinds = defineCollection({
   loader: file("src/content/dhammas/kinds.yaml"),
   schema: z.object({
     title: z.string(), short: z.string(), pali: z.string(), plates: z.array(z.string()), concept: z.string(), chapter: z.string(),
-    desc: z.string(), groups: z.array(z.object({ key: z.string(), title: z.string(), desc: z.string().optional() })),
+    desc: z.string(), groups: z.array(z.object({ key: z.string(), title: z.string(), desc: z.string().optional(), from: z.array(z.string()).optional(), to: z.array(z.string()).optional() })),
   }),
 });
 
