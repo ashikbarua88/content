@@ -1,9 +1,11 @@
 ---
-import Base from "../layouts/Base.astro";
-import M from "../data/map.json";
-import { conceptUrl, u, links, linkTypes } from "../lib/atlas.js";
-import { dhammaUrl, factors, matter, conditions, roleCond } from "../lib/dhammas.js";
-import { listsGraph } from "../figures/graph.js";
+import Base from "../../layouts/Base.astro";
+import M from "../../data/map.json";
+import { conceptUrl, u, links, linkTypes } from "../../lib/atlas.js";
+import { dhammaUrl, factors, matter, conditions, roleCond } from "../../lib/dhammas.js";
+import { listsGraph } from "../../figures/graph.js";
+import { getCollection } from "astro:content";
+const models = (await getCollection("models3d")).sort((a, b) => a.data.level - b.data.level);
 const lists = listsGraph({ factors, matter, conditions, roleCond, url: dhammaUrl });
 
 // The concept map (drawn for the atlas), with every idea a link to its concept page and every arrow
@@ -28,6 +30,20 @@ const types = Object.entries(linkTypes);
         Rows are the levels of study, from foundations at the top to the path at the bottom.
       </figcaption>
     </figure>
+
+    <section class="band" style="border:0">
+      <h2 style="margin-top:0">In three dimensions</h2>
+      <p class="muted" style="max-width:40em">Seven models, one for each level of study, that you can turn and take apart.</p>
+      <ul class="m3cards">
+        {models.map((m) => (
+          <li><a href={u("explore/3d/#" + m.id)}>
+            <img src={u(`models/${m.id}.webp`)} alt="" width="640" height="420" loading="lazy" />
+            <span class="lv">Level {m.data.level}</span><span class="t">{m.data.title}</span>
+          </a></li>
+        ))}
+      </ul>
+      <p class="ui"><a href={u("explore/3d/")}>All seven models</a></p>
+    </section>
 
     <section class="band" style="border:0">
       <h2 style="margin-top:0">How the dhammas connect</h2>

@@ -1,0 +1,137 @@
+# The 3D models (Explore › In three dimensions): one entry per level. 'html' is the scene markup and its captions;
+# the scenes themselves are drawn by src/scripts/models3d.js into the elements with these ids.
+- id: D1
+  level: 1
+  title: The categories, mapped
+  lede: 'The suttas describe experience with overlapping lists: five aggregates, twelve bases, eighteen elements,
+    four noble truths. The Abhidhamma shows that they are four ways of cutting the same cloth. The top bar holds
+    every kind of ultimate reality, sized by count; each row below cuts that same bar differently. Read straight
+    down to see where any dhamma falls in every list.<span class="web"> Choose any slice to read it.</span>'
+  sources: 'Sources: Bodhi, <i>CMA</i> VII (compendium of categories); Nārada, <i>Manual</i> VII'
+  html: "<div class=\"btnrow ctl3\" id=\"d1-btns\" role=\"group\" aria-label=\"Cut the realities by\"></div>\n \
+    \ <div class=\"viz3d\" id=\"d1-view\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">The\
+    \ four ultimate realities as four pillars, cut four ways: into the aggregates, the bases, the elements and the\
+    \ noble truths. Choose a cut to see which reality each item is made of.</p>\n  <div class=\"cols\">\n    <div\
+    \ class=\"box\"><h3>Five aggregates</h3><p class=\"small\">Rūpa is all 28 kinds of matter. Feeling and perception\
+    \ are one mental factor each, and formations are the other 50. Consciousness is all 89 cittas. Nibbāna belongs\
+    \ to no aggregate.</p></div>\n    <div class=\"box\"><h3>Twelve bases</h3><p class=\"small\">Ten bases are matter:\
+    \ five sense organs and five objects. The mind base is all 89 cittas. The mental-object base gathers the rest:\
+    \ the 52 factors, the 16 subtle kinds of matter, and Nibbāna.</p></div>\n    <div class=\"box\"><h3>Eighteen\
+    \ elements</h3><p class=\"small\">As the bases, but the mind base splits into seven: five sense-consciousness\
+    \ elements (10 cittas), the mind element (3: five-door adverting and the two receiving cittas) and the mind-consciousness\
+    \ element (the other 76).</p></div>\n    <div class=\"box\"><h3>Four noble truths</h3><p class=\"small\">Suffering\
+    \ is everything mundane, the mind and matter of the three planes. Its origin is craving, which the Abhidhamma\
+    \ identifies with the factor greed. Cessation is Nibbāna. The path is the eight path factors, mental factors\
+    \ that arise together in path consciousness (seven in paths of the second jhāna and above, which lack right\
+    \ intention).</p></div>\n  </div>\n  <p class=\"cap\">Gross and subtle matter: the five organs and seven objects\
+    \ (touch counting as earth, fire and air) are the 12 gross kinds of matter; the other 16 are subtle and are\
+    \ known only at the mind door.</p>"
+- id: D2
+  level: 2
+  title: Elements in 3D
+  lede: 'Three models of the elements of experience: all 89 cittas as a stupa, the 52 factors gathered round a single
+    citta, and the inside of a kalāpa of matter.'
+  sources: 'Sources: Bodhi, <i>CMA</i> I, II, VI'
+  html: "<div class=\"btnrow ctl3\" id=\"d2-tower-btns\" role=\"group\" aria-label=\"Colour by\"></div>\n  <div\
+    \ class=\"viz3d\" id=\"d2-tower\"><span class=\"hint3\">drag to turn</span></div>\n  <div class=\"legend\" id=\"\
+    d2-tower-legend\"></div>\n  <p class=\"cap\">Each cube is one citta. The tiers rise from the 54 sense-sphere\
+    \ cittas, through the 15 fine-material and 12 immaterial, to the 8 supramundane cittas around Nibbāna at the\
+    \ top. Coloured by feeling, most of the stupa is joy or equanimity; the four red-brown and green cubes are the\
+    \ only cittas with bodily pain, bodily pleasure or displeasure.</p>\n  <div class=\"cols\">\n    <div class=\"\
+    fig\">\n      <div class=\"btnrow ctl3 sm\" id=\"d2-ceta-btns\" role=\"group\" aria-label=\"Citta\"></div>\n\
+    \      <div class=\"viz3d\" id=\"d2-ceta\"><div class=\"tip3\" id=\"d2-ceta-tip\"></div><span class=\"hint3\"\
+    >drag to turn</span></div>\n      <p class=\"cap\" id=\"d2-ceta-cap\"></p>\n    </div>\n    <div class=\"fig\"\
+    >\n      <div class=\"btnrow ctl3 sm\" id=\"d2-kal-btns\" role=\"group\" aria-label=\"Kalāpa\"></div>\n    \
+    \  <div class=\"viz3d\" id=\"d2-kal\"><span class=\"hint3\">drag to turn</span></div>\n      <p class=\"cap\"\
+    \ id=\"d2-kal-cap\"></p>\n    </div>\n  </div>"
+- id: D3
+  level: 3
+  title: Process in 3D
+  lede: 'Two views of the same seconds of life. Above, one cognitive process as a track of moments, with what each
+    moment does to kamma and to the body. Below, the body itself as a clock: one turn of the pointer is the 51 sub-moments
+    that a unit of matter lives, so each ring of matter stays full while every unit in it is replaced.'
+  sources: 'Sources: Bodhi, <i>CMA</i> IV, VI'
+  html: "<div class=\"btnrow ctl3\" id=\"d3-proc-btns\" role=\"group\" aria-label=\"Object\"></div>\n  <div class=\"\
+    viz3d\" id=\"d3-proc\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">The bar above the\
+    \ track is the object's life: seventeen moments for a very great object. Violet seeds rise from the javanas,\
+    \ where kamma is made. The small cubes below are mind-born matter, produced as each citta arises, except the\
+    \ sense consciousness, which is too weak to produce matter.</p>\n  <div class=\"btnrow ctl3\" id=\"d3-loom-modes\"\
+    \ role=\"group\" aria-label=\"Stage of life\"></div>\n  <div class=\"viz3d\" id=\"d3-loom\"><span class=\"hint3\"\
+    >drag to turn</span></div>\n  <div class=\"legend\"><span><i style=\"background:var(--kamma)\"></i>kamma-born\
+    \ · every sub-moment</span><span><i style=\"background:var(--nama)\"></i>mind-born · at each citta's arising</span><span><i\
+    \ style=\"background:var(--temp)\"></i>temperature-born · rate illustrative</span><span><i style=\"background:var(--food)\"\
+    ></i>nutriment-born · rate illustrative</span></div>\n  <p class=\"cap\"><b id=\"d3-loom-title\"></b> <span\
+    \ id=\"d3-loom-text\"></span></p>"
+- id: D4
+  level: 4
+  title: Relations in 3D
+  lede: The wheel of twelve links opened into a helix that climbs through three lives, and the 24 conditions drawn
+    as arcs between mind, matter and concepts.
+  sources: 'Sources: Bodhi, <i>CMA</i> VIII; Visuddhimagga XVII'
+  html: "<div class=\"btnrow ctl3\" id=\"d4-helix-btns\" role=\"group\" aria-label=\"Colour by\"></div>\n  <div\
+    \ class=\"viz3d\" id=\"d4-helix\"><span class=\"hint3\">drag to turn</span></div>\n  <p class=\"cap\">Red links\
+    \ are defilements, indigo kamma, turmeric results; becoming (10) is both kamma and result. The three rings are\
+    \ the connections between the four groups, and the halos mark the two roots, ignorance and craving. At rebirth,\
+    \ the Visuddhimagga says, mentality supports the mind base, the sixth of the six bases, in at least seven ways:\
+    \ conascence, mutuality, support, association, result, presence and non-disappearance. It supports the five\
+    \ physical bases in fewer ways, since association holds only between mental states.</p>\n  <div class=\"cols\"\
+    >\n    <div class=\"fig\"><div class=\"viz3d\" id=\"d4-comp\"><span class=\"hint3\">drag to turn</span></div></div>\n\
+    \    <div class=\"fig\"><div class=\"btnrow ctl3 sm\" id=\"d4-comp-btns\" role=\"group\" aria-label=\"Family\"\
+    ></div><div class=\"box\" id=\"d4-comp-info\"></div></div>\n  </div>"
+- id: D5
+  level: 5
+  title: Thirty-one planes as a world-mountain
+  lede: 'The traditional cosmos, stacked. The woeful states lie below the human world. Mount Sineru rises from it:
+    the Four Great Kings dwell on its slopes and the Thirty-three on its summit. The higher heavens and the Brahmā
+    worlds rest above it in space, and the four immaterial planes, drawn as empty rings, have no matter at all.'
+  sources: 'Sources: Bodhi, <i>CMA</i> V; commentaries on Sineru'
+  html: "<div class=\"viz3d\" id=\"d5-view\"><span class=\"hint3\">drag to turn</span></div>\n  <div class=\"cols3\"\
+    >\n    <div class=\"box\"><h3>Floors of mind</h3><p class=\"small\">Each floor of the Brahmā worlds corresponds\
+    \ to a jhāna; beings are reborn there by the kamma of that jhāna. The higher the floor, the longer the life\
+    \ and the subtler the mind.</p></div>\n    <div class=\"box\"><h3>Mind without matter</h3><p class=\"small\"\
+    >In the four immaterial planes there is no body and no base: cittas arise with no physical support. Among the\
+    \ non-percipient beings, the reverse: a body with no mind at all.</p></div>\n    <div class=\"box\"><h3>Ring\
+    \ widths</h3><p class=\"small\">Disc widths are schematic, not measured. For the actual lifespans, from nine\
+    \ million human years to 84,000 aeons, see the reading Thirty-one planes.</p></div>\n  </div>"
+- id: D6
+  level: 6
+  title: Practice as a climb
+  lede: 'Calm rises through stacked floors of absorption, the first five each with fewer factors than the one below;
+    the immaterial floors keep the fifth jhāna''s two. Insight rises beside them: it can start from any floor, or
+    from none, and only insight passes the top of calm into the supramundane, where four paths, each taking Nibbāna
+    as object, cut the ten fetters.'
+  sources: 'Sources: Bodhi, <i>CMA</i> I (jhāna factors), VII (requisites), IX (calm, insight, paths); Nārada, <i>Manual</i>
+    VII'
+  html: "<div class=\"btnrow ctl3\" id=\"d6-fet-btns\" role=\"group\" aria-label=\"Attainment\"></div>\n  <div class=\"\
+    viz3d\" id=\"d6-climb\"><span class=\"hint3\">drag to turn · choose a stage</span></div>\n  <p class=\"cap\"\
+    \ id=\"d6-fet-cap\"></p>\n  <div class=\"cols\" style=\"align-items:start\">\n    <div class=\"fig\"><div class=\"\
+    lab\">The 37 requisites are 14 states</div><div id=\"d6-req\"></div></div>\n    <div class=\"box tint\"><h3>Reading\
+    \ the climb</h3><p class=\"small\">A factor's post ends on the last floor that has it: initial and sustained\
+    \ application go first, then zest, then happiness, which gives way to equanimity; one-pointedness runs to the\
+    \ top. The immaterial floors keep the fifth jhāna's two factors and change only the object; drawn as empty frames,\
+    \ they are still planes of existence (D5). Dashed links: insight may start from any floor; dry insight starts\
+    \ from the ground with momentary concentration.</p><p class=\"small\">The table: each dot is one place a state\
+    \ appears among the 37; energy appears nine times, mindfulness eight, wisdom five, concentration four, faith\
+    \ twice, the other nine once. Thirteen are mental factors; one, as a base of success, is citta itself.</p></div>\n\
+    \  </div>"
+- id: D7
+  level: 7
+  title: One moment, every lens
+  lede: 'The mango moment (seeing a ripe mango and wanting it) as five transparent layers on one time axis of seventeen
+    mind-moments: matter, citta, its factors, the conditions that link them, and kamma. Everything the site teaches
+    happens at once; the layers show it lined up. Choose a moment to cut through all five.'
+  sources: 'Sources: Bodhi, <i>CMA</i> II (factors), III–IV (process), V (kamma), VI (matter), VIII (conditions)'
+  html: "<div class=\"btnrow ctl3 sm\" id=\"d7-btns\" role=\"group\" aria-label=\"Moment\"></div>\n  <div class=\"\
+    viz3d\" id=\"d7-view\"><span class=\"hint3\">drag to turn · choose a moment</span></div>\n  <div class=\"legend\"\
+    ><span><i style=\"background:var(--nama)\"></i>universal factors</span><span><i style=\"background:var(--nama-2)\"\
+    ></i>occasional</span><span><i style=\"background:var(--nama);opacity:.4\"></i>beautiful</span><span><i style=\"\
+    background:var(--bad)\"></i>unwholesome</span><span><i style=\"background:var(--g5)\"></i>object condition</span><span><i\
+    \ style=\"background:var(--g4)\"></i>prenascence</span><span><i style=\"background:var(--g1)\"></i>proximity,\
+    \ repetition</span><span><i style=\"background:var(--kamma)\"></i>kamma</span></div>\n  <p class=\"cap\" id=\"\
+    d7-cap\"></p>\n  <div class=\"cols\">\n    <div class=\"box\"><h3>What lines up</h3><p class=\"small\">Red appears\
+    \ in the factors only at the javanas, and the same seven moments are the only ones that send kamma forward;\
+    \ every other moment of the process is a result arriving or a functional step. The object's matter lasts exactly\
+    \ as long as the process, seventeen moments, and every citta but seeing adds mind-born matter.</p></div>\n \
+    \   <div class=\"box\"><h3>How to use it</h3><p class=\"small\">Cut at each moment and say all five lenses aloud\
+    \ before reading the caption. The readings follow ideas one at a time; this model takes the opposite cut: one\
+    \ moment, every idea at once.</p></div>\n  </div>"

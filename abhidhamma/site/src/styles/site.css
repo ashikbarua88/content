@@ -323,3 +323,35 @@ svg.fig .fg-mu { fill: var(--muted); } svg.fig .fg-nm { fill: var(--nama); } svg
 @media (max-width: 1000px) { .page.dh { grid-template-columns: minmax(0, 48em); } }
 @media (max-width: 760px) { .dh-rows a { grid-template-columns: 1fr auto; } }
 svg.graph .gnode { cursor: pointer; } svg.graph .gnode:hover rect { stroke-width: 2.6; } svg.graph .gnode:focus { outline: none; } svg.graph .gnode:focus-visible rect { stroke: var(--ink); stroke-width: 3; }
+
+/* ---------- 3D models (src/scripts/models3d.js) ---------- */
+.m3toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 8px; font-family: var(--ui); }
+.m3toc a { border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; text-decoration: none; color: var(--ink); background: var(--sheet); font-size: 14px; }
+.m3toc a:hover { border-color: var(--accent); } .m3toc .lv { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.m3sec { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 8px; scroll-margin-top: 70px; }
+.m3sec h2 { margin-top: 4px; } .m3sec .lede { font-size: 18px; color: var(--muted); max-width: 40em; }
+.m3sec .cap, .m3sec .small { font: 14.5px/1.55 var(--ui); color: var(--muted); max-width: 46em; margin: 10px 0 16px; }
+.m3sec .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; } @media (max-width: 760px) { .m3sec .cols { grid-template-columns: 1fr; } }
+.m3sec .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font: 12.5px var(--ui); color: var(--muted); margin: 8px 0; }
+.m3sec .legend span { display: inline-flex; align-items: center; gap: 5px; } .m3sec .legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; flex: none; }
+.viz3d { position: relative; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: radial-gradient(120% 90% at 50% 35%, var(--sheet) 0%, var(--faint) 100%); min-height: 120px; margin: 8px 0; }
+.viz3d canvas.c3 { display: block; cursor: grab; } .viz3d canvas.c3:active { cursor: grabbing; }
+.viz3d .labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.lbl3 { position: absolute; left: 0; top: 0; font-family: var(--ui); font-size: 12px; line-height: 1.2; white-space: nowrap; color: var(--ink); background: color-mix(in srgb, var(--sheet) 80%, transparent); padding: 1px 5px; border-radius: 4px; }
+.lbl3.p { font-family: var(--body); font-style: italic; font-size: 14px; } .lbl3.nd { font-weight: 600; } .lbl3.sm { font-size: 11px; color: var(--muted); } .lbl3.sm2 { font-size: 10.5px; } .lbl3.xs { font-size: 10px; padding: 0 4px; } .lbl3.el { font-size: 10.5px; font-style: italic; }
+.lbl3.badge { color: var(--on-accent); font-weight: 700; font-size: 11px; border-radius: 999px; padding: 1px 7px; } .lbl3.cap3 { font-size: 10px; letter-spacing: .1em; color: var(--muted); font-weight: 600; background: none; } .lbl3 i { font-family: var(--body); }
+.viz3d .hint3 { position: absolute; right: 8px; bottom: 6px; font: 11px var(--ui); color: var(--muted); pointer-events: none; }
+.viz3d .tip3 { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; font: 12px var(--ui); background: var(--ink); color: var(--sheet); padding: 2px 7px; border-radius: 4px; opacity: 0; }
+.nogl { padding: 30px 18px; text-align: center; color: var(--muted); font: 14px var(--ui); }
+.btnrow { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.pill { border: 1px solid var(--line); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 4px 11px; font: 13px var(--ui); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+.btnrow.sm .pill { font-size: 12px; padding: 3px 9px; } .pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.pill[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+@media print { .viz3d .hint3, .ctl3, .viz3d .tip3 { display: none !important; } }
+.m3cards { list-style: none; margin: 16px 0 10px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.m3cards a { display: grid; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--sheet); color: var(--ink); text-decoration: none; }
+.m3cards a:hover { border-color: var(--accent); }
+.m3cards img { width: 100%; height: 150px; object-fit: cover; background: #fff; }
+.m3cards .lv { font: 11px var(--ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 10px 12px 0; }
+.m3cards .t { font: 500 17px/1.25 var(--display); padding: 2px 12px 12px; }
+.sw3 { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: baseline; }

@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { levels, u } from "../../lib/atlas.js";
+const models = (await getCollection("models3d")).sort((a, b) => a.data.level - b.data.level);
+---
+<Base title="In three dimensions" nav="explore" description="Seven 3D models, one for each level of study: turn them, take them apart, and see the categories, elements, processes, conditions, planes, practice and one moment in depth.">
+  <div class="wrap m3page" style="max-width:980px;padding-top:34px">
+    <p class="crumbs"><a href={u("explore/")}>Explore</a> › In three dimensions</p>
+    <h1>In three dimensions</h1>
+    <p class="dek" style="max-width:38em">Seven models, one for each level of study. Drag any model to turn it; the buttons above a model change what it shows. Each comes with a caption that says what to look for.</p>
+    <nav class="m3toc" aria-label="Models">
+      {models.map((m) => <a href={"#" + m.id}><span class="lv">Level {m.data.level}</span>{m.data.title}</a>)}
+    </nav>
+    {models.map((m) => (
+      <section class="m3sec d3p" id={m.id}>
+        <p class="lab">Level {m.data.level} · {levels[m.data.level]?.name}</p>
+        <h2>{m.data.title}</h2>
+        <p class="lede">{m.data.lede}</p>
+        <Fragment set:html={m.data.html} />
+        {m.data.sources && <p class="src ui">Sources: <Fragment set:html={m.data.sources.replace(/^Sources:\s*/, "")} /></p>}
+      </section>
+    ))}
+  </div>
+  <script>
+    import "../../scripts/three-models.js";
+  </script>
+</Base>

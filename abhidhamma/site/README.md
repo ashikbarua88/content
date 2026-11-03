@@ -35,6 +35,7 @@ The website is the single source of truth. Every word is in `src/content/`, neve
 | Levels; the parts that group concepts and readings | `src/content/levels.yaml`, `parts.yaml` |
 | Page chrome (home, about, library) | `src/pages/*.astro` |
 | Figures: drawing code, and the tables they draw | `src/figures/<name>.js`, `src/data/figures/<name>.json` |
+| 3D models: their titles, captions and markup | `src/content/models3d.yaml`; the scenes in `src/scripts/models3d.js` (three.js r128) |
 
 Tables that are not prose are in `src/data/structure.json`: the following.
 
@@ -72,6 +73,8 @@ npm run preview
 - `src/styles/atlas-tokens.css`: the colours.
 
 Run it only after the atlas's drawings change, then commit the results.
+
+`node tools/render-models.mjs`, run after a build, refreshes the 3D previews on Explore (`public/models/`).
 
 The build itself needs a browser only for the book PDF, which CI installs.
 

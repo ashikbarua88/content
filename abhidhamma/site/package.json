@@ -15,6 +15,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "@supabase/supabase-js": "^2.118.0",
     "astro": "^6.4.8",
-    "pagefind": "^1.6.0"
+    "pagefind": "^1.6.0",
+    "three": "^0.128.0"
   }
 }

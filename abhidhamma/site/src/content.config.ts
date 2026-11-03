@@ -77,4 +77,9 @@ const kinds = defineCollection({
   }),
 });
 
-export const collections = { readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };
+const models3d = defineCollection({
+  loader: file("src/content/models3d.yaml"),
+  schema: z.object({ level: z.number(), title: z.string(), lede: z.string(), sources: z.string(), html: z.string() }),
+});
+
+export const collections = { models3d, readings, concepts, links, parts, glossary, stories, levels, factors, matter, conditions, kinds };
