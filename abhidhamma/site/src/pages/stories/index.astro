@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import { stories, storyKinds, levels, withGlosses, storyUrl } from "../../lib/atlas.js";
+const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
+const n = Object.values(stories).flat().length;
+---
+<Base title="Stories" nav="stories" description="Stories from the Buddha's life, the Jātakas and the disciples, each told in full and read against an idea of the Abhidhamma.">
+  <div class="wrap" style="max-width:820px;padding-top:34px">
+    <h1>Stories</h1>
+    <p class="dek">The Abhidhamma is abstract; its tradition is not. These {n} stories come from the suttas, the Jātakas and the commentaries. Each has its own page with the full story, who is in it, where it is told, and a reading, marked as a study aid, that links it to an idea.</p>
+    <nav class="st-levels ui" aria-label="Levels">{Object.keys(stories).map((lv) => <a href={"#level-" + lv}>{levels[lv]?.name}</a>)}</nav>
+    {Object.keys(stories).map((lv) => (
+      <section id={"level-" + lv}>
+        <h2>{levels[lv]?.name}</h2>
+        <p class="muted">{levels[lv]?.q}</p>
+        <div class="stories">
+          {stories[lv].map((s) => (
+            <div class="story">
+              <h3><a href={storyUrl(s)}>{s.t}</a></h3>
+              <span class="src">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
+              <p>{s.s}</p>
+              <p class="r" set:html={ital(s.r)} />
+              <p class="ui st-more"><a href={storyUrl(s)}>Read the full story<span class="vh">: {s.t}</span> →</a></p>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>

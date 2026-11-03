@@ -364,3 +364,17 @@ svg.graph.hl .gedge.on { opacity: 1 !important; stroke-width: 2.2 !important; }
 .m3sub { margin: 30px 0 8px; font-size: 1.15rem; }
 #d4-comp-info { margin-top: 12px; } #d4-comp-info h3 .sw3 { margin-right: 6px; }
 .m3conds { columns: 2 14em; padding-left: 1.1em; margin: 6px 0 0; } .m3conds li { break-inside: avoid; margin-bottom: 3px; }
+/* Stories: the index and each story's own page */
+.st-levels { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 4px 0 18px; font-size: 14px; }
+.story h3 a { color: inherit; text-decoration: none; } .story h3 a:hover { text-decoration: underline; }
+.st-more { font-size: 14px; margin-top: 4px; }
+.st-facts { display: grid; gap: 8px; margin: 18px 0 26px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet); }
+.st-facts div { display: grid; grid-template-columns: 5.5em 1fr; gap: 10px; }
+.st-facts dt { font: 600 12px var(--ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.st-facts dd { margin: 0; } .st-facts ul { margin: 0; padding: 0; list-style: none; } .st-facts li { margin-bottom: 2px; }
+.st-body p { font-size: 18.5px; line-height: 1.65; }
+.st-reading { border-left: 3px solid var(--rupa-mark); padding-left: 16px; margin: 28px 0; }
+.st-reading h2 span { font-size: 14px; font-weight: 400; }
+.st-links, .st-texts li { font-size: 15px; }
+.st-texts ul { padding-left: 1.2em; } .st-texts li { margin-bottom: 4px; }
+@media (max-width: 560px) { .st-facts div { grid-template-columns: 1fr; gap: 2px; } }

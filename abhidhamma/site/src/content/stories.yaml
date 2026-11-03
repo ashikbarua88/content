@@ -1,17 +1,52 @@
-# Stories from the Buddha's life, the Jātakas and the disciples, by level. 'reading' links each to an idea and is marked on the site as a study aid.
+# Stories from the Buddha's life, the Jātakas and the disciples, by level.
+# story: the short telling shown in lists. detail: the full retelling, paragraph by paragraph, on the story's own page.
+# setting, people, texts (where it is told, with a link where a public translation exists) and note (on the sources).
+# 'reading' links each story to an idea and is marked on the site as a study aid. Retold, not quoted, except for short lines.
 - id: s01
   level: 1
   kind: life
   title: Where the Abhidhamma was first taught
   source: Atthasālinī, introduction
+  setting: Tāvatiṃsa heaven and Lake Anotatta, in the seventh rains retreat after the awakening
+  people:
+    - { name: The Buddha, who: "teaching the devas for three months" }
+    - { name: His mother, who: "Queen Mahāmāyā, who died seven days after his birth and was reborn as a deva" }
+    - { name: Sāriputta, who: "the chief disciple, who received each day's teaching in outline" }
   story: >-
     The commentary tells that the Buddha spent a rainy season in the Tāvatiṃsa heaven, teaching the Abhidhamma
     to the devas, among them his mother, reborn as a deva. Each day he came down to Lake Anotatta, where he
     gave Sāriputta the outline, and Sāriputta taught it to five hundred monks. At the end of the rains he
     descended at Saṅkassa. The Tipiṭaka itself does not tell this story.
+  detail:
+    - >-
+      In the seventh year after his awakening, the commentaries say, the Buddha performed the Twin Miracle at
+      Sāvatthī, and then, as every Buddha does, went up to the Tāvatiṃsa heaven for the rains. He sat on Sakka's
+      stone seat beneath the coral tree, and devas from ten thousand world-systems gathered to hear him. At their
+      head was his mother. She had died seven days after his birth and was reborn as a deva; she came down from
+      the Tusita heaven to listen. The teaching he gave her, the tradition says, was the Abhidhamma, a debt repaid
+      to the one who had carried him.
+    - >-
+      The teaching went on without a break for three months. At the hour for alms the Buddha created a likeness of
+      himself to carry on the discourse, went to gather food, and ate beside Lake Anotatta in the Himalaya.
+      Sāriputta waited on him there, and the Buddha gave him the method of that day's teaching in outline: "this
+      much has been taught". Sāriputta, with his gift for analysis, could unfold the whole from the outline, and he
+      taught it to the five hundred monks who were his pupils. The commentary adds that in a former life they had
+      been bats in a cave who heard two monks reciting the Abhidhamma, and they took it in again now with ease.
+    - >-
+      At the end of the rains, on the full-moon day of Pavāraṇā, the Buddha came down at the city of Saṅkassa by a
+      stairway of jewels, with devas on stairways of gold and silver on either side. The place became one of the
+      great pilgrimage sites. The order of the books as the monks recite them, the commentary says, was fixed by
+      Sāriputta, which is why he is honoured as the first teacher of the Abhidhamma.
+  texts:
+    - { ref: "Atthasālinī, Nidānakathā (introduction); translated as The Expositor, by Pe Maung Tin" }
+    - { ref: "Dhammapada commentary on v. 181 (the descent at Saṅkassa)" }
+  note: >-
+    The story is told in the commentaries of the fifth century, not in the canon. It is the tradition's answer to
+    a question it took seriously: if the Abhidhamma is the Buddha's word, when and to whom did he teach it?
+    Modern scholarship generally dates the books of the Abhidhamma Piṭaka later than the main body of the suttas.
   reading: >-
-    This is the tradition's account of where the seven books of Plate 1 came from, and why Sāriputta is
-    honoured as the first teacher of the Abhidhamma.
+    This is the tradition's account of where the seven books described in “The library” came from, and why
+    Sāriputta is honoured as the first teacher of the Abhidhamma.
   question: Why might a tradition place the first teaching of the Abhidhamma among devas rather than humans?
   plates:
     - "1"
@@ -21,12 +56,39 @@
   kind: jataka
   title: The last line of every Jātaka
   source: Jātaka, closing identification
+  setting: The end of each of the 547 birth stories
+  people:
+    - { name: The Bodhisatta, who: "the Buddha-to-be, in each of his former lives" }
+    - { name: The disciples, who: "Ānanda, Sāriputta, Devadatta and others, recognised in earlier roles" }
   story: >-
     Each Jātaka ends by naming who was who: “At that time, so-and-so was the king, and I myself was the
     ascetic.” One continuity is followed across many lives as if it were one person.
+  detail:
+    - >-
+      A Jātaka has a fixed shape. It opens with a story of the present: something happens among the monks, and
+      the Buddha says this is not the first time. Then comes the story of the past, usually set when Brahmadatta
+      was reigning in Benares, with verses spoken at its turning points. Last comes the connection
+      (samodhāna), in which the Buddha names who was who.
+    - >-
+      The connection always runs the same way: “At that time Devadatta was the king, Ānanda was the minister,
+      the Buddha's following was the company of ascetics, and I myself was the teacher.” The cast changes roles
+      from tale to tale. Devadatta is a cruel king, a jealous monkey, a greedy brahmin; Ānanda is often a loyal
+      companion; Sāriputta a wise adviser. The Bodhisatta is a king, a hare, a monkey, a merchant, a tree spirit.
+    - >-
+      Only the verses of the Jātakas belong to the canon. The prose that carries them, the frame story and the
+      closing identification are commentary, collected in Sri Lanka and put into Pāli around the fifth century.
+      But the closing line is where the collection does its teaching: across all these bodies and births, the
+      same name is used for one ongoing stream.
+  texts:
+    - { ref: "Jātaka verses (Khuddaka Nikāya)", url: "https://suttacentral.net/ja1" }
+    - { ref: "Jātakaṭṭhakathā (the prose and the identifications); translated by E. B. Cowell and others, 1895–1907" }
+  note: >-
+    The identifications are part of the commentary, not of the canonical verses. Many of the tales are older
+    Indian fables that the tradition took in and gave a Buddhist frame.
   reading: >-
-    Conventional truth at work (Plate 2). Ultimately there is only a stream of cittas and matter, each moment
-    conditioning the next. “The Bodhisatta” names the stream: neither the same person, nor a different one.
+    Conventional truth at work (“A chariot of parts”). Ultimately there is only a stream of cittas and matter,
+    each moment conditioning the next. “The Bodhisatta” names the stream: neither the same person, nor a
+    different one.
   question: What does the word “I” refer to in “I was the ascetic”?
   plates:
     - "2"
@@ -36,12 +98,44 @@
   kind: disc
   title: Vakkali and the body
   source: SN 22.87
+  setting: A potter's shed in Rājagaha, and Black Rock on the slope of Isigili
+  people:
+    - { name: Vakkali, who: "a monk who loved the sight of the Buddha, now gravely ill" }
+    - { name: The Buddha, who: "visiting the sick" }
   story: >-
     The monk Vakkali longed to keep looking at the Buddha. The Buddha said: “Enough, Vakkali. What is there to
     see in this foul body? Whoever sees the Dhamma sees me.”
+  detail:
+    - >-
+      The commentary says Vakkali was a brahmin of Sāvatthī who went forth for one reason: so that he could
+      always see the Buddha, whose body he found beautiful beyond anything. He followed him about and neglected
+      his practice. At last the Buddha sent him away. In despair Vakkali climbed Vulture Peak to throw himself
+      off, and the Buddha appeared before him and taught him.
+    - >-
+      In the sutta, Vakkali lies sick in a potter's shed in Rājagaha and asks for the Buddha to come. When the
+      Buddha arrives, Vakkali tries to rise from his bed, and is told to lie still. He says he has long wanted to
+      come and see the Buddha but had no strength. The Buddha answers: “Enough, Vakkali. Why do you want to see
+      this foul body? One who sees the Dhamma sees me; one who sees me sees the Dhamma.”
+    - >-
+      Then the Buddha questions him, as he questioned the first five disciples: is form permanent or
+      impermanent? Feeling, perception, formations, consciousness? Whatever is impermanent, is it fit to be
+      regarded as “mine, I, my self”? Vakkali answers rightly each time.
+    - >-
+      Vakkali asks to be carried to Black Rock on the slope of Isigili, saying a monk like him should not die
+      inside a house. There he takes the knife. Afterwards the Buddha shows the monks a smoky cloud moving in all
+      directions: Māra, searching for the place where Vakkali's consciousness has been established. It is
+      nowhere, the Buddha says: Vakkali has attained final Nibbāna.
+  texts:
+    - { ref: "SN 22.87 Vakkali Sutta", url: "https://suttacentral.net/sn22.87" }
+    - { ref: "Dhammapada commentary on v. 381 (the earlier episode at Vulture Peak)" }
+    - { ref: "AN 1, the list of foremost disciples: Vakkali, foremost among those resolved through faith" }
+  note: >-
+    The commentaries tell Vakkali's story in more than one way. In the Dhammapada commentary he becomes an arahant
+    on Vulture Peak; in the sutta he takes his own life when ill, and the Buddha declares him free. The suttas
+    treat a few such deaths (Channa, Godhika) in the same careful way.
   reading: >-
     Even “the Buddha” is a convention for aggregates. What is really to be seen are dhammas and their
-    characteristics, the shift Plate 2 asks of you.
+    characteristics, the shift “A chariot of parts” asks of you.
   question: What would it mean to see a teacher in dhammas rather than as a person?
   plates:
     - "2"
@@ -50,13 +144,41 @@
   kind: disc
   title: Nun Vajirā's chariot
   source: SN 5.10
+  setting: The Blind Men's Grove outside Sāvatthī
+  people:
+    - { name: Vajirā, who: "a nun, sitting alone for the day's meditation" }
+    - { name: Māra, who: "the tempter, trying to make her afraid" }
   story: >-
     Māra asked the nun Vajirā who had created “this being”. She answered: “Why do you assume a being? This is
     a heap of formations. As the word ‘chariot’ is used when the parts are assembled, so ‘a being’ is the
     convention when the aggregates are present.”
+  detail:
+    - >-
+      In the morning Vajirā went into Sāvatthī for alms, and after her meal she went to the Blind Men's Grove to
+      sit for the day under a tree. Māra wanted to make her afraid and break her concentration, and came to her
+      with a question in verse: by whom was this being created? Where is the one who makes beings? Where does a
+      being arise, and where does it cease?
+    - >-
+      Vajirā knew at once who was speaking. Her answer, in four verses, became one of the most quoted passages in
+      the canon. Why do you assume “a being”? Is that your view, Māra? This is a mere heap of formations; no
+      being is found here. Just as the word “chariot” is used when the parts are put together, so “a being” is
+      the convention when the aggregates are there.
+    - >-
+      Her last verse goes further: it is only suffering that comes to be, suffering that stands and falls away.
+      Nothing but suffering comes to be, nothing but suffering ceases. Māra, knowing he had been seen through,
+      vanished, sad and disappointed.
+    - >-
+      Centuries later the monk Nāgasena used the same chariot to answer King Milinda: is the axle the chariot?
+      the wheels? the pole? Neither the parts nor something apart from them, and yet “chariot” is a true name.
+  texts:
+    - { ref: "SN 5.10 Vajirā Sutta", url: "https://suttacentral.net/sn5.10" }
+    - { ref: "Milindapañha, the chariot simile (Book II)" }
+  note: >-
+    The Saṃyutta Nikāya's chapter on nuns (SN 5) has ten such meetings with Māra, each answered in verse. Vajirā's
+    is the one the Abhidhamma commentaries quote when they explain conventional truth.
   reading: >-
-    Her reply is the hinge of Plate 2: the five aggregates on the left of its diagram, the convention “a
-    being” on top of them.
+    Her reply is the hinge of “A chariot of parts”: the five aggregates underneath, the convention “a being” on
+    top of them.
   question: Is Vajirā saying that beings do not exist, or saying what the word refers to?
   plates:
     - "2"
@@ -65,13 +187,44 @@
   kind: disc
   title: Kisāgotamī and the mustard seed
   source: Dhammapada commentary, v. 114
+  setting: Sāvatthī and the Jetavana monastery
+  people:
+    - { name: Kisāgotamī, who: "“lean Gotamī”, a young mother from a poor family" }
+    - { name: The Buddha, who: "at Jetavana" }
   story: >-
     Mad with grief, Kisāgotamī carried her dead child from house to house asking for medicine. The Buddha
     asked her for a mustard seed from a house where no one had died. She found none, laid the child down, and
     understood that death comes to all.
+  detail:
+    - >-
+      Gotamī was called Kisā, “lean”, for her thin frame. She came from a poor family and married into a rich
+      one, where she was treated with contempt until she bore a son. Then she was honoured. When the boy was old
+      enough to run about, he died.
+    - >-
+      She could not accept it. Thinking that her honour would go with him, and unable to believe he was gone, she
+      carried his body on her hip from door to door in Sāvatthī, asking for medicine for her son. People laughed
+      at her. A wise man, seeing her state, told her there was one who knew the medicine: the Buddha, at
+      Jetavana.
+    - >-
+      The Buddha told her he did know the medicine. Bring a mustard seed, he said, from a house in which no one
+      has ever died. She went from house to house. Everyone would gladly give a seed; but in every house someone
+      had died: “the living are few, the dead are many.” By evening she understood. This was not her misfortune
+      alone; it was the way of all who live. She took the child to the charnel ground and laid him down.
+    - >-
+      She returned to the Buddha and asked to go forth. As a nun, the commentary says, she was one day watching
+      the flames of a lamp flare up and die down, and saw in them the rising and falling of beings. The Buddha
+      spoke the verse: better one day seeing the deathless than a hundred years without seeing it. She became an
+      arahant, and he named her foremost among the nuns who wore rough robes.
+  texts:
+    - { ref: "Dhammapada v. 114, with its commentary ", url: "https://suttacentral.net/dhp100-115" }
+    - { ref: "Therīgāthā 10.1, her own verses (vv. 213–223)", url: "https://suttacentral.net/thig10.1" }
+    - { ref: "SN 5.3, Kisāgotamī and Māra", url: "https://suttacentral.net/sn5.3" }
+  note: >-
+    The mustard seed belongs to the commentary. Her own verses in the Therīgāthā speak of a woman's sorrows in
+    general and of her awakening, without the seed.
   reading: >-
-    Her grief is displeasure (domanassa), which on Plate 3 occurs only in the two hate-rooted cittas: grief is
-    aversion toward loss. The search turned a private wound into a universal fact.
+    Her grief is displeasure (domanassa), which in “A map of the eighty-nine” occurs only in the two hate-rooted
+    cittas: grief is aversion toward loss. The search turned a private wound into a universal fact.
   question: Why would the Abhidhamma class grief with aversion rather than with love?
   plates:
     - "3"
@@ -81,14 +234,40 @@
   kind: disc
   title: Why Moggallāna smiled
   source: SN 19.1
+  setting: The path down from Vulture Peak, outside Rājagaha
+  people:
+    - { name: Mahā Moggallāna, who: "the disciple foremost in psychic power" }
+    - { name: Lakkhaṇa, who: "a fellow monk walking with him" }
+    - { name: The Buddha, who: "at the Bamboo Grove" }
   story: >-
     Coming down Vulture Peak, Mahā Moggallāna smiled. Asked why, he said he had seen a skeleton moving through
     the air, pursued by crows and vultures. The Buddha confirmed that he too had seen such beings, and named
     the deeds that led there.
+  detail:
+    - >-
+      Lakkhaṇa and Mahā Moggallāna were living on Vulture Peak. One morning, walking down to Rājagaha for alms,
+      Moggallāna smiled at a certain place. Lakkhaṇa asked why. “This is not the time for that question,” he said.
+      “Ask me in the presence of the Blessed One.”
+    - >-
+      After the meal, before the Buddha, Lakkhaṇa asked again. Moggallāna said that on the way down he had seen a
+      skeleton travelling through the air, with vultures, crows and hawks following it, pecking between its ribs,
+      and it cried out in pain. It had struck him: how wonderful that there should be such a being.
+    - >-
+      The Buddha said his disciples live with vision and knowledge. He himself had seen that being before, but
+      had not spoken of it, because those who did not believe it would come to harm through disbelief. It had
+      been a cattle butcher in Rājagaha. After long ages in hell, it was now living out what remained of that
+      deed in such a body. The suttas that follow in the same chapter tell of twenty more such beings, each with
+      its deed.
+  texts:
+    - { ref: "SN 19.1 Aṭṭhi Sutta (the skeleton), and SN 19.2–21", url: "https://suttacentral.net/sn19.1" }
+    - { ref: "The same accounts in the Vinaya, Pārājika 4" }
+  note: >-
+    The commentary explains that an arahant's smile is never broad: it shows only at the corners of the mouth.
+    The Abhidhamma gives that smile its own kind of citta.
   reading: >-
-    An arahant smiles with one of five cittas, none of which makes kamma: citta 30 on Plate 3, the
-    smile-producing consciousness found only in arahants, or one of the four joyful great functional cittas.
-    What he saw belongs to the woeful planes of Plate 11.
+    An arahant smiles with one of five cittas, none of which makes kamma: the smile-producing consciousness found
+    only in arahants (in “A map of the eighty-nine”), or one of the four joyful great functional cittas. What he
+    saw belongs to the woeful planes of “Thirty-one planes”.
   question: In terms of citta, how does an ordinary person's smile differ from an arahant's?
   plates:
     - "3"
@@ -98,13 +277,44 @@
   kind: jataka
   title: Khantivādi, the teacher of patience
   source: Ja 313
+  setting: The royal park at Benares, in the reign of King Kalābu
+  people:
+    - { name: The ascetic, who: "the Bodhisatta, called Khantivādi, “the teacher of patience”" }
+    - { name: King Kalābu, who: "of Kāsi; Devadatta in a former life" }
+    - { name: The commander-in-chief, who: "who tended the ascetic; Sāriputta in a former life" }
   story: >-
     A drunken king, Kalābu, asked an ascetic what he taught. “Patience,” he said. To test him, the king had
     his hands, feet, nose and ears cut off. The ascetic felt no anger and wished the king long life. Leaving,
     the king was swallowed by the earth.
+  detail:
+    - >-
+      The Buddha told this story about a monk given to anger. Long ago, the Bodhisatta was born to a rich brahmin
+      family, gave away his wealth, and lived as an ascetic in the Himalaya. Coming down to Benares for salt and
+      vinegar, he stayed in the royal park.
+    - >-
+      King Kalābu came to the park with his dancers, drank, and fell asleep with his head on a favourite's lap.
+      The women, bored, wandered off and found the ascetic, and sat around him listening to him teach. The king
+      woke, found them gone, and came upon them in a rage. “What do you teach, ascetic?” “Patience, great king.”
+      “What is patience?” “Not to be angry when one is abused, struck or insulted.”
+    - >-
+      “Let us see your patience,” said the king, and called the executioner. The ascetic was flogged with thorny
+      lashes; his hands were cut off, then his feet, then his nose and ears. Each time the king asked what he
+      taught, and each time the answer was the same: patience, which is not in the skin or the limbs but deep in
+      the heart. The king kicked him in the chest and walked away.
+    - >-
+      The king's commander-in-chief wiped the blood away and begged him to be angry with the king alone, not with
+      the kingdom. “May the king live long,” said the ascetic. “Those like me do not get angry.” As the king left
+      the park the earth split open and he was drawn down into the fires of Avīci. The ascetic died that same
+      day.
+  texts:
+    - { ref: "Ja 313 Khantivādi Jātaka", url: "https://suttacentral.net/ja313" }
+    - { ref: "Jātakamālā 28 (Sanskrit retelling); the Diamond Sūtra recalls the same life" }
+  note: >-
+    The tale is told across Buddhist traditions. In the Mahāyāna Diamond Sūtra the Buddha recalls being cut
+    limb from limb by the King of Kaliṅga without any notion of a self, and so without anger.
   reading: >-
-    Plate 4 at its sharpest: non-hatred (adosa) and hatred (dosa) never share a citta. The king's fate returns
-    on Plate 10 as kamma that ripens in this very life.
+    “An ensemble of fifty-two” at its sharpest: non-hatred (adosa) and hatred (dosa) never share a citta. The
+    king's fate returns in “Kamma, death and rebirth” as kamma that ripens in this very life.
   question: Is patience only the absence of anger, or the presence of something else?
   plates:
     - "4"
@@ -114,13 +324,44 @@
   kind: jataka
   title: The monkey king's bridge
   source: Ja 407
+  setting: A great mango tree on the bank of the Ganges, in the Himalaya
+  people:
+    - { name: The monkey king, who: "the Bodhisatta, leader of eighty thousand monkeys" }
+    - { name: The king of Benares, who: "Ānanda in a former life" }
+    - { name: The jealous monkey, who: "Devadatta in a former life" }
   story: >-
     To save his troop from archers, a monkey king stretched himself across a river as a living bridge. The
     troop crossed over his back, but a jealous monkey leapt on him and broke it. The king of Benares, moved,
     tended him as he died.
+  detail:
+    - >-
+      The monkey king lived with his troop in a mango tree whose branches spread over the Ganges. Knowing the
+      danger, he had every fruit on the branches over the water eaten while still small. One mango, hidden by an
+      ant's nest, ripened and fell into the river, and floated down to Benares, where it was caught in the king's
+      bathing nets.
+    - >-
+      The king tasted it, and longed for more. He went upstream with his men, found the tree and the monkeys
+      eating, and surrounded it with archers to shoot them at dawn. The monkeys, trapped, came trembling to
+      their king.
+    - >-
+      He leapt across the river with a long bamboo tied to his foot, but it was short by the length of his own
+      body. So he held a branch on the far bank and made himself the last stretch of the bridge, and told the
+      troop to cross. Eighty thousand monkeys crossed over his back. Last came one who had always hated him, and
+      leapt down hard on his back and broke it.
+    - >-
+      The king of Benares had watched it all. He had the monkey king lowered gently, bathed, robed and laid on a
+      couch, and asked him why he had given his life for them. A king, the monkey answered, should be like this:
+      he should seek the welfare of all who depend on him, even at the cost of his own life. Then he died, and
+      the king honoured him as a king.
+  texts:
+    - { ref: "Ja 407 Mahākapi Jātaka", url: "https://suttacentral.net/ja407" }
+    - { ref: "Carved at the stūpa of Bhārhut, 2nd century BCE" }
+  note: >-
+    The story is among the earliest Jātakas to be carved in stone: a medallion at Bhārhut shows the bridge, the
+    archers and the king's men holding out a cloth.
   reading: >-
-    Compassion (karuṇā) is one of the variable beautiful factors on Plate 4. It joins a wholesome citta only
-    now and then, when the suffering of others is the object.
+    Compassion (karuṇā) is one of the variable beautiful factors in “An ensemble of fifty-two”. It joins a
+    wholesome citta only now and then, when the suffering of others is the object.
   question: Why does compassion need suffering as its object, while loving-kindness does not?
   plates:
     - "4"
@@ -130,11 +371,44 @@
   kind: disc
   title: Dhammadinnā on feeling
   source: MN 44
+  setting: The Bamboo Grove at Rājagaha
+  people:
+    - { name: Dhammadinnā, who: "a nun, formerly Visākha's wife" }
+    - { name: Visākha, who: "a lay follower of Rājagaha, already a non-returner" }
+    - { name: The Buddha, who: "who confirmed her answers" }
   story: >-
     Questioned by the layman Visākha, the nun Dhammadinnā explained that lust lies latent in pleasant feeling,
     aversion in painful feeling and ignorance in neutral feeling. The Buddha said he would have answered in
     the same way.
-  reading: "This joins Plate 3's colours to Plate 9's wheel: feeling (link 7) is where craving (link 8) takes hold."
+  detail:
+    - >-
+      The commentary tells the background. Visākha, a merchant of Rājagaha, heard the Buddha teach and in time
+      became a non-returner. When he came home he no longer smiled at his wife as before. When she learned why,
+      she asked to go forth, and soon became an arahant. Then Visākha came to put questions to her.
+    - >-
+      He asked her about identity: what the Buddha calls “personality”, how identity view arises and how it ends;
+      about the noble path and the three trainings; about formations of body, speech and mind, and the
+      attainment of cessation. Then he asked about feeling: pleasant, painful and neutral, and what lies latent
+      in each.
+    - >-
+      Lust lies latent in pleasant feeling, she said, aversion in painful feeling, ignorance in neutral feeling;
+      but not in every pleasant feeling. The pleasure of the first jhāna abandons lust; the pain of longing for
+      liberation abandons aversion; the neutral feeling of the fourth jhāna abandons ignorance.
+    - >-
+      He pressed on: what is the counterpart of pleasant feeling? of neutral feeling? of ignorance? of
+      liberation? And what is the counterpart of Nibbāna? “You have gone too far, friend Visākha,” she said. “The
+      holy life is lived with Nibbāna as its culmination.” Visākha reported all this to the Buddha, who said: “The
+      nun Dhammadinnā is wise. If you had asked me, I would have answered in the same way.”
+  texts:
+    - { ref: "MN 44 Cūḷavedalla Sutta", url: "https://suttacentral.net/mn44" }
+    - { ref: "Therīgāthā 1.12, her verse", url: "https://suttacentral.net/thig1.12" }
+    - { ref: "AN 1, the list of foremost disciples: Dhammadinnā, foremost among nuns who teach the Dhamma" }
+  note: >-
+    The Buddha's endorsement makes her answers the Buddha's word. MN 44 is one of the suttas the Abhidhamma
+    tradition draws on for its account of feeling and the latent tendencies.
+  reading: >-
+    This joins the colours of feeling in “A map of the eighty-nine” to the wheel in “The wheel across three
+    lives”: feeling (link 7) is where craving (link 8) takes hold.
   question: Which tendency does neutral feeling feed, and why is it the hardest to notice?
   plates:
     - "3"
@@ -144,13 +418,45 @@
   kind: disc
   title: Pukkusāti and the elements
   source: MN 140
+  setting: The potter Bhaggava's workshop in Rājagaha, one night
+  people:
+    - { name: Pukkusāti, who: "a monk who had gone forth out of faith in the Buddha, without ever having met him" }
+    - { name: The Buddha, who: "wandering in Magadha, unrecognised" }
+    - { name: Bhaggava, who: "the potter who lent his workshop" }
   story: >-
     One night in a potter's shed, the Buddha taught a stranger, Pukkusāti, to see his body as earth, water,
     fire, air, space and consciousness, none of it “mine”. Pukkusāti recognised his teacher, but while seeking
     robes for ordination he was killed by a cow. The Buddha declared him a non-returner.
+  detail:
+    - >-
+      The commentary says Pukkusāti was the king of Takkasilā, far to the north-west, and a friend by letter of
+      King Bimbisāra. Bimbisāra once sent him, engraved on a gold plate, an account of the Buddha, the Dhamma and
+      the Saṅgha. Pukkusāti read it, shaved his head, put on a robe, and walked alone the whole way to
+      Rājagaha.
+    - >-
+      In the sutta, the Buddha arrives at Rājagaha and asks the potter Bhaggava for a night in his workshop. A
+      monk is already there: Pukkusāti, who has gone forth under the Buddha's name without ever seeing him. Both
+      sit in silence most of the night. Then the Buddha asks whom he follows, and offers to teach.
+    - >-
+      He teaches that a person is made of six elements: earth, water, fire, air, space and consciousness. Each
+      is examined, inside the body and outside it: whatever is hard in the body, the hair, nails, teeth, bones,
+      is earth, and it is to be seen as “this is not mine, this I am not, this is not my self.” What remains is
+      a pure, bright equanimity, and even that is seen as conditioned. Pukkusāti understands that this is the
+      Teacher, and asks forgiveness for having called him “friend”.
+    - >-
+      He asks for full ordination. The Buddha does not ordain one without bowl and robes, so Pukkusāti goes out
+      to find them, and a cow gores him to death. The monks ask what has become of him. He was wise, the Buddha
+      says, and practised in line with the Dhamma: he has broken the five lower fetters and will reach
+      Nibbāna from the Pure Abodes without returning.
+  texts:
+    - { ref: "MN 140 Dhātuvibhaṅga Sutta", url: "https://suttacentral.net/mn140" }
+    - { ref: "Majjhima commentary on MN 140 (the king of Takkasilā)" }
+  note: >-
+    Three stories here end with a death by a cow: Pukkusāti, Bāhiya, and others in the commentaries. The
+    commentary explains it as one yakkha, in the form of a cow, settling an old grievance.
   reading: >-
-    The four great elements are the core of the 28 kinds of matter on Plate 5. Analysing the body into
-    elements is also one of the forty meditation subjects on Plate 12.
+    The four great elements are the core of the 28 kinds of matter in “How matter is made”. Analysing the body
+    into elements is also one of the subjects in “Forty meditation subjects”.
   question: If hardness, cohesion, heat and motion are all there is in “my hand”, what does “my” point to?
   plates:
     - "5"
@@ -160,14 +466,48 @@
   kind: disc
   title: "Bāhiya: in the seen, only the seen"
   source: Ud 1.10
+  setting: Suppāraka on the western coast, then the streets of Sāvatthī
+  people:
+    - { name: Bāhiya Dārucīriya, who: "“Bāhiya of the bark cloth”, honoured at Suppāraka as an arahant" }
+    - { name: A deva, who: "who had been his companion in a former life" }
+    - { name: The Buddha, who: "on his alms round" }
   story: >-
     Bāhiya stopped the Buddha on his alms round, begging to be taught. The Buddha said: “In the seen there
     will be only the seen, in the heard only the heard, in the sensed only the sensed, in the cognized only
     the cognized.” Bāhiya became an arahant there and then, and was killed by a cow soon after.
+  detail:
+    - >-
+      Bāhiya lived at Suppāraka by the sea, dressed in bark, and people honoured him as an arahant. The
+      commentary says he had been shipwrecked and came ashore naked, covered himself in bark, and was taken for a
+      holy man. One day the thought came to him: am I one of those who are arahants? A deva who had once been his
+      kinsman came to him and said: you are not, and you are not even on the way. There is one in Sāvatthī who
+      is.
+    - >-
+      Bāhiya set out at once, and travelled, the commentary says, the whole way in one night. At Jetavana he was
+      told the Buddha had gone into the city for alms. He hurried after him, fell at his feet in the street and
+      begged to be taught. “It is not the time,” said the Buddha; “I am on alms round.” Bāhiya asked a second
+      time, and a third: “It is hard to know how long the Blessed One will live, or how long I will.”
+    - >-
+      Then the Buddha taught him, standing there: “Bāhiya, train yourself thus: in the seen there will be only
+      the seen, in the heard only the heard, in the sensed only the sensed, in the cognized only the cognized.
+      When that is so, you will not be ‘with that’; when you are not ‘with that’, you will not be ‘in that’;
+      then you will be neither here nor beyond nor between the two. This is the end of suffering.”
+    - >-
+      Bāhiya's mind was freed on the spot. Soon after the Buddha left, a cow with a young calf attacked and killed
+      him. Returning from his round, the Buddha had the monks cremate the body and build a mound for it, and
+      declared that Bāhiya had attained final Nibbāna. He later named him foremost among those who understand
+      quickly.
+  texts:
+    - { ref: "Ud 1.10 Bāhiya Sutta", url: "https://suttacentral.net/ud1.10" }
+    - { ref: "Udāna commentary (the shipwreck, the one-night journey)" }
+    - { ref: "SN 35.95, the same teaching given to Mālukyaputta", url: "https://suttacentral.net/sn35.95" }
+  note: >-
+    The same short instruction appears in SN 35.95, given to the old monk Mālukyaputta, who asks for a teaching
+    in brief and is given this one, with verses that unpack it.
   reading: >-
-    Plate 7 shows where the instruction bites. Seeing itself, at moment 5, is a result and makes no kamma.
-    Liking, disliking and “I” enter only in the javanas.
-  question: At which moment of Plate 7 does “the seen” become “a mango I want”?
+    “The mango and the moment” shows where the instruction bites. Seeing itself, at moment 5, is a result and
+    makes no kamma. Liking, disliking and “I” enter only in the javanas.
+  question: At which moment of the process does “the seen” become “a mango I want”?
   plates:
     - "7"
     - "2"
@@ -176,13 +516,46 @@
   kind: disc
   title: Nanda, guardian of the doors
   source: Ud 3.2; AN 8.9; AN 1.230
+  setting: Kapilavatthu, Jetavana, and a journey to the Tāvatiṃsa heaven
+  people:
+    - { name: Nanda, who: "the Buddha's half-brother, son of Mahāpajāpatī Gotamī" }
+    - { name: Janapadakalyāṇī, who: "“the beauty of the land”, the Sakyan bride he left behind" }
+    - { name: The Buddha, who: "his elder half-brother and teacher" }
   story: >-
     The Buddha's half-brother Nanda was ordained on his wedding day and pined for his bride. In time he became
     an arahant, and the Buddha named him foremost among those who guard the sense doors: whichever way Nanda
     looked, he looked with full awareness, so that longing and grief could not flow in.
+  detail:
+    - >-
+      The commentary tells how it began. On the Buddha's first visit home, on the day of Nanda's wedding and
+      consecration, the Buddha handed him his bowl and walked away. Nanda, out of respect, followed him to the
+      monastery holding it, and his bride called after him, hair half combed: “Come back soon, my lord.” At the
+      monastery the Buddha asked if he would go forth, and Nanda could not bring himself to refuse.
+    - >-
+      In the Udāna, Nanda tells the monks he is not happy in the holy life: he keeps thinking of the Sakyan girl
+      and her parting words, and means to give up the training. The Buddha takes him by the arm and, as quickly
+      as one might bend an arm, takes him to the Tāvatiṃsa heaven, where five hundred nymphs with feet like doves
+      are waiting on Sakka. Which is lovelier, he asks, your bride or these? Beside them, says Nanda, she is like a
+      scorched she-monkey. The Buddha promises him the nymphs if he practises.
+    - >-
+      Back at Jetavana, the other monks hear of it and call Nanda a hireling, a monk bought for nymphs. Ashamed,
+      he goes off alone and practises with all his strength, and soon becomes an arahant. He comes to release
+      the Buddha from his promise; the Buddha already knows.
+    - >-
+      In AN 8.9 the Buddha praises him: Nanda is strong, handsome and passionate, and yet he lives the holy life
+      in full, because he guards the doors of his senses, eats with moderation, stays wakeful, and is mindful.
+      If he looks to the east, he looks having considered it fully, so that longing and grief do not flood in.
+  texts:
+    - { ref: "Ud 3.2 Nanda Sutta", url: "https://suttacentral.net/ud3.2" }
+    - { ref: "AN 8.9 Nanda Sutta", url: "https://suttacentral.net/an8.9" }
+    - { ref: "AN 1, the list of foremost disciples: Nanda, foremost among those who guard the doors of the senses" }
+    - { ref: "Aśvaghoṣa's Saundarananda, a Sanskrit poem on the same story, 1st–2nd century" }
+  note: >-
+    The she-monkey comparison is in the Udāna itself; the commentary adds that on the way the Buddha showed him
+    a monkey burned in a forest fire, to make the point.
   reading: >-
-    The doors of sense restraint are the doors of Plate 7. Guarding them means the seeing is not followed by
-    unwholesome javanas.
+    The doors of sense restraint are the doors of “The mango and the moment”. Guarding them means the seeing is
+    not followed by unwholesome javanas.
   question: Can a door be guarded without being closed?
   plates:
     - "7"
@@ -192,12 +565,40 @@
   kind: jataka
   title: Makhādeva's first grey hair
   source: Ja 9
+  setting: Mithilā, capital of Videha
+  people:
+    - { name: King Makhādeva, who: "the Bodhisatta, a righteous king of very long life" }
+    - { name: The barber, who: "Ānanda in a former life" }
+    - { name: The prince, who: "his eldest son; Rāhula in a former life" }
   story: >-
     King Makhādeva told his barber to report the first grey hair. When it came, the king held it in his hand,
     saw death approaching, handed the kingdom to his son and went forth.
+  detail:
+    - >-
+      The Buddha told this story when the monks were talking about his own going forth. Makhādeva lived in an
+      age when lives were long: the tale gives him eighty-four thousand years as a prince, as many as viceroy,
+      and as many as king.
+    - >-
+      One day he told his barber: “When you see a grey hair on my head, tell me.” Many years later the barber
+      found one, drew it out with tweezers and laid it in the king's hand. The king looked at it and felt as if
+      the king of death had come and was standing beside him. He called it a messenger of the gods (devadūta).
+    - >-
+      He gave the barber a village, called his eldest son, and handed him the kingdom, asking him to do the same
+      when his own first grey hair appeared. Then he went forth in a mango grove near the city, cultivated the
+      four divine abidings, and after death was reborn in the Brahmā world.
+    - >-
+      His line kept the custom for eighty-four thousand kings. The last of them was Nimi, whose story is told
+      in Ja 541: the Bodhisatta born again at the end of his own line, to close the circle.
+  texts:
+    - { ref: "Ja 9 Makhādeva Jātaka", url: "https://suttacentral.net/ja9" }
+    - { ref: "MN 83 Makhādeva Sutta, the canonical telling", url: "https://suttacentral.net/mn83" }
+  note: >-
+    MN 83 tells the same story in the canon, and adds the line of kings down to Nimi, and how the custom was
+    finally broken by Nimi's son.
   reading: >-
     A small object can carry a large process. The same sight of a grey hair could run javanas of vanity or of
-    urgency; which one runs depends on attention at the turning point of determining (Plate 7).
+    urgency; which one runs depends on attention at the turning point of determining (“The mango and the
+    moment”).
   question: What decides whether a grey hair produces worry or wisdom?
   plates:
     - "7"
@@ -207,11 +608,41 @@
   kind: life
   title: Rāhula and the mirror
   source: MN 61
+  setting: Ambalaṭṭhikā, in the Bamboo Grove at Rājagaha
+  people:
+    - { name: Rāhula, who: "the Buddha's son, a novice of about seven, the commentary says" }
+    - { name: The Buddha, who: "his father and teacher" }
   story: >-
     The Buddha asked his young son Rāhula what a mirror is for. “For reflection, sir.” “In the same way,” said
     the Buddha, “reflect before, during and after every action of body, speech and mind: does it lead to harm
     for myself, for others, or both?”
-  reading: Reflection is a discipline for the javanas, where volition becomes kamma (Plates 7 and 10).
+  detail:
+    - >-
+      Seeing the Buddha coming in the evening, Rāhula set out a seat and water for his feet. The Buddha washed
+      his feet and left a little water in the vessel. “Do you see this little water left, Rāhula? Just so little
+      is the recluseship of those who are not ashamed to tell a deliberate lie.” He threw the water away: just
+      so is their recluseship thrown away. He turned the vessel upside down, and then upright, empty: just so
+      overturned, just so empty.
+    - >-
+      Then an elephant: a royal tusker that goes into battle using its feet, its body, its tusks and its tail,
+      but keeps its trunk back, has not yet given its life to the fight. When it uses its trunk too, there is
+      nothing it will not do. So with one who is not ashamed to lie: there is no evil he will not do. “Train
+      thus, Rāhula: I will not tell a lie even as a joke.”
+    - >-
+      Then the mirror. “What is a mirror for?” “For reflection, venerable sir.” So, before doing an action with
+      the body, while doing it and after it, one should reflect: does this lead to my own affliction, to
+      others', or to both? Is it unwholesome, with painful results? If so, do not do it; stop it; and if it is
+      done, confess it to the teacher or a wise companion and restrain yourself in future. The same for speech,
+      and for mind; and if the act was good, abide happy and glad, training day and night.
+  texts:
+    - { ref: "MN 61 Ambalaṭṭhikārāhulovāda Sutta", url: "https://suttacentral.net/mn61" }
+    - { ref: "Named by King Asoka, in his Bhabru edict, among the texts monks and lay people should hear often" }
+  note: >-
+    Rāhula has three teachings named for him in the Majjhima: MN 61, 62 and 147. In the last, years later, he
+    becomes an arahant.
+  reading: >-
+    Reflection is a discipline for the javanas, where volition becomes kamma (“The mango and the moment” and
+    “Kamma, death and rebirth”).
   question: Why reflect after an action, when its kamma is already made?
   plates:
     - "7"
@@ -221,13 +652,42 @@
   kind: life
   title: The night of awakening
   source: MN 36; Ud 1.1–1.3
+  setting: The foot of the Bodhi tree at Uruvelā, on the bank of the Nerañjarā
+  people:
+    - { name: The Bodhisatta, who: "aged thirty-five, six years after leaving home" }
   story: >-
     Under the Bodhi tree, in the first watch of the night he recalled his past lives; in the second he saw
     beings pass away and reappear according to their kamma; in the third he realised the destruction of the
     taints. In the days that followed he reviewed dependent origination forward and in reverse.
+  detail:
+    - >-
+      Having given up the austerities and eaten again, he sat beneath the tree and entered the four jhānas. With
+      his mind concentrated, pure and pliant, he turned it to knowledge.
+    - >-
+      In the first watch of the night he recollected his past lives: one birth, two, a hundred thousand, through
+      many aeons of the world's contraction and expansion, with names, families, food, pleasures and pains, and
+      the way each life ended. In the second watch, with the divine eye, he saw beings dying and being reborn,
+      inferior and superior, fortunate and unfortunate, according to their deeds. In the third watch he knew the
+      four noble truths, and the taints of sensual desire, becoming and ignorance were destroyed. “Ignorance was
+      dispelled and knowledge arose, darkness was dispelled and light arose.”
+    - >-
+      The Udāna adds what followed. For seven days he sat in one posture at the foot of the tree, experiencing
+      the bliss of release. At the end of the week he attended to dependent origination: in the first watch in
+      forward order, how suffering arises; in the second in reverse, how it ceases; in the third in both. At the
+      end of each watch he spoke a verse: when things become clear to the ardent, meditating brahmin, all his
+      doubts vanish, for he understands their cause; he stands dispelling Māra's army, like the sun lighting up
+      the sky.
+  texts:
+    - { ref: "MN 36 Mahāsaccaka Sutta (the three knowledges)", url: "https://suttacentral.net/mn36" }
+    - { ref: "Ud 1.1–1.3 Bodhi Suttas", url: "https://suttacentral.net/ud1.1" }
+    - { ref: "Vinaya, Mahāvagga I.1 (the same weeks)", url: "https://suttacentral.net/pli-tv-kd1" }
+  note: >-
+    The commentaries spread the weeks after the awakening into seven, each at a different spot near the tree;
+    the fourth, in the jewelled chamber, is the setting of “Rays from the Jewel House”.
   reading: >-
-    The three watches map onto the atlas: past lives and the planes (Plates 10–11), kamma and its fruit (Plate
-    10), and the wheel with its ending (Plates 9 and 13).
+    The three watches map onto the readings: past lives and the planes (“Thirty-one planes”), kamma and its
+    fruit (“Kamma, death and rebirth”), and the wheel with its ending (“The wheel across three lives” and “The
+    tree of purification”).
   question: Why must dependent origination be seen in reverse as well as forward?
   plates:
     - "9"
@@ -238,13 +698,44 @@
   kind: disc
   title: Assaji's four lines
   source: Vinaya, Mahāvagga I.23
+  setting: The streets of Rājagaha, then the Bamboo Grove
+  people:
+    - { name: Assaji, who: "one of the first five disciples" }
+    - { name: Upatissa, who: "a wanderer under Sañjaya; later Sāriputta" }
+    - { name: Kolita, who: "his friend; later Mahā Moggallāna" }
   story: >-
     The wanderer Upatissa saw the monk Assaji on alms round and asked for his teacher's doctrine. Assaji gave
     it in one verse: “Of things that arise from a cause, the Tathāgata has told the cause, and also their
     cessation.” Upatissa, later Sāriputta, gained the eye of Dhamma on hearing it.
+  detail:
+    - >-
+      Upatissa and Kolita, two young brahmins of good family, had gone forth together under the wanderer Sañjaya.
+      They had learned all he could teach and found no end of suffering in it. They made a pact: whichever of
+      them first found the deathless would tell the other.
+    - >-
+      In Rājagaha, Upatissa saw a monk on alms round whose bearing was so calm, going and coming, looking ahead
+      and looking aside, that he thought: if anyone is an arahant, this monk is. He followed him until the meal
+      was over and then asked: whom do you follow, friend? What does your teacher say? Assaji answered that he
+      was new to the teaching and could not explain it at length, but would give its meaning in brief.
+    - >-
+      Then he spoke the verse: “Of those things that arise from a cause, the Tathāgata has told the cause, and
+      also what their cessation is: this is the doctrine of the great recluse.” As he heard it, the dustless eye
+      of Dhamma arose in Upatissa: whatever is subject to arising is all subject to cessation.
+    - >-
+      He went to Kolita, who saw from his face what had happened, and on hearing the verse attained the same.
+      They went to the Buddha at the Bamboo Grove with two hundred and fifty of Sañjaya's followers. Seeing them
+      coming, the Buddha said: these two will be my chief pair of disciples. Moggallāna became an arahant within a
+      week, Sāriputta within a fortnight.
+  texts:
+    - { ref: "Vinaya, Mahāvagga I.23–24", url: "https://suttacentral.net/pli-tv-kd1" }
+    - { ref: "Dhammapada commentary on vv. 11–12 (the background of the two friends)" }
+  note: >-
+    The verse, ye dhammā hetuppabhavā, became the most widely written words in the Buddhist world. It is found
+    stamped on clay seals, carved on images and placed inside stūpas from India to Southeast Asia.
   reading: >-
-    The shortest summary of Plates 8 and 9: whatever is conditioned has conditions, and they can cease.
-    Sāriputta went on to become the Abhidhamma's first teacher (Plate 1).
+    The shortest summary of “The web of twenty-four conditions” and “The wheel across three lives”: whatever is
+    conditioned has conditions, and they can cease. Sāriputta went on to become the Abhidhamma's first teacher
+    (“The library”).
   question: Why might a statement about conditions be enough to open the eye of Dhamma?
   plates:
     - "8"
@@ -255,13 +746,38 @@
   kind: life
   title: “Do not say so, Ānanda”
   source: DN 15
+  setting: Kammāsadhamma, a market town of the Kurus
+  people:
+    - { name: Ānanda, who: "the Buddha's cousin and attendant" }
+    - { name: The Buddha, who: "teaching at Kammāsadhamma" }
   story: >-
     Ānanda remarked that dependent origination, though called deep, seemed clear to him. The Buddha replied:
     “Do not say so, Ānanda. This dependent origination is deep and appears deep. Through not understanding it,
     this generation has become like a tangled skein.”
+  detail:
+    - >-
+      Ānanda came to the Buddha and said: it is wonderful, venerable sir, how deep this dependent origination is,
+      and how deep it appears; and yet to me it seems as clear as clear can be.
+    - >-
+      “Do not say so, Ānanda,” the Buddha answered. “It is deep and it appears deep. It is through not
+      understanding and not penetrating this teaching that this generation has become like a tangled skein, a
+      knotted ball of thread, like matted reeds and rushes, and does not pass beyond the plane of misery, the
+      bad destinations, the lower world, saṃsāra.”
+    - >-
+      Then he took Ānanda through it again, link by link, asking at each step: is there a specific condition for
+      aging and death? For birth? For becoming? In this telling the chain runs back to consciousness and
+      name-and-form, which condition each other, and stops there: “to this extent one may be born, age and die.”
+      A second chain shows how craving leads to seeking, gain, possessiveness and at last to quarrels and the
+      taking up of weapons. The sutta ends with the ways people describe a self, and the eight liberations.
+  texts:
+    - { ref: "DN 15 Mahānidāna Sutta", url: "https://suttacentral.net/dn15" }
+    - { ref: "Bhikkhu Bodhi, The Great Discourse on Causation (1984), with the commentary" }
+  note: >-
+    The commentary reads the exchange two ways: as praise, since only Ānanda's long practice could make the
+    teaching seem clear to him, and as a warning that it is deep for everyone else.
   reading: >-
-    Plates 8 and 9 make the structure visible, but reading a diagram is learning (suta). Seeing a link happen
-    is development (bhāvanā).
+    “The web of twenty-four conditions” and “The wheel across three lives” make the structure visible, but
+    reading a diagram is learning (suta). Seeing a link happen is development (bhāvanā).
   question: What would it take to move from knowing the twelve links to seeing one of them happen?
   plates:
     - "9"
@@ -270,13 +786,40 @@
   kind: life
   title: Rays from the Jewel House
   source: Atthasālinī, introduction
+  setting: The Ratanaghara, “jewel house”, near the Bodhi tree, in the fourth week after the awakening
+  people:
+    - { name: The Buddha, who: "newly awakened, contemplating the Abhidhamma" }
   story: >-
     In the fourth week after the awakening, the commentary says, the Buddha sat in a jewelled chamber and
     contemplated the Abhidhamma. Through the first six books no rays appeared; when he reached the Paṭṭhāna,
     rays of six colours streamed from his body.
+  detail:
+    - >-
+      The commentaries spend each of the seven weeks after the awakening at a different spot near the Bodhi
+      tree. In the fourth, the devas built a chamber of jewels to the north-west of the tree, and the Buddha sat
+      in it and went over the Abhidhamma in his mind, book by book.
+    - >-
+      He went through the Dhammasaṅgaṇī, then the Vibhaṅga, the Dhātukathā, the Puggalapaññatti, the
+      Kathāvatthu and the Yamaka, and nothing happened. Then he came to the Paṭṭhāna, with its twenty-four
+      conditions and their numberless combinations. Here, the commentary says, his omniscient knowledge found room
+      at last, like the great fish Timirapiṅgala turning in the ocean, eighty-four thousand yojanas deep.
+    - >-
+      As his mind moved in that vastness, rays of six colours streamed from his body: blue from his hair and the
+      dark of his eyes, yellow from his skin, red from his flesh and blood, white from his bones, teeth and the
+      whites of his eyes, crimson from his palms and soles, and a shining blend of all five. They spread through
+      the universe.
+    - >-
+      In 1885 a committee in Colombo designed a flag from these six colours for the Vesak holiday, and the
+      American Henry Steel Olcott helped adapt it for wider use. It is now the Buddhist flag across the world.
+  texts:
+    - { ref: "Atthasālinī, Nidānakathā; The Expositor, tr. Pe Maung Tin (1920)" }
+    - { ref: "Jātaka Nidānakathā and the Buddhavaṃsa commentary (the jewel house in the fourth week)" }
+  note: >-
+    Other commentaries place the Buddha in the jewel house contemplating the Abhidhamma, but the rays and the
+    Paṭṭhāna belong to the Atthasālinī's telling, which has every reason to honour that book.
   reading: >-
-    The tradition marks the Paṭṭhāna, the book behind Plate 8, as the vastest of all. Its colours inspired the
-    modern Buddhist flag.
+    The tradition marks the Paṭṭhāna, the book behind “The web of twenty-four conditions”, as the vastest of
+    all. Its colours inspired the modern Buddhist flag.
   question: Why might the relations between things be harder to see than the things themselves?
   plates:
     - "8"
@@ -286,13 +829,46 @@
   kind: disc
   title: Maṭṭhakuṇḍalī's last thought
   source: Dhammapada commentary, v. 2
+  setting: Sāvatthī
+  people:
+    - { name: Maṭṭhakuṇḍalī, who: "“Burnished Earrings”, a boy of sixteen" }
+    - { name: Adinnapubbaka, who: "“Never-Gave”, his miserly brahmin father" }
+    - { name: The Buddha, who: "on his alms round" }
   story: >-
     A miserly brahmin's son lay dying, left on the veranda so visitors would not see inside the house. The
     Buddha passed and let himself be seen. The boy's mind filled with faith, he died with that thought, and he
     was reborn in the Tāvatiṃsa heaven.
+  detail:
+    - >-
+      In Sāvatthī lived a brahmin so mean that he was called Adinnapubbaka, “one who never gave”. To save the
+      goldsmith's fee he hammered out a pair of earrings for his only son himself, and the boy was called
+      Maṭṭhakuṇḍalī, “Burnished Earrings”.
+    - >-
+      At sixteen the boy fell ill with jaundice. The father would not pay a physician; he asked doctors what
+      they gave for such an illness and treated the boy himself with bark, and the boy grew worse. When it was
+      clear he would die, the father carried him out to the veranda, so that people coming to mourn would not
+      see the wealth inside the house.
+    - >-
+      That morning the Buddha, surveying the world, saw the boy. On his alms round he stopped at the door and
+      sent out a ray of light. The boy turned and saw him. Too weak to move or speak, he set his heart on him in
+      faith, and died with that thought. He was reborn in the Tāvatiṃsa heaven in a golden mansion.
+    - >-
+      The father went to the charnel ground every day to weep. The young deva, seeing it, took his old form and
+      wept beside him. Asked why, he said he wanted a pair of wheels for his golden chariot, and the only ones
+      that would do were the sun and the moon. “You fool,” said the brahmin, “you weep for what cannot be had.”
+      “The sun and moon can at least be seen,” said the boy. “You weep for one who is gone and cannot be seen.
+      Which of us is the fool?” Then he revealed who he was. The brahmin invited the Buddha to a meal, and the
+      Buddha spoke the second verse of the Dhammapada: mind goes before all things; if one speaks or acts with a
+      pure mind, happiness follows like a shadow that never leaves.
+  texts:
+    - { ref: "Dhammapada v. 2, with its commentary", url: "https://suttacentral.net/dhp1-20" }
+    - { ref: "Vimānavatthu 7.9, the Maṭṭhakuṇḍalī mansion story", url: "https://suttacentral.net/vv83" }
+  note: >-
+    The commentary has people at the meal doubt whether one can reach heaven by a thought of faith alone,
+    without giving or keeping precepts; the young deva appears to settle the question.
   reading: >-
-    Death-proximate kamma on Plate 10: the last javanas were full of faith, and the rebirth-linking that
-    followed took up their object.
+    Death-proximate kamma in “Kamma, death and rebirth”: the last javanas were full of faith, and the
+    rebirth-linking that followed took up their object.
   question: If one last thought can decide a rebirth, why do teachers stress habitual kamma?
   plates:
     - "10"
@@ -302,12 +878,43 @@
   kind: disc
   title: Queen Mallikā's seven days
   source: Dhammapada commentary, v. 151
+  setting: Sāvatthī, the court of King Pasenadi of Kosala
+  people:
+    - { name: Mallikā, who: "a garland-maker's daughter who became Pasenadi's chief queen" }
+    - { name: King Pasenadi, who: "of Kosala, a lay follower of the Buddha" }
+    - { name: The Buddha, who: "at Jetavana" }
   story: >-
     Queen Mallikā was generous and devout, but as she died her mind went to one wrong deed she had hidden from
     the king. She was reborn in a woeful state for seven days, and then in the Tusita heaven.
+  detail:
+    - >-
+      Mallikā was the daughter of a garland-maker. As a girl she gave her own meal to the Buddha, and soon after
+      King Pasenadi, meeting her by chance, made her his queen. She became one of the Buddha's most devoted
+      followers. The suttas show her setting the king straight more than once: when he hoped she loved him more
+      than herself, and when he was disappointed that she bore a daughter.
+    - >-
+      The commentary tells of one fault. In the bath-house she let her dog behave improperly with her, and the
+      king saw it through a window. When he spoke of it, she told him the room had a trick to it: whoever went in
+      would look doubled to one outside. She sent him in, and claimed to see him with a she-goat. He believed her.
+    - >-
+      When she was dying, she did not think of her great gifts, but of this deed and the lie that covered it, and
+      she was reborn in hell for seven days. The grieving king went to the Buddha meaning to ask where she was
+      reborn. Each day the Buddha turned the talk so that he forgot to ask, so as not to break his faith. On the
+      eighth day she was reborn in the Tusita heaven, and the Buddha told the king.
+    - >-
+      Pasenadi had come in his royal chariot. The Buddha used it for his verse: even the splendid chariots of
+      kings wear out, and so does the body; but the Dhamma of the good does not grow old.
+  texts:
+    - { ref: "Dhammapada v. 151, with its commentary (Buddhist Legends XI.6)", url: "https://www.ancient-buddhist-texts.net/English-Texts/Buddhist-Legends/11-06.htm" }
+    - { ref: "SN 3.8 Mallikā Sutta (dearer than oneself)", url: "https://suttacentral.net/sn3.8" }
+    - { ref: "SN 3.16 (the daughter)", url: "https://suttacentral.net/sn3.16" }
+  note: >-
+    Translators and editors have noted that some references to Mallikā in later commentaries point to the wrong
+    story or confuse her with another Mallikā, the wife of the general Bandhula. The version here follows the
+    Dhammapada commentary on v. 151.
   reading: >-
     The other face of death-proximate kamma: one unwholesome last thought outweighed a good life, but only for
-    a while. Her stored good kamma then took its turn (Plate 10).
+    a while. Her stored good kamma then took its turn (“Kamma, death and rebirth”).
   question: "Which shapes rebirth more: a whole life, or its last moments?"
   plates:
     - "10"
@@ -317,13 +924,51 @@
   kind: disc
   title: Aṅgulimāla and the stones
   source: MN 86
+  setting: The kingdom of Kosala, the road to Aṅgulimāla's forest, and Sāvatthī
+  people:
+    - { name: Aṅgulimāla, who: "“garland of fingers”, a bandit; born Ahiṃsaka, “harmless”" }
+    - { name: King Pasenadi, who: "who rode out to hunt him" }
+    - { name: The Buddha, who: "who walked into the forest alone" }
   story: >-
     The bandit Aṅgulimāla had killed many. Meeting the Buddha, he went forth and became an arahant. On alms
     round people threw stones and sticks at him. The Buddha said: “Bear it, brahmin. You are experiencing here
     and now the result of deeds for which you might have suffered in hell for many years.”
+  detail:
+    - >-
+      The commentary tells how a gifted student called Ahiṃsaka, “harmless”, was slandered by jealous fellow
+      students, and his teacher, to be rid of him, demanded a fee of a thousand human fingers. In the sutta he is
+      already a bandit in the realm of King Pasenadi, wearing a garland of fingers, who has laid waste villages
+      and towns.
+    - >-
+      One morning the Buddha took the road toward his forest. Cowherds and farmers warned him that men in groups
+      of forty had gone that way and fallen to Aṅgulimāla. He walked on in silence. Aṅgulimāla saw him and ran
+      after him with sword and shield, but, running his hardest, could not catch the Buddha walking at his
+      ordinary pace. “Stop, recluse!” he shouted. “I have stopped, Aṅgulimāla,” said the Buddha. “You stop too.”
+      I have stopped, he explained, because I have laid down the rod toward all beings; you have not.
+      Aṅgulimāla threw his weapons into a chasm, bowed, and asked to go forth.
+    - >-
+      King Pasenadi rode out with five hundred horsemen to take him, and found him sitting at Jetavana with
+      shaven head. The king, amazed, offered him robes and food: “what we could not tame with force and
+      weapons, the Blessed One has tamed without them.” On alms round Aṅgulimāla saw a woman in a difficult
+      childbirth, and the Buddha gave him words to say to her: since I was born with the noble birth, I do not
+      recall ever taking a life; by this truth may you and your child be well. She was safe. The verse is still
+      chanted for women in labour.
+    - >-
+      He became an arahant. One day he came back from alms round with a broken head, his bowl smashed and his
+      robe torn, from a stone, a stick and a potsherd thrown at him. The Buddha said: “Bear it, brahmin. You are
+      experiencing here and now the result of deeds for which you might have been tormented in hell for many
+      years.” His verses close the sutta: one who was heedless and later is heedful lights up the world like the
+      moon freed from a cloud.
+  texts:
+    - { ref: "MN 86 Aṅgulimāla Sutta", url: "https://suttacentral.net/mn86" }
+    - { ref: "Theragāthā 16.8, his verses", url: "https://suttacentral.net/thag16.8" }
+    - { ref: "Majjhima commentary on MN 86 (Ahiṃsaka, the teacher's fee, his mother)" }
+  note: >-
+    The Aṅgulimāla paritta, the words he said to the woman in labour, is one of the protective chants of the
+    Theravāda.
   reading: >-
-    Kamma by time (Plate 10): what could ripen in this life did. With arahantship there is no next life, so
-    kamma waiting for later lives could never ripen.
+    Kamma by time (“Kamma, death and rebirth”): what could ripen in this life did. With arahantship there is no
+    next life, so kamma waiting for later lives could never ripen.
   question: What does Aṅgulimāla's story say about whether kamma is fate?
   plates:
     - "10"
@@ -332,13 +977,50 @@
   kind: disc
   title: Devadatta's weighty kamma
   source: Vinaya, Cūḷavagga VII; Dhammapada commentary, v. 17
+  setting: Rājagaha, Vulture Peak, Gayāsīsa, and the gate of Jetavana
+  people:
+    - { name: Devadatta, who: "the Buddha's cousin and brother-in-law, a monk with psychic powers" }
+    - { name: Prince Ajātasattu, who: "of Magadha, his patron" }
+    - { name: Sāriputta and Moggallāna, who: "who won back the monks he led away" }
   story: >-
     The Buddha's cousin Devadatta drew the Buddha's blood with a rock hurled from Vulture Peak, and split the
     Saṅgha. The commentary says that as he came at last to ask forgiveness, the earth swallowed him and he was
     reborn in the Avīci hell.
+  detail:
+    - >-
+      Devadatta went forth with the Sakyan princes Bhaddiya, Anuruddha, Ānanda, Bhagu and Kimbila, and the
+      barber Upāli. He gained psychic powers, and with them won the favour of Prince Ajātasattu, appearing in his
+      lap as a boy wearing a girdle of snakes. With gain and honour, the Vinaya says, came the wish to lead the
+      Saṅgha.
+    - >-
+      He asked the Buddha, now old, to hand the Saṅgha over to him, and was refused. He urged Ajātasattu to kill
+      his father and take the throne, and he himself would kill the Buddha. He sent archers, who were converted.
+      He hurled a rock from Vulture Peak; it broke, and a splinter cut the Buddha's foot and drew blood. He had
+      the fierce elephant Nāḷāgiri loosed in the Buddha's path; the elephant was calmed by the Buddha's
+      loving-kindness and knelt.
+    - >-
+      Then he proposed five strict rules: monks should live only in the forest, eat only alms food, wear only rag
+      robes, live at the foot of trees, and never eat fish or meat. The Buddha allowed each as a choice but would
+      not make them binding. Devadatta took this as his cause, and led five hundred newly ordained monks away to
+      Gayāsīsa: a schism. Sāriputta and Moggallāna went there and brought them back, and the Vinaya says hot
+      blood gushed from Devadatta's mouth.
+    - >-
+      The Dhammapada commentary tells his end. After nine months of illness he wished to see the Buddha and was
+      carried towards Jetavana on a litter. When it was set down by the pond at the gate, he stood, and the earth
+      opened and drew him down. Going down, he spoke a verse taking refuge in the Buddha with his bones and his
+      last breath. He was reborn in Avīci; and the commentary adds that after a hundred thousand aeons he will
+      become a paccekabuddha.
+  texts:
+    - { ref: "Vinaya, Cūḷavagga VII (Saṅghabhedakkhandhaka)", url: "https://suttacentral.net/pli-tv-kd17" }
+    - { ref: "Dhammapada v. 17, with its commentary", url: "https://suttacentral.net/dhp1-20" }
+    - { ref: "AN 8.7 and Ud 5.8 on Devadatta" }
+  note: >-
+    Scholars have long noted that Devadatta's five rules were a call for stricter practice, and that later
+    Chinese pilgrims met monks in India who followed Devadatta's rules. The Pāli tradition remembers him only as
+    the Buddha's enemy.
   reading: >-
     Wounding a Buddha and splitting the Saṅgha are two of the five heinous deeds: weighty kamma, which ripens
-    before any other kind (Plate 10).
+    before any other kind (“Kamma, death and rebirth”).
   question: Why should weighty kamma override even death-proximate kamma?
   plates:
     - "10"
@@ -348,13 +1030,46 @@
   kind: disc
   title: Why Moggallāna was beaten
   source: Dhammapada commentary, vv. 137–140
+  setting: Black Rock on the slope of Isigili, near Rājagaha
+  people:
+    - { name: Mahā Moggallāna, who: "the chief disciple foremost in psychic power, now old" }
+    - { name: The Nigaṇṭhas, who: "naked ascetics, rivals who hired his killers" }
   story: >-
     Late in life the great disciple Mahā Moggallāna was beaten to death by hired bandits. The commentary
     traces this to a deed many lives before, when he turned on his own blind parents; versions differ on
     whether he went through with it.
+  detail:
+    - >-
+      Moggallāna used to visit the heavens and the hells and come back to tell people what he had seen:
+      followers of the Buddha enjoying the fruit of their deeds, followers of other teachers suffering. The naked
+      ascetics, the commentary says, saw their support draining away, and paid bandits a thousand coins to kill
+      him.
+    - >-
+      The bandits surrounded his dwelling at Black Rock. He knew, and slipped out through the keyhole. They came
+      back another time, and he rose through the roof into the sky. The third time he did not escape. He saw that
+      an old deed was waiting for its chance, and let them take him. They beat him until his bones were broken
+      like grains of rice, and left him for dead.
+    - >-
+      He held himself together by the power of jhāna, went to the Buddha to take his leave, and returned to
+      Black Rock to attain final Nibbāna. When the monks asked why such a death had come to such a disciple, the
+      Buddha told of a past life. Moggallāna had been a devoted son to blind parents; his wife resented caring
+      for them and turned him against them. He took them into the forest by cart, pretended that bandits were
+      attacking, and beat them himself.
+    - >-
+      Here the versions part. In one he killed them. In another, the parents, thinking robbers were attacking,
+      cried out to their son to save himself and leave them; touched to the heart, he stopped. Either way, says
+      the commentary, the deed ripened for countless lives, and this was its last. King Ajātasattu had the
+      killers found and executed. The verses spoken were Dhammapada 137–140: whoever harms the harmless meets
+      one of ten misfortunes.
+  texts:
+    - { ref: "Dhammapada vv. 137–140, with their commentary (Buddhist Legends X.7)", url: "https://www.ancient-buddhist-texts.net/English-Texts/Buddhist-Legends/10-07.htm" }
+    - { ref: "Jātaka 522 Sarabhaṅga, introduction (a parallel telling)", url: "https://suttacentral.net/ja522" }
+  note: >-
+    The canon itself does not describe Moggallāna's death. The story comes from the commentaries, which give it
+    in more than one form, with differences in the timing and in the past-life deed.
   reading: >-
-    Kamma that can ripen “in any later life” (Plate 10) waits for its chance, even for an arahant. What
-    arahantship ends is new kamma and any further rebirth.
+    Kamma that can ripen “in any later life” (“Kamma, death and rebirth”) waits for its chance, even for an
+    arahant. What arahantship ends is new kamma and any further rebirth.
   question: If even an arahant meets old kamma, what exactly does arahantship end?
   plates:
     - "10"
@@ -363,13 +1078,43 @@
   kind: jataka
   title: King Nimi's chariot
   source: Ja 541
+  setting: Mithilā, the hells, and the Tāvatiṃsa heaven
+  people:
+    - { name: King Nimi, who: "the Bodhisatta, last of Makhādeva's line" }
+    - { name: Sakka, who: "king of the devas of Tāvatiṃsa" }
+    - { name: Mātali, who: "Sakka's charioteer" }
   story: >-
     Sakka sent his charioteer Mātali to bring the righteous King Nimi to the Tāvatiṃsa heaven. On the way
     Mātali showed him the hells, naming the deeds that led there, and then the heavenly mansions, naming the
     deeds that earned them.
+  detail:
+    - >-
+      The Buddha smiled one evening in Makhādeva's mango grove near Mithilā, and Ānanda asked why. He told the
+      story of the last king of that line. Nimi was so generous and so careful in keeping the precepts that his
+      people followed him, and many were reborn among the devas. He wondered which bears more fruit, giving or the
+      holy life, and Sakka came down to answer him: the holy life.
+    - >-
+      The devas of Tāvatiṃsa wished to see this king, and Sakka sent his charioteer Mātali with the chariot drawn
+      by a thousand thoroughbreds. Mātali asked which way he would go: by the road of those who did evil, or of
+      those who did good? Nimi asked to see both.
+    - >-
+      Mātali drove him first over the hells. At each one he named the deed: those who had been cruel to the weak,
+      those who had cheated in trade, those who had harmed recluses, those who had killed, stolen, lied. Then he
+      drove up through the heavens, past mansion after mansion, and at each he named the deed: a woman who gave
+      food to monks, a man who built a rest-house, one who cared for his parents.
+    - >-
+      Nimi was received in the Sudhamma hall, and Sakka invited him to stay. Nimi declined. He did not want to
+      enjoy, he said, what had been given by another; he would go back and make merit of his own. He returned and
+      told his people what he had seen, and when his first grey hair appeared, he went forth like Makhādeva.
+  texts:
+    - { ref: "Ja 541 Nimi Jātaka", url: "https://suttacentral.net/ja541" }
+    - { ref: "MN 83 Makhādeva Sutta (the line of kings)", url: "https://suttacentral.net/mn83" }
+  note: >-
+    The Nimi Jātaka is one of the ten great Jātakas of the last ten lives, each taken to show one perfection;
+    Nimi's is resolution (adhiṭṭhāna). Scenes from his journey are painted in temples across Southeast Asia.
   reading: >-
-    A guided tour of Plate 11. Each world is paired with a kind of deed, the same pairing as kamma “by place”
-    on Plate 10.
+    A guided tour of “Thirty-one planes”. Each world is paired with a kind of deed, the same pairing as kamma
+    “by place” in “Kamma, death and rebirth”.
   question: Why does the story always show the deed alongside the world?
   plates:
     - "11"
@@ -379,13 +1124,45 @@
   kind: life
   title: The rose-apple tree
   source: MN 36
+  setting: Kapilavatthu in his childhood, and Uruvelā during the austerities
+  people:
+    - { name: The Bodhisatta, who: "as a boy, and later as an exhausted ascetic" }
+    - { name: King Suddhodana, who: "his father, leading the ploughing festival" }
   story: >-
     As a boy, the Bodhisatta sat in the shade of a rose-apple tree while his father worked at a ploughing
     ceremony, and entered the first jhāna. Years later, worn out by austerities, he remembered it and asked:
     “Could that be the path to awakening?”
+  detail:
+    - >-
+      In MN 36 the Buddha tells the debater Saccaka about his years of striving. He had pressed his tongue to his
+      palate and crushed mind with mind until sweat ran from his armpits. He had stopped his breath until his head
+      felt split by a sword. He had lived on a handful of beans a day, until his spine stood out like a string of
+      beads and the hair rotted from his skin. Whatever pain any recluse had ever felt, this was the utmost; and it
+      had not brought him knowledge.
+    - >-
+      Then he remembered a day in childhood. His father the Sakyan was at work, and he was sitting in the cool
+      shade of a rose-apple tree, secluded from sensual pleasures and unwholesome states, and he entered the first
+      jhāna, with its rapture and happiness. “Could that be the path to awakening?” And the knowledge came: that
+      is the path.
+    - >-
+      Why be afraid of that pleasure, he asked himself, which has nothing to do with sensual desire? But such a
+      pleasure could not be reached with so starved a body. So he ate rice and porridge again, and the five
+      ascetics who had waited on him left in disgust: he had given up the struggle. With his strength back he sat
+      down, entered the jhānas, and that night awakened.
+    - >-
+      The commentaries fill in the childhood day. It was the royal ploughing festival. The nurses left the boy
+      alone under the tree to watch the ceremony, and returned to find him sitting cross-legged in meditation;
+      and though the shadows of the other trees had moved with the sun, the shadow of the rose-apple tree had not.
+  texts:
+    - { ref: "MN 36 Mahāsaccaka Sutta", url: "https://suttacentral.net/mn36" }
+    - { ref: "MN 85 and MN 100 give the same account" }
+    - { ref: "Jātaka Nidānakathā (the ploughing festival and the still shadow)" }
+  note: >-
+    The commentaries say his subject that day was mindfulness of breathing, which is why the tradition takes the
+    breath as the Buddha's own meditation.
   reading: >-
-    On Plate 13's tree, concentration is a root. The commentaries say his subject was the breath, one of the
-    eleven that can reach all five jhānas on Plate 12.
+    On the tree in “The tree of purification”, concentration is a root. The commentaries say his subject was the
+    breath, one of the eleven in “Forty meditation subjects” that can reach all five jhānas.
   question: Why was a pleasant, blameless state the clue, after years of pain?
   plates:
     - "12"
@@ -395,13 +1172,49 @@
   kind: disc
   title: Cūḷapanthaka's white cloth
   source: Dhammapada commentary, v. 25
+  setting: Rājagaha, the gateway of the monastery, and the physician Jīvaka's house
+  people:
+    - { name: Cūḷapanthaka, who: "“little road-child”, the younger of two brothers born on a journey" }
+    - { name: Mahāpanthaka, who: "his elder brother, already an arahant" }
+    - { name: Jīvaka, who: "the royal physician, host of the meal" }
   story: >-
     Cūḷapanthaka could not learn a single verse in four months, and his brother told him to leave. The Buddha
     gave him a clean white cloth to rub while repeating “removing dirt”. As the cloth grew soiled he saw
     impermanence, and he became an arahant.
+  detail:
+    - >-
+      Their mother was the daughter of a rich family of Rājagaha who ran away with a servant. Both her sons were
+      born by the roadside on the way back to her parents, and so they were called Panthaka, “road-child”, the
+      elder and the younger. The elder, Mahāpanthaka, went forth, became an arahant, and brought his brother into
+      the Saṅgha.
+    - >-
+      Cūḷapanthaka could not learn. For four months he tried to memorise one verse, in praise of the Buddha as a
+      fragrant red lotus, and as he learned each line the last slipped away. Mahāpanthaka, who was arranging the
+      monks for a meal at the house of Jīvaka the physician, left him off the list, and told him he was no use in
+      the teaching and should go home.
+    - >-
+      At dawn he stood weeping at the monastery gate. The Buddha met him there, took him by the hand, and gave him
+      a clean white cloth. Sit facing the sun, he said, rub it, and repeat: rajoharaṇaṃ, “removing dirt”. As he
+      rubbed, the cloth grew soiled from his hand. He thought: this was clean, and by this body it has become
+      dirty; so are all conditioned things. He went on into insight and became an arahant with the analytical
+      knowledges.
+    - >-
+      At Jīvaka's house the Buddha would not begin the meal: there was a monk still at the monastery. A messenger
+      went and found the mango grove full of monks, a thousand of them, all mind-made by Cūḷapanthaka, and each
+      said his name was Panthaka. Told to take the first who spoke, the messenger brought him back. The Buddha
+      spoke the verse: by effort, heedfulness, restraint and self-control, the wise make an island no flood can
+      overwhelm. He was named foremost among those who create mind-made bodies.
+  texts:
+    - { ref: "Dhammapada v. 25, with its commentary", url: "https://suttacentral.net/dhp21-32" }
+    - { ref: "Ja 4 Cullakaseṭṭhi Jātaka (his past life)", url: "https://suttacentral.net/ja4" }
+    - { ref: "Theragāthā 10.4, his verses", url: "https://suttacentral.net/thag10.4" }
+  note: >-
+    The commentary explains both sides with past lives: as a king who wiped his brow with a clean cloth and
+    saw it soiled, he had once before seen impermanence this way; as a monk who mocked a slow learner, he had
+    made himself slow.
   reading: >-
-    A subject fitted to the person (Plate 12): a simple object you can see and touch, which ripened into
-    insight (Plate 13).
+    A subject fitted to the person (“Forty meditation subjects”): a simple object you can see and touch, which
+    ripened into insight (“The tree of purification”).
   question: Why might a slow learner of words be a quick learner of seeing?
   plates:
     - "12"
@@ -411,14 +1224,45 @@
   kind: disc
   title: The goldsmith and the lotus
   source: Dhammapada commentary, v. 285; Ja 25
+  setting: Jetavana
+  people:
+    - { name: A young monk, who: "a goldsmith's son, Sāriputta's pupil" }
+    - { name: Sāriputta, who: "his preceptor" }
+    - { name: The Buddha, who: "who saw what Sāriputta could not" }
   story: >-
     A young monk, a goldsmith for five hundred lives, made no progress with meditation on the foulness of the
     body. The Buddha gave him a lotus instead. Its beauty steadied his mind; then the flower withered, and he
     saw impermanence.
+  detail:
+    - >-
+      A goldsmith's son went forth under Sāriputta. Thinking that young men are prone to lust, Sāriputta gave him
+      the foulness of the body as his subject. He worked at it for four months without the least success.
+      Sāriputta took him to the Buddha.
+    - >-
+      The Buddha saw what a disciple could not: for five hundred lives this monk had been a goldsmith, working
+      with beautiful, pure, red gold. A repulsive subject did not suit him. By his power he made a lotus of gold,
+      water dripping from its leaves and stem, and gave it to the monk: set it on a heap of sand at the edge of
+      the monastery, sit before it, and attend to it: “red, red.”
+    - >-
+      The monk's mind settled at once, and he passed through the jhānas. Then the Buddha made the lotus wither.
+      Its colour faded and its petals fell, from the edges inwards, until only the seed-pod was left. Watching it,
+      the monk saw that whatever has a beginning has an ending, and that his own body was like it. The Buddha sent
+      out his radiance and spoke the verse: cut off the love of self, as one plucks an autumn lotus with the hand;
+      cultivate the path of peace, Nibbāna, taught by the Well-Gone. The monk became an arahant.
+    - >-
+      The Jātaka linked to it tells of a royal horse that would not bathe at a ford where common horses had
+      bathed. The king's groom was baffled; the Bodhisatta, a minister, saw that the horse was fastidious and had
+      it bathed at another ford, where it went in at once. What suits one being is not what suits another.
+  texts:
+    - { ref: "Dhammapada v. 285, with its commentary", url: "https://suttacentral.net/dhp273-289" }
+    - { ref: "Ja 25 Tittha Jātaka", url: "https://suttacentral.net/ja25" }
+  note: >-
+    The story is often quoted on fitting a meditation subject to temperament. It is also a reminder that even
+    Sāriputta, the wisest disciple, could misread a pupil.
   reading: >-
-    Plate 12's temperaments in action: the usual remedy for lust did not fit this mind, and a beautiful object
-    did.
-  question: Which of Plate 12's six temperaments sounds most like your own?
+    The temperaments of “Forty meditation subjects” in action: the usual remedy for lust did not fit this mind,
+    and a beautiful object did.
+  question: Which of the six temperaments sounds most like your own?
   plates:
     - "12"
 - id: s28
@@ -426,13 +1270,43 @@
   kind: life
   title: Āḷāra and Uddaka
   source: MN 26
+  setting: Magadha, during the search; then the road to Bārāṇasī after the awakening
+  people:
+    - { name: Āḷāra Kālāma, who: "a teacher of meditation, master of the base of nothingness" }
+    - { name: Uddaka Rāmaputta, who: "son or pupil of Rāma, who had reached neither perception nor non-perception" }
+    - { name: The Bodhisatta, who: "a young seeker, “still black-haired, in the prime of life”" }
   story: >-
     Before his awakening, the Bodhisatta reached the base of nothingness under Āḷāra Kālāma, and neither
     perception nor non-perception under Uddaka Rāmaputta. He left both, seeing they did not lead to Nibbāna.
     After awakening he thought first of teaching them, but both had died.
+  detail:
+    - >-
+      In MN 26, “the noble search”, the Buddha tells how he went forth while young, against his weeping parents'
+      wishes, seeking what is unborn, unaging, deathless. He went first to Āḷāra Kālāma, quickly learned his
+      teaching by word, and asked how far it went. To the base of nothingness, said Āḷāra. The Bodhisatta thought:
+      not only Āḷāra has faith, energy, mindfulness, concentration and wisdom; I have them too. He soon reached
+      it himself. Āḷāra was delighted, and offered to lead his community jointly with him.
+    - >-
+      But he saw that this teaching did not lead to disenchantment and peace, only to rebirth in the base of
+      nothingness, and he left. Under Uddaka Rāmaputta the same thing happened with the base of neither perception
+      nor non-perception, which Rāma had reached. Uddaka offered to make him the sole teacher. Again he saw it did
+      not lead to Nibbāna, and left, and went to Uruvelā.
+    - >-
+      After the awakening, when he had resolved to teach, he thought first of Āḷāra: he is wise and has little
+      dust in his eyes; he will understand quickly. A deva told him Āḷāra had died seven days before. Then of
+      Uddaka: he had died the night before. “A great loss,” he said. So he went to the five ascetics at
+      Isipatana. On the road a wanderer, Upaka, asked who his teacher was; told he had none and had awakened by
+      himself, Upaka said, “May it be so, friend,” shook his head, and took a side path.
+  texts:
+    - { ref: "MN 26 Ariyapariyesanā Sutta", url: "https://suttacentral.net/mn26" }
+    - { ref: "MN 36 and MN 85 tell the same", url: "https://suttacentral.net/mn36" }
+  note: >-
+    The commentaries count the lifespan in the base of nothingness as 60,000 aeons, and in neither perception
+    nor non-perception as 84,000; for a being who could have understood, that is a very long wait.
   reading: >-
-    The highest calm leads to the highest immaterial planes of Plate 11, with lifespans of 60,000 and 84,000
-    aeons, but not out of the round. That is why Plate 13's tree needs a trunk of insight.
+    The highest calm leads to the highest immaterial planes of “Thirty-one planes”, with lifespans of 60,000 and
+    84,000 aeons, but not out of the round. That is why the tree in “The tree of purification” needs a trunk of
+    insight.
   question: What does insight supply that even the highest jhāna lacks?
   plates:
     - "11"
@@ -443,13 +1317,47 @@
   kind: disc
   title: Paṭācārā and the water
   source: Therīgāthā 112–116
+  setting: The road to Sāvatthī, the river Aciravatī, and the nuns' dwelling
+  people:
+    - { name: Paṭācārā, who: "a merchant's daughter of Sāvatthī" }
+    - { name: The Buddha, who: "at Jetavana" }
   story: >-
     Having lost her whole family, Paṭācārā became a nun. Washing her feet, she watched the water trickle down,
     some a little way, some further, like the stages of a life. That night, as she drew down the wick of her
     lamp, her mind was freed.
+  detail:
+    - >-
+      The commentary tells her life before. She was the daughter of a rich merchant of Sāvatthī, and ran away with
+      a servant of the house. Pregnant with her second child, she set out for her parents' home with her husband
+      and her little son. A storm broke; her husband went to cut sticks for a shelter, was bitten by a snake, and
+      died. She gave birth in the night, crouching over both children in the rain.
+    - >-
+      In the morning she found her husband dead. At the river Aciravatī, swollen with the rain, she could not
+      carry both children across. She took the newborn over, laid it on the far bank, and turned back for the
+      elder. Midstream, a hawk took the baby. She threw up her arms and screamed, and the elder boy, thinking she
+      called him, stepped into the river and was swept away.
+    - >-
+      Near Sāvatthī she asked a traveller about her family. In the night's storm their house had fallen; her
+      father, mother and brother were burning on one pyre, there, where the smoke rose. She went out of her mind.
+      Her clothes fell from her, and she wandered, and came to Jetavana, where the Buddha said to her: “Sister,
+      recover your mindfulness.” She came to herself. He told her that the tears she had shed in the round of
+      births were more than the waters of the four oceans. She entered the stream, and went forth.
+    - >-
+      Her own verses tell the rest. Men plough their fields and sow, and prosper; why do I, keeping the training,
+      not reach Nibbāna? Washing her feet, she watched the water run down the slope, and her mind became still
+      like a well-trained horse. She took her lamp into her cell, sat on the bed, and drew down the wick with a
+      pin. As the lamp went out, her mind was freed. She became the foremost of the nuns in the discipline, and a
+      teacher of many.
+  texts:
+    - { ref: "Therīgāthā 5.10, her verses (vv. 112–116)", url: "https://suttacentral.net/thig5.10" }
+    - { ref: "Dhammapada v. 113, with its commentary (her life)", url: "https://suttacentral.net/dhp100-115" }
+    - { ref: "Therīgāthā 5.11 and 6.1, the nuns she taught", url: "https://suttacentral.net/thig5.11" }
+  note: >-
+    Her name is usually explained as “one who walks with her cloak fallen”; some modern scholars read it as
+    “one who walks in the right way”.
   reading: >-
-    The knowledge of rise and fall on Plate 13, seen first in water and then in her own mind. The lamp going
-    out echoes Plate 10's image of death.
+    The knowledge of rise and fall in “The tree of purification”, seen first in water and then in her own mind.
+    The lamp going out echoes the image of death in “Kamma, death and rebirth”.
   question: Why is the going-out of a flame so often the image of Nibbāna?
   plates:
     - "13"
@@ -459,12 +1367,40 @@
   kind: life
   title: Koṇḍañña's eye of Dhamma
   source: SN 56.11
+  setting: The Deer Park at Isipatana, near Bārāṇasī
+  people:
+    - { name: Koṇḍañña, who: "the eldest of the five ascetics" }
+    - { name: The Buddha, who: "giving his first teaching" }
   story: >-
     At the first sermon in the Deer Park, as the Buddha finished, Koṇḍañña understood: “Whatever is subject to
     arising is all subject to cessation.” The Buddha exclaimed, “Koṇḍañña has understood!”
+  detail:
+    - >-
+      The five ascetics saw him coming and agreed not to rise or greet him: he had given up the struggle. As he
+      came near they could not keep to it. He told them not to call him “friend”: he had found the deathless.
+    - >-
+      He taught them that there are two extremes not to be followed, the pursuit of sensual pleasure and the
+      pursuit of self-torment, and a middle way between them: the noble eightfold path. Then the four noble
+      truths, each in three turnings: this is suffering; it is to be fully understood; it has been fully
+      understood. Only when his knowledge of all twelve was clear, he said, did he claim to be awakened.
+    - >-
+      While he was speaking, the dustless eye of Dhamma arose in Koṇḍañña: whatever is subject to arising is all
+      subject to cessation. The Buddha exclaimed: “Koṇḍañña has understood! Koṇḍañña has understood!” and so he
+      came to be called Aññā Koṇḍañña. The earth devas raised a cry, and it passed from heaven to heaven up to the
+      Brahmā world; the ten-thousandfold world system shook, and a great light appeared.
+    - >-
+      The commentary says Koṇḍañña had been the youngest of the eight brahmins who examined the baby prince's
+      marks, and the only one who said without hedging that he would become a Buddha. Over the following days the
+      other four entered the stream; with the next teaching, on non-self, all five became arahants.
+  texts:
+    - { ref: "SN 56.11 Dhammacakkappavattana Sutta", url: "https://suttacentral.net/sn56.11" }
+    - { ref: "SN 22.59, the teaching on non-self that followed", url: "https://suttacentral.net/sn22.59" }
+    - { ref: "Vinaya, Mahāvagga I.6", url: "https://suttacentral.net/pli-tv-kd1" }
+  note: >-
+    The day is kept as Āsāḷha Pūjā, the full moon of July, across the Theravāda world.
   reading: >-
-    Stream-entry (Plate 13): just after change-of-lineage first turns to Nibbāna, path knowledge takes Nibbāna
-    as its object and the first three fetters fall away.
+    Stream-entry (“The tree of purification”): just after change-of-lineage first turns to Nibbāna, path
+    knowledge takes Nibbāna as its object and the first three fetters fall away.
   question: Why is the insight put as a general rule rather than a particular experience?
   plates:
     - "13"
@@ -473,13 +1409,45 @@
   kind: jataka
   title: Sumedha's vow
   source: Buddhavaṃsa II; Jātaka introduction
+  setting: The city of Amaravatī, and the road to Rammaka, four incalculable aeons ago
+  people:
+    - { name: Sumedha, who: "a wealthy brahmin who became an ascetic; the Bodhisatta" }
+    - { name: Dīpaṅkara, who: "the Buddha of that age" }
   story: >-
     Ages ago, the ascetic Sumedha lay down in the mud so that the Buddha Dīpaṅkara could walk across him, and
     resolved to become a Buddha himself. Dīpaṅkara foretold it. Four incalculable aeons and a hundred thousand
     aeons of perfections followed.
+  detail:
+    - >-
+      Sumedha was a brahmin of Amaravatī whose parents died young, leaving him great wealth. Looking over the
+      treasure his family had stored for seven generations, he thought: they all took nothing with them. Birth is
+      suffering, ageing is suffering, death is suffering; as there is heat and also cold, there must be a way out.
+      He gave everything away, went to the Himalaya as an ascetic, and mastered the jhānas and the powers.
+    - >-
+      One day, flying over the city of Rammaka, he saw people clearing and decorating a road. It was for the
+      Buddha Dīpaṅkara. He asked for a stretch of it to prepare himself, and was given a muddy patch. Before he
+      had finished, the Buddha came, with four hundred thousand arahants.
+    - >-
+      Sumedha loosened his hair, spread his bark robe and deerskin on the mud, and lay down across it so that the
+      Buddha would not soil his feet. Lying there, he thought: if I wished, I could end my defilements today. But
+      what use is crossing alone? I will become a Buddha, and carry many across. Dīpaṅkara stopped at his head
+      and declared: after four incalculable aeons and a hundred thousand more, this ascetic will be a Buddha named
+      Gotama.
+    - >-
+      When the Buddha had gone, Sumedha sat and searched out the qualities that make a Buddha, and found ten
+      perfections: giving, virtue, renunciation, wisdom, energy, patience, truthfulness, resolution,
+      loving-kindness and equanimity. The rest of the Jātaka collection, life after life, is the record of their
+      fulfilling.
+  texts:
+    - { ref: "Buddhavaṃsa 2, the story of Sumedha", url: "https://suttacentral.net/bv2" }
+    - { ref: "Jātaka Nidānakathā, “the distant epoch”" }
+    - { ref: "Cariyāpiṭaka (the perfections in practice)" }
+  note: >-
+    The Buddhavaṃsa is late among the canonical books. Other schools tell the same meeting with Dīpaṅkara, with
+    a young man called Megha or Sumati who throws flowers to the Buddha and spreads his hair in the mud.
   reading: >-
-    One volition (Plate 4), renewed and fulfilled across lives (Plate 10), in worlds measured in aeons (Plate
-    11): the whole atlas in a single vow.
+    One volition (“An ensemble of fifty-two”), renewed and fulfilled across lives (“Kamma, death and rebirth”),
+    in worlds measured in aeons (“Thirty-one planes”): the whole study in a single vow.
   question: In Abhidhamma terms, what continues from Sumedha to Siddhattha?
   plates:
     - "4"
@@ -490,13 +1458,49 @@
   kind: jataka
   title: Vessantara's gifts
   source: Ja 547
+  setting: Jetuttara, capital of the Sivi kingdom, and Mount Vaṅka
+  people:
+    - { name: Prince Vessantara, who: "the Bodhisatta" }
+    - { name: Maddī, who: "his wife; Yasodharā, Rāhula's mother, in a former life" }
+    - { name: Jāli and Kaṇhājinā, who: "their children; Rāhula and Uppalavaṇṇā" }
+    - { name: Jūjaka, who: "an old brahmin; Devadatta" }
   story: >-
     In the last human life before the final one, the Bodhisatta as Prince Vessantara gave away the kingdom's
     white elephant, his wealth, and in the end his children and his wife. After that life he was reborn in the
     Tusita heaven.
+  detail:
+    - >-
+      The Buddha told this story on his first visit home to Kapilavatthu, when a rain fell that wet only those who
+      wished to be wet: such a rain had fallen once before, he said. Vessantara, son of King Sañjaya of the Sivis,
+      had loved giving since birth. When brahmins came from drought-stricken Kaliṅga to ask for the kingdom's
+      white elephant, whose presence brought rain, he gave it.
+    - >-
+      The people were furious and demanded his banishment. Before leaving he gave the great gift of seven hundreds:
+      elephants, horses, chariots, women, cows, slaves and wealth. Maddī his wife would not stay behind, and went
+      with their two small children. On the road he gave away the horses and the chariot, and they walked to a
+      hermitage on Mount Vaṅka.
+    - >-
+      An old brahmin, Jūjaka, came there. His young wife had been mocked by the village women for drawing water
+      herself, and sent him to get her servants. While Maddī was out gathering fruit, held back by devas in the
+      form of wild beasts, Jūjaka asked for the children, and Vessantara gave them. The children hid in a pond and
+      had to be called out. When Maddī came home she searched all night and fell unconscious. Then Sakka came,
+      disguised as a brahmin, and asked for Maddī, and Vessantara gave her too. Sakka revealed himself, gave her
+      back, and granted him boons.
+    - >-
+      Led by the devas, Jūjaka took the children to the Sivi capital, where their grandfather ransomed them;
+      Jūjaka ate so much at the feast that he died. The king and the people went to Mount Vaṅka, the family was
+      reunited, and Vessantara was brought home as king. The earth shook, and a rain of jewels fell.
+  texts:
+    - { ref: "Ja 547 Vessantara Jātaka", url: "https://suttacentral.net/ja547" }
+    - { ref: "Cariyāpiṭaka 1.9", url: "https://suttacentral.net/cp9" }
+    - { ref: "Margaret Cone and Richard Gombrich, The Perfect Generosity of Prince Vessantara (1977)" }
+  note: >-
+    It is the longest and best-loved of the Jātakas, recited over a day and a night at the Thet Mahachat festival
+    in Thailand and Laos. Buddhists have argued about it for centuries, above all over the gift of the children
+    and the wife, and the tradition itself puts those doubts into the mouths of its characters.
   reading: >-
-    Sense-sphere wholesome kamma at its fullest (Plate 10). The tradition counts it as the completion of the
-    perfection of giving.
+    Sense-sphere wholesome kamma at its fullest (“Kamma, death and rebirth”). The tradition counts it as the
+    completion of the perfection of giving.
   question: Can giving be wholesome kamma and also a step toward ending kamma?
   plates:
     - "10"
@@ -506,13 +1510,45 @@
   kind: disc
   title: Ajātasattu's lost chance
   source: DN 2
+  setting: The mango grove of Jīvaka at Rājagaha, on a full-moon night
+  people:
+    - { name: King Ajātasattu, who: "of Magadha, who had his father Bimbisāra killed" }
+    - { name: Jīvaka, who: "the royal physician, owner of the mango grove" }
+    - { name: The Buddha, who: "staying with 1,250 monks" }
   story: >-
     King Ajātasattu, who had killed his father to take the throne, heard the Buddha's discourse on the fruits
     of the recluse's life and went for refuge. When he had left, the Buddha said that had he not killed his
     father, the eye of Dhamma would have arisen in him then and there.
+  detail:
+    - >-
+      It was the full-moon night of Komudī, at the end of the rains. The king sat on his palace roof among his
+      ministers and said: how lovely the night is; what recluse or brahmin might we visit, to bring peace to my
+      heart? One minister named Pūraṇa Kassapa, others the other well-known teachers. Jīvaka the physician sat
+      silent, and when asked, said the Buddha was staying in his mango grove.
+    - >-
+      They set out on elephants by torchlight. Near the grove the king grew afraid: there were twelve hundred and
+      fifty monks there and not a sound, not a cough. Was this a trap? Jīvaka reassured him. Seeing the monks
+      seated in silence like a clear lake, the king said: may my son Udāyibhadda have such calm.
+    - >-
+      He asked the Buddha what visible fruit there is in the life of a recluse, here and now, as there is in a
+      craft or a trade; he had asked the six other teachers and got no answer. The Buddha answered step by step,
+      from the respect even a slave who goes forth would receive, through virtue, sense restraint and
+      contentment, to the jhānas, the knowledges, and the end of the taints. The king confessed his crime and
+      went for refuge.
+    - >-
+      When he had gone, the Buddha said: “The king is wounded, monks, the king is uprooted. Had he not taken the
+      life of his father, a righteous king, the dustless eye of Dhamma would have arisen in him in this very
+      seat.” The commentary adds that from that night he could sleep again; that he became a great supporter of
+      the Saṅgha after the Buddha's death; and that he will one day be a paccekabuddha.
+  texts:
+    - { ref: "DN 2 Sāmaññaphala Sutta", url: "https://suttacentral.net/dn2" }
+    - { ref: "Vinaya, Cūḷavagga VII (Devadatta and the prince)", url: "https://suttacentral.net/pli-tv-kd17" }
+  note: >-
+    DN 2 also preserves the views of the six other teachers of the time, which makes it one of the main sources
+    for the religious world of the Buddha's India.
   reading: >-
-    Weighty kamma (Plate 10) can bar the path (Plate 13). A heinous deed closes the door to path attainment in
-    that life.
+    Weighty kamma (“Kamma, death and rebirth”) can bar the path (“The tree of purification”). A heinous deed
+    closes the door to path attainment in that life.
   question: Why can one past act close a door that a good present act cannot open?
   plates:
     - "10"
@@ -522,14 +1558,50 @@
   kind: life
   title: The last night at Kusinārā
   source: DN 16
+  setting: The sāla grove of the Mallas at Kusinārā
+  people:
+    - { name: The Buddha, who: "eighty years old" }
+    - { name: Ānanda, who: "his attendant for twenty-five years" }
+    - { name: Subhadda, who: "a wanderer, the last disciple he received" }
+    - { name: Anuruddha, who: "who followed his mind through the jhānas" }
   story: >-
     The Buddha's last words were: “All conditioned things are subject to decay. Strive on with diligence.” He
     then rose through the jhānas to the cessation of perception and feeling, came back down to the first
     jhāna, rose again to the fourth, and on emerging from it attained final Nibbāna.
+  detail:
+    - >-
+      Ill after his last meal at the house of Cunda the smith, the Buddha walked to Kusinārā and lay down on his
+      right side between twin sāla trees, which flowered out of season and scattered their blossoms over him.
+      Ānanda went aside and wept, and the Buddha called him back: have I not told you that we must part from all
+      that is dear? You have served me long and well; make the effort, and you will soon be free.
+    - >-
+      A wanderer named Subhadda came, wanting to ask a question. Ānanda turned him away three times, not to tire
+      the Buddha. The Buddha overheard and let him in. Subhadda asked whether the other famous teachers had all
+      understood. Leave that aside, said the Buddha: where the noble eightfold path is found, there are true
+      recluses. Subhadda went forth that night, the last disciple the Buddha received himself, and soon became an
+      arahant.
+    - >-
+      To the monks the Buddha said: after I am gone, the Dhamma and the Discipline I have taught will be your
+      teacher. Three times he asked if anyone had a doubt about the Buddha, the Dhamma, the Saṅgha, the path or
+      the practice; all were silent. Then his last words: “All conditioned things are subject to decay. Strive on
+      with diligence.” (vayadhammā saṅkhārā, appamādena sampādetha)
+    - >-
+      He entered the first jhāna and rose through all the jhānas to the cessation of perception and feeling.
+      Ānanda said: the Blessed One has passed away. Not yet, said Anuruddha: he has entered cessation. The Buddha
+      came down through the jhānas to the first, rose again to the fourth, and emerging from the fourth, attained
+      final Nibbāna. The earth shook, and Brahmā, Sakka, Anuruddha and Ānanda each spoke a verse. Sakka's is still
+      chanted at funerals: impermanent are all formations, their nature is to arise and pass away.
+  texts:
+    - { ref: "DN 16 Mahāparinibbāna Sutta", url: "https://suttacentral.net/dn16" }
+    - { ref: "SN 6.15, the parinibbāna verses", url: "https://suttacentral.net/sn6.15" }
+  note: >-
+    DN 16 is the longest sutta in the canon. It follows the last year of the Buddha's life, from Rājagaha to
+    Kusinārā, and ends with the division of his relics among eight kingdoms.
   reading: >-
-    Every level at once: the jhānas of Plates 3 and 12, the planes he would not return to (11), and a death
-    followed by no rebirth-linking (10).
-  question: In terms of Plate 10, how does an arahant's death differ from anyone else's?
+    Every level at once: the jhānas of “A map of the eighty-nine” and “Forty meditation subjects”, the planes he
+    would not return to (“Thirty-one planes”), and a death followed by no rebirth-linking (“Kamma, death and
+    rebirth”).
+  question: How does an arahant's death differ from anyone else's?
   plates:
     - "3"
     - "10"

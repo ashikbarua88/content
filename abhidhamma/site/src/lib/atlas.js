@@ -30,9 +30,13 @@ export const GROUPS = ["what", "unfolds", "way"].map((k) => ({ key: k, t: partOf
 export const READING_PARTS = ["what", "unfolds", "way", "back"].map((k) => ({ key: k, t: partOf[k].title, d: partOf[k].desc }));
 
 export const levels = Object.fromEntries(LV.map((l) => [l.data.n, { name: l.data.name, q: l.data.question }]));
-// Stories by level, in the shape the pages use: k kind, t title, src source, s story, r reading, q question, p plates.
+// Stories by level, in the shape the pages use: k kind, t title, src source, s story, r reading, q question, p plates;
+// and for the story's own page: slug, level, setting, people, detail (paragraphs), texts, note.
+export const storyList = [...ST].sort((a, b) => a.id.localeCompare(b.id)).map(({ id, data: s }) => ({ id, slug: slugify(s.title), level: s.level, k: s.kind, t: s.title, src: s.source, s: s.story,
+  r: s.reading, q: s.question, p: s.plates, setting: s.setting, people: s.people || [], detail: s.detail || [], texts: s.texts || [], note: s.note }));
 export const stories = {};
-ST.forEach(({ data: s }) => { (stories[s.level] = stories[s.level] || []).push({ k: s.kind, t: s.title, src: s.source, s: s.story, r: s.reading, q: s.question, p: s.plates }); });
+storyList.forEach((s) => { (stories[s.level] = stories[s.level] || []).push(s); });
+export const storyUrl = (s) => u(`stories/${s.slug}/`);
 export const storyKinds = S.storyKinds;
 export const cmaMap = Object.fromEntries(S.cmaMap.map(([p, t, refs]) => [p, { t, refs }]));
 export const plates = S.plates;

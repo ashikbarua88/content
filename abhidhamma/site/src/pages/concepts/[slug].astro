@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Discuss from "../../components/Discuss.astro";
-import { concepts, concept, connections, storiesFor, storyKinds, conceptUrl, withGlosses, GROUPS, atlasUrl, plateTitle, cmaMap, u, SLUG, scLink } from "../../lib/atlas.js";
+import { concepts, concept, connections, storiesFor, storyKinds, storyUrl, conceptUrl, withGlosses, GROUPS, atlasUrl, plateTitle, cmaMap, u, SLUG, scLink } from "../../lib/atlas.js";
 
 export function getStaticPaths() {
   return concepts.map((c) => ({ params: { slug: c.slug }, props: { id: c.id } }));
@@ -80,7 +80,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
           <div class="stories">
             {tales.map((s) => (
               <div class="story">
-                <h3>{s.t}</h3>
+                <h3><a href={storyUrl(s)}>{s.t}</a></h3>
                 <span class="src">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
                 <p>{s.s}</p>
                 <p class="r" set:html={withGlosses(s.r.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"))} />

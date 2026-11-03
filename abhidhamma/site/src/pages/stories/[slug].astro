@@ -1,0 +1,82 @@
+---
+// One story told in full: setting and people, the retelling, where it is told, the study reading, related
+// readings and stories, and the reflection journal and discussion.
+import Base from "../../layouts/Base.astro";
+import Discuss from "../../components/Discuss.astro";
+import { getCollection } from "astro:content";
+import { storyList, storyKinds, levels, withGlosses, storyUrl, u } from "../../lib/atlas.js";
+
+export function getStaticPaths() {
+  return storyList.map((s, i) => ({ params: { slug: s.slug }, props: { s, prev: storyList[i - 1], next: storyList[i + 1] } }));
+}
+const { s, prev, next } = Astro.props;
+const ital = (t) => withGlosses(t.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
+const readings = (await getCollection("readings")).filter((r) => s.p.includes(r.data.plate.replace(/^p/, ""))).sort((a, b) => a.data.order - b.data.order);
+const shared = new Set(s.p);
+const alsoSee = storyList.filter((x) => x !== s && x.p.some((p) => shared.has(p)))
+  .map((x) => ({ x, hits: x.p.filter((p) => shared.has(p)).length })).sort((a, b) => b.hits - a.hits).slice(0, 4).map((o) => o.x);
+const kind = (storyKinds[s.k] || [""])[0];
+---
+<Base title={s.t} nav="stories" description={s.s}>
+  <div class="wrap page st-page">
+    <article>
+      <p class="crumbs"><a href={u("stories/")}>Stories</a> › <a href={u("stories/#level-" + s.level)}>{levels[s.level]?.name}</a></p>
+      <header>
+        <p class="dh-badge ui">{kind} · Level {s.level}</p>
+        <h1>{s.t}</h1>
+        <p class="dek">{s.s}</p>
+      </header>
+
+      {(s.setting || s.people.length > 0) && (
+        <dl class="st-facts">
+          {s.setting && <div><dt>Where</dt><dd>{s.setting}</dd></div>}
+          {s.people.length > 0 && <div><dt>Who</dt><dd><ul>{s.people.map((p) => <li><b>{p.name}</b>{p.who && <>, {p.who}</>}</li>)}</ul></dd></div>}
+          <div><dt>Source</dt><dd>{s.src}</dd></div>
+        </dl>
+      )}
+
+      {s.detail.length > 0 && (
+        <section class="st-body">
+          <h2 id="the-story">The story</h2>
+          {s.detail.map((para) => <p set:html={ital(para)} />)}
+        </section>
+      )}
+
+      <section class="st-reading">
+        <h2 id="a-reading">A reading <span class="muted ui">· a study aid, not the tradition's own reading</span></h2>
+        <p set:html={ital(s.r)} />
+        {readings.length > 0 && (
+          <p class="ui st-links">Read with: {readings.map((r, i) => <>{i > 0 && " · "}<a href={u(`readings/${r.id}/`)}>{r.data.title}</a></>)}</p>
+        )}
+      </section>
+
+      {s.texts.length > 0 && (
+        <section class="st-texts">
+          <h2 id="where-it-is-told">Where it is told</h2>
+          <ul>{s.texts.map((t) => <li>{t.url ? <a href={t.url} rel="noopener">{t.ref}</a> : t.ref}</li>)}</ul>
+          {s.note && <p class="note">{s.note}</p>}
+          <p class="muted ui">Retold from the texts named here, in our own words; short lines in quotation marks follow the published translations.</p>
+        </section>
+      )}
+
+      {s.q && <Discuss term={"story:" + s.slug} q={s.q} title={s.t} />}
+
+      <nav class="pn" aria-label="Previous and next story">
+        {prev && <a href={storyUrl(prev)}><small>Previous</small><span class="t">{prev.t}</span></a>}
+        {next && <a class="next" href={storyUrl(next)}><small>Next</small><span class="t">{next.t}</span></a>}
+      </nav>
+    </article>
+    <aside data-pagefind-ignore>
+      <div class="box">
+        <div><p class="lab">On this page</p><ul>
+          {s.detail.length > 0 && <li><a href="#the-story">The story</a></li>}
+          <li><a href="#a-reading">A reading</a></li>
+          {s.texts.length > 0 && <li><a href="#where-it-is-told">Where it is told</a></li>}
+          {s.q && <li><a href="#reflect">Reflect and discuss</a></li>}
+        </ul></div>
+        {alsoSee.length > 0 && <div><p class="lab">Related stories</p><ul>{alsoSee.map((x) => <li><a href={storyUrl(x)}>{x.t}</a></li>)}</ul></div>}
+        <div><p class="lab">{levels[s.level]?.name}</p><ul>{storyList.filter((x) => x.level === s.level).map((x) => <li><a href={storyUrl(x)} aria-current={x === s ? "page" : undefined}>{x.t}</a></li>)}</ul></div>
+      </div>
+    </aside>
+  </div>
+</Base>

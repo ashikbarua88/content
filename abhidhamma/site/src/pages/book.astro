@@ -99,8 +99,8 @@ const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\
           {stories[lv].map((s) => (
             <div class="story">
               <h4>{s.t}</h4>
-              <span class="src ui">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
-              <p>{s.s}</p>
+              <span class="src ui">{(storyKinds[s.k] || [""])[0]} · {s.src}{s.setting && <> · {s.setting}</>}</span>
+              {s.detail.length ? s.detail.map((para) => <p set:html={ital(para)} />) : <p>{s.s}</p>}
               <p class="r" set:html={ital(s.r)} />
             </div>
           ))}

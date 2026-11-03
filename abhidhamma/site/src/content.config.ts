@@ -45,6 +45,9 @@ const stories = defineCollection({
   schema: z.object({
     level: z.number(), kind: z.enum(["life", "jataka", "disc"]), title: z.string(), source: z.string(),
     story: z.string(), reading: z.string(), question: z.string().optional(), plates: z.array(z.string()),
+    setting: z.string().optional(), people: z.array(z.object({ name: z.string(), who: z.string() })).optional(),
+    detail: z.array(z.string()).optional(), texts: z.array(z.object({ ref: z.string(), url: z.string().optional() })).optional(),
+    note: z.string().optional(),
   }),
 });
 const levels = defineCollection({
