@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { glossary, fold, atlasUrl, concepts, conceptUrl } from "../lib/atlas.js";
+import { glossary, fold, concepts, conceptUrl } from "../lib/atlas.js";
 import { dhammaFor, dhammaUrl } from "../lib/dhammas.js";
 const letters = [...new Set(glossary.map((g) => fold(g.term)[0].toUpperCase()))];
 const groups = letters.map((L) => [L, glossary.filter((g) => fold(g.term)[0].toUpperCase() === L)]);
@@ -17,7 +17,7 @@ const conceptFor = (g) => concepts.find((c) => fold(g.term.split(" · ")[0]) ===
         <h2 id={L}>{L}</h2>
         <dl class="gl">
           {gs.map((g) => { const c = conceptFor(g); const dm = dhammaFor(g.term); return (
-            <div id={g.id}><dt lang="pi">{g.term}</dt><dd>{g.gloss}. {c && <a href={conceptUrl(c.id)}>The concept</a>}{c && " · "}{dm && <a href={dhammaUrl(dm)}>The entry</a>}{dm && " · "}<span class="x"><a href={atlasUrl("p" + g.plate)}>Plate {g.plate}</a></span></dd></div>
+            <div id={g.id}><dt lang="pi">{g.term}</dt><dd>{g.gloss}. {c && <a href={conceptUrl(c.id)}>The concept</a>}{c && dm && " · "}{dm && <a href={dhammaUrl(dm)}>The entry</a>}</dd></div>
           ); })}
         </dl>
       </section>

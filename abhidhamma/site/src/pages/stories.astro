@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { stories, storyKinds, levels, withGlosses, atlasUrl } from "../lib/atlas.js";
+import { stories, storyKinds, levels, withGlosses } from "../lib/atlas.js";
 const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\)/g, "(<i>$1</i>)"));
 ---
 <Base title="Stories" nav="stories" description="Stories from the Buddha's life, the Jātakas and the disciples, each read against an idea of the Abhidhamma.">
@@ -15,7 +15,7 @@ const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\
           {stories[lv].map((s) => (
             <div class="story">
               <h3>{s.t}</h3>
-              <span class="src">{(storyKinds[s.k] || [""])[0]} · {s.src} · <a href={atlasUrl("S" + lv)}>in the atlas</a></span>
+              <span class="src">{(storyKinds[s.k] || [""])[0]} · {s.src}</span>
               <p>{s.s}</p>
               <p class="r" set:html={ital(s.r)} />
               {s.q && <p><i>{s.q}</i></p>}

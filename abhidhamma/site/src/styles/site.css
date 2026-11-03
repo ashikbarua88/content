@@ -322,3 +322,4 @@ svg.fig .fg-mu { fill: var(--muted); } svg.fig .fg-nm { fill: var(--nama); } svg
 .dh-rows a { grid-template-columns: 13em 1fr 7em; }
 @media (max-width: 1000px) { .page.dh { grid-template-columns: minmax(0, 48em); } }
 @media (max-width: 760px) { .dh-rows a { grid-template-columns: 1fr auto; } }
+svg.graph .gnode { cursor: pointer; } svg.graph .gnode:hover rect { stroke-width: 2.6; } svg.graph .gnode:focus { outline: none; } svg.graph .gnode:focus-visible rect { stroke: var(--ink); stroke-width: 3; }

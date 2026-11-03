@@ -56,6 +56,7 @@
   text: "The air element: motion and support, felt as pressure and distension. It moves and steadies the body."
 - id: cakkhu
   related:
+    - { kind: conditions, id: indriya, how: "eye-sensitivity is a faculty" }
     - { kind: matter, id: vanna, how: "its object" }
     - { kind: conditions, id: purejata, how: "supports seeing as prenascence" }
   order: 5
@@ -73,6 +74,8 @@
     tryIt: You never see the eye-sensitivity; you know it only through seeing. Close your eyes and open them.
 - id: sota
   related:
+    - { kind: conditions, id: purejata, how: "supports hearing as prenascence" }
+    - { kind: conditions, id: indriya, how: "ear-sensitivity is a faculty" }
     - { kind: matter, id: sadda, how: "its object" }
   order: 6
   pali: sota
@@ -81,6 +84,8 @@
   text: "Ear-sensitivity: the matter in the ear that sound can strike. It is the base and door of hearing."
 - id: ghana
   related:
+    - { kind: conditions, id: purejata, how: "supports smelling as prenascence" }
+    - { kind: conditions, id: indriya, how: "nose-sensitivity is a faculty" }
     - { kind: matter, id: gandha, how: "its object" }
   order: 7
   pali: ghāna
@@ -89,6 +94,8 @@
   text: "Nose-sensitivity: the matter in the nose that smells can strike."
 - id: jivha
   related:
+    - { kind: conditions, id: purejata, how: "supports tasting as prenascence" }
+    - { kind: conditions, id: indriya, how: "tongue-sensitivity is a faculty" }
     - { kind: matter, id: rasa, how: "its object" }
   order: 8
   pali: jivhā
@@ -97,6 +104,8 @@
   text: "Tongue-sensitivity: the matter in the tongue that tastes can strike."
 - id: kaya
   related:
+    - { kind: conditions, id: purejata, how: "supports touching as prenascence" }
+    - { kind: conditions, id: indriya, how: "body-sensitivity is a faculty" }
     - { kind: matter, id: pathavi, how: "its object: the tangible" }
     - { kind: matter, id: tejo, how: "its object: the tangible" }
     - { kind: matter, id: vayo, how: "its object: the tangible" }
@@ -109,6 +118,7 @@
     great elements themselves.
 - id: vanna
   related:
+    - { kind: conditions, id: arammana, how: "helps seeing as its object" }
     - { kind: matter, id: cakkhu, how: "the sense that knows it" }
   order: 10
   pali: vaṇṇa
@@ -157,6 +167,7 @@
   text: "Masculinity: the kamma-born faculty that shapes the marks and manner of a male body."
 - id: hadaya
   related:
+    - { kind: conditions, id: purejata, how: "supports mind as prenascence, during a life" }
     - { kind: conditions, id: nissaya, how: "supports mind-consciousness: support condition" }
   order: 16
   pali: hadaya
@@ -167,6 +178,7 @@
     canonical Paṭṭhāna speaks only of "that matter" on which mind depends.
 - id: jivita
   related:
+    - { kind: conditions, id: indriya, how: "the material life faculty" }
     - { kind: factors, id: jivitindriya, how: "its counterpart in mind" }
   order: 17
   pali: jīvita

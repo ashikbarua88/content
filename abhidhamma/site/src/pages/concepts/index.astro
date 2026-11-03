@@ -1,12 +1,12 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { GROUPS, concept, conceptUrl, atlasUrl } from "../../lib/atlas.js";
+import { GROUPS, concept, conceptUrl, u } from "../../lib/atlas.js";
 const pic = (c) => c.picture?.svg.replace(/<title>[^<]*<\/title>/, "").replace(/aria-label="[^"]*"/, 'aria-hidden="true"') || "";
 ---
 <Base title="Concepts" nav="concepts" description="Sixteen ideas that hold the Abhidhamma together, each with a picture, its links to the others, its sources and a question.">
   <div class="wrap" style="padding-top:34px">
     <h1>Sixteen ideas</h1>
-    <p class="dek" style="max-width:36em">The Abhidhamma's many lists rest on a few ideas. Each page says what the idea is, how it connects to the others, where it comes from in the texts, and what to ask of it. The same ideas are drawn as a <a href={atlasUrl("map")}>clickable map</a> in the atlas.</p>
+    <p class="dek" style="max-width:36em">The Abhidhamma's many lists rest on a few ideas. Each page says what the idea is, how it connects to the others, where it comes from in the texts, and what to ask of it. The same ideas are drawn as a <a href={u("explore/")}>clickable map</a>.</p>
     {GROUPS.map((g) => (
       <section class="band" style="border:0;padding-bottom:0">
         <h2 style="margin-top:0">{g.t}</h2>

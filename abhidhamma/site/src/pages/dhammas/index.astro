@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { KINDS, dhammaUrl, gist, FIGURE_READING } from "../../lib/dhammas.js";
+import { KINDS, dhammaUrl, gist, FIGURE_READING, factors, matter, conditions, roleCond } from "../../lib/dhammas.js";
+import { listsGraph } from "../../figures/graph.js";
 import { conceptUrl, concept, fold, u } from "../../lib/atlas.js";
 
 const COLOR = { factors: "var(--nama)", matter: "var(--rupa)", conditions: "var(--nib)" };
@@ -8,6 +9,7 @@ const COLOR = { factors: "var(--nama)", matter: "var(--rupa)", conditions: "var(
 const groupsOf = (K) => K.groups.map((x) => ({ g: x.title, list: K.list.filter((e) => (e.groupName || e.group) === x.title) })).filter((x) => x.list.length);
 const anchor = (k, g) => `${k}-${fold(g).replace(/[^a-z0-9]+/g, "-")}`;
 const ORIG = ["kamma", "mind", "temperature", "nutriment"];
+const graph = listsGraph({ factors, matter, conditions, roleCond, url: dhammaUrl });
 ---
 <Base title="Dhammas" nav="dhammas" description="The 52 mental factors, the 28 kinds of matter and the 24 conditions: what each is, how they group, and how they connect.">
   <div class="wrap page dh">
@@ -26,6 +28,11 @@ const ORIG = ["kamma", "mind", "temperature", "nutriment"];
           </a>
         ))}
       </div>
+
+      <figure class="pic drawn dh-graph">
+        <div class="fig-scroll" tabindex="0"><Fragment set:html={graph} /></div>
+        <figcaption>How the three lists connect. Mental factors and kinds of matter, on either side, become the conditions in the middle: greed, for instance, is a root, and as a root it is root condition. Every name opens its entry.</figcaption>
+      </figure>
 
       <div class="dh-filter" data-pagefind-ignore>
         <label for="dh-q" class="lab">Find an entry</label>

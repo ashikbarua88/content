@@ -98,3 +98,19 @@ export function readingsFor(e) {
 export const gist = (t) => (t.match(/^.*?[.!?](\s|$)/) || [t])[0].trim();
 // Which reading draws each list's figure.
 export const FIGURE_READING = { factors: ["the-52-factors", "An ensemble of fifty-two"], matter: ["how-matter-is-made", "How matter is made"], conditions: ["the-web-of-conditions", "The web of twenty-four conditions"] };
+
+// An entry's neighbours for its graph: what it names as related, what names it, the conditions its
+// roles become, and, for a condition, the factors that become it. At most twelve, nearest first.
+const ROLE_COND = Object.fromEntries(Object.entries(ROLES).filter(([, [, c]]) => c).map(([r, [, c]]) => [r, c]));
+export const roleCond = ROLE_COND;
+export function neighbours(e) {
+  const out = new Map(), key = (x) => x.kind + ":" + x.slug, short = (h) => h.replace(/^(its|a|an|the) /, "").split(/[:,]/)[0].split(" ").slice(0, 5).join(" ");
+  const add = (entry, how) => { if (entry && entry !== e && !out.has(key(entry))) out.set(key(entry), { entry, short: short(how) }); };
+  e.related.forEach((r) => add(r.entry, r.how));
+  if (e.kind === "factors") e.roles.forEach((r) => ROLE_COND[r] && add(conditionBySlug(ROLE_COND[r]), "as " + ROLES[r][0]));
+  if (e.kind === "conditions") factors.forEach((f) => f.roles.forEach((r) => ROLE_COND[r] === e.slug && add(f, ROLES[r][0])));
+  // Entries that name this one: keep their wording only when it reads the same both ways.
+  const SYM = /opposite|partner|counterpart|fellow|same/;
+  for (const x of [...factors, ...matter, ...conditions]) x.related.forEach((r) => { if (r.entry === e) add(x, SYM.test(r.how) ? r.how : "related"); });
+  return [...out.values()].slice(0, 12);
+}

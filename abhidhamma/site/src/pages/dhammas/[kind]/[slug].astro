@@ -1,7 +1,8 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { KINDS, dhammaUrl, readingsFor, ROLES, conditionBySlug, FIGURE_READING } from "../../../lib/dhammas.js";
-import { conceptUrl, concept, atlasUrl, u, withGlosses } from "../../../lib/atlas.js";
+import { KINDS, dhammaUrl, readingsFor, ROLES, conditionBySlug, FIGURE_READING, neighbours } from "../../../lib/dhammas.js";
+import { egoGraph } from "../../../figures/graph.js";
+import { conceptUrl, concept, u, withGlosses } from "../../../lib/atlas.js";
 import { BLOCKS } from "../../../figures/common.js";
 
 export function getStaticPaths() {
@@ -24,6 +25,8 @@ if (e.kind === "matter") glance.push(["Origins", e.origins.length ? e.origins.jo
 if (e.kind === "conditions") glance.push(["Direction", e.group], ...(e.synthesis ? [["Synthesis", `one of the four: ${e.synthesis}`]] : []));
 glance.push(["Group", groupName], ["Manual", K.ch]);
 const fig = FIGURE_READING[e.kind];
+const nbs = neighbours(e);
+const ego = nbs.length ? egoGraph(e, nbs, dhammaUrl) : null;
 ---
 <Base title={`${e.en} (${e.pali})`} description={e.text} nav="dhammas">
   <div class="wrap page dh-entry" style={`--c:${COLOR[e.kind]}`}>
@@ -53,6 +56,12 @@ const fig = FIGURE_READING[e.kind];
 
       <section id="connections">
         <h2>Connections</h2>
+        {ego && (
+          <figure class="pic drawn dh-graph">
+            <div class="fig-scroll" tabindex="0"><Fragment set:html={ego} /></div>
+            <figcaption>Blue: mental factors. Gold: matter. Green: conditions. Choose any name to go to it.</figcaption>
+          </figure>
+        )}
 
         {e.related?.length > 0 && (
           <div class="dh-block">
@@ -118,7 +127,7 @@ const fig = FIGURE_READING[e.kind];
         </div>
       </section>
 
-      <p class="note" style="margin-top:28px">Part of <a href={conceptUrl(K.concept)}>{concept(K.concept).title}</a>. Described after the commentaries, in the order of the <i>Manual</i>; not quoted from it. <a href={atlasUrl(K.plate)}>The atlas plate</a>.</p>
+      <p class="note" style="margin-top:28px">Part of <a href={conceptUrl(K.concept)}>{concept(K.concept).title}</a>. Described after the commentaries, in the order of the <i>Manual</i>; not quoted from it.</p>
 
       <nav class="pn" aria-label="Previous and next entry">
         {prev && <a href={dhammaUrl(prev)}><small>Previous</small><span class="t">{prev.en}</span></a>}

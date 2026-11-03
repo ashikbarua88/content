@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Discuss from "../../components/Discuss.astro";
 import { getCollection, render } from "astro:content";
-import { concept, conceptUrl, atlasUrl, u, cmaMap } from "../../lib/atlas.js";
+import { concept, conceptUrl, u, cmaMap } from "../../lib/atlas.js";
 
 export async function getStaticPaths() {
   const all = (await getCollection("readings")).sort((a, b) => a.data.order - b.data.order);
@@ -19,7 +19,7 @@ const plateNo = d.plate.replace(/^p/, "");
       <p class="crumbs"><a href={u("readings/")}>Readings</a> › {d.part}</p>
       <h1>{d.title}</h1>
       <p class="dek">{d.dek}</p>
-      <p class="meta"><button type="button" class="savepdf" onclick="window.print()">Save as PDF</button><span>About {d.minutes} minutes</span><span>Plate {plateNo} in the atlas</span>{cmaMap[plateNo] && <span>Manual {cmaMap[plateNo].refs.split(";")[0]}</span>}</p>
+      <p class="meta"><button type="button" class="savepdf" onclick="window.print()">Save as PDF</button><span>About {d.minutes} minutes</span>{cmaMap[plateNo] && <span>Manual {cmaMap[plateNo].refs.split(";")[0]}</span>}</p>
     </header>
     <div class="body">
       <Content />
@@ -31,7 +31,7 @@ const plateNo = d.plate.replace(/^p/, "");
       </ul>
       <h2 id="sources">Sources</h2>
       <ul class="canon">{d.sources.map((s) => <li set:html={s} />)}</ul>
-      <p class="note">Retold for study, not quoted. The full drawing and its notes are on <a href={atlasUrl(d.plate)}>Plate {plateNo} of the atlas</a>.</p>
+      <p class="note">Retold for study, not quoted.</p>
       <h2 id="discuss">Reflect and discuss</h2>
       <Discuss term={"reading:" + r.id} q={d.question} a={d.answer} title={d.title} />
       <nav class="pn" aria-label="Previous and next reading">

@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
-import { READING_PARTS, concept, conceptUrl, u, atlasUrl } from "../lib/atlas.js";
+import { READING_PARTS, concept, conceptUrl, u } from "../lib/atlas.js";
 const readings = (await getCollection("readings")).sort((a, b) => a.data.order - b.data.order);
 const cards = ["T", "CI", "PR", "JV", "KA", "DO", "VI", "NB"].map(concept);
 const pic = (c) => c.picture?.svg.replace(/<title>[^<]*<\/title>/, "").replace(/aria-label="[^"]*"/, 'aria-hidden="true"') || "";
@@ -47,7 +47,6 @@ const R = 150, cells = Array.from({ length: 17 }, (_, i) => {
               <p>{g.d}</p>
               <ul class="list">
                 {rs.map((r) => <li><a href={u("readings/" + r.id + "/")}><span class="t">{r.data.title}</span></a></li>)}
-                {rs.length === 0 && <li class="muted ui inline" style="font-size:15px">The first essays here are being written. The <a href={atlasUrl("L6")}>atlas plates</a> cover this part now.</li>}
               </ul>
             </div>
           );
@@ -81,7 +80,7 @@ const R = 150, cells = Array.from({ length: 17 }, (_, i) => {
     <div class="wrap cols">
       <div class="col"><h3><a href={u("glossary/")}>Glossary</a></h3><p>Every Pāli term used on the site, with a short English gloss. Hover or tap a dotted word anywhere to see its entry.</p></div>
       <div class="col"><h3><a href={u("stories/")}>Stories</a></h3><p>The Buddha's life, the Jātakas and the disciples, each read against the idea it shows.</p></div>
-      <div class="col"><h3><a href={u("library/")}>Library</a></h3><p>The atlas of plates, its printable PDF, the interactive model of mind and matter, and the books behind them.</p></div>
+      <div class="col"><h3><a href={u("library/")}>Library</a></h3><p>The whole site as one book, the earlier atlas and its 3D models, and the books behind them.</p></div>
     </div>
   </section>
 </Base>

@@ -1,9 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
 import M from "../data/map.json";
-import { conceptUrl, atlasUrl, u, levels, links, linkTypes } from "../lib/atlas.js";
+import { conceptUrl, u, links, linkTypes } from "../lib/atlas.js";
+import { dhammaUrl, factors, matter, conditions, roleCond } from "../lib/dhammas.js";
+import { listsGraph } from "../figures/graph.js";
+const lists = listsGraph({ factors, matter, conditions, roleCond, url: dhammaUrl });
 
-// The atlas's concept map, with every idea a link to its concept page and every arrow
+// The concept map (drawn for the atlas), with every idea a link to its concept page and every arrow
 // carrying its two ends, so hovering an idea can light up its connections.
 let svg = M.svg
   .replace(/^<svg([^>]*?) width="[^"]*"/, "<svg$1").replace(/^<svg([^>]*?) height="[^"]*"/, "<svg$1")
@@ -13,12 +16,8 @@ let svg = M.svg
     (m, i) => `<g class="cme" data-from="${links[i].from}" data-to="${links[i].to}">`)
   .replace(/aria-label="Concept map[^"]*"/, 'aria-label="Concept map of the sixteen ideas in six rows, joined by labelled arrows. Each idea links to its page."');
 const types = Object.entries(linkTypes);
-const models = [
-  ["D1", "The categories, mapped", 1], ["D2", "Elements in 3D", 2], ["D3", "Process in 3D", 3],
-  ["D4", "Relations in 3D", 4], ["D5", "Thirty-one planes as a world-mountain", 5], ["D6", "Practice as a climb", 6], ["D7", "One moment, every lens", 7],
-];
 ---
-<Base title="Explore" nav="explore" description="The concept map of the sixteen ideas, and the atlas's 3D models.">
+<Base title="Explore" nav="explore" description="The concept map of the sixteen ideas, and how the three lists of dhammas connect.">
   <div class="wrap" style="padding-top:34px">
     <h1>Explore</h1>
     <p class="dek" style="max-width:36em">The sixteen ideas on one map. Point at an idea to light up what it connects to; choose it to read about it.</p>
@@ -26,18 +25,17 @@ const models = [
       <Fragment set:html={svg} />
       <figcaption>
         <span class="legend">{types.map(([k, [c, t]]) => <span><i style={`background:var(${c})`}></i>{t}</span>)}</span>
-        Rows are the levels of the atlas's path, from foundations at the top to the path at the bottom. <a href={atlasUrl("map")}>The map in the atlas</a> also traces a path between any two ideas.
+        Rows are the levels of study, from foundations at the top to the path at the bottom.
       </figcaption>
     </figure>
 
     <section class="band" style="border:0">
-      <h2 style="margin-top:0">In three dimensions</h2>
-      <p class="muted" style="max-width:40em">The atlas has a 3D model for each level, which you can turn and take apart. They open in the atlas.</p>
-      <ul class="list cols" style="border:0">
-        {models.map(([id, t, lv]) => <li><a href={atlasUrl(id)}><span class="t">{t}</span><span class="d">Level {lv}: {levels[lv]?.name}</span></a></li>)}
-        <li><a href={u("nama-rupa-model.html")}><span class="t">The nāma–rūpa model</span><span class="d">Mind and matter in relation, a lifespan of moments, the kalāpas</span></a></li>
-      </ul>
+      <h2 style="margin-top:0">How the dhammas connect</h2>
+      <p class="muted" style="max-width:40em">The three lists of <a href={u("dhammas/")}>dhammas</a> are not separate: mental factors and kinds of matter become the conditions that relate them. Choose any name to open its entry.</p>
+      <figure class="pic drawn dh-graph"><div class="fig-scroll" tabindex="0"><Fragment set:html={lists} /></div></figure>
     </section>
+
+
   </div>
   <script is:inline>
     (function () {

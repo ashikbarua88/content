@@ -32,7 +32,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
       {pic && (
         <figure class="pic">
           <Fragment set:html={pic} />
-          <figcaption><button type="button" class="play" data-play={c.id}>▶ Play the picture</button> A literal picture of the idea, after {c.pictureSource}. Drawn for the atlas.</figcaption>
+          <figcaption><button type="button" class="play" data-play={c.id}>▶ Play the picture</button> A literal picture of the idea, after {c.pictureSource}.</figcaption>
         </figure>
       )}
 
@@ -46,8 +46,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
         <dl class="facts">
           <dt>Part</dt><dd>{group.t}: {group.d.toLowerCase()}</dd>
           <dt>Level</dt><dd>{c.level}. {c.levelName}</dd>
-          <dt>In the Manual</dt><dd>{cma.length ? cma.join("; ") : "see the atlas plates"}</dd>
-          <dt>In the atlas</dt><dd>{c.plates.map((p, k) => <>{k ? ", " : ""}<a href={atlasUrl("p" + p)}>Plate {p}, {plateTitle(p)}</a></>)}</dd>
+          <dt>In the Manual</dt><dd>{cma.length ? cma.join("; ") : "—"}</dd>
         </dl>
       </section>
 
@@ -117,7 +116,7 @@ const cma = c.plates.map((p) => cmaMap[p]?.refs).filter(Boolean);
         </div>
         <div>
           <p class="lab">See it on the map</p>
-          <a href={atlasUrl("idea-" + c.id)}>{c.title} on the atlas's concept map</a>
+          <a href={u("explore/")}>{c.title} on the concept map</a>
         </div>
       </div>
     </aside>

@@ -47,7 +47,7 @@ const ital = (s) => withGlosses(s.replace(/\(([a-zāīūṅñṭḍṇḷṃ]+)\
             <article class="essay reading" id={"r-" + r.id}>
               <h2>{r.data.title}</h2>
               <p class="dek">{r.data.dek}</p>
-              <p class="meta ui">Plate {r.data.plate.slice(1)} in the atlas{cmaMap[r.data.plate.slice(1)] && ` · Manual ${cmaMap[r.data.plate.slice(1)].refs.split(";")[0]}`}</p>
+              {cmaMap[r.data.plate.slice(1)] && <p class="meta ui">Manual {cmaMap[r.data.plate.slice(1)].refs.split(";")[0]}</p>}
               <div class="body"><Content /></div>
               <p class="q"><b>To reflect on.</b> {r.data.question}</p>
               <p class="src ui"><b>Sources.</b> <Fragment set:html={r.data.sources.join(" ")} /></p>
